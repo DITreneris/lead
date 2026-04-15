@@ -19,6 +19,7 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 ## Golden standard (LT)
 
 - **Tonas**: visur „TU“ (profesionaliai, trumpai, be „mokyklos“ tono).
+- **Forma**: vengti „-kite“ konstrukcijų (pvz. „Atsisiųskite“) — rašyti tiesiai „Atsisiųsk“.
 - **Tikslas**: padėti **įmonės darbuotojui** ir **vadovui** greitai pritaikyti sistemą darbe.
 - **Terminija**: „DI“, „užklausa (promptas)“ (pirmą kartą gali būti su paaiškinimu), „šablonas“, „patikra“, „skaidrė“, „biblioteka“.
 - **Microcopy**: vienas sakinys = viena mintis; CTA = vienas veiksmas; veiksmažodžiai vietoj abstrakcijų.

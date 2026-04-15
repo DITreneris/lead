@@ -6,6 +6,14 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [0.3.0] - 2026-04-15
+
+### Added
+
 - **Socialiniai meta ir OG:** `og:image`, `twitter:card` (`summary_large_image`), `twitter:image` — [assets/og-promptanatomy.png](assets/og-promptanatomy.png); absoliutus URL `http://promptanatomy.app/assets/og-promptanatomy.png` [index.html](index.html).
 - **Hero:** viena eilutė apie trukmę ir rezultatą (`.hero-meta`) [index.html](index.html).
 - **„Turinys“:** `#slide-outline` su dinamiškai užpildomu sąrašu iš šoninės navigacijos `aria-label`, slinkimas į tą pačią skaidrę kaip taškai [index.html](index.html).
