@@ -1,4 +1,4 @@
-# Build PDF from docs/pamoka-1-pdf.md -> assets/promptu-anatomija-pamoka-1.pdf
+# Build PDF from docs/pamoka-1-pdf.md -> assets/www.promptanatomy.app.pdf
 # Requires: Pandoc on PATH; PDF engine: typst (winget install Typst.Typst) or pdflatex.
 
 $ErrorActionPreference = "Stop"
@@ -8,7 +8,7 @@ Set-Location $root
 
 $src = Join-Path $root "docs\pamoka-1-pdf.md"
 $outDir = Join-Path $root "assets"
-$out = Join-Path $outDir "promptu-anatomija-pamoka-1.pdf"
+$out = Join-Path $outDir "www.promptanatomy.app.pdf"
 
 if (-not (Test-Path $src)) { throw "Missing source: $src" }
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
@@ -44,9 +44,9 @@ if (-not $typst) {
 }
 
 if ($typst) {
-    & $pandoc $src -o $out --pdf-engine=$typst -V geometry:margin=2.5cm
+    & $pandoc $src -o $out --resource-path=".;docs" --pdf-engine=$typst -V geometry:margin=2.5cm
 } else {
-    & $pandoc $src -o $out -V geometry:margin=2.5cm -V lang=lt
+    & $pandoc $src -o $out --resource-path=".;docs" -V geometry:margin=2.5cm -V lang=lt
 }
 
 Write-Host "OK: $out"

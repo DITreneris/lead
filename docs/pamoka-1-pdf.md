@@ -6,6 +6,8 @@ date: "2026"
 lang: lt
 ---
 
+**www.promptanatomy.app**
+
 # Trys sluoksniai viename prompte (užklausoje)
 
 Derink visus tris tame pačiame tekste — ypač planuojant darbą, pristatymą, laišką ar komandos sprendimą.

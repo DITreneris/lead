@@ -9,17 +9,17 @@
     <meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">
     <meta property="og:description" content="Praktinė DI užklausų sistema įmonei: aiški struktūra darbe — mažiau taisymo, daugiau kontrolės. Biblioteka ir trumpas quiz.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.promptanatomy.app/">
+    <meta property="og:url" content="http://promptanatomy.app/">
     <meta property="og:locale" content="lt_LT">
-    <meta property="og:image" content="https://www.promptanatomy.app/assets/og-promptanatomy.png">
+    <meta property="og:image" content="http://promptanatomy.app/assets/og-promptanatomy.png">
     <meta property="og:image:width" content="1376">
     <meta property="og:image:height" content="768">
     <meta property="og:image:alt" content="Promptų anatomija — DI užklausų sistema įmonei">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://www.promptanatomy.app/assets/og-promptanatomy.png">
+    <meta name="twitter:image" content="http://promptanatomy.app/assets/og-promptanatomy.png">
     <meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">
     <meta name="twitter:description" content="Praktinė DI užklausų sistema įmonei: aiški struktūra darbe — mažiau taisymo, daugiau kontrolės. Biblioteka ir trumpas quiz.">
-    <link rel="canonical" href="https://www.promptanatomy.app/">
+    <link rel="canonical" href="http://promptanatomy.app/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -192,6 +192,7 @@
             max-width: 100%;
         }
         button.nav-item {
+            position: relative;
             width: 14px;
             height: 14px;
             padding: 0;
@@ -202,8 +203,9 @@
             transition: 0.3s;
             background: rgba(255, 255, 255, 0.06);
             flex-shrink: 0;
+            touch-action: manipulation;
         }
-        button.nav-item.active { background: var(--accent-yellow); border-color: var(--accent-yellow); transform: scale(1.45); box-shadow: 0 0 0 2px var(--bg-dark); }
+        button.nav-item.active { background: var(--accent-yellow); border-color: var(--accent-yellow); transform: scale(1.28); box-shadow: 0 0 0 2px var(--bg-dark), 0 0 12px rgba(251, 211, 4, 0.22); }
 
         /* Skaidrių bazė */
         section {
@@ -215,6 +217,12 @@
             padding: 60px 120px;
             position: relative;
             border-bottom: 1px solid var(--border);
+        }
+        @supports (height: 100svh) {
+            section { min-height: 100svh; }
+        }
+        @supports (height: 100dvh) {
+            section { min-height: 100dvh; }
         }
 
         .container {
@@ -631,7 +639,7 @@
         .types-tip {
             margin-top: 24px;
             padding: 16px 18px;
-            background: linear-gradient(135deg, rgba(16, 59, 90, 0.45), rgba(255, 90, 95, 0.1));
+            background: linear-gradient(135deg, rgba(16, 59, 90, 0.50), rgba(251, 211, 4, 0.06));
             border: 1px solid var(--border);
             border-radius: 12px;
             display: flex;
@@ -1378,21 +1386,50 @@
         }
 
         @media (max-width: 1024px) {
+            :root { --mobile-nav-h: 72px; }
             .meme-interlude { padding: 32px 20px 40px; }
             .container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             section { padding: 40px 20px 100px; }
             .nav-sidebar { display: none; }
             .nav-mobile { display: flex; }
-            body { padding-bottom: 72px; }
+            body { padding-bottom: var(--mobile-nav-h); }
             .prompt-editor { text-align: left; }
             h1 { font-size: clamp(48px, 12vw, 80px); }
             h2 { font-size: clamp(32px, 8vw, 44px); }
             h2.essence-tagline { font-size: clamp(40px, 11vw, 72px); }
             h2.cta-title { font-size: clamp(40px, 11vw, 72px); }
             .nav-mobile button.nav-item {
-                width: 16px;
-                height: 16px;
-                border-width: 3px;
+                width: 40px;
+                height: 40px;
+                border-radius: 999px;
+                border: 0;
+                background: transparent;
+                display: grid;
+                place-items: center;
+                -webkit-tap-highlight-color: transparent;
+                transition: transform 0.18s ease, background 0.18s ease;
+            }
+            .nav-mobile button.nav-item::after {
+                content: '';
+                width: 12px;
+                height: 12px;
+                border-radius: 999px;
+                border: 3px solid rgba(255, 255, 255, 0.22);
+                background: rgba(255, 255, 255, 0.06);
+                box-sizing: border-box;
+                transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+            }
+            .nav-mobile button.nav-item.active {
+                transform: none;
+                background: rgba(251, 211, 4, 0.08);
+                box-shadow: none;
+                border-color: transparent;
+            }
+            .nav-mobile button.nav-item.active::after {
+                background: var(--accent-yellow);
+                border-color: var(--accent-yellow);
+                transform: scale(1.18);
+                box-shadow: 0 0 0 2px var(--bg-dark), 0 0 12px rgba(251, 211, 4, 0.22);
             }
             .brand-header {
                 padding: 12px 14px 12px 12px;
@@ -1425,7 +1462,7 @@
                 left: 12px;
                 right: auto;
                 top: auto;
-                bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+                bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 12px);
                 max-width: min(300px, calc(100vw - 100px));
             }
         }
@@ -1447,7 +1484,7 @@
 </details>
 
 <header class="brand-header" role="banner">
-    <a class="brand-lockup" href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija — oficiali svetainė www.promptanatomy.app (atidaryti naujame skirtuke)">
+    <a class="brand-lockup" href="http://promptanatomy.app/" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija — oficiali svetainė promptanatomy.app (atidaryti naujame skirtuke)">
         <div class="brand-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path fill="#fbd304" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
@@ -1463,7 +1500,7 @@
 <nav class="nav-sidebar" aria-label="Skaidrių navigacija">
     <button type="button" class="nav-item active" aria-label="Skaidrė 1: Įvadas" aria-current="true"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 2: Promptų anatomijos schema"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 3: Pradėkite per 2 minutes"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 3: Pradėk per 2 minutes"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 4: Patikros ir rizikos protokolas"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 5: Projekto ar darbo plano architektas"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 6: Auditorijų ir lygių derinimas"></button>
@@ -1481,7 +1518,7 @@
     <div class="nav-mobile-inner">
         <button type="button" class="nav-item active" aria-label="Skaidrė 1: Įvadas" aria-current="true"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 2: Promptų anatomijos schema"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 3: Pradėkite per 2 minutes"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 3: Pradėk per 2 minutes"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 4: Patikros ir rizikos protokolas"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 5: Projekto ar darbo plano architektas"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 6: Auditorijų ir lygių derinimas"></button>
@@ -1505,15 +1542,15 @@
             <span class="label">DI užklausų sistema įmonei</span>
             <h1>PROMPTŲ<br><span style="color: var(--accent-yellow);">ANATOMIJA</span></h1>
             <p class="hero-lead">Nuo DI „spėliojimo“ iki aiškios darbo sistemos: mažiau taisymo, daugiau kontrolės.</p>
-            <p class="hero-meta">Pradėk čia: per 2 minutes nusikopijuok vieną šabloną, pritaikyk savo situacijai ir patikrink kokybę pagal protokolą.</p>
+            <p class="hero-meta">2 min.: nusikopijuok šabloną → pritaikyk → patikrink pagal protokolą.</p>
             <div class="hero-actions">
                 <a class="hero-primary-link" href="#guided" aria-label="Pradėti: pereiti į 2 minučių praktiką" data-track="hero_primary_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
-                    Pradėti čia (2 min.)
+                    Pradėk čia (2 min.)
                 </a>
-                <a class="hero-pdf-link" href="assets/promptu-anatomija-pamoka-1.pdf" download="promptu-anatomija-pamoka-1.pdf" aria-label="Atsisiųsti 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
+                <a class="hero-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsti 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
-                    Atsisiųskite 1 pamokos santrauką (PDF)
+                    Atsisiųsk santrauką (PDF)
                 </a>
             </div>
         </div>
@@ -1533,7 +1570,7 @@
         <div class="schema-inner">
             <span class="label">Rėmas</span>
             <h2>Promptų anatomijos schema</h2>
-            <p class="schema-lead">5 žingsniai, kad DI <strong>nespėliotų</strong>, o dirbtų pagal jūsų užduoties logiką. Jei atsakymas „plaukia“ — dažniausiai trūksta 1–2 žingsnių.</p>
+            <p class="schema-lead">5 žingsniai, kad DI <strong>nespėliotų</strong>, o dirbtų pagal tavo užduotį. Jei atsakymas „plaukia“ — dažniausiai trūksta 1–2 žingsnių.</p>
             <div class="schema-grid">
                 <div class="schema-column-flow">
                     <svg class="schema-loop-svg" viewBox="0 0 40 200" preserveAspectRatio="none" aria-hidden="true">
@@ -1590,7 +1627,7 @@
                 </div>
             </div>
             <footer class="schema-foot">
-                <a href="#guided" aria-label="Toliau: pereiti į 2 minučių praktiką" data-track="schema_next_click">Toliau: 2 minučių praktika</a>
+                <a href="#guided" aria-label="Toliau: pereiti į 2 minučių praktiką" data-track="schema_next_click">Toliau: 2 min. praktika</a>
             </footer>
         </div>
     </div>
@@ -1600,26 +1637,26 @@
 <div class="meme-interlude">
     <figure class="meme-figure">
         <img src="assets/memes/meme-after-types.png" width="1280" height="720" loading="lazy" decoding="async"
-            alt="Memas po trijų prompto (užklausos) sluoksnių: DI atspindi tavo mąstymo aiškumą, todėl verta struktūruoti promptą.">
+            alt="Memas po trijų užklausos (promptų) sluoksnių: DI atspindi tavo mąstymo aiškumą, todėl verta struktūruoti užklausą.">
     </figure>
 </div>
 
 <!-- Skaidrė 3: Guided praktika -->
-<section id="guided" class="types-slide" aria-label="Pradėkite per 2 minutes">
+<section id="guided" class="types-slide" aria-label="Pradėk per 2 minutes">
     <div class="container">
         <div class="types-head">
             <span class="label">Praktika</span>
-            <h2>Pradėkite per 2 minutes</h2>
-            <p class="types-lead">Vienas scenarijus. <strong>Prieš</strong> (DI spėlioja) → <strong>Po</strong> (pagal anatomiją) → <strong>Patikra</strong> prieš siunčiant.</p>
+            <h2>Pradėk per 2 minutes</h2>
+            <p class="types-lead"><strong>Prieš</strong> (DI spėlioja) → <strong>Po</strong> (struktūra) → <strong>Patikra</strong> (prieš siunčiant).</p>
         </div>
         <div class="types-grid">
             <article class="types-card types-card--sys">
                 <h3>Prieš (per miglu)</h3>
                 <p class="types-card-desc">Pavyzdys, kai DI prigalvoja detalių, nes trūksta rėmo.</p>
-                <p class="types-card-k">Promptas</p>
+                <p class="types-card-k">Užklausa</p>
                 <div class="types-example-block">
                     <p class="types-card-example">„Paruošk ataskaitą apie mūsų Q3 iniciatyvą.“</p>
-                    <button type="button" class="types-copy-btn" data-copy-text="Paruošk ataskaitą apie mūsų Q3 iniciatyvą." aria-label="Kopijuoti 'prieš' promptą" data-track="practice_before_copy">Kopijuoti</button>
+                    <button type="button" class="types-copy-btn" data-copy-text="Paruošk ataskaitą apie mūsų Q3 iniciatyvą." aria-label="Kopijuoti 'prieš' užklausą" data-track="practice_before_copy">Kopijuoti</button>
                 </div>
                 <p class="types-card-k">Rizika</p>
                 <p class="types-card-result">DI spėlioja: auditorija, formatas, skaičiai, ką jau žinai.</p>
@@ -1627,20 +1664,20 @@
             <article class="types-card types-card--ctx">
                 <h3>Po (pagal anatomiją)</h3>
                 <p class="types-card-desc">Tas pats tikslas, bet su 5 žingsnių rėmu.</p>
-                <p class="types-card-k">Promptas</p>
+                <p class="types-card-k">Užklausa</p>
                 <div class="types-example-block">
                     <p class="types-card-example">„Tu esi B2B marketingo analitikas. Kontekstas: Q3 iniciatyva [PAVADINIMAS], auditorija: vadovybė, komanda jau matė [ŠALTINIS]. Mąstymas: 3 įžvalgos → 3 rizikos → 3 veiksmai. Rezultatas: 1 puslapio santrauka su lentelėmis. Pabaigoje: ką privalau patikrinti pats.“</p>
-                    <button type="button" class="types-copy-btn" data-copy-text="Tu esi B2B marketingo analitikas. Kontekstas: Q3 iniciatyva [PAVADINIMAS], auditorija: vadovybė, komanda jau matė [ŠALTINIS]. Mąstymas: 3 įžvalgos → 3 rizikos → 3 veiksmai. Rezultatas: 1 puslapio santrauka su lentelėmis. Pabaigoje: ką privalau patikrinti pats." aria-label="Kopijuoti 'po' promptą" data-track="practice_after_copy">Kopijuoti</button>
+                    <button type="button" class="types-copy-btn" data-copy-text="Tu esi B2B marketingo analitikas. Kontekstas: Q3 iniciatyva [PAVADINIMAS], auditorija: vadovybė, komanda jau matė [ŠALTINIS]. Mąstymas: 3 įžvalgos → 3 rizikos → 3 veiksmai. Rezultatas: 1 puslapio santrauka su lentelėmis. Pabaigoje: ką privalau patikrinti pats." aria-label="Kopijuoti 'po' užklausą" data-track="practice_after_copy">Kopijuoti</button>
                 </div>
                 <p class="types-card-k">Rezultatas</p>
-                <p class="types-card-result">Gausite atsakymą, kurį lengviau patikrinti ir naudoti.</p>
+                <p class="types-card-result">Gausi atsakymą, kurį lengviau patikrinti ir naudoti.</p>
             </article>
             <article class="types-card types-card--role">
                 <h3>Patikra (30 sek.)</h3>
-                <p class="types-card-desc">Prieš siunčiant klientui / vadovybei — paleiskite protokolą.</p>
+                <p class="types-card-desc">Prieš siunčiant klientui / vadovybei — paleisk protokolą.</p>
                 <p class="types-card-k">Ką tikrinti</p>
                 <div class="types-example-block">
-                    <p class="types-card-example">Faktai, rizikos, ko trūksta kontekste, ką privalote patikrinti patikimu šaltiniu.</p>
+                    <p class="types-card-example">Faktai, rizikos, ko trūksta kontekste, ką privalai patikrinti patikimu šaltiniu.</p>
                     <button type="button" class="types-copy-btn" data-copy-text="Patikra: 1) 3 didžiausios rizikos, 2) kas tinka naudoti, 3) ką privalau patikrinti pats, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
                 </div>
                 <p class="types-card-k">Toliau</p>
@@ -1701,7 +1738,7 @@
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi patyręs [srities] projektų ar procesų koordinatorius.</div>
                 <div class="prompt-line"><b>KONTEKSTAS</b> Paruošk [trukmė, pvz. 60 min.] susitikimo ar sprinto planą temai [Tema], komandai [Komanda / rolės]. Jie jau žino [ką sutarėte anksčiau].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Lentelė: Laikas | Veikla | Tikslas. Pridėk 3 sprendimui skirtus klausimus.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti promptą</button>
+                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span> Planas paruoštas per kelias minutes.</div>
         </div>
@@ -1718,7 +1755,7 @@
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi komunikacijos ir įsitraukimo ekspertas darbo aplinkoje.</div>
                 <div class="prompt-line"><b>KONTEKSTAS</b> Auditorijoje yra skirtingos patirtys: [pvz. junior / senior, klientas / vidinė komanda]. Tema ar užduotis: [Tema].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Pateik tą pačią žinutę ar užduotį 3 lygiais: 1. Bazinis, 2. Vidutinis, 3. Pažengęs / ekspertas.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti promptą</button>
+                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span> Vienas šablonas — kelios auditorijos.</div>
         </div>
@@ -1750,7 +1787,7 @@
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi profesionalus turinio ir kokybės vertintojas.</div>
                 <div class="prompt-line"><b>KONTEKSTAS</b> Įvertink komandos nario ar tiekėjo pateiktą tekstą / darbą: [Tekstas] pagal kriterijus: [Kriterijai].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Įvertinimas (balas ar lygis), 3 stiprios vietos ir 1 konkretus tobulinimo patarimas.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti promptą</button>
+                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></span> Mažiau iteracijų ir taisymo laiko.</div>
         </div>
@@ -1767,7 +1804,7 @@
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi inovatyvių darbo priemonių ir medžiagų kūrėjas.</div>
                 <div class="prompt-line"><b>KONTEKSTAS</b> Sukurk užduotį ar trumpą mokymo medžiagą tema [Tema], auditorijai [Komanda / rolė]. Naudok realų verslo ar proceso pavyzdį.</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Formatas: [žinių patikrinimas / praktinė užduotis]. Instrukcija vartotojui + atsakymų ar vertinimo raktas.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti promptą</button>
+                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span> Pritaikyta realiai darbo situacijai.</div>
         </div>
@@ -1799,7 +1836,7 @@
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi profesionalus komunikacijos specialistas.</div>
                 <div class="prompt-line"><b>KONTEKSTAS</b> Parašyk laišką ar žinutę [auditorijai: komanda / klientas / partneris] apie [situacija]. Tonas: profesionalus, bet šiltas.</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Laiškas iki 100 žodžių: Problema + Sprendimas + Kvietimas dialogui ar kitas aiškus veiksmas.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti promptą</button>
+                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span> Aiški ir rami komunikacija.</div>
         </div>
@@ -1809,9 +1846,9 @@
 <!-- Skaidrė 11: Promptų biblioteka (resursai) -->
 <section id="library" class="library-slide" aria-label="Promptų biblioteka (resursai)">
     <div class="container">
-        <span class="label">Resursai</span>
+        <span class="label">Biblioteka</span>
         <h2>Promptų biblioteka</h2>
-        <p class="library-lead">Jei reikia daugiau — čia yra mini-promptai skirtingoms situacijoms. Rekomenduojamas startas: paimk 1 ir pritaikyk <strong>[laužtiniuose skliaustuose]</strong> savo duomenimis.</p>
+        <p class="library-lead">Paruošti promptai dažniausioms situacijoms. Pasirink kategoriją, spausk „Kopijuoti“ ir užpildyk <strong>[skliaustuose]</strong>.</p>
 
         <div class="library-tabs" role="tablist" aria-label="Bibliotekos auditorija">
             <button type="button" class="library-tab" role="tab" id="library-tab-emp" aria-selected="true" aria-controls="library-panels">Darbuotojas</button>
@@ -1834,47 +1871,61 @@
         </details>
 
         <div class="library-categories" id="library-panels" role="tabpanel" aria-labelledby="library-tab-emp" aria-live="polite" aria-atomic="true">
-            <article class="library-cat" id="lib-cat-4">
+            <article class="library-cat" id="lib-cat-work">
                 <details class="library-cat-details">
-                    <summary class="library-cat-summary">Rekomenduojamas startas</summary>
+                    <summary class="library-cat-summary">Kasdienis darbas</summary>
                     <div class="library-cat-body">
                         <div class="library-item">
                             <h4>Dienos santrauka</h4>
                             <pre class="library-prompt-block" data-emp-key="lib_daySummary" data-mgr-key="mgr_daySummary"></pre>
-                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_daySummary" data-mgr-key="mgr_daySummary" aria-label="Kopijuoti dienos santraukos promptą" data-track="library_copy_daySummary">Kopijuoti</button>
+                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_daySummary" data-mgr-key="mgr_daySummary" aria-label="Kopijuoti dienos santraukos užklausą" data-track="library_copy_daySummary">Kopijuoti</button>
                         </div>
                         <div class="library-item">
                             <h4>Užduočių sąrašas</h4>
                             <pre class="library-prompt-block" data-emp-key="lib_taskList" data-mgr-key="mgr_taskList"></pre>
-                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_taskList" data-mgr-key="mgr_taskList" aria-label="Kopijuoti užduočių sąrašo promptą" data-track="library_copy_taskList">Kopijuoti</button>
+                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_taskList" data-mgr-key="mgr_taskList" aria-label="Kopijuoti užduočių sąrašo užklausą" data-track="library_copy_taskList">Kopijuoti</button>
+                        </div>
+                        <div class="library-item">
+                            <h4>Susitikimo užrašai</h4>
+                            <pre class="library-prompt-block" data-emp-key="lib_meetingNotes" data-mgr-key="mgr_meetingNotes"></pre>
+                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_meetingNotes" data-mgr-key="mgr_meetingNotes" aria-label="Kopijuoti susitikimo užrašų užklausą" data-track="library_copy_meetingNotes">Kopijuoti</button>
                         </div>
                     </div>
                 </details>
             </article>
 
-            <article class="library-cat" id="lib-cat-1">
+            <article class="library-cat" id="lib-cat-comm">
                 <details class="library-cat-details">
-                    <summary class="library-cat-summary">1. Šūkiai ir pavyzdžiai</summary>
+                    <summary class="library-cat-summary">Komunikacija</summary>
                     <div class="library-cat-body">
                         <div class="library-item">
-                            <h4>Mini: Zero-shot šūkis</h4>
-                            <p class="library-goal">Tikslas: vienas sakinys, be pavyzdžių.</p>
-                            <pre class="library-prompt-block" data-emp-key="lib_zeroShot" data-mgr-key="mgr_zeroShot"></pre>
-                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_zeroShot" data-mgr-key="mgr_zeroShot" aria-label="Kopijuoti Zero-shot šūkio promptą" data-track="library_copy_zeroShot">Kopijuoti</button>
+                            <h4>Atsakymas į laišką</h4>
+                            <pre class="library-prompt-block" data-emp-key="lib_emailReply" data-mgr-key="mgr_emailReply"></pre>
+                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_emailReply" data-mgr-key="mgr_emailReply" aria-label="Kopijuoti atsakymo į laišką užklausą" data-track="library_copy_emailReply">Kopijuoti</button>
+                        </div>
+                        <div class="library-item">
+                            <h4>Sutrumpinti tekstą</h4>
+                            <pre class="library-prompt-block" data-emp-key="lib_simplifyText" data-mgr-key="mgr_simplifyText"></pre>
+                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_simplifyText" data-mgr-key="mgr_simplifyText" aria-label="Kopijuoti teksto trumpinimo užklausą" data-track="library_copy_simplifyText">Kopijuoti</button>
                         </div>
                     </div>
                 </details>
             </article>
 
-            <article class="library-cat" id="lib-cat-6">
+            <article class="library-cat" id="lib-cat-qc">
                 <details class="library-cat-details">
-                    <summary class="library-cat-summary">6. Kokybė ir vertinimas</summary>
+                    <summary class="library-cat-summary">Kokybė ir patikra</summary>
                     <div class="library-cat-body">
                         <div class="library-item">
-                            <h4>Prompto kokybės patikrinimas (pagal 5 principus)</h4>
-                            <p class="library-goal">Įklijuok savo promptą ir paleisk.</p>
+                            <h4>Užklausos kokybės patikrinimas (pagal 5 principus)</h4>
+                            <p class="library-goal">Įklijuok savo užklausą (promptą) ir paleisk.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_qualityCheck" data-mgr-key="mgr_qualityCheck"></pre>
-                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_qualityCheck" data-mgr-key="mgr_qualityCheck" aria-label="Kopijuoti prompto kokybės patikrinimo promptą" data-track="library_copy_qualityCheck">Kopijuoti</button>
+                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_qualityCheck" data-mgr-key="mgr_qualityCheck" aria-label="Kopijuoti užklausos kokybės patikrinimo užklausą" data-track="library_copy_qualityCheck">Kopijuoti</button>
+                        </div>
+                        <div class="library-item">
+                            <h4>Apribojimai ir formatas</h4>
+                            <pre class="library-prompt-block" data-emp-key="lib_constraints" data-mgr-key="mgr_constraints"></pre>
+                            <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_constraints" data-mgr-key="mgr_constraints" aria-label="Kopijuoti apribojimų ir formato užklausą" data-track="library_copy_constraints">Kopijuoti</button>
                         </div>
                     </div>
                 </details>
@@ -1957,10 +2008,10 @@
             <form id="prompt-quiz-form" novalidate
                 data-msg-select="Pasirink vieną variantą ir spausk Tikrinti."
                 data-feedback-correct="Vaidmuo, kontekstas ir aiškiai apibrėžtas rezultatas leidžia DI atsakyti pagal tavo užduoties ar projekto logiką — tai atitinka promptų anatomijos šablonus."
-                data-feedback-wrong="Be aiškaus vaidmens ir konkretaus konteksto DI spėlioja. Vien tik prašymas būti kūrybingam, tonas ar labai trumpas promptas (užklausa) neperduoda, kokio turinio ir formato tikiesi.">
+                data-feedback-wrong="Be aiškaus vaidmens ir konkretaus konteksto DI spėlioja. Vien tik prašymas būti kūrybingam, tonas ar labai trumpa užklausa (promptas) neperduoda, kokio turinio ir formato tikiesi.">
                 <fieldset class="quiz-fieldset">
-                    <legend class="label">Patikrinkite supratimą</legend>
-                    <h2 class="quiz-question" id="quiz-question-heading">Ką verta aiškiai įtraukti į promptą (užklausą), kad DI atsakymas būtų naudingas darbe?</h2>
+                    <legend class="label">Patikrink supratimą</legend>
+                    <h2 class="quiz-question" id="quiz-question-heading">Ką įtraukti į užklausą (promptą), kad DI atsakymas būtų naudingas?</h2>
                     <ul class="quiz-options">
                         <li>
                             <label class="quiz-option" for="quiz-opt-a">
@@ -2005,19 +2056,19 @@
 </section>
 
 <!-- Skaidrė 14: raginimas veikti -->
-<section id="cta" aria-label="Pradėti (mokama programa)" style="background: linear-gradient(to bottom, var(--bg-dark), var(--primary-blue));">
+<section id="cta" aria-label="Pradėti (PDF santrauka)" style="background: linear-gradient(to bottom, var(--bg-dark), var(--primary-blue));">
     <div style="text-align: center;">
-        <h2 class="cta-title">PAVERKITE TAI SISTEMA</h2>
-        <p class="cta-sub">Jei nori ne „vieno gero prompto“, o komandinio rezultato — pereik į mokamą programą.</p>
+        <h2 class="cta-title">PAVERSK TAI SISTEMA</h2>
+        <p class="cta-sub">Atsisiųsk santrauką ir pritaikyk 1 šabloną savo situacijai. Tada patikrink pagal protokolą.</p>
         <div class="cta-actions-stack">
-            <a href="https://www.promptanatomy.app/?utm_source=lead&utm_medium=slide&utm_campaign=promptu_anatomija" class="cta-btn" target="_blank" rel="noopener noreferrer" aria-label="Pagrindinis veiksmas: atidaryti mokamą programą (naujame skirtuke)" data-track="paid_cta_click">Peržiūrėti programą ir kainą</a>
-        </div>
-        <div class="cta-secondary-wrap">
-            <p class="cta-secondary-label">Papildomai</p>
-            <a class="cta-pdf-link" href="assets/promptu-anatomija-pamoka-1.pdf" download="promptu-anatomija-pamoka-1.pdf" aria-label="Atsisiųsti 1 pamokos santrauką PDF" data-track="cta_pdf_click">
+            <a class="cta-pdf-link cta-pdf-link--primary" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Pagrindinis veiksmas: atsisiųsti 1 pamokos santrauką PDF" data-track="cta_pdf_click">
                 <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                 Atsisiųsti santrauką (PDF)
             </a>
+        </div>
+        <div class="cta-secondary-wrap">
+            <p class="cta-secondary-label">Kitas žingsnis</p>
+            <a href="http://promptanatomy.app/?utm_source=lead&utm_medium=slide&utm_campaign=promptu_anatomija" class="cta-btn cta-btn--secondary" target="_blank" rel="noopener noreferrer" aria-label="Kitas žingsnis: atidaryti mokamą programą (naujame skirtuke)" data-track="paid_cta_click">Peržiūrėti programą ir kainą</a>
         </div>
         <p class="cta-community">
             <a href="https://t.me/prompt_anatomy" class="cta-telegram-link" target="_blank" rel="noopener noreferrer" aria-label="Bendruomenės Telegram kanalas Prompt Anatomy (atidaryti naujame skirtuke)" data-track="cta_telegram_click">
@@ -2152,34 +2203,34 @@
                 '3–5 konkretūs punktai kiekvienoje dalyje'
             ].join('\n'),
             lib_qualityCheck: [
-                'ROLE:',
-                'Tu esi patyręs promptų inžinierius ir praktikas (mokymai bei darbo vietos naudojimas).',
-                'Tavo tikslas – kritiškai įvertinti prompto kokybę ir pasiūlyti pagerinimus.',
+                'VAIDMUO:',
+                'Tu esi patyręs užklausų (promptų) inžinierius ir praktikas (mokymai bei darbo vietos naudojimas).',
+                'Tavo tikslas – kritiškai įvertinti užklausos (promptų) kokybę ir pasiūlyti pagerinimus.',
                 '',
-                'TASK:',
-                'Įvertink pateiktą promptą pagal 5 principus:',
+                'UŽDUOTIS:',
+                'Įvertink pateiktą užklausą (promptą) pagal 5 principus:',
                 '1) Aiškumas',
                 '2) Eksperimentavimas',
                 '3) Nuo paprasto → prie sudėtingo',
                 '4) Kontekstas',
                 '5) Žodžių pasirinkimas',
                 '',
-                'INPUT:',
-                '[pateikiamas promptas]',
+                'ĮVESTIS:',
+                '[pateikiama užklausa]',
                 '',
-                'EVALUATION FORMAT:',
-                '1. Įvertinimo lentelė (1–5 balai kiekvienam principui)',
-                '2. Trumpas paaiškinimas, KODĖL skirtas toks balas',
-                '3. 3 svarbiausios silpnos vietos',
-                '4. Pasiūlyta patobulinta prompto versija',
+                'VERTINIMO FORMATAS:',
+                '1) Įvertinimo lentelė (1–5 balai kiekvienam principui)',
+                '2) Trumpas paaiškinimas, KODĖL skirtas toks balas',
+                '3) 3 svarbiausios silpnos vietos',
+                '4) Pasiūlyta patobulinta užklausos versija',
                 '',
-                'RULES:',
+                'TAISYKLĖS:',
                 '- Būk konkretus, be bendrinių frazių',
                 '- Jei trūksta informacijos – aiškiai įvardink',
-                '- Jei promptas per sudėtingas – pasiūlyk paprastesnę V1 versiją',
+                '- Jei užklausa per sudėtinga – pasiūlyk paprastesnę V1 versiją',
                 '- Neperrašinėk be reikalo – taisyk tik tai, kas duoda realią naudą',
                 '',
-                'OUTPUT:',
+                'REZULTATAS:',
                 'Struktūruotas, aiškus, praktiškai pritaikomas atsakymas.'
             ].join('\n')
         };
@@ -2270,34 +2321,34 @@
             '1 pastaba apie konkurencinį ar reguliacinį kontekstą, jei aktualu'
         ].join('\n');
         libraryPrompts.mgr_qualityCheck = [
-            'ROLE:',
-            'Tu esi patyręs promptų inžinierius ir vadovybės komunikacijos praktikas.',
-            'Tavo tikslas – įvertinti promptą prieš naudojant jį svarbiems sprendimams ar masiniam siuntimui.',
+            'VAIDMUO:',
+            'Tu esi patyręs užklausų (promptų) inžinierius ir vadovybės komunikacijos praktikas.',
+            'Tavo tikslas – įvertinti užklausą (promptą) prieš naudojant ją svarbiems sprendimams ar masiniam siuntimui.',
             '',
-            'TASK:',
-            'Įvertink pateiktą promptą pagal 5 principus:',
+            'UŽDUOTIS:',
+            'Įvertink pateiktą užklausą (promptą) pagal 5 principus:',
             '1) Aiškumas',
             '2) Eksperimentavimas',
             '3) Nuo paprasto → prie sudėtingo',
             '4) Kontekstas',
             '5) Žodžių pasirinkimas',
             '',
-            'INPUT:',
-            '[pateikiamas promptas]',
+            'ĮVESTIS:',
+            '[pateikiama užklausa]',
             '',
-            'EVALUATION FORMAT:',
-            '1. Įvertinimo lentelė (1–5 balai kiekvienam principui)',
-            '2. Trumpas paaiškinimas, KODĖL skirtas toks balas',
-            '3. 3 svarbiausios silpnos vietos',
-            '4. Pasiūlyta patobulinta prompto versija',
+            'VERTINIMO FORMATAS:',
+            '1) Įvertinimo lentelė (1–5 balai kiekvienam principui)',
+            '2) Trumpas paaiškinimas, KODĖL skirtas toks balas',
+            '3) 3 svarbiausios silpnos vietos',
+            '4) Pasiūlyta patobulinta užklausos versija',
             '',
-            'RULES:',
+            'TAISYKLĖS:',
             '- Būk konkretus, be bendrinių frazių',
             '- Jei trūksta informacijos – aiškiai įvardink',
-            '- Jei promptas per sudėtingas – pasiūlyk paprastesnę V1 versiją',
+            '- Jei užklausa per sudėtinga – pasiūlyk paprastesnę V1 versiją',
             '- Neperrašinėk be reikalo – taisyk tik tai, kas duoda realią naudą',
             '',
-            'OUTPUT:',
+            'REZULTATAS:',
             'Struktūruotas, aiškus, praktiškai pritaikomas atsakymas.'
         ].join('\n');
 
@@ -2392,9 +2443,13 @@
         }
 
         function bindNav(navButtons) {
+            let tapLockUntil = 0;
             navButtons.forEach((item, index) => {
                 item.addEventListener('click', () => {
-                    sections[index].scrollIntoView(scrollOpts);
+                    const now = Date.now();
+                    if (now < tapLockUntil) return;
+                    tapLockUntil = now + 350;
+                    if (sections[index]) sections[index].scrollIntoView(Object.assign({ block: 'start' }, scrollOpts));
                 });
             });
         }
@@ -2424,16 +2479,23 @@
 
         let scrollNavTicking = false;
         function updateNavFromScroll() {
-            let current = 0;
-            const y = window.scrollY || window.pageYOffset;
+            let current = -1;
+            const focusY = Math.round(window.innerHeight * 0.35);
+            let bestAbove = 0;
+            let bestAboveTop = -Infinity;
+
             sections.forEach((section, index) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (y >= sectionTop - sectionHeight / 3) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= focusY && rect.bottom >= focusY) {
                     current = index;
                 }
+                if (rect.top <= focusY && rect.top > bestAboveTop) {
+                    bestAboveTop = rect.top;
+                    bestAbove = index;
+                }
             });
-            setActiveNav(current);
+
+            setActiveNav(current >= 0 ? current : bestAbove);
         }
         window.addEventListener(
             'scroll',
@@ -2444,6 +2506,20 @@
                     scrollNavTicking = false;
                     updateNavFromScroll();
                 });
+            },
+            { passive: true }
+        );
+
+        let outlineLastY = window.scrollY || window.pageYOffset || 0;
+        window.addEventListener(
+            'scroll',
+            () => {
+                if (!outlineRoot || !outlineRoot.open) return;
+                if (!window.matchMedia('(max-width: 1024px)').matches) return;
+                const y = window.scrollY || window.pageYOffset || 0;
+                const dy = Math.abs(y - outlineLastY);
+                outlineLastY = y;
+                if (dy >= 24) outlineRoot.open = false;
             },
             { passive: true }
         );
@@ -2467,7 +2543,7 @@
                 btn.textContent = 'Nukopijuota!';
                 setTimeout(() => { btn.textContent = original; }, 2000);
             } catch (e) {
-                btn.textContent = 'Nepavyko — naudokite naršyklėje HTTPS arba vietinį serverį';
+                btn.textContent = 'Nepavyko — naudok naršyklėje HTTPS arba vietinį serverį';
                 setTimeout(() => { btn.textContent = original; }, 4000);
             }
         }
@@ -2533,7 +2609,7 @@
             const feedbackEl = document.getElementById('quiz-feedback');
             const correctBody = quizForm.getAttribute('data-feedback-correct') || '';
             const wrongBody = quizForm.getAttribute('data-feedback-wrong') || '';
-            const selectMsg = quizForm.getAttribute('data-msg-select') || 'Pasirinkite variantą.';
+            const selectMsg = quizForm.getAttribute('data-msg-select') || 'Pasirink variantą.';
 
             function hideFeedback() {
                 feedbackEl.classList.remove('is-visible', 'quiz-feedback--ok', 'quiz-feedback--no', 'quiz-feedback--hint');
@@ -2576,7 +2652,7 @@
                     feedbackEl.classList.add('is-visible', 'quiz-feedback--hint');
                     const title = document.createElement('div');
                     title.className = 'quiz-feedback-title';
-                    title.textContent = 'Pasirinkite variantą';
+                    title.textContent = 'Pasirink variantą';
                     const p = document.createElement('p');
                     p.className = 'quiz-feedback-body';
                     p.textContent = selectMsg;

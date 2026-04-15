@@ -16,6 +16,17 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 4. **Q_A (neprivaloma):** prieš commit ar po rizikingų pakeitimų — `@.cursor/skills/q-a-agent/SKILL.md`.
 5. **Release:** žemiau skyriuje „Release“.
 
+## Golden standard (LT)
+
+- **Tonas**: visur „TU“ (profesionaliai, trumpai, be „mokyklos“ tono).
+- **Tikslas**: padėti **įmonės darbuotojui** ir **vadovui** greitai pritaikyti sistemą darbe.
+- **Terminija**: „DI“, „užklausa (promptas)“ (pirmą kartą gali būti su paaiškinimu), „šablonas“, „patikra“, „skaidrė“, „biblioteka“.
+- **Microcopy**: vienas sakinys = viena mintis; CTA = vienas veiksmas; veiksmažodžiai vietoj abstrakcijų.
+- **Ilgis**: jei įmanoma, sakinys iki ~14–18 žodžių; perteklių skaidyti į 2 sakinius arba į sąrašą.
+- **Formatas**: kabutės „…“, intervalai su brūkšniu/en dash (pvz. 10–30 min), didžiosios raidės tik kai reikia (ne šaukimui).
+- **Aiškumas**: vietoj „kažkas“/„tinka“/„geriau“ rašyti konkretų kriterijų ar rezultatą (ką gausi, ką darysi).
+- **Red flags**: mišrus „TU/JŪS“, ilgi sakiniai su 3+ šalutiniais, dviprasmiai pažadai („sutaupysi garantuotai“), kaltinanti kalba, perteklinis žargonas.
+
 ## 1. Turinio agentas (LT)
 
 - Redaguoja viešą tekstą `index.html`: antraštės, lead, quiz, CTA, bibliotekos įvadas.
@@ -29,8 +40,8 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 
 ## 3. PDF sinchronas
 
-- Šaltinis: `docs/pamoka-1-pdf.md`. Po pakeitimo: `scripts/build-pdf.ps1` arba `scripts/build-pdf.sh`, tada commitinti `assets/promptu-anatomija-pamoka-1.pdf`.
-- Nuorodos puslapyje: `assets/promptu-anatomija-pamoka-1.pdf`.
+- Šaltinis: `docs/pamoka-1-pdf.md`. Po pakeitimo: `scripts/build-pdf.ps1` arba `scripts/build-pdf.sh`, tada commitinti `assets/www.promptanatomy.app.pdf`.
+- Nuorodos puslapyje: `assets/www.promptanatomy.app.pdf`.
 
 ## 4. Biblioteka ir vadovo kelias
 

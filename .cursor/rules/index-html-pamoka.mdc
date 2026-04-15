@@ -6,6 +6,7 @@ alwaysApply: false
 
 # index.html
 
+- **Kalba (golden standard)**: visur „TU“. Žodynas ir taisyklės — `AGENTS.md` skyriuje **„Golden standard (LT)“**.
 - **Skaidrės**: `main section` eilės tvarka turi sutapti su `.nav-sidebar` / `.nav-mobile` mygtukų skaičiumi ir `aria-label` tekstais.
 - **Turinys**: `#slide-outline` / `#slide-outline-list` — sąrašas generuojamas iš šoninės nav `aria-label` (tas pats indeksas kaip skaidrėse); nauja skaidrė = atnaujinti abu nav ir etiketes.
 - **Meme 16:9**: tarp kai kurių skaidrių gali būti `div.meme-interlude` (ne `section`) su `figure.meme-figure` ir PNG iš `assets/memes/` — nav taškų skaičius keisti negalima.
