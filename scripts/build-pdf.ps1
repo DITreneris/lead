@@ -14,13 +14,39 @@ if (-not (Test-Path $src)) { throw "Missing source: $src" }
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
 $pandoc = Get-Command pandoc -ErrorAction SilentlyContinue
-if (-not $pandoc) { throw "pandoc not found. Install: winget install JohnMacFarlane.Pandoc" }
+if (-not $pandoc) {
+    $pandocCandidates = @(
+        (Join-Path $env:LOCALAPPDATA "Pandoc\pandoc.exe"),
+        (Join-Path $env:LOCALAPPDATA "Programs\Pandoc\pandoc.exe"),
+        (Join-Path $env:ProgramFiles "Pandoc\pandoc.exe"),
+        (Join-Path ${env:ProgramFiles(x86)} "Pandoc\pandoc.exe")
+    ) | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
+
+    if ($pandocCandidates) {
+        $pandoc = $pandocCandidates
+    } else {
+        throw "pandoc not found. Install: winget install JohnMacFarlane.Pandoc"
+    }
+}
 
 $typst = Get-Command typst -ErrorAction SilentlyContinue
+if (-not $typst) {
+    $typstCandidates = @(
+        (Join-Path $env:LOCALAPPDATA "Programs\Typst\typst.exe"),
+        (Join-Path $env:LOCALAPPDATA "Programs\Typst\typst-x86_64-pc-windows-msvc\typst.exe"),
+        (Join-Path $env:ProgramFiles "Typst\typst.exe"),
+        (Join-Path ${env:ProgramFiles(x86)} "Typst\typst.exe")
+    ) | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
+
+    if ($typstCandidates) {
+        $typst = $typstCandidates
+    }
+}
+
 if ($typst) {
-    pandoc $src -o $out --pdf-engine=typst -V geometry:margin=2.5cm
+    & $pandoc $src -o $out --pdf-engine=$typst -V geometry:margin=2.5cm
 } else {
-    pandoc $src -o $out -V geometry:margin=2.5cm -V lang=lt
+    & $pandoc $src -o $out -V geometry:margin=2.5cm -V lang=lt
 }
 
 Write-Host "OK: $out"

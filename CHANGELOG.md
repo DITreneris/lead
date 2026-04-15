@@ -25,6 +25,7 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Changed
 
+- **PNG ir gradientai:** atnaujintas OG paveikslas (`assets/og-promptanatomy.png`), `og:image:width/height` sulyginti su faktiniais matmenimis; meme intarpų gradientas susietas su `:root` palete (su fallback senesnėms naršyklėms) [index.html](index.html).
 - **CTA pabaiga:** PDF kaip pagrindinis veiksmas (geltonas „primary“ stilius), kita pamoka (automation hub) — antrinis mygtuko stilius ir aiški „Kitas žingsnis“ etiketė [index.html](index.html).
 - **Scroll spy:** skaidrių aktyvumo skaičiavimas per `requestAnimationFrame` throttling ir `passive: true` ant `scroll` [index.html](index.html).
 - Pozicionavimas ir tekstai: auditorija **įmonės darbuotojas** (title, hero, tipų skaidrė, roadmap, šablonų skaidrės, quiz, patikros blokas).
