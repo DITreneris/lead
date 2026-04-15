@@ -1,3 +1,10 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Pandoc / LaTeX pagalbiniai (jei naudojate pdflatex)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz

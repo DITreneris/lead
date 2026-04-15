@@ -1,0 +1,12 @@
+---
+description: Promptų anatomija — repozitorijos kontekstas ir ribos
+alwaysApply: true
+---
+
+# Projektas
+
+- Produktas: **Promptų anatomija** — interaktyvi pamoka / lead magnetas LT kalba.
+- Auditorija: **įmonės darbuotojas** ir **vadovas** (bibliotekoje tabai); vengti perteklinės „mokyklos“ kalbos, nebent kontekstas aiškiai pedagoginis.
+- Stack: vienas pagrindinis **[index.html](index.html)** (HTML + CSS + JS vienoje byloje), statinis deploy į **GitHub Pages** (žr. [.github/workflows/pages.yml](.github/workflows/pages.yml)).
+- PDF šaltinis: [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md); build: [scripts/build-pdf.ps1](scripts/build-pdf.ps1) / [scripts/build-pdf.sh](scripts/build-pdf.sh) → [assets/promptu-anatomija-pamoka-1.pdf](assets/promptu-anatomija-pamoka-1.pdf). Po MD pakeitimo — perbuildinti ir commitinti PDF.
+- Oficiali svetainė: https://www.promptanatomy.app/ — neplėsti stacko (frameworkų, bundlerių) be aiškios priežasties.

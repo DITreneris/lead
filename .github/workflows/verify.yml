@@ -1,0 +1,24 @@
+name: Verify static files
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Required paths exist
+        run: |
+          test -f index.html
+          test -f favicon.svg
+          test -f 404.html
+          test -f .github/workflows/pages.yml
+          test -d assets

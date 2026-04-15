@@ -1,0 +1,15 @@
+---
+description: index.html — skaidrės, biblioteka, prieinamumas
+globs: index.html
+alwaysApply: false
+---
+
+# index.html
+
+- **Skaidrės**: `main section` eilės tvarka turi sutapti su `.nav-sidebar` / `.nav-mobile` mygtukų skaičiumi ir `aria-label` tekstais.
+- **Turinys**: `#slide-outline` / `#slide-outline-list` — sąrašas generuojamas iš šoninės nav `aria-label` (tas pats indeksas kaip skaidrėse); nauja skaidrė = atnaujinti abu nav ir etiketes.
+- **Meme 16:9**: tarp kai kurių skaidrių gali būti `div.meme-interlude` (ne `section`) su `figure.meme-figure` ir PNG iš `assets/memes/` — nav taškų skaičius keisti negalima.
+- **Biblioteka**: `.library-slide`, tabai `role="tablist"` / `role="tab"`, `pre.library-prompt-block` su raktų atributais (`data-emp-key` / `data-mgr-key` jei naudojama), kopijavimas per `libraryPrompts` ir `syncLibraryDom`; kategorijos `#lib-cat-1`…`#lib-cat-6`, `.library-toc` nuorodos, `.library-cat-details` (suskleidžiamos kategorijos) — nauja kategorija = inkaras + TOC + `details` blokas.
+- **Šablonai**: `.prompt-editor`, `.prompt-line`, `.copy-prompt-btn` — kopijavimas surenka `.prompt-line` tekstus.
+- **Tipų skaidrė**: `.types-card`, `.types-copy-btn` su `data-copy-text`.
+- **Prieinamumas**: išlaikyti `.skip-link`, `aria-label`, `aria-live` kur jau yra (pvz. quiz), `focus-visible` stilius `:root`.
