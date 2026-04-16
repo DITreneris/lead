@@ -10,7 +10,7 @@ description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių 
 - Reikia **nubraižyti schemą** (architektūra, duomenų / turinio srautas, procesas).
 - Reikia **patikrinti duomenis ar faktus** tekste, lentelėse, skaidrėse (ar sutampa su šaltiniu / kodu).
 - Prieš didesnius pakeitimus: **planas pagal bylas**, tada vykdymas pagal rekomendacijas.
-- Užduotys apie kelią: `docs/pamoka-1-pdf.md` → PDF build → `assets/promptu-anatomija-pamoka-1.pdf` → nuorodos `index.html`.
+- Užduotys apie kelią: `docs/pamoka-1-pdf.md` → PDF build → `assets/www.promptanatomy.app.pdf` → nuorodos `index.html`.
 
 ## Instrukcijos
 
@@ -41,7 +41,7 @@ description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių 
 ### 4. Ryšys su repozitorija
 
 - Vienas pagrindinis puslapis: [index.html](../../../index.html) (HTML + CSS + JS).
-- PDF šaltinis: [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md); build: [scripts/build-pdf.ps1](../../../scripts/build-pdf.ps1) / [scripts/build-pdf.sh](../../../scripts/build-pdf.sh); išvestis: [assets/promptu-anatomija-pamoka-1.pdf](../../../assets/promptu-anatomija-pamoka-1.pdf).
+- PDF šaltinis: [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md); build: [scripts/build-pdf.ps1](../../../scripts/build-pdf.ps1) / [scripts/build-pdf.sh](../../../scripts/build-pdf.sh); išvestis: [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf).
 - **Neplėsti** stacko (frameworkai, bundleriai, backend) be aiškios priežasties — žr. projekto `.cursor/rules`.
 
 ### 5. „Mokymasis“ šiame projekte

@@ -22,3 +22,4 @@ jobs:
           test -f 404.html
           test -f .github/workflows/pages.yml
           test -d assets
+          test -f assets/www.promptanatomy.app.pdf

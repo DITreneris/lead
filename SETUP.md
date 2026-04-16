@@ -12,7 +12,7 @@ Atidarykite `index.html` naršyklėje (dvigubas paspaudimas) arba naudokite papr
 
 1. Įdiekite **Pandoc**: [https://pandoc.org/installing.html](https://pandoc.org/installing.html) arba `winget install JohnMacFarlane.Pandoc`.
 2. **Windows**: be LaTeX dažnai pakanka **Typst** kaip PDF variklio: `winget install Typst.Typst`, tada skriptas naudoja `--pdf-engine=typst`.
-3. Šaltinis: [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md). Išvestis: [assets/promptu-anatomija-pamoka-1.pdf](assets/promptu-anatomija-pamoka-1.pdf).
+3. Šaltinis: [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md). Išvestis: [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf).
 
 **Windows (PowerShell):**
 
@@ -28,6 +28,22 @@ chmod +x scripts/build-pdf.sh
 ```
 
 Po pakeitimų `docs/pamoka-1-pdf.md` paleiskite build ir commitinkite atnaujintą PDF kartu su MD.
+
+## Lean repo (kad būtų paprasta tvarkytis)
+
+- **Vienas UI šaltinis:** [index.html](index.html) — HTML, CSS, JS vienoje byloje; naujos funkcijos geriau čia nei nauji įrankiai.
+- **Vienas PDF kanonas:** šaltinis [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → build → tik [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) (senų dublikatų necommitinti).
+- **Biblioteka:** kopijuojamas tekstas — `libraryPrompts` + `syncLibraryDom` (žr. [AGENTS.md](AGENTS.md) §4.1).
+- **Kontekstas agentams:** [AGENTS.md](AGENTS.md) — maršrutai; Cursor rules — `.cursor/rules/`; kokybė — `.cursor/skills/q-a-agent/SKILL.md`.
+
+## Prieš push į `main` (release)
+
+Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius „Release“.
+
+- [ ] Jei keitėsi `docs/pamoka-1-pdf.md`: paleistas `scripts/build-pdf.ps1` arba `build-pdf.sh`, commitintas [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf).
+- [ ] `index.html`: pagrindiniai CTA, PDF nuorodos, bibliotekos kopijavimas, `#library` / hash elgsena.
+- [ ] [404.html](404.html) atsidaro ir grįžta į pamoką.
+- [ ] GitHub Actions: [pages.yml](.github/workflows/pages.yml) ir [verify.yml](.github/workflows/verify.yml) žali po push (kai taikoma).
 
 ## Nuorodos
 

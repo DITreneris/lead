@@ -6,15 +6,31 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Added
 
+- **Prieinamumas:** paslėptas `#a11y-status` regionas (`.visually-hidden`, `aria-live="polite"`, `aria-atomic="true"`) ir pranešimai po sėkmingo / nesėkmingo kopijavimo (`copyPromptText`) [index.html](index.html).
+- **Klaviatūra:** `Escape` uždaro „Turinys“ (`details#slide-outline`) ir grąžina fokusą į `summary` [index.html](index.html).
+
+### Removed
+
+- **Dublikatas:** pašalintas senas PDF failas `assets/promptu-anatomija-pamoka-1.pdf` — kanonas lieka [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf).
+
 ### Changed
 
-### Fixed
+- **Kanoninis URL:** `og:url`, `og:image`, `twitter:image`, `link rel="canonical"`, prekės ženklo nuoroda ir mokamos programos CTA nukreipti į `https://www.promptanatomy.app/` [index.html](index.html); [README.md](README.md) ir [.cursor/rules/projektas-promptu-anatomija.mdc](.cursor/rules/projektas-promptu-anatomija.mdc) sutapdinti su [SETUP.md](SETUP.md).
+- **Cursor rule:** [.cursor/rules/index-html-pamoka.mdc](.cursor/rules/index-html-pamoka.mdc) — bibliotekos kategorijų inkarai atitinka kodą (`#lib-cat-work`, `#lib-cat-comm`, `#lib-cat-qc`).
+- **CI:** [.github/workflows/verify.yml](.github/workflows/verify.yml) — papildomas patikrinimas, kad egzistuotų `assets/www.promptanatomy.app.pdf`.
+- **Biblioteka (vadovas):** atskiros `mgr_*` užklausos tekstui trumpinimui ir apribojimams (`mgr_simplifyText`, `mgr_constraints`) — nebe identiškos darbuotojo versijai [index.html](index.html).
+- **Dokumentacija:** [SETUP.md](SETUP.md) — skyriai „Lean repo“ ir „Prieš push į main“; [README.md](README.md) — nuorodos į lean/release ir [todo.md](todo.md).
+- **UI:** ramus „surface“ sluoksniavimas (`:root` žetonai), subtilesnės skaidrių ir kortelių ribos (`--border-hairline`), silpnas ambient fonas ant `body`, didesnis vertikalus tarpas tarp iliustracijos ir quiz / esmės teksto; švelninta įvado geltona dėmė [index.html](index.html).
+- **Mikrokopija (LT):** gramatikos ir tono pataisymai (schema „nespėliuotų“, praktika „per miglą“, kelio plano įvadas, patikros ir bibliotekos eilutės, kveizo grįžtamasis ryšys, `libraryPrompts` vietos rezervai ir kokybės šablone); patikslinta `lib_emailReply` eilutė (**„Profesionalus, mandagus tonas“**) ir deeskalacijos įvesties rezervas (**„[TRUMPAI APRAŠYK]“** — žodis „aprašyk“, ne „aprąžyk“) [index.html](index.html).
+- **Vartotojo kelionė:** kelio plano skaidrė perkelta **po praktikos**, prieš 6 gilumo skaidres (`#roadmap`); sąrašo eilė sutapatinta su skaidrėmis (nuo patikros); schema ir praktika papildytos trumpu „kur eisi toliau“ su nuorodomis; navigacijos ir `#cta` etiketės suderintos su PDF + kitu žingsniu [index.html](index.html).
+- **Hash → biblioteka:** `#library` atidaro numatytą kategoriją **„Kasdienis darbas“** (`#lib-cat-work`) ir išsuka į bibliotekos sekciją (`openLibraryTargetFromHash`) [index.html](index.html).
+- **Inline nuorodos:** likusioms geltonoms `<a>` pridėta `class="inline-link"` (įskaitant dinaminį kveizo atsakymo linką), kad sutaptų fokuso stilius su kitais inline CTA [index.html](index.html).
 
 ## [0.3.0] - 2026-04-15
 
 ### Added
 
-- **Socialiniai meta ir OG:** `og:image`, `twitter:card` (`summary_large_image`), `twitter:image` — [assets/og-promptanatomy.png](assets/og-promptanatomy.png); absoliutus URL `http://promptanatomy.app/assets/og-promptanatomy.png` [index.html](index.html).
+- **Socialiniai meta ir OG:** `og:image`, `twitter:card` (`summary_large_image`), `twitter:image` — [assets/og-promptanatomy.png](assets/og-promptanatomy.png); absoliutus URL pradžioje `http://promptanatomy.app/assets/og-promptanatomy.png` (vėliau sutapdinta su `https://www.promptanatomy.app/` žr. [Unreleased]) [index.html](index.html).
 - **Hero:** viena eilutė apie trukmę ir rezultatą (`.hero-meta`) [index.html](index.html).
 - **„Turinys“:** `#slide-outline` su dinamiškai užpildomu sąrašu iš šoninės navigacijos `aria-label`, slinkimas į tą pačią skaidrę kaip taškai [index.html](index.html).
 - **Biblioteka:** kategorijos suskleidžiamos per `<details>` (numatyta atidaryta); ant `#library-panels` — `aria-live` / `aria-atomic` tab perjungimui [index.html](index.html).
@@ -43,7 +59,7 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 - **CTA pabaiga:** PDF kaip pagrindinis veiksmas (geltonas „primary“ stilius), mokama programa — antrinis mygtuko stilius ir aiški „Kitas žingsnis“ etiketė [index.html](index.html).
 - **Scroll spy:** skaidrių aktyvumo skaičiavimas per `requestAnimationFrame` throttling ir `passive: true` ant `scroll` [index.html](index.html).
 - Pozicionavimas ir tekstai: auditorija **įmonės darbuotojas** (title, hero, tipų skaidrė, roadmap, šablonų skaidrės, quiz, patikros blokas).
-- Išorinės nuorodos: pagrindinė svetainė `http://promptanatomy.app/`, CTA į mokamą programą [index.html](index.html).
+- Išorinės nuorodos: pagrindinė svetainė ir CTA į mokamą programą (anksčiau `http://promptanatomy.app/`; žr. [Unreleased] dėl `https://www.promptanatomy.app/`) [index.html](index.html).
 - CTA poraštės tekstas atspindi įmonės / komandos kontekstą.
 
 ### Fixed

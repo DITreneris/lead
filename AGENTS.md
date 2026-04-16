@@ -59,3 +59,4 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 ## 5. Release
 
 - Prieš push į `main`: ar PDF atitinka MD (jei keitėsi MD); ar veikia nuorodos ir GitHub Pages deploy.
+- Checklist su punktais: [SETUP.md](SETUP.md) skyrius **„Prieš push į `main` (release)“**.

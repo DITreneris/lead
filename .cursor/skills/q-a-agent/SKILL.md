@@ -41,7 +41,7 @@ description: Kokybės ir atitikties patikra šiam repozitorijai prieš commit ar
 
 ### PDF ir release
 
-- [ ] Jei keitėsi [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md): perkeltas build į [assets/promptu-anatomija-pamoka-1.pdf](../../../assets/promptu-anatomija-pamoka-1.pdf) ir atnaujinta nuoroda puslapyje, jei keitėsi kelias.
+- [ ] Jei keitėsi [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md): perbuildinta išvestis į [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf) ir nuorodos puslapyje rodo į tą patį failą.
 - [ ] Nuorodos į GitHub Pages / statinius assetus veikia logiškai (relatyvūs keliai repo kontekste).
 
 ## Išvesties formatas

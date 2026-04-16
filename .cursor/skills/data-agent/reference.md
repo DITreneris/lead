@@ -8,7 +8,7 @@
 flowchart LR
   mdSource[pamoka-1-pdf.md]
   buildScript[build-pdf ps1 arba sh]
-  pdfAsset[promptu-anatomija-pamoka-1.pdf]
+  pdfAsset[www.promptanatomy.app.pdf]
   indexPage[index.html nuoroda]
   mdSource --> buildScript
   buildScript --> pdfAsset
