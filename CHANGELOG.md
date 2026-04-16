@@ -15,6 +15,8 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Changed
 
+- **Gilumo skaidrės 7–11 ir biblioteka:** trumpesni pavadinimai (nav, kelio planas, `aria-label`); gilumo `prompt-line` šablonai įvairesni (ne vienoda VAIDMUO–KONTEKSTAS–REZULTATAS monotonija); skaidrė 6 (QC) — tik lengvas sutrumpinimas; bibliotekos kopijuojami šablonai (`libraryPrompts` + `mgr_*` kur skiriasi) — trumpa LT įžanga ir laukai **Įvestis** / **Išvestis** vietoj META/INPUT/OUTPUT (įskaitant kokybės patikrą) [index.html](index.html).
+- **Copy (mažiau pasikartojimų):** schema — sujungtas `schema-lead` su 2–3 vs 5 žingsnių mintimi, pašalinta antra bibliotekos eilutė ir `schema-advance-hint`; praktika — vienas „Toliau“ į kelio planą (6 žingsniai), pašalinta `guided-advance-hint` ir šoninis kelias „į patikrą“; kelio planas — viena `roadmap-sub`; gilumo skaidrės 6–11 — unikalūs įžangų sakiniai vietoj „Kitas lygis…“ [index.html](index.html).
 - **Kanoninis URL:** `og:url`, `og:image`, `twitter:image`, `link rel="canonical"`, prekės ženklo nuoroda ir mokamos programos CTA nukreipti į `https://www.promptanatomy.app/` [index.html](index.html); [README.md](README.md) ir [.cursor/rules/projektas-promptu-anatomija.mdc](.cursor/rules/projektas-promptu-anatomija.mdc) sutapdinti su [SETUP.md](SETUP.md).
 - **Cursor rule:** [.cursor/rules/index-html-pamoka.mdc](.cursor/rules/index-html-pamoka.mdc) — bibliotekos kategorijų inkarai atitinka kodą (`#lib-cat-work`, `#lib-cat-comm`, `#lib-cat-qc`).
 - **CI:** [.github/workflows/verify.yml](.github/workflows/verify.yml) — papildomas patikrinimas, kad egzistuotų `assets/www.promptanatomy.app.pdf`.
