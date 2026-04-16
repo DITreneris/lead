@@ -890,9 +890,30 @@
             gap: 10px;
             margin: -6px 0 18px;
         }
-        .library-actions .types-copy-btn {
+        .library-actions .types-copy-btn,
+        .library-actions .library-toggle-all {
             padding: 10px 14px;
             font-size: 12px;
+        }
+        .library-toggle-all {
+            font-family: var(--font-body);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: 1px solid rgba(251, 211, 4, 0.35);
+            background: rgba(251, 211, 4, 0.08);
+            color: var(--accent-yellow);
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+        .library-toggle-all:hover {
+            background: rgba(251, 211, 4, 0.14);
+            border-color: rgba(251, 211, 4, 0.5);
+        }
+        .library-toggle-all:focus-visible {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 2px;
         }
         .library-tabs [role="tab"] {
             font-family: var(--font-display);
@@ -1596,14 +1617,18 @@
             <span class="label">DI užklausų sistema įmonei</span>
             <h1>PROMPTŲ<br><span style="color: var(--accent-yellow);">ANATOMIJA</span></h1>
             <p class="hero-lead">Nuo DI „spėliojimo“ iki aiškios darbo sistemos: mažiau taisymo, daugiau kontrolės.</p>
-            <p class="hero-meta">2 min.: šablonas → pritaikymas → protokolas, kai rizika didelė. Pradžia — žemiau.</p>
+            <p class="hero-meta">Pirma santrauka (PDF), tada — Pradėk. Toliau: šablonas, schema, protokolas skaidrėse.</p>
             <div class="hero-actions">
-                <a class="hero-primary-link" href="#library" aria-label="Atidaryti promptų biblioteką" data-track="hero_primary_click">
+                <a class="hero-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsti 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
+                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
+                    Atsisiųsk santrauką (PDF)
+                </a>
+                <a class="hero-primary-link" href="#guided" aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką" data-track="hero_primary_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
-                    Atidaryk biblioteką
+                    Pradėk
                 </a>
             </div>
-            <p class="hero-foot-links"><a href="#guided" data-track="hero_guided_click">Praktika</a> · <a href="#schema" data-track="hero_schema_click">Schema</a> · <a href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" data-track="hero_pdf_click">PDF</a> · <a href="#cta" data-track="hero_cta_click">Programa</a></p>
+            <p class="hero-foot-links"><a href="#library" data-track="hero_library_click">Biblioteka</a> · <a href="#schema" data-track="hero_schema_click">Schema</a> · <a href="#cta" data-track="hero_cta_click">Programa</a></p>
         </div>
         <div class="viz-container">
             <svg class="viz-svg" viewBox="0 0 400 400">
@@ -1999,7 +2024,7 @@
         </div>
 
         <div class="library-actions" aria-label="Bibliotekos valdikliai">
-            <button type="button" class="types-copy-btn library-toggle-all" data-action="open" aria-label="Išskleisti visas bibliotekos kategorijas" data-track="library_open_all">Išskleisti viską</button>
+            <button type="button" class="library-toggle-all" data-action="open" aria-label="Išskleisti visas bibliotekos kategorijas ir instrukciją „Kaip naudoti“" data-track="library_open_all">Išskleisti viską</button>
         </div>
 
         <details class="library-howto" id="library-howto">
@@ -2638,14 +2663,30 @@
         }
 
         function setLibraryCategoriesOpen(open) {
-            document.querySelectorAll('details.library-cat-details').forEach((d) => { d.open = !!open; });
+            document.querySelectorAll('details.library-cat-details').forEach((d) => {
+                d.open = !!open;
+            });
+            const howto = document.getElementById('library-howto');
+            if (howto) howto.open = !!open;
         }
 
         document.querySelectorAll('.library-toggle-all').forEach((btn) => {
-            btn.addEventListener('click', () => {
-                const act = btn.getAttribute('data-action');
-                setLibraryCategoriesOpen(act === 'open');
-            });
+            btn.addEventListener(
+                'click',
+                () => {
+                    const act = btn.getAttribute('data-action');
+                    const open = act === 'open';
+                    setLibraryCategoriesOpen(open);
+                    const a11y = document.getElementById('a11y-status');
+                    if (a11y && open) {
+                        a11y.textContent = 'Išskleista: kategorijos ir instrukcija';
+                        window.setTimeout(() => {
+                            a11y.textContent = '';
+                        }, 900);
+                    }
+                },
+                true
+            );
         });
 
         document.querySelectorAll('.library-toc a').forEach((a) => {
