@@ -113,4 +113,4 @@ Derink visus tris tame pačiame tekste — ypač planuojant darbą, pristatymą,
 
 ---
 
-*Pilna interaktyvi pamoka: žr. projekto `index.html` arba publikuotą svetainę.*
+*Pilna interaktyvi pamoka: https://www.promptanatomy.app/ · Bendruomenė Telegram: https://t.me/prompt_anatomy*
