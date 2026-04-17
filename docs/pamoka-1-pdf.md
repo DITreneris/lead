@@ -90,11 +90,13 @@ Derink visus tris tame pačiame tekste — ypač planuojant darbą, pristatymą,
 
 ---
 
-# Patikros ir rizikos protokolas (prieš siunčiant)
+# Greita siuntimo patikra (prieš siunčiant)
+
+Į DI įkelk pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio. Patikra vertina faktus ir rizikas prieš siuntimą.
 
 **VAIDMUO:** Tu esi atsakingas specialistas ir informacijos kritikas, žinantis, kad DI gali klysti ar pateikti išgalvotą turinį.
 
-**KONTEKSTAS:** DI sugeneruotas tekstas bus naudojamas [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Štai tekstas: [Įklijuok DI atsakymą].
+**KONTEKSTAS:** Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].
 
 **REZULTATAS:**
 

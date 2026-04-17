@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promptų anatomija — darbui ir vadovavimui</title>
-    <meta name="description" content="DI Praktinė sistema įmonei: biblioteka, schema, protokolas ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
+    <meta name="description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
     <meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">
-    <meta property="og:description" content="DI Praktinė sistema įmonei: biblioteka, schema, protokolas ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
+    <meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.promptanatomy.app/">
     <meta property="og:locale" content="lt_LT">
     <meta property="og:image" content="https://www.promptanatomy.app/assets/og-promptanatomy.png">
     <meta property="og:image:width" content="1376">
     <meta property="og:image:height" content="768">
-    <meta property="og:image:alt" content="Promptų anatomija — DI Praktinė sistema įmonei">
+    <meta property="og:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://www.promptanatomy.app/assets/og-promptanatomy.png">
     <meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">
-    <meta name="twitter:description" content="DI Praktinė sistema įmonei: biblioteka, schema, protokolas ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
+    <meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
     <link rel="canonical" href="https://www.promptanatomy.app/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="favicon.svg">
@@ -603,6 +603,7 @@
             gap: 18px;
             text-align: left;
             margin-top: 22px;
+            align-items: stretch;
         }
         .types-card {
             background: var(--surface-raised);
@@ -612,6 +613,31 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            min-height: 0;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+        }
+        /* Trys kortelės (Pagrindai + Praktika): vienoda aukštis, „Kopijuoti“ vienoje linijoje */
+        .types-triple-grid .types-card-grow {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+        .types-triple-grid .types-example-block {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+        .types-triple-grid .types-copy-btn {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        .types-triple-grid .types-card-extra {
+            flex-shrink: 0;
+            margin-top: 4px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-hairline);
         }
         .types-card--sys { border-color: var(--primary-blue); }
         .types-card--ctx { border-color: #0d9488; }
@@ -650,7 +676,7 @@
             color: var(--text-body);
             font-style: italic;
             margin: 0;
-            padding: 12px 14px;
+            padding: 14px 16px;
             background: rgba(0, 0, 0, 0.35);
             border-radius: 8px;
             border-left: 3px solid rgba(251, 211, 4, 0.55);
@@ -969,7 +995,7 @@
             position: fixed;
             z-index: 190;
             max-width: min(288px, calc(100vw - 24px));
-            left: 20px;
+            left: 34px;
             top: 96px;
         }
         .slide-outline__summary {
@@ -1576,7 +1602,7 @@
     <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutes"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 6: Patikros ir rizikos protokolas"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 9: Turinio grįžtamasis ryšys"></button>
@@ -1595,7 +1621,7 @@
         <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutes"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 6: Patikros ir rizikos protokolas"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 9: Turinio grįžtamasis ryšys"></button>
@@ -1614,12 +1640,12 @@
 <section id="intro" aria-label="Įvadas" style="background: radial-gradient(circle at 80% 20%, rgba(251, 211, 4, 0.035), transparent 52%);">
     <div class="container">
         <div>
-            <span class="label">DI Praktinė sistema įmonei</span>
+            <span class="label">DI praktinė sistema įmonei</span>
             <h1>PROMPTŲ<br><span style="color: var(--accent-yellow);">ANATOMIJA</span></h1>
             <p class="hero-lead">Nuo DI „spėliojimo“ iki aiškios darbo sistemos: mažiau taisymo, daugiau kontrolės.</p>
-            <p class="hero-meta">Pirma santrauka (PDF), tada — Pradėk.<br>Toliau: šablonas, schema, protokolas skaidrėse.</p>
+            <p class="hero-meta">Pirma santrauka (PDF), tada — Pradėk.<br>Toliau: šablonas, schema, greita patikra skaidrėse.</p>
             <div class="hero-actions">
-                <a class="hero-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsti 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
+                <a class="hero-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                     Atsisiųsk santrauką (PDF)
                 </a>
@@ -1646,42 +1672,50 @@
         <div class="types-head">
             <span class="label">Pagrindai</span>
             <h2>Kas yra promptas?</h2>
-            <p class="types-lead">Viena taisyklė dažnai pakanka.<br>Schema — kai atsakymas vis dar neaiškus.</p>
+            <p class="types-lead">Dažnai užtenka greito formato: Tikslas + Įvestis + Rezultatas.<br>Penkių žingsnių schema — kai to maža: vis dar miglota ar negali klysti.</p>
         </div>
 
-        <div class="types-grid">
+        <div class="types-grid types-triple-grid">
             <article class="types-card types-card--sys">
-                <h3>Promptas</h3>
-                <p class="types-card-desc">Trumpa instrukcija DI, kad gautum konkretų rezultatą.</p>
-                <p class="types-card-k">Praktikoje</p>
-                <div class="types-example-block">
-                    <p class="types-card-example">„Padaryk X pagal Y ir grąžink Z formatu.“</p>
-                    <button type="button" class="types-copy-btn" data-copy-text="Trumpa instrukcija DI — konkretus rezultatas. Pavyzdys: Padaryk X pagal Y ir grąžink Z formatu." aria-label="Kopijuoti prompto santrauką" data-track="primer_copy_promptas">Kopijuoti</button>
+                <div class="types-card-grow">
+                    <h3>Promptas</h3>
+                    <p class="types-card-desc">Trumpa instrukcija DI, kad gautum konkretų rezultatą.</p>
+                    <p class="types-card-k">Praktikoje</p>
+                    <div class="types-example-block">
+                        <p class="types-card-example">„Padaryk X pagal Y ir grąžink Z formatu.“</p>
+                        <button type="button" class="types-copy-btn" data-copy-text="Trumpa instrukcija DI — konkretus rezultatas. Pavyzdys: Padaryk X pagal Y ir grąžink Z formatu." aria-label="Kopijuoti prompto santrauką" data-track="primer_copy_promptas">Kopijuoti</button>
+                    </div>
                 </div>
             </article>
 
             <article class="types-card types-card--ctx">
-                <h3>Promptų inžinerija</h3>
-                <p class="types-card-desc">Procesas, kaip rašai promptą: specifikacija → struktūra → iteracija.</p>
-                <p class="types-card-k">Tikslas</p>
-                <div class="types-example-block">
-                    <p class="types-card-example">Specifikacija → struktūra → iteracija. Mažiau spėliojimo, daugiau stabilumo per kartojimus.</p>
-                    <button type="button" class="types-copy-btn" data-copy-text="Procesas: specifikacija → struktūra → iteracija. Tikslas: mažiau spėliojimo, daugiau stabilumo per kartojimus." aria-label="Kopijuoti promptų inžinerijos santrauką" data-track="primer_copy_inzinerija">Kopijuoti</button>
+                <div class="types-card-grow">
+                    <h3>Promptų inžinerija</h3>
+                    <p class="types-card-desc">Procesas, kaip rašai promptą: specifikacija → struktūra → iteracija.</p>
+                    <p class="types-card-k">Tikslas</p>
+                    <div class="types-example-block">
+                        <p class="types-card-example">Specifikacija → struktūra → iteracija. Mažiau spėliojimo, daugiau stabilumo per kartojimus.</p>
+                        <button type="button" class="types-copy-btn" data-copy-text="Procesas: specifikacija → struktūra → iteracija. Tikslas: mažiau spėliojimo, daugiau stabilumo per kartojimus." aria-label="Kopijuoti promptų inžinerijos santrauką" data-track="primer_copy_inzinerija">Kopijuoti</button>
+                    </div>
                 </div>
             </article>
 
             <article class="types-card types-card--role">
-                <h3>Vienas formatas (~1 min.)</h3>
-                <p class="types-card-desc"><strong>Taisyklė:</strong> Tikslas + Įvestis + Rezultatas.</p>
-                <p class="types-card-k">Užklausa</p>
-                <div class="types-example-block">
-                    <p class="types-card-example">„Tikslas: [KĄ NORIU PASIEKTI]. Įvestis: [ĮKLIJUOK TEKSTĄ]. Rezultatas: 7 punktų sąrašas su A/B/C prioritetais.“</p>
-                    <button type="button" class="types-copy-btn" data-copy-text="Tikslas: [KĄ NORIU PASIEKTI]. Įvestis: [ĮKLIJUOK TEKSTĄ]. Rezultatas: 7 punktų sąrašas su A/B/C prioritetais." aria-label="Kopijuoti greito starto užklausą" data-track="primer_copy_format">Kopijuoti</button>
+                <div class="types-card-grow">
+                    <h3>Vienas formatas (~1 min.)</h3>
+                    <p class="types-card-desc"><strong>Taisyklė:</strong> Tikslas + Įvestis + Rezultatas.</p>
+                    <p class="types-card-k">Užklausa</p>
+                    <div class="types-example-block">
+                        <p class="types-card-example">„Tikslas: [KĄ NORIU PASIEKTI]. Įvestis: [ĮKLIJUOK TEKSTĄ]. Rezultatas: 7 punktų sąrašas su A/B/C prioritetais.“</p>
+                        <button type="button" class="types-copy-btn" data-copy-text="Tikslas: [KĄ NORIU PASIEKTI]. Įvestis: [ĮKLIJUOK TEKSTĄ]. Rezultatas: 7 punktų sąrašas su A/B/C prioritetais." aria-label="Kopijuoti greito starto užklausą" data-track="primer_copy_format">Kopijuoti</button>
+                    </div>
                 </div>
-                <p class="types-card-k">Toliau</p>
-                <p class="types-card-result">
-                    <a class="inline-link" href="#schema" data-track="primer_to_schema" style="color: rgba(255, 255, 255, 0.82); text-decoration: none; font-weight: 800;">Schema ↓</a>
-                </p>
+                <div class="types-card-extra">
+                    <p class="types-card-k">Toliau</p>
+                    <p class="types-card-result">
+                        <a class="inline-link" href="#schema" data-track="primer_to_schema" style="color: rgba(255, 255, 255, 0.82); text-decoration: none; font-weight: 800;">Schema ↓</a>
+                    </p>
+                </div>
             </article>
         </div>
     </div>
@@ -1691,9 +1725,9 @@
 <section id="schema" class="schema-section" aria-label="Promptų anatomijos schema">
     <div class="container">
         <div class="schema-inner">
-            <span class="label">Rėmas</span>
+            <span class="label">Žingsniai</span>
             <h2>Promptų anatomijos schema</h2>
-            <p class="schema-lead">Penki žingsniai: nuo aiškaus vaidmens iki kokybės kontrolės. Pradžiai dažnai užtenka 2–3; visus penkis — kai negali rizikuoti.</p>
+            <p class="schema-lead">Kiekvienas blokas prideda aiškumo. Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>
             <div class="schema-grid">
                 <div class="schema-column-flow">
                     <svg class="schema-loop-svg" viewBox="0 0 40 200" preserveAspectRatio="none" aria-hidden="true">
@@ -1734,7 +1768,7 @@
                         <span class="schema-step-num">4</span>
                         <div class="schema-step-body">
                             <strong>Rezultatas</strong>
-                            <span>Formatas, apimtis, pavyzdys, „definition of done“</span>
+                            <span>Formatas, apimtis, pavyzdys, baigtumo kriterijai</span>
                         </div>
                     </div>
                     <div class="schema-arrow" aria-hidden="true">
@@ -1772,39 +1806,51 @@
             <h2>Pradėk per 2 minutes</h2>
             <p class="types-lead">Trys kortos: migla → struktūra → trumpa savikontrolė.</p>
         </div>
-        <div class="types-grid">
+        <div class="types-grid types-triple-grid">
             <article class="types-card types-card--sys">
-                <h3>Prieš (per miglą)</h3>
-                <p class="types-card-desc">Pavyzdys, kai DI prigalvoja detalių, nes trūksta rėmo.</p>
-                <p class="types-card-k">Užklausa</p>
-                <div class="types-example-block">
-                    <p class="types-card-example">„Paruošk ataskaitą apie mūsų Q3 iniciatyvą.“</p>
-                    <button type="button" class="types-copy-btn" data-copy-text="Paruošk ataskaitą apie mūsų Q3 iniciatyvą." aria-label="Kopijuoti 'prieš' užklausą" data-track="practice_before_copy">Kopijuoti</button>
+                <div class="types-card-grow">
+                    <h3>Prieš (per miglą)</h3>
+                    <p class="types-card-desc">Pavyzdys, kai DI prigalvoja detalių, nes trūksta rėmo.</p>
+                    <p class="types-card-k">Užklausa</p>
+                    <div class="types-example-block">
+                        <p class="types-card-example">„Paruošk ataskaitą apie mūsų Q3 iniciatyvą.“</p>
+                        <button type="button" class="types-copy-btn" data-copy-text="Paruošk ataskaitą apie mūsų Q3 iniciatyvą." aria-label="Kopijuoti 'prieš' užklausą" data-track="practice_before_copy">Kopijuoti</button>
+                    </div>
                 </div>
-                <p class="types-card-k">Rizika</p>
-                <p class="types-card-result">DI spėlioja: auditorija, formatas, skaičiai, ką jau žinai.</p>
+                <div class="types-card-extra">
+                    <p class="types-card-k">Rizika</p>
+                    <p class="types-card-result">DI spėlioja: auditorija, formatas, skaičiai, ką jau žinai.</p>
+                </div>
             </article>
             <article class="types-card types-card--ctx">
-                <h3>Po (pagal anatomiją)</h3>
-                <p class="types-card-desc">Tas pats tikslas, bet su aiškiu kontekstu ir formatu.</p>
-                <p class="types-card-k">Užklausa</p>
-                <div class="types-example-block">
-                    <p class="types-card-example">„Tu esi mano darbo asistentas. Įvestis: [ĮKLIJUOK el. laišką / užrašus]. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Rezultatas: 7 punktų užduočių sąrašas (prioritetas A/B/C + terminas, jei paminėtas).“</p>
-                    <button type="button" class="types-copy-btn" data-copy-text="Tu esi mano darbo asistentas. Įvestis: [ĮKLIJUOK el. laišką / užrašus]. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Rezultatas: 7 punktų užduočių sąrašas (prioritetas A/B/C + terminas, jei paminėtas)." aria-label="Kopijuoti 'po' užklausą" data-track="practice_after_copy">Kopijuoti</button>
+                <div class="types-card-grow">
+                    <h3>Po (pagal anatomiją)</h3>
+                    <p class="types-card-desc">Tas pats tikslas, bet su aiškiu kontekstu ir formatu.</p>
+                    <p class="types-card-k">Užklausa</p>
+                    <div class="types-example-block">
+                        <p class="types-card-example">„Tu esi mano darbo asistentas. Įvestis: [ĮKLIJUOK el. laišką / užrašus]. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Rezultatas: 7 punktų užduočių sąrašas (prioritetas A/B/C + terminas, jei paminėtas).“</p>
+                        <button type="button" class="types-copy-btn" data-copy-text="Tu esi mano darbo asistentas. Įvestis: [ĮKLIJUOK el. laišką / užrašus]. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Rezultatas: 7 punktų užduočių sąrašas (prioritetas A/B/C + terminas, jei paminėtas)." aria-label="Kopijuoti 'po' užklausą" data-track="practice_after_copy">Kopijuoti</button>
+                    </div>
                 </div>
-                <p class="types-card-k">Rezultatas</p>
-                <p class="types-card-result">Gausi aiškų sąrašą, kurį gali iškart naudoti ar deleguoti.</p>
+                <div class="types-card-extra">
+                    <p class="types-card-k">Rezultatas</p>
+                    <p class="types-card-result">Gausi aiškų sąrašą, kurį gali iškart naudoti ar deleguoti.</p>
+                </div>
             </article>
             <article class="types-card types-card--role">
-                <h3>Patikra (30 sek.)</h3>
-                <p class="types-card-desc">Pilnas protokolas — kitoje skaidrėje.</p>
-                <p class="types-card-k">Ką tikrinti</p>
-                <div class="types-example-block">
-                    <p class="types-card-example">Faktai, rizikos, ko trūksta kontekste, ką privalai patikrinti patikimu šaltiniu.</p>
-                    <button type="button" class="types-copy-btn" data-copy-text="Patikra: 1) 3 didžiausios rizikos, 2) kas tinka naudoti, 3) ką turi patikrinti pats, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
+                <div class="types-card-grow">
+                    <h3>Patikra (30 sek.)</h3>
+                    <p class="types-card-desc">Pilna siuntimo patikra — kitoje skaidrėje.</p>
+                    <p class="types-card-k">Ką tikrinti</p>
+                    <div class="types-example-block">
+                        <p class="types-card-example">Faktai, rizikos, ko trūksta kontekste, ką privalai patikrinti patikimu šaltiniu.</p>
+                        <button type="button" class="types-copy-btn" data-copy-text="Patikra: 1) 3 didžiausios rizikos, 2) kas tinka naudoti, 3) ką turi patikrinti pats, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
+                    </div>
                 </div>
-                <p class="types-card-k">Toliau</p>
-                <p class="types-card-result"><a class="inline-link" href="#roadmap" data-track="practice_next_click" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;">Kelio planas ↓</a></p>
+                <div class="types-card-extra">
+                    <p class="types-card-k">Toliau</p>
+                    <p class="types-card-result"><a class="inline-link" href="#roadmap" data-track="practice_next_click" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;">Kelio planas ↓</a></p>
+                </div>
             </article>
         </div>
     </div>
@@ -1816,12 +1862,12 @@
         <div class="roadmap-inner">
             <span class="label">Kelio planas</span>
             <h2>Tavo kelias, kaip sutaupyti iki 5 val. per savaitę</h2>
-            <p class="roadmap-sub">Šeši žingsniai iš eilės: protokolas, tada penki gilūs šablonai. Laikai — orientaciniai.</p>
+            <p class="roadmap-sub">Šeši žingsniai iš eilės: pirmiausia greita siuntimo patikra, tada penki gilūs šablonai. Laikai — orientaciniai.</p>
             <div class="roadmap-journey" role="list">
                 <div class="roadmap-journey-line" aria-hidden="true"></div>
                 <div class="roadmap-row" role="listitem">
                     <span class="roadmap-dot-wrap" aria-hidden="true"><span class="roadmap-dot"></span></span>
-                    <span class="roadmap-name">Patikros ir rizikos protokolas</span>
+                    <span class="roadmap-name">Greita siuntimo patikra</span>
                     <span class="roadmap-time">5–15 min</span>
                 </div>
                 <div class="roadmap-row" role="listitem">
@@ -1855,18 +1901,18 @@
     </div>
 </section>
 
-<!-- Skaidrė 6: patikros ir rizikos protokolas -->
-<section id="qc" aria-label="Patikros ir rizikos protokolas">
+<!-- Skaidrė 6: greita siuntimo patikra -->
+<section id="qc" aria-label="Greita siuntimo patikra">
     <div class="container">
         <div>
             <span class="label">Saugumas</span>
-            <h2>Patikros ir rizikos protokolas</h2>
-            <p style="margin: 8px 0 16px; opacity: 0.9;">Prieš siuntimą klientui ar vadovybei — peržvelk DI tekstą pagal faktus ir rizikas.</p>
+            <h2>Greita siuntimo patikra</h2>
+            <p style="margin: 8px 0 16px; opacity: 0.9;">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio. Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>
-                <div class="prompt-line"><b>KONTEKSTAS</b> Tekstas bus naudojamas [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok DI atsakymą: [TEKSTAS].</div>
+                <div class="prompt-line"><b>KONTEKSTAS</b> Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> 1) 3 didžiausios rizikos (faktinės, teisinės ar komunikacinės). 2) Kas tinka naudoti be pakeitimų. 3) Ką patikrinti nepriklausomu šaltiniu (ne vien DI). 4) Ko trūksta kontekste tikslesniam atsakymui.</div>
-                <button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti protokolą</button>
+                <button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti patikrą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 22V2"/></svg></span> Mažiau rizikos klientui ir reputacijai.</div>
         </div>
@@ -1974,8 +2020,8 @@
             <h2>Užduotis / mokymas komandai</h2>
             <p style="margin: 8px 0 16px; opacity: 0.9;">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>Įvestis</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš jūsų veiklos ar proceso: [TRUMPAI].</div>
-                <div class="prompt-line"><b>Užduotis</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigu ir pritaikoma.</div>
+                <div class="prompt-line"><b>Įvestis</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>
+                <div class="prompt-line"><b>Užduotis</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>
                 <div class="prompt-line"><b>Grąžink</b> Paruoštą tekstą su aiškia instrukcija naudotojui; jei tinka — atsakymų ar vertinimo raktą.</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
@@ -2205,9 +2251,9 @@
         <h2 class="cta-title">PAVERSK TAI SISTEMA</h2>
         <p class="cta-sub">PDF su santrauka — pasiimk su savimi. Gilyn — per programą.</p>
         <div class="cta-actions-stack">
-            <a class="cta-pdf-link cta-pdf-link--primary" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Pagrindinis veiksmas: atsisiųsti 1 pamokos santrauką PDF" data-track="cta_pdf_click">
+            <a class="cta-pdf-link cta-pdf-link--primary" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Pagrindinis veiksmas: atsisiųsk 1 pamokos santrauką PDF" data-track="cta_pdf_click">
                 <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
-                Atsisiųsti santrauką (PDF)
+                Atsisiųsk santrauką (PDF)
             </a>
         </div>
         <div class="cta-secondary-wrap">

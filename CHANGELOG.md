@@ -27,6 +27,9 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 - **Vartotojo kelionė:** kelio plano skaidrė perkelta **po praktikos**, prieš 6 gilumo skaidres (`#roadmap`); sąrašo eilė sutapatinta su skaidrėmis (nuo patikros); schema ir praktika papildytos trumpu „kur eisi toliau“ su nuorodomis; navigacijos ir `#cta` etiketės suderintos su PDF + kitu žingsniu [index.html](index.html).
 - **Hash → biblioteka:** `#library` atidaro numatytą kategoriją **„Kasdienis darbas“** (`#lib-cat-work`) ir išsuka į bibliotekos sekciją (`openLibraryTargetFromHash`) [index.html](index.html).
 - **Inline nuorodos:** likusioms geltonoms `<a>` pridėta `class="inline-link"` (įskaitant dinaminį kveizo atsakymo linką), kad sutaptų fokuso stilius su kitais inline CTA [index.html](index.html).
+- **LT copy ir skaidrės:** aiškesnis „Kas yra promptas?“ leadas (greitas formatas vs penki žingsniai); schemos įžanga supaprastinta, etiketė **Žingsniai**, žingsnyje „Rezultatas“ — **baigtumo kriterijai** (ne angl. *definition of done*); skaidrė **„Greita siuntimo patikra“** (anksčiau „Patikros ir rizikos protokolas“) — aiškesnis leadas ir KONTEKSTAS, ką įklijuoti; hero, meta ir kelio planas suderinti su nauju pavadinimu; žyma ir aprašai **DI praktinė sistema** (vienoda didžioji raštis su prekės ženklu); PDF CTA **„Atsisiųsk“** sutapdintas su hero; smulki gramatika (įtaigi, tavo veiklos) [index.html](index.html).
+- **PDF šaltinis:** [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) atnaujinta greitos patikros antraštė ir įžanga; [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) perbuildinta.
+- **Trys kortelės (Pagrindai + Praktika):** bendras išdėstymas **`types-triple-grid`** (`types-card-grow` / `types-card-extra`), išlygiuoti „Kopijuoti“, kortelių šešėlis, storesnis pavyzdžio laukas, „Turinys“ desktop — arčiau šoninės navigacijos (`left: 34px`) [index.html](index.html).
 
 ## [0.3.0] - 2026-04-15
 
