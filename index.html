@@ -41,6 +41,17 @@
             --card-bg: var(--surface-raised);
             --border: rgba(255, 255, 255, 0.1);
             --border-hairline: rgba(255, 255, 255, 0.065);
+            /* Radius & šešėliai: viena skalė (premium nuoseklumas) */
+            --radius-xs: 4px;
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-pill: 999px;
+            --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
+            --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
+            --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.45);
+            --lift-sm: translateY(-2px);
+            --lift-md: translateY(-3px);
             --font-display: 'Space Grotesk', sans-serif;
             --font-main: 'Inter', sans-serif;
             /* Tekstas: kontrastas salėje / projektoriui */
@@ -50,7 +61,8 @@
             --text-soft: #94a3b8;
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { 
             background-color: var(--surface-base);
             margin: 0; 
@@ -77,7 +89,7 @@
             color: #000;
             font-weight: 800;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: var(--radius-xs);
         }
         .skip-link:focus {
             left: 16px;
@@ -138,7 +150,7 @@
             gap: 14px;
             text-decoration: none;
             color: inherit;
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 6px 8px;
             margin: -6px -8px;
             transition: opacity 0.2s;
@@ -147,14 +159,14 @@
         .brand-icon {
             width: 48px;
             height: 48px;
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             background: linear-gradient(145deg, #050d14 0%, var(--primary-blue) 100%);
             border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            box-shadow: var(--shadow-sm);
         }
         .brand-icon svg { width: 26px; height: 26px; display: block; }
         .brand-wordmark {
@@ -177,7 +189,7 @@
         .brand-tagline {
             font-size: clamp(11px, 1.15vw, 13px);
             font-weight: 600;
-            letter-spacing: 0.16em;
+            letter-spacing: 0.1em;
             color: var(--text-soft);
             text-transform: uppercase;
             margin-top: 4px;
@@ -313,13 +325,13 @@
             color: #fff;
             background: var(--accent-red);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border: 1px solid rgba(255, 90, 95, 0.55);
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 16px 32px rgba(255, 90, 95, 0.25);
         }
         .hero-primary-link:hover {
-            transform: translateY(-2px);
+            transform: var(--lift-sm);
             box-shadow: 0 22px 40px rgba(255, 90, 95, 0.35);
         }
         .hero-primary-link:active { transform: scale(0.99); }
@@ -333,12 +345,12 @@
             color: #0a0a0a;
             background: var(--accent-yellow);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border: 1px solid rgba(251, 211, 4, 0.6);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .hero-pdf-link:hover {
-            transform: translateY(-2px);
+            transform: var(--lift-sm);
             box-shadow: 0 12px 28px rgba(251, 211, 4, 0.25);
         }
         .hero-pdf-link .icon { opacity: 0.9; }
@@ -355,7 +367,7 @@
             color: var(--accent-yellow);
             background: transparent;
             border: 2px solid rgba(251, 211, 4, 0.55);
-            border-radius: 6px;
+            border-radius: var(--radius-sm);
             text-decoration: none;
             transition: background 0.2s, color 0.2s;
         }
@@ -370,7 +382,7 @@
             border: 1px solid rgba(251, 211, 4, 0.65);
             padding: 18px 30px;
             font-size: clamp(16px, 1.35vw, 20px);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             box-shadow: 0 12px 32px rgba(251, 211, 4, 0.22);
         }
         .cta-pdf-link--primary:hover {
@@ -396,7 +408,7 @@
             margin: 0;
             font-size: clamp(12px, 1vw, 14px);
             font-weight: 800;
-            letter-spacing: 0.14em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--text-soft);
         }
@@ -410,7 +422,7 @@
             box-shadow: none;
         }
         .cta-btn--secondary:hover {
-            transform: translateY(-3px);
+            transform: var(--lift-md);
             border-color: rgba(251, 211, 4, 0.65);
             color: var(--accent-yellow);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
@@ -443,13 +455,13 @@
         .cta-foot {
             margin-top: 80px;
             font-size: clamp(13px, 1.2vw, 15px);
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             color: var(--text-soft);
         }
         .label { 
             color: var(--accent-red); 
             text-transform: uppercase; 
-            letter-spacing: 4px; 
+            letter-spacing: 0.14em; 
             font-weight: 800; 
             font-size: clamp(13px, 1.1vw, 15px); 
             margin-bottom: 12px;
@@ -459,7 +471,7 @@
         /* Prompt Kortelė */
         .prompt-editor {
             background: #000;
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 30px;
             border: 1px solid var(--border);
             position: relative;
@@ -474,7 +486,7 @@
             font-size: 12px;
             font-weight: 800;
             padding: 4px 12px;
-            border-radius: 4px;
+            border-radius: var(--radius-xs);
             letter-spacing: 0.04em;
         }
         .prompt-line {
@@ -497,12 +509,13 @@
             color: #000;
             background: var(--accent-yellow);
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .copy-prompt-btn:hover { box-shadow: 0 8px 24px rgba(251, 211, 4, 0.35); }
         .copy-prompt-btn:active { transform: scale(0.98); }
+        .copy-prompt-btn:focus-visible { outline: 2px solid #fff6b0; outline-offset: 3px; }
 
         h2.essence-tagline {
             font-family: var(--font-display);
@@ -539,7 +552,7 @@
             background: rgba(255, 90, 95, 0.14);
             color: #ff7a7e;
             padding: 14px 26px;
-            border-radius: 100px;
+            border-radius: var(--radius-pill);
             font-weight: 700;
             font-size: clamp(14px, 1vw, 16px);
             margin-top: 30px;
@@ -554,12 +567,12 @@
             font-size: clamp(18px, 1.6vw, 24px);
             font-weight: 800;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: var(--radius-md);
             display: inline-block;
             transition: 0.3s;
             box-shadow: 0 20px 40px rgba(255, 90, 95, 0.3);
         }
-        .cta-btn:hover { transform: translateY(-5px); box-shadow: 0 30px 50px rgba(255, 90, 95, 0.5); }
+        .cta-btn:hover { transform: var(--lift-md); box-shadow: 0 30px 50px rgba(255, 90, 95, 0.5); }
 
         .cta-community {
             margin: 40px 0 0;
@@ -607,7 +620,7 @@
         }
         .types-card {
             background: var(--surface-raised);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 18px 16px;
             border: 2px solid;
             display: flex;
@@ -648,14 +661,14 @@
             text-align: left;
             background: rgba(0, 0, 0, 0.22);
             border: 1px solid var(--border-hairline);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             border-top: 2px solid rgba(251, 211, 4, 0.35);
         }
         .types-primer-quick-k {
             font-size: clamp(11px, 0.85vw, 12px);
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             color: var(--accent-yellow);
             margin: 0 0 6px;
         }
@@ -716,7 +729,7 @@
         }
         /* #guided: kontrastas ir sąrašai (praktika) */
         #guided .types-card-example--minimal {
-            font-style: italic;
+            font-style: normal;
             padding: 10px 12px;
             background: rgba(0, 0, 0, 0.22);
             border-left-width: 2px;
@@ -734,8 +747,8 @@
             flex-wrap: wrap;
             gap: 6px 10px;
             align-items: baseline;
-            font-size: clamp(12px, 0.9vw, 13px);
-            line-height: 1.4;
+            font-size: clamp(13px, 1.05vw, 14px);
+            line-height: 1.6;
             color: var(--text-body);
         }
         #guided .practice-structured-line strong {
@@ -743,7 +756,7 @@
             font-family: var(--font-main);
             font-size: 10px;
             font-weight: 800;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--accent-yellow);
         }
@@ -754,8 +767,8 @@
         #guided .practice-card-list {
             margin: 0;
             padding: 0 0 0 1.15em;
-            font-size: clamp(12px, 0.92vw, 14px);
-            line-height: 1.45;
+            font-size: clamp(13px, 1.05vw, 15px);
+            line-height: 1.65;
             color: var(--text-soft);
         }
         #guided .practice-card-list li {
@@ -783,7 +796,7 @@
         }
         .types-card-desc {
             font-size: clamp(13px, 1vw, 15px);
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--text-muted);
             margin: 0;
         }
@@ -791,7 +804,7 @@
             font-size: clamp(11px, 0.85vw, 12px);
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             color: var(--accent-yellow);
             margin: 2px 0 0;
         }
@@ -802,10 +815,10 @@
             align-items: stretch;
         }
         .types-card-example {
-            font-size: clamp(13px, 0.95vw, 14px);
-            line-height: 1.5;
+            font-size: clamp(14px, 1.05vw, 15px);
+            line-height: 1.7;
             color: var(--text-body);
-            font-style: italic;
+            font-style: normal;
             margin: 0;
             padding: 14px 16px;
             background: rgba(0, 0, 0, 0.35);
@@ -824,15 +837,22 @@
             border: 1px solid rgba(251, 211, 4, 0.45);
             border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s, color 0.2s;
+            transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
         }
         .types-copy-btn:hover {
             background: rgba(251, 211, 4, 0.12);
             color: #fff6b0;
+            border-color: rgba(251, 211, 4, 0.65);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+        }
+        .types-copy-btn:active { transform: scale(0.99); }
+        .types-copy-btn:focus-visible {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 3px;
         }
         .types-card-result {
             font-size: clamp(13px, 0.95vw, 14px);
-            line-height: 1.45;
+            line-height: 1.6;
             color: var(--text-soft);
             margin: 0;
         }
@@ -1022,8 +1042,9 @@
         }
         .library-prompt-block {
             font-family: ui-monospace, 'Cascadia Code', 'Courier New', monospace;
-            font-size: clamp(12px, 0.88vw, 14px);
-            line-height: 1.55;
+            font-size: clamp(13px, 0.98vw, 15px);
+            line-height: 1.7;
+            font-variant-ligatures: none;
             color: var(--text-body);
             white-space: pre-wrap;
             margin: 0 0 14px;
@@ -1053,7 +1074,7 @@
             font-size: 12px;
         }
         .library-toggle-all {
-            font-family: var(--font-body);
+            font-family: var(--font-main);
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
@@ -1375,7 +1396,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.35);
+            color: rgba(255, 255, 255, 0.3);
         }
         .schema-arrow svg { width: 20px; height: 20px; }
         .schema-loop-svg {
@@ -1391,7 +1412,7 @@
         .schema-loop-svg path {
             fill: none;
             stroke: var(--primary-blue);
-            stroke-width: 2.5;
+            stroke-width: 2.25;
             opacity: 0.85;
         }
         .schema-bracket svg {
@@ -1607,11 +1628,40 @@
             padding: 2px 2px;
             border-radius: 10px;
         }
+        .inline-link:hover {
+            background: rgba(251, 211, 4, 0.08);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
         .inline-link:focus-visible { outline: 2px solid var(--accent-yellow); outline-offset: 3px; }
 
         @media (prefers-reduced-motion: reduce) {
-            * { scroll-behavior: auto !important; }
+            html { scroll-behavior: auto !important; }
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+                animation: none !important;
+            }
             .loop-sq, .loop-ci { animation: none !important; }
+            .hero-primary-link,
+            .hero-pdf-link,
+            .cta-btn,
+            .cta-pdf-link,
+            .copy-prompt-btn,
+            .types-copy-btn,
+            .quiz-check-btn,
+            .quiz-reset-btn,
+            button.nav-item,
+            .nav-mobile button.nav-item::after {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        @media (max-width: 1366px) {
+            section { padding-left: 90px; padding-right: 90px; }
+            .container { gap: 64px; }
         }
 
         @media (max-width: 1024px) {
@@ -1868,7 +1918,7 @@
                         </div>
                     </div>
                     <div class="schema-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 10l5 5 5-5H7z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
                     <div class="schema-step schema-step--neutral">
                         <span class="schema-step-num">2</span>
@@ -1878,7 +1928,7 @@
                         </div>
                     </div>
                     <div class="schema-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 10l5 5 5-5H7z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
                     <div class="schema-step schema-step--reason">
                         <span class="schema-step-num">3</span>
@@ -1888,7 +1938,7 @@
                         </div>
                     </div>
                     <div class="schema-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 10l5 5 5-5H7z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
                     <div class="schema-step schema-step--neutral">
                         <span class="schema-step-num">4</span>
@@ -1898,7 +1948,7 @@
                         </div>
                     </div>
                     <div class="schema-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 10l5 5 5-5H7z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
                     <div class="schema-step schema-step--qc">
                         <span class="schema-step-num">5</span>
@@ -2060,7 +2110,7 @@
         <div class="viz-container">
             <svg class="viz-svg" viewBox="0 0 400 400">
                 <path d="M200 55 L330 105 V215 Q330 295 200 355 Q70 295 70 215 V105 Z" fill="none" stroke="var(--accent-yellow)" stroke-width="3" />
-                <path d="M145 205 L180 248 L265 145" stroke="var(--accent-red)" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M145 205 L180 248 L265 145" stroke="var(--accent-red)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
                 <circle cx="200" cy="200" r="118" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
             </svg>
         </div>
@@ -2422,6 +2472,10 @@
         const mobileNav = document.querySelectorAll('.nav-mobile .nav-item');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const scrollOpts = { behavior: prefersReducedMotion ? 'auto' : 'smooth' };
+        const warned = {
+            navMismatch: false,
+            libraryMissing: new Set()
+        };
 
         const libraryPrompts = {
             lib_zeroShot: 'Sukurk vieno sakinio produkto šūkį produktui [ĮRAŠYKITE].',
@@ -2810,7 +2864,12 @@
         function syncLibraryDom() {
             document.querySelectorAll('pre.library-prompt-block').forEach((pre) => {
                 const k = resolveLibraryKey(pre);
-                if (k && libraryPrompts[k]) pre.textContent = libraryPrompts[k];
+                if (k && libraryPrompts[k]) {
+                    pre.textContent = libraryPrompts[k];
+                } else if (k && !warned.libraryMissing.has(k)) {
+                    warned.libraryMissing.add(k);
+                    console.warn('[library] Missing prompt key:', k, pre);
+                }
             });
             const tabEmp = document.getElementById('library-tab-emp');
             const tabMgr = document.getElementById('library-tab-mgr');
@@ -2959,6 +3018,15 @@
                     tapLockUntil = now + 350;
                     if (sections[index]) sections[index].scrollIntoView(Object.assign({ block: 'start' }, scrollOpts));
                 });
+            });
+        }
+
+        if (!warned.navMismatch && (sections.length !== sideNav.length || sections.length !== mobileNav.length)) {
+            warned.navMismatch = true;
+            console.warn('[nav] Mismatch:', {
+                sections: sections.length,
+                sideNav: sideNav.length,
+                mobileNav: mobileNav.length
             });
         }
 
@@ -3136,6 +3204,13 @@
             const checkBtn = document.getElementById('quiz-check-btn');
             const resetBtn = document.getElementById('quiz-reset-btn');
             const feedbackEl = document.getElementById('quiz-feedback');
+            if (!checkBtn || !resetBtn || !feedbackEl) {
+                console.warn('[quiz] Missing DOM elements; quiz handlers not bound.', {
+                    checkBtn: !!checkBtn,
+                    resetBtn: !!resetBtn,
+                    feedbackEl: !!feedbackEl
+                });
+            } else {
             const correctBody = quizForm.getAttribute('data-feedback-correct') || '';
             const wrongBody = quizForm.getAttribute('data-feedback-wrong') || '';
             const selectMsg = quizForm.getAttribute('data-msg-select') || 'Pasirink variantą.';
@@ -3200,6 +3275,7 @@
                 quizForm.querySelectorAll('input[name="prompt-quiz"]').forEach((r) => { r.checked = false; });
                 hideFeedback();
             });
+            }
         }
 
         window.addEventListener('load', () => window.dispatchEvent(new Event('scroll')));

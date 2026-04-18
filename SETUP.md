@@ -11,8 +11,12 @@ Atidarykite `index.html` naršyklėje (dvigubas paspaudimas) arba naudokite papr
 ## PDF iš Markdown
 
 1. Įdiekite **Pandoc**: [https://pandoc.org/installing.html](https://pandoc.org/installing.html) arba `winget install JohnMacFarlane.Pandoc`.
-2. **Windows**: be LaTeX dažnai pakanka **Typst** kaip PDF variklio: `winget install Typst.Typst`, tada skriptas naudoja `--pdf-engine=typst`.
+2. **PDF variklis** (skriptas renka šia tvarka; jei nieko neranda — aiški klaida ir stabdymas):
+   - pirmiausia **Typst** (`winget install Typst.Typst`), tada Pandoc kviečiamas su `--pdf-engine=typst`;
+   - jei Typst nėra — bandoma **pdflatex**, paskui **xelatex**, paskui **lualatex** (turi būti PATH, pvz. MiKTeX arba TeX Live).
 3. Šaltinis: [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md). Išvestis: [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf).
+
+**Pull request į `main`:** jei PR keičia `docs/pamoka-1-pdf.md`, tame pačiame PR turi būti ir atnaujintas [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) — tai tikrina [verify.yml](.github/workflows/verify.yml).
 
 **Windows (PowerShell):**
 
@@ -41,6 +45,7 @@ Po pakeitimų `docs/pamoka-1-pdf.md` paleiskite build ir commitinkite atnaujint�
 Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius „Release“.
 
 - [ ] Jei keitėsi `docs/pamoka-1-pdf.md`: paleistas `scripts/build-pdf.ps1` arba `build-pdf.sh`, commitintas [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf).
+- [ ] Jei [CHANGELOG.md](CHANGELOG.md) mini PDF perbuild arba turinio pakeitimą PDF — commit’e matosi atitinkamas [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) pakeitimas (kai taikoma).
 - [ ] `index.html`: pagrindiniai CTA, PDF nuorodos, bibliotekos kopijavimas, `#library` / hash elgsena.
 - [ ] [404.html](404.html) atsidaro ir grįžta į pamoką.
 - [ ] GitHub Actions: [pages.yml](.github/workflows/pages.yml) ir [verify.yml](.github/workflows/verify.yml) žali po push (kai taikoma).

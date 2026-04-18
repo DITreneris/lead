@@ -43,6 +43,7 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 
 - Šaltinis: `docs/pamoka-1-pdf.md`. Po pakeitimo: `scripts/build-pdf.ps1` arba `scripts/build-pdf.sh`, tada commitinti `assets/www.promptanatomy.app.pdf`.
 - Nuorodos puslapyje: `assets/www.promptanatomy.app.pdf`.
+- PR į `main`: jei keičiasi MD, tame pačiame PR turi keistis ir PDF — tikrina `.github/workflows/verify.yml` (kitu atveju CI failina).
 
 ## 4. Biblioteka ir vadovo kelias
 

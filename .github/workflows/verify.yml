@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Required paths exist
         run: |
           test -f index.html
@@ -23,3 +25,22 @@ jobs:
           test -f .github/workflows/pages.yml
           test -d assets
           test -f assets/www.promptanatomy.app.pdf
+      - name: Prevent MD→PDF drift (PRs)
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          set -euo pipefail
+          if [ -z "${BASE_REF:-}" ]; then
+            echo "BASE_REF not set; skipping."
+            exit 0
+          fi
+          git fetch origin "${BASE_REF}" --depth=1
+          CHANGED="$(git diff --name-only FETCH_HEAD...HEAD || true)"
+          echo "$CHANGED"
+          if echo "$CHANGED" | grep -qx 'docs/pamoka-1-pdf.md'; then
+            if ! echo "$CHANGED" | grep -qx 'assets/www.promptanatomy.app.pdf'; then
+              echo "docs/pamoka-1-pdf.md changed but assets/www.promptanatomy.app.pdf did not. Rebuild PDF."
+              exit 1
+            fi
+          fi

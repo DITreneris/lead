@@ -22,13 +22,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
       - name: Configure Pages
-        uses: actions/configure-pages@v6
+        uses: actions/configure-pages@v5
+      - name: Prepare site artifact
+        run: |
+          set -euo pipefail
+          rm -rf site
+          mkdir -p site
+          cp index.html 404.html favicon.svg site/
+          cp -R assets site/assets
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "."
+          path: "site"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

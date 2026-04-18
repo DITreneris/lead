@@ -1,5 +1,5 @@
 # Build PDF from docs/pamoka-1-pdf.md -> assets/www.promptanatomy.app.pdf
-# Requires: Pandoc on PATH; PDF engine: typst (winget install Typst.Typst) or pdflatex.
+# Requires: Pandoc on PATH; PDF engine: Typst (winget install Typst.Typst) OR pdflatex/xelatex/lualatex (LaTeX on PATH).
 
 $ErrorActionPreference = "Stop"
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -43,10 +43,34 @@ if (-not $typst) {
     }
 }
 
+$pandocArgs = @(
+    $src,
+    '-o', $out,
+    '--resource-path', '.;docs',
+    '-V', 'geometry:margin=2.5cm'
+)
+
 if ($typst) {
-    & $pandoc $src -o $out --resource-path=".;docs" --pdf-engine=$typst -V geometry:margin=2.5cm
+    $typstEngine = if ($typst -is [string]) { $typst } else { $typst.Source }
+    & $pandoc @pandocArgs --pdf-engine=$typstEngine
 } else {
-    & $pandoc $src -o $out --resource-path=".;docs" -V geometry:margin=2.5cm -V lang=lt
+    $latexEngine = $null
+    foreach ($name in @('pdflatex', 'xelatex', 'lualatex')) {
+        $c = Get-Command $name -ErrorAction SilentlyContinue
+        if ($c) {
+            $latexEngine = $c.Name
+            break
+        }
+    }
+    if (-not $latexEngine) {
+        throw @"
+No PDF engine found. Install one of:
+  - Typst: winget install Typst.Typst
+  - LaTeX with pdflatex on PATH (e.g. MiKTeX, TeX Live)
+See SETUP.md — section 'PDF iš Markdown'.
+"@
+    }
+    & $pandoc @pandocArgs --pdf-engine=$latexEngine -V lang=lt
 }
 
 Write-Host "OK: $out"
