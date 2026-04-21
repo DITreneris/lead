@@ -6,7 +6,10 @@ alwaysApply: false
 
 # index.html
 
-- **Kalba (golden standard)**: visur „TU“. Žodynas ir taisyklės — `AGENTS.md` skyriuje **„Golden standard (LT)“**.
+- **Kalba (golden standard)**: visur „TU“. Žodynas ir taisyklės — `AGENTS.md` skyriuje **„Golden standard (LT)“**; anglų tekstui — **„Golden standard (EN)“** ir `uiText` / build poros (`scripts/en-html-replacements.cjs`).
+- **LT / EN:** šoninėje juostoje `LT` / `EN` mygtukai; naujos skaidrės — LT `aria-label` su prefiksu `Skaidrė N:`, EN build'e — `Slide N:` (outline regex palaiko abu); kopijuojama biblioteka — `libraryPromptsLt` + [assets/prompt-library-en.js](assets/prompt-library-en.js).
+- **LT / EN redaguojant:** vienas keitimas — patikrink tris vietas: (1) `index.html` LT, (2) atitinkama pora [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) (įskaitant `aria-label` / `data-copy-text`), (3) jei liečia biblioteką — abu `libraryPromptsLt` ir EN failas; po to `npm run build` ir `npm run verify` (žr. [AGENTS.md](AGENTS.md) **„Dviguba patikra“**).
+- **Runtime tekstas:** viskas, kas rašoma į `#a11y-status` ar kitą `aria-live`, naudoti `uiText(lt, en)` — ne fiksuotą LT vienoje šakoje.
 - **Skaidrės**: `main section` eilės tvarka turi sutapti su `.nav-sidebar` / `.nav-mobile` mygtukų skaičiumi ir `aria-label` tekstais.
 - **Turinys**: `#slide-outline` / `#slide-outline-list` — sąrašas generuojamas iš šoninės nav `aria-label` (tas pats indeksas kaip skaidrėse); nauja skaidrė = atnaujinti abu nav ir etiketes.
 - **Meme 16:9**: tarp kai kurių skaidrių gali būti `div.meme-interlude` (ne `section`) su `figure.meme-figure` ir PNG iš `assets/memes/` — nav taškų skaičius keisti negalima.

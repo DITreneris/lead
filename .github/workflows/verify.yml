@@ -17,6 +17,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - name: Required paths exist
         run: |
           test -f index.html
@@ -25,6 +29,30 @@ jobs:
           test -f .github/workflows/pages.yml
           test -d assets
           test -f assets/www.promptanatomy.app.pdf
+          test -f assets/prompt-library-en.js
+          test -f package.json
+          test -f scripts/build-locale-pages.js
+          test -f scripts/verify-library-keys.js
+          test -f scripts/verify-en-locale.js
+      - name: Build locale pages
+        run: |
+          set -euo pipefail
+          npm install
+          npm run build
+      - name: Locale HTML checks
+        run: |
+          set -euo pipefail
+          test -f site/index.html
+          test -f site/lt/index.html
+          test -f site/en/index.html
+          grep -q 'lang="lt"' site/lt/index.html
+          grep -q 'lang="en"' site/en/index.html
+          grep -q 'page-locale" content="en"' site/en/index.html
+          grep -q 'hreflang="en"' site/en/index.html
+      - name: LT or EN drift checks
+        run: |
+          set -euo pipefail
+          npm run verify
       - name: Prevent MD→PDF drift (PRs)
         if: ${{ github.event_name == 'pull_request' }}
         env:

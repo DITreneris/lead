@@ -42,6 +42,7 @@ description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių 
 
 - Vienas pagrindinis puslapis: [index.html](../../../index.html) (HTML + CSS + JS).
 - PDF šaltinis: [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md); build: [scripts/build-pdf.ps1](../../../scripts/build-pdf.ps1) / [scripts/build-pdf.sh](../../../scripts/build-pdf.sh); išvestis: [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf).
+- **LT / EN (planuojant turinio ar struktūros pokyčius):** kanonas LT `index.html`; EN matomas HTML — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs); biblioteka EN — [assets/prompt-library-en.js](../../../assets/prompt-library-en.js); po pakeitimų — `npm run build` ir `npm run verify` (žr. [AGENTS.md](../../../AGENTS.md) **„Dviguba patikra“**).
 - **Neplėsti** stacko (frameworkai, bundleriai, backend) be aiškios priežasties — žr. projekto `.cursor/rules`.
 
 ### 5. „Mokymasis“ šiame projekte

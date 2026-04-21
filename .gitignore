@@ -3,8 +3,7 @@ Thumbs.db
 desktop.ini
 assets/pandoc-media/
 node_modules/
-package-lock.json
-package.json
+site/
 docs/favicon-64.png
 assets/favicon-64.png
 

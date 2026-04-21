@@ -3,7 +3,12 @@
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
+    <meta name="page-locale" content="lt">
+    <meta name="app-base-path" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" hreflang="lt" href="https://www.promptanatomy.app/lt/">
+    <link rel="alternate" hreflang="en" href="https://www.promptanatomy.app/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.promptanatomy.app/lt/">
     <title>Promptų anatomija — darbui ir vadovavimui</title>
     <meta name="description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
     <meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">
@@ -141,6 +146,8 @@
             display: flex;
             justify-content: flex-end;
             align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
             pointer-events: none;
         }
         .brand-header .brand-lockup {
@@ -193,6 +200,36 @@
             color: var(--text-soft);
             text-transform: uppercase;
             margin-top: 4px;
+        }
+
+        .lang-switch {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 12px;
+        }
+        .lang-switch__btn {
+            font-family: var(--font-main);
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            padding: 6px 10px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
+        }
+        .lang-switch__btn:hover {
+            color: var(--text-bright);
+            border-color: rgba(255, 255, 255, 0.28);
+        }
+        .lang-switch__btn.is-active {
+            color: #000;
+            background: var(--accent-yellow);
+            border-color: var(--accent-yellow);
         }
 
         /* Navigacija */
@@ -467,6 +504,10 @@
             margin-bottom: 12px;
             display: block;
         }
+        .slide-sublead {
+            margin: 8px 0 16px;
+            opacity: 0.9;
+        }
 
         /* Prompt Kortelė */
         .prompt-editor {
@@ -533,6 +574,7 @@
             font-weight: 700;
             color: #fff;
         }
+        .cta-inner { text-align: center; }
 
         /* Iliustracijos (SVG) */
         .viz-container {
@@ -1764,6 +1806,10 @@
 </details>
 
 <header class="brand-header" role="banner">
+    <div class="lang-switch" role="group" aria-label="Kalbos pasirinkimas">
+        <button type="button" class="lang-switch__btn" id="langLtBtn" lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
+        <button type="button" class="lang-switch__btn" id="langEnBtn" lang="en" aria-label="Switch to English">EN</button>
+    </div>
     <a class="brand-lockup" href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija — oficiali svetainė www.promptanatomy.app (atidaryti naujame skirtuke)">
         <div class="brand-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -1853,7 +1899,7 @@
         <div class="types-head">
             <span class="label">Pagrindai</span>
             <h2>Kas yra promptas?</h2>
-            <p class="types-lead">Žemiau — du apibrėžimai ir greito naudojimo taisyklė (juosta). Penkių žingsnių schema — kai atsakymas miglotas ir vis dar reikia pataisymų.</p>
+            <p class="types-lead">Žemiau — du apibrėžimai ir greito naudojimo taisyklė (juosta).<br>Penkių žingsnių schema — kai atsakymas miglotas ir vis dar reikia pataisymų.</p>
         </div>
 
         <div class="types-grid types-primer-cols">
@@ -2098,7 +2144,7 @@
         <div>
             <span class="label">Saugumas</span>
             <h2>Greita siuntimo patikra</h2>
-            <p style="margin: 8px 0 16px; opacity: 0.9;">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio. Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>
+            <p class="slide-sublead">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio.<br>Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>
                 <div class="prompt-line"><b>KONTEKSTAS</b> Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].</div>
@@ -2140,7 +2186,7 @@
         <div>
             <span class="label">01 • Struktūra</span>
             <h2>Susitikimo ar sprinto planas</h2>
-            <p style="margin: 8px 0 16px; opacity: 0.9;">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>
+            <p class="slide-sublead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>Užduotis</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>
                 <div class="prompt-line"><b>Įvestis</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTARĖTE ANKSČIAU].</div>
@@ -2158,7 +2204,7 @@
         <div>
             <span class="label">02 • Personalizacija</span>
             <h2>Ta pati žinutė — 3 lygiai</h2>
-            <p style="margin: 8px 0 16px; opacity: 0.9;">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>
+            <p class="slide-sublead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>Užduotis</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>
                 <div class="prompt-line"><b>Įvestis</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>
@@ -2191,7 +2237,7 @@
         <div>
             <span class="label">03 • Grįžtamasis ryšys</span>
             <h2>Turinio grįžtamasis ryšys</h2>
-            <p style="margin: 8px 0 16px; opacity: 0.9;">Įvertinimas + vienas konkretus patarimas — mažiau tuščių iteracijų.</p>
+            <p class="slide-sublead">Įvertinimas + vienas konkretus patarimas — mažiau tuščių iteracijų.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>Įvestis</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>
                 <div class="prompt-line"><b>Užduotis</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>
@@ -2209,7 +2255,7 @@
         <div>
             <span class="label">04 • Inovacijos</span>
             <h2>Užduotis / mokymas komandai</h2>
-            <p style="margin: 8px 0 16px; opacity: 0.9;">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>
+            <p class="slide-sublead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>Įvestis</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>
                 <div class="prompt-line"><b>Užduotis</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>
@@ -2242,7 +2288,7 @@
         <div>
             <span class="label">05 • Komunikacija</span>
             <h2>Laiškas ar žinutė (juodraštis)</h2>
-            <p style="margin: 8px 0 16px; opacity: 0.9;">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
+            <p class="slide-sublead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>Įvestis</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
                 <div class="prompt-line"><b>Užduotis</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus kitas žingsnis.</div>
@@ -2438,7 +2484,7 @@
 
 <!-- Skaidrė 15: raginimas veikti -->
 <section id="cta" aria-label="PDF santrauka ir kitas žingsnis" style="background: linear-gradient(to bottom, var(--bg-dark), var(--primary-blue));">
-    <div style="text-align: center;">
+    <div class="cta-inner">
         <h2 class="cta-title">PAVERSK TAI SISTEMA</h2>
         <p class="cta-sub">PDF su santrauka — pasiimk su savimi. Gilyn — per programą.</p>
         <div class="cta-actions-stack">
@@ -2449,7 +2495,7 @@
         </div>
         <div class="cta-secondary-wrap">
             <p class="cta-secondary-label">Kitas žingsnis</p>
-            <a href="https://www.promptanatomy.app/?utm_source=lead&utm_medium=slide&utm_campaign=promptu_anatomija" class="cta-btn cta-btn--secondary" target="_blank" rel="noopener noreferrer" aria-label="Kitas žingsnis: atidaryti mokamą programą (naujame skirtuke)" data-track="paid_cta_click">Peržiūrėti programą ir kainą</a>
+            <a href="https://www.promptanatomy.app/?utm_source=lead&utm_medium=slide&utm_campaign=promptu_anatomija" class="cta-btn cta-btn--secondary" target="_blank" rel="noopener noreferrer" aria-label="Kitas žingsnis: peržvelk mokamą programą (naujame skirtuke)" data-track="paid_cta_click">Peržvelk programą ir kainą</a>
         </div>
         <p class="cta-community">
             <a href="https://t.me/prompt_anatomy" class="cta-telegram-link" target="_blank" rel="noopener noreferrer" aria-label="Bendruomenės Telegram kanalas Prompt Anatomy (atidaryti naujame skirtuke)" data-track="cta_telegram_click">
@@ -2465,8 +2511,87 @@
 
 </main>
 
+<script src="assets/prompt-library-en.js"></script>
 <script>
     (function () {
+        const LANG_KEY = 'prompt_anatomy_lang';
+        function appBasePath() {
+            var m = document.querySelector('meta[name="app-base-path"]');
+            return (m && m.getAttribute('content')) || '';
+        }
+        function getLocaleFromPathname() {
+            var path = (window.location.pathname || '').toLowerCase();
+            if (/\/lt(?:\/|$)/.test(path)) return 'lt';
+            if (/\/en(?:\/|$)/.test(path)) return 'en';
+            return '';
+        }
+        function getLocaleFromMeta() {
+            try {
+                var m = document.querySelector('meta[name="page-locale"]');
+                var c = (m && m.getAttribute('content') || '').toLowerCase();
+                if (c === 'lt' || c === 'en') return c;
+            } catch (eMeta) { /* ignore */ }
+            return '';
+        }
+        function getPageLocale() {
+            var fromPath = getLocaleFromPathname();
+            if (fromPath) return fromPath;
+            try {
+                var params = new URLSearchParams(window.location.search || '');
+                var q = (params.get('lang') || '').toLowerCase();
+                if (q === 'lt' || q === 'en') return q;
+            } catch (e0) { /* ignore */ }
+            var fromMeta = getLocaleFromMeta();
+            if (fromMeta) return fromMeta;
+            try {
+                var stored = localStorage.getItem(LANG_KEY);
+                if (stored === 'lt' || stored === 'en') return stored;
+            } catch (e1) { /* ignore */ }
+            var nav = (navigator.language || '').toLowerCase();
+            if (nav.startsWith('lt')) return 'lt';
+            return 'lt';
+        }
+        var LOCALE = getPageLocale();
+        document.documentElement.setAttribute('lang', LOCALE === 'en' ? 'en' : 'lt');
+        function uiText(lt, en) {
+            return LOCALE === 'en' ? en : lt;
+        }
+        function localeSwitchUrl(nextLang) {
+            var h = window.location.hash || '';
+            if (window.location.protocol === 'file:') {
+                return (nextLang === 'lt' ? 'index.html' : 'en/index.html') + h;
+            }
+            var base = appBasePath().replace(/\/$/, '');
+            var u = new URL(window.location.origin + (base || '') + '/' + nextLang + '/');
+            u.hash = h;
+            if (window.location.search) u.search = window.location.search;
+            return u.toString();
+        }
+        function bindLangSwitch() {
+            var ltBtn = document.getElementById('langLtBtn');
+            var enBtn = document.getElementById('langEnBtn');
+            if (!ltBtn || !enBtn) return;
+            function mark() {
+                ltBtn.classList.toggle('is-active', LOCALE === 'lt');
+                enBtn.classList.toggle('is-active', LOCALE === 'en');
+            }
+            mark();
+            ltBtn.addEventListener('click', function () {
+                if (LOCALE === 'lt') return;
+                try {
+                    localStorage.setItem(LANG_KEY, 'lt');
+                } catch (e) { /* ignore */ }
+                window.location.href = localeSwitchUrl('lt');
+            });
+            enBtn.addEventListener('click', function () {
+                if (LOCALE === 'en') return;
+                try {
+                    localStorage.setItem(LANG_KEY, 'en');
+                } catch (e2) { /* ignore */ }
+                window.location.href = localeSwitchUrl('en');
+            });
+        }
+
         const sections = document.querySelectorAll('main section');
         const sideNav = document.querySelectorAll('.nav-sidebar .nav-item');
         const mobileNav = document.querySelectorAll('.nav-mobile .nav-item');
@@ -2477,7 +2602,7 @@
             libraryMissing: new Set()
         };
 
-        const libraryPrompts = {
+        const libraryPromptsLt = {
             lib_zeroShot: 'Sukurk vieno sakinio produkto šūkį produktui [ĮRAŠYKITE].',
             lib_fewShot: [
                 'Pavyzdžiai:',
@@ -2669,17 +2794,17 @@
         ['zeroShot', 'fewShot', 'thoughtChain', 'promptSeq', 'instruct', 'constraints', 'daySummary', 'meetingNotes', 'emailReply', 'hardUpdate', 'feedbackAfterMistake', 'deescalateMessage', 'taskList', 'decisionSummary', 'processDoc', 'simplifyText', 'swot', 'qualityCheck'].forEach((s) => {
             const lk = 'lib_' + s;
             const mk = 'mgr_' + s;
-            libraryPrompts[mk] = libraryPrompts[lk];
+            libraryPromptsLt[mk] = libraryPromptsLt[lk];
         });
 
-        libraryPrompts.mgr_zeroShot = 'Sukurk vieno sakinio verslo šūkį ar pozicionavimo sakinį iniciatyvai / produktui [ĮRAŠYKITE]. Auditorija: vadovybė ar išoriniai partneriai.';
-        libraryPrompts.mgr_fewShot = [
+        libraryPromptsLt.mgr_zeroShot = 'Sukurk vieno sakinio verslo šūkį ar pozicionavimo sakinį iniciatyvai / produktui [ĮRAŠYKITE]. Auditorija: vadovybė ar išoriniai partneriai.';
+        libraryPromptsLt.mgr_fewShot = [
             'Pavyzdžiai (stilius vadovybei ar klientui):',
             '„[PAVYZDYS 1]“',
             '„[PAVYZDYS 2]“',
             'Sukurk dar 3 panašaus stiliaus sakinius tema [ĮRAŠYKITE].'
         ].join('\n');
-        libraryPrompts.mgr_daySummary = [
+        libraryPromptsLt.mgr_daySummary = [
             'Vadovo dienos santrauka iš faktų — užpildyk laukus.',
             '',
             'Įvestis:',
@@ -2692,7 +2817,7 @@
             '5 punktų vadovo santrauka (vykdymui; jei reikia — perkėlimui į vadovybę)',
             'Kiekvienam 1–2 sakiniai, be perteklinio žargono'
         ].join('\n');
-        libraryPrompts.mgr_meetingNotes = [
+        libraryPromptsLt.mgr_meetingNotes = [
             'Susitikimo išvada vadovybei ar komandai — iš trumpų užrašų.',
             '',
             'Įvestis:',
@@ -2706,7 +2831,7 @@
             'Veiksmai (kas / iki kada)',
             'Rizikos ir atviri klausimai'
         ].join('\n');
-        libraryPrompts.mgr_emailReply = [
+        libraryPromptsLt.mgr_emailReply = [
             'Atsakymas vadovaujančiai ar išorinei komunikacijai.',
             '',
             'Įvestis:',
@@ -2718,7 +2843,7 @@
             'Aiškūs kiti žingsniai ir atsakomybės',
             'Jei reikia — viena pastaba apie konfidencialumą'
         ].join('\n');
-        libraryPrompts.mgr_hardUpdate = [
+        libraryPromptsLt.mgr_hardUpdate = [
             'Sunki žinutė vadovybei ar išorei — reputacija ir rizika matomos.',
             '',
             'Įvestis:',
@@ -2733,7 +2858,7 @@
             'Struktūra: kontekstas → sprendimas dabar → savininkas ir terminas → rizikos (iki 3)',
             'Tonas: ramus, be kaltinimų; be spekuliacijų už faktų ribų'
         ].join('\n');
-        libraryPrompts.mgr_feedbackAfterMistake = [
+        libraryPromptsLt.mgr_feedbackAfterMistake = [
             'Grįžtamasis ryšys vadovui: rezultatas ir elgsena (1:1).',
             '',
             'Įvestis:',
@@ -2749,7 +2874,7 @@
             '1 klausimas dialogui tęsti',
             'Jei reikia HR / proceso etapo — viena neutrali pastaba (be diagnozių)'
         ].join('\n');
-        libraryPrompts.mgr_deescalateMessage = [
+        libraryPromptsLt.mgr_deescalateMessage = [
             'Įtampos mažinimas vadovo žinutei — rizika ir tęstinumas įvertinti.',
             '',
             'Įvestis:',
@@ -2763,7 +2888,7 @@
             'Pašalink kaltinančias frazes; palik aiškią ribą, jei reikia',
             'Jei trūksta faktų – parašyk, ko paklausti vietoj spėliojimo'
         ].join('\n');
-        libraryPrompts.mgr_taskList = [
+        libraryPromptsLt.mgr_taskList = [
             'Iš teksto — užduotys su savininku ir prioritetais (vadovui).',
             '',
             'Įvestis:',
@@ -2774,7 +2899,7 @@
             'Prioritetai A / B / C su pagrindimu',
             'Terminai ir priklausomybės (jei žinomos)'
         ].join('\n');
-        libraryPrompts.mgr_decisionSummary = [
+        libraryPromptsLt.mgr_decisionSummary = [
             'META: Tu esi vadovybės sprendimų analitikas.',
             'INPUT:',
             'Klausimas ar dilema: [APRAŠYMAS]',
@@ -2786,7 +2911,7 @@
             'Rekomendacija vadovybei',
             'Ką stebėti po sprendimo'
         ].join('\n');
-        libraryPrompts.mgr_processDoc = [
+        libraryPromptsLt.mgr_processDoc = [
             'META: Tu esi organizacijos procesų ir atitikties ekspertas.',
             'INPUT:',
             'Procesas ar politika: [PROCESAS]',
@@ -2796,7 +2921,7 @@
             'Trumpi sakiniai, veiksmažodžiai',
             'Viena pastaba apie auditą ar dokumentavimą, jei aktualu'
         ].join('\n');
-        libraryPrompts.mgr_swot = [
+        libraryPromptsLt.mgr_swot = [
             'META: Tu esi strategijos konsultantas vadovybei.',
             'INPUT:',
             'Verslo vienetas / iniciatyva: [APRAŠYMAS]',
@@ -2806,7 +2931,7 @@
             'Po 3–5 konkrečių punktų kiekvienoje dalyje',
             '1 pastaba apie konkurencinį ar reguliacinį kontekstą, jei aktualu'
         ].join('\n');
-        libraryPrompts.mgr_qualityCheck = [
+        libraryPromptsLt.mgr_qualityCheck = [
             'Įvertink užklausą (promptą) prieš masinį siuntimą ar svarbius vadovybės sprendimus.',
             '',
             'Įvestis:',
@@ -2821,7 +2946,7 @@
             '4) Patobulinta užklausos versija',
             'Taisyklės: būk konkretus; jei trūksta faktų — įvardink; jei per sudėtinga — pasiūlyk V1; nekeisk be naudos.'
         ].join('\n');
-        libraryPrompts.mgr_simplifyText = [
+        libraryPromptsLt.mgr_simplifyText = [
             'Sutrumpink tekstą vadovybei, klientui ar rinkai — viena aiški esmė.',
             '',
             'Įvestis:',
@@ -2835,7 +2960,7 @@
             'Aiški kalba; be perteklinio žargono ir „dekoracijų“',
             'Jei lieka politinė ar teisinė rizika — viena aiški pastaba, be spekuliacijų'
         ].join('\n');
-        libraryPrompts.mgr_constraints = [
+        libraryPromptsLt.mgr_constraints = [
             'Užduotis DI su atitiktimi ir patvirtinimo grandine (vadovui).',
             '',
             'Įvestis:',
@@ -2851,6 +2976,11 @@
             '„Ko vengti“: iki 5 punktų',
             'Jei trūksta faktų — ko paklausti prieš vykdant, ne spėliojant'
         ].join('\n');
+
+        var libraryPrompts =
+            LOCALE === 'en' && typeof window.__PROMPT_LIBRARY_EN__ === 'object'
+                ? window.__PROMPT_LIBRARY_EN__
+                : libraryPromptsLt;
 
         let libraryModeManager = false;
 
@@ -2941,13 +3071,21 @@
             const btn = document.getElementById('library-expand-toggle');
             if (!btn) return;
             const expanded = libraryAllExpanded();
-            btn.textContent = expanded ? 'Suskleisti viską' : 'Išskleisti viską';
+            btn.textContent = expanded
+                ? uiText('Suskleisti viską', 'Collapse all')
+                : uiText('Išskleisti viską', 'Expand all');
             btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
             btn.setAttribute(
                 'aria-label',
                 expanded
-                    ? 'Suskleisti visas bibliotekos kategorijas ir instrukciją „Kaip naudoti“'
-                    : 'Išskleisti visas bibliotekos kategorijas ir instrukciją „Kaip naudoti“'
+                    ? uiText(
+                          'Suskleisti visas bibliotekos kategorijas ir instrukciją „Kaip naudoti“',
+                          'Collapse all library categories and the How to use section'
+                      )
+                    : uiText(
+                          'Išskleisti visas bibliotekos kategorijas ir instrukciją „Kaip naudoti“',
+                          'Expand all library categories and the How to use section'
+                      )
             );
         }
 
@@ -2962,8 +3100,8 @@
                     const a11y = document.getElementById('a11y-status');
                     if (a11y) {
                         a11y.textContent = expand
-                            ? 'Išskleista: kategorijos ir instrukcija'
-                            : 'Suskleista: kategorijos ir instrukcija';
+                            ? uiText('Išskleista: kategorijos ir instrukcija', 'Expanded: categories and instructions')
+                            : uiText('Suskleista: kategorijos ir instrukcija', 'Collapsed: categories and instructions');
                         window.setTimeout(() => {
                             a11y.textContent = '';
                         }, 900);
@@ -3041,8 +3179,8 @@
                 const b = document.createElement('button');
                 b.type = 'button';
                 b.className = 'slide-outline__btn';
-                const al = navBtn.getAttribute('aria-label') || ('Skaidrė ' + (index + 1));
-                const shortLabel = al.replace(/^Skaidrė\s*\d+\s*:\s*/i, '').trim();
+                const al = navBtn.getAttribute('aria-label') || (uiText('Skaidrė ', 'Slide ') + (index + 1));
+                const shortLabel = al.replace(/^(Skaidrė|Slide)\s*\d+\s*:\s*/i, '').trim();
                 b.textContent = (index + 1) + '. ' + (shortLabel || al);
                 b.addEventListener('click', () => {
                     if (sections[index]) sections[index].scrollIntoView(scrollOpts);
@@ -3135,12 +3273,15 @@
                     document.execCommand('copy');
                     document.body.removeChild(ta);
                 }
-                btn.textContent = 'Nukopijuota!';
-                announce('Nukopijuota');
+                btn.textContent = uiText('Nukopijuota!', 'Copied!');
+                announce(uiText('Nukopijuota', 'Copied'));
                 setTimeout(() => { btn.textContent = original; }, 2000);
             } catch (e) {
-                btn.textContent = 'Nepavyko — naudok naršyklėje HTTPS arba vietinį serverį';
-                announce('Nepavyko nukopijuoti');
+                btn.textContent = uiText(
+                    'Nepavyko — naudok naršyklėje HTTPS arba vietinį serverį',
+                    'Could not copy — use HTTPS in the browser or a local server'
+                );
+                announce(uiText('Nepavyko nukopijuoti', 'Could not copy'));
                 setTimeout(() => { btn.textContent = original; }, 4000);
             }
         }
@@ -3213,7 +3354,9 @@
             } else {
             const correctBody = quizForm.getAttribute('data-feedback-correct') || '';
             const wrongBody = quizForm.getAttribute('data-feedback-wrong') || '';
-            const selectMsg = quizForm.getAttribute('data-msg-select') || 'Pasirink variantą.';
+            const selectMsg =
+                quizForm.getAttribute('data-msg-select') ||
+                uiText('Pasirink variantą.', 'Pick an option.');
 
             function hideFeedback() {
                 feedbackEl.classList.remove('is-visible', 'quiz-feedback--ok', 'quiz-feedback--no', 'quiz-feedback--hint');
@@ -3233,7 +3376,7 @@
                     ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>'
                     : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>';
                 title.appendChild(icon);
-                title.appendChild(document.createTextNode(ok ? 'Teisingai' : 'Ne visai'));
+                title.appendChild(document.createTextNode(ok ? uiText('Teisingai', 'Correct') : uiText('Ne visai', 'Not quite')));
                 const p = document.createElement('p');
                 p.className = 'quiz-feedback-body';
                 p.textContent = bodyText;
@@ -3244,8 +3387,12 @@
                 const next = document.createElement('div');
                 next.style.marginTop = '12px';
                 next.innerHTML = ok
-                    ? '<a class="inline-link" href="#cta" data-track="quiz_next_paid" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;">Toliau: mokama programa ↓</a>'
-                    : '<a class="inline-link" href="#schema" data-track="quiz_back_schema" style="color: rgba(255, 255, 255, 0.82); text-decoration: none; font-weight: 800;">Grįžti į schemą ir pasitaisyti ↓</a>';
+                    ? '<a class="inline-link" href="#cta" data-track="quiz_next_paid" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;">' +
+                      uiText('Toliau: mokama programa ↓', 'Next: paid program ↓') +
+                      '</a>'
+                    : '<a class="inline-link" href="#schema" data-track="quiz_back_schema" style="color: rgba(255, 255, 255, 0.82); text-decoration: none; font-weight: 800;">' +
+                      uiText('Grįžti į schemą ir pasitaisyti ↓', 'Back to the framework and fix it ↓') +
+                      '</a>';
                 feedbackEl.appendChild(next);
             }
 
@@ -3256,7 +3403,7 @@
                     feedbackEl.classList.add('is-visible', 'quiz-feedback--hint');
                     const title = document.createElement('div');
                     title.className = 'quiz-feedback-title';
-                    title.textContent = 'Pasirink variantą';
+                    title.textContent = uiText('Pasirink variantą', 'Pick an option');
                     const p = document.createElement('p');
                     p.className = 'quiz-feedback-body';
                     p.textContent = selectMsg;
@@ -3277,6 +3424,8 @@
             });
             }
         }
+
+        bindLangSwitch();
 
         window.addEventListener('load', () => window.dispatchEvent(new Event('scroll')));
     })();

@@ -1,0 +1,10 @@
+{
+  "name": "prompt-anatomy-site",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-locale-pages.js",
+    "verify:library-keys": "node scripts/verify-library-keys.js",
+    "verify:en-locale": "node scripts/verify-en-locale.js",
+    "verify": "node scripts/verify-library-keys.js && node scripts/verify-en-locale.js"
+  }
+}

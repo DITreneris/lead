@@ -4,7 +4,7 @@ Vieno failo statinė interaktyvi pamoka (`index.html`) su „Promptų biblioteka
 
 ## Nuorodos
 
-- **Kanoninis puslapis**: `https://www.promptanatomy.app/`
+- **Kanoninis puslapis**: `https://www.promptanatomy.app/` (LT šaknis ir `/lt/`; anglų versija: `/en/` po `npm run build` / deploy)
 - **PDF santrauka**: `assets/www.promptanatomy.app.pdf`
 - **Pakeitimų istorija**: [CHANGELOG.md](CHANGELOG.md)
 
@@ -21,13 +21,17 @@ Instrukcija ir komandos: [SETUP.md](SETUP.md).
 
 ## Deploy į GitHub Pages
 
-Projektas deploy’inamas iš repo šaknies per GitHub Actions workflow `.github/workflows/pages.yml`.
+Projektas deploy’inamas iš repo šaknies per GitHub Actions workflow `.github/workflows/pages.yml` (po `npm run build` paleidžiamas ir `npm run verify`).
 
 Trumpa instrukcija (įskaitant *Settings → Pages → Source = GitHub Actions*): [SETUP.md](SETUP.md).
 
 ## Projekto struktūra
 
-- **`index.html`**: visas UI (HTML + CSS + JS)
+- **`index.html`**: visas UI (HTML + CSS + JS); EN statinis HTML generuoja `npm run build` → `site/en/`
+- **`assets/prompt-library-en.js`**: angliški bibliotekos šablonai
+- **`scripts/build-locale-pages.js`**: LT / EN puslapių artefaktas `site/`
+- **`scripts/en-html-replacements.cjs`**: LT→EN statinio HTML poros build metu
+- **`scripts/verify-library-keys.js`** / **`scripts/verify-en-locale.js`**: patikros po build (`npm run verify`; žr. [AGENTS.md](AGENTS.md))
 - **`docs/pamoka-1-pdf.md`**: PDF šaltinis
 - **`scripts/build-pdf.ps1` / `scripts/build-pdf.sh`**: MD → PDF build
 - **`assets/`**: statiniai failai (įskaitant PDF ir OG paveikslą)
@@ -38,6 +42,7 @@ Trumpa instrukcija (įskaitant *Settings → Pages → Source = GitHub Actions*)
 - **Tekstai (LT) turi būti „TU“ tonu** ir trumpi.
 - **„Promptų bibliotekos“ kopijuojamas tekstas** turi gyventi `libraryPrompts` objekte (JS), o HTML `pre` blokai pildomi per `syncLibraryDom`.
 - Jei keiti `docs/pamoka-1-pdf.md`, **perbuildink PDF ir commitink abu**.
+- LT / EN: po `npm run build` paleisk **`npm run verify`** (raktų paritetas ir tipiniai LT likučiai EN puslapyje) — detalės [AGENTS.md](AGENTS.md).
 
 ## Lean repo ir release
 

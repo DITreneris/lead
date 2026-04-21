@@ -8,6 +8,21 @@ Vieno failo statinė pamoka ir lead magnetas: [index.html](index.html), publikuo
 
 Atidarykite `index.html` naršyklėje (dvigubas paspaudimas) arba naudokite paprastą HTTP serverį, jei reikia pilnos `clipboard` API funkcijos.
 
+**LT / EN (lokalus build):** įdiekite [Node.js](https://nodejs.org/) (LTS), tada iš repozitorijos šaknies:
+
+```powershell
+npm install
+npm run build
+npm run verify
+```
+
+`npm run verify` reikalauja, kad jau būtų paleistas `npm run build` (generuojamas `site/en/index.html`). Žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
+
+Atidarykite `site/index.html` (LT, šaknis), `site/lt/index.html` arba `site/en/index.html` per tą patį HTTP serverį, kad veiktų keliai `/assets/…` ir kalbos perjungimas į `/lt/` bei `/en/`. Katalogą `site/` galima ignoruoti commituose — jį generuoja CI.
+
+- **Anglų biblioteka:** [assets/prompt-library-en.js](assets/prompt-library-en.js) (įkeliama prieš pagrindinį skriptą `index.html`).
+- **GitHub Pages projekto URL** (`…/repo/`): build metu nustatykite `BASE_PATH=/repo` (žr. [scripts/build-locale-pages.js](scripts/build-locale-pages.js) komentarus / aplinkos kintamąjį workflow).
+
 ## PDF iš Markdown
 
 1. Įdiekite **Pandoc**: [https://pandoc.org/installing.html](https://pandoc.org/installing.html) arba `winget install JohnMacFarlane.Pandoc`.
@@ -35,9 +50,10 @@ Po pakeitimų `docs/pamoka-1-pdf.md` paleiskite build ir commitinkite atnaujint�
 
 ## Lean repo (kad būtų paprasta tvarkytis)
 
-- **Vienas UI šaltinis:** [index.html](index.html) — HTML, CSS, JS vienoje byloje; naujos funkcijos geriau čia nei nauji įrankiai.
+- **Vienas UI šaltinis:** [index.html](index.html) — HTML, CSS, JS vienoje byloje; naujos funkcijos geriau čia nei nauji įrankiai. LT / EN statinis skaidymas — `npm run build` + [scripts/build-locale-pages.js](scripts/build-locale-pages.js); papildomas failas tik EN bibliotekai — [assets/prompt-library-en.js](assets/prompt-library-en.js).
 - **Vienas PDF kanonas:** šaltinis [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → build → tik [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) (senų dublikatų necommitinti).
 - **Biblioteka:** kopijuojamas tekstas — `libraryPrompts` + `syncLibraryDom` (žr. [AGENTS.md](AGENTS.md) §4.1).
+- **LT / EN patikra:** po `npm run build` — `npm run verify` ([package.json](package.json) — `verify-library-keys` + `verify-en-locale`).
 - **Kontekstas agentams:** [AGENTS.md](AGENTS.md) — maršrutai; Cursor rules — `.cursor/rules/`; kokybė — `.cursor/skills/q-a-agent/SKILL.md`.
 
 ## Prieš push į `main` (release)
@@ -46,7 +62,8 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 
 - [ ] Jei keitėsi `docs/pamoka-1-pdf.md`: paleistas `scripts/build-pdf.ps1` arba `build-pdf.sh`, commitintas [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf).
 - [ ] Jei [CHANGELOG.md](CHANGELOG.md) mini PDF perbuild arba turinio pakeitimą PDF — commit’e matosi atitinkamas [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) pakeitimas (kai taikoma).
-- [ ] `index.html`: pagrindiniai CTA, PDF nuorodos, bibliotekos kopijavimas, `#library` / hash elgsena.
+- [ ] `index.html`: pagrindiniai CTA, PDF nuorodos, bibliotekos kopijavimas, `#library` / hash elgsena; po `npm run build` — `site/en/index.html` ir `site/lt/index.html` (kalbos perjungiklis, `/en/` ir `/lt/`).
+- [ ] Po `npm run build`: `npm run verify` (bibliotekos raktų paritetas ir EN puslapio LT „drift“) — žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
 - [ ] [404.html](404.html) atsidaro ir grįžta į pamoką.
 - [ ] GitHub Actions: [pages.yml](.github/workflows/pages.yml) ir [verify.yml](.github/workflows/verify.yml) žali po push (kai taikoma).
 
