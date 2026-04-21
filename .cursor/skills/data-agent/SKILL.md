@@ -10,7 +10,7 @@ description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių 
 - Reikia **nubraižyti schemą** (architektūra, duomenų / turinio srautas, procesas).
 - Reikia **patikrinti duomenis ar faktus** tekste, lentelėse, skaidrėse (ar sutampa su šaltiniu / kodu).
 - Prieš didesnius pakeitimus: **planas pagal bylas**, tada vykdymas pagal rekomendacijas.
-- Užduotys apie kelią: `docs/pamoka-1-pdf.md` → PDF build → `assets/www.promptanatomy.app.pdf` → nuorodos `index.html`.
+- Užduotys apie kelią: `docs/pamoka-1-pdf.md` / `docs/pamoka-1-pdf-en.md` → PDF build → `assets/www.promptanatomy.app*.pdf` → nuorodos `index.html` (EN build — `en-html-replacements.cjs`).
 
 ## Instrukcijos
 
@@ -27,7 +27,7 @@ description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių 
 
 ### 2. Duomenų ir faktų tikrinimas
 
-- **Šaltinis:** skaičiai ir teiginiai turi remtis `index.html`, `docs/pamoka-1-pdf.md`, vartotojo pateiktais failais ar aiškiai pažymėtais įvesties duomenimis.
+- **Šaltinis:** skaičiai ir teiginiai turi remtis `index.html`, `docs/pamoka-1-pdf.md` / `docs/pamoka-1-pdf-en.md` (pagal kalbą), vartotojo pateiktais failais ar aiškiai pažymėtais įvesties duomenimis.
 - Jei šaltinio nėra: rašyti `Nežinoma / reikia šaltinio`, ne išgalvoti skaičių ar citatų.
 - Palyginti: ar tas pats faktas **nesipriešina** tarp MD, HTML ir JS (pvz. metai, pavadinimai, keliai į `assets/`).
 
@@ -41,7 +41,7 @@ description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių 
 ### 4. Ryšys su repozitorija
 
 - Vienas pagrindinis puslapis: [index.html](../../../index.html) (HTML + CSS + JS).
-- PDF šaltinis: [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md); build: [scripts/build-pdf.ps1](../../../scripts/build-pdf.ps1) / [scripts/build-pdf.sh](../../../scripts/build-pdf.sh); išvestis: [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf).
+- PDF: LT [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md) → [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf); EN [docs/pamoka-1-pdf-en.md](../../../docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](../../../assets/www.promptanatomy.app-en.pdf); build: [scripts/build-pdf.ps1](../../../scripts/build-pdf.ps1) / [scripts/build-pdf.sh](../../../scripts/build-pdf.sh).
 - **LT / EN (planuojant turinio ar struktūros pokyčius):** kanonas LT `index.html`; EN matomas HTML — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs); biblioteka EN — [assets/prompt-library-en.js](../../../assets/prompt-library-en.js); po pakeitimų — `npm run build` ir `npm run verify` (žr. [AGENTS.md](../../../AGENTS.md) **„Dviguba patikra“**).
 - **Neplėsti** stacko (frameworkai, bundleriai, backend) be aiškios priežasties — žr. projekto `.cursor/rules`.
 

@@ -55,6 +55,13 @@ function main() {
     }
   }
 
+  if (body.includes('www.promptanatomy.app.pdf')) {
+    console.error(
+      '[verify-en-locale] EN page should use assets/www.promptanatomy.app-en.pdf for lesson PDF, not LT filename www.promptanatomy.app.pdf (check scripts/en-html-replacements.cjs).'
+    );
+    process.exit(1);
+  }
+
   const ltDiacritics = /[\u0105\u010d\u0119\u0117\u012f\u0161\u0173\u016b\u017e\u0104\u010c\u0118\u0116\u012e\u0160\u0172\u016a\u017d]/;
   if (ltDiacritics.test(body)) {
     const idx = body.search(ltDiacritics);

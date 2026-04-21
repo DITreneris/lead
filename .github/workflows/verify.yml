@@ -29,6 +29,7 @@ jobs:
           test -f .github/workflows/pages.yml
           test -d assets
           test -f assets/www.promptanatomy.app.pdf
+          test -f assets/www.promptanatomy.app-en.pdf
           test -f assets/prompt-library-en.js
           test -f package.json
           test -f scripts/build-locale-pages.js
@@ -69,6 +70,12 @@ jobs:
           if echo "$CHANGED" | grep -qx 'docs/pamoka-1-pdf.md'; then
             if ! echo "$CHANGED" | grep -qx 'assets/www.promptanatomy.app.pdf'; then
               echo "docs/pamoka-1-pdf.md changed but assets/www.promptanatomy.app.pdf did not. Rebuild PDF."
+              exit 1
+            fi
+          fi
+          if echo "$CHANGED" | grep -qx 'docs/pamoka-1-pdf-en.md'; then
+            if ! echo "$CHANGED" | grep -qx 'assets/www.promptanatomy.app-en.pdf'; then
+              echo "docs/pamoka-1-pdf-en.md changed but assets/www.promptanatomy.app-en.pdf did not. Rebuild PDF."
               exit 1
             fi
           fi

@@ -6,7 +6,7 @@ Vienas kanonas: kas uždaroma čia, laikom uždaryta projekte. Lean repo princip
 
 ## Fazė 0 — Repo higiena ir paprastumas *(uždaryta šiame PR / iteracijoje)*
 
-- [x] Vienas PDF kanonas: `assets/www.promptanatomy.app.pdf` (šaltinis `docs/pamoka-1-pdf.md`, build per `scripts/`).
+- [x] PDF kanonai: LT `assets/www.promptanatomy.app.pdf` (`docs/pamoka-1-pdf.md`), EN `assets/www.promptanatomy.app-en.pdf` (`docs/pamoka-1-pdf-en.md`), build per `scripts/build-pdf.*`.
 - [x] Pašalintas dublikatas `assets/promptu-anatomija-pamoka-1.pdf`.
 - [x] Dokumentacija: lean + release checklist [SETUP.md](SETUP.md); įrašyta [CHANGELOG.md](CHANGELOG.md); [README.md](README.md) rodo į planą ir release.
 

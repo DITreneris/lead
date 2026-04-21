@@ -53,7 +53,7 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 
 ### PDF ir release
 
-- [ ] Jei keitėsi [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md): perbuildinta išvestis į [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf) ir nuorodos puslapyje rodo į tą patį failą.
+- [ ] Jei keitėsi [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md): perbuildinta išvestis į [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf). Jei keitėsi [docs/pamoka-1-pdf-en.md](../../../docs/pamoka-1-pdf-en.md) — į [assets/www.promptanatomy.app-en.pdf](../../../assets/www.promptanatomy.app-en.pdf). `site/en/` PDF nuorodos — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs) (failas `…-en.pdf`).
 - [ ] Nuorodos į GitHub Pages / statinius assetus veikia logiškai (relatyvūs keliai repo kontekste).
 
 ## Išvesties formatas

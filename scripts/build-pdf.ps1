@@ -1,4 +1,6 @@
-# Build PDF from docs/pamoka-1-pdf.md -> assets/www.promptanatomy.app.pdf
+# Build PDFs from Markdown:
+#   docs/pamoka-1-pdf.md     -> assets/www.promptanatomy.app.pdf (LT)
+#   docs/pamoka-1-pdf-en.md  -> assets/www.promptanatomy.app-en.pdf (EN)
 # Requires: Pandoc on PATH; PDF engine: Typst (winget install Typst.Typst) OR pdflatex/xelatex/lualatex (LaTeX on PATH).
 
 $ErrorActionPreference = "Stop"
@@ -6,11 +8,7 @@ $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $root = Split-Path -Parent $scriptDir
 Set-Location $root
 
-$src = Join-Path $root "docs\pamoka-1-pdf.md"
 $outDir = Join-Path $root "assets"
-$out = Join-Path $outDir "www.promptanatomy.app.pdf"
-
-if (-not (Test-Path $src)) { throw "Missing source: $src" }
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
 $pandoc = Get-Command pandoc -ErrorAction SilentlyContinue
@@ -43,34 +41,47 @@ if (-not $typst) {
     }
 }
 
-$pandocArgs = @(
-    $src,
-    '-o', $out,
-    '--resource-path', '.;docs',
-    '-V', 'geometry:margin=2.5cm'
-)
+function Build-PdfOne {
+    param(
+        [string]$SrcRelative,
+        [string]$OutFileName,
+        [string]$Lang
+    )
+    $src = Join-Path $root $SrcRelative
+    $out = Join-Path $outDir $OutFileName
+    if (-not (Test-Path $src)) { throw "Missing source: $src" }
 
-if ($typst) {
-    $typstEngine = if ($typst -is [string]) { $typst } else { $typst.Source }
-    & $pandoc @pandocArgs --pdf-engine=$typstEngine
-} else {
-    $latexEngine = $null
-    foreach ($name in @('pdflatex', 'xelatex', 'lualatex')) {
-        $c = Get-Command $name -ErrorAction SilentlyContinue
-        if ($c) {
-            $latexEngine = $c.Name
-            break
+    $pandocArgs = @(
+        $src,
+        '-o', $out,
+        '--resource-path', '.;docs',
+        '-V', 'geometry:margin=2.5cm'
+    )
+
+    if ($typst) {
+        $typstEngine = if ($typst -is [string]) { $typst } else { $typst.Source }
+        & $pandoc @pandocArgs --pdf-engine=$typstEngine
+    } else {
+        $latexEngine = $null
+        foreach ($name in @('pdflatex', 'xelatex', 'lualatex')) {
+            $c = Get-Command $name -ErrorAction SilentlyContinue
+            if ($c) {
+                $latexEngine = $c.Name
+                break
+            }
         }
-    }
-    if (-not $latexEngine) {
-        throw @"
+        if (-not $latexEngine) {
+            throw @"
 No PDF engine found. Install one of:
   - Typst: winget install Typst.Typst
   - LaTeX with pdflatex on PATH (e.g. MiKTeX, TeX Live)
 See SETUP.md — section 'PDF iš Markdown'.
 "@
+        }
+        & $pandoc @pandocArgs --pdf-engine=$latexEngine -V lang=$Lang
     }
-    & $pandoc @pandocArgs --pdf-engine=$latexEngine -V lang=lt
+    Write-Host "OK: $out"
 }
 
-Write-Host "OK: $out"
+Build-PdfOne "docs\pamoka-1-pdf.md" "www.promptanatomy.app.pdf" "lt"
+Build-PdfOne "docs\pamoka-1-pdf-en.md" "www.promptanatomy.app-en.pdf" "en"

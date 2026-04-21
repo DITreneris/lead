@@ -6,6 +6,7 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Added
 
+- **PDF (EN lead magnet):** [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf); `site/en/` hero ir CTA nuorodos į šį failą — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs); build skriptai generuoja abu PDF — [scripts/build-pdf.ps1](scripts/build-pdf.ps1) / [scripts/build-pdf.sh](scripts/build-pdf.sh).
 - **EN lokalės auditas:** angliškas UI/UX ir LT likučių santrauka po build — [docs/EN_LOCALE_UI_UX_AUDIT_2026-04-18.md](docs/EN_LOCALE_UI_UX_AUDIT_2026-04-18.md).
 - **LT / EN (CI ir agentai):** `npm run verify` — [scripts/verify-library-keys.js](scripts/verify-library-keys.js) (HTML `data-*-key` vs `libraryPromptsLt` ir [assets/prompt-library-en.js](assets/prompt-library-en.js)) ir [scripts/verify-en-locale.js](scripts/verify-en-locale.js) (dažni LT likučiai `site/en/index.html` po build); žingsnis [.github/workflows/verify.yml](.github/workflows/verify.yml); dokumentacija — [AGENTS.md](AGENTS.md) („Dviguba patikra“), [.cursor/skills/q-a-agent/SKILL.md](.cursor/skills/q-a-agent/SKILL.md), [.cursor/rules/index-html-pamoka.mdc](.cursor/rules/index-html-pamoka.mdc), [.cursor/rules/projektas-promptu-anatomija.mdc](.cursor/rules/projektas-promptu-anatomija.mdc).
 - **Prieinamumas (EN):** bibliotekos „išskleisti viską“ toggle pranešimai į `#a11y-status` per `uiText` — [index.html](index.html).

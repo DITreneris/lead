@@ -6,13 +6,18 @@
 
 ```mermaid
 flowchart LR
-  mdSource[pamoka-1-pdf.md]
+  mdLt[pamoka-1-pdf.md]
+  mdEn[pamoka-1-pdf-en.md]
   buildScript[build-pdf ps1 arba sh]
-  pdfAsset[www.promptanatomy.app.pdf]
-  indexPage[index.html nuoroda]
-  mdSource --> buildScript
-  buildScript --> pdfAsset
-  pdfAsset --> indexPage
+  pdfLt[www.promptanatomy.app.pdf]
+  pdfEn[www.promptanatomy.app-en.pdf]
+  indexPage[index.html / site/en]
+  mdLt --> buildScript
+  mdEn --> buildScript
+  buildScript --> pdfLt
+  buildScript --> pdfEn
+  pdfLt --> indexPage
+  pdfEn --> indexPage
 ```
 
 ## 2. Sluoksniai: statinis deploy (GitHub Pages)

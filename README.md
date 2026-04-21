@@ -6,7 +6,7 @@ Vieno failo statinė interaktyvi pamoka (`index.html`) su „Promptų biblioteka
 
 - **Kanoninis puslapis**: `https://www.promptanatomy.app/` (LT šaknis ir `/lt/`; anglų versija: `/en/` po `npm run build` / deploy)
 - **GitHub Pages (repo `lead`)**: šaknis `https://ditreneris.github.io/lead/`, anglų kalba — **`https://ditreneris.github.io/lead/en/`** (ne `…github.io/en/` — tai kita vieta)
-- **PDF santrauka**: `assets/www.promptanatomy.app.pdf`
+- **PDF santrauka (LT)**: `assets/www.promptanatomy.app.pdf` · **EN (`/en/`)**: `assets/www.promptanatomy.app-en.pdf` (šaltiniai `docs/pamoka-1-pdf*.md`)
 - **Pakeitimų istorija**: [CHANGELOG.md](CHANGELOG.md)
 
 ## Greitas startas
@@ -16,7 +16,7 @@ Vieno failo statinė interaktyvi pamoka (`index.html`) su „Promptų biblioteka
 
 ## PDF build (iš Markdown)
 
-Šaltinis yra `docs/pamoka-1-pdf.md`, o išvestis turi būti `assets/www.promptanatomy.app.pdf`.
+Šaltiniai: `docs/pamoka-1-pdf.md` (LT) ir `docs/pamoka-1-pdf-en.md` (EN); išvestys — `assets/www.promptanatomy.app.pdf` ir `assets/www.promptanatomy.app-en.pdf`.
 
 Instrukcija ir komandos: [SETUP.md](SETUP.md).
 
