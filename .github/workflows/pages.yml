@@ -30,6 +30,9 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Build locale pages
+        env:
+          # Project Pages URL is https://DITreneris.github.io/lead/ — language switch + assets need this prefix
+          SITE_PREFIX: /lead
         run: |
           set -euo pipefail
           npm install

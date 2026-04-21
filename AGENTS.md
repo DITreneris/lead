@@ -38,7 +38,7 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 ## LT / EN (i18n) ir deploy
 
 - **Šaltinis (LT):** [index.html](index.html) lieka kanoninis lietuviškas šablonas redagavimui.
-- **Build:** `npm run build` generuoja [site/](site/) (`site/index.html`, `site/lt/index.html`, `site/en/index.html`) su `canonical` / `hreflang`, `/assets/…` keliais poaplankiuose; EN tekstas — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) + [scripts/build-locale-pages.js](scripts/build-locale-pages.js) (`og` / `twitter` antraštės EN šakoje).
+- **Build:** `npm run build` generuoja [site/](site/) (`site/index.html`, `site/lt/index.html`, `site/en/index.html`) su `canonical` / `hreflang`, `../assets/…` santykiniu keliu `lt/` ir `en/` puslapiuose; EN tekstas — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) + [scripts/build-locale-pages.js](scripts/build-locale-pages.js) (`og` / `twitter` antraštės EN šakoje). GitHub Pages projektui CI nustato `SITE_PREFIX=/lead` (`app-base-path`).
 - **Biblioteka EN:** kopijuojami tekstai anglų kalba — [assets/prompt-library-en.js](assets/prompt-library-en.js) (`window.__PROMPT_LIBRARY_EN__`); LT tekstai — `libraryPromptsLt` inline `index.html`. Naujas raktas: atnaujink abu šaltinius ir `syncLibraryDom` raktus HTML.
 - **PDF:** pilnas pamokos PDF lieka lietuviškai ([docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md)); EN puslapyje aiškiai pažymėta, kad santrauka LT (žr. CTA / hero `aria-label` build pakeitimuose).
 - **GitHub Pages:** [.github/workflows/pages.yml](.github/workflows/pages.yml) paleidžia `npm install`, `npm run build` ir `npm run verify` prieš artefaktą; `BASE_PATH` jei kada nors reikės project site — aplinkos kintamasis build skripte.

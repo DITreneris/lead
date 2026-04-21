@@ -18,7 +18,7 @@ npm run verify
 
 `npm run verify` reikalauja, kad jau būtų paleistas `npm run build` (generuojamas `site/en/index.html`). Žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
 
-Atidarykite `site/index.html` (LT, šaknis), `site/lt/index.html` arba `site/en/index.html` per tą patį HTTP serverį, kad veiktų keliai `/assets/…` ir kalbos perjungimas į `/lt/` bei `/en/`. Katalogą `site/` galima ignoruoti commituose — jį generuoja CI.
+Atidarykite `site/index.html` (LT, šaknis), `site/lt/index.html` arba `site/en/index.html` per tą patį HTTP serverį, kad veiktų keliai į `assets/` (poaplankiuose build naudoja `../assets/…`) ir kalbos perjungimas į `/lt/` bei `/en/`. Katalogą `site/` galima ignoruoti commituose — jį generuoja CI.
 
 - **Anglų biblioteka:** [assets/prompt-library-en.js](assets/prompt-library-en.js) (įkeliama prieš pagrindinį skriptą `index.html`).
 - **GitHub Pages projekto URL** (`…/repo/`): build metu nustatykite `BASE_PATH=/repo` (žr. [scripts/build-locale-pages.js](scripts/build-locale-pages.js) komentarus / aplinkos kintamąjį workflow).
@@ -80,6 +80,6 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 2. **Pirmas push:** įsitikinkite, kad `main` šakoje yra visi reikalingi failai (įskaitant [.github/workflows/pages.yml](.github/workflows/pages.yml) ir [`.github/workflows/verify.yml`](.github/workflows/verify.yml)), tada `git push -u origin main` (arba `-u lead main`).
 3. **GitHub Pages:** repozitorijoje *Settings → Pages → Build and deployment → Source:* pasirinkite **GitHub Actions** (ne „Deploy from a branch“), kad veiktų esamas Pages workflow.
 4. **Pirmas Actions paleidimas:** po push atidarykite *Actions* ir leiskite workflow baigtis; jei reikia, *Settings → Actions → General* patvirtinkite workflow leidimus organizacijos lygmenyje.
-5. **Publikacija:** projekto Pages URL bus `https://DITreneris.github.io/lead/` (keliai puslapyje santykiniai — papildomo `base` nereikia).
+5. **Publikacija:** projekto Pages URL yra **`https://DITreneris.github.io/lead/`**; anglų versija — **`https://DITreneris.github.io/lead/en/`**. Adresas `https://DITreneris.github.io/en/` yra vartotojo/organizacijos šaknies svetainė (ne šis repo) ir ten bus 404. Deploy workflow nustato `SITE_PREFIX=/lead`, kad kalbos perjungiklis ir `../assets/` veiktų po `/lead/`.
 
 **Pastaba:** `og:url`, `canonical` ir panašūs meta gali likti nukreipti į [www.promptanatomy.app](https://www.promptanatomy.app/) kaip į kanoninį domeną; tai normalu, jei `github.io` naudojate tik kaip papildomą ar perkėlimo etapą.

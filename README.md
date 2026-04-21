@@ -5,6 +5,7 @@ Vieno failo statinė interaktyvi pamoka (`index.html`) su „Promptų biblioteka
 ## Nuorodos
 
 - **Kanoninis puslapis**: `https://www.promptanatomy.app/` (LT šaknis ir `/lt/`; anglų versija: `/en/` po `npm run build` / deploy)
+- **GitHub Pages (repo `lead`)**: šaknis `https://ditreneris.github.io/lead/`, anglų kalba — **`https://ditreneris.github.io/lead/en/`** (ne `…github.io/en/` — tai kita vieta)
 - **PDF santrauka**: `assets/www.promptanatomy.app.pdf`
 - **Pakeitimų istorija**: [CHANGELOG.md](CHANGELOG.md)
 

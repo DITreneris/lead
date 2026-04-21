@@ -15,6 +15,8 @@ const SRC_HTML = path.join(ROOT, 'index.html');
 const SITE_DIR = path.join(ROOT, 'site');
 
 const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
+/** GitHub Pages project URL prefix, e.g. `/lead` for https://user.github.io/lead/ — empty on apex domain. */
+const SITE_PREFIX = (process.env.SITE_PREFIX || '').replace(/\/$/, '');
 const ORIGIN = 'https://www.promptanatomy.app';
 
 function originUrl(pathname) {
@@ -53,10 +55,22 @@ function injectHreflangBlock(html, canonicalHref) {
   );
 }
 
+/**
+ * Subpages live at /lt/ and /en/ — use relative ../assets/ so the same build works at domain root
+ * (promptanatomy.app) and under a project path (github.io/repo/).
+ */
 function fixSubdirAssetPaths(html) {
   return html
-    .replace(/href="assets\//g, 'href="/assets/')
-    .replace(/src="assets\//g, 'src="/assets/');
+    .replace(/href="assets\//g, 'href="../assets/')
+    .replace(/src="assets\//g, 'src="../assets/');
+}
+
+function injectAppBasePathMeta(html) {
+  if (!SITE_PREFIX) return html;
+  return html.replace(
+    /<meta name="app-base-path" content="">/,
+    `<meta name="app-base-path" content="${SITE_PREFIX}">`
+  );
 }
 
 function applyEnHead(html) {
@@ -133,9 +147,9 @@ function main() {
   fs.mkdirSync(path.join(SITE_DIR, 'lt'), { recursive: true });
   fs.mkdirSync(path.join(SITE_DIR, 'en'), { recursive: true });
 
-  const rootLt = buildLt(raw, originUrl('/'));
-  const ltPage = fixSubdirAssetPaths(buildLt(raw, originUrl('/lt/')));
-  const enPage = fixSubdirAssetPaths(buildEn(raw));
+  const rootLt = injectAppBasePathMeta(buildLt(raw, originUrl('/')));
+  const ltPage = injectAppBasePathMeta(fixSubdirAssetPaths(buildLt(raw, originUrl('/lt/'))));
+  const enPage = injectAppBasePathMeta(fixSubdirAssetPaths(buildEn(raw)));
 
   fs.writeFileSync(path.join(SITE_DIR, 'index.html'), rootLt, 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'lt', 'index.html'), ltPage, 'utf8');
