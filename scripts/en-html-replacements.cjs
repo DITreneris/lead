@@ -60,7 +60,7 @@ function getEnHtmlReplacementPairs() {
     ],
     [
       '<p class="hero-meta">Pirma santrauka (PDF), tada — Pradėk.<br>Toliau: šablonas, schema, greita patikra skaidrėse.</p>',
-      '<p class="hero-meta">Summary PDF first, then Start.<br>Next: template, framework, quick check in the slides.</p>'
+      '<p class="hero-meta">English summary PDF first, then Start.<br>Next: template, framework, quick check in the slides.</p>'
     ],
     [
       'href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf"',
@@ -68,9 +68,9 @@ function getEnHtmlReplacementPairs() {
     ],
     [
       'aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu"',
-      'aria-label="Download lesson 1 summary as PDF"'
+      'aria-label="Download lesson 1 English summary (PDF)"'
     ],
-    ['Atsisiųsk santrauką (PDF)', 'Download summary (PDF)'],
+    ['Atsisiųsk santrauką (PDF)', 'Download English summary (PDF)'],
     [
       'aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką"',
       'aria-label="Start the lesson: go to the 2-minute practice"'
@@ -564,11 +564,11 @@ function getEnHtmlReplacementPairs() {
     ['<h2 class="cta-title">PAVERSK TAI SISTEMA</h2>', '<h2 class="cta-title">MAKE IT A SYSTEM</h2>'],
     [
       '<p class="cta-sub">PDF su santrauka — pasiimk su savimi. Gilyn — per programą.</p>',
-      '<p class="cta-sub">PDF summary — take it with you. Go deeper via the program.</p>'
+      '<p class="cta-sub">English lesson summary (PDF) — take it with you. Go deeper via the program.</p>'
     ],
     [
       'aria-label="Pagrindinis veiksmas: atsisiųsk 1 pamokos santrauką PDF"',
-      'aria-label="Primary action: download lesson 1 summary PDF"'
+      'aria-label="Primary action: download lesson 1 English summary (PDF)"'
     ],
     ['<p class="cta-secondary-label">Kitas žingsnis</p>', '<p class="cta-secondary-label">Next step</p>'],
     [

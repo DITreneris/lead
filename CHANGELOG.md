@@ -22,6 +22,7 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Fixed
 
+- **EN PDF painiava:** matomas mygtuko tekstas ir `aria-label` aiškiai sako „English summary“; hero paantraštė — „English summary PDF first…“; priminimas README, kad teisingas atsisiuntimas iš `/en/` yra `www.promptanatomy.app-en.pdf`, o `www.promptanatomy.app.pdf` — LT — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs), [README.md](README.md).
 - **GitHub Pages (`…/lead/en/`):** `site/lt` ir `site/en` naudojo absoliučius kelius `/assets/…`, todėl ant `ditreneris.github.io` užklausos eidavo į neteisingą šaknį; pakeista į santykinius `../assets/…`. Kalbos perjungiklis iš `github.io/lead/` į `/lt/` arba `/en/` — per `SITE_PREFIX=/lead` ir `<meta name="app-base-path">` deploy workflow — [scripts/build-locale-pages.js](scripts/build-locale-pages.js), [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
 - **LT / EN (runtime):** `getLocaleFromMeta()` skaito `<meta name="page-locale">` ir naudoja jį **prieš** `localStorage` — ant kanoninio `/` ar `/lt/` su lietuvišku HTML nebelieka angliško `uiText`, kai `prompt_anatomy_lang` dar `en` po vizito į `/en/` — [index.html](index.html).
 - **Prieinamumas (EN):** bibliotekos „išskleisti / suskleisti viską“ mygtuko `#library-expand-toggle` atributas `aria-label` sinchronizuojamas per `uiText` (Expand / Collapse all library categories…), kad po pirmo JS paleidimo EN puslapyje neliktų lietuviškos etiketės — [index.html](index.html).

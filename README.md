@@ -6,7 +6,7 @@ Vieno failo statinė interaktyvi pamoka (`index.html`) su „Promptų biblioteka
 
 - **Kanoninis puslapis**: `https://www.promptanatomy.app/` (LT šaknis ir `/lt/`; anglų versija: `/en/` po `npm run build` / deploy)
 - **GitHub Pages (repo `lead`)**: šaknis `https://ditreneris.github.io/lead/`, anglų kalba — **`https://ditreneris.github.io/lead/en/`** (ne `…github.io/en/` — tai kita vieta)
-- **PDF santrauka (LT)**: `assets/www.promptanatomy.app.pdf` · **EN (`/en/`)**: `assets/www.promptanatomy.app-en.pdf` (šaltiniai `docs/pamoka-1-pdf*.md`)
+- **PDF santrauka (LT)**: `assets/www.promptanatomy.app.pdf` · **EN (`/en/`)**: `assets/www.promptanatomy.app-en.pdf` (šaltiniai `docs/pamoka-1-pdf*.md`). Atsisiunčiant iš **anglų puslapio**, naršyklė turi pasiūlyti failą vardu **`www.promptanatomy.app-en.pdf`** — jei matai **`www.promptanatomy.app.pdf`**, tai LT versija (atsisiuntei iš `/` ar `/lt/`, ne iš `/en/`).
 - **Pakeitimų istorija**: [CHANGELOG.md](CHANGELOG.md)
 
 ## Greitas startas
