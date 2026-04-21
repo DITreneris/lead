@@ -4,18 +4,20 @@ subtitle: "For teams • free summary"
 author: "Prompt Anatomy"
 date: "2026"
 lang: en
+geometry: margin=2.5cm
+fontsize: 11pt
 ---
 
-**www.promptanatomy.app**
+> **www.promptanatomy.app**
 
 # Three layers in one prompt
 
 Align all three in the same text — especially when planning work, a delivery, an email, or a team decision.
 
 | Layer | What you write | What you get |
-|--------|----------------|--------------|
+|-------|----------------|--------------|
 | **System** | The AI’s role in your work and the goal of the answer | Fewer “generic lines” — the answer follows the task logic |
-| **Context** | Project, audience, constraints, sources, what people already know | Content tied to your situation, not an abstract summary |
+| **Context** | Project, audience, constraints, sources, what people already know | Content tied to your situation,<br/>not an abstract summary |
 | **Role and tone** | Who you write for (leadership / client / team), which style | Style fits the situation — less rework |
 
 **Example (system):** You are a B2B marketing analyst preparing clear summaries for leadership.
@@ -113,4 +115,4 @@ A prompt should clearly include **role** (who you are and what you want), **cont
 
 ---
 
-*Full interactive lesson: https://www.promptanatomy.app/ · Community on Telegram: https://t.me/prompt_anatomy*
+*Full interactive lesson: [www.promptanatomy.app](https://www.promptanatomy.app/) · Telegram: [t.me/prompt_anatomy](https://t.me/prompt_anatomy)*

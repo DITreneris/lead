@@ -17,7 +17,8 @@ build_pdf() {
   local SRC="$1"
   local OUT="$2"
   local LANG="$3"
-  local COMMON=( "$SRC" -o "$OUT" --resource-path=".:docs" -V geometry:margin=2.5cm )
+  # Tipografija (margin, fontsize) — docs/pamoka-1-pdf*.md YAML front matter
+  local COMMON=( "$SRC" -o "$OUT" --resource-path=".:docs" )
 
   if command -v typst >/dev/null 2>&1; then
     pandoc "${COMMON[@]}" --pdf-engine=typst

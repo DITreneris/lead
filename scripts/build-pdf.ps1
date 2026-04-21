@@ -51,11 +51,11 @@ function Build-PdfOne {
     $out = Join-Path $outDir $OutFileName
     if (-not (Test-Path $src)) { throw "Missing source: $src" }
 
+    # Tipografija (margin, fontsize) — docs/pamoka-1-pdf*.md YAML front matter
     $pandocArgs = @(
         $src,
         '-o', $out,
-        '--resource-path', '.;docs',
-        '-V', 'geometry:margin=2.5cm'
+        '--resource-path', '.;docs'
     )
 
     if ($typst) {

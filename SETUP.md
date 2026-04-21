@@ -29,7 +29,7 @@ Atidarykite `site/index.html` (LT, šaknis), `site/lt/index.html` arba `site/en/
 2. **PDF variklis** (skriptas renka šia tvarka; jei nieko neranda — aiški klaida ir stabdymas):
    - pirmiausia **Typst** (`winget install Typst.Typst`), tada Pandoc kviečiamas su `--pdf-engine=typst`;
    - jei Typst nėra — bandoma **pdflatex**, paskui **xelatex**, paskui **lualatex** (turi būti PATH, pvz. MiKTeX arba TeX Live).
-3. Šaltiniai: [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) (LT) ir [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) (EN). Išvestis: [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) ir [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf) (abu generuoja tas pats `build-pdf` skriptas).
+3. Šaltiniai: [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) (LT) ir [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) (EN). Išvestis: [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) ir [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf) (abu generuoja tas pats `build-pdf` skriptas). **Maketas (PDF):** pagrindiniai nustatymai (`geometry`, `fontsize`) ir turinio patobulinimai — abiejų kalbų MD YAML ir lentelėse; skriptas tik nurodo `--resource-path`.
 
 **Pull request į `main`:** jei PR keičia `docs/pamoka-1-pdf.md`, tame pačiame PR turi būti ir atnaujintas LT PDF; jei keičia `docs/pamoka-1-pdf-en.md` — EN PDF — tai tikrina [verify.yml](.github/workflows/verify.yml).
 

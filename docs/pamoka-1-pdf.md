@@ -4,9 +4,11 @@ subtitle: "Įmonėms • nemokama santrauka"
 author: "Promptų anatomija"
 date: "2026"
 lang: lt
+geometry: margin=2.5cm
+fontsize: 11pt
 ---
 
-**www.promptanatomy.app**
+> **www.promptanatomy.app**
 
 # Trys sluoksniai viename prompte (užklausoje)
 
@@ -15,7 +17,7 @@ Derink visus tris tame pačiame tekste — ypač planuojant darbą, pristatymą,
 | Sluoksnis | Ką įrašote | Ką gaunate |
 |-----------|------------|------------|
 | **Sistema** | Koks DI vaidmuo tavo darbe ir koks atsakymo tikslas | Mažiau „bendrų frazių“ — atsakymas laikosi užduoties logikos |
-| **Kontekstas** | Projektas, auditorija, apribojimai, šaltiniai, kas jau žinoma | Turinys susietas su tavo situacija, ne su abstrakčia santrauka |
+| **Kontekstas** | Projektas, auditorija, apribojimai, šaltiniai, kas jau žinoma | Turinys susietas su tavo situacija,<br/>ne su abstrakčia santrauka |
 | **Vaidmuo ir tonas** | Kam rašai (vadovybei / klientui / komandai), koks stilius | Stilius atitinka situaciją — mažiau taisymo |
 
 **Pavyzdys (sistema):** Tu esi B2B marketingo analitikas, ruošiantis aiškias santraukas vadovybei.
@@ -113,4 +115,4 @@ Derink visus tris tame pačiame tekste — ypač planuojant darbą, pristatymą,
 
 ---
 
-*Pilna interaktyvi pamoka: https://www.promptanatomy.app/ · Bendruomenė Telegram: https://t.me/prompt_anatomy*
+*Pilna interaktyvi pamoka: [www.promptanatomy.app](https://www.promptanatomy.app/) · Telegram: [t.me/prompt_anatomy](https://t.me/prompt_anatomy)*
