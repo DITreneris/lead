@@ -266,6 +266,15 @@
             gap: 12px;
             max-width: 100%;
         }
+        .nav-mobile-progress {
+            display: none;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            line-height: 1;
+        }
         button.nav-item {
             position: relative;
             width: 14px;
@@ -379,15 +388,17 @@
             padding: 14px 22px;
             font-size: clamp(14px, 1.1vw, 16px);
             font-weight: 700;
-            color: #0a0a0a;
-            background: var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: transparent;
             text-decoration: none;
             border-radius: var(--radius-md);
-            border: 1px solid rgba(251, 211, 4, 0.6);
+            border: 1px solid rgba(251, 211, 4, 0.55);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .hero-pdf-link:hover {
             transform: var(--lift-sm);
+            background: rgba(251, 211, 4, 0.1);
+            color: #fff6b0;
             box-shadow: 0 12px 28px rgba(251, 211, 4, 0.25);
         }
         .hero-pdf-link .icon { opacity: 0.9; }
@@ -412,21 +423,6 @@
             background: rgba(251, 211, 4, 0.12);
             color: #fff6b0;
         }
-        /* CTA pabaigoje: mokama programa — primary */
-        .cta-pdf-link--primary {
-            color: #0a0a0a;
-            background: var(--accent-yellow);
-            border: 1px solid rgba(251, 211, 4, 0.65);
-            padding: 18px 30px;
-            font-size: clamp(16px, 1.35vw, 20px);
-            border-radius: var(--radius-md);
-            box-shadow: 0 12px 32px rgba(251, 211, 4, 0.22);
-        }
-        .cta-pdf-link--primary:hover {
-            background: #ffe033;
-            color: #0a0a0a;
-            box-shadow: 0 16px 40px rgba(251, 211, 4, 0.3);
-        }
         .cta-actions-stack {
             display: flex;
             flex-direction: column;
@@ -448,21 +444,6 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--text-soft);
-        }
-        .cta-btn--secondary {
-            background: transparent;
-            color: var(--text-bright);
-            border: 2px solid rgba(255, 255, 255, 0.35);
-            padding: 16px 36px;
-            font-size: clamp(15px, 1.25vw, 19px);
-            font-weight: 700;
-            box-shadow: none;
-        }
-        .cta-btn--secondary:hover {
-            transform: var(--lift-md);
-            border-color: rgba(251, 211, 4, 0.65);
-            color: var(--accent-yellow);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
         }
         .essence-primary-headline {
             font-family: var(--font-display);
@@ -557,6 +538,14 @@
         .copy-prompt-btn:hover { box-shadow: 0 8px 24px rgba(251, 211, 4, 0.35); }
         .copy-prompt-btn:active { transform: scale(0.98); }
         .copy-prompt-btn:focus-visible { outline: 2px solid #fff6b0; outline-offset: 3px; }
+        .copy-prompt-btn:disabled,
+        .types-copy-btn:disabled,
+        .quiz-check-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.62;
+            transform: none;
+            box-shadow: none;
+        }
 
         h2.essence-tagline {
             font-family: var(--font-display);
@@ -615,6 +604,9 @@
             box-shadow: 0 20px 40px rgba(255, 90, 95, 0.3);
         }
         .cta-btn:hover { transform: var(--lift-md); box-shadow: 0 30px 50px rgba(255, 90, 95, 0.5); }
+        .cta-btn--primary {
+            border: 1px solid rgba(255, 90, 95, 0.65);
+        }
 
         .cta-community {
             margin: 40px 0 0;
@@ -886,6 +878,11 @@
             color: #fff6b0;
             border-color: rgba(251, 211, 4, 0.65);
             box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+        }
+        .types-copy-btn:disabled:hover {
+            background: transparent;
+            color: var(--accent-yellow);
+            border-color: rgba(251, 211, 4, 0.45);
         }
         .types-copy-btn:active { transform: scale(0.99); }
         .types-copy-btn:focus-visible {
@@ -1707,12 +1704,17 @@
         }
 
         @media (max-width: 1024px) {
-            :root { --mobile-nav-h: 72px; }
+            :root { --mobile-nav-h: 96px; }
             .meme-interlude { padding: 32px 20px 40px; }
             .container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             section { padding: 40px 20px 100px; }
             .nav-sidebar { display: none; }
-            .nav-mobile { display: flex; }
+            .nav-mobile {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-mobile-progress { display: block; }
             body { padding-bottom: var(--mobile-nav-h); }
             .prompt-editor { text-align: left; }
             h1 { font-size: clamp(48px, 12vw, 80px); }
@@ -1842,6 +1844,7 @@
 </nav>
 
 <nav class="nav-mobile" aria-label="Skaidrių navigacija (mobilusis)">
+    <div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Įvadas</div>
     <div class="nav-mobile-inner">
         <button type="button" class="nav-item active" aria-label="Skaidrė 1: Įvadas" aria-current="true"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
@@ -1870,15 +1873,15 @@
             <span class="label">DI praktinė sistema įmonei</span>
             <h1>PROMPTŲ<br><span style="color: var(--accent-yellow);">ANATOMIJA</span></h1>
             <p class="hero-lead">Nuo DI „spėliojimo“ iki aiškios darbo sistemos: mažiau taisymo, daugiau kontrolės.</p>
-            <p class="hero-meta">Pirma santrauka (PDF), tada — Pradėk.<br>Toliau: šablonas, schema, greita patikra skaidrėse.</p>
+            <p class="hero-meta">Pradėk nuo 2 min. praktikos, PDF pasiimk kai prireiks.<br>Toliau: šablonas, schema, greita patikra skaidrėse.</p>
             <div class="hero-actions">
+                <a class="hero-primary-link" href="#guided" aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką" data-track="hero_primary_click">
+                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+                    Pradėk 2 min. praktiką
+                </a>
                 <a class="hero-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                     Atsisiųsk santrauką (PDF)
-                </a>
-                <a class="hero-primary-link" href="#guided" aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką" data-track="hero_primary_click">
-                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
-                    Pradėk
                 </a>
             </div>
             <p class="hero-foot-links"><a href="#library" data-track="hero_library_click">Biblioteka</a> · <a href="#schema" data-track="hero_schema_click">Schema</a> · <a href="#cta" data-track="hero_cta_click">Programa</a></p>
@@ -2188,9 +2191,9 @@
             <h2>Susitikimo ar sprinto planas</h2>
             <p class="slide-sublead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>Užduotis</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>
-                <div class="prompt-line"><b>Įvestis</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTARĖTE ANKSČIAU].</div>
-                <div class="prompt-line"><b>Grąžink</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>
+                <div class="prompt-line"><b>UŽDUOTIS</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>
+                <div class="prompt-line"><b>ĮVESTIS</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTARĖTE ANKSČIAU].</div>
+                <div class="prompt-line"><b>REZULTATAS</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span> Planas paruoštas per kelias minutes.</div>
@@ -2206,9 +2209,9 @@
             <h2>Ta pati žinutė — 3 lygiai</h2>
             <p class="slide-sublead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>Užduotis</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>
-                <div class="prompt-line"><b>Įvestis</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>
-                <div class="prompt-line"><b>Grąžink</b> Tris aiškiai atskirtas versijas su antraštėmis Bazinis / Vidutinis / Pažengęs; tonas ir detalumas turi augti kartu su lygiu.</div>
+                <div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>
+                <div class="prompt-line"><b>ĮVESTIS</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>
+                <div class="prompt-line"><b>REZULTATAS</b> Tris aiškiai atskirtas versijas su antraštėmis Bazinis / Vidutinis / Pažengęs; tonas ir detalumas turi augti kartu su lygiu.</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span> Vienas šablonas — kelios auditorijos.</div>
@@ -2239,9 +2242,9 @@
             <h2>Turinio grįžtamasis ryšys</h2>
             <p class="slide-sublead">Įvertinimas + vienas konkretus patarimas — mažiau tuščių iteracijų.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>Įvestis</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>
-                <div class="prompt-line"><b>Užduotis</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>
-                <div class="prompt-line"><b>Grąžink</b> Trumpą įvertinimą (balas ar lygis), 3 stiprias vietas, 1 konkretų tobulinimo žingsnį su pavyzdžiu.</div>
+                <div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>
+                <div class="prompt-line"><b>ĮVESTIS</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>
+                <div class="prompt-line"><b>REZULTATAS</b> Trumpą įvertinimą (balas ar lygis), 3 stiprias vietas, 1 konkretų tobulinimo žingsnį su pavyzdžiu.</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></span> Mažiau iteracijų ir taisymo laiko.</div>
@@ -2257,9 +2260,9 @@
             <h2>Užduotis / mokymas komandai</h2>
             <p class="slide-sublead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>Įvestis</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>
-                <div class="prompt-line"><b>Užduotis</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>
-                <div class="prompt-line"><b>Grąžink</b> Paruoštą tekstą su aiškia instrukcija naudotojui; jei tinka — atsakymų ar vertinimo raktą.</div>
+                <div class="prompt-line"><b>UŽDUOTIS</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>
+                <div class="prompt-line"><b>ĮVESTIS</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>
+                <div class="prompt-line"><b>REZULTATAS</b> Paruoštą tekstą su aiškia instrukcija naudotojui; jei tinka — atsakymų ar vertinimo raktą.</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span> Pritaikyta realiai darbo situacijai.</div>
@@ -2290,9 +2293,9 @@
             <h2>Laiškas ar žinutė (juodraštis)</h2>
             <p class="slide-sublead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>Įvestis</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
-                <div class="prompt-line"><b>Užduotis</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus kitas žingsnis.</div>
-                <div class="prompt-line"><b>Grąžink</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>
+                <div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus kitas žingsnis.</div>
+                <div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
+                <div class="prompt-line"><b>REZULTATAS</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span> Aiški ir rami komunikacija.</div>
@@ -2329,7 +2332,7 @@
 
         <div class="library-categories" id="library-panels" role="tabpanel" aria-labelledby="library-tab-emp" aria-live="polite" aria-atomic="true">
             <article class="library-cat" id="lib-cat-work">
-                <details class="library-cat-details">
+                <details class="library-cat-details" open>
                     <summary class="library-cat-summary">Kasdienis darbas</summary>
                     <div class="library-cat-body">
                         <div class="library-item">
@@ -2488,14 +2491,14 @@
         <h2 class="cta-title">PAVERSK TAI SISTEMA</h2>
         <p class="cta-sub">PDF su santrauka — pasiimk su savimi. Gilyn — per programą.</p>
         <div class="cta-actions-stack">
-            <a class="cta-pdf-link cta-pdf-link--primary" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Pagrindinis veiksmas: atsisiųsk 1 pamokos santrauką PDF" data-track="cta_pdf_click">
+            <a href="https://www.promptanatomy.app/?utm_source=lead&utm_medium=slide&utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Pagrindinis veiksmas: peržvelk mokamą programą ir kainą (naujame skirtuke)" data-track="paid_cta_click">Peržvelk programą ir kainą</a>
+        </div>
+        <div class="cta-secondary-wrap">
+            <p class="cta-secondary-label">Santrauka</p>
+            <a class="cta-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF" data-track="cta_pdf_click">
                 <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                 Atsisiųsk santrauką (PDF)
             </a>
-        </div>
-        <div class="cta-secondary-wrap">
-            <p class="cta-secondary-label">Kitas žingsnis</p>
-            <a href="https://www.promptanatomy.app/?utm_source=lead&utm_medium=slide&utm_campaign=promptu_anatomija" class="cta-btn cta-btn--secondary" target="_blank" rel="noopener noreferrer" aria-label="Kitas žingsnis: peržvelk mokamą programą (naujame skirtuke)" data-track="paid_cta_click">Peržvelk programą ir kainą</a>
         </div>
         <p class="cta-community">
             <a href="https://t.me/prompt_anatomy" class="cta-telegram-link" target="_blank" rel="noopener noreferrer" aria-label="Bendruomenės Telegram kanalas Prompt Anatomy (atidaryti naujame skirtuke)" data-track="cta_telegram_click">
@@ -3007,6 +3010,8 @@
             if (tabEmp && tabMgr) {
                 tabEmp.setAttribute('aria-selected', String(!libraryModeManager));
                 tabMgr.setAttribute('aria-selected', String(libraryModeManager));
+                tabEmp.tabIndex = libraryModeManager ? -1 : 0;
+                tabMgr.tabIndex = libraryModeManager ? 0 : -1;
             }
             if (panels) {
                 panels.setAttribute('aria-labelledby', libraryModeManager ? 'library-tab-mgr' : 'library-tab-emp');
@@ -3016,13 +3021,27 @@
         const tabEmp = document.getElementById('library-tab-emp');
         const tabMgr = document.getElementById('library-tab-mgr');
         if (tabEmp && tabMgr) {
-            tabEmp.addEventListener('click', () => {
-                libraryModeManager = false;
+            const libraryTabs = [tabEmp, tabMgr];
+            function activateLibraryTab(index, shouldFocus) {
+                libraryModeManager = index === 1;
                 syncLibraryDom();
-            });
-            tabMgr.addEventListener('click', () => {
-                libraryModeManager = true;
-                syncLibraryDom();
+                if (shouldFocus && libraryTabs[index] && typeof libraryTabs[index].focus === 'function') {
+                    libraryTabs[index].focus();
+                }
+            }
+            libraryTabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => activateLibraryTab(index, false));
+                tab.addEventListener('keydown', (e) => {
+                    const current = libraryTabs.indexOf(document.activeElement);
+                    let next = current >= 0 ? current : index;
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (next + 1) % libraryTabs.length;
+                    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (next - 1 + libraryTabs.length) % libraryTabs.length;
+                    else if (e.key === 'Home') next = 0;
+                    else if (e.key === 'End') next = libraryTabs.length - 1;
+                    else return;
+                    e.preventDefault();
+                    activateLibraryTab(next, true);
+                });
             });
         }
         syncLibraryDom();
@@ -3133,6 +3152,12 @@
         openLibraryTargetFromHash();
 
         function setActiveNav(index) {
+            const mobileProgress = document.getElementById('nav-mobile-progress');
+            if (mobileProgress && sideNav[index]) {
+                const al = sideNav[index].getAttribute('aria-label') || '';
+                const shortLabel = al.replace(/^(Skaidrė|Slide)\s*\d+\s*:\s*/i, '').trim();
+                mobileProgress.textContent = (index + 1) + '/' + sections.length + (shortLabel ? ' · ' + shortLabel : '');
+            }
             sideNav.forEach((el, i) => {
                 const on = i === index;
                 el.classList.toggle('active', on);
@@ -3247,6 +3272,7 @@
         });
 
         async function copyPromptText(text, btn) {
+            if (btn.disabled) return;
             const original = btn.textContent;
             const a11y = document.getElementById('a11y-status');
             let a11yTimer = null;
@@ -3259,6 +3285,8 @@
                     a11yTimer = null;
                 }, 900);
             };
+            btn.disabled = true;
+            btn.setAttribute('aria-busy', 'true');
             try {
                 if (navigator.clipboard && window.isSecureContext) {
                     await navigator.clipboard.writeText(text);
@@ -3283,6 +3311,9 @@
                 );
                 announce(uiText('Nepavyko nukopijuoti', 'Could not copy'));
                 setTimeout(() => { btn.textContent = original; }, 4000);
+            } finally {
+                btn.disabled = false;
+                btn.removeAttribute('aria-busy');
             }
         }
 
@@ -3290,9 +3321,15 @@
             const btn = editor.querySelector('.copy-prompt-btn');
             if (!btn) return;
             btn.addEventListener('click', () => {
-                const lines = Array.from(editor.querySelectorAll('.prompt-line')).map((l) =>
-                    l.textContent.trim().replace(/\s+/g, ' ')
-                );
+                // Vizualines etiketes (<b>VAIDMUO</b>, <b>Užduotis</b> ir pan.) is
+                // kopijuojamo teksto pašaliname — DI gauna tik gryną prompto turinį.
+                const lines = Array.from(editor.querySelectorAll('.prompt-line'))
+                    .map((line) => {
+                        const cloned = line.cloneNode(true);
+                        cloned.querySelectorAll('b, strong').forEach((label) => label.remove());
+                        return cloned.textContent.trim().replace(/\s+/g, ' ');
+                    })
+                    .filter((text) => text.length > 0);
                 copyPromptText(lines.join('\n\n'), btn);
             });
         });
@@ -3357,6 +3394,8 @@
             const selectMsg =
                 quizForm.getAttribute('data-msg-select') ||
                 uiText('Pasirink variantą.', 'Pick an option.');
+            checkBtn.disabled = true;
+            feedbackEl.setAttribute('tabindex', '-1');
 
             function hideFeedback() {
                 feedbackEl.classList.remove('is-visible', 'quiz-feedback--ok', 'quiz-feedback--no', 'quiz-feedback--hint');
@@ -3394,7 +3433,16 @@
                       uiText('Grįžti į schemą ir pasitaisyti ↓', 'Back to the framework and fix it ↓') +
                       '</a>';
                 feedbackEl.appendChild(next);
+                feedbackEl.scrollIntoView(Object.assign({ block: 'nearest' }, scrollOpts));
+                if (typeof feedbackEl.focus === 'function') feedbackEl.focus({ preventScroll: true });
             }
+
+            quizForm.addEventListener('change', (e) => {
+                if (e.target && e.target.matches('input[name="prompt-quiz"]')) {
+                    checkBtn.disabled = false;
+                    hideFeedback();
+                }
+            });
 
             checkBtn.addEventListener('click', () => {
                 const sel = quizForm.querySelector('input[name="prompt-quiz"]:checked');
@@ -3420,6 +3468,7 @@
 
             resetBtn.addEventListener('click', () => {
                 quizForm.querySelectorAll('input[name="prompt-quiz"]').forEach((r) => { r.checked = false; });
+                checkBtn.disabled = true;
                 hideFeedback();
             });
             }

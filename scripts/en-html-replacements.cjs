@@ -51,6 +51,7 @@ function getEnHtmlReplacementPairs() {
     ['aria-label="Skaidrė 15: PDF santrauka ir kitas žingsnis"', 'aria-label="Slide 15: PDF summary and next step"'],
 
     ['aria-label="Skaidrių navigacija (mobilusis)"', 'aria-label="Slide navigation (mobile)"'],
+    ['<div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Įvadas</div>', '<div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Introduction</div>'],
 
     ['<section id="intro" aria-label="Įvadas"', '<section id="intro" aria-label="Introduction"'],
     ['<span class="label">DI praktinė sistema įmonei</span>', '<span class="label">Practical AI system for teams</span>'],
@@ -59,8 +60,8 @@ function getEnHtmlReplacementPairs() {
       '<p class="hero-lead">From AI guesswork to a clear work system: less rework, more control.</p>'
     ],
     [
-      '<p class="hero-meta">Pirma santrauka (PDF), tada — Pradėk.<br>Toliau: šablonas, schema, greita patikra skaidrėse.</p>',
-      '<p class="hero-meta">English summary PDF first, then Start.<br>Next: template, framework, quick check in the slides.</p>'
+      '<p class="hero-meta">Pradėk nuo 2 min. praktikos, PDF pasiimk kai prireiks.<br>Toliau: šablonas, schema, greita patikra skaidrėse.</p>',
+      '<p class="hero-meta">Start with the 2 min practice; take the PDF when you need it.<br>Next: template, framework, quick check in the slides.</p>'
     ],
     [
       'href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf"',
@@ -76,8 +77,8 @@ function getEnHtmlReplacementPairs() {
       'aria-label="Start the lesson: go to the 2-minute practice"'
     ],
     [
-      'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Pradėk\n                </a>',
-      'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Start\n                </a>'
+      'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Pradėk 2 min. praktiką\n                </a>',
+      'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Start 2 min practice\n                </a>'
     ],
     ['<a href="#library" data-track="hero_library_click">Biblioteka</a>', '<a href="#library" data-track="hero_library_click">Library</a>'],
     ['<a href="#schema" data-track="hero_schema_click">Schema</a>', '<a href="#schema" data-track="hero_schema_click">Framework</a>'],
@@ -316,16 +317,16 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead">One table: time, activity, goal — plus a few decision questions.</p>'
     ],
     [
-      '<div class="prompt-line"><b>Užduotis</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>',
-      '<div class="prompt-line"><b>Task</b> Build a meeting or sprint plan as a table (time · activity · goal) and add 3 questions that help decide.</div>'
+      '<div class="prompt-line"><b>UŽDUOTIS</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>',
+      '<div class="prompt-line"><b>TASK</b> Build a meeting or sprint plan as a table (time · activity · goal) and add 3 questions that help decide.</div>'
     ],
     [
-      '<div class="prompt-line"><b>Įvestis</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTARĖTE ANKSČIAU].</div>',
-      '<div class="prompt-line"><b>Input</b> Duration: [e.g. 60 min]. Topic: [TOPIC]. Team / roles: [WHO JOINS]. They already know: [WHAT YOU AGREED BEFORE].</div>'
+      '<div class="prompt-line"><b>ĮVESTIS</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTARĖTE ANKSČIAU].</div>',
+      '<div class="prompt-line"><b>INPUT</b> Duration: [e.g. 60 min]. Topic: [TOPIC]. Team / roles: [WHO JOINS]. They already know: [WHAT YOU AGREED BEFORE].</div>'
     ],
     [
-      '<div class="prompt-line"><b>Grąžink</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>',
-      '<div class="prompt-line"><b>Return</b> A table with columns Time | Activity | Goal, then 3 questions below.</div>'
+      '<div class="prompt-line"><b>REZULTATAS</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>',
+      '<div class="prompt-line"><b>OUTPUT</b> A table with columns Time | Activity | Goal, then 3 questions below.</div>'
     ],
     ['<button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn">Copy prompt</button>'],
     [
@@ -340,16 +341,16 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead">Basic, intermediate, advanced — same core, different depth.</p>'
     ],
     [
-      '<div class="prompt-line"><b>Užduotis</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>',
-      '<div class="prompt-line"><b>Task</b> Write the same message or task at three difficulty levels (basic, intermediate, advanced).</div>'
+      '<div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>',
+      '<div class="prompt-line"><b>TASK</b> Write the same message or task at three difficulty levels (basic, intermediate, advanced).</div>'
     ],
     [
-      '<div class="prompt-line"><b>Įvestis</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>',
-      '<div class="prompt-line"><b>Input</b> Topic or task: [TOPIC]. Reader: [e.g. junior / senior, client / internal team]. Starting idea or draft (if any): [TEXT].</div>'
+      '<div class="prompt-line"><b>ĮVESTIS</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>',
+      '<div class="prompt-line"><b>INPUT</b> Topic or task: [TOPIC]. Reader: [e.g. junior / senior, client / internal team]. Starting idea or draft (if any): [TEXT].</div>'
     ],
     [
-      '<div class="prompt-line"><b>Grąžink</b> Tris aiškiai atskirtas versijas su antraštėmis Bazinis / Vidutinis / Pažengęs; tonas ir detalumas turi augti kartu su lygiu.</div>',
-      '<div class="prompt-line"><b>Return</b> Three clearly separated versions titled Basic / Intermediate / Advanced; tone and detail should scale with level.</div>'
+      '<div class="prompt-line"><b>REZULTATAS</b> Tris aiškiai atskirtas versijas su antraštėmis Bazinis / Vidutinis / Pažengęs; tonas ir detalumas turi augti kartu su lygiu.</div>',
+      '<div class="prompt-line"><b>OUTPUT</b> Three clearly separated versions titled Basic / Intermediate / Advanced; tone and detail should scale with level.</div>'
     ],
     [
       '</svg></span> Vienas šablonas — kelios auditorijos.</div>',
@@ -363,16 +364,16 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead">Assessment + one concrete tip — fewer empty iterations.</p>'
     ],
     [
-      '<div class="prompt-line"><b>Įvestis</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>',
-      '<div class="prompt-line"><b>Input</b> Text or work: [TEXT]. Criteria: [Criteria].</div>'
+      '<div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>',
+      '<div class="prompt-line"><b>TASK</b> Score against the criteria and give one clear change to make first.</div>'
     ],
     [
-      '<div class="prompt-line"><b>Užduotis</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>',
-      '<div class="prompt-line"><b>Task</b> Score against the criteria and give one clear change to make first.</div>'
+      '<div class="prompt-line"><b>ĮVESTIS</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>',
+      '<div class="prompt-line"><b>INPUT</b> Text or work: [TEXT]. Criteria: [Criteria].</div>'
     ],
     [
-      '<div class="prompt-line"><b>Grąžink</b> Trumpą įvertinimą (balas ar lygis), 3 stiprias vietas, 1 konkretų tobulinimo žingsnį su pavyzdžiu.</div>',
-      '<div class="prompt-line"><b>Return</b> Short assessment (score or level), 3 strengths, 1 concrete improvement step with an example.</div>'
+      '<div class="prompt-line"><b>REZULTATAS</b> Trumpą įvertinimą (balas ar lygis), 3 stiprias vietas, 1 konkretų tobulinimo žingsnį su pavyzdžiu.</div>',
+      '<div class="prompt-line"><b>OUTPUT</b> Short assessment (score or level), 3 strengths, 1 concrete improvement step with an example.</div>'
     ],
     [
       '</svg></span> Mažiau iteracijų ir taisymo laiko.</div>',
@@ -386,16 +387,16 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead">One concrete format — e.g. knowledge check or hands-on task — with instructions for the team.</p>'
     ],
     [
-      '<div class="prompt-line"><b>Įvestis</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>',
-      '<div class="prompt-line"><b>Input</b> Topic: [TOPIC]. Audience: [Team / role]. Format: [knowledge check / hands-on task]. Example from your work or process: [BRIEF].</div>'
+      '<div class="prompt-line"><b>UŽDUOTIS</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>',
+      '<div class="prompt-line"><b>TASK</b> Create short material or a task; use the example so it feels relevant and usable.</div>'
     ],
     [
-      '<div class="prompt-line"><b>Užduotis</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>',
-      '<div class="prompt-line"><b>Task</b> Create short material or a task; use the example so it feels relevant and usable.</div>'
+      '<div class="prompt-line"><b>ĮVESTIS</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>',
+      '<div class="prompt-line"><b>INPUT</b> Topic: [TOPIC]. Audience: [Team / role]. Format: [knowledge check / hands-on task]. Example from your work or process: [BRIEF].</div>'
     ],
     [
-      '<div class="prompt-line"><b>Grąžink</b> Paruoštą tekstą su aiškia instrukcija naudotojui; jei tinka — atsakymų ar vertinimo raktą.</div>',
-      '<div class="prompt-line"><b>Return</b> Ready text with clear user instructions; if useful, an answer key or rubric.</div>'
+      '<div class="prompt-line"><b>REZULTATAS</b> Paruoštą tekstą su aiškia instrukcija naudotojui; jei tinka — atsakymų ar vertinimo raktą.</div>',
+      '<div class="prompt-line"><b>OUTPUT</b> Ready text with clear user instructions; if useful, an answer key or rubric.</div>'
     ],
     [
       '</svg></span> Pritaikyta realiai darbo situacijai.</div>',
@@ -409,16 +410,16 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead">Up to ~100 words: problem, solution, clear next step.</p>'
     ],
     [
-      '<div class="prompt-line"><b>Įvestis</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>',
-      '<div class="prompt-line"><b>Input</b> Who you write to: [team / client / partner]. Situation (facts): [WHAT HAPPENED]. Tone: professional but warm. Limit: up to 100 words.</div>'
+      '<div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus kitas žingsnis.</div>',
+      '<div class="prompt-line"><b>TASK</b> Produce one draft; structure: problem → solution → call to action or another clear next step.</div>'
     ],
     [
-      '<div class="prompt-line"><b>Užduotis</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus kitas žingsnis.</div>',
-      '<div class="prompt-line"><b>Task</b> Produce one draft; structure: problem → solution → call to action or another clear next step.</div>'
+      '<div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>',
+      '<div class="prompt-line"><b>INPUT</b> Who you write to: [team / client / partner]. Situation (facts): [WHAT HAPPENED]. Tone: professional but warm. Limit: up to 100 words.</div>'
     ],
     [
-      '<div class="prompt-line"><b>Grąžink</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>',
-      '<div class="prompt-line"><b>Return</b> One ready text; if useful, a second shorter variant (e.g. Slack / Teams).</div>'
+      '<div class="prompt-line"><b>REZULTATAS</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>',
+      '<div class="prompt-line"><b>OUTPUT</b> One ready text; if useful, a second shorter variant (e.g. Slack / Teams).</div>'
     ],
     [
       '</svg></span> Aiški ir rami komunikacija.</div>',
@@ -567,13 +568,13 @@ function getEnHtmlReplacementPairs() {
       '<p class="cta-sub">English lesson summary (PDF) — take it with you. Go deeper via the program.</p>'
     ],
     [
-      'aria-label="Pagrindinis veiksmas: atsisiųsk 1 pamokos santrauką PDF"',
-      'aria-label="Primary action: download lesson 1 English summary (PDF)"'
+      'aria-label="Pagrindinis veiksmas: peržvelk mokamą programą ir kainą (naujame skirtuke)" data-track="paid_cta_click">Peržvelk programą ir kainą</a>',
+      'aria-label="Primary action: view the paid program and pricing (new tab)" data-track="paid_cta_click">View program and pricing</a>'
     ],
-    ['<p class="cta-secondary-label">Kitas žingsnis</p>', '<p class="cta-secondary-label">Next step</p>'],
+    ['<p class="cta-secondary-label">Santrauka</p>', '<p class="cta-secondary-label">Summary</p>'],
     [
-      'aria-label="Kitas žingsnis: peržvelk mokamą programą (naujame skirtuke)" data-track="paid_cta_click">Peržvelk programą ir kainą</a>',
-      'aria-label="Next step: view the paid program (new tab)" data-track="paid_cta_click">View program and pricing</a>'
+      'aria-label="Atsisiųsk 1 pamokos santrauką PDF" data-track="cta_pdf_click"',
+      'aria-label="Download lesson 1 English summary (PDF)" data-track="cta_pdf_click"'
     ],
     [
       'aria-label="Bendruomenės Telegram kanalas Prompt Anatomy (atidaryti naujame skirtuke)" data-track="cta_telegram_click"',
