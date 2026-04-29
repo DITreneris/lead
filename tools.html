@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Anatomy - AI Tools Guide 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .brand-dark { color: #0f172a; }
+        .brand-gold { color: #d4a017; }
+        .bg-brand-dark { background-color: #0f172a; }
+        
+        .header-title {
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+        }
+
+        .category-pill {
+            border-radius: 6px;
+            padding: 6px 16px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Category Colors */
+        .bg-cat-1 { background-color: #0f172a; } 
+        .bg-cat-2 { background-color: #d4a017; } 
+
+        .tool-list {
+            position: relative;
+            padding-left: 24px;
+            border-left: 1px solid #e2e8f0;
+            margin-left: 8px;
+        }
+        .tool-item {
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: #334155;
+        }
+        .tool-item::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 50%;
+            width: 16px;
+            height: 1px;
+            background-color: #e2e8f0;
+        }
+        .tool-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #d4a017;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .version-tag {
+            font-size: 0.7rem;
+            background: #f1f5f9;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-12">
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
+        
+        <!-- Brand Header -->
+        <div class="p-8 md:p-12 border-b border-gray-100">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-brand-dark p-2 rounded-lg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#d4a017" stroke="#d4a017" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-extrabold tracking-tight brand-dark leading-none">PROMPT <span class="brand-gold">ANATOMY</span></h2>
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold">AI Operating System</p>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl header-title brand-dark max-w-2xl">
+                The Ultimate <span class="brand-gold">AI Stack</span> (April 2026 Update)
+            </h1>
+        </div>
+
+        <!-- Grid Content -->
+        <div class="p-8 md:p-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12">
+            
+            <!-- Column 1 -->
+            <div class="space-y-12">
+                <section>
+                    <div class="category-pill bg-cat-1">AI Presentations</div>
+                    <div class="tool-list">
+                        <div class="tool-item"><div class="tool-dot"></div> PPT AI <span class="version-tag">New King</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> Gamma AI</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Beautiful.AI</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Pitch</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Napkin AI</div>
+                    </div>
+                </section>
+                <section>
+                    <div class="category-pill bg-cat-2">AI Spreadsheets</div>
+                    <div class="tool-list">
+                        <div class="tool-item"><div class="tool-dot"></div> Rows AI</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Google Sheets AI</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Formula Bot</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Gigasheet</div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="space-y-12">
+                <section>
+                    <div class="category-pill bg-cat-2">AI Chatbots</div>
+                    <div class="tool-list">
+                        <div class="tool-item"><div class="tool-dot"></div> ChatGPT <span class="version-tag">GPT-5.4</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> Claude <span class="version-tag">4.6 Opus</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> Gemini <span class="version-tag">3.1 Pro</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> Perplexity <span class="version-tag">Sonar Pro</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> DeepSeek <span class="version-tag">V3.2</span></div>
+                    </div>
+                </section>
+                <section>
+                    <div class="category-pill bg-cat-1">Image Generation</div>
+                    <div class="tool-list">
+                        <div class="tool-item"><div class="tool-dot"></div> Midjourney <span class="version-tag">v7</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> FLUX.1.1 Pro</div>
+                        <div class="tool-item"><div class="tool-dot"></div> DALL-E 4</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Adobe Firefly</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Leonardo.ai</div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="space-y-12">
+                <section>
+                    <div class="category-pill bg-cat-1">Coding Assistants</div>
+                    <div class="tool-list">
+                        <div class="tool-item"><div class="tool-dot"></div> Windsurf <span class="version-tag">#1 Rank</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> Cursor <span class="version-tag">Composer</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> Lovable</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Claude Code <span class="version-tag">CLI</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> GitHub Copilot</div>
+                    </div>
+                </section>
+                <section>
+                    <div class="category-pill bg-cat-2">Writing & SEO</div>
+                    <div class="tool-list">
+                        <div class="tool-item"><div class="tool-dot"></div> Claude Writing</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Jasper</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Copy.ai</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Grammarly Business</div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="space-y-12">
+                <section>
+                    <div class="category-pill bg-cat-2">Video & Motion</div>
+                    <div class="tool-list">
+                        <div class="tool-item"><div class="tool-dot"></div> Runway <span class="version-tag">Gen-4.5</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> Google Veo 3</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Sora <span class="version-tag">Public</span></div>
+                        <div class="tool-item"><div class="tool-dot"></div> Kling AI</div>
+                        <div class="tool-item"><div class="tool-dot"></div> HeyGen</div>
+                    </div>
+                </section>
+                <section>
+                    <div class="category-pill bg-cat-1">Meeting & Notes</div>
+                    <div class="tool-list">
+                        <div class="tool-item"><div class="tool-dot"></div> Otter.ai</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Fireflies</div>
+                        <div class="tool-item"><div class="tool-dot"></div> Fathom</div>
+                        <div class="tool-item"><div class="tool-dot"></div> NotebookLM</div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <!-- Minimal Footer -->
+        <div class="bg-gray-50 p-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+            <p>Curated by PromptAnatomy.app • Updated April 21, 2026</p>
+            <p class="font-semibold brand-dark">Stop talking. Start building.</p>
+        </div>
+    </div>
+</body>
+</html>
