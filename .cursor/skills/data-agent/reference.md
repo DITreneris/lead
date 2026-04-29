@@ -11,7 +11,7 @@ flowchart LR
   buildScript[build-pdf ps1 arba sh]
   pdfLt[www.promptanatomy.app.pdf]
   pdfEn[www.promptanatomy.app-en.pdf]
-  indexPage[index.html / site/en]
+  indexPage[index.html to site index EN]
   mdLt --> buildScript
   mdEn --> buildScript
   buildScript --> pdfLt

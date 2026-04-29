@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Pagrindinis puslapis: redaguok tik šį failą (index.html). -->
+<!-- Pagrindinis puslapis: redaguok tik šį failą (index.html). LT šaltinis; npm run build → EN site/index.html, LT site/lt/index.html. -->
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,8 @@
     <meta name="app-base-path" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="alternate" hreflang="lt" href="https://www.promptanatomy.app/lt/">
-    <link rel="alternate" hreflang="en" href="https://www.promptanatomy.app/en/">
-    <link rel="alternate" hreflang="x-default" href="https://www.promptanatomy.app/lt/">
+    <link rel="alternate" hreflang="en" href="https://www.promptanatomy.app/">
+    <link rel="alternate" hreflang="x-default" href="https://www.promptanatomy.app/">
     <title>Promptų anatomija — darbui ir vadovavimui</title>
     <meta name="description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
     <meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">
@@ -16,6 +16,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.promptanatomy.app/">
     <meta property="og:locale" content="lt_LT">
+    <meta property="og:site_name" content="Promptų anatomija">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:image" content="https://www.promptanatomy.app/assets/og-promptanatomy.png">
     <meta property="og:image:width" content="1376">
     <meta property="og:image:height" content="768">
@@ -24,7 +26,7 @@
     <meta name="twitter:image" content="https://www.promptanatomy.app/assets/og-promptanatomy.png">
     <meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">
     <meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">
-    <link rel="canonical" href="https://www.promptanatomy.app/">
+    <link rel="canonical" href="https://www.promptanatomy.app/lt/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +53,7 @@
             --radius-sm: 6px;
             --radius-md: 8px;
             --radius-lg: 12px;
+            --radius-tab: 10px;
             --radius-pill: 999px;
             --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
             --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
@@ -64,6 +67,8 @@
             --text-body: #e2e8f0;
             --text-muted: #cbd5e1;
             --text-soft: #94a3b8;
+            --text-on-accent: #0a0a0a;
+            --accent-yellow-hover-text: #fff6b0;
         }
 
         * { box-sizing: border-box; }
@@ -91,7 +96,7 @@
             z-index: 1000;
             padding: 12px 20px;
             background: var(--accent-yellow);
-            color: #000;
+            color: var(--text-on-accent);
             font-weight: 800;
             text-decoration: none;
             border-radius: var(--radius-xs);
@@ -227,7 +232,7 @@
             border-color: rgba(255, 255, 255, 0.28);
         }
         .lang-switch__btn.is-active {
-            color: #000;
+            color: var(--text-on-accent);
             background: var(--accent-yellow);
             border-color: var(--accent-yellow);
         }
@@ -320,7 +325,15 @@
 
         /* Tipografija */
         h1 { font-family: var(--font-display); font-size: clamp(56px, 7.5vw, 104px); line-height: 0.92; margin: 0; font-weight: 700; }
-        h2 { font-family: var(--font-display); font-size: clamp(36px, 4.2vw, 56px); line-height: 1.12; margin-bottom: 24px; color: #fff; }
+        h2 { font-family: var(--font-display); font-size: clamp(36px, 4.2vw, 56px); line-height: 1.12; margin-bottom: 24px; color: var(--text-bright); }
+        .hero-geo-summary {
+            font-size: clamp(14px, 1.25vw, 17px);
+            margin: 20px 0 0;
+            line-height: 1.5;
+            max-width: 36em;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
         .hero-lead {
             font-size: clamp(22px, 2.4vw, 32px);
             margin-top: 28px;
@@ -368,7 +381,7 @@
             padding: 14px 22px;
             font-size: clamp(14px, 1.1vw, 16px);
             font-weight: 800;
-            color: #fff;
+            color: var(--text-bright);
             background: var(--accent-red);
             text-decoration: none;
             border-radius: var(--radius-md);
@@ -398,7 +411,7 @@
         .hero-pdf-link:hover {
             transform: var(--lift-sm);
             background: rgba(251, 211, 4, 0.1);
-            color: #fff6b0;
+            color: var(--accent-yellow-hover-text);
             box-shadow: 0 12px 28px rgba(251, 211, 4, 0.25);
         }
         .hero-pdf-link .icon { opacity: 0.9; }
@@ -409,19 +422,19 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 24px;
+            padding: 14px 22px;
             font-size: clamp(15px, 1.15vw, 18px);
             font-weight: 700;
             color: var(--accent-yellow);
             background: transparent;
             border: 2px solid rgba(251, 211, 4, 0.55);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-md);
             text-decoration: none;
             transition: background 0.2s, color 0.2s;
         }
         .cta-pdf-link:hover {
             background: rgba(251, 211, 4, 0.12);
-            color: #fff6b0;
+            color: var(--accent-yellow-hover-text);
         }
         .cta-actions-stack {
             display: flex;
@@ -451,7 +464,7 @@
             line-height: 1.05;
             margin: 0 0 8px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-bright);
         }
         .essence-lead {
             font-size: clamp(22px, 2.6vw, 36px);
@@ -487,7 +500,7 @@
         }
         .slide-sublead {
             margin: 8px 0 16px;
-            opacity: 0.9;
+            color: var(--text-muted);
         }
 
         /* Prompt Kortelė */
@@ -504,7 +517,7 @@
             position: absolute;
             top: -12px; right: 20px;
             background: var(--accent-yellow);
-            color: #000;
+            color: var(--text-on-accent);
             font-size: 12px;
             font-weight: 800;
             padding: 4px 12px;
@@ -526,9 +539,9 @@
             width: 100%;
             padding: 15px 20px;
             font-family: var(--font-main);
-            font-size: 16px;
+            font-size: clamp(15px, 1.1vw, 16px);
             font-weight: 700;
-            color: #000;
+            color: var(--text-on-accent);
             background: var(--accent-yellow);
             border: none;
             border-radius: var(--radius-md);
@@ -537,7 +550,7 @@
         }
         .copy-prompt-btn:hover { box-shadow: 0 8px 24px rgba(251, 211, 4, 0.35); }
         .copy-prompt-btn:active { transform: scale(0.98); }
-        .copy-prompt-btn:focus-visible { outline: 2px solid #fff6b0; outline-offset: 3px; }
+        .copy-prompt-btn:focus-visible { outline: 2px solid var(--accent-yellow); outline-offset: 3px; }
         .copy-prompt-btn:disabled,
         .types-copy-btn:disabled,
         .quiz-check-btn:disabled {
@@ -557,11 +570,11 @@
         }
         h2.cta-title {
             font-family: var(--font-display);
-            font-size: clamp(44px, 7vw, 100px);
+            font-size: clamp(44px, 7vw, 104px);
             line-height: 0.92;
             margin: 0 0 20px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-bright);
         }
         .cta-inner { text-align: center; }
 
@@ -593,7 +606,7 @@
         /* CTA */
         .cta-btn {
             background: var(--accent-red);
-            color: white;
+            color: var(--text-bright);
             padding: 24px 56px;
             font-size: clamp(18px, 1.6vw, 24px);
             font-weight: 800;
@@ -655,7 +668,7 @@
         .types-card {
             background: var(--surface-raised);
             border-radius: var(--radius-lg);
-            padding: 18px 16px;
+            padding: 18px 18px;
             border: 2px solid;
             display: flex;
             flex-direction: column;
@@ -856,7 +869,7 @@
             margin: 0;
             padding: 14px 16px;
             background: rgba(0, 0, 0, 0.35);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border-left: 3px solid rgba(251, 211, 4, 0.55);
             user-select: text;
         }
@@ -869,13 +882,13 @@
             color: var(--accent-yellow);
             background: transparent;
             border: 1px solid rgba(251, 211, 4, 0.45);
-            border-radius: 6px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
             transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
         }
         .types-copy-btn:hover {
             background: rgba(251, 211, 4, 0.12);
-            color: #fff6b0;
+            color: var(--accent-yellow-hover-text);
             border-color: rgba(251, 211, 4, 0.65);
             box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
         }
@@ -901,7 +914,7 @@
             padding: 16px 18px;
             background: linear-gradient(135deg, rgba(16, 59, 90, 0.50), rgba(251, 211, 4, 0.06));
             border: 1px solid var(--border-hairline);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             display: flex;
             gap: 14px;
             align-items: flex-start;
@@ -948,7 +961,7 @@
             height: auto;
             aspect-ratio: 16 / 9;
             object-fit: contain;
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             border: 1px solid var(--border);
             background: rgba(0, 0, 0, 0.35);
             box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
@@ -989,7 +1002,7 @@
         .library-howto {
             background: var(--surface-muted-deep);
             border: 1px solid var(--border-hairline);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 0;
             margin-bottom: 36px;
         }
@@ -1029,7 +1042,7 @@
         .library-cat-details {
             margin-bottom: 36px;
             border: 1px solid var(--border-hairline);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             background: var(--surface-inset);
             overflow: hidden;
         }
@@ -1041,7 +1054,7 @@
             letter-spacing: 0.06em;
             text-transform: uppercase;
             margin: 0;
-            padding: 14px 18px 12px;
+            padding: 14px 18px;
             border-bottom: 1px solid var(--border-hairline);
             color: var(--text-bright);
             background: var(--surface-muted);
@@ -1062,7 +1075,7 @@
         .library-item {
             background: var(--card-bg);
             border: 1px solid var(--border-hairline);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 18px 20px 20px;
             margin-bottom: 14px;
         }
@@ -1070,7 +1083,7 @@
             font-family: var(--font-display);
             font-size: clamp(15px, 1.1vw, 17px);
             margin: 0 0 8px;
-            color: #fff;
+            color: var(--text-bright);
         }
         .library-goal {
             font-size: clamp(12px, 0.9vw, 14px);
@@ -1089,7 +1102,7 @@
             margin: 0 0 14px;
             padding: 14px;
             background: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border-left: 3px solid rgba(251, 211, 4, 0.45);
             user-select: text;
         }
@@ -1117,7 +1130,7 @@
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border: 1px solid rgba(251, 211, 4, 0.35);
             background: rgba(251, 211, 4, 0.08);
             color: var(--accent-yellow);
@@ -1139,7 +1152,7 @@
             letter-spacing: 0.06em;
             text-transform: uppercase;
             padding: 12px 20px;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border: 2px solid var(--border-hairline);
             background: rgba(0, 0, 0, 0.25);
             color: var(--text-muted);
@@ -1147,7 +1160,7 @@
             transition: color 0.2s, border-color 0.2s, background 0.2s;
         }
         .library-tabs [role="tab"][aria-selected="true"] {
-            color: #0a0a0a;
+            color: var(--text-on-accent);
             background: var(--accent-yellow);
             border-color: var(--accent-yellow);
         }
@@ -1165,7 +1178,7 @@
             padding: 14px 16px;
             background: var(--surface-muted);
             border: 1px solid var(--border-hairline);
-            border-radius: 10px;
+            border-radius: var(--radius-tab);
         }
         .library-toc a {
             font-size: clamp(12px, 0.95vw, 14px);
@@ -1177,7 +1190,7 @@
         }
         .library-toc a:hover,
         .library-toc a:focus-visible {
-            color: #fff6b0;
+            color: var(--accent-yellow-hover-text);
             border-color: rgba(251, 211, 4, 0.65);
         }
 
@@ -1200,7 +1213,7 @@
             color: var(--text-bright);
             background: rgba(7, 27, 41, 0.94);
             border: 1px solid var(--border-hairline);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             padding: 10px 14px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
         }
@@ -1211,7 +1224,7 @@
             padding: 6px 0;
             background: rgba(7, 27, 41, 0.97);
             border: 1px solid var(--border-hairline);
-            border-radius: 10px;
+            border-radius: var(--radius-tab);
             max-height: min(440px, 52vh);
             overflow-y: auto;
             box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
@@ -1336,7 +1349,7 @@
             padding: 14px 18px;
             background: rgba(251, 211, 4, 0.1);
             border: 1px solid rgba(251, 211, 4, 0.35);
-            border-radius: 10px;
+            border-radius: var(--radius-tab);
             font-family: var(--font-display);
             font-size: clamp(18px, 2.8vw, 24px);
             font-weight: 700;
@@ -1385,7 +1398,7 @@
             gap: 14px;
             align-items: flex-start;
             padding: 14px 16px;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
         }
@@ -1420,14 +1433,14 @@
         }
         .schema-step--reason .schema-step-num { color: rgba(255, 255, 255, 0.9); }
         .schema-step--reason .schema-step-body { color: #ecfdf5; }
-        .schema-step--reason .schema-step-body strong { color: #fff; }
+        .schema-step--reason .schema-step-body strong { color: var(--text-bright); }
         .schema-step--qc {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #0c2d45 100%);
             border-color: rgba(255, 255, 255, 0.15);
         }
         .schema-step--qc .schema-step-num { color: rgba(255, 255, 255, 0.9); }
         .schema-step--qc .schema-step-body { color: #e0f2fe; }
-        .schema-step--qc .schema-step-body strong { color: #fff; }
+        .schema-step--qc .schema-step-body strong { color: var(--text-bright); }
         .schema-arrow {
             width: 100%;
             max-width: 340px;
@@ -1465,7 +1478,7 @@
         .schema-advanced {
             background: var(--surface-raised);
             border: 1px solid var(--border-hairline);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 20px 18px;
             display: flex;
             flex-direction: column;
@@ -1542,7 +1555,7 @@
             font-family: var(--font-display);
             font-size: clamp(22px, 2.5vw, 30px);
             line-height: 1.22;
-            color: #fff;
+            color: var(--text-bright);
             margin: 0 auto 24px;
             max-width: 28em;
             text-align: center;
@@ -1560,7 +1573,7 @@
             align-items: flex-start;
             gap: 14px;
             padding: 16px 18px;
-            border-radius: 10px;
+            border-radius: var(--radius-tab);
             border: 1px solid var(--border-hairline);
             background: var(--surface-raised);
             cursor: pointer;
@@ -1596,12 +1609,12 @@
         .quiz-check-btn {
             padding: 14px 28px;
             font-family: var(--font-main);
-            font-size: 16px;
+            font-size: clamp(15px, 1.1vw, 16px);
             font-weight: 700;
-            color: #000;
+            color: var(--text-on-accent);
             background: var(--accent-yellow);
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -1615,7 +1628,7 @@
             color: var(--text-muted);
             background: transparent;
             border: 1px solid var(--border-hairline);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             cursor: pointer;
             transition: color 0.2s, border-color 0.2s;
         }
@@ -1623,7 +1636,7 @@
         .quiz-feedback {
             margin-top: 22px;
             padding: 18px 20px;
-            border-radius: 10px;
+            border-radius: var(--radius-tab);
             text-align: left;
             border: 1px solid var(--border-hairline);
             display: none;
@@ -1665,7 +1678,7 @@
         .inline-link {
             display: inline-block;
             padding: 2px 2px;
-            border-radius: 10px;
+            border-radius: var(--radius-tab);
         }
         .inline-link:hover {
             background: rgba(251, 211, 4, 0.08);
@@ -1724,7 +1737,7 @@
             .nav-mobile button.nav-item {
                 width: 40px;
                 height: 40px;
-                border-radius: 999px;
+                border-radius: var(--radius-pill);
                 border: 0;
                 background: transparent;
                 display: grid;
@@ -1736,7 +1749,7 @@
                 content: '';
                 width: 12px;
                 height: 12px;
-                border-radius: 999px;
+                border-radius: var(--radius-pill);
                 border: 3px solid rgba(255, 255, 255, 0.22);
                 background: rgba(255, 255, 255, 0.06);
                 box-sizing: border-box;
@@ -1760,7 +1773,7 @@
             .brand-icon {
                 width: 40px;
                 height: 40px;
-                border-radius: 10px;
+                border-radius: var(--radius-tab);
             }
             .brand-icon svg { width: 22px; height: 22px; }
             .schema-grid {
@@ -1872,6 +1885,7 @@
         <div>
             <span class="label">DI praktinė sistema įmonei</span>
             <h1>PROMPTŲ<br><span style="color: var(--accent-yellow);">ANATOMIJA</span></h1>
+            <p class="hero-geo-summary">Ši pamoka: penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Oficiali svetainė: www.promptanatomy.app.</p>
             <p class="hero-lead">Nuo DI „spėliojimo“ iki aiškios darbo sistemos: mažiau taisymo, daugiau kontrolės.</p>
             <p class="hero-meta">Pradėk nuo 2 min. praktikos, PDF pasiimk kai prireiks.<br>Toliau: šablonas, schema, greita patikra skaidrėse.</p>
             <div class="hero-actions">
@@ -2552,7 +2566,7 @@
             } catch (e1) { /* ignore */ }
             var nav = (navigator.language || '').toLowerCase();
             if (nav.startsWith('lt')) return 'lt';
-            return 'lt';
+            return 'en';
         }
         var LOCALE = getPageLocale();
         document.documentElement.setAttribute('lang', LOCALE === 'en' ? 'en' : 'lt');
@@ -2562,10 +2576,18 @@
         function localeSwitchUrl(nextLang) {
             var h = window.location.hash || '';
             if (window.location.protocol === 'file:') {
-                return (nextLang === 'lt' ? 'index.html' : 'en/index.html') + h;
+                var rawPath = (window.location.pathname || '').replace(/\\/g, '/');
+                if (/\/lt\//i.test(rawPath) || /\/lt\/index\.html$/i.test(rawPath)) {
+                    return (nextLang === 'lt' ? 'index.html' : '../index.html') + h;
+                }
+                if (/\/site\/index\.html$/i.test(rawPath)) {
+                    return (nextLang === 'en' ? 'index.html' : 'lt/index.html') + h;
+                }
+                return (nextLang === 'lt' ? 'lt/index.html' : 'site/index.html') + h;
             }
             var base = appBasePath().replace(/\/$/, '');
-            var u = new URL(window.location.origin + (base || '') + '/' + nextLang + '/');
+            var pathSeg = nextLang === 'lt' ? '/lt/' : '/';
+            var u = new URL(window.location.origin + (base || '') + pathSeg);
             u.hash = h;
             if (window.location.search) u.search = window.location.search;
             return u.toString();

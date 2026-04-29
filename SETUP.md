@@ -16,9 +16,9 @@ npm run build
 npm run verify
 ```
 
-`npm run verify` reikalauja, kad jau būtų paleistas `npm run build` (generuojamas `site/en/index.html`). Žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
+`npm run verify` reikalauja, kad jau būtų paleistas `npm run build` (generuojamas `site/index.html` kaip EN ir `site/lt/index.html`). Žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
 
-Atidarykite `site/index.html` (LT, šaknis), `site/lt/index.html` arba `site/en/index.html` per tą patį HTTP serverį, kad veiktų keliai į `assets/` (poaplankiuose build naudoja `../assets/…`) ir kalbos perjungimas į `/lt/` bei `/en/`. Katalogą `site/` galima ignoruoti commituose — jį generuoja CI.
+Atidarykite `site/index.html` (EN, šaknis), `site/lt/index.html` (LT) per tą patį HTTP serverį, kad veiktų keliai į `assets/` (`site/lt/` naudoja `../assets/…`) ir kalbos perjungimas į `/` ir `/lt/`. Katalogą `site/` galima ignoruoti commituose — jį generuoja CI.
 
 - **Anglų biblioteka:** [assets/prompt-library-en.js](assets/prompt-library-en.js) (įkeliama prieš pagrindinį skriptą `index.html`).
 - **GitHub Pages projekto URL** (`…/repo/`): build metu nustatykite `BASE_PATH=/repo` (žr. [scripts/build-locale-pages.js](scripts/build-locale-pages.js) komentarus / aplinkos kintamąjį workflow).
@@ -62,7 +62,7 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 
 - [ ] Jei keitėsi `docs/pamoka-1-pdf.md` ir/ar `docs/pamoka-1-pdf-en.md`: paleistas `scripts/build-pdf.ps1` arba `build-pdf.sh`, commitinti pasikeitusius `assets/www.promptanatomy.app.pdf` ir/ar `assets/www.promptanatomy.app-en.pdf`.
 - [ ] Jei [CHANGELOG.md](CHANGELOG.md) mini PDF perbuild arba turinio pakeitimą PDF — commit’e matosi atitinkamas [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) pakeitimas (kai taikoma).
-- [ ] `index.html`: pagrindiniai CTA, PDF nuorodos, bibliotekos kopijavimas, `#library` / hash elgsena; po `npm run build` — `site/en/index.html` ir `site/lt/index.html` (kalbos perjungiklis, `/en/` ir `/lt/`).
+- [ ] `index.html`: pagrindiniai CTA, PDF nuorodos, bibliotekos kopijavimas, `#library` / hash elgsena; po `npm run build` — `site/index.html` (EN) ir `site/lt/index.html` (kalbos perjungiklis, `/` ir `/lt/`).
 - [ ] Po `npm run build`: `npm run verify` (bibliotekos raktų paritetas ir EN puslapio LT „drift“) — žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
 - [ ] [404.html](404.html) atsidaro ir grįžta į pamoką.
 - [ ] GitHub Actions: [pages.yml](.github/workflows/pages.yml) ir [verify.yml](.github/workflows/verify.yml) žali po push (kai taikoma).
@@ -72,6 +72,11 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 - Oficiali svetainė: [https://www.promptanatomy.app/](https://www.promptanatomy.app/)
 - Tęsinys (automation hub): [https://ditreneris.github.io/automation/](https://ditreneris.github.io/automation/)
 
+## Produkcija (apex)
+
+- Build sukuria `site/sitemap.xml` ir `site/robots.txt` su absoliučiais apex URL (`/` EN, `/lt/` LT). Po deploy į [www.promptanatomy.app](https://www.promptanatomy.app/) verta Google Search Console pateikti **`https://www.promptanatomy.app/sitemap.xml`**.
+- Jei seniau buvo viešas kelias **`/en/`**, apex serveryje (CDN / hosting) nustatykite **301** į **`/`** — repozitoriuje `/en/` nebegeneruojamas.
+
 ## Šaltas deploy į GitHub (pvz. [DITreneris/lead](https://github.com/DITreneris/lead))
 
 1. **Repozitorija:** tuščias `lead` klonas arba naujas remote. Vietiniame kataloge `origin` dabar gali rodyti į kitą repo — pasirinkite vieną variantą:
@@ -80,6 +85,6 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 2. **Pirmas push:** įsitikinkite, kad `main` šakoje yra visi reikalingi failai (įskaitant [.github/workflows/pages.yml](.github/workflows/pages.yml) ir [`.github/workflows/verify.yml`](.github/workflows/verify.yml)), tada `git push -u origin main` (arba `-u lead main`).
 3. **GitHub Pages:** repozitorijoje *Settings → Pages → Build and deployment → Source:* pasirinkite **GitHub Actions** (ne „Deploy from a branch“), kad veiktų esamas Pages workflow.
 4. **Pirmas Actions paleidimas:** po push atidarykite *Actions* ir leiskite workflow baigtis; jei reikia, *Settings → Actions → General* patvirtinkite workflow leidimus organizacijos lygmenyje.
-5. **Publikacija:** projekto Pages URL yra **`https://DITreneris.github.io/lead/`**; anglų versija — **`https://DITreneris.github.io/lead/en/`**. Adresas `https://DITreneris.github.io/en/` yra vartotojo/organizacijos šaknies svetainė (ne šis repo) ir ten bus 404. Deploy workflow nustato `SITE_PREFIX=/lead`, kad kalbos perjungiklis ir `../assets/` veiktų po `/lead/`.
+5. **Publikacija:** projekto Pages URL yra **`https://DITreneris.github.io/lead/`** (EN šaknis); lietuvių — **`https://DITreneris.github.io/lead/lt/`**. Adresas `https://DITreneris.github.io/en/` yra vartotojo/organizacijos šaknies svetainė (ne šis repo). Deploy workflow nustato `SITE_PREFIX=/lead`, kad kalbos perjungiklis ir `../assets/` veiktų po `/lead/`.
 
 **Pastaba:** `og:url`, `canonical` ir panašūs meta gali likti nukreipti į [www.promptanatomy.app](https://www.promptanatomy.app/) kaip į kanoninį domeną; tai normalu, jei `github.io` naudojate tik kaip papildomą ar perkėlimo etapą.

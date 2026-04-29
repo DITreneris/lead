@@ -45,11 +45,13 @@ jobs:
           set -euo pipefail
           test -f site/index.html
           test -f site/lt/index.html
-          test -f site/en/index.html
+          test -f site/robots.txt
+          test -f site/sitemap.xml
           grep -q 'lang="lt"' site/lt/index.html
-          grep -q 'lang="en"' site/en/index.html
-          grep -q 'page-locale" content="en"' site/en/index.html
-          grep -q 'hreflang="en"' site/en/index.html
+          grep -q 'lang="en"' site/index.html
+          grep -q 'page-locale" content="en"' site/index.html
+          grep -q 'hreflang="x-default"' site/index.html
+          grep -q 'https://www.promptanatomy.app/' site/sitemap.xml
       - name: LT or EN drift checks
         run: |
           set -euo pipefail

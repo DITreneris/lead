@@ -47,13 +47,13 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
   - matomas HTML LT — [index.html](../../../index.html);
   - EN statinis HTML — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs) (ir `build-locale-pages` `head` EN šakai, jei keičiasi meta / `title`);
   - kopijuojama biblioteka — `libraryPromptsLt` + [assets/prompt-library-en.js](../../../assets/prompt-library-en.js) (tie patys `data-emp-key` / `data-mgr-key`).
-- [ ] Po pakeitimų: `npm run build`, tada `npm run verify` (žr. [package.json](../../../package.json)) — CI tai daro po build. **`verify:en-locale`** neveiks be iš anksto sugeneruoto `site/en/index.html` (pirmiau paleisk `npm run build`).
+- [ ] Po pakeitimų: `npm run build`, tada `npm run verify` (žr. [package.json](../../../package.json)) — CI tai daro po build. **`verify:en-locale`** neveiks be iš anksto sugeneruoto `site/index.html` (EN; pirmiau paleisk `npm run build`).
 - [ ] Build konsolėje **nėra** `[build] EN pair … LT fragment missing` / `EN head fragment not found` (žinutės iš [scripts/build-locale-pages.js](../../../scripts/build-locale-pages.js)).
 - [ ] **Terminologija EN** sutampa su [AGENTS.md](../../../AGENTS.md) skyriumi „Golden standard (EN)“ ir jau naudojamais žodžiais UI (pvz. „framework“, „prompt“, „library“ — ne maišyti atsitiktinai su kitais sinonimais vienoje šakoje).
 
 ### PDF ir release
 
-- [ ] Jei keitėsi [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md): perbuildinta išvestis į [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf). Jei keitėsi [docs/pamoka-1-pdf-en.md](../../../docs/pamoka-1-pdf-en.md) — į [assets/www.promptanatomy.app-en.pdf](../../../assets/www.promptanatomy.app-en.pdf). `site/en/` PDF nuorodos — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs) (failas `…-en.pdf`).
+- [ ] Jei keitėsi [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md): perbuildinta išvestis į [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf). Jei keitėsi [docs/pamoka-1-pdf-en.md](../../../docs/pamoka-1-pdf-en.md) — į [assets/www.promptanatomy.app-en.pdf](../../../assets/www.promptanatomy.app-en.pdf). EN build (`site/index.html`) PDF nuorodos — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs) (failas `…-en.pdf`).
 - [ ] Nuorodos į GitHub Pages / statinius assetus veikia logiškai (relatyvūs keliai repo kontekste).
 
 ## Išvesties formatas

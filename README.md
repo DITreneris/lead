@@ -4,9 +4,9 @@ Vieno failo statinė interaktyvi pamoka (`index.html`) su „Promptų biblioteka
 
 ## Nuorodos
 
-- **Kanoninis puslapis**: `https://www.promptanatomy.app/` (LT šaknis ir `/lt/`; anglų versija: `/en/` po `npm run build` / deploy)
-- **GitHub Pages (repo `lead`)**: šaknis `https://ditreneris.github.io/lead/`, anglų kalba — **`https://ditreneris.github.io/lead/en/`** (ne `…github.io/en/` — tai kita vieta)
-- **PDF santrauka (LT)**: `assets/www.promptanatomy.app.pdf` · **EN (`/en/`)**: `assets/www.promptanatomy.app-en.pdf` (šaltiniai `docs/pamoka-1-pdf*.md`). Atsisiunčiant iš **anglų puslapio**, naršyklė turi pasiūlyti failą vardu **`www.promptanatomy.app-en.pdf`** — jei matai **`www.promptanatomy.app.pdf`**, tai LT versija (atsisiuntei iš `/` ar `/lt/`, ne iš `/en/`).
+- **Kanoninis puslapis**: `https://www.promptanatomy.app/` — **anglų (EN)** po `npm run build` / deploy; lietuvių — **`/lt/`**. Senas kelias `/en/` nebegeneruojamas; apex serveryje pageidautina **301** iš `/en/` į `/`.
+- **GitHub Pages (repo `lead`)**: EN — **`https://ditreneris.github.io/lead/`** (šaknis), LT — **`https://ditreneris.github.io/lead/lt/`** (ne `…github.io/en/`).
+- **PDF santrauka (LT)**: `assets/www.promptanatomy.app.pdf` · **EN (šaknis)**: `assets/www.promptanatomy.app-en.pdf` (šaltiniai `docs/pamoka-1-pdf*.md`). Atsisiunčiant iš **anglų puslapio** (`/`), naršyklė turi pasiūlyti **`www.promptanatomy.app-en.pdf`** — jei matai **`www.promptanatomy.app.pdf`**, tai LT versija (atsisiuntei iš `/lt/`).
 - **Pakeitimų istorija**: [CHANGELOG.md](CHANGELOG.md)
 
 ## Greitas startas
@@ -28,7 +28,7 @@ Trumpa instrukcija (įskaitant *Settings → Pages → Source = GitHub Actions*)
 
 ## Projekto struktūra
 
-- **`index.html`**: visas UI (HTML + CSS + JS); EN statinis HTML generuoja `npm run build` → `site/en/`
+- **`index.html`**: visas UI (HTML + CSS + JS); EN statinis HTML generuoja `npm run build` → `site/index.html` (LT šaltinis → `site/lt/index.html`)
 - **`assets/prompt-library-en.js`**: angliški bibliotekos šablonai
 - **`scripts/build-locale-pages.js`**: LT / EN puslapių artefaktas `site/`
 - **`scripts/en-html-replacements.cjs`**: LT→EN statinio HTML poros build metu

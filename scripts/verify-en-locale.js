@@ -1,14 +1,14 @@
 'use strict';
 
 /**
- * After `npm run build`, fail if site/en/index.html still contains common LT-only
+ * After `npm run build`, fail if site/index.html (EN primary) still contains common LT-only
  * UI fragments outside <script>/<style>/HTML comments (where LT in JS is expected).
  */
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const EN_HTML = path.join(ROOT, 'site', 'en', 'index.html');
+const EN_HTML = path.join(ROOT, 'site', 'index.html');
 
 function stripNoise(html) {
   return html

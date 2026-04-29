@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Ordered [LT, EN] HTML fragments for site/en/index.html.
+ * Ordered [LT, EN] HTML fragments for the EN build output (site/index.html).
  * Keep fragments unique enough to avoid accidental double-replace.
  */
 function getEnHtmlReplacementPairs() {
@@ -28,6 +28,10 @@ function getEnHtmlReplacementPairs() {
     [
       '<h1>PROMPTŲ<br><span style="color: var(--accent-yellow);">ANATOMIJA</span></h1>',
       '<h1>PROMPT<br><span style="color: var(--accent-yellow);">ANATOMY</span></h1>'
+    ],
+    [
+      '<p class="hero-geo-summary">Ši pamoka: penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Oficiali svetainė: www.promptanatomy.app.</p>',
+      '<p class="hero-geo-summary">This lesson: a five-part prompt framework, a quick send check, a copy-ready library, and a short quiz — built for teams and leaders. Official site: www.promptanatomy.app.</p>'
     ],
 
     ['aria-label="Skaidrių navigacija"', 'aria-label="Slide navigation"'],

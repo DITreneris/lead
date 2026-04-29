@@ -9,7 +9,7 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 1. **Įvestis:** ką keiti (pvz. tik `index.html`, tik `docs/pamoka-1-pdf.md`, ar abi dalys)? Koks tikslas (turinys, UI, PDF, schema / duomenų peržūra, LT/EN)?
 2. **Maršrutas:**
    - **Turinys (LT)** — žemiau „Turinio agentas“; neardyti JS ir skaidrių be reikalo.
-   - **Turinys (EN) arba abu kalbas** — `scripts/en-html-replacements.cjs` (matomas HTML EN puslapyje), [assets/prompt-library-en.js](assets/prompt-library-en.js) (biblioteka), po pakeitimo `npm run build` ir `npm run verify` (įskaitant `site/en/index.html`).
+   - **Turinys (EN) arba abu kalbas** — `scripts/en-html-replacements.cjs` (matomas HTML EN puslapyje), [assets/prompt-library-en.js](assets/prompt-library-en.js) (biblioteka), po pakeitimo `npm run build` ir `npm run verify` (įskaitant `site/index.html` kaip EN).
    - **Skaidrės / CSS / nav / biblioteka** — „Frontend / skaidrės“ + „Biblioteka ir vadovo kelias“.
    - **PDF** — „PDF sinchronas“ (MD → build → commit PDF).
    - **Schemos, duomenų tikrinimas, planas prieš kodą** — Cursor skillas: Composer įkelti `@.cursor/skills/data-agent/SKILL.md` (ir pagal poreikį `@.cursor/skills/data-agent/reference.md`).
@@ -38,17 +38,17 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 ## LT / EN (i18n) ir deploy
 
 - **Šaltinis (LT):** [index.html](index.html) lieka kanoninis lietuviškas šablonas redagavimui.
-- **Build:** `npm run build` generuoja [site/](site/) (`site/index.html`, `site/lt/index.html`, `site/en/index.html`) su `canonical` / `hreflang`, `../assets/…` santykiniu keliu `lt/` ir `en/` puslapiuose; EN tekstas — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) + [scripts/build-locale-pages.js](scripts/build-locale-pages.js) (`og` / `twitter` antraštės EN šakoje). GitHub Pages projektui CI nustato `SITE_PREFIX=/lead` (`app-base-path`).
+- **Build:** `npm run build` generuoja [site/](site/) — **EN** į `site/index.html` (šaknis, kanonas JAV / pagrindinė auditorija), **LT** į `site/lt/index.html` (`../assets/…`), taip pat `robots.txt` ir `sitemap.xml`; `canonical` / `hreflang` / `x-default` → EN šaknis. EN tekstas — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) + [scripts/build-locale-pages.js](scripts/build-locale-pages.js). GitHub Pages projektui CI nustato `SITE_PREFIX=/lead` (`app-base-path`). Senas kelias `/en/` repozitoriuje nebegeneruojamas — apex serveryje pageidautina **301** iš `/en/` į `/`.
 - **Biblioteka EN:** kopijuojami tekstai anglų kalba — [assets/prompt-library-en.js](assets/prompt-library-en.js) (`window.__PROMPT_LIBRARY_EN__`); LT tekstai — `libraryPromptsLt` inline `index.html`. Naujas raktas: atnaujink abu šaltinius ir `syncLibraryDom` raktus HTML.
-- **PDF:** LT šaltinis — [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf); EN šaltinis — [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf). Build: `scripts/build-pdf.ps1` arba `build-pdf.sh` (abu failai). Statiniame EN HTML (`site/en/`) nuorodos į anglišką PDF — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs). **Patikra:** jei vartotojas atsisiuntė `www.promptanatomy.app.pdf`, tai LT failas — anglų turinį duoda tik `…-en.pdf` iš `/en/`.
+- **PDF:** LT šaltinis — [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf); EN šaltinis — [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf). Build: `scripts/build-pdf.ps1` arba `build-pdf.sh` (abu failai). Statiniame EN HTML (`site/index.html`) nuorodos į anglišką PDF — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs). **Patikra:** jei vartotojas atsisiuntė `www.promptanatomy.app.pdf`, tai LT failas — anglų turinį duoda tik `…-en.pdf` iš EN puslapio (šaknis `/`).
 - **GitHub Pages:** [.github/workflows/pages.yml](.github/workflows/pages.yml) paleidžia `npm install`, `npm run build` ir `npm run verify` prieš artefaktą; `BASE_PATH` jei kada nors reikės project site — aplinkos kintamasis build skripte.
 
 ### Dviguba patikra (LT↔EN)
 
 - **Viena redakcija — keli šaltiniai:** pakeitus matomą LT eilutę `index.html`, dažnai reikia atnaujinti ir [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) porą (kartais kelias poras: matomas tekstas, `aria-label`, `data-copy-text`).
 - **Biblioteka:** naujas ar pakeistas `data-emp-key` / `data-mgr-key` — visada **abu**: `libraryPromptsLt` ir [assets/prompt-library-en.js](assets/prompt-library-en.js) (vadovui atskiri `mgr_*`, jei taikoma).
-- **Dinaminiai pranešimai:** naujas tekstas į `aria-live`, `#a11y-status` ar mygtuko būseną po veiksmo — naudoti `uiText(lt, en)` (arba EN statinį HTML per build), kad `/en/` nepraleistų LT.
-- **Automatinė patikra:** `npm run build`, tada `npm run verify` — [scripts/verify-library-keys.js](scripts/verify-library-keys.js) (raktų paritetas HTML ↔ abu bibliotekos šaltiniai) ir [scripts/verify-en-locale.js](scripts/verify-en-locale.js) (dažni LT likučiai `site/en/index.html` ne `<script>` / ne CSS). **Pastaba:** `verify:en-locale` reikalauja jau sugeneruoto `site/en/index.html` (paleisk build).
+- **Dinaminiai pranešimai:** naujas tekstas į `aria-live`, `#a11y-status` ar mygtuko būseną po veiksmo — naudoti `uiText(lt, en)` (arba EN statinį HTML per build), kad EN šaknis nepraleistų LT.
+- **Automatinė patikra:** `npm run build`, tada `npm run verify` — [scripts/verify-library-keys.js](scripts/verify-library-keys.js) (raktų paritetas HTML ↔ abu bibliotekos šaltiniai) ir [scripts/verify-en-locale.js](scripts/verify-en-locale.js) (dažni LT likučiai `site/index.html` ne `<script>` / ne CSS). **Pastaba:** `verify:en-locale` reikalauja jau sugeneruoto `site/index.html` (EN; paleisk build).
 
 ## 1. Turinio agentas (LT)
 
@@ -64,7 +64,7 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 ## 3. PDF sinchronas
 
 - Šaltiniai: `docs/pamoka-1-pdf.md` (LT), `docs/pamoka-1-pdf-en.md` (EN). Po pakeitimo: `scripts/build-pdf.ps1` arba `scripts/build-pdf.sh`, tada commitinti atitinkamus `assets/www.promptanatomy.app.pdf` ir `assets/www.promptanatomy.app-en.pdf`.
-- Nuorodos puslapyje: LT → `assets/www.promptanatomy.app.pdf`; EN build (`/en/`) → angliškas failas (poros faile `en-html-replacements.cjs`).
+- Nuorodos puslapyje: LT → `assets/www.promptanatomy.app.pdf`; EN build (šaknis) → angliškas failas (poros faile `en-html-replacements.cjs`).
 - PR į `main`: jei keičiasi MD, tame pačiame PR turi keistis ir PDF — tikrina `.github/workflows/verify.yml` (kitu atveju CI failina).
 
 ## 4. Biblioteka ir vadovo kelias
