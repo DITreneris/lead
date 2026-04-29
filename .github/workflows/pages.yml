@@ -38,11 +38,6 @@ jobs:
           npm install
           npm run build
           npm run verify
-      - name: Prepare site artifact
-        run: |
-          set -euo pipefail
-          cp 404.html favicon.svg site/
-          cp -R assets site/assets
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:

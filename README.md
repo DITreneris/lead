@@ -32,6 +32,8 @@ Trumpa instrukcija (įskaitant *Settings → Pages → Source = GitHub Actions*)
 - **`index.html`**: visas UI (HTML + CSS + JS); EN statinis HTML generuoja `npm run build` → `site/index.html` (LT šaltinis → `site/lt/index.html`)
 - **`assets/prompt-library-en.js`**: angliški bibliotekos šablonai
 - **`scripts/build-locale-pages.js`**: LT / EN puslapių artefaktas `site/`
+- **`scripts/prepare-site-artifact.js`**: po locale build kopijuoja `404.html`, `favicon.svg` ir `assets/` į `site/` (GitHub Pages / Vercel)
+- **`vercel.json`**: `outputDirectory` = `site`, build su verify (žr. Vercel projekto nustatymus)
 - **`scripts/en-html-replacements.cjs`**: LT→EN statinio HTML poros build metu
 - **`scripts/verify-library-keys.js`** / **`scripts/verify-en-locale.js`**: patikros po build (`npm run verify`; žr. [AGENTS.md](AGENTS.md))
 - **`docs/pamoka-1-pdf.md`**: PDF šaltinis

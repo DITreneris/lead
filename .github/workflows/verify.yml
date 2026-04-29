@@ -47,6 +47,8 @@ jobs:
           test -f site/lt/index.html
           test -f site/robots.txt
           test -f site/sitemap.xml
+          test -f site/favicon.svg
+          test -f site/assets/prompt-library-en.js
           grep -q 'lang="lt"' site/lt/index.html
           grep -q 'lang="en"' site/index.html
           grep -q 'page-locale" content="en"' site/index.html
