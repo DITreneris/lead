@@ -31,7 +31,7 @@ function getEnHtmlReplacementPairs() {
     ],
     [
       '<p class="hero-geo-summary">Ši pamoka: penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Oficiali svetainė: www.promptanatomy.app.</p>',
-      '<p class="hero-geo-summary">This lesson: a five-part prompt framework, a quick send check, a copy-ready library, and a short quiz — built for teams and leaders. Official site: www.promptanatomy.app.</p>'
+      '<p class="hero-geo-summary">This lesson gives you a five-part prompt framework, a quick send check, a copy-ready library, and a short quiz for teams and leaders. Official site: www.promptanatomy.app.</p>'
     ],
 
     ['aria-label="Skaidrių navigacija"', 'aria-label="Slide navigation"'],
@@ -61,11 +61,11 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">DI praktinė sistema įmonei</span>', '<span class="label">Practical AI system for teams</span>'],
     [
       '<p class="hero-lead">Nuo DI „spėliojimo“ iki aiškios darbo sistemos: mažiau taisymo, daugiau kontrolės.</p>',
-      '<p class="hero-lead">From AI guesswork to a clear work system: less rework, more control.</p>'
+      '<p class="hero-lead">From AI guesswork to a clear operating system: less rework, more control.</p>'
     ],
     [
       '<p class="hero-meta">Pradėk nuo 2 min. praktikos, PDF pasiimk kai prireiks.<br>Toliau: šablonas, schema, greita patikra skaidrėse.</p>',
-      '<p class="hero-meta">Start with the 2 min practice; take the PDF when you need it.<br>Next: template, framework, quick check in the slides.</p>'
+      '<p class="hero-meta">Start with the 2-minute practice, then download the PDF when you need it.<br>Next: template, slide framework, and send check.</p>'
     ],
     [
       'href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf"',
