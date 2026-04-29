@@ -87,6 +87,10 @@ function getEnHtmlReplacementPairs() {
     ['<a href="#library" data-track="hero_library_click">Biblioteka</a>', '<a href="#library" data-track="hero_library_click">Library</a>'],
     ['<a href="#schema" data-track="hero_schema_click">Schema</a>', '<a href="#schema" data-track="hero_schema_click">Framework</a>'],
     ['<a href="#cta" data-track="hero_cta_click">Programa</a>', '<a href="#cta" data-track="hero_cta_click">Program</a>'],
+    [
+      '<a href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO ir COO executive rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a>',
+      '<a href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO and COO executive kit on promptanatomy.pro (opens in a new tab)">Executive kit</a>'
+    ],
 
     ['<section id="primer" class="types-slide" aria-label="Kas yra promptas?"', '<section id="primer" class="types-slide" aria-label="What is a prompt?"'],
     ['<span class="label">Pagrindai</span>', '<span class="label">Basics</span>'],

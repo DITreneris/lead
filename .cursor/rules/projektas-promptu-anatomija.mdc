@@ -10,6 +10,7 @@ alwaysApply: true
 - Stack: vienas pagrindinis **[index.html](index.html)** (HTML + CSS + JS vienoje byloje), statinis deploy į **GitHub Pages** (žr. [.github/workflows/pages.yml](.github/workflows/pages.yml) — `build` + `verify` prieš artefaktą; PR — [.github/workflows/verify.yml](.github/workflows/verify.yml)); LT↔EN drift patikra — [scripts/verify-library-keys.js](scripts/verify-library-keys.js), [scripts/verify-en-locale.js](scripts/verify-en-locale.js), žr. [AGENTS.md](AGENTS.md).
 - PDF: LT — [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf); EN — [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf); build: [scripts/build-pdf.ps1](scripts/build-pdf.ps1) / [scripts/build-pdf.sh](scripts/build-pdf.sh). Po MD pakeitimo — perbuildinti ir commitinti atitinkamą PDF; EN build (`site/index.html`, šaknis `/`) nuoroda į EN failą — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
 - Oficiali svetainė: https://www.promptanatomy.app/ — neplėsti stacko (frameworkų, bundlerių) be aiškios priežasties.
+- Seserinis domenas **promptanatomy.pro** (pvz. `/en/`) — executive „Prompt Operating Kit“ vadovybei; ne šio repo kanonas. Hero nuoroda į jį keičiama kartu su LT ir [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
 
 ## Golden standard (LT)
 

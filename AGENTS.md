@@ -17,6 +17,11 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 4. **Q_A (neprivaloma):** prieš commit ar po rizikingų pakeitimų — `@.cursor/skills/q-a-agent/SKILL.md` (įskaitant LT↔EN checklist); po `npm run build` — `npm run verify` (žr. žemiau **„Dviguba patikra“**).
 5. **Release:** žemiau skyriuje „Release“.
 
+## Ekosistema (domenai)
+
+- **Šis repo / kanonas:** [www.promptanatomy.app](https://www.promptanatomy.app/) — interaktyvi pamoka; LT redakcija — [index.html](index.html), EN statinis build — [site/index.html](site/index.html) po `npm run build`.
+- **Seserinis executive rinkinys:** [promptanatomy.pro/en/](https://promptanatomy.pro/en/) — CEO/COO „Prompt Operating Kit“; ne pakaitalas šiam repo ir ne kanoninis LT šaltinio URL. Jei keiti hero nuorodą į `.pro`: LT [index.html](index.html) + pora [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs), tada `npm run build` ir `npm run verify`.
+
 ## Golden standard (LT)
 
 - **Tonas**: visur „TU“ (profesionaliai, trumpai, be „mokyklos“ tono).
