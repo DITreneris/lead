@@ -135,6 +135,10 @@ function applyEnHead(html) {
       '<meta property="og:image:alt" content="Prompt Anatomy — practical AI system for teams">'
     ],
     [
+      '<meta name="twitter:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
+      '<meta name="twitter:image:alt" content="Prompt Anatomy — practical AI system for teams">'
+    ],
+    [
       '<meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">',
       '<meta name="twitter:title" content="Prompt Anatomy — for work and leadership">'
     ],
