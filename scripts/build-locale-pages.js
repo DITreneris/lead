@@ -159,7 +159,7 @@ function applyLtSocialEnglish(html) {
   return h;
 }
 
-function injectJsonLdPrimaryEn(html) {
+function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, faq }) {
   const payload = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -169,6 +169,33 @@ function injectJsonLdPrimaryEn(html) {
         url: originUrl('/'),
         inLanguage: 'en-US'
       },
+      {
+        '@type': 'WebPage',
+        name: pageName,
+        url: pageUrl,
+        inLanguage: pageLanguage,
+        isPartOf: {
+          '@type': 'WebSite',
+          url: originUrl('/')
+        }
+      },
+      ...(Array.isArray(faq) && faq.length
+        ? [
+            {
+              '@type': 'FAQPage',
+              url: pageUrl,
+              inLanguage: pageLanguage,
+              mainEntity: faq.map((item) => ({
+                '@type': 'Question',
+                name: item.q,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: item.a
+                }
+              }))
+            }
+          ]
+        : []),
       {
         '@type': 'Organization',
         name: 'Prompt Anatomy',
@@ -186,7 +213,7 @@ function applyEnHead(html) {
     ['<title>Promptų anatomija — darbui ir vadovavimui</title>', '<title>Prompt Anatomy — for work and leadership</title>'],
     [
       '<meta name="description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta name="description" content="A practical AI prompt system for teams: library, schema, quick send check, short quiz — less rework, more control.">'
+      '<meta name="description" content="A practical AI prompt framework for leaders: structure, quick send check, and a copy-ready library — less rework, more control.">'
     ],
     [
       '<meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">',
@@ -194,7 +221,7 @@ function applyEnHead(html) {
     ],
     [
       '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta property="og:description" content="A practical AI prompt system for teams: library, schema, quick send check, short quiz — less rework, more control.">'
+      '<meta property="og:description" content="A practical AI prompt framework for leaders: structure, quick send check, and a copy-ready library — less rework, more control.">'
     ],
     ['<meta property="og:locale" content="lt_LT">', '<meta property="og:locale" content="en_US">'],
     [
@@ -219,7 +246,7 @@ function applyEnHead(html) {
     ],
     [
       '<meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta name="twitter:description" content="A practical AI prompt system for teams: library, schema, quick send check, short quiz — less rework, more control.">'
+      '<meta name="twitter:description" content="A practical AI prompt framework for leaders: structure, quick send check, and a copy-ready library — less rework, more control.">'
     ]
   ];
   for (const [from, to] of headPairs) {
@@ -250,6 +277,11 @@ function buildLt(html, canonicalHref) {
   h = injectHreflangBlock(h, canonicalHref);
   h = setOgUrl(h, canonicalHref);
   h = applyLtSocialEnglish(h);
+  h = injectJsonLdForPage(h, {
+    pageUrl: canonicalHref,
+    pageLanguage: 'lt-LT',
+    pageName: 'Promptų anatomija — darbui ir vadovavimui'
+  });
   h = applySocialImageVersion(h);
   return h;
 }
@@ -259,7 +291,29 @@ function buildEn(html) {
   h = injectHreflangBlock(h, originUrl('/'));
   h = applyEnHead(h);
   h = applyEnBodyPairs(h);
-  h = injectJsonLdPrimaryEn(h);
+  h = injectJsonLdForPage(h, {
+    pageUrl: originUrl('/'),
+    pageLanguage: 'en-US',
+    pageName: 'Prompt Anatomy — for work and leadership',
+    faq: [
+      {
+        q: 'What should I include in a prompt for leadership updates?',
+        a: 'Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.'
+      },
+      {
+        q: 'How do I reduce hallucinated facts in client emails?',
+        a: 'Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.'
+      },
+      {
+        q: 'What’s a quick send check?',
+        a: 'A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.'
+      },
+      {
+        q: 'How do I get consistent outputs across my team?',
+        a: 'Use one shared template (role + context + reasoning + output), then iterate with the same checklist.'
+      }
+    ]
+  });
   h = applySocialImageVersion(h);
   return h;
 }

@@ -31,7 +31,7 @@ function getEnHtmlReplacementPairs() {
     ],
     [
       '<p class="hero-geo-summary">Ši pamoka: penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Brendo svetainė: www.promptanatomy.app.</p>',
-      '<p class="hero-geo-summary">This lesson gives you a five-part prompt framework, a quick send check, a copy-ready library, and a short quiz for teams and leaders. Brand site: www.promptanatomy.app.</p>'
+      '<p class="hero-geo-summary">A practical AI prompt framework for leaders: a 5-part structure, a quick send check, a copy-ready library, and a short quiz. Use it for leadership updates, client emails, and decision docs. Brand site: www.promptanatomy.app.</p>'
     ],
 
     ['aria-label="Skaidrių navigacija"', 'aria-label="Slide navigation"'],
@@ -90,6 +90,10 @@ function getEnHtmlReplacementPairs() {
     [
       '<a href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO ir COO executive rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a>',
       '<a href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO and COO executive kit on promptanatomy.pro (opens in a new tab)">Executive kit</a>'
+    ],
+    [
+      '<div class="geo-faq-anchor" data-geo-faq="1">\n                <p style="margin: 18px 0 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9;">DUK (trumpai)</p>\n                <div style="display: grid; gap: 10px; max-width: 34em;">\n                    <div><strong>Kam tai?</strong> Komandos darbui ir vadovui: mažiau taisymo, aiškesni rezultatai.</div>\n                    <div><strong>Kada naudoti patikrą?</strong> Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.</div>\n                    <div><strong>Ką kopijuoti?</strong> Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.</div>\n                </div>\n            </div>',
+      '<div class="geo-faq-anchor" data-geo-faq="1">\n                <p style="margin: 18px 0 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9;">FAQ (for leaders)</p>\n                <div style="display: grid; gap: 10px; max-width: 38em;">\n                    <div><strong>What should I include in a prompt for leadership updates?</strong> Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.</div>\n                    <div><strong>How do I reduce hallucinated facts in client emails?</strong> Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.</div>\n                    <div><strong>What’s a quick send check?</strong> A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.</div>\n                    <div><strong>How do I get consistent outputs across my team?</strong> Use one shared template (role + context + reasoning + output), then iterate with the same checklist.</div>\n                </div>\n            </div>'
     ],
 
     ['<section id="primer" class="types-slide" aria-label="Kas yra promptas?"', '<section id="primer" class="types-slide" aria-label="What is a prompt?"'],
