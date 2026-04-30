@@ -20,6 +20,12 @@ const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
 const SITE_PREFIX = (process.env.SITE_PREFIX || '').replace(/\/$/, '');
 /** Interactive lesson canonical host (social meta, sitemap). Override: PUBLIC_ORIGIN. Mother brand: www.promptanatomy.app (links in body). */
 const ORIGIN = (process.env.PUBLIC_ORIGIN || 'https://promptanatomy.cloud').replace(/\/$/, '');
+/** Cache-busting param for social crawlers (Twitter/X, Facebook/Meta). */
+const OG_IMAGE_VERSION = (process.env.OG_IMAGE_VERSION || '2026-04-30').trim();
+
+function escapeRegExp(str) {
+  return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 
 function originUrl(pathname) {
   const p = pathname.startsWith('/') ? pathname : '/' + pathname;
@@ -84,6 +90,28 @@ function setOgUrl(html, absoluteUrl) {
     /<meta property="og:url" content="[^"]*">/,
     `<meta property="og:url" content="${absoluteUrl}">`
   );
+}
+
+function applySocialImageVersion(html) {
+  if (!OG_IMAGE_VERSION) return html;
+  const v = encodeURIComponent(OG_IMAGE_VERSION);
+  const base = originUrl('/assets/og-promptanatomy.png');
+  const versioned = `${base}?v=${v}`;
+  const patterns = [
+    ['<meta property="og:image" content="', '<meta property="og:image" content="'],
+    ['<meta property="og:image:secure_url" content="', '<meta property="og:image:secure_url" content="'],
+    ['<meta name="twitter:image" content="', '<meta name="twitter:image" content="']
+  ];
+  let h = html;
+  for (const [needlePrefix] of patterns) {
+    const re = new RegExp(`${escapeRegExp(needlePrefix)}[^"]*"`, 'g');
+    h = h.replace(re, (m) => {
+      // Keep original tag prefix, just set content to canonical versioned URL.
+      const prefix = m.split(/content="/)[0] + 'content="';
+      return `${prefix}${versioned}"`;
+    });
+  }
+  return h;
 }
 
 /**
@@ -222,6 +250,7 @@ function buildLt(html, canonicalHref) {
   h = injectHreflangBlock(h, canonicalHref);
   h = setOgUrl(h, canonicalHref);
   h = applyLtSocialEnglish(h);
+  h = applySocialImageVersion(h);
   return h;
 }
 
@@ -231,6 +260,7 @@ function buildEn(html) {
   h = applyEnHead(h);
   h = applyEnBodyPairs(h);
   h = injectJsonLdPrimaryEn(h);
+  h = applySocialImageVersion(h);
   return h;
 }
 

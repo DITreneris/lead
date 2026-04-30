@@ -36,7 +36,7 @@ Trumpa instrukcija (įskaitant *Settings → Pages → Source = GitHub Actions*)
 - **`scripts/prepare-site-artifact.js`**: po locale build kopijuoja `404.html`, `favicon.svg` ir `assets/` į `site/` (GitHub Pages / Vercel)
 - **`vercel.json`**: `outputDirectory` = `site`, build su verify (žr. Vercel projekto nustatymus)
 - **`scripts/en-html-replacements.cjs`**: LT→EN statinio HTML poros build metu
-- **`scripts/verify-library-keys.js`** / **`scripts/verify-en-locale.js`**: patikros po build (`npm run verify`; žr. [AGENTS.md](AGENTS.md))
+- **`scripts/verify-library-keys.js`** / **`scripts/verify-en-locale.js`** / **`scripts/verify-social-meta.js`**: patikros po build (`npm run verify`; žr. [AGENTS.md](AGENTS.md))
 - **`docs/pamoka-1-pdf.md`**: PDF šaltinis
 - **`scripts/build-pdf.ps1` / `scripts/build-pdf.sh`**: MD → PDF build
 - **`assets/`**: statiniai failai (įskaitant PDF ir OG paveikslą)
@@ -48,6 +48,7 @@ Trumpa instrukcija (įskaitant *Settings → Pages → Source = GitHub Actions*)
 - **„Promptų bibliotekos“ kopijuojamas tekstas** turi gyventi `libraryPrompts` objekte (JS), o HTML `pre` blokai pildomi per `syncLibraryDom`.
 - Jei keiti `docs/pamoka-1-pdf.md`, **perbuildink PDF ir commitink abu**.
 - LT / EN: po `npm run build` paleisk **`npm run verify`** (raktų paritetas ir tipiniai LT likučiai EN puslapyje) — detalės [AGENTS.md](AGENTS.md).
+- Jei keiti OG paveikslą `assets/og-promptanatomy.png`, padidink `?v=` versiją `index.html` (arba naudok `OG_IMAGE_VERSION` per build), kad Facebook/X persikrautų kortelę.
 
 ## Lean repo ir release
 
