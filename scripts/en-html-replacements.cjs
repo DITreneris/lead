@@ -16,8 +16,8 @@ function getEnHtmlReplacementPairs() {
     ['<summary class="slide-outline__summary">Turinys</summary>', '<summary class="slide-outline__summary">Contents</summary>'],
 
     [
-      'aria-label="Promptų anatomija — oficiali svetainė www.promptanatomy.app (atidaryti naujame skirtuke)"',
-      'aria-label="Prompt Anatomy — official site www.promptanatomy.app (opens in a new tab)"'
+      'aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)"',
+      'aria-label="Prompt Anatomy — brand site www.promptanatomy.app (opens in a new tab)"'
     ],
     ['<div class="brand-tagline">DI praktinė sistema</div>', '<div class="brand-tagline">Practical AI system</div>'],
 
@@ -30,8 +30,8 @@ function getEnHtmlReplacementPairs() {
       '<h1>PROMPT<br><span style="color: var(--accent-yellow);">ANATOMY</span></h1>'
     ],
     [
-      '<p class="hero-geo-summary">Ši pamoka: penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Oficiali svetainė: www.promptanatomy.app.</p>',
-      '<p class="hero-geo-summary">This lesson gives you a five-part prompt framework, a quick send check, a copy-ready library, and a short quiz for teams and leaders. Official site: www.promptanatomy.app.</p>'
+      '<p class="hero-geo-summary">Ši pamoka: penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Brendo svetainė: www.promptanatomy.app.</p>',
+      '<p class="hero-geo-summary">This lesson gives you a five-part prompt framework, a quick send check, a copy-ready library, and a short quiz for teams and leaders. Brand site: www.promptanatomy.app.</p>'
     ],
 
     ['aria-label="Skaidrių navigacija"', 'aria-label="Slide navigation"'],

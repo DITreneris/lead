@@ -4,7 +4,7 @@
  * Generates GitHub Pages artifact under site/:
  *   site/index.html   — EN (primary), canonical /
  *   site/lt/index.html — LT, canonical /lt/
- *   robots.txt, sitemap.xml — apex URLs (+ BASE_PATH if set)
+ *   robots.txt, sitemap.xml — absoliutūs URL pagal PUBLIC_ORIGIN (+ BASE_PATH jei nustatyta)
  * Legacy /en/ is not generated; use server 301 /en/ → / on production.
  */
 const fs = require('fs');
@@ -18,7 +18,8 @@ const SITE_DIR = path.join(ROOT, 'site');
 const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
 /** GitHub Pages project URL prefix, e.g. `/lead` for https://user.github.io/lead/ — empty on apex domain. */
 const SITE_PREFIX = (process.env.SITE_PREFIX || '').replace(/\/$/, '');
-const ORIGIN = 'https://www.promptanatomy.app';
+/** Interactive lesson canonical host (social meta, sitemap). Override: PUBLIC_ORIGIN. Mother brand: www.promptanatomy.app (links in body). */
+const ORIGIN = (process.env.PUBLIC_ORIGIN || 'https://promptanatomy.cloud').replace(/\/$/, '');
 
 function originUrl(pathname) {
   const p = pathname.startsWith('/') ? pathname : '/' + pathname;
@@ -66,7 +67,8 @@ function injectHreflangBlock(html, canonicalHref) {
 function fixSubdirAssetPaths(html) {
   return html
     .replace(/href="assets\//g, 'href="../assets/')
-    .replace(/src="assets\//g, 'src="../assets/');
+    .replace(/src="assets\//g, 'src="../assets/')
+    .replace(/href="favicon\.svg"/g, 'href="../favicon.svg"');
 }
 
 function injectAppBasePathMeta(html) {

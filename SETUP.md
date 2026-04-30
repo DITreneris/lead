@@ -69,12 +69,12 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 
 ## Nuorodos
 
-- Oficiali svetainė: [https://www.promptanatomy.app/](https://www.promptanatomy.app/)
+- Interaktyvi pamoka (kanonas): [https://promptanatomy.cloud/](https://promptanatomy.cloud/) · motininė: [https://www.promptanatomy.app/](https://www.promptanatomy.app/)
 - Tęsinys (automation hub): [https://ditreneris.github.io/automation/](https://ditreneris.github.io/automation/)
 
-## Produkcija (apex)
+## Produkcija (pamoka)
 
-- Build sukuria `site/sitemap.xml` ir `site/robots.txt` su absoliučiais apex URL (`/` EN, `/lt/` LT). Po deploy į [www.promptanatomy.app](https://www.promptanatomy.app/) verta Google Search Console pateikti **`https://www.promptanatomy.app/sitemap.xml`**.
+- Build sukuria `site/sitemap.xml` ir `site/robots.txt` su absoliučiais URL (`/` EN, `/lt/` LT) pagal **`PUBLIC_ORIGIN`** ([scripts/build-locale-pages.js](scripts/build-locale-pages.js)), numatyta **`https://promptanatomy.cloud`**. Po deploy į tą domeną Search Console pateik **`https://promptanatomy.cloud/sitemap.xml`**.
 - Jei seniau buvo viešas kelias **`/en/`**, apex serveryje (CDN / hosting) nustatykite **301** į **`/`** — repozitoriuje `/en/` nebegeneruojamas.
 
 ## Šaltas deploy į GitHub (pvz. [DITreneris/lead](https://github.com/DITreneris/lead))
@@ -87,4 +87,4 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 4. **Pirmas Actions paleidimas:** po push atidarykite *Actions* ir leiskite workflow baigtis; jei reikia, *Settings → Actions → General* patvirtinkite workflow leidimus organizacijos lygmenyje.
 5. **Publikacija:** projekto Pages URL yra **`https://DITreneris.github.io/lead/`** (EN šaknis); lietuvių — **`https://DITreneris.github.io/lead/lt/`**. Adresas `https://DITreneris.github.io/en/` yra vartotojo/organizacijos šaknies svetainė (ne šis repo). Deploy workflow nustato `SITE_PREFIX=/lead`, kad kalbos perjungiklis ir `../assets/` veiktų po `/lead/`.
 
-**Pastaba:** `og:url`, `canonical` ir panašūs meta gali likti nukreipti į [www.promptanatomy.app](https://www.promptanatomy.app/) kaip į kanoninį domeną; tai normalu, jei `github.io` naudojate tik kaip papildomą ar perkėlimo etapą.
+**Pastaba:** `github.io` artefaktas gali būti antrinis URL; pamokos kanonas meta ir sitemap — **`promptanatomy.cloud`** (arba per `PUBLIC_ORIGIN` kitas viešas hostas).

@@ -50,7 +50,7 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] Po pakeitimų: `npm run build`, tada `npm run verify` (žr. [package.json](../../../package.json)) — CI tai daro po build. **`verify:en-locale`** neveiks be iš anksto sugeneruoto `site/index.html` (EN; pirmiau paleisk `npm run build`).
 - [ ] Build konsolėje **nėra** `[build] EN pair … LT fragment missing` / `EN head fragment not found` (žinutės iš [scripts/build-locale-pages.js](../../../scripts/build-locale-pages.js)).
 - [ ] **Terminologija EN** sutampa su [AGENTS.md](../../../AGENTS.md) skyriumi „Golden standard (EN)“ ir jau naudojamais žodžiais UI (pvz. „framework“, „prompt“, „library“ — ne maišyti atsitiktinai su kitais sinonimais vienoje šakoje).
-- [ ] Nauja ar keista **išorinė nuoroda į promptanatomy.pro**: LT ir EN poros [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs), `aria-label`, UTM; kanonas lieka `www.promptanatomy.app` (žr. AGENTS.md **„Ekosistema (domenai)“**).
+- [ ] Nauja ar keista **išorinė nuoroda į promptanatomy.pro**: LT ir EN poros [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs), `aria-label`, UTM; pamokos kanonas — `promptanatomy.cloud` (žr. AGENTS.md **„Ekosistema (domenai)“**).
 
 ### PDF ir release
 

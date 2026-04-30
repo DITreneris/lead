@@ -4,8 +4,9 @@ Vieno failo statinė interaktyvi pamoka (`index.html`) su „Promptų biblioteka
 
 ## Nuorodos
 
-- **Kanoninis puslapis**: `https://www.promptanatomy.app/` — **anglų (EN)** po `npm run build` / deploy; lietuvių — **`/lt/`**. Senas kelias `/en/` nebegeneruojamas; apex serveryje pageidautina **301** iš `/en/` į `/`.
-- **Seserinis executive rinkinys (EN):** `https://promptanatomy.pro/en/` — CEO/COO „Prompt Operating Kit“; papildo šią pamoką, kanonas lieka `.app`.
+- **Interaktyvi pamoka (kanonas):** `https://promptanatomy.cloud/` — **anglų (EN)** po `npm run build` / deploy; lietuvių — **`/lt/`**. Senas kelias `/en/` nebegeneruojamas; apex serveryje pageidautina **301** iš `/en/` į `/`. Kito staging kanonui build metu naudok env **`PUBLIC_ORIGIN`** (žr. [scripts/build-locale-pages.js](scripts/build-locale-pages.js)).
+- **Motininė svetainė:** `https://www.promptanatomy.app/` — atskiras brand puslapis (ne šios pamokos hostas).
+- **Seserinis executive rinkinys (EN):** `https://promptanatomy.pro/en/` — CEO/COO „Prompt Operating Kit“; papildo šią pamoką.
 - **GitHub Pages (repo `lead`)**: EN — **`https://ditreneris.github.io/lead/`** (šaknis), LT — **`https://ditreneris.github.io/lead/lt/`** (ne `…github.io/en/`).
 - **PDF santrauka (LT)**: `assets/www.promptanatomy.app.pdf` · **EN (šaknis)**: `assets/www.promptanatomy.app-en.pdf` (šaltiniai `docs/pamoka-1-pdf*.md`). Atsisiunčiant iš **anglų puslapio** (`/`), naršyklė turi pasiūlyti **`www.promptanatomy.app-en.pdf`** — jei matai **`www.promptanatomy.app.pdf`**, tai LT versija (atsisiuntei iš `/lt/`).
 - **Pakeitimų istorija**: [CHANGELOG.md](CHANGELOG.md)
