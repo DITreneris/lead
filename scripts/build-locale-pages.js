@@ -86,6 +86,51 @@ function setOgUrl(html, absoluteUrl) {
   );
 }
 
+/**
+ * LT page content stays Lithuanian; Open Graph / Twitter preview fields use English so og:image
+ * and shared cards match international English artwork and copy (same PNG as EN build).
+ */
+function applyLtSocialEnglish(html) {
+  const pairs = [
+    [
+      '<meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">',
+      '<meta property="og:title" content="Prompt Anatomy — for work and leadership">'
+    ],
+    [
+      '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
+      '<meta property="og:description" content="A practical AI prompt system for teams: library, schema, quick send check, short quiz — less rework, more control.">'
+    ],
+    [
+      '<meta property="og:site_name" content="Promptų anatomija">',
+      '<meta property="og:site_name" content="Prompt Anatomy">'
+    ],
+    [
+      '<meta property="og:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
+      '<meta property="og:image:alt" content="Prompt Anatomy — practical AI system for teams">'
+    ],
+    [
+      '<meta name="twitter:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
+      '<meta name="twitter:image:alt" content="Prompt Anatomy — practical AI system for teams">'
+    ],
+    [
+      '<meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">',
+      '<meta name="twitter:title" content="Prompt Anatomy — for work and leadership">'
+    ],
+    [
+      '<meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
+      '<meta name="twitter:description" content="A practical AI prompt system for teams: library, schema, quick send check, short quiz — less rework, more control.">'
+    ]
+  ];
+  let h = html;
+  for (const [from, to] of pairs) {
+    if (!h.includes(from)) {
+      console.warn('[build] LT social EN fragment not found:', from.slice(0, 72));
+    }
+    h = h.split(from).join(to);
+  }
+  return h;
+}
+
 function injectJsonLdPrimaryEn(html) {
   const payload = {
     '@context': 'https://schema.org',
@@ -176,6 +221,7 @@ function buildLt(html, canonicalHref) {
   let h = injectPageLocale(html, 'lt');
   h = injectHreflangBlock(h, canonicalHref);
   h = setOgUrl(h, canonicalHref);
+  h = applyLtSocialEnglish(h);
   return h;
 }
 
