@@ -22,6 +22,8 @@ const SITE_PREFIX = (process.env.SITE_PREFIX || '').replace(/\/$/, '');
 const ORIGIN = (process.env.PUBLIC_ORIGIN || 'https://promptanatomy.cloud').replace(/\/$/, '');
 /** Cache-busting param for social crawlers (Twitter/X, Facebook/Meta). */
 const OG_IMAGE_VERSION = (process.env.OG_IMAGE_VERSION || '2026-04-30').trim();
+/** Vercel sets this during builds on Vercel; omit analytics on GitHub Pages / local to avoid broken /_vercel paths under project URLs. */
+const VERCEL_BUILD = process.env.VERCEL === '1';
 
 function escapeRegExp(str) {
   return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -115,6 +117,20 @@ function applySocialImageVersion(html) {
 }
 
 /**
+ * Vercel Web Analytics (https://vercel.com/docs/analytics). Uses the HTML snippet pattern;
+ * dependency `@vercel/analytics` is installed for version alignment; script is injected here so
+ * static HTML works without a bundler.
+ */
+function injectVercelWebAnalytics(html) {
+  if (!VERCEL_BUILD) return html;
+  const snippet = `    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>`;
+  return html.replace('</head>', `${snippet}\n</head>`);
+}
+
+/**
  * LT page content stays Lithuanian; Open Graph / Twitter preview fields use English so og:image
  * and shared cards match international English artwork and copy (same PNG as EN build).
  */
@@ -126,7 +142,7 @@ function applyLtSocialEnglish(html) {
     ],
     [
       '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta property="og:description" content="A practical AI prompt system for teams: library, schema, quick send check, short quiz — less rework, more control.">'
+      '<meta property="og:description" content="A practical AI prompt framework for leaders: structure, quick send check, and a copy-ready library — less rework, more control.">'
     ],
     [
       '<meta property="og:site_name" content="Promptų anatomija">',
@@ -283,6 +299,7 @@ function buildLt(html, canonicalHref) {
     pageName: 'Promptų anatomija — darbui ir vadovavimui'
   });
   h = applySocialImageVersion(h);
+  h = injectVercelWebAnalytics(h);
   return h;
 }
 
@@ -315,6 +332,7 @@ function buildEn(html) {
     ]
   });
   h = applySocialImageVersion(h);
+  h = injectVercelWebAnalytics(h);
   return h;
 }
 

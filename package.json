@@ -7,5 +7,8 @@
     "verify:en-locale": "node scripts/verify-en-locale.js",
     "verify:social-meta": "node scripts/verify-social-meta.js",
     "verify": "node scripts/verify-library-keys.js && node scripts/verify-en-locale.js && node scripts/verify-social-meta.js"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
   }
 }

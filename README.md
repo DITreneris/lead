@@ -28,6 +28,11 @@ Projektas deploy’inamas iš repo šaknies per GitHub Actions workflow `.github
 
 Trumpa instrukcija (įskaitant *Settings → Pages → Source = GitHub Actions*): [SETUP.md](SETUP.md).
 
+## Vercel (Web Analytics)
+
+- **Įjunk** Vercel projekte: *Settings → Analytics* (Web Analytics).
+- **Paketas:** `npm i @vercel/analytics` — priklausomybė fiksuota `package.json`; statiniam HTML be bundlerio build skriptas įterpia oficialų snippetą tik kai **`VERCEL=1`** (Vercel build), kad GitHub Pages deploy nebandytų krauti `/_vercel/insights/script.js` iš neteisingo kelio.
+
 ## Projekto struktūra
 
 - **`index.html`**: visas UI (HTML + CSS + JS); EN statinis HTML generuoja `npm run build` → `site/index.html` (LT šaltinis → `site/lt/index.html`)
