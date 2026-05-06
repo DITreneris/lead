@@ -222,16 +222,16 @@ function getEnHtmlReplacementPairs() {
       '<div class="practice-structured-line"><strong>Role</strong> <span>work assistant</span></div>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Tikslas</strong> <span>Q3 planas, ką padaryti šią savaitę</span></div>',
-      '<div class="practice-structured-line"><strong>Goal</strong> <span>Q3 plan, what to do this week</span></div>'
+      '<div class="practice-structured-line"><strong>Tikslas</strong> <span>Q3 prioritetai, ši savaitė</span></div>',
+      '<div class="practice-structured-line"><strong>Goal</strong> <span>Q3 priorities, this week</span></div>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Įvestis</strong> <span>[laiškai / užrašai]</span></div>',
-      '<div class="practice-structured-line"><strong>Input</strong> <span>[emails / notes]</span></div>'
+      '<div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>',
+      '<div class="practice-structured-line"><strong>Input</strong> <span>notes / emails</span></div>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Rezultatas</strong> <span>7 punktai, A/B/C + terminai</span></div>',
-      '<div class="practice-structured-line"><strong>Output</strong> <span>7 bullets, A/B/C + deadlines</span></div>'
+      '<div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>',
+      '<div class="practice-structured-line"><strong>Output</strong> <span>action list (A/B/C)</span></div>'
     ],
     [
       '<p class="visually-hidden">Pilna užklausa nukopijuojama mygtuku Kopijuoti.</p>',

@@ -75,7 +75,7 @@
             --shadow-accent-yellow: 0 8px 24px rgba(251, 211, 4, 0.35);
             --scroll-anchor-top: 20px;
             /* Šoninė juosta: „Turinys“ ir taškai — tas pats kairys kraštas + taškų centravimas */
-            --sidebar-rail-left: 40px;
+            --sidebar-rail-left: 34px;
             /* Motion (nav, CTA, hero) */
             --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
             --duration-fast: 180ms;
@@ -282,7 +282,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 13px;
             z-index: 100;
             width: min(140px, calc(100vw - var(--sidebar-rail-left) - 16px));
             box-sizing: border-box;
@@ -321,11 +321,11 @@
         }
         button.nav-item {
             position: relative;
-            width: 14px;
-            height: 14px;
+            width: 11px;
+            height: 11px;
             padding: 0;
             margin: 0;
-            border: 2px solid rgba(255, 255, 255, 0.22);
+            border: 2px solid rgba(255, 255, 255, 0.14);
             border-radius: 50%;
             cursor: pointer;
             transition:
@@ -333,14 +333,14 @@
                 background-color var(--duration-fast) var(--ease-out),
                 border-color var(--duration-fast) var(--ease-out),
                 box-shadow var(--duration-base) var(--ease-out);
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.035);
             flex-shrink: 0;
             touch-action: manipulation;
         }
         button.nav-item.active {
             background: var(--accent-yellow);
             border-color: var(--accent-yellow);
-            transform: scale(1.22);
+            transform: scale(1.14);
             box-shadow: var(--shadow-nav-dot-active);
         }
 
@@ -1025,6 +1025,48 @@
             padding-top: 15px;
             border-top: 1px solid var(--border-hairline);
         }
+        #guided .types-triple-grid .types-card-extra {
+            margin-top: 0;
+        }
+        #guided .types-card-actions {
+            flex-shrink: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-hairline);
+        }
+        #guided .types-card-actions .types-copy-btn {
+            margin-top: 0;
+        }
+        #guided .types-copy-btn--practice {
+            color: rgba(255, 255, 255, 0.82);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+            font-size: 12px;
+            padding: 8px 14px;
+        }
+        #guided .types-copy-btn--practice:hover {
+            background: rgba(251, 211, 4, 0.1);
+            color: var(--accent-yellow-hover-text);
+            border-color: rgba(251, 211, 4, 0.45);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+        }
+        #guided .types-copy-btn--practice:focus-visible {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 3px;
+        }
+        #guided .types-card h3 {
+            text-transform: none;
+            letter-spacing: 0.02em;
+            font-size: clamp(15px, 1.12vw, 17px);
+        }
+        #guided .types-card .types-card-k {
+            color: var(--text-soft);
+            letter-spacing: 0.06em;
+        }
         /* #guided: kontrastas ir sąrašai (praktika) */
         #guided .types-card-example--minimal {
             font-style: normal;
@@ -1035,10 +1077,10 @@
         }
         #guided .types-card-example--structured {
             font-style: normal;
-            padding: 14px 16px;
+            padding: 12px 14px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             overflow-wrap: anywhere;
         }
         #guided .practice-structured-line {
@@ -1057,7 +1099,7 @@
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--accent-yellow);
+            color: rgba(167, 243, 208, 0.88);
         }
         #guided .practice-structured-line span {
             flex: 1 1 12em;
@@ -1075,9 +1117,6 @@
         }
         #guided .practice-card-list li:last-child {
             margin-bottom: 0;
-        }
-        #guided .practice-card-list--spaced {
-            margin-bottom: 7px;
         }
         #guided .types-card--ctx .types-card-example--structured {
             border-left-color: rgba(16, 185, 129, 0.55);
@@ -2081,6 +2120,10 @@
             }
         }
 
+        @media (min-width: 1367px) {
+            section { padding-left: 132px; }
+        }
+
         @media (max-width: 1366px) {
             section { padding-left: 90px; padding-right: 90px; }
             .promo-handoff { padding-left: 90px; padding-right: 90px; }
@@ -2126,11 +2169,11 @@
             }
             .nav-mobile button.nav-item::after {
                 content: '';
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
                 border-radius: var(--radius-pill);
-                border: 3px solid rgba(255, 255, 255, 0.22);
-                background: rgba(255, 255, 255, 0.06);
+                border: 2px solid rgba(255, 255, 255, 0.16);
+                background: rgba(255, 255, 255, 0.04);
                 box-sizing: border-box;
                 transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
             }
@@ -2442,8 +2485,10 @@
                     <p class="types-card-k">Užklausa</p>
                     <div class="types-example-block">
                         <p class="types-card-example types-card-example--minimal">„Paruošk ataskaitą apie mūsų Q3 iniciatyvą.“</p>
-                        <button type="button" class="types-copy-btn" data-copy-text="Paruošk ataskaitą apie mūsų Q3 iniciatyvą." aria-label="Kopijuoti 'prieš' užklausą" data-track="practice_before_copy">Kopijuoti</button>
                     </div>
+                </div>
+                <div class="types-card-actions">
+                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Paruošk ataskaitą apie mūsų Q3 iniciatyvą." aria-label="Kopijuoti 'prieš' užklausą" data-track="practice_before_copy">Kopijuoti</button>
                 </div>
                 <div class="types-card-extra">
                     <p class="types-card-k">Rizika</p>
@@ -2462,13 +2507,15 @@
                     <div class="types-example-block">
                         <div class="types-card-example types-card-example--structured">
                             <div class="practice-structured-line"><strong>Rolė</strong> <span>darbo asistentas</span></div>
-                            <div class="practice-structured-line"><strong>Tikslas</strong> <span>Q3 planas, ką padaryti šią savaitę</span></div>
-                            <div class="practice-structured-line"><strong>Įvestis</strong> <span>[laiškai / užrašai]</span></div>
-                            <div class="practice-structured-line"><strong>Rezultatas</strong> <span>7 punktai, A/B/C + terminai</span></div>
+                            <div class="practice-structured-line"><strong>Tikslas</strong> <span>Q3 prioritetai, ši savaitė</span></div>
+                            <div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>
+                            <div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>
                         </div>
                         <p class="visually-hidden">Pilna užklausa nukopijuojama mygtuku Kopijuoti.</p>
-                        <button type="button" class="types-copy-btn" data-copy-text="Tu esi mano darbo asistentas. Įvestis: [ĮKLIJUOK el. laišką / užrašus]. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Rezultatas: 7 punktų užduočių sąrašas (prioritetas A/B/C + terminas, jei paminėtas)." aria-label="Kopijuoti 'po' užklausą" data-track="practice_after_copy">Kopijuoti</button>
                     </div>
+                </div>
+                <div class="types-card-actions">
+                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Tu esi mano darbo asistentas. Įvestis: [ĮKLIJUOK el. laišką / užrašus]. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Rezultatas: 7 punktų užduočių sąrašas (prioritetas A/B/C + terminas, jei paminėtas)." aria-label="Kopijuoti 'po' užklausą" data-track="practice_after_copy">Kopijuoti</button>
                 </div>
                 <div class="types-card-extra">
                     <p class="types-card-k">Rezultatas</p>
@@ -2481,14 +2528,16 @@
                     <p class="types-card-desc">Pilna siuntimo patikra — kitoje skaidrėje.</p>
                     <p class="types-card-k">Ką tikrinti</p>
                     <div class="types-example-block">
-                        <ul class="practice-card-list practice-card-list--spaced">
+                        <ul class="practice-card-list">
                             <li>Ar faktai tikri?</li>
                             <li>Ko trūksta kontekste?</li>
                             <li>Kokios 2–3 rizikos?</li>
                             <li>Ką patikrinti nepriklausomu šaltiniu?</li>
                         </ul>
-                        <button type="button" class="types-copy-btn" data-copy-text="Patikra: 1) 3 didžiausios rizikos, 2) kas tinka naudoti, 3) ką turi patikrinti pats, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
                     </div>
+                </div>
+                <div class="types-card-actions">
+                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Patikra: 1) 3 didžiausios rizikos, 2) kas tinka naudoti, 3) ką turi patikrinti pats, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
                 </div>
                 <div class="types-card-extra">
                     <p class="types-card-k">Toliau</p>

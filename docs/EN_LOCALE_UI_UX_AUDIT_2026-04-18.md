@@ -1,7 +1,7 @@
-# English locale UI/UX audit — Prompt Anatomy (`/en/`)
+# English locale UI/UX audit — Prompt Anatomy (EN root)
 
 **Date:** 2026-04-18  
-**Scope:** User-facing and accessibility-relevant text on the built English page `site/en/index.html`, plus the English prompt library asset `assets/prompt-library-en.js`.  
+**Scope:** User-facing and accessibility-relevant text on the built English page `site/index.html` (EN root), plus the English prompt library asset `assets/prompt-library-en.js`.  
 **Method:** `npm run build` → `npm run verify`; manual review of `scripts/en-html-replacements.cjs` coverage; grep for Lithuanian diacritics; comparison of nav `aria-label` values vs landmark `section aria-label` values.
 
 ---
@@ -12,7 +12,7 @@ Several **landmark `section` elements** kept Lithuanian `aria-label` values on t
 
 Those gaps are **fixed** in `scripts/en-html-replacements.cjs` (build-time string pairs). **`scripts/verify-en-locale.js`** now fails the build if **any Lithuanian-specific letter** appears in the English HTML **outside** `<script>`, `<style>`, and HTML comments — reducing regression risk.
 
-The file `site/en/index.html` still contains **Lithuanian in HTML comments, CSS comments, and inside the inline script** (the `libraryPromptsLt` object remains in the bundle for the LT code path). That text is **not rendered** to end users, but it **is visible in “View source”** and increases noise for developers auditing the EN artifact.
+The file `site/index.html` still contains **Lithuanian in HTML comments, CSS comments, and inside the inline script** (the `libraryPromptsLt` object remains in the bundle for the LT code path). That text is **not rendered** to end users, but it **is visible in “View source”** and increases noise for developers auditing the EN artifact.
 
 ---
 
@@ -21,10 +21,10 @@ The file `site/en/index.html` still contains **Lithuanian in HTML comments, CSS 
 | Area | Severity | Finding |
 |------|----------|---------|
 | Landmarks | **Blocking (a11y / locale)** | Five `<section aria-label="…">` values stayed in Lithuanian (`Susitikimo ar sprinto planas`, `Ta pati žinutė — 3 lygiai`, `Turinio grįžtamasis ryšys`, `Užduotis / mokymas komandai`, `Laiškas ar žinutė (juodraštis)`). Nav items for the same slides were already in English — **inconsistent UX** for screen-reader users moving from nav to content. |
-| Brand / hero | **High (visible)** | `PROMPTŲ` / `ANATOMIJA` in `.brand-name` and `<h1>` on `/en/`. |
+| Brand / hero | **High (visible)** | `PROMPTŲ` / `ANATOMIJA` in `.brand-name` and `<h1>` on EN root. |
 | Automation | **Medium** | `verify-en-locale.js` only matched a fixed deny-list; **ASCII-only** Lithuanian phrases (e.g. `Susitikimo ar sprinto planas`) could slip through. |
 | EN prompt library | **OK** | `assets/prompt-library-en.js` contains **no** Lithuanian diacritics in the checked file. Runtime selection uses `window.__PROMPT_LIBRARY_EN__` when `LOCALE === 'en'`. |
-| Product PDF | **By design** | English UI states that the downloadable summary PDF is **Lithuanian** (see existing `aria-label` / hero copy in replacements). |
+| Product PDF | **Must match UI** | English UI should point to the English summary PDF (`assets/www.promptanatomy.app-en.pdf`) and make the language explicit in `aria-label` / CTA copy. |
 
 ---
 
@@ -43,9 +43,9 @@ The file `site/en/index.html` still contains **Lithuanian in HTML comments, CSS 
 
 | Location | User impact | Recommendation |
 |----------|-------------|----------------|
-| `<!-- … -->` slide markers in `site/en/index.html` | None (comments not rendered) | Optional: translate comments in **source** `index.html` to neutral English for maintainers, or strip comments in a future build step. |
+| `<!-- … -->` slide markers in `site/index.html` | None (comments not rendered) | Optional: translate comments in **source** `index.html` to neutral English for maintainers, or strip comments in a future build step. |
 | `/* … */` inside `<style>` | None | Same as above — developer ergonomics only. |
-| Inline `<script>`: `libraryPromptsLt` object | None at runtime on `/en/` if `prompt-library-en.js` loads | Long-term: split bundles so EN pages do not ship LT strings (smaller HTML, cleaner audits). |
+| Inline `<script>`: `libraryPromptsLt` object | None at runtime on EN root if `prompt-library-en.js` loads | Long-term: split bundles so EN pages do not ship LT strings (smaller HTML, cleaner audits). |
 
 ---
 
@@ -66,7 +66,7 @@ npm run build
 npm run verify
 ```
 
-Expected: `[verify-library-keys] OK` and `[verify-en-locale] OK` for `site/en/index.html`.
+Expected: `[verify-library-keys] OK` and `[verify-en-locale] OK` for `site/index.html`.
 
 ---
 
