@@ -145,7 +145,10 @@ function getEnHtmlReplacementPairs() {
     ],
     ['data-track="primer_copy_format">Kopijuoti</button>', 'data-track="primer_copy_format">Copy</button>'],
     ['<span class="types-card-k">Toliau</span>', '<span class="types-card-k">Next</span>'],
-    ['data-track="primer_to_schema">Schema ↓</a>', 'data-track="primer_to_schema">Framework ↓</a>'],
+    [
+      '<a class="inline-link inline-link--soft primer-next-cta" href="#schema" data-track="primer_to_schema">Schema ↓</a>',
+      '<a class="inline-link inline-link--soft primer-next-cta" href="#schema" data-track="primer_to_schema">Framework ↓</a>'
+    ],
 
     ['<section id="schema" class="schema-section" aria-label="Promptų anatomijos schema"', '<section id="schema" class="schema-section" aria-label="Prompt anatomy framework"'],
     ['<span class="label">Žingsniai</span>', '<span class="label">Steps</span>'],
