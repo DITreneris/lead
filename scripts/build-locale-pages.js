@@ -296,7 +296,21 @@ function buildLt(html, canonicalHref) {
   h = injectJsonLdForPage(h, {
     pageUrl: canonicalHref,
     pageLanguage: 'lt-LT',
-    pageName: 'Promptų anatomija — darbui ir vadovavimui'
+    pageName: 'Promptų anatomija — darbui ir vadovavimui',
+    faq: [
+      {
+        q: 'Kam tai?',
+        a: 'Komandos darbui ir vadovui: mažiau taisymo, aiškesni rezultatai.'
+      },
+      {
+        q: 'Kada naudoti patikrą?',
+        a: 'Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.'
+      },
+      {
+        q: 'Ką kopijuoti?',
+        a: 'Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.'
+      }
+    ]
   });
   h = applySocialImageVersion(h);
   h = injectVercelWebAnalytics(h);
