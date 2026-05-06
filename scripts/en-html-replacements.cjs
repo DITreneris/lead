@@ -13,7 +13,10 @@ function getEnHtmlReplacementPairs() {
     ['aria-label="Kalbos pasirinkimas"', 'aria-label="Language selection"'],
     ['aria-label="Perjungti į lietuvių kalbą"', 'aria-label="Switch to Lithuanian"'],
 
-    ['<summary class="slide-outline__summary">Turinys</summary>', '<summary class="slide-outline__summary">Contents</summary>'],
+    [
+      '<summary class="slide-outline__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Turinys</summary>',
+      '<summary class="slide-outline__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Contents</summary>'
+    ],
 
     [
       'aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)"',
@@ -26,8 +29,8 @@ function getEnHtmlReplacementPairs() {
       '<div class="brand-name"><span class="brand-prompt">PROMPT</span> <span class="brand-anatomy">ANATOMY</span></div>'
     ],
     [
-      '<h1>PROMPTŲ<br><span style="color: var(--accent-yellow);">ANATOMIJA</span></h1>',
-      '<h1>PROMPT<br><span style="color: var(--accent-yellow);">ANATOMY</span></h1>'
+      '<h1>PROMPTŲ<br><span class="hero-title-accent">ANATOMIJA</span></h1>',
+      '<h1>PROMPT<br><span class="hero-title-accent">ANATOMY</span></h1>'
     ],
     [
       '<p class="hero-intro">Penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Nuo DI „spėliojimo“ iki aiškios sistemos: mažiau taisymo, daugiau kontrolės.</p>',
@@ -142,7 +145,7 @@ function getEnHtmlReplacementPairs() {
     ],
     ['data-track="primer_copy_format">Kopijuoti</button>', 'data-track="primer_copy_format">Copy</button>'],
     ['<span class="types-card-k">Toliau</span>', '<span class="types-card-k">Next</span>'],
-    ['data-track="primer_to_schema" style="color: rgba(255, 255, 255, 0.82); text-decoration: none; font-weight: 800;">Schema ↓</a>', 'data-track="primer_to_schema" style="color: rgba(255, 255, 255, 0.82); text-decoration: none; font-weight: 800;">Framework ↓</a>'],
+    ['data-track="primer_to_schema">Schema ↓</a>', 'data-track="primer_to_schema">Framework ↓</a>'],
 
     ['<section id="schema" class="schema-section" aria-label="Promptų anatomijos schema"', '<section id="schema" class="schema-section" aria-label="Prompt anatomy framework"'],
     ['<span class="label">Žingsniai</span>', '<span class="label">Steps</span>'],
@@ -258,7 +261,7 @@ function getEnHtmlReplacementPairs() {
     ],
     ['data-track="practice_qc_copy">Kopijuoti</button>', 'data-track="practice_qc_copy">Copy</button>'],
     ['<p class="types-card-k">Toliau</p>', '<p class="types-card-k">Next</p>'],
-    ['data-track="practice_next_click" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;">Kelio planas ↓</a>', 'data-track="practice_next_click" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;">Roadmap ↓</a>'],
+    ['data-track="practice_next_click">Kelio planas ↓</a>', 'data-track="practice_next_click">Roadmap ↓</a>'],
 
     [
       '<section id="roadmap" class="roadmap-slide" aria-label="Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"',
@@ -437,8 +440,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Biblioteka</span>', '<span class="label">Library</span>'],
     ['<h2>Promptų biblioteka</h2>', '<h2>Prompt library</h2>'],
     [
-      '<p class="library-lead">Kopijuok, užpildyk <strong>[žymes]</strong>, paleisk. Dažniausias startas: <a class="inline-link" href="#lib-cat-work" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;" data-track="library_quick_work">Kasdienis darbas</a> → dienos santrauka ar užduočių sąrašas.</p>',
-      '<p class="library-lead">Copy, fill <strong>[placeholders]</strong>, run. Most common start: <a class="inline-link" href="#lib-cat-work" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;" data-track="library_quick_work">Daily work</a> → day summary or task list.</p>'
+      '<p class="library-lead">Kopijuok, užpildyk <strong>[žymes]</strong>, paleisk. Dažniausias startas: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Kasdienis darbas</a> → dienos santrauka ar užduočių sąrašas.</p>',
+      '<p class="library-lead">Copy, fill <strong>[placeholders]</strong>, run. Most common start: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Daily work</a> → day summary or task list.</p>'
     ],
     ['aria-label="Bibliotekos auditorija"', 'aria-label="Library audience"'],
     ['>Darbuotojas</button>', '>Individual contributor</button>'],
@@ -451,8 +454,8 @@ function getEnHtmlReplacementPairs() {
     ['<li>„Kopijuoti“.</li>', '<li>“Copy”.</li>'],
     ['<li>Užpildyk <strong>[...]</strong>.</li>', '<li>Fill <strong>[...]</strong>.</li>'],
     [
-      '<li>Per miglą — <a class="inline-link" href="#schema" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;" data-track="library_back_to_schema">schema</a>, pridėk trūkstamą žingsnį.</li>',
-      '<li>If fuzzy — <a class="inline-link" href="#schema" style="color: var(--accent-yellow); text-decoration: none; font-weight: 800;" data-track="library_back_to_schema">framework</a>, add the missing step.</li>'
+      '<li>Per miglą — <a class="inline-link inline-link--accent" href="#schema" data-track="library_back_to_schema">schema</a>, pridėk trūkstamą žingsnį.</li>',
+      '<li>If fuzzy — <a class="inline-link inline-link--accent" href="#schema" data-track="library_back_to_schema">framework</a>, add the missing step.</li>'
     ],
     ['<summary class="library-cat-summary">Kasdienis darbas</summary>', '<summary class="library-cat-summary">Daily work</summary>'],
     ['<h4>Dienos santrauka</h4>', '<h4>Day summary</h4>'],
