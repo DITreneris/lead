@@ -680,6 +680,8 @@
         .promo-handoff .container {
             max-width: 1180px;
             margin: 0 auto;
+            grid-template-columns: 1fr;
+            justify-items: center;
         }
         .promo-handoff__panel {
             max-width: 640px;
@@ -1103,7 +1105,7 @@
         .library-slide {
             min-height: auto;
             align-items: flex-start;
-            padding: 84px 0 100px;
+            padding: 64px 0 76px;
         }
         .library-slide .container {
             grid-template-columns: 1fr;
@@ -1115,19 +1117,37 @@
             font-size: clamp(16px, 1.2vw, 19px);
             line-height: 1.55;
             color: var(--text-muted);
-            margin: 0 0 28px;
+            margin: 0 0 20px;
             max-width: 40em;
+        }
+        .library-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px 18px;
+            margin-bottom: 18px;
+        }
+        .library-toolbar .library-tabs {
+            margin-bottom: 0;
+        }
+        .library-toolbar .library-actions {
+            margin: 0;
         }
         .library-howto {
             background: var(--surface-muted-deep);
             border: 1px solid var(--border-hairline);
             border-radius: var(--radius-lg);
             padding: 0;
-            margin-bottom: 36px;
+            margin-bottom: 24px;
         }
         .library-howto-summary {
             list-style: none;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
             font-family: var(--font-display);
             font-size: clamp(18px, 1.4vw, 22px);
             margin: 0;
@@ -1135,6 +1155,23 @@
             color: var(--accent-yellow);
             border-bottom: 1px solid var(--border-hairline);
             background: var(--surface-inset-soft);
+            transition: background 0.15s;
+        }
+        .library-howto-summary__title {
+            flex: 1;
+            min-width: 0;
+        }
+        .library-howto-summary::after {
+            content: '›';
+            flex-shrink: 0;
+            font-size: 1.35em;
+            font-weight: 700;
+            line-height: 1;
+            opacity: 0.88;
+            transition: transform 0.2s ease;
+        }
+        details.library-howto[open] > .library-howto-summary::after {
+            transform: rotate(90deg);
         }
         .library-howto-summary::-webkit-details-marker { display: none; }
         .library-howto-summary::marker { content: ''; }
@@ -1159,7 +1196,7 @@
             scroll-margin-top: 100px;
         }
         .library-cat-details {
-            margin-bottom: 36px;
+            margin-bottom: 22px;
             border: 1px solid var(--border-hairline);
             border-radius: var(--radius-lg);
             background: var(--surface-inset);
@@ -1168,16 +1205,45 @@
         .library-cat-summary {
             list-style: none;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
             font-family: var(--font-display);
             font-size: clamp(17px, 1.25vw, 21px);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
             margin: 0;
             padding: 14px 18px;
             border-bottom: 1px solid var(--border-hairline);
             color: var(--text-bright);
             background: var(--surface-muted);
             transition: background 0.15s;
+        }
+        .library-cat-summary__title {
+            flex: 1;
+            min-width: 0;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .library-cat-summary__meta {
+            flex-shrink: 0;
+            font-family: var(--font-main);
+            font-size: clamp(11px, 0.82vw, 13px);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: none;
+            color: var(--text-muted);
+        }
+        .library-cat-summary::after {
+            content: '›';
+            flex-shrink: 0;
+            font-size: 1.25em;
+            font-weight: 700;
+            line-height: 1;
+            opacity: 0.88;
+            transition: transform 0.2s ease;
+        }
+        details.library-cat-details[open] > .library-cat-summary::after {
+            transform: rotate(90deg);
         }
         .library-cat-summary::-webkit-details-marker { display: none; }
         .library-cat-summary::marker { content: ''; }
@@ -1241,8 +1307,8 @@
         }
         .library-actions .types-copy-btn,
         .library-actions .library-toggle-all {
-            padding: 10px 14px;
-            font-size: 12px;
+            padding: 11px 16px;
+            font-size: clamp(12px, 0.95vw, 14px);
         }
         .library-toggle-all {
             font-family: var(--font-main);
@@ -1286,6 +1352,13 @@
         .library-tabs [role="tab"]:focus-visible {
             outline: 2px solid var(--accent-yellow);
             outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .library-howto-summary::after,
+            .library-cat-summary::after {
+                transition: none;
+            }
         }
 
         /* Biblioteka: šuoliai į kategorijas (sumažina slinkimo apkrovą) */
@@ -2504,19 +2577,21 @@
     <div class="container">
         <span class="label">Biblioteka</span>
         <h2>Promptų biblioteka</h2>
-        <p class="library-lead">Kopijuok, užpildyk <strong>[žymes]</strong>, paleisk. Dažniausias startas: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Kasdienis darbas</a> → dienos santrauka ar užduočių sąrašas.</p>
+        <p class="library-lead">Čia — paruoštos užklausos į DI: atsidaryk kategoriją ir nukopijuok. Dažniausias startas: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Kasdienis darbas</a> → dienos santrauka ar užduočių sąrašas.</p>
 
-        <div class="library-tabs" role="tablist" aria-label="Bibliotekos auditorija">
-            <button type="button" class="library-tab" role="tab" id="library-tab-emp" aria-selected="true" aria-controls="library-panels">Darbuotojas</button>
-            <button type="button" class="library-tab" role="tab" id="library-tab-mgr" aria-selected="false" aria-controls="library-panels">Vadovas</button>
-        </div>
+        <div class="library-toolbar">
+            <div class="library-tabs" role="tablist" aria-label="Bibliotekos auditorija">
+                <button type="button" class="library-tab" role="tab" id="library-tab-emp" aria-selected="true" aria-controls="library-panels">Darbuotojas</button>
+                <button type="button" class="library-tab" role="tab" id="library-tab-mgr" aria-selected="false" aria-controls="library-panels">Vadovas</button>
+            </div>
 
-        <div class="library-actions" aria-label="Bibliotekos valdikliai">
-            <button type="button" class="library-toggle-all" id="library-expand-toggle" aria-expanded="false" aria-label="Išskleisti visas bibliotekos kategorijas ir instrukciją „Kaip naudoti“" data-track="library_toggle_all">Išskleisti viską</button>
+            <div class="library-actions" aria-label="Bibliotekos valdikliai">
+                <button type="button" class="library-toggle-all" id="library-expand-toggle" aria-expanded="false" aria-label="Išskleisti visas bibliotekos kategorijas ir instrukciją „Kaip naudoti“" data-track="library_toggle_all">Išskleisti viską</button>
+            </div>
         </div>
 
         <details class="library-howto" id="library-howto">
-            <summary class="library-howto-summary">Kaip naudoti (30 sek.)</summary>
+            <summary class="library-howto-summary"><span class="library-howto-summary__title">Kaip naudoti (30 sek.)</span></summary>
             <div class="library-howto-body">
                 <ol>
                     <li>„Kopijuoti“.</li>
@@ -2528,8 +2603,8 @@
 
         <div class="library-categories" id="library-panels" role="tabpanel" aria-labelledby="library-tab-emp" aria-live="polite" aria-atomic="true">
             <article class="library-cat" id="lib-cat-work">
-                <details class="library-cat-details" open>
-                    <summary class="library-cat-summary">Kasdienis darbas</summary>
+                <details class="library-cat-details">
+                    <summary class="library-cat-summary"><span class="library-cat-summary__title">Kasdienis darbas</span><span class="library-cat-summary__meta">3 šablonai</span></summary>
                     <div class="library-cat-body">
                         <div class="library-item">
                             <h4>Dienos santrauka</h4>
@@ -2552,7 +2627,7 @@
 
             <article class="library-cat" id="lib-cat-comm">
                 <details class="library-cat-details">
-                    <summary class="library-cat-summary">Komunikacija</summary>
+                    <summary class="library-cat-summary"><span class="library-cat-summary__title">Komunikacija</span><span class="library-cat-summary__meta">5 šablonai</span></summary>
                     <div class="library-cat-body">
                         <div class="library-item">
                             <h4>Atsakymas į laišką</h4>
@@ -2585,7 +2660,7 @@
 
             <article class="library-cat" id="lib-cat-qc">
                 <details class="library-cat-details">
-                    <summary class="library-cat-summary">Kokybė ir patikra</summary>
+                    <summary class="library-cat-summary"><span class="library-cat-summary__title">Kokybė ir patikra</span><span class="library-cat-summary__meta">2 šablonai</span></summary>
                     <div class="library-cat-body">
                         <div class="library-item">
                             <h4>Užklausos kokybės patikrinimas (pagal 5 principus)</h4>

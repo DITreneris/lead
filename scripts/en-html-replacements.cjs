@@ -440,8 +440,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Biblioteka</span>', '<span class="label">Library</span>'],
     ['<h2>Promptų biblioteka</h2>', '<h2>Prompt library</h2>'],
     [
-      '<p class="library-lead">Kopijuok, užpildyk <strong>[žymes]</strong>, paleisk. Dažniausias startas: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Kasdienis darbas</a> → dienos santrauka ar užduočių sąrašas.</p>',
-      '<p class="library-lead">Copy, fill <strong>[placeholders]</strong>, run. Most common start: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Daily work</a> → day summary or task list.</p>'
+      '<p class="library-lead">Čia — paruoštos užklausos į DI: atsidaryk kategoriją ir nukopijuok. Dažniausias startas: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Kasdienis darbas</a> → dienos santrauka ar užduočių sąrašas.</p>',
+      '<p class="library-lead">Here — ready-made prompts for AI: open a category and copy. Most common start: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Daily work</a> → day summary or task list.</p>'
     ],
     ['aria-label="Bibliotekos auditorija"', 'aria-label="Library audience"'],
     ['>Darbuotojas</button>', '>Individual contributor</button>'],
@@ -450,14 +450,20 @@ function getEnHtmlReplacementPairs() {
       'aria-label="Išskleisti visas bibliotekos kategorijas ir instrukciją „Kaip naudoti“" data-track="library_toggle_all">Išskleisti viską</button>',
       'aria-label="Expand all library categories and the How to use section" data-track="library_toggle_all">Expand all</button>'
     ],
-    ['<summary class="library-howto-summary">Kaip naudoti (30 sek.)</summary>', '<summary class="library-howto-summary">How to use (30 sec)</summary>'],
+    [
+      '<summary class="library-howto-summary"><span class="library-howto-summary__title">Kaip naudoti (30 sek.)</span></summary>',
+      '<summary class="library-howto-summary"><span class="library-howto-summary__title">How to use (30 sec)</span></summary>'
+    ],
     ['<li>„Kopijuoti“.</li>', '<li>“Copy”.</li>'],
     ['<li>Užpildyk <strong>[...]</strong>.</li>', '<li>Fill <strong>[...]</strong>.</li>'],
     [
       '<li>Per miglą — <a class="inline-link inline-link--accent" href="#schema" data-track="library_back_to_schema">schema</a>, pridėk trūkstamą žingsnį.</li>',
       '<li>If fuzzy — <a class="inline-link inline-link--accent" href="#schema" data-track="library_back_to_schema">framework</a>, add the missing step.</li>'
     ],
-    ['<summary class="library-cat-summary">Kasdienis darbas</summary>', '<summary class="library-cat-summary">Daily work</summary>'],
+    [
+      '<summary class="library-cat-summary"><span class="library-cat-summary__title">Kasdienis darbas</span><span class="library-cat-summary__meta">3 šablonai</span></summary>',
+      '<summary class="library-cat-summary"><span class="library-cat-summary__title">Daily work</span><span class="library-cat-summary__meta">3 templates</span></summary>'
+    ],
     ['<h4>Dienos santrauka</h4>', '<h4>Day summary</h4>'],
     [
       'aria-label="Kopijuoti dienos santraukos užklausą" data-track="library_copy_daySummary">Kopijuoti</button>',
@@ -473,7 +479,10 @@ function getEnHtmlReplacementPairs() {
       'aria-label="Kopijuoti susitikimo užrašų užklausą" data-track="library_copy_meetingNotes">Kopijuoti</button>',
       'aria-label="Copy meeting-notes prompt" data-track="library_copy_meetingNotes">Copy</button>'
     ],
-    ['<summary class="library-cat-summary">Komunikacija</summary>', '<summary class="library-cat-summary">Communication</summary>'],
+    [
+      '<summary class="library-cat-summary"><span class="library-cat-summary__title">Komunikacija</span><span class="library-cat-summary__meta">5 šablonai</span></summary>',
+      '<summary class="library-cat-summary"><span class="library-cat-summary__title">Communication</span><span class="library-cat-summary__meta">5 templates</span></summary>'
+    ],
     ['<h4>Atsakymas į laišką</h4>', '<h4>Email reply</h4>'],
     [
       'aria-label="Kopijuoti atsakymo į laišką užklausą" data-track="library_copy_emailReply">Kopijuoti</button>',
@@ -499,7 +508,10 @@ function getEnHtmlReplacementPairs() {
       'aria-label="Kopijuoti įtampos mažinimo užklausą" data-track="library_copy_deescalateMessage">Kopijuoti</button>',
       'aria-label="Copy de-escalation prompt" data-track="library_copy_deescalateMessage">Copy</button>'
     ],
-    ['<summary class="library-cat-summary">Kokybė ir patikra</summary>', '<summary class="library-cat-summary">Quality and checks</summary>'],
+    [
+      '<summary class="library-cat-summary"><span class="library-cat-summary__title">Kokybė ir patikra</span><span class="library-cat-summary__meta">2 šablonai</span></summary>',
+      '<summary class="library-cat-summary"><span class="library-cat-summary__title">Quality and checks</span><span class="library-cat-summary__meta">2 templates</span></summary>'
+    ],
     ['<h4>Užklausos kokybės patikrinimas (pagal 5 principus)</h4>', '<h4>Prompt quality check (five principles)</h4>'],
     [
       '<p class="library-goal">Įklijuok savo užklausą (promptą) ir paleisk.</p>',
