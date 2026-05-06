@@ -142,7 +142,7 @@ function applyLtSocialEnglish(html) {
     ],
     [
       '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta property="og:description" content="A practical AI prompt framework for leaders: structure, quick send check, and a copy-ready library — less rework, more control.">'
+      '<meta property="og:description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
     ],
     [
       '<meta property="og:site_name" content="Promptų anatomija">',
@@ -150,11 +150,11 @@ function applyLtSocialEnglish(html) {
     ],
     [
       '<meta property="og:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
-      '<meta property="og:image:alt" content="Prompt Anatomy — practical AI system for teams">'
+      '<meta property="og:image:alt" content="Prompt Anatomy — practical AI for teams">'
     ],
     [
       '<meta name="twitter:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
-      '<meta name="twitter:image:alt" content="Prompt Anatomy — practical AI system for teams">'
+      '<meta name="twitter:image:alt" content="Prompt Anatomy — practical AI for teams">'
     ],
     [
       '<meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">',
@@ -162,7 +162,7 @@ function applyLtSocialEnglish(html) {
     ],
     [
       '<meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta name="twitter:description" content="A practical AI prompt system for teams: library, schema, quick send check, short quiz — less rework, more control.">'
+      '<meta name="twitter:description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
     ]
   ];
   let h = html;
@@ -229,7 +229,7 @@ function applyEnHead(html) {
     ['<title>Promptų anatomija — darbui ir vadovavimui</title>', '<title>Prompt Anatomy — for work and leadership</title>'],
     [
       '<meta name="description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta name="description" content="A practical AI prompt framework for leaders: structure, quick send check, and a copy-ready library — less rework, more control.">'
+      '<meta name="description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
     ],
     [
       '<meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">',
@@ -237,7 +237,7 @@ function applyEnHead(html) {
     ],
     [
       '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta property="og:description" content="A practical AI prompt framework for leaders: structure, quick send check, and a copy-ready library — less rework, more control.">'
+      '<meta property="og:description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
     ],
     ['<meta property="og:locale" content="lt_LT">', '<meta property="og:locale" content="en_US">'],
     [
@@ -250,11 +250,11 @@ function applyEnHead(html) {
     ],
     [
       '<meta property="og:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
-      '<meta property="og:image:alt" content="Prompt Anatomy — practical AI system for teams">'
+      '<meta property="og:image:alt" content="Prompt Anatomy — practical AI for teams">'
     ],
     [
       '<meta name="twitter:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
-      '<meta name="twitter:image:alt" content="Prompt Anatomy — practical AI system for teams">'
+      '<meta name="twitter:image:alt" content="Prompt Anatomy — practical AI for teams">'
     ],
     [
       '<meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">',
@@ -262,7 +262,7 @@ function applyEnHead(html) {
     ],
     [
       '<meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta name="twitter:description" content="A practical AI prompt framework for leaders: structure, quick send check, and a copy-ready library — less rework, more control.">'
+      '<meta name="twitter:description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
     ]
   ];
   for (const [from, to] of headPairs) {

@@ -76,6 +76,35 @@
             --scroll-anchor-top: 20px;
             /* Šoninė juosta: „Turinys“ ir taškai — tas pats kairys kraštas + taškų centravimas */
             --sidebar-rail-left: 40px;
+            /* Motion (nav, CTA, hero) */
+            --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+            --duration-fast: 180ms;
+            --duration-base: 220ms;
+            /* Dedikuoti šešėliai — sluoksniuota gylio sistema */
+            --shadow-red-hero-rest:
+                0 1px 0 rgba(255, 255, 255, 0.06),
+                0 16px 32px rgba(255, 90, 95, 0.25);
+            --shadow-red-hero-hover:
+                0 1px 0 rgba(255, 255, 255, 0.08),
+                0 22px 40px rgba(255, 90, 95, 0.35);
+            --shadow-cta-rest:
+                0 1px 0 rgba(255, 255, 255, 0.06),
+                0 20px 40px rgba(255, 90, 95, 0.3);
+            --shadow-cta-hover:
+                0 1px 0 rgba(255, 255, 255, 0.08),
+                0 30px 50px rgba(255, 90, 95, 0.5);
+            --shadow-yellow-hover:
+                0 1px 0 rgba(255, 255, 255, 0.05),
+                0 12px 28px rgba(251, 211, 4, 0.25);
+            --shadow-editor:
+                0 1px 0 rgba(255, 255, 255, 0.04),
+                0 30px 60px rgba(0, 0, 0, 0.4);
+            --shadow-panel-deep:
+                0 1px 0 rgba(255, 255, 255, 0.05),
+                0 16px 48px rgba(0, 0, 0, 0.28);
+            --shadow-nav-dot-active:
+                0 0 0 2px var(--bg-dark),
+                0 0 16px rgba(251, 211, 4, 0.28);
         }
 
         * { box-sizing: border-box; }
@@ -299,12 +328,21 @@
             border: 2px solid rgba(255, 255, 255, 0.22);
             border-radius: 50%;
             cursor: pointer;
-            transition: 0.3s;
+            transition:
+                transform var(--duration-fast) var(--ease-out),
+                background-color var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
             background: rgba(255, 255, 255, 0.06);
             flex-shrink: 0;
             touch-action: manipulation;
         }
-        button.nav-item.active { background: var(--accent-yellow); border-color: var(--accent-yellow); transform: scale(1.28); box-shadow: 0 0 0 2px var(--bg-dark), 0 0 12px rgba(251, 211, 4, 0.22); }
+        button.nav-item.active {
+            background: var(--accent-yellow);
+            border-color: var(--accent-yellow);
+            transform: scale(1.22);
+            box-shadow: var(--shadow-nav-dot-active);
+        }
 
         /* Skaidrių bazė */
         section {
@@ -346,9 +384,23 @@
         }
 
         /* Tipografija */
-        h1 { font-family: var(--font-display); font-size: clamp(56px, 7.5vw, 104px); line-height: 0.92; margin: 0; font-weight: 700; }
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(56px, 7.5vw, 104px);
+            line-height: 0.92;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
         .hero-title-accent { color: var(--accent-yellow); }
-        h2 { font-family: var(--font-display); font-size: clamp(36px, 4.2vw, 56px); line-height: 1.12; margin-bottom: 24px; color: var(--text-bright); }
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 4.2vw, 56px);
+            line-height: 1.12;
+            margin-bottom: 24px;
+            color: var(--text-bright);
+            letter-spacing: -0.02em;
+        }
         .hero-intro {
             font-size: clamp(17px, 1.9vw, 24px);
             margin: 24px 0 0;
@@ -435,12 +487,14 @@
             text-decoration: none;
             border-radius: var(--radius-md);
             border: 1px solid rgba(255, 90, 95, 0.55);
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 16px 32px rgba(255, 90, 95, 0.25);
+            transition:
+                transform var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
+            box-shadow: var(--shadow-red-hero-rest);
         }
         .hero-primary-link:hover {
             transform: var(--lift-sm);
-            box-shadow: 0 22px 40px rgba(255, 90, 95, 0.35);
+            box-shadow: var(--shadow-red-hero-hover);
         }
         .hero-primary-link:active { transform: scale(0.99); }
         .hero-pdf-link {
@@ -455,13 +509,17 @@
             text-decoration: none;
             border-radius: var(--radius-md);
             border: 1px solid rgba(251, 211, 4, 0.55);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition:
+                transform var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out),
+                background var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out);
         }
         .hero-pdf-link:hover {
             transform: var(--lift-sm);
             background: rgba(251, 211, 4, 0.1);
             color: var(--accent-yellow-hover-text);
-            box-shadow: 0 12px 28px rgba(251, 211, 4, 0.25);
+            box-shadow: var(--shadow-yellow-hover);
         }
         .hero-pdf-link .icon { opacity: 0.9; }
         .cta-pdf-wrap {
@@ -559,7 +617,7 @@
             padding: 30px;
             border: 1px solid var(--border);
             position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            box-shadow: var(--shadow-editor);
         }
         .prompt-editor::before {
             content: 'UŽKLAUSOS STRUKTŪRA';
@@ -662,10 +720,12 @@
             text-decoration: none;
             border-radius: var(--radius-md);
             display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0 20px 40px rgba(255, 90, 95, 0.3);
+            transition:
+                transform var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
+            box-shadow: var(--shadow-cta-rest);
         }
-        .cta-btn:hover { transform: var(--lift-md); box-shadow: 0 30px 50px rgba(255, 90, 95, 0.5); }
+        .cta-btn:hover { transform: var(--lift-md); box-shadow: var(--shadow-cta-hover); }
         .cta-btn--primary {
             border: 1px solid rgba(255, 90, 95, 0.65);
         }
@@ -690,7 +750,7 @@
             text-align: center;
             border-radius: var(--radius-lg);
             border: 1px solid rgba(251, 211, 4, 0.28);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
+            box-shadow: var(--shadow-panel-deep);
             background: linear-gradient(145deg, rgba(16, 59, 90, 0.42), rgba(251, 211, 4, 0.06));
         }
         @supports (background: color-mix(in srgb, black 50%, transparent)) {

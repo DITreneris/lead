@@ -22,7 +22,7 @@ function getEnHtmlReplacementPairs() {
       'aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)"',
       'aria-label="Prompt Anatomy — brand site www.promptanatomy.app (opens in a new tab)"'
     ],
-    ['<div class="brand-tagline">DI praktinė sistema</div>', '<div class="brand-tagline">Practical AI system</div>'],
+    ['<div class="brand-tagline">DI praktinė sistema</div>', '<div class="brand-tagline">Built for real work</div>'],
 
     [
       '<div class="brand-name"><span class="brand-prompt">PROMPTŲ</span> <span class="brand-anatomy">ANATOMIJA</span></div>',
@@ -34,7 +34,7 @@ function getEnHtmlReplacementPairs() {
     ],
     [
       '<p class="hero-intro">Penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Nuo DI „spėliojimo“ iki aiškios sistemos: mažiau taisymo, daugiau kontrolės.</p>',
-      '<p class="hero-intro">A 5-part prompt structure, quick send check, copy-ready library, and short quiz — for teams and leaders. From AI guesswork to a clear operating system: less rework, more control.</p>'
+      '<p class="hero-intro">A 5-part prompt framework, a quick send check, a copy-ready library, and a short quiz — for teams and leaders. Turn AI guesswork into a clear playbook: less rework, more control.</p>'
     ],
 
     ['aria-label="Skaidrių navigacija"', 'aria-label="Slide navigation"'],
@@ -61,7 +61,7 @@ function getEnHtmlReplacementPairs() {
     ['<div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Įvadas</div>', '<div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Introduction</div>'],
 
     ['<section id="intro" aria-label="Įvadas"', '<section id="intro" aria-label="Introduction"'],
-    ['<span class="label">DI praktinė sistema įmonei</span>', '<span class="label">Practical AI system for teams</span>'],
+    ['<span class="label">DI praktinė sistema įmonei</span>', '<span class="label">Practical AI for teams</span>'],
     [
       'href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf"',
       'href="assets/www.promptanatomy.app-en.pdf" download="www.promptanatomy.app-en.pdf"'
@@ -77,7 +77,7 @@ function getEnHtmlReplacementPairs() {
     ],
     [
       'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Pradėk 2 min. praktiką\n                </a>',
-      'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Start 2 min practice\n                </a>'
+      'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Try the 2-minute practice\n                </a>'
     ],
     ['<a href="#library" data-track="hero_library_click">Biblioteka</a>', '<a href="#library" data-track="hero_library_click">Library</a>'],
     [
@@ -271,7 +271,7 @@ function getEnHtmlReplacementPairs() {
     ['<h2>Tavo kelias, kaip sutaupyti iki 5 val. per savaitę</h2>', '<h2>Your path to save up to 5 hours weekly</h2>'],
     [
       '<p class="roadmap-sub">Šeši žingsniai iš eilės: pirmiausia greita siuntimo patikra, tada penki gilūs šablonai. Laikai — orientaciniai.</p>',
-      '<p class="roadmap-sub">Six steps in order: quick send check first, then five deeper templates. Times are indicative.</p>'
+      '<p class="roadmap-sub">Six steps in order: quick send check first, then five deeper templates. Times are approximate.</p>'
     ],
     ['<span class="roadmap-name">Greita siuntimo patikra</span>', '<span class="roadmap-name">Quick send check</span>'],
     ['<span class="roadmap-name">Susitikimo ar sprinto planas</span>', '<span class="roadmap-name">Meeting or sprint plan</span>'],

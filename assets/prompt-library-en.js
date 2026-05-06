@@ -94,11 +94,11 @@
             'Relationship: [LEADER–MEMBER / PEERS]',
             'Event (facts, no spin): [WHAT HAPPENED]',
             'Impact: [TEAM / CLIENT / DEADLINES]',
-            'Goal for the conversation: [WHAT YOU WANT NEXT IN BEHAVIOUR OR PROCESS]',
+            'Goal for the conversation: [WHAT YOU WANT NEXT IN BEHAVIOR OR PROCESS]',
             '',
             'Output:',
             'Opening: 2–3 sentences (clear, not “school tone”)',
-            '2–3 observations tied to behaviour and outcome',
+            '2–3 observations tied to behavior and outcome',
             '1 clear agreement or expectation',
             '1 question to continue the dialogue',
             'Avoid personal labels; talk about what can change'
@@ -254,17 +254,17 @@
         'Tone: calm, no blame; no speculation beyond facts'
     ].join('\n');
     p.mgr_feedbackAfterMistake = [
-        'Feedback to a leader: results and behaviour (1:1).',
+        'Feedback to a leader: results and behavior (1:1).',
         '',
         'Input:',
         'Relationship: [LEADER–MEMBER / PEERS]',
         'Event (facts): [WHAT HAPPENED]',
         'Impact: [TEAM / CLIENT / DEADLINES / RISKS]',
-        'Goal: [WHAT YOU WANT NEXT IN BEHAVIOUR / PROCESS]',
+        'Goal: [WHAT YOU WANT NEXT IN BEHAVIOR / PROCESS]',
         '',
         'Output:',
         'Opening: 2–3 sentences (clear, not “grading” tone)',
-        '2–3 observations tied to behaviour and impact',
+        '2–3 observations tied to behavior and impact',
         '1 clear expectation and 1 visible next step',
         '1 question to continue the dialogue',
         'If HR / process step is relevant — one neutral note (no diagnoses)'
