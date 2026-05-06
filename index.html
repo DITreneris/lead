@@ -74,6 +74,8 @@
             --accent-yellow-hover-text: #fff6b0;
             --shadow-accent-yellow: 0 8px 24px rgba(251, 211, 4, 0.35);
             --scroll-anchor-top: 20px;
+            /* Šoninė juosta: „Turinys“ ir taškai — tas pats kairys kraštas + taškų centravimas */
+            --sidebar-rail-left: 40px;
         }
 
         * { box-sizing: border-box; }
@@ -245,13 +247,16 @@
         /* Navigacija */
         .nav-sidebar {
             position: fixed;
-            left: 40px;
+            left: var(--sidebar-rail-left);
             top: 50%;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 20px;
             z-index: 100;
+            width: min(140px, calc(100vw - var(--sidebar-rail-left) - 16px));
+            box-sizing: border-box;
         }
         .nav-mobile {
             display: none;
@@ -778,6 +783,12 @@
             max-width: 920px;
             margin-left: auto;
             margin-right: auto;
+            align-items: stretch;
+        }
+        .types-primer-cols > .types-card {
+            height: 100%;
+            min-height: 0;
+            align-self: stretch;
         }
         .types-primer-cols .types-card-grow {
             flex: 1;
@@ -786,7 +797,7 @@
             min-height: 0;
         }
         .types-primer-cols .types-example-block {
-            flex: 1 1 auto;
+            flex: 1 1 0;
             display: flex;
             flex-direction: column;
             min-height: 0;
@@ -796,7 +807,7 @@
             align-self: flex-start;
         }
         .types-primer-quick {
-            margin-top: 22px;
+            margin-top: 28px;
             max-width: 920px;
             margin-left: auto;
             margin-right: auto;
@@ -808,7 +819,7 @@
             border-top: 2px solid rgba(251, 211, 4, 0.35);
         }
         .types-primer-quick-k {
-            font-size: clamp(11px, 0.85vw, 12px);
+            font-size: clamp(12px, 0.88vw, 13px);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -848,6 +859,17 @@
             display: inline;
         }
         /* Trys kortelės (Praktika): vienoda aukštis, „Kopijuoti“ vienoje linijoje */
+        .types-grid.types-triple-grid {
+            gap: 24px;
+            margin-top: 26px;
+        }
+        .types-triple-grid > .types-card {
+            height: 100%;
+            min-height: 0;
+            align-self: stretch;
+            gap: 13px;
+            padding: 21px;
+        }
         .types-triple-grid .types-card-grow {
             flex: 1;
             display: flex;
@@ -855,7 +877,7 @@
             min-height: 0;
         }
         .types-triple-grid .types-example-block {
-            flex: 1 1 auto;
+            flex: 1 1 0;
             display: flex;
             flex-direction: column;
             min-height: 0;
@@ -866,32 +888,33 @@
         }
         .types-triple-grid .types-card-extra {
             flex-shrink: 0;
-            margin-top: 4px;
-            padding-top: 12px;
+            margin-top: 12px;
+            padding-top: 15px;
             border-top: 1px solid var(--border-hairline);
         }
         /* #guided: kontrastas ir sąrašai (praktika) */
         #guided .types-card-example--minimal {
             font-style: normal;
-            padding: 10px 12px;
+            padding: 12px 14px;
             background: rgba(0, 0, 0, 0.22);
             border-left-width: 2px;
             border-left-color: rgba(255, 255, 255, 0.2);
         }
         #guided .types-card-example--structured {
             font-style: normal;
-            padding: 12px 14px;
+            padding: 14px 16px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
+            overflow-wrap: anywhere;
         }
         #guided .practice-structured-line {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px 10px;
+            gap: 8px 12px;
             align-items: baseline;
             font-size: clamp(13px, 1.05vw, 14px);
-            line-height: 1.6;
+            line-height: 1.68;
             color: var(--text-body);
         }
         #guided .practice-structured-line strong {
@@ -915,13 +938,13 @@
             color: var(--text-soft);
         }
         #guided .practice-card-list li {
-            margin: 0 0 6px;
+            margin: 0 0 9px;
         }
         #guided .practice-card-list li:last-child {
             margin-bottom: 0;
         }
         #guided .practice-card-list--spaced {
-            margin-bottom: 4px;
+            margin-bottom: 7px;
         }
         #guided .types-card--ctx .types-card-example--structured {
             border-left-color: rgba(16, 185, 129, 0.55);
@@ -944,7 +967,7 @@
             margin: 0;
         }
         .types-card-k {
-            font-size: clamp(11px, 0.85vw, 12px);
+            font-size: clamp(12px, 0.88vw, 13px);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -1295,7 +1318,7 @@
             position: fixed;
             z-index: 190;
             max-width: min(288px, calc(100vw - 24px));
-            left: 34px;
+            left: var(--sidebar-rail-left);
             top: 96px;
         }
         .slide-outline__summary {
