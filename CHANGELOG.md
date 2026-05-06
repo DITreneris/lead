@@ -6,6 +6,8 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Added
 
+- **Promo baneris į programą:** prieš biblioteką (`div.promo-handoff`, ne nauja skaidrė) vienas CTA į `www.promptanatomy.app` su `utm_medium=banner` ir `data-track=promo_app_banner_click`; LT kanonas ir EN build poros — [index.html](index.html), [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
+
 - **Social preview ir CI:** `og:image` / `og:image:secure_url` / `twitter:image` su versijos parametru `?v=` (numatyta data arba `OG_IMAGE_VERSION`); naujas patikrinimas [scripts/verify-social-meta.js](scripts/verify-social-meta.js) į `npm run verify` (versijuoti URL + OG PNG 1200×630) — [index.html](index.html), [scripts/build-locale-pages.js](scripts/build-locale-pages.js), [package.json](package.json), [SETUP.md](SETUP.md).
 - **Schema.org (klasikinis SEO):** JSON‑LD `WebPage` abiem build puslapiams; EN šaknyje papildomai `FAQPage` (vadovų DUK, sutampa su matomu EN FAQ) — [scripts/build-locale-pages.js](scripts/build-locale-pages.js).
 - **GEO (EN, JAV vadovai):** hero santrauka orientuota į leadership / kliento komunikaciją; trumpas FAQ blokas įvado skaidrėje (LT inkaras + EN poros build’e) — [index.html](index.html), [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).

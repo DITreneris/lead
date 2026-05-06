@@ -645,6 +645,58 @@
             border: 1px solid rgba(255, 90, 95, 0.65);
         }
 
+        /* Promo handoff (prieš biblioteką — ne skaidrė, be nav taško) */
+        .promo-handoff {
+            width: 100%;
+            padding: 44px 120px 52px;
+            border-bottom: 1px solid var(--border-hairline);
+            background: linear-gradient(180deg, rgba(7, 27, 41, 0.55) 0%, rgba(16, 59, 90, 0.14) 100%);
+        }
+        .promo-handoff .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+        .promo-handoff__panel {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 28px 28px 32px;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(251, 211, 4, 0.28);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
+            background: linear-gradient(145deg, rgba(16, 59, 90, 0.42), rgba(251, 211, 4, 0.06));
+        }
+        @supports (background: color-mix(in srgb, black 50%, transparent)) {
+            .promo-handoff__panel {
+                background: linear-gradient(
+                    145deg,
+                    color-mix(in srgb, var(--primary-blue) 44%, transparent),
+                    color-mix(in srgb, var(--accent-yellow) 7%, transparent)
+                );
+            }
+        }
+        .promo-handoff__panel .label {
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .promo-handoff__title {
+            margin: 0 0 12px;
+            font-size: clamp(22px, 2.4vw, 30px);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--text-bright);
+            letter-spacing: -0.02em;
+        }
+        .promo-handoff__sub {
+            margin: 0 0 24px;
+            font-size: clamp(15px, 1.15vw, 17px);
+            line-height: 1.55;
+            color: var(--text-muted);
+            max-width: 34em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .cta-community {
             margin: 40px 0 0;
             padding: 0 16px;
@@ -1737,12 +1789,15 @@
 
         @media (max-width: 1366px) {
             section { padding-left: 90px; padding-right: 90px; }
+            .promo-handoff { padding-left: 90px; padding-right: 90px; }
             .container { gap: 64px; }
         }
 
         @media (max-width: 1024px) {
             :root { --mobile-nav-h: 96px; }
             .meme-interlude { padding: 32px 20px 40px; }
+            .promo-handoff { padding: 32px 20px 40px; }
+            .promo-handoff__panel { padding: 22px 18px 26px; }
             .container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             section { padding: 40px 20px 100px; }
             .nav-sidebar { display: none; }
@@ -2346,6 +2401,17 @@
         </div>
     </div>
 </section>
+
+<div class="promo-handoff" role="region" aria-label="Nuoroda į programą www.promptanatomy.app">
+    <div class="container">
+        <div class="promo-handoff__panel">
+            <span class="label">Programa</span>
+            <p class="promo-handoff__title">Įdiegk tą pačią sistemą komandoje</p>
+            <p class="promo-handoff__sub">Čia — nemokama pamoka ir biblioteka. Ten — mokama programa su struktūra komandai.</p>
+            <a href="https://www.promptanatomy.app/?utm_source=lead&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryk promptanatomy.app naujame skirtuke" data-track="promo_app_banner_click">Atidaryk promptanatomy.app</a>
+        </div>
+    </div>
+</div>
 
 <!-- Skaidrė 12: Promptų biblioteka (resursai) -->
 <section id="library" class="library-slide" aria-label="Promptų biblioteka (resursai)">
