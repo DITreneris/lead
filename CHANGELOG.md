@@ -6,6 +6,8 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Added
 
+- **Legal footnote (best practice):** paskutinėje CTA skaidrėje `.site-legal-footnote` — Prompt Anatomy, Alameda adresas, `info@promptanatomy.app`; sinchronizuota JSON-LD, `llms.txt`, EN build — [scripts/legal-contact.cjs](scripts/legal-contact.cjs), [index.html](index.html), [404.html](404.html), [tools.html](tools.html).
+
 - **SEO / GEO / crawlers (build-only, be `index.html` hero pakeitimų):** `robots.txt` — explicit Allow visiems pagrindiniams AI/search crawleriams + `Content-Signal`; `sitemap.xml` — PDF URL + `lastmod`; JSON-LD — `@id`, `Organization.logo` / `sameAs`, `LearningResource`, `WebPage.description`; `<link rel="alternate" type="text/markdown" href="…/llms.txt">`. Nauji artefaktai: `llms.txt`, `llms-full.txt` (EN biblioteka), `pricing.md`, `security.txt`, `.well-known/agent.json`, `.well-known/agent-card.json` — [scripts/site-build-config.js](scripts/site-build-config.js), [scripts/generate-llms-artifacts.js](scripts/generate-llms-artifacts.js), [scripts/verify-robots-llms.js](scripts/verify-robots-llms.js); [vercel.json](vercel.json) security headers; CI — [.github/workflows/verify.yml](.github/workflows/verify.yml).
 
 ### Changed

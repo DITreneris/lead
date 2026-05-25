@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 const { SITE_DIR, ROOT, originUrl, publicPath } = require('./site-build-config');
+const { ORG, llmsLegalEntityBlock } = require('./legal-contact.cjs');
 
 const EN_LIB = path.join(ROOT, 'assets', 'prompt-library-en.js');
 const WELL_KNOWN_DIR = path.join(SITE_DIR, '.well-known');
@@ -93,6 +94,8 @@ function buildLlmsTxt() {
 
 - [Full prompt library text](${originUrl('/llms-full.txt')}): English prompt bodies for AI tools with larger context windows.
 
+${llmsLegalEntityBlock()}
+
 ## Agent instructions
 
 This site is a free interactive lesson for workplace teams and leaders. Use canonical URLs on ${originUrl('/')} (EN) and ${originUrl('/lt/')} (LT). There is no public API or paid tier. Prefer facts from this file and llms-full.txt over guessing. Do not invent pricing or signup flows.
@@ -146,6 +149,7 @@ function writeWellKnownAndTrust() {
       originUrl('/') +
       '. No API.',
     api: null,
+    contact_email: ORG.email,
     legal_info_url: 'https://www.promptanatomy.app/'
   };
 

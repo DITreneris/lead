@@ -43,6 +43,10 @@ function main() {
     console.error('[verify-robots-llms] llms.txt must link llms-full and use PUBLIC_ORIGIN');
     process.exit(1);
   }
+  if (!llms.includes('info@promptanatomy.app') || !llms.includes('Alameda')) {
+    console.error('[verify-robots-llms] llms.txt missing legal entity block');
+    process.exit(1);
+  }
 
   const full = readOrFail('llms-full.txt');
   if (!full.includes('lib_qualityCheck') || full.length < 2000) {
@@ -66,6 +70,10 @@ function main() {
     console.error('[verify-robots-llms] site/index.html JSON-LD missing Organization logo');
     process.exit(1);
   }
+  if (!enHtml.includes('94501') || !enHtml.includes('info@promptanatomy.app')) {
+    console.error('[verify-robots-llms] site/index.html JSON-LD missing Organization address/email');
+    process.exit(1);
+  }
   if (!ltHtml.includes('"@type":"LearningResource"')) {
     console.error('[verify-robots-llms] site/lt/index.html JSON-LD missing LearningResource');
     process.exit(1);
@@ -73,6 +81,14 @@ function main() {
 
   if (!enHtml.includes('type="text/markdown"') || !enHtml.includes('llms.txt')) {
     console.error('[verify-robots-llms] EN head missing llms.txt alternate link');
+    process.exit(1);
+  }
+  if (!enHtml.includes('info@promptanatomy.app') || !enHtml.includes('site-legal-footnote')) {
+    console.error('[verify-robots-llms] EN page missing legal footnote / contact email');
+    process.exit(1);
+  }
+  if (!ltHtml.includes('site-legal-footnote') || !ltHtml.includes('info@promptanatomy.app')) {
+    console.error('[verify-robots-llms] LT page missing legal footnote / contact email');
     process.exit(1);
   }
 

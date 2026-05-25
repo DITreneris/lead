@@ -703,6 +703,52 @@
             letter-spacing: 0.1em;
             color: var(--text-soft);
         }
+        .cta-foot.site-legal-footnote {
+            margin-top: 56px;
+            letter-spacing: normal;
+            line-height: 1.55;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+            text-align: center;
+        }
+        .site-legal-footnote__brand,
+        .site-legal-footnote__addr,
+        .site-legal-footnote__email,
+        .site-legal-footnote__tag {
+            margin: 0;
+        }
+        .site-legal-footnote__brand {
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.85em;
+        }
+        .site-legal-footnote__brand strong {
+            color: var(--text-bright);
+            font-weight: 700;
+        }
+        .site-legal-footnote__addr,
+        .site-legal-footnote__email {
+            font-size: 0.92em;
+        }
+        .site-legal-footnote__email a {
+            color: var(--text-body);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .site-legal-footnote__email a:hover { color: var(--text-bright); }
+        .site-legal-footnote__email a:focus-visible {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 3px;
+        }
+        .site-legal-footnote__tag {
+            margin-top: 8px;
+            letter-spacing: 0.1em;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            opacity: 0.85;
+        }
         .label { 
             color: var(--accent-red); 
             text-transform: uppercase; 
@@ -3020,8 +3066,11 @@
                 Telegram (palaikymas ir naujienos)
             </a>
         </p>
-        <div class="cta-foot">
-            PROMPTŲ ANATOMIJA • ĮMONĖS KOMANDOS • 2026
+        <div class="cta-foot site-legal-footnote" role="contentinfo" aria-label="Kontaktai ir leidėjas">
+            <p class="site-legal-footnote__brand"><strong>Prompt Anatomy</strong></p>
+            <p class="site-legal-footnote__addr">1311 Park St, Unit #654<br>Alameda, CA 94501</p>
+            <p class="site-legal-footnote__email"><a href="mailto:info@promptanatomy.app">info@promptanatomy.app</a></p>
+            <p class="site-legal-footnote__tag">Promptų anatomija • Įmonės komandos • 2026</p>
         </div>
     </div>
 </section>

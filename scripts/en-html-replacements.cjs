@@ -1,5 +1,7 @@
 'use strict';
 
+const { CTA_FOOTNOTE_LT, CTA_FOOTNOTE_EN } = require('./legal-contact.cjs');
+
 /**
  * Ordered [LT, EN] HTML fragments for the EN build output (site/index.html).
  * Keep fragments unique enough to avoid accidental double-replace.
@@ -606,7 +608,7 @@ function getEnHtmlReplacementPairs() {
       'aria-label="Prompt Anatomy Telegram community (opens in a new tab)" data-track="cta_telegram_click"'
     ],
     ['Telegram (palaikymas ir naujienos)', 'Telegram (support and updates)'],
-    ['PROMPTŲ ANATOMIJA • ĮMONĖS KOMANDOS • 2026', 'PROMPT ANATOMY • TEAMS • 2026']
+    [CTA_FOOTNOTE_LT, CTA_FOOTNOTE_EN]
   ];
 }
 

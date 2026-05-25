@@ -10,6 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const { getEnHtmlReplacementPairs } = require('./en-html-replacements.cjs');
+const { ORG, postalAddressSchema } = require('./legal-contact.cjs');
 const {
   ROOT,
   SITE_DIR,
@@ -193,9 +194,11 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
       {
         '@type': 'Organization',
         '@id': orgId,
-        name: 'Prompt Anatomy',
+        name: ORG.name,
         url: originUrl('/'),
+        email: ORG.email,
         logo: versionedOgImageUrl(),
+        address: postalAddressSchema(),
         sameAs: [
           'https://www.promptanatomy.app/',
           'https://github.com/DITreneris/lead'

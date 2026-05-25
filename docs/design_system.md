@@ -211,7 +211,7 @@ There is **no global site footer**. Use contextual footers only:
 | Class | Slide / context |
 |-------|-----------------|
 | `.hero-foot-links` | Hero secondary links |
-| `.cta-foot` | Final CTA slide |
+| `.cta-foot` / `.site-legal-footnote` | Final CTA slide — publisher name, postal address, `mailto:` (canonical: [scripts/legal-contact.cjs](../scripts/legal-contact.cjs)) |
 | `.schema-foot` | Schema slide |
 
 ---
