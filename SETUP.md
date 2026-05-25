@@ -67,7 +67,8 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 - [ ] `index.html`: pagrindiniai CTA, PDF nuorodos, bibliotekos kopijavimas, `#library` / hash elgsena; po `npm run build` — `site/index.html` (EN) ir `site/lt/index.html` (kalbos perjungiklis, `/` ir `/lt/`).
 - [ ] Jei keitėsi vizualinė sistema (tokenai, CTA, naujos klasės): [docs/design_system.md](docs/design_system.md) atnaujintas; mobilus smoke (žr. DS §6) — 375 / 768 / 1024 px.
 - [ ] Po `npm run build`: `npm run verify` (bibliotekos raktų paritetas ir EN puslapio LT „drift“) — žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
-- [ ] [404.html](404.html) atsidaro ir grįžta į pamoką; [tools.html](tools.html) — dark brand smoke (jei keitėsi).
+- [ ] [404.html](404.html) atsidaro ir grįžta į pamoką; [tools.html](tools.html) (EN) ir [tools-lt.html](tools-lt.html) — dark brand + token inject smoke.
+- [ ] Po CSS/token pakeitimo: redaguoti [`styles/tokens.css`](styles/tokens.css), ne ranka `:root` tarp `DS_TOKENS_*` markerių HTML; `npm run build` (inject) ir `npm run verify`.
 - [ ] GitHub Actions: [pages.yml](.github/workflows/pages.yml) ir [verify.yml](.github/workflows/verify.yml) žali po push (kai taikoma).
 
 ## Nuorodos

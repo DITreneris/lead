@@ -65,7 +65,7 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 ## 2. Frontend / skaidrės
 
 - Viena byla `index.html`: CSS `:root` kintamieji, navigacija, responsive taisyklių laikymasis.
-- **Design system (v1.5):** [docs/design_system.md](docs/design_system.md) — tokenai (`--space-*`, tint), CTA matrica, komponentų katalogas, slide modifieriai, `verify:design-tokens`; palydoviniai (`404.html`, `tools.html`); prieš naują vizualinį šabloną skaityti DS — poliravimas, ne redesign.
+- **Design system (v2.0):** [docs/design_system.md](docs/design_system.md) — kanonas [`styles/tokens.css`](styles/tokens.css) + `inject-design-tokens` → [index.html](index.html); patterns `.slide-lead`, `.disclosure-chip*`, `.btn-pdf-outline`, `.link-tier-tertiary`; verify: `design-tokens`, `satellite-tokens`, `typography-roles`; palydoviniai [`404.html`](404.html), [`tools.html`](tools.html), [`tools-lt.html`](tools-lt.html).
 - Naujos skaidrės = nauji `section` + du atitinkami `nav-item` (šonas ir mobilusis).
 
 ## 3. PDF sinchronas

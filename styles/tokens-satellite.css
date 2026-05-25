@@ -1,0 +1,30 @@
+/* DS v2.0 — minimal :root for 404.html and tools.html (subset of styles/tokens.css) */
+:root {
+    --primary-blue: #103b5a;
+    --accent-yellow: #fbd304;
+    --accent-red: #ff5a5f;
+    --bg-dark: #071b29;
+    --surface-base: var(--bg-dark);
+    --surface-raised: rgba(255, 255, 255, 0.045);
+    --surface-inset: rgba(0, 0, 0, 0.2);
+    --border-hairline: rgba(255, 255, 255, 0.065);
+    --border-subtle: rgba(255, 255, 255, 0.16);
+    --text-bright: #f8fafc;
+    --text-body: #e2e8f0;
+    --text-muted: #cbd5e1;
+    --text-soft: #94a3b8;
+    --text-on-accent: #0a0a0a;
+    --text-on-dark-high: rgba(255, 255, 255, 0.82);
+    --brand-wordmark: #f1f5f9;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-main: 'Inter', sans-serif;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --duration-fast: 180ms;
+    --duration-base: 220ms;
+}

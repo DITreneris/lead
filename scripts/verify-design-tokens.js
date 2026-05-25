@@ -1,14 +1,15 @@
 'use strict';
 
 /**
- * Strict design-token parity: index.html :root ↔ docs/design_system.md §3.
- * Also fails on undocumented rgba(251,…) / rgba(255,90,…) literals in component CSS.
+ * Design-token parity: styles/tokens.css ↔ docs/design_system.md §3;
+ * index.html component CSS — no stray accent/overlay literals.
  */
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const INDEX = path.join(ROOT, 'index.html');
+const TOKENS = path.join(ROOT, 'styles', 'tokens.css');
 const DS = path.join(ROOT, 'docs', 'design_system.md');
 
 /** Literals allowed outside :root (see DS §3.9 exceptions). */
@@ -19,6 +20,15 @@ const LITERAL_EXCEPTION_PATTERNS = [
   /rgba\s*\(\s*255\s*,\s*90\s*,\s*95\s*,\s*0\.45\s*\)/,
   /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,\s*0\.22\s*\)/,
   /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,\s*0\.06\s*\)/,
+];
+
+const OVERLAY_EXCEPTION_PATTERNS = [
+  /rgba\s*\(\s*0\s*,\s*0\s*,\s*0\s*,/,
+  /linear-gradient/,
+  /stroke:\s*rgba/,
+  /rgba\s*\(\s*7\s*,\s*27\s*,\s*41\s*,\s*0\.(?:55|98)\s*\)/,
+  /rgba\s*\(\s*255\s*,\s*255\s*,\s*255\s*,\s*0\.(?:15|16|30|35)\s*\)/,
+  /rgba\s*\(\s*255,\s*255,\s*255,/,
 ];
 
 function extractStyleBlock(html) {
@@ -36,8 +46,8 @@ function collectDefinedTokens(css) {
 }
 
 function extractRootBlock(css) {
-  const m = css.match(/:root\s*\{([\s\S]*?)\n\s*\}/);
-  if (!m) throw new Error('No :root block in index.html');
+  const m = css.match(/:root\s*\{([\s\S]*)\}/);
+  if (!m) throw new Error('No :root block');
   return m[1];
 }
 
@@ -51,26 +61,26 @@ function collectDocumentedTokens(dsMarkdown) {
   return tokens;
 }
 
-function componentCss(css, rootBlock) {
+function componentCssFromIndex(css) {
+  const markerEnd = css.indexOf('/* DS_TOKENS_END */');
+  if (markerEnd >= 0) return css.slice(markerEnd + '/* DS_TOKENS_END */'.length);
   const rootStart = css.indexOf(':root');
   const rootEnd = css.indexOf('}', rootStart) + 1;
   return css.slice(rootEnd);
 }
 
-function findUndocumentedLiterals(componentPart) {
+function findUndocumentedLiterals(componentPart, patterns, label) {
   const hits = [];
-  const yellowRe = /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,[^)]+\)/gi;
-  const redRe = /rgba\s*\(\s*255\s*,\s*90\s*,\s*95\s*,[^)]+\)/gi;
   const lines = componentPart.split('\n');
   lines.forEach((line, i) => {
-    const lineNo = i + 1;
-    for (const re of [yellowRe, redRe]) {
+    for (const re of patterns) {
       re.lastIndex = 0;
       let m;
       while ((m = re.exec(line)) !== null) {
         const lit = m[0];
         if (LITERAL_EXCEPTION_PATTERNS.some((p) => p.test(lit))) continue;
-        hits.push({ line: lineNo, literal: lit });
+        if (OVERLAY_EXCEPTION_PATTERNS.some((p) => p.test(lit))) continue;
+        hits.push({ line: i + 1, literal: lit, label });
       }
     }
   });
@@ -78,18 +88,19 @@ function findUndocumentedLiterals(componentPart) {
 }
 
 function main() {
+  const tokensCss = fs.readFileSync(TOKENS, 'utf8');
   const html = fs.readFileSync(INDEX, 'utf8');
   const ds = fs.readFileSync(DS, 'utf8');
-  const css = extractStyleBlock(html);
-  const rootBlock = extractRootBlock(css);
-  const definedTokens = collectDefinedTokens(css);
+  const indexStyle = extractStyleBlock(html);
+  const rootBlock = extractRootBlock(tokensCss);
+  const definedTokens = collectDefinedTokens(tokensCss);
   const docTokens = collectDocumentedTokens(ds);
 
   let failed = false;
 
   const missingInRoot = [...docTokens].filter((t) => !definedTokens.has(t)).sort();
   if (missingInRoot.length) {
-    console.error('[verify-design-tokens] Documented in DS §3 but missing in index.html styles:');
+    console.error('[verify-design-tokens] Documented in DS §3 but missing in styles/tokens.css:');
     missingInRoot.forEach((t) => console.error('  ' + t));
     failed = true;
   }
@@ -97,23 +108,42 @@ function main() {
   const rootOnlyTokens = collectDefinedTokens(rootBlock);
   const missingInDoc = [...rootOnlyTokens].filter((t) => !docTokens.has(t)).sort();
   if (missingInDoc.length) {
-    console.error('[verify-design-tokens] In index.html :root but not documented in DS §3 tables:');
+    console.error('[verify-design-tokens] In tokens.css but not documented in DS §3:');
     missingInDoc.forEach((t) => console.error('  ' + t));
     failed = true;
   }
 
-  const literals = findUndocumentedLiterals(componentCss(css, rootBlock));
-  if (literals.length) {
-    console.error('[verify-design-tokens] Undocumented rgba literals in component CSS (use var(--accent-*) or add §3.9 exception):');
-    literals.forEach(({ line, literal }) => console.error(`  line ~${line}: ${literal}`));
-    failed = true;
+  const componentPart = componentCssFromIndex(indexStyle);
+  const yellowRed = findUndocumentedLiterals(
+    componentPart,
+    [
+      /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,[^)]+\)/gi,
+      /rgba\s*\(\s*255\s*,\s*90\s*,\s*95\s*,[^)]+\)/gi,
+    ],
+    'accent'
+  );
+  const overlay = findUndocumentedLiterals(
+    componentPart,
+    [
+      /rgba\s*\(\s*7\s*,\s*27\s*,\s*41\s*,[^)]+\)/gi,
+      /rgba\s*\(\s*255\s*,\s*255\s*,\s*255\s*,[^)]+\)/gi,
+    ],
+    'overlay'
+  );
+
+  for (const { line, literal, label } of [...yellowRed, ...overlay]) {
+    if (!failed) {
+      console.error('[verify-design-tokens] Undocumented literals in index.html component CSS:');
+      failed = true;
+    }
+    console.error(`  [${label}] line ~${line}: ${literal}`);
   }
 
   if (failed) process.exit(1);
   console.log(
     '[verify-design-tokens] OK —',
     rootOnlyTokens.size,
-    'tokens in :root match DS §3; no stray accent literals in components.'
+    'tokens in styles/tokens.css match DS §3; component CSS clean.'
   );
 }
 

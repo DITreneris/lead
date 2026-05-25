@@ -16,10 +16,9 @@ function getEnHtmlReplacementPairs() {
     ['aria-label="Perjungti į lietuvių kalbą"', 'aria-label="Switch to Lithuanian"'],
 
     [
-      '<summary class="slide-outline__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Turinys</summary>',
-      '<summary class="slide-outline__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Contents</summary>'
+      '<summary class="slide-outline__summary disclosure-chip__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Turinys</summary>',
+      '<summary class="slide-outline__summary disclosure-chip__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Contents</summary>'
     ],
-
     [
       'aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)"',
       'aria-label="Prompt Anatomy — brand site www.promptanatomy.app (opens in a new tab)"'
@@ -35,8 +34,16 @@ function getEnHtmlReplacementPairs() {
       '<h1>PROMPT<br><span class="hero-title-accent">ANATOMY</span></h1>'
     ],
     [
-      '<p class="hero-intro">Penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Nuo DI „spėliojimo“ iki aiškios sistemos: mažiau taisymo, daugiau kontrolės.</p>',
-      '<p class="hero-intro">A 5-part prompt framework, a quick send check, a copy-ready library, and a short quiz — for teams and leaders. Turn AI guesswork into a clear playbook: less rework, more control.</p>'
+      '<p class="hero-intro slide-lead">Penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Nuo DI „spėliojimo“ iki aiškios sistemos: mažiau taisymo, daugiau kontrolės.</p>',
+      '<p class="hero-intro slide-lead">A 5-part prompt framework, a quick send check, a copy-ready library, and a short quiz — for teams and leaders. Turn AI guesswork into a clear playbook: less rework, more control.</p>'
+    ],
+    [
+      'class="hero-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf"',
+      'class="hero-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app-en.pdf"'
+    ],
+    [
+      'class="cta-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf"',
+      'class="cta-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app-en.pdf"'
     ],
 
     ['aria-label="Skaidrių navigacija"', 'aria-label="Slide navigation"'],
@@ -64,10 +71,7 @@ function getEnHtmlReplacementPairs() {
 
     ['<section id="intro" aria-label="Įvadas"', '<section id="intro" aria-label="Introduction"'],
     ['<span class="label">DI praktinė sistema įmonei</span>', '<span class="label">Practical AI for teams</span>'],
-    [
-      'href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf"',
-      'href="assets/www.promptanatomy.app-en.pdf" download="www.promptanatomy.app-en.pdf"'
-    ],
+    ['download="www.promptanatomy.app.pdf"', 'download="www.promptanatomy.app-en.pdf"'],
     [
       'aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu"',
       'aria-label="Download lesson 1 English summary (PDF)"'
@@ -81,14 +85,13 @@ function getEnHtmlReplacementPairs() {
       'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Pradėk 2 min. praktiką\n                </a>',
       'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Try the 2-minute practice\n                </a>'
     ],
-    ['<a href="#library" data-track="hero_library_click">Biblioteka</a>', '<a href="#library" data-track="hero_library_click">Library</a>'],
     [
-      '<a href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO ir COO executive rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a>',
-      '<a href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO and COO executive kit on promptanatomy.pro (opens in a new tab)">Executive kit</a>'
+      '<p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Biblioteka</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO ir COO executive rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a> · <a class="link-tier-tertiary" href="tools-lt.html">DI įrankių gidas</a></p>',
+      '<p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Library</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO and COO executive kit on promptanatomy.pro (opens in a new tab)">Executive kit</a> · <a class="link-tier-tertiary" href="tools.html">AI tools guide</a></p>'
     ],
     [
-      '<details class="hero-faq geo-faq-anchor" data-geo-faq="1">\n                <summary class="hero-faq__summary">DUK (trumpai)</summary>\n                <div class="hero-faq__panel">\n                    <div><strong>Kam tai?</strong> Komandos darbui ir vadovui: mažiau taisymo, aiškesni rezultatai.</div>\n                    <div><strong>Kada naudoti patikrą?</strong> Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.</div>\n                    <div><strong>Ką kopijuoti?</strong> Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.</div>\n                </div>\n            </details>',
-      '<details class="hero-faq geo-faq-anchor" data-geo-faq="1">\n                <summary class="hero-faq__summary">FAQ (for leaders)</summary>\n                <div class="hero-faq__panel">\n                    <div><strong>What should I include in a prompt for leadership updates?</strong> Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.</div>\n                    <div><strong>How do I reduce hallucinated facts in client emails?</strong> Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.</div>\n                    <div><strong>What’s a quick send check?</strong> A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.</div>\n                    <div><strong>How do I get consistent outputs across my team?</strong> Use one shared template (role + context + reasoning + output), then iterate with the same checklist.</div>\n                </div>\n            </details>'
+      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div><strong>Kam tai?</strong> Komandos darbui ir vadovui: mažiau taisymo, aiškesni rezultatai.</div>\n                    <div><strong>Kada naudoti patikrą?</strong> Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.</div>\n                    <div><strong>Ką kopijuoti?</strong> Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.</div>\n                </div>\n            </details>',
+      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">FAQ (for leaders)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div><strong>What should I include in a prompt for leadership updates?</strong> Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.</div>\n                    <div><strong>How do I reduce hallucinated facts in client emails?</strong> Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.</div>\n                    <div><strong>What’s a quick send check?</strong> A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.</div>\n                    <div><strong>How do I get consistent outputs across my team?</strong> Use one shared template (role + context + reasoning + output), then iterate with the same checklist.</div>\n                </div>\n            </details>'
     ],
 
     [
@@ -100,8 +103,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Pagrindai</span>', '<span class="label">Basics</span>'],
     ['<h2>Kas yra promptas?</h2>', '<h2>What is a prompt?</h2>'],
     [
-      '<p class="types-lead">Žemiau — du apibrėžimai ir greito naudojimo taisyklė (juosta).<br>Penkių žingsnių schema — kai atsakymas miglotas ir vis dar reikia pataisymų.</p>',
-      '<p class="types-lead">Two definitions and a one-minute rule (strip).<br>Five-step framework — when answers stay fuzzy and you still need fixes.</p>'
+      '<p class="types-lead slide-lead">Žemiau — du apibrėžimai ir greito naudojimo taisyklė (juosta).<br>Penkių žingsnių schema — kai atsakymas miglotas ir vis dar reikia pataisymų.</p>',
+      '<p class="types-lead slide-lead">Two definitions and a one-minute rule (strip).<br>Five-step framework — when answers stay fuzzy and you still need fixes.</p>'
     ],
     ['<h3>Promptas</h3>', '<h3>Prompt</h3>'],
     [
@@ -156,8 +159,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Žingsniai</span>', '<span class="label">Steps</span>'],
     ['<h2>Promptų anatomijos schema</h2>', '<h2>Prompt anatomy framework</h2>'],
     [
-      '<p class="schema-lead">Kiekvienas blokas prideda aiškumo. Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>',
-      '<p class="schema-lead">Each block adds clarity. Often 2–3 are enough; use all five when you cannot risk mistakes.</p>'
+      '<p class="schema-lead slide-lead">Kiekvienas blokas prideda aiškumo. Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>',
+      '<p class="schema-lead slide-lead">Each block adds clarity. Often 2–3 are enough; use all five when you cannot risk mistakes.</p>'
     ],
     [
       '<strong>Vaidmuo</strong>\n                            <span>Kas esi ir koks tikslas (kodėl DI turi taip veikti)</span>',
@@ -190,8 +193,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Praktika</span>', '<span class="label">Practice</span>'],
     ['<h2>Pradėk per 2 minutes</h2>', '<h2>Start in 2 minutes</h2>'],
     [
-      '<p class="types-lead">Tas pats Q3 tikslas — bet užklausa su rėmu keičia, ką gauni.<br>Eiga: migla → struktūra → trumpa savikontrolė.</p>',
-      '<p class="types-lead">Same Q3 goal — framing changes what you get.<br>Flow: fuzzy → structure → short self-check.</p>'
+      '<p class="types-lead slide-lead">Tas pats Q3 tikslas — bet užklausa su rėmu keičia, ką gauni.<br>Eiga: migla → struktūra → trumpa savikontrolė.</p>',
+      '<p class="types-lead slide-lead">Same Q3 goal — framing changes what you get.<br>Flow: fuzzy → structure → short self-check.</p>'
     ],
     ['<h3>Prieš (per miglą)</h3>', '<h3>Before (fuzzy)</h3>'],
     [
@@ -299,8 +302,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Saugumas</span>', '<span class="label">Safety</span>'],
     ['<h2>Greita siuntimo patikra</h2>', '<h2>Quick send check</h2>'],
     [
-      '<p class="slide-sublead">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio.<br>Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>',
-      '<p class="slide-sublead">Paste the full text you plan to send or submit to a client, leadership, or partner (e.g. email, report, or proposal draft) — not a random chat reply.<br>This check reviews facts and risks before you send.</p>'
+      '<p class="slide-sublead slide-lead">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio.<br>Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>',
+      '<p class="slide-sublead slide-lead">Paste the full text you plan to send or submit to a client, leadership, or partner (e.g. email, report, or proposal draft) — not a random chat reply.<br>This check reviews facts and risks before you send.</p>'
     ],
     [
       '<div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>',
@@ -328,8 +331,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">01 • Struktūra</span>', '<span class="label">01 • Structure</span>'],
     ['<h2>Susitikimo ar sprinto planas</h2>', '<h2>Meeting or sprint plan</h2>'],
     [
-      '<p class="slide-sublead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>',
-      '<p class="slide-sublead">One table: time, activity, goal — plus a few decision questions.</p>'
+      '<p class="slide-sublead slide-lead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>',
+      '<p class="slide-sublead slide-lead">One table: time, activity, goal — plus a few decision questions.</p>'
     ],
     [
       '<div class="prompt-line"><b>UŽDUOTIS</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>',
@@ -352,8 +355,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">02 • Personalizacija</span>', '<span class="label">02 • Personalisation</span>'],
     ['<h2>Ta pati žinutė — 3 lygiai</h2>', '<h2>Same message — three levels</h2>'],
     [
-      '<p class="slide-sublead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>',
-      '<p class="slide-sublead">Basic, intermediate, advanced — same core, different depth.</p>'
+      '<p class="slide-sublead slide-lead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>',
+      '<p class="slide-sublead slide-lead">Basic, intermediate, advanced — same core, different depth.</p>'
     ],
     [
       '<div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>',
@@ -375,8 +378,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">03 • Grįžtamasis ryšys</span>', '<span class="label">03 • Feedback</span>'],
     ['<h2>Turinio grįžtamasis ryšys</h2>', '<h2>Content feedback</h2>'],
     [
-      '<p class="slide-sublead">Įvertinimas + vienas konkretus patarimas — mažiau tuščių iteracijų.</p>',
-      '<p class="slide-sublead">Assessment + one concrete tip — fewer empty iterations.</p>'
+      '<p class="slide-sublead slide-lead">Įvertinimas + vienas konkretus patarimas — mažiau tuščių iteracijų.</p>',
+      '<p class="slide-sublead slide-lead">Assessment + one concrete tip — fewer empty iterations.</p>'
     ],
     [
       '<div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>',
@@ -398,8 +401,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">04 • Inovacijos</span>', '<span class="label">04 • Innovation</span>'],
     ['<h2>Užduotis / mokymas komandai</h2>', '<h2>Assignment / team learning</h2>'],
     [
-      '<p class="slide-sublead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>',
-      '<p class="slide-sublead">One concrete format — e.g. knowledge check or hands-on task — with instructions for the team.</p>'
+      '<p class="slide-sublead slide-lead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>',
+      '<p class="slide-sublead slide-lead">One concrete format — e.g. knowledge check or hands-on task — with instructions for the team.</p>'
     ],
     [
       '<div class="prompt-line"><b>UŽDUOTIS</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>',
@@ -421,8 +424,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">05 • Komunikacija</span>', '<span class="label">05 • Communication</span>'],
     ['<h2>Laiškas ar žinutė (juodraštis)</h2>', '<h2>Email or message (draft)</h2>'],
     [
-      '<p class="slide-sublead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>',
-      '<p class="slide-sublead">Up to ~100 words: problem, solution, clear next step.</p>'
+      '<p class="slide-sublead slide-lead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>',
+      '<p class="slide-sublead slide-lead">Up to ~100 words: problem, solution, clear next step.</p>'
     ],
     [
       '<div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus kitas žingsnis.</div>',

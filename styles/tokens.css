@@ -1,0 +1,133 @@
+:root {
+    --primary-blue: #103b5a;
+    --accent-yellow: #fbd304;
+    --accent-red: #ff5a5f;
+    --bg-dark: #071b29;
+    --surface-base: var(--bg-dark);
+    --surface-raised: rgba(255, 255, 255, 0.045);
+    --surface-muted: rgba(16, 59, 90, 0.26);
+    --surface-muted-deep: rgba(16, 59, 90, 0.34);
+    --surface-inset: rgba(0, 0, 0, 0.2);
+    --surface-inset-soft: rgba(0, 0, 0, 0.13);
+    --card-bg: var(--surface-raised);
+    --border: rgba(255, 255, 255, 0.1);
+    --border-hairline: rgba(255, 255, 255, 0.065);
+    /* Spacing skalė (DS v1.0) */
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-section-y: 60px;
+    --space-section-x: 120px;
+    --space-section-x-md: 90px;
+    --space-section-rail-left: 132px;
+    --space-section-mobile: 40px 20px 100px;
+    --space-container-gap: 80px;
+    --space-container-gap-md: 64px;
+    --space-container-gap-sm: 40px;
+    --space-card-padding: 18px;
+    --space-card-padding-lg: 21px;
+    --space-promo-block: 44px 120px 64px;
+    --space-promo-mobile: 32px 20px 52px;
+    --space-library-block: 64px 0 76px;
+    /* Tint / surface (DS v1.0) */
+    --accent-yellow-border: rgba(251, 211, 4, 0.45);
+    --accent-yellow-border-faint: rgba(251, 211, 4, 0.28);
+    --accent-yellow-border-soft: rgba(251, 211, 4, 0.35);
+    --accent-yellow-border-strong: rgba(251, 211, 4, 0.55);
+    --accent-yellow-outline-soft: rgba(251, 211, 4, 0.32);
+    --accent-yellow-nav-idle: rgba(251, 211, 4, 0.4);
+    --accent-yellow-nav-hover: rgba(251, 211, 4, 0.68);
+    --accent-yellow-bg-subtle: rgba(251, 211, 4, 0.1);
+    --accent-yellow-bg-mid: rgba(251, 211, 4, 0.12);
+    --accent-yellow-bg-hover: rgba(251, 211, 4, 0.07);
+    --accent-yellow-bg-faint: rgba(251, 211, 4, 0.06);
+    --accent-yellow-bg-fill: rgba(251, 211, 4, 0.08);
+    --accent-yellow-bg-emphasis: rgba(251, 211, 4, 0.14);
+    --mobile-nav-h: 96px;
+    --accent-red-muted-border: rgba(255, 90, 95, 0.35);
+    --accent-red-border-strong: rgba(255, 90, 95, 0.55);
+    --accent-red-border-emphasis: rgba(255, 90, 95, 0.65);
+    --accent-red-bg-subtle: rgba(255, 90, 95, 0.14);
+    --accent-red-quiz-bg: rgba(255, 90, 95, 0.1);
+    --accent-red-text-muted: #ff7a7e;
+    --surface-code: #000;
+    --brand-wordmark: #f1f5f9;
+    /* Radius & šešėliai: viena skalė (premium nuoseklumas) */
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-tab: 10px;
+    --radius-pill: 999px;
+    --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.45);
+    --lift-sm: translateY(-2px);
+    --lift-md: translateY(-3px);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-main: 'Inter', sans-serif;
+    /* Tekstas: kontrastas salėje / projektoriui */
+    --text-bright: #f8fafc;
+    --text-body: #e2e8f0;
+    --text-muted: #cbd5e1;
+    --text-soft: #94a3b8;
+    --text-on-accent: #0a0a0a;
+    --accent-yellow-hover-text: #fff6b0;
+    --shadow-accent-yellow: 0 8px 24px var(--accent-yellow-border-soft);
+    --scroll-anchor-top: 20px;
+    /* Šoninė juosta: „Turinys“ ir taškai — tas pats kairys kraštas + taškų centravimas */
+    --sidebar-rail-left: 34px;
+    /* Motion (nav, CTA, hero) */
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --duration-fast: 180ms;
+    --duration-base: 220ms;
+    /* Dedikuoti šešėliai — sluoksniuota gylio sistema */
+    --shadow-red-hero-rest:
+    0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 32px rgba(255, 90, 95, 0.25);
+    --shadow-red-hero-hover:
+    0 1px 0 rgba(255, 255, 255, 0.08),
+    0 22px 40px var(--accent-red-muted-border);
+    --shadow-cta-rest:
+    0 1px 0 rgba(255, 255, 255, 0.06),
+    0 20px 40px rgba(255, 90, 95, 0.3);
+    --shadow-cta-hover:
+    0 1px 0 rgba(255, 255, 255, 0.08),
+    0 30px 50px rgba(255, 90, 95, 0.5);
+    --shadow-yellow-hover:
+    0 1px 0 rgba(255, 255, 255, 0.05),
+    0 12px 28px rgba(251, 211, 4, 0.25);
+    --shadow-editor:
+    0 1px 0 rgba(255, 255, 255, 0.04),
+    0 30px 60px rgba(0, 0, 0, 0.4);
+    --shadow-panel-deep:
+    0 1px 0 rgba(255, 255, 255, 0.05),
+    0 16px 48px rgba(0, 0, 0, 0.28);
+    --shadow-nav-dot-active:
+        0 0 0 2px var(--bg-dark),
+        0 0 16px var(--accent-yellow-border-faint);
+    /* Overlay / on-dark (DS v2.0) */
+    --surface-overlay: rgba(7, 27, 41, 0.94);
+    --surface-overlay-mid: rgba(7, 27, 41, 0.92);
+    --surface-overlay-strong: rgba(7, 27, 41, 0.97);
+    --border-control: rgba(255, 255, 255, 0.18);
+    --border-control-hover: rgba(255, 255, 255, 0.28);
+    --nav-dot-idle-border: rgba(255, 255, 255, 0.14);
+    --nav-dot-idle-bg: rgba(255, 255, 255, 0.035);
+    --white-alpha-04: rgba(255, 255, 255, 0.04);
+    --white-alpha-06: rgba(255, 255, 255, 0.06);
+    --white-alpha-08: rgba(255, 255, 255, 0.08);
+    --white-alpha-12: rgba(255, 255, 255, 0.12);
+    --white-alpha-20: rgba(255, 255, 255, 0.2);
+    --white-alpha-22: rgba(255, 255, 255, 0.22);
+    --white-alpha-90: rgba(255, 255, 255, 0.9);
+    --border-subtle: rgba(255, 255, 255, 0.16);
+    --text-on-dark-high: rgba(255, 255, 255, 0.82);
+    --text-on-dark-muted: rgba(255, 255, 255, 0.88);
+    --shadow-chip: 0 10px 28px rgba(0, 0, 0, 0.4);
+    --shadow-outline-panel: 0 14px 36px rgba(0, 0, 0, 0.45);
+}

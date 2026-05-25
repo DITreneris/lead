@@ -27,11 +27,13 @@ function main() {
     process.exit(1);
   }
   copyIntoSite('404.html');
+  copyIntoSite('tools.html');
+  copyIntoSite('tools-lt.html');
   copyIntoSite('favicon.svg');
   copyIntoSite('assets');
   copyIntoSite('google7305663b2567346e.html');
   console.log(
-    '[prepare-site-artifact] Copied 404.html, favicon.svg, assets/, google7305663b2567346e.html → site/'
+    '[prepare-site-artifact] Copied 404.html, tools.html, tools-lt.html, favicon.svg, assets/, google7305663b2567346e.html → site/'
   );
 }
 

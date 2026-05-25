@@ -37,10 +37,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <!-- Inline SVG: Lucide icons (lucide-static, ISC License, https://lucide.dev) -->
     <style>
+                                                                                                                /* DS_TOKENS_START — from styles\tokens.css; do not edit here */
         :root {
-            --primary-blue: #103b5a;    
-            --accent-yellow: #fbd304;   
-            --accent-red: #ff5a5f;      
+            --primary-blue: #103b5a;
+            --accent-yellow: #fbd304;
+            --accent-red: #ff5a5f;
             --bg-dark: #071b29;
             --surface-base: var(--bg-dark);
             --surface-raised: rgba(255, 255, 255, 0.045);
@@ -126,30 +127,51 @@
             --duration-base: 220ms;
             /* Dedikuoti šešėliai — sluoksniuota gylio sistema */
             --shadow-red-hero-rest:
-                0 1px 0 rgba(255, 255, 255, 0.06),
-                0 16px 32px rgba(255, 90, 95, 0.25);
+            0 1px 0 rgba(255, 255, 255, 0.06),
+            0 16px 32px rgba(255, 90, 95, 0.25);
             --shadow-red-hero-hover:
-                0 1px 0 rgba(255, 255, 255, 0.08),
-                0 22px 40px var(--accent-red-muted-border);
+            0 1px 0 rgba(255, 255, 255, 0.08),
+            0 22px 40px var(--accent-red-muted-border);
             --shadow-cta-rest:
-                0 1px 0 rgba(255, 255, 255, 0.06),
-                0 20px 40px rgba(255, 90, 95, 0.3);
+            0 1px 0 rgba(255, 255, 255, 0.06),
+            0 20px 40px rgba(255, 90, 95, 0.3);
             --shadow-cta-hover:
-                0 1px 0 rgba(255, 255, 255, 0.08),
-                0 30px 50px rgba(255, 90, 95, 0.5);
+            0 1px 0 rgba(255, 255, 255, 0.08),
+            0 30px 50px rgba(255, 90, 95, 0.5);
             --shadow-yellow-hover:
-                0 1px 0 rgba(255, 255, 255, 0.05),
-                0 12px 28px rgba(251, 211, 4, 0.25);
+            0 1px 0 rgba(255, 255, 255, 0.05),
+            0 12px 28px rgba(251, 211, 4, 0.25);
             --shadow-editor:
-                0 1px 0 rgba(255, 255, 255, 0.04),
-                0 30px 60px rgba(0, 0, 0, 0.4);
+            0 1px 0 rgba(255, 255, 255, 0.04),
+            0 30px 60px rgba(0, 0, 0, 0.4);
             --shadow-panel-deep:
-                0 1px 0 rgba(255, 255, 255, 0.05),
-                0 16px 48px rgba(0, 0, 0, 0.28);
+            0 1px 0 rgba(255, 255, 255, 0.05),
+            0 16px 48px rgba(0, 0, 0, 0.28);
             --shadow-nav-dot-active:
                 0 0 0 2px var(--bg-dark),
                 0 0 16px var(--accent-yellow-border-faint);
+            /* Overlay / on-dark (DS v2.0) */
+            --surface-overlay: rgba(7, 27, 41, 0.94);
+            --surface-overlay-mid: rgba(7, 27, 41, 0.92);
+            --surface-overlay-strong: rgba(7, 27, 41, 0.97);
+            --border-control: rgba(255, 255, 255, 0.18);
+            --border-control-hover: rgba(255, 255, 255, 0.28);
+            --nav-dot-idle-border: rgba(255, 255, 255, 0.14);
+            --nav-dot-idle-bg: rgba(255, 255, 255, 0.035);
+            --white-alpha-04: rgba(255, 255, 255, 0.04);
+            --white-alpha-06: rgba(255, 255, 255, 0.06);
+            --white-alpha-08: rgba(255, 255, 255, 0.08);
+            --white-alpha-12: rgba(255, 255, 255, 0.12);
+            --white-alpha-20: rgba(255, 255, 255, 0.2);
+            --white-alpha-22: rgba(255, 255, 255, 0.22);
+            --white-alpha-90: rgba(255, 255, 255, 0.9);
+            --border-subtle: rgba(255, 255, 255, 0.16);
+            --text-on-dark-high: rgba(255, 255, 255, 0.82);
+            --text-on-dark-muted: rgba(255, 255, 255, 0.88);
+            --shadow-chip: 0 10px 28px rgba(0, 0, 0, 0.4);
+            --shadow-outline-panel: 0 14px 36px rgba(0, 0, 0, 0.45);
         }
+        /* DS_TOKENS_END */
 
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -301,7 +323,7 @@
             letter-spacing: 0.08em;
             padding: 6px 10px;
             border-radius: var(--radius-pill);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border: 1px solid var(--border-control);
             background: rgba(0, 0, 0, 0.2);
             color: var(--text-muted);
             cursor: pointer;
@@ -309,7 +331,7 @@
         }
         .lang-switch__btn:hover {
             color: var(--text-bright);
-            border-color: rgba(255, 255, 255, 0.28);
+            border-color: var(--border-control-hover);
         }
         .lang-switch__btn.is-active {
             color: var(--text-on-accent);
@@ -342,7 +364,7 @@
             align-items: center;
             gap: 12px;
             padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
-            background: rgba(7, 27, 41, 0.92);
+            background: var(--surface-overlay-mid);
             border-top: 1px solid var(--border-hairline);
             backdrop-filter: blur(8px);
         }
@@ -369,7 +391,7 @@
             height: 11px;
             padding: 0;
             margin: 0;
-            border: 2px solid rgba(255, 255, 255, 0.14);
+            border: 2px solid var(--nav-dot-idle-border);
             border-radius: 50%;
             cursor: pointer;
             transition:
@@ -377,7 +399,7 @@
                 background-color var(--duration-fast) var(--ease-out),
                 border-color var(--duration-fast) var(--ease-out),
                 box-shadow var(--duration-base) var(--ease-out);
-            background: rgba(255, 255, 255, 0.035);
+            background: var(--nav-dot-idle-bg);
             flex-shrink: 0;
             touch-action: manipulation;
         }
@@ -412,6 +434,10 @@
 
         section#intro {
             background: radial-gradient(circle at 80% 20%, rgba(251, 211, 4, 0.035), transparent 52%);
+            padding-top: max(var(--space-section-y), calc(72px + env(safe-area-inset-top, 0px)));
+        }
+        section#intro .viz-container .viz-svg {
+            opacity: 0.9;
         }
 
         section#cta {
@@ -505,6 +531,145 @@
             letter-spacing: -0.02em;
         }
         .hero-title-accent { color: var(--accent-yellow); }
+
+        /* DS v2.0 — shared typography / disclosure / tertiary / Tier 2 PDF */
+        .slide-lead {
+            color: var(--text-muted);
+            font-size: clamp(16px, 1.25vw, 19px);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        .slide-lead strong { color: var(--text-bright); font-weight: 700; }
+        .hero-intro.slide-lead {
+            margin: var(--space-6) 0 0;
+            max-width: 34em;
+        }
+        .types-lead.slide-lead,
+        .schema-lead.slide-lead {
+            max-width: 34em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .slide-sublead.slide-lead {
+            margin: var(--space-2) 0 var(--space-4);
+        }
+        .disclosure-chip__summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-bright);
+            background: var(--surface-overlay);
+            border: 1px solid var(--accent-yellow-border-faint);
+            border-left: 3px solid var(--accent-yellow-border-strong);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            box-shadow: var(--shadow-chip);
+            transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+        }
+        .disclosure-chip__summary::-webkit-details-marker { display: none; }
+        .disclosure-chip__summary::marker { content: ''; }
+        .disclosure-chip__summary:focus-visible {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 3px;
+        }
+        .disclosure-chip--inline .disclosure-chip__summary::after {
+            content: '';
+            width: 0.45em;
+            height: 0.45em;
+            margin-left: 0.15em;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg);
+            opacity: 0.75;
+            transition: transform var(--duration-fast) var(--ease-out);
+        }
+        details.disclosure-chip--inline[open] .disclosure-chip__summary::after {
+            transform: rotate(-135deg);
+        }
+        .disclosure-chip__panel {
+            text-align: left;
+            background: var(--surface-overlay-strong);
+            border: 1px solid var(--border-hairline);
+            border-radius: var(--radius-tab);
+            box-shadow: var(--shadow-outline-panel);
+        }
+        .disclosure-chip--nav .disclosure-chip__panel {
+            margin-top: var(--space-2);
+            padding: 6px 0;
+            max-height: min(440px, 52vh);
+            overflow-y: auto;
+        }
+        .disclosure-chip--inline .disclosure-chip__panel {
+            display: grid;
+            gap: var(--space-3);
+            margin-top: var(--space-2);
+            padding: var(--space-3) var(--space-4);
+            max-width: 34em;
+            font-size: clamp(14px, 1.1vw, 16px);
+            line-height: 1.5;
+            color: var(--text-body);
+        }
+        .link-tier-tertiary {
+            color: var(--text-on-dark-high);
+            text-decoration: none;
+            border-radius: var(--radius-tab);
+            transition: color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+        }
+        .link-tier-tertiary:hover {
+            color: var(--accent-yellow);
+            background: var(--accent-yellow-bg-fill);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+        .link-tier-tertiary:focus-visible {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 3px;
+        }
+        .hero-foot-links a.link-tier-tertiary {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 10px 10px;
+            margin: -10px -10px;
+        }
+        .btn-pdf-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 22px;
+            font-size: clamp(14px, 1.1vw, 16px);
+            font-weight: 700;
+            color: var(--accent-yellow);
+            background: transparent;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--accent-yellow-border-strong);
+            transition:
+                transform var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out),
+                background var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out);
+        }
+        .btn-pdf-outline:hover {
+            transform: var(--lift-sm);
+            background: var(--accent-yellow-bg-subtle);
+            color: var(--accent-yellow-hover-text);
+            box-shadow: var(--shadow-yellow-hover);
+        }
+        .btn-pdf-outline .icon { opacity: 0.9; }
+        .btn-pdf-outline:focus-visible {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 3px;
+        }
+
         h2 {
             font-family: var(--font-display);
             font-size: clamp(36px, 4.2vw, 56px);
@@ -513,79 +678,24 @@
             color: var(--text-bright);
             letter-spacing: -0.02em;
         }
-        .hero-intro {
-            font-size: clamp(17px, 1.9vw, 24px);
-            margin: 24px 0 0;
-            line-height: 1.45;
-            max-width: 28em;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-        details.hero-faq {
-            margin-top: 20px;
+        details.hero-faq.disclosure-chip--inline {
+            margin-top: var(--space-5);
             max-width: 36em;
-        }
-        .hero-faq__summary {
-            cursor: pointer;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            opacity: 0.9;
-            list-style: none;
-        }
-        .hero-faq__summary::-webkit-details-marker {
-            display: none;
-        }
-        .hero-faq__summary::after {
-            content: " ▼";
-            font-size: 0.65em;
-            opacity: 0.75;
-        }
-        details.hero-faq[open] .hero-faq__summary::after {
-            content: " ▲";
-        }
-        .hero-faq__summary:focus-visible {
-            outline: 2px solid var(--accent-yellow);
-            outline-offset: 4px;
-        }
-        .hero-faq__panel {
-            display: grid;
-            gap: 10px;
-            margin-top: 12px;
-            max-width: 34em;
-            font-size: clamp(14px, 1.1vw, 16px);
-            line-height: 1.5;
-            color: var(--text-body);
         }
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 16px 20px;
-            margin-top: 28px;
+            gap: var(--space-4) var(--space-5);
+            margin-top: var(--space-8);
         }
         .hero-foot-links {
-            margin-top: 14px;
+            margin-top: var(--space-3);
             font-size: clamp(14px, 1.05vw, 16px);
             font-weight: 600;
             color: var(--text-soft);
             line-height: 1.5;
             max-width: 32em;
-        }
-        .hero-foot-links a {
-            display: inline-flex;
-            align-items: center;
-            min-height: 44px;
-            padding: 10px 10px;
-            margin: -10px -10px;
-            color: rgba(255, 255, 255, 0.88);
-            text-decoration: underline;
-            text-decoration-color: var(--accent-yellow-border);
-            text-underline-offset: 3px;
-        }
-        .hero-foot-links a:hover {
-            color: var(--accent-yellow);
-            text-decoration-color: var(--accent-yellow);
         }
         .hero-primary-link {
             display: inline-flex;
@@ -609,51 +719,8 @@
             box-shadow: var(--shadow-red-hero-hover);
         }
         .hero-primary-link:active { transform: scale(0.99); }
-        .hero-pdf-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 22px;
-            font-size: clamp(14px, 1.1vw, 16px);
-            font-weight: 700;
-            color: var(--accent-yellow);
-            background: transparent;
-            text-decoration: none;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--accent-yellow-border-strong);
-            transition:
-                transform var(--duration-fast) var(--ease-out),
-                box-shadow var(--duration-base) var(--ease-out),
-                background var(--duration-fast) var(--ease-out),
-                color var(--duration-fast) var(--ease-out);
-        }
-        .hero-pdf-link:hover {
-            transform: var(--lift-sm);
-            background: var(--accent-yellow-bg-subtle);
-            color: var(--accent-yellow-hover-text);
-            box-shadow: var(--shadow-yellow-hover);
-        }
-        .hero-pdf-link .icon { opacity: 0.9; }
         .cta-pdf-wrap {
-            margin: 28px 0 0;
-        }
-        .cta-pdf-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 22px;
-            font-size: clamp(15px, 1.15vw, 18px);
-            font-weight: 700;
-            color: var(--accent-yellow);
-            background: transparent;
-            border: 2px solid var(--accent-yellow-border-strong);
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            transition: background var(--duration-base), color var(--duration-base);
-        }
-        .cta-pdf-link:hover {
-            background: var(--accent-yellow-bg-mid);
-            color: var(--accent-yellow-hover-text);
+            margin: var(--space-8) 0 0;
         }
         .cta-actions-stack {
             display: flex;
@@ -763,10 +830,6 @@
             margin-bottom: 12px;
             display: block;
         }
-        .slide-sublead {
-            margin: 8px 0 16px;
-            color: var(--text-muted);
-        }
 
         /* Prompt Kortelė */
         .prompt-editor {
@@ -816,9 +879,7 @@
         .copy-prompt-btn:hover { box-shadow: var(--shadow-accent-yellow); }
         .copy-prompt-btn:active { transform: scale(0.98); }
         .hero-primary-link:focus-visible,
-        .hero-pdf-link:focus-visible,
         .cta-btn:focus-visible,
-        .cta-pdf-link:focus-visible,
         .copy-prompt-btn:focus-visible,
         .types-copy-btn:focus-visible,
         .quiz-check-btn:focus-visible,
@@ -984,14 +1045,9 @@
         }
         .types-head { margin-bottom: 4px; }
         .types-head h2 { margin-bottom: 10px; }
-        .types-lead {
-            color: var(--text-muted);
-            font-size: clamp(16px, 1.25vw, 19px);
-            line-height: 1.5;
-            max-width: 34em;
+        .types-lead.slide-lead {
             margin: 0 auto;
         }
-        .types-lead strong { color: var(--text-bright); font-weight: 700; }
         .types-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1049,7 +1105,7 @@
             padding: 18px 18px 16px;
             text-align: left;
             background: rgba(16, 59, 90, 0.22);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--white-alpha-08);
             border-radius: var(--radius-lg);
             border-top: 2px solid var(--accent-yellow-border-faint);
         }
@@ -1093,30 +1149,35 @@
             margin: 0;
             display: inline;
         }
-        /* Trys kortelės (Praktika): stabilus vertikalus srautas (be išsitempimo) */
+        /* Trys kortelės (Praktika): lygios kolonos, vienoda Kopijuoti eilutė, pilkas turinio box išsitempia */
         .types-grid.types-triple-grid {
-            gap: 24px;
+            gap: var(--space-6);
             margin-top: 26px;
-            align-items: start;
+            align-items: stretch;
         }
         .types-triple-grid > .types-card {
-            height: auto;
+            height: 100%;
             min-height: 0;
-            align-self: start;
-            gap: 13px;
+            align-self: stretch;
+            gap: var(--space-4);
             padding: var(--space-card-padding-lg);
         }
         .types-triple-grid .types-card-grow {
-            flex: 0 1 auto;
+            flex: 1 1 auto;
             display: flex;
             flex-direction: column;
             min-height: 0;
+            gap: var(--space-2);
         }
         .types-triple-grid .types-example-block {
-            flex: 0 1 auto;
+            flex: 1 1 auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: var(--space-3);
+            min-height: 0;
+        }
+        .types-triple-grid .types-example-block > * {
+            flex: 1 1 auto;
             min-height: 0;
         }
         .types-triple-grid .types-copy-btn {
@@ -1125,29 +1186,26 @@
         }
         .types-triple-grid .types-card-extra {
             flex-shrink: 0;
-            margin-top: 12px;
-            padding-top: 15px;
+            margin-top: var(--space-3);
+            padding-top: var(--space-4);
             border-top: 1px solid var(--border-hairline);
-        }
-        .types-slide--guided .types-triple-grid .types-card-extra {
-            margin-top: 0;
         }
         .types-slide--guided .types-card-actions {
             flex-shrink: 0;
+            margin-top: auto;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 10px;
-            margin: 0;
-            padding-top: 14px;
+            gap: var(--space-3);
+            padding-top: var(--space-4);
             border-top: 1px solid var(--border-hairline);
         }
         .types-slide--guided .types-card-actions .types-copy-btn {
             margin-top: 0;
         }
         .types-slide--guided .types-copy-btn--practice {
-            color: rgba(255, 255, 255, 0.82);
-            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--text-on-dark-high);
+            border-color: var(--white-alpha-20);
             box-shadow: none;
             font-size: 12px;
             padding: 8px 14px;
@@ -1170,6 +1228,10 @@
         .types-slide--guided .types-card .types-card-k {
             color: var(--text-soft);
             letter-spacing: 0.06em;
+            margin-top: var(--space-2);
+        }
+        .types-slide--guided .types-card-desc {
+            margin-bottom: var(--space-2);
         }
         /* .types-slide--guided: kontrastas ir sąrašai (praktika) */
         .types-slide--guided .types-card-example--minimal {
@@ -1177,20 +1239,20 @@
             padding: 12px 14px;
             background: rgba(0, 0, 0, 0.22);
             border-left-width: 2px;
-            border-left-color: rgba(255, 255, 255, 0.2);
+            border-left-color: var(--white-alpha-20);
         }
         .types-slide--guided .types-card-example--structured {
             font-style: normal;
-            padding: 12px 14px;
+            padding: var(--space-4) var(--space-3);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: var(--space-3);
             overflow-wrap: anywhere;
         }
         .types-slide--guided .practice-structured-line {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px 12px;
+            gap: var(--space-2) var(--space-3);
             align-items: baseline;
             font-size: clamp(13px, 1.05vw, 14px);
             line-height: 1.68;
@@ -1217,7 +1279,7 @@
             color: var(--text-soft);
         }
         .types-slide--guided .practice-card-list li {
-            margin: 0 0 9px;
+            margin: 0 0 var(--space-3);
         }
         .types-slide--guided .practice-card-list li:last-child {
             margin-bottom: 0;
@@ -1672,24 +1734,8 @@
                 transform-origin: left top;
             }
         }
-        .slide-outline__summary {
-            cursor: pointer;
-            list-style: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--text-bright);
-            background: rgba(7, 27, 41, 0.94);
-            border: 1px solid rgba(251, 211, 4, 0.22);
-            border-left: 3px solid var(--accent-yellow-border-strong);
-            border-radius: var(--radius-md);
-            padding: 10px 14px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+        .disclosure-chip--nav .disclosure-chip__summary {
+            gap: var(--space-2);
         }
         .slide-outline__icon {
             display: inline-flex;
@@ -1702,18 +1748,6 @@
             width: 100%;
             height: 100%;
             display: block;
-        }
-        .slide-outline__summary::-webkit-details-marker { display: none; }
-        .slide-outline__summary::marker { content: ''; }
-        .slide-outline__panel {
-            margin-top: 8px;
-            padding: 6px 0;
-            background: rgba(7, 27, 41, 0.97);
-            border: 1px solid var(--border-hairline);
-            border-radius: var(--radius-tab);
-            max-height: min(440px, 52vh);
-            overflow-y: auto;
-            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
         }
         .slide-outline__list {
             margin: 0;
@@ -1852,12 +1886,9 @@
             max-width: 960px;
             margin: 0 auto;
         }
-        .schema-lead {
-            font-size: clamp(16px, 1.25vw, 19px);
-            color: var(--text-muted);
+        .schema-lead.slide-lead {
             max-width: 36em;
-            margin: 0 auto 36px;
-            line-height: 1.55;
+            margin: 0 auto var(--space-8);
         }
         .schema-grid {
             display: grid;
@@ -1885,7 +1916,7 @@
             align-items: flex-start;
             padding: 14px 16px;
             border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid var(--white-alpha-12);
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
         }
         .schema-step-num {
@@ -1915,16 +1946,16 @@
         .schema-step--neutral .schema-step-num { color: #0f172a; }
         .schema-step--reason {
             background: linear-gradient(135deg, #0d9488 0%, #047857 100%);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--white-alpha-20);
         }
-        .schema-step--reason .schema-step-num { color: rgba(255, 255, 255, 0.9); }
+        .schema-step--reason .schema-step-num { color: var(--white-alpha-90); }
         .schema-step--reason .schema-step-body { color: #ecfdf5; }
         .schema-step--reason .schema-step-body strong { color: var(--text-bright); }
         .schema-step--qc {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #0c2d45 100%);
             border-color: rgba(255, 255, 255, 0.15);
         }
-        .schema-step--qc .schema-step-num { color: rgba(255, 255, 255, 0.9); }
+        .schema-step--qc .schema-step-num { color: var(--white-alpha-90); }
         .schema-step--qc .schema-step-body { color: #e0f2fe; }
         .schema-step--qc .schema-step-body strong { color: var(--text-bright); }
         .schema-arrow {
@@ -2067,7 +2098,7 @@
         }
         .quiz-option:hover {
             border-color: var(--accent-yellow-border-soft);
-            background: rgba(255, 255, 255, 0.06);
+            background: var(--white-alpha-06);
         }
         .quiz-option:has(input:focus-visible) {
             outline: 2px solid var(--accent-yellow);
@@ -2118,7 +2149,7 @@
             cursor: pointer;
             transition: color var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
         }
-        .quiz-reset-btn:hover { color: var(--text-bright); border-color: rgba(255, 255, 255, 0.22); }
+        .quiz-reset-btn:hover { color: var(--text-bright); border-color: var(--white-alpha-22); }
         .quiz-feedback {
             margin-top: 22px;
             padding: 18px 20px;
@@ -2188,8 +2219,7 @@
             text-decoration: none;
         }
 
-        .inline-link--soft {
-            color: rgba(255, 255, 255, 0.82);
+        .inline-link--soft.link-tier-tertiary {
             font-weight: 800;
             text-decoration: none;
         }
@@ -2206,9 +2236,8 @@
             }
             .loop-sq, .loop-ci { animation: none !important; }
             .hero-primary-link,
-            .hero-pdf-link,
+            .btn-pdf-outline,
             .cta-btn,
-            .cta-pdf-link,
             .copy-prompt-btn,
             .types-copy-btn,
             .quiz-check-btn,
@@ -2272,7 +2301,7 @@
                 height: 10px;
                 border-radius: var(--radius-pill);
                 border: 2px solid rgba(255, 255, 255, 0.16);
-                background: rgba(255, 255, 255, 0.04);
+                background: var(--white-alpha-04);
                 box-sizing: border-box;
                 transition: transform var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
             }
@@ -2326,6 +2355,27 @@
             #quiz-feedback {
                 scroll-margin-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 12px);
             }
+            section#intro {
+                padding-top: max(40px, calc(64px + env(safe-area-inset-top, 0px)));
+            }
+            #intro .hero-intro,
+            #intro .hero-foot-links,
+            #intro details.hero-faq {
+                margin-inline: auto;
+            }
+            #intro .disclosure-chip__summary {
+                margin-inline: auto;
+            }
+            #intro .hero-actions {
+                justify-content: center;
+            }
+            #intro .viz-container {
+                order: -1;
+                max-width: min(280px, 72vw);
+                margin-inline: auto;
+                margin-bottom: var(--space-4);
+                opacity: 0.88;
+            }
         }
         @media (max-width: 480px) {
             .brand-name { white-space: normal; text-align: right; max-width: 9.5em; }
@@ -2338,9 +2388,9 @@
 <a class="skip-link" href="#main-content">Pereiti prie turinio</a>
 <div id="a11y-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
 
-<details class="slide-outline" id="slide-outline">
-    <summary class="slide-outline__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Turinys</summary>
-    <div class="slide-outline__panel">
+<details class="slide-outline disclosure-chip disclosure-chip--nav" id="slide-outline">
+    <summary class="slide-outline__summary disclosure-chip__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Turinys</summary>
+    <div class="slide-outline__panel disclosure-chip__panel">
         <ul class="slide-outline__list" id="slide-outline-list"></ul>
     </div>
 </details>
@@ -2410,21 +2460,21 @@
         <div>
             <span class="label">DI praktinė sistema įmonei</span>
             <h1>PROMPTŲ<br><span class="hero-title-accent">ANATOMIJA</span></h1>
-            <p class="hero-intro">Penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Nuo DI „spėliojimo“ iki aiškios sistemos: mažiau taisymo, daugiau kontrolės.</p>
+            <p class="hero-intro slide-lead">Penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Nuo DI „spėliojimo“ iki aiškios sistemos: mažiau taisymo, daugiau kontrolės.</p>
             <div class="hero-actions">
                 <a class="hero-primary-link" href="#guided" aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką" data-track="hero_primary_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
                     Pradėk 2 min. praktiką
                 </a>
-                <a class="hero-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
+                <a class="hero-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                     Atsisiųsk santrauką (PDF)
                 </a>
             </div>
-            <p class="hero-foot-links"><a href="#library" data-track="hero_library_click">Biblioteka</a> · <a href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO ir COO executive rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a></p>
-            <details class="hero-faq geo-faq-anchor" data-geo-faq="1">
-                <summary class="hero-faq__summary">DUK (trumpai)</summary>
-                <div class="hero-faq__panel">
+            <p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Biblioteka</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO ir COO executive rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a> · <a class="link-tier-tertiary" href="tools-lt.html">DI įrankių gidas</a></p>
+            <details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">
+                <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>
+                <div class="hero-faq__panel disclosure-chip__panel">
                     <div><strong>Kam tai?</strong> Komandos darbui ir vadovui: mažiau taisymo, aiškesni rezultatai.</div>
                     <div><strong>Kada naudoti patikrą?</strong> Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.</div>
                     <div><strong>Ką kopijuoti?</strong> Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.</div>
@@ -2447,7 +2497,7 @@
         <div class="types-head">
             <span class="label">Pagrindai</span>
             <h2>Kas yra promptas?</h2>
-            <p class="types-lead">Žemiau — du apibrėžimai ir greito naudojimo taisyklė (juosta).<br>Penkių žingsnių schema — kai atsakymas miglotas ir vis dar reikia pataisymų.</p>
+            <p class="types-lead slide-lead">Žemiau — du apibrėžimai ir greito naudojimo taisyklė (juosta).<br>Penkių žingsnių schema — kai atsakymas miglotas ir vis dar reikia pataisymų.</p>
         </div>
 
         <div class="types-grid types-primer-cols">
@@ -2497,7 +2547,7 @@
         <div class="schema-inner">
             <span class="label">Žingsniai</span>
             <h2>Promptų anatomijos schema</h2>
-            <p class="schema-lead">Kiekvienas blokas prideda aiškumo. Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>
+            <p class="schema-lead slide-lead">Kiekvienas blokas prideda aiškumo. Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>
             <div class="schema-grid">
                 <div class="schema-column-flow">
                     <svg class="schema-loop-svg" viewBox="0 0 40 200" preserveAspectRatio="none" aria-hidden="true">
@@ -2574,7 +2624,7 @@
         <div class="types-head">
             <span class="label">Praktika</span>
             <h2>Pradėk per 2 minutes</h2>
-            <p class="types-lead">Tas pats Q3 tikslas — bet užklausa su rėmu keičia, ką gauni.<br>Eiga: migla → struktūra → trumpa savikontrolė.</p>
+            <p class="types-lead slide-lead">Tas pats Q3 tikslas — bet užklausa su rėmu keičia, ką gauni.<br>Eiga: migla → struktūra → trumpa savikontrolė.</p>
         </div>
         <div class="types-grid types-triple-grid">
             <article class="types-card types-card--sys">
@@ -2698,7 +2748,7 @@
         <div>
             <span class="label">Saugumas</span>
             <h2>Greita siuntimo patikra</h2>
-            <p class="slide-sublead">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio.<br>Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>
+            <p class="slide-sublead slide-lead">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio.<br>Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>
                 <div class="prompt-line"><b>KONTEKSTAS</b> Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].</div>
@@ -2711,7 +2761,7 @@
             <svg class="viz-svg" viewBox="0 0 400 400">
                 <path d="M200 55 L330 105 V215 Q330 295 200 355 Q70 295 70 215 V105 Z" fill="none" stroke="var(--accent-yellow)" stroke-width="3" />
                 <path d="M145 205 L180 248 L265 145" stroke="var(--accent-red)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                <circle cx="200" cy="200" r="118" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+                <circle cx="200" cy="200" r="118" fill="none" stroke="var(--white-alpha-08)" stroke-width="1" />
             </svg>
         </div>
     </div>
@@ -2740,7 +2790,7 @@
         <div>
             <span class="label">01 • Struktūra</span>
             <h2>Susitikimo ar sprinto planas</h2>
-            <p class="slide-sublead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>
+            <p class="slide-sublead slide-lead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTARĖTE ANKSČIAU].</div>
@@ -2758,7 +2808,7 @@
         <div>
             <span class="label">02 • Personalizacija</span>
             <h2>Ta pati žinutė — 3 lygiai</h2>
-            <p class="slide-sublead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>
+            <p class="slide-sublead slide-lead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>
@@ -2791,7 +2841,7 @@
         <div>
             <span class="label">03 • Grįžtamasis ryšys</span>
             <h2>Turinio grįžtamasis ryšys</h2>
-            <p class="slide-sublead">Įvertinimas + vienas konkretus patarimas — mažiau tuščių iteracijų.</p>
+            <p class="slide-sublead slide-lead">Įvertinimas + vienas konkretus patarimas — mažiau tuščių iteracijų.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>
@@ -2809,7 +2859,7 @@
         <div>
             <span class="label">04 • Inovacijos</span>
             <h2>Užduotis / mokymas komandai</h2>
-            <p class="slide-sublead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>
+            <p class="slide-sublead slide-lead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>
@@ -2842,7 +2892,7 @@
         <div>
             <span class="label">05 • Komunikacija</span>
             <h2>Laiškas ar žinutė (juodraštis)</h2>
-            <p class="slide-sublead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
+            <p class="slide-sublead slide-lead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus kitas žingsnis.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
@@ -3059,7 +3109,7 @@
         </div>
         <div class="cta-secondary-wrap">
             <p class="cta-secondary-label">Santrauka</p>
-            <a class="cta-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF" data-track="cta_pdf_click">
+            <a class="cta-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF" data-track="cta_pdf_click">
                 <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                 Atsisiųsk santrauką (PDF)
             </a>
