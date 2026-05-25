@@ -51,10 +51,10 @@ Po pakeitimų `docs/pamoka-1-pdf.md` paleiskite build ir commitinkite atnaujint�
 ## Lean repo (kad būtų paprasta tvarkytis)
 
 - **Vienas UI šaltinis:** [index.html](index.html) — HTML, CSS, JS vienoje byloje; naujos funkcijos geriau čia nei nauji įrankiai. LT / EN statinis skaidymas — `npm run build` + [scripts/build-locale-pages.js](scripts/build-locale-pages.js); papildomas failas tik EN bibliotekai — [assets/prompt-library-en.js](assets/prompt-library-en.js).
-- **Design system:** [docs/design_system.md](docs/design_system.md) — tokenai, komponentai, CTA, responsive ir palydoviniai puslapiai; atnaujinti kartu su didesniais CSS pakeitimais.
+- **Design system (v1.5):** [docs/design_system.md](docs/design_system.md) — tokenai, komponentai, CTA, slide modifieriai, `verify:design-tokens`; atnaujinti kartu su didesniais CSS pakeitimais.
 - **PDF kanonai:** LT — [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf); EN — [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf).
 - **Biblioteka:** kopijuojamas tekstas — `libraryPrompts` + `syncLibraryDom` (žr. [AGENTS.md](AGENTS.md) §4.1).
-- **LT / EN patikra:** po `npm run build` — `npm run verify` ([package.json](package.json) — `verify-library-keys` + `verify-en-locale` + `verify-social-meta` + `verify-robots-llms`).
+- **LT / EN patikra:** po `npm run build` — `npm run verify` ([package.json](package.json) — `verify-library-keys` + `verify-design-tokens` + `verify-en-locale` + `verify-social-meta` + `verify-robots-llms`).
 - **Social share (FB/X):** jei keiti `assets/og-promptanatomy.png`, didink `OG_IMAGE_VERSION` (env) arba `?v=` URL, kad crawleriai persikrautų paveikslą.
 - **Kontekstas agentams:** [AGENTS.md](AGENTS.md) — maršrutai; Cursor rules — `.cursor/rules/`; kokybė — `.cursor/skills/q-a-agent/SKILL.md`.
 

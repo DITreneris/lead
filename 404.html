@@ -22,6 +22,9 @@
             --radius-md: 8px;
             --font-display: 'Space Grotesk', sans-serif;
             --font-main: 'Inter', sans-serif;
+            --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+            --duration-fast: 180ms;
+            --border-hairline: rgba(255, 255, 255, 0.065);
         }
         * { box-sizing: border-box; }
         body {
@@ -55,6 +58,7 @@
             text-decoration: none;
             padding: 12px 22px;
             border-radius: var(--radius-md);
+            transition: filter var(--duration-fast) var(--ease-out);
         }
         a.cta-primary:hover { filter: brightness(1.05); }
         a.cta-primary:focus-visible { outline: 2px solid var(--accent-yellow); outline-offset: 3px; }
@@ -72,7 +76,7 @@
         .page-legal-footnote {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid var(--border-hairline);
             font-size: 0.8rem;
             color: var(--text-muted);
             line-height: 1.5;

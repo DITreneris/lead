@@ -82,6 +82,11 @@
             --accent-yellow-nav-hover: rgba(251, 211, 4, 0.68);
             --accent-yellow-bg-subtle: rgba(251, 211, 4, 0.1);
             --accent-yellow-bg-mid: rgba(251, 211, 4, 0.12);
+            --accent-yellow-bg-hover: rgba(251, 211, 4, 0.07);
+            --accent-yellow-bg-faint: rgba(251, 211, 4, 0.06);
+            --accent-yellow-bg-fill: rgba(251, 211, 4, 0.08);
+            --accent-yellow-bg-emphasis: rgba(251, 211, 4, 0.14);
+            --mobile-nav-h: 96px;
             --accent-red-muted-border: rgba(255, 90, 95, 0.35);
             --accent-red-border-strong: rgba(255, 90, 95, 0.55);
             --accent-red-border-emphasis: rgba(255, 90, 95, 0.65);
@@ -413,25 +418,25 @@
             background: linear-gradient(to bottom, var(--bg-dark), var(--primary-blue));
         }
 
-        /* Pagrindai (#primer): turinys aukščiau, be vertikalaus „plaukiojimo“ centre */
-        section#primer.types-slide {
+        /* Pagrindai (.types-slide--primer): turinys aukščiau, be vertikalaus „plaukiojimo“ centre */
+        .types-slide--primer {
             align-items: flex-start;
             padding-top: max(92px, calc(52px + env(safe-area-inset-top, 0px)));
         }
-        #primer .types-head {
+        .types-slide--primer .types-head {
             margin-bottom: 0;
         }
-        #primer .types-grid.types-primer-cols {
+        .types-slide--primer .types-grid.types-primer-cols {
             margin-top: 14px;
         }
-        #primer .types-card h3 {
+        .types-slide--primer .types-card h3 {
             font-size: clamp(15px, 1.12vw, 17px);
         }
-        #primer .types-card-desc {
+        .types-slide--primer .types-card-desc {
             font-size: clamp(12px, 0.98vw, 14px);
             color: var(--text-soft);
         }
-        #primer .types-card .types-card-example {
+        .types-slide--primer .types-card .types-card-example {
             background: rgba(16, 59, 90, 0.4);
             border-left-width: 2px;
             border-left-color: var(--accent-yellow-border);
@@ -441,14 +446,14 @@
             border-left-width: 2px;
             border-left-color: var(--accent-yellow-nav-idle);
         }
-        #primer .types-copy-btn {
+        .types-slide--primer .types-copy-btn {
             padding: 7px 12px;
             font-size: 12px;
             font-weight: 600;
             opacity: 0.9;
             border-color: var(--accent-yellow-outline-soft);
         }
-        #primer .types-copy-btn:hover {
+        .types-slide--primer .types-copy-btn:hover {
             opacity: 1;
         }
         .primer-next-cta {
@@ -468,7 +473,7 @@
             border: 1px solid var(--accent-yellow-border);
             background: rgba(16, 59, 90, 0.48);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-            transition: background 0.18s var(--ease-out), border-color 0.18s var(--ease-out), color 0.18s var(--ease-out);
+            transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
         }
         .primer-next-cta:hover {
             background: var(--accent-yellow-bg-mid);
@@ -918,7 +923,7 @@
             border-radius: var(--radius-lg);
             border: 1px solid var(--accent-yellow-border-faint);
             box-shadow: var(--shadow-panel-deep);
-            background: linear-gradient(145deg, rgba(16, 59, 90, 0.42), rgba(251, 211, 4, 0.06));
+            background: linear-gradient(145deg, rgba(16, 59, 90, 0.42), var(--accent-yellow-bg-faint));
         }
         @supports (background: color-mix(in srgb, black 50%, transparent)) {
             .promo-handoff__panel {
@@ -1124,10 +1129,10 @@
             padding-top: 15px;
             border-top: 1px solid var(--border-hairline);
         }
-        #guided .types-triple-grid .types-card-extra {
+        .types-slide--guided .types-triple-grid .types-card-extra {
             margin-top: 0;
         }
-        #guided .types-card-actions {
+        .types-slide--guided .types-card-actions {
             flex-shrink: 0;
             display: flex;
             flex-wrap: wrap;
@@ -1137,44 +1142,44 @@
             padding-top: 14px;
             border-top: 1px solid var(--border-hairline);
         }
-        #guided .types-card-actions .types-copy-btn {
+        .types-slide--guided .types-card-actions .types-copy-btn {
             margin-top: 0;
         }
-        #guided .types-copy-btn--practice {
+        .types-slide--guided .types-copy-btn--practice {
             color: rgba(255, 255, 255, 0.82);
             border-color: rgba(255, 255, 255, 0.2);
             box-shadow: none;
             font-size: 12px;
             padding: 8px 14px;
         }
-        #guided .types-copy-btn--practice:hover {
+        .types-slide--guided .types-copy-btn--practice:hover {
             background: var(--accent-yellow-bg-subtle);
             color: var(--accent-yellow-hover-text);
             border-color: var(--accent-yellow-border);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
         }
-        #guided .types-copy-btn--practice:focus-visible {
+        .types-slide--guided .types-copy-btn--practice:focus-visible {
             outline: 2px solid var(--accent-yellow);
             outline-offset: 3px;
         }
-        #guided .types-card h3 {
+        .types-slide--guided .types-card h3 {
             text-transform: none;
             letter-spacing: 0.02em;
             font-size: clamp(15px, 1.12vw, 17px);
         }
-        #guided .types-card .types-card-k {
+        .types-slide--guided .types-card .types-card-k {
             color: var(--text-soft);
             letter-spacing: 0.06em;
         }
-        /* #guided: kontrastas ir sąrašai (praktika) */
-        #guided .types-card-example--minimal {
+        /* .types-slide--guided: kontrastas ir sąrašai (praktika) */
+        .types-slide--guided .types-card-example--minimal {
             font-style: normal;
             padding: 12px 14px;
             background: rgba(0, 0, 0, 0.22);
             border-left-width: 2px;
             border-left-color: rgba(255, 255, 255, 0.2);
         }
-        #guided .types-card-example--structured {
+        .types-slide--guided .types-card-example--structured {
             font-style: normal;
             padding: 12px 14px;
             display: flex;
@@ -1182,7 +1187,7 @@
             gap: 8px;
             overflow-wrap: anywhere;
         }
-        #guided .practice-structured-line {
+        .types-slide--guided .practice-structured-line {
             display: flex;
             flex-wrap: wrap;
             gap: 8px 12px;
@@ -1191,7 +1196,7 @@
             line-height: 1.68;
             color: var(--text-body);
         }
-        #guided .practice-structured-line strong {
+        .types-slide--guided .practice-structured-line strong {
             flex: 0 0 5.5em;
             font-family: var(--font-main);
             font-size: 10px;
@@ -1200,24 +1205,24 @@
             text-transform: uppercase;
             color: rgba(167, 243, 208, 0.88);
         }
-        #guided .practice-structured-line span {
+        .types-slide--guided .practice-structured-line span {
             flex: 1 1 12em;
             color: var(--text-muted);
         }
-        #guided .practice-card-list {
+        .types-slide--guided .practice-card-list {
             margin: 0;
             padding: 0 0 0 1.15em;
             font-size: clamp(13px, 1.05vw, 15px);
             line-height: 1.65;
             color: var(--text-soft);
         }
-        #guided .practice-card-list li {
+        .types-slide--guided .practice-card-list li {
             margin: 0 0 9px;
         }
-        #guided .practice-card-list li:last-child {
+        .types-slide--guided .practice-card-list li:last-child {
             margin-bottom: 0;
         }
-        #guided .types-card--ctx .types-card-example--structured {
+        .types-slide--guided .types-card--ctx .types-card-example--structured {
             border-left-color: rgba(16, 185, 129, 0.55);
         }
         .types-card--sys { border-color: var(--primary-blue); }
@@ -1298,7 +1303,7 @@
         .types-tip {
             margin-top: 24px;
             padding: 16px 18px;
-            background: linear-gradient(135deg, rgba(16, 59, 90, 0.50), rgba(251, 211, 4, 0.06));
+            background: linear-gradient(135deg, rgba(16, 59, 90, 0.50), var(--accent-yellow-bg-faint));
             border: 1px solid var(--border-hairline);
             border-radius: var(--radius-lg);
             display: flex;
@@ -1440,7 +1445,7 @@
         }
         .library-howto-summary::-webkit-details-marker { display: none; }
         .library-howto-summary::marker { content: ''; }
-        .library-howto-summary:hover { background: rgba(251, 211, 4, 0.07); }
+        .library-howto-summary:hover { background: var(--accent-yellow-bg-hover); }
         .library-howto-summary:focus-visible {
             outline: 2px solid var(--accent-yellow);
             outline-offset: -2px;
@@ -1513,7 +1518,7 @@
         .library-cat-summary::-webkit-details-marker { display: none; }
         .library-cat-summary::marker { content: ''; }
         .library-cat-summary:hover {
-            background: rgba(251, 211, 4, 0.07);
+            background: var(--accent-yellow-bg-hover);
         }
         .library-cat-summary:focus-visible {
             outline: 2px solid var(--accent-yellow);
@@ -1582,14 +1587,14 @@
             text-transform: uppercase;
             border-radius: var(--radius-md);
             border: 1px solid var(--accent-yellow-border-soft);
-            background: rgba(251, 211, 4, 0.08);
+            background: var(--accent-yellow-bg-fill);
             color: var(--accent-yellow);
             cursor: pointer;
             transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
         }
         .library-toggle-all:hover {
-            background: rgba(251, 211, 4, 0.14);
-            border-color: rgba(251, 211, 4, 0.5);
+            background: var(--accent-yellow-bg-emphasis);
+            border-color: var(--accent-yellow-border-strong);
         }
         .library-toggle-all:focus-visible {
             outline: 2px solid var(--accent-yellow);
@@ -1658,7 +1663,7 @@
             max-width: min(288px, calc(100vw - 24px));
             left: var(--sidebar-rail-left);
             top: 96px;
-            transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+            transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
         }
         @media (min-width: 1025px) {
             html.primer-active .slide-outline {
@@ -2170,7 +2175,7 @@
             border-radius: var(--radius-tab);
         }
         .inline-link:hover {
-            background: rgba(251, 211, 4, 0.08);
+            background: var(--accent-yellow-bg-fill);
             text-decoration: underline;
             text-decoration-thickness: 2px;
             text-underline-offset: 3px;
@@ -2227,7 +2232,6 @@
 
         @media (max-width: 1024px) {
             :root {
-                --mobile-nav-h: 96px;
                 --scroll-anchor-top: 24px;
             }
             .meme-interlude { padding: 32px 20px 40px; }
@@ -2235,7 +2239,7 @@
             .promo-handoff__panel { padding: 22px 18px 26px; }
             .container { grid-template-columns: 1fr; gap: var(--space-container-gap-sm); text-align: center; }
             section { padding: var(--space-section-mobile); }
-            section#primer.types-slide {
+            .types-slide--primer {
                 padding-top: max(72px, calc(36px + env(safe-area-inset-top, 0px)));
             }
             .nav-sidebar { display: none; }
@@ -2260,7 +2264,7 @@
                 display: grid;
                 place-items: center;
                 -webkit-tap-highlight-color: transparent;
-                transition: transform 0.18s ease, background 0.18s ease;
+                transition: transform var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
             }
             .nav-mobile button.nav-item::after {
                 content: '';
@@ -2270,11 +2274,11 @@
                 border: 2px solid rgba(255, 255, 255, 0.16);
                 background: rgba(255, 255, 255, 0.04);
                 box-sizing: border-box;
-                transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+                transition: transform var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
             }
             .nav-mobile button.nav-item.active {
                 transform: none;
-                background: rgba(251, 211, 4, 0.08);
+                background: var(--accent-yellow-bg-fill);
                 box-shadow: none;
                 border-color: transparent;
             }
@@ -2438,7 +2442,7 @@
 </section>
 
 <!-- Skaidrė 2: kas yra promptas -->
-<section id="primer" class="types-slide" aria-label="Kas yra promptas?">
+<section id="primer" class="types-slide types-slide--primer" aria-label="Kas yra promptas?">
     <div class="container">
         <div class="types-head">
             <span class="label">Pagrindai</span>
@@ -2565,7 +2569,7 @@
 </div>
 
 <!-- Skaidrė 4: Guided praktika -->
-<section id="guided" class="types-slide" aria-label="Pradėk per 2 minutes">
+<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutes">
     <div class="container">
         <div class="types-head">
             <span class="label">Praktika</span>

@@ -4,10 +4,11 @@
   "scripts": {
     "build": "node scripts/build-locale-pages.js && node scripts/generate-llms-artifacts.js && node scripts/prepare-site-artifact.js",
     "verify:library-keys": "node scripts/verify-library-keys.js",
+    "verify:design-tokens": "node scripts/verify-design-tokens.js",
     "verify:en-locale": "node scripts/verify-en-locale.js",
     "verify:social-meta": "node scripts/verify-social-meta.js",
     "verify:robots-llms": "node scripts/verify-robots-llms.js",
-    "verify": "node scripts/verify-library-keys.js && node scripts/verify-en-locale.js && node scripts/verify-social-meta.js && node scripts/verify-robots-llms.js"
+    "verify": "node scripts/verify-library-keys.js && node scripts/verify-design-tokens.js && node scripts/verify-en-locale.js && node scripts/verify-social-meta.js && node scripts/verify-robots-llms.js"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1"

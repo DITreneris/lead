@@ -96,7 +96,7 @@ function getEnHtmlReplacementPairs() {
       '<div class="promo-handoff" role="region" aria-label="Link to the program at www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Program</span>\n            <p class="promo-handoff__title">Roll out the same system for your team</p>\n            <p class="promo-handoff__sub">This page is the free lesson and library. The site has the paid, team-ready program.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=lead&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Open PromptAnatomy.app in a new tab" data-track="promo_app_banner_click">Open PromptAnatomy.app</a>\n        </div>\n    </div>\n</div>'
     ],
 
-    ['<section id="primer" class="types-slide" aria-label="Kas yra promptas?"', '<section id="primer" class="types-slide" aria-label="What is a prompt?"'],
+    ['<section id="primer" class="types-slide types-slide--primer" aria-label="Kas yra promptas?"', '<section id="primer" class="types-slide types-slide--primer" aria-label="What is a prompt?"'],
     ['<span class="label">Pagrindai</span>', '<span class="label">Basics</span>'],
     ['<h2>Kas yra promptas?</h2>', '<h2>What is a prompt?</h2>'],
     [
@@ -186,7 +186,7 @@ function getEnHtmlReplacementPairs() {
       'alt="Meme after basics cards: the AI mirrors how clear your input is — structure the prompt."'
     ],
 
-    ['<section id="guided" class="types-slide" aria-label="Pradėk per 2 minutes"', '<section id="guided" class="types-slide" aria-label="Start in 2 minutes"'],
+    ['<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutes"', '<section id="guided" class="types-slide types-slide--guided" aria-label="Start in 2 minutes"'],
     ['<span class="label">Praktika</span>', '<span class="label">Practice</span>'],
     ['<h2>Pradėk per 2 minutes</h2>', '<h2>Start in 2 minutes</h2>'],
     [

@@ -41,11 +41,12 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] Išlaikyti `.skip-link`, `aria-label`, `aria-live` (pvz. quiz), `:focus-visible` stiliai kur jau apibrėžta; nauji interaktyvūs elementai nepažeidžia esamo modelio.
 - [ ] Viskas, kas patenka į **`aria-live`** ar **`#a11y-status` `textContent`**, turi būti **kalbai jautrus** (`uiText` arba EN build poros), kad EN puslapyje nebūtų LT pranešimų.
 
-### Vizualinė sistema / DS
+### Vizualinė sistema / DS (v1.5)
 
-- [ ] Naujas mygtukas / CTA atitinka tier iš [docs/design_system.md](../../../docs/design_system.md) §8 (ne naujas „raudonas“ variantas).
-- [ ] Nauja vieša CSS klasė ar `:root` tokenas — atnaujintas [docs/design_system.md](../../../docs/design_system.md) (§3–§8).
-- [ ] Po CSS pakeitimų: mobilus smoke pagal DS §6 (375 / 768 / 1024 px), jei liečia layout ar nav.
+- [ ] Naujas mygtukas / CTA atitinka tier iš [docs/design_system.md](../../../docs/design_system.md) §8 (ne naujas „raudonas“ variantas); DS v1.5 = poliravimas, ne hero/layout redesign.
+- [ ] Nauja vieša CSS klasė ar `:root` tokenas — atnaujintas [docs/design_system.md](../../../docs/design_system.md) (§3–§8); primer/guided stiliams — `.types-slide--primer` / `--guided`, ne ID selektoriai.
+- [ ] `npm run verify` įskaitant `verify:design-tokens` (strict: `:root` ↔ DS §3, be ne dokumentuotų `rgba(251/255,90)` komponentuose).
+- [ ] Po CSS pakeitimų: mobilus smoke pagal DS §6 (375 / 390 / 768 / 1024 px), jei liečia layout ar nav.
 
 ### LT ↔ EN (i18n ir „drift“)
 
