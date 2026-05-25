@@ -6,6 +6,18 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Added
 
+- **SEO / GEO / crawlers (build-only, be `index.html` hero pakeitimų):** `robots.txt` — explicit Allow visiems pagrindiniams AI/search crawleriams + `Content-Signal`; `sitemap.xml` — PDF URL + `lastmod`; JSON-LD — `@id`, `Organization.logo` / `sameAs`, `LearningResource`, `WebPage.description`; `<link rel="alternate" type="text/markdown" href="…/llms.txt">`. Nauji artefaktai: `llms.txt`, `llms-full.txt` (EN biblioteka), `pricing.md`, `security.txt`, `.well-known/agent.json`, `.well-known/agent-card.json` — [scripts/site-build-config.js](scripts/site-build-config.js), [scripts/generate-llms-artifacts.js](scripts/generate-llms-artifacts.js), [scripts/verify-robots-llms.js](scripts/verify-robots-llms.js); [vercel.json](vercel.json) security headers; CI — [.github/workflows/verify.yml](.github/workflows/verify.yml).
+
+### Changed
+
+- **Design System v1.0:** [index.html](index.html) — `--space-*` skalė (section, container, types-card, library, promo); tint tokenai (`--accent-yellow-*`, `--accent-red-*`, `--surface-code`, `--brand-wordmark`); literal → `var()` migracija; bendras CTA `:focus-visible` / `:disabled` / `aria-busy`; motion per `--duration-*` + `--ease-out`. [404.html](404.html) — Inter + Space Grotesk, lesson token subset. [tools.html](tools.html) — dark SaaS parity, be Tailwind CDN. [docs/design_system.md](docs/design_system.md) atnaujintas į v1.0.
+
+### Added
+
+- **Google Search Console (Vercel / deploy):** `google7305663b2567346e.html` kopijuojamas į `site/` per [scripts/prepare-site-artifact.js](scripts/prepare-site-artifact.js), kad būtų pasiekiamas `https://promptanatomy.cloud/google7305663b2567346e.html` (anksčiau failas buvo tik repo šaknyje, ne deploy artefakte).
+
+- **Design system (dokumentacija):** [docs/design_system.md](docs/design_system.md) — v0.88 kanonas iš [index.html](index.html) (`:root`, komponentai, CTA matrica, responsive, a11y, i18n); palydoviniai puslapiai [404.html](404.html) ir [tools.html](tools.html); nuorodos — [AGENTS.md](AGENTS.md), [SETUP.md](SETUP.md), [.cursor/rules/index-html-pamoka.mdc](.cursor/rules/index-html-pamoka.mdc), [.cursor/skills/q-a-agent/SKILL.md](.cursor/skills/q-a-agent/SKILL.md); [LT_EN_UI_UX_REPORT.md](LT_EN_UI_UX_REPORT.md) pažymėtas kaip pasenęs.
+
 - **Promo baneris į programą:** prieš biblioteką (`div.promo-handoff`, ne nauja skaidrė) vienas CTA į `www.promptanatomy.app` su `utm_medium=banner` ir `data-track=promo_app_banner_click`; LT kanonas ir EN build poros — [index.html](index.html), [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
 
 - **Social preview ir CI:** `og:image` / `og:image:secure_url` / `twitter:image` su versijos parametru `?v=` (numatyta data arba `OG_IMAGE_VERSION`); naujas patikrinimas [scripts/verify-social-meta.js](scripts/verify-social-meta.js) į `npm run verify` (versijuoti URL + OG PNG 1200×630) — [index.html](index.html), [scripts/build-locale-pages.js](scripts/build-locale-pages.js), [package.json](package.json), [SETUP.md](SETUP.md).

@@ -41,6 +41,12 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] Išlaikyti `.skip-link`, `aria-label`, `aria-live` (pvz. quiz), `:focus-visible` stiliai kur jau apibrėžta; nauji interaktyvūs elementai nepažeidžia esamo modelio.
 - [ ] Viskas, kas patenka į **`aria-live`** ar **`#a11y-status` `textContent`**, turi būti **kalbai jautrus** (`uiText` arba EN build poros), kad EN puslapyje nebūtų LT pranešimų.
 
+### Vizualinė sistema / DS
+
+- [ ] Naujas mygtukas / CTA atitinka tier iš [docs/design_system.md](../../../docs/design_system.md) §8 (ne naujas „raudonas“ variantas).
+- [ ] Nauja vieša CSS klasė ar `:root` tokenas — atnaujintas [docs/design_system.md](../../../docs/design_system.md) (§3–§8).
+- [ ] Po CSS pakeitimų: mobilus smoke pagal DS §6 (375 / 768 / 1024 px), jei liečia layout ar nav.
+
 ### LT ↔ EN (i18n ir „drift“)
 
 - [ ] **Trys kanonai sinchronizuoti**, jei liečia atitinkamą sritį:

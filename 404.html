@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puslapis nerastas (404) — Promptų anatomija</title>
     <meta name="robots" content="noindex">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #071b29;
-            --text: #f8fafc;
-            --muted: #94a3b8;
-            --accent: #fbd304;
-            --link: #e2e8f0;
+            --primary-blue: #103b5a;
+            --accent-yellow: #fbd304;
+            --bg-dark: #071b29;
+            --surface-base: var(--bg-dark);
+            --text-bright: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-on-accent: #0a0a0a;
+            --text-body: #e2e8f0;
+            --radius-md: 8px;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-main: 'Inter', sans-serif;
         }
         * { box-sizing: border-box; }
         body {
@@ -21,9 +31,9 @@
             align-items: center;
             justify-content: center;
             padding: 24px;
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: var(--font-main);
+            background: var(--surface-base);
+            color: var(--text-bright);
             line-height: 1.5;
         }
         main {
@@ -31,39 +41,41 @@
             text-align: center;
         }
         h1 {
+            font-family: var(--font-display);
             font-size: clamp(1.25rem, 4vw, 1.5rem);
             font-weight: 700;
             margin: 0 0 12px;
         }
-        p { margin: 0 0 20px; color: var(--muted); font-size: 1rem; }
-        a {
+        p { margin: 0 0 20px; color: var(--text-muted); font-size: 1rem; }
+        a.cta-primary {
             display: inline-block;
-            color: var(--bg);
-            background: var(--accent);
+            color: var(--text-on-accent);
+            background: var(--accent-yellow);
             font-weight: 700;
             text-decoration: none;
             padding: 12px 22px;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
         }
-        a:hover { filter: brightness(1.05); }
-        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+        a.cta-primary:hover { filter: brightness(1.05); }
+        a.cta-primary:focus-visible { outline: 2px solid var(--accent-yellow); outline-offset: 3px; }
         .sub { margin-top: 16px; font-size: 0.9rem; }
         .sub a {
             display: inline;
             background: none;
-            color: var(--link);
+            color: var(--text-body);
             padding: 0;
             text-decoration: underline;
             font-weight: 600;
         }
-        .sub a:hover { color: #fff; }
+        .sub a:hover { color: var(--text-bright); }
+        .sub a:focus-visible { outline: 2px solid var(--accent-yellow); outline-offset: 3px; }
     </style>
 </head>
 <body>
     <main>
         <h1>Puslapis nerastas</h1>
-        <p>Šio adreso čia nėra. Grįžk į <a href="https://promptanatomy.cloud/">pamoką</a> arba į <a href="https://www.promptanatomy.app/" rel="noopener">www.promptanatomy.app</a> (brendas).</p>
-        <p><a href="./index.html">Atidaryti šį katalogą (index)</a></p>
+        <p>Šio adreso čia nėra. Grįžk į <a class="cta-primary" href="https://promptanatomy.cloud/">pamoką</a> arba į <a href="https://www.promptanatomy.app/" rel="noopener">www.promptanatomy.app</a> (brendas).</p>
+        <p class="sub"><a href="./index.html">Atidaryti šį katalogą (index)</a></p>
     </main>
 </body>
 </html>

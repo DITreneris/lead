@@ -10,7 +10,7 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 2. **Maršrutas:**
    - **Turinys (LT)** — žemiau „Turinio agentas“; neardyti JS ir skaidrių be reikalo.
    - **Turinys (EN) arba abu kalbas** — `scripts/en-html-replacements.cjs` (matomas HTML EN puslapyje), [assets/prompt-library-en.js](assets/prompt-library-en.js) (biblioteka), po pakeitimo `npm run build` ir `npm run verify` (įskaitant `site/index.html` kaip EN).
-   - **Skaidrės / CSS / nav / biblioteka** — „Frontend / skaidrės“ + „Biblioteka ir vadovo kelias“.
+   - **Skaidrės / CSS / nav / biblioteka** — „Frontend / skaidrės“ + „Biblioteka ir vadovo kelias“; vizualinė sistema (tokenai, CTA, komponentai) — [docs/design_system.md](docs/design_system.md).
    - **PDF** — „PDF sinchronas“ (MD → build → commit PDF).
    - **Schemos, duomenų tikrinimas, planas prieš kodą** — Cursor skillas: Composer įkelti `@.cursor/skills/data-agent/SKILL.md` (ir pagal poreikį `@.cursor/skills/data-agent/reference.md`).
 3. **Vykdymas:** į chat įtraukti aktualius failus (`@index.html`, `@docs/pamoka-1-pdf.md`, …) pagal maršrutą.
@@ -65,6 +65,7 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 ## 2. Frontend / skaidrės
 
 - Viena byla `index.html`: CSS `:root` kintamieji, navigacija, responsive taisyklių laikymasis.
+- **Design system (v1.0):** [docs/design_system.md](docs/design_system.md) — tokenai (`--space-*`, tint), CTA matrica, komponentų katalogas, palydoviniai puslapiai (`404.html`, `tools.html`); prieš naują vizualinį šabloną skaityti DS, ne kurti atsitiktinių klasių.
 - Naujos skaidrės = nauji `section` + du atitinkami `nav-item` (šonas ir mobilusis).
 
 ## 3. PDF sinchronas
@@ -90,4 +91,5 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 
 - Prieš push į `main`: ar PDF atitinka MD (jei keitėsi MD); ar veikia nuorodos ir GitHub Pages deploy.
 - Jei keitėsi **i18n** (`index.html` matomas tekstas, bibliotekos raktai, [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs), [assets/prompt-library-en.js](assets/prompt-library-en.js)): `npm run build`, tada `npm run verify` (žr. **„Dviguba patikra“**).
+- **SEO / GEO artefaktai:** `npm run build` generuoja `site/robots.txt` (AI crawlers + `Content-Signal`), `sitemap.xml` (su PDF + `lastmod`), `llms.txt`, `llms-full.txt`, `pricing.md`, `security.txt`, `.well-known/*` — [scripts/build-locale-pages.js](scripts/build-locale-pages.js), [scripts/generate-llms-artifacts.js](scripts/generate-llms-artifacts.js); JSON-LD build metu (`Organization` + `LearningResource` ir kt.). Po build: `verify:robots-llms`. Produkcijoje patikrink `https://promptanatomy.cloud/robots.txt` ir `…/llms.txt`.
 - Checklist su punktais: [SETUP.md](SETUP.md) skyrius **„Prieš push į `main` (release)“**.

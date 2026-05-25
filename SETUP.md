@@ -51,9 +51,10 @@ Po pakeitimų `docs/pamoka-1-pdf.md` paleiskite build ir commitinkite atnaujint�
 ## Lean repo (kad būtų paprasta tvarkytis)
 
 - **Vienas UI šaltinis:** [index.html](index.html) — HTML, CSS, JS vienoje byloje; naujos funkcijos geriau čia nei nauji įrankiai. LT / EN statinis skaidymas — `npm run build` + [scripts/build-locale-pages.js](scripts/build-locale-pages.js); papildomas failas tik EN bibliotekai — [assets/prompt-library-en.js](assets/prompt-library-en.js).
+- **Design system:** [docs/design_system.md](docs/design_system.md) — tokenai, komponentai, CTA, responsive ir palydoviniai puslapiai; atnaujinti kartu su didesniais CSS pakeitimais.
 - **PDF kanonai:** LT — [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf); EN — [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf).
 - **Biblioteka:** kopijuojamas tekstas — `libraryPrompts` + `syncLibraryDom` (žr. [AGENTS.md](AGENTS.md) §4.1).
-- **LT / EN patikra:** po `npm run build` — `npm run verify` ([package.json](package.json) — `verify-library-keys` + `verify-en-locale` + `verify-social-meta`).
+- **LT / EN patikra:** po `npm run build` — `npm run verify` ([package.json](package.json) — `verify-library-keys` + `verify-en-locale` + `verify-social-meta` + `verify-robots-llms`).
 - **Social share (FB/X):** jei keiti `assets/og-promptanatomy.png`, didink `OG_IMAGE_VERSION` (env) arba `?v=` URL, kad crawleriai persikrautų paveikslą.
 - **Kontekstas agentams:** [AGENTS.md](AGENTS.md) — maršrutai; Cursor rules — `.cursor/rules/`; kokybė — `.cursor/skills/q-a-agent/SKILL.md`.
 
@@ -64,8 +65,9 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 - [ ] Jei keitėsi `docs/pamoka-1-pdf.md` ir/ar `docs/pamoka-1-pdf-en.md`: paleistas `scripts/build-pdf.ps1` arba `build-pdf.sh`, commitinti pasikeitusius `assets/www.promptanatomy.app.pdf` ir/ar `assets/www.promptanatomy.app-en.pdf`.
 - [ ] Jei [CHANGELOG.md](CHANGELOG.md) mini PDF perbuild arba turinio pakeitimą PDF — commit’e matosi atitinkamas [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) pakeitimas (kai taikoma).
 - [ ] `index.html`: pagrindiniai CTA, PDF nuorodos, bibliotekos kopijavimas, `#library` / hash elgsena; po `npm run build` — `site/index.html` (EN) ir `site/lt/index.html` (kalbos perjungiklis, `/` ir `/lt/`).
+- [ ] Jei keitėsi vizualinė sistema (tokenai, CTA, naujos klasės): [docs/design_system.md](docs/design_system.md) atnaujintas; mobilus smoke (žr. DS §6) — 375 / 768 / 1024 px.
 - [ ] Po `npm run build`: `npm run verify` (bibliotekos raktų paritetas ir EN puslapio LT „drift“) — žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
-- [ ] [404.html](404.html) atsidaro ir grįžta į pamoką.
+- [ ] [404.html](404.html) atsidaro ir grįžta į pamoką; [tools.html](tools.html) — dark brand smoke (jei keitėsi).
 - [ ] GitHub Actions: [pages.yml](.github/workflows/pages.yml) ir [verify.yml](.github/workflows/verify.yml) žali po push (kai taikoma).
 
 ## Nuorodos
@@ -75,8 +77,12 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 
 ## Produkcija (pamoka)
 
-- Build sukuria `site/sitemap.xml` ir `site/robots.txt` su absoliučiais URL (`/` EN, `/lt/` LT) pagal **`PUBLIC_ORIGIN`** ([scripts/build-locale-pages.js](scripts/build-locale-pages.js)), numatyta **`https://promptanatomy.cloud`**. Po deploy į tą domeną Search Console pateik **`https://promptanatomy.cloud/sitemap.xml`**.
+- Build sukuria `site/sitemap.xml` ir `site/robots.txt` su absoliučiais URL (`/` EN, `/lt/` LT, PDF lead magnetai) pagal **`PUBLIC_ORIGIN`** ([scripts/build-locale-pages.js](scripts/build-locale-pages.js)), numatyta **`https://promptanatomy.cloud`**. Po deploy į tą domeną Search Console pateik **`https://promptanatomy.cloud/sitemap.xml`**.
+- **SEO / GEO artefaktai** (generuojami, ne rankiniu `index.html`): `robots.txt` (explicit AI crawler Allow + `Content-Signal`), `llms.txt`, `llms-full.txt` ([scripts/generate-llms-artifacts.js](scripts/generate-llms-artifacts.js)), `pricing.md`, `security.txt`, `.well-known/agent.json`, `.well-known/agent-card.json`. Patikra: `npm run verify:robots-llms`.
 - Jei seniau buvo viešas kelias **`/en/`**, apex serveryje (CDN / hosting) nustatykite **301** į **`/`** — repozitoriuje `/en/` nebegeneruojamas.
+- **GitHub Pages dubliatas:** `https://DITreneris.github.io/lead/` gali rodyti tą patį turinį kaip `promptanatomy.cloud` — kanonas meta/sitemap visada **cloud**. Pageidautina **301** iš github.io į cloud arba atskiras Search Console property; jei naudojate **Cloudflare**, patikrinkite, kad AI bot blocking būtų išjungtas.
+- **Po deploy (curl):** `robots.txt`, `llms.txt`, `llms-full.txt`, `/.well-known/agent.json` — žr. [AGENTS.md](AGENTS.md) Release.
+- **Vercel:** [vercel.json](vercel.json) — `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`. GitHub Pages antraštės — CDN taisyklėmis (jei taikoma).
 
 ## Šaltas deploy į GitHub (pvz. [DITreneris/lead](https://github.com/DITreneris/lead))
 

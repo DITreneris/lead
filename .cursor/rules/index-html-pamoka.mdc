@@ -6,6 +6,7 @@ alwaysApply: false
 
 # index.html
 
+- **Design system (vizualinė):** tokenai, CTA matrica, komponentai — [docs/design_system.md](../../docs/design_system.md); operacinė DOM/skaidrės logika — žemiau šiame faile.
 - **Kalba (golden standard)**: visur „TU“. Žodynas ir taisyklės — `AGENTS.md` skyriuje **„Golden standard (LT)“**; anglų tekstui — **„Golden standard (EN)“** ir `uiText` / build poros (`scripts/en-html-replacements.cjs`).
 - **LT / EN:** šoninėje juostoje `LT` / `EN` mygtukai; naujos skaidrės — LT `aria-label` su prefiksu `Skaidrė N:`, EN build'e — `Slide N:` (outline regex palaiko abu); kopijuojama biblioteka — `libraryPromptsLt` + [assets/prompt-library-en.js](assets/prompt-library-en.js).
 - **LT / EN redaguojant:** vienas keitimas — patikrink tris vietas: (1) `index.html` LT, (2) atitinkama pora [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) (įskaitant `aria-label` / `data-copy-text`), (3) jei liečia biblioteką — abu `libraryPromptsLt` ir EN failas; po to `npm run build` ir `npm run verify` (žr. [AGENTS.md](AGENTS.md) **„Dviguba patikra“**). **PDF:** LT turinys — [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md); angliškas lead magnet PDF — [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md); EN build (`site/index.html`, šaknis `/`) turi rodyti į `www.promptanatomy.app-en.pdf` (poros faile `en-html-replacements.cjs`).

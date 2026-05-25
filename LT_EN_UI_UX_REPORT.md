@@ -1,5 +1,7 @@
 # LT→EN UI/UX praktikų ataskaita – duplikavimui kituose repo
 
+> **Deprecated (2026-05):** Šis failas aprašo **pasenusią** architektūrą (`generator.js`, `style.css`, `/lt/` ir `/en/` kaip atskirus runtime kelius). Dabartinis kanonas: vienas [index.html](index.html), `npm run build` → `site/index.html` (EN) ir `site/lt/index.html` (LT), [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs). Vizualinė sistema: [docs/design_system.md](docs/design_system.md). Agentams ir release: [AGENTS.md](AGENTS.md), [SETUP.md](SETUP.md).
+
 **Tikslas:** Aprašyti šio projekto (DI Operacinis Centras) LT/EN lokalizacijos ir UI/UX modelį, kad būtų galima atkartoti panašų sprendimą kituose repozitorijuose.
 
 **Data:** 2026-03

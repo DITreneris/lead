@@ -33,8 +33,10 @@ jobs:
           test -f assets/prompt-library-en.js
           test -f package.json
           test -f scripts/build-locale-pages.js
+          test -f scripts/generate-llms-artifacts.js
           test -f scripts/verify-library-keys.js
           test -f scripts/verify-en-locale.js
+          test -f scripts/verify-robots-llms.js
       - name: Build locale pages
         run: |
           set -euo pipefail
@@ -47,7 +49,14 @@ jobs:
           test -f site/lt/index.html
           test -f site/robots.txt
           test -f site/sitemap.xml
+          test -f site/llms.txt
+          test -f site/llms-full.txt
+          test -f site/pricing.md
+          test -f site/security.txt
+          test -f site/.well-known/agent.json
           test -f site/favicon.svg
+          grep -q 'GPTBot' site/robots.txt
+          grep -q 'Content-Signal' site/robots.txt
           test -f site/assets/prompt-library-en.js
           grep -q 'lang="lt"' site/lt/index.html
           grep -q 'lang="en"' site/index.html

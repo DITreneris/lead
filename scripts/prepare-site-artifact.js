@@ -29,7 +29,10 @@ function main() {
   copyIntoSite('404.html');
   copyIntoSite('favicon.svg');
   copyIntoSite('assets');
-  console.log('[prepare-site-artifact] Copied 404.html, favicon.svg, assets/ → site/');
+  copyIntoSite('google7305663b2567346e.html');
+  console.log(
+    '[prepare-site-artifact] Copied 404.html, favicon.svg, assets/, google7305663b2567346e.html → site/'
+  );
 }
 
 main();

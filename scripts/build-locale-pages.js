@@ -10,28 +10,28 @@
 const fs = require('fs');
 const path = require('path');
 const { getEnHtmlReplacementPairs } = require('./en-html-replacements.cjs');
+const {
+  ROOT,
+  SITE_DIR,
+  SITE_PREFIX,
+  OG_IMAGE_VERSION,
+  originUrl,
+  publicPath,
+  sitemapLastmod,
+  versionedOgImageUrl
+} = require('./site-build-config');
 
-const ROOT = path.join(__dirname, '..');
 const SRC_HTML = path.join(ROOT, 'index.html');
-const SITE_DIR = path.join(ROOT, 'site');
 
-const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
-/** GitHub Pages project URL prefix, e.g. `/lead` for https://user.github.io/lead/ — empty on apex domain. */
-const SITE_PREFIX = (process.env.SITE_PREFIX || '').replace(/\/$/, '');
-/** Interactive lesson canonical host (social meta, sitemap). Override: PUBLIC_ORIGIN. Mother brand: www.promptanatomy.app (links in body). */
-const ORIGIN = (process.env.PUBLIC_ORIGIN || 'https://promptanatomy.cloud').replace(/\/$/, '');
-/** Cache-busting param for social crawlers (Twitter/X, Facebook/Meta). */
-const OG_IMAGE_VERSION = (process.env.OG_IMAGE_VERSION || '2026-04-30').trim();
+const META_DESCRIPTION_EN =
+  'A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.';
+const META_DESCRIPTION_LT =
+  'DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.';
 /** Vercel sets this during builds on Vercel; omit analytics on GitHub Pages / local to avoid broken /_vercel paths under project URLs. */
 const VERCEL_BUILD = process.env.VERCEL === '1';
 
 function escapeRegExp(str) {
   return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function originUrl(pathname) {
-  const p = pathname.startsWith('/') ? pathname : '/' + pathname;
-  return ORIGIN + BASE + p;
 }
 
 function stripCanonicalAndAlternates(html) {
@@ -175,30 +175,65 @@ function applyLtSocialEnglish(html) {
   return h;
 }
 
-function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, faq }) {
+function injectLlmsAlternateLink(html) {
+  const href = publicPath('/llms.txt');
+  const tag = `    <link rel="alternate" type="text/markdown" href="${href}">`;
+  if (html.includes('type="text/markdown"')) return html;
+  return html.replace('</head>', `${tag}\n</head>`);
+}
+
+function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescription, faq }) {
+  const orgId = `${originUrl('/')}#org`;
+  const websiteId = `${originUrl('/')}#website`;
+  const webpageId = `${pageUrl}#webpage`;
+  const faqId = `${pageUrl}#faq`;
   const payload = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'WebSite',
+        '@type': 'Organization',
+        '@id': orgId,
         name: 'Prompt Anatomy',
         url: originUrl('/'),
-        inLanguage: 'en-US'
+        logo: versionedOgImageUrl(),
+        sameAs: [
+          'https://www.promptanatomy.app/',
+          'https://github.com/DITreneris/lead'
+        ]
+      },
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        name: 'Prompt Anatomy',
+        url: originUrl('/'),
+        inLanguage: pageLanguage.startsWith('lt') ? 'lt-LT' : 'en-US',
+        publisher: { '@id': orgId }
       },
       {
         '@type': 'WebPage',
+        '@id': webpageId,
         name: pageName,
+        description: pageDescription,
         url: pageUrl,
         inLanguage: pageLanguage,
-        isPartOf: {
-          '@type': 'WebSite',
-          url: originUrl('/')
-        }
+        isPartOf: { '@id': websiteId }
+      },
+      {
+        '@type': 'LearningResource',
+        '@id': `${pageUrl}#lesson`,
+        name: pageName,
+        description: pageDescription,
+        url: pageUrl,
+        inLanguage: pageLanguage,
+        isAccessibleForFree: true,
+        learningResourceType: 'Interactive lesson',
+        provider: { '@id': orgId }
       },
       ...(Array.isArray(faq) && faq.length
         ? [
             {
               '@type': 'FAQPage',
+              '@id': faqId,
               url: pageUrl,
               inLanguage: pageLanguage,
               mainEntity: faq.map((item) => ({
@@ -212,11 +247,6 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, faq }) {
             }
           ]
         : []),
-      {
-        '@type': 'Organization',
-        name: 'Prompt Anatomy',
-        url: originUrl('/')
-      }
     ]
   };
   const script = `    <script type="application/ld+json">${JSON.stringify(payload)}</script>`;
@@ -297,6 +327,7 @@ function buildLt(html, canonicalHref) {
     pageUrl: canonicalHref,
     pageLanguage: 'lt-LT',
     pageName: 'Promptų anatomija — darbui ir vadovavimui',
+    pageDescription: META_DESCRIPTION_LT,
     faq: [
       {
         q: 'Kam tai?',
@@ -312,6 +343,7 @@ function buildLt(html, canonicalHref) {
       }
     ]
   });
+  h = injectLlmsAlternateLink(h);
   h = applySocialImageVersion(h);
   h = injectVercelWebAnalytics(h);
   return h;
@@ -326,6 +358,7 @@ function buildEn(html) {
     pageUrl: originUrl('/'),
     pageLanguage: 'en-US',
     pageName: 'Prompt Anatomy — for work and leadership',
+    pageDescription: META_DESCRIPTION_EN,
     faq: [
       {
         q: 'What should I include in a prompt for leadership updates?',
@@ -345,22 +378,55 @@ function buildEn(html) {
       }
     ]
   });
+  h = injectLlmsAlternateLink(h);
   h = applySocialImageVersion(h);
   h = injectVercelWebAnalytics(h);
   return h;
 }
 
+const ROBOTS_AI_AGENTS = [
+  'Googlebot',
+  'Bingbot',
+  'GPTBot',
+  'ChatGPT-User',
+  'ClaudeBot',
+  'anthropic-ai',
+  'PerplexityBot',
+  'Google-Extended',
+  'Applebot-Extended',
+  'Meta-ExternalAgent',
+  'Amazonbot',
+  'CCBot',
+  'Bytespider'
+];
+
+function robotsBlock(userAgent, extraLines) {
+  const lines = [`User-agent: ${userAgent}`, ...extraLines, 'Allow: /', ''];
+  return lines.join('\n');
+}
+
 function writeRobotsAndSitemap() {
   const sitemapLoc = originUrl('/sitemap.xml');
-  const robots = `User-agent: *
-Allow: /
+  const blocks = [
+    robotsBlock('*', ['Content-Signal: search=yes, ai-input=yes, ai-train=yes']),
+    ...ROBOTS_AI_AGENTS.map((ua) => robotsBlock(ua, [])),
+    `Sitemap: ${sitemapLoc}\n`
+  ];
+  const robots = blocks.join('\n');
 
-Sitemap: ${sitemapLoc}
-`;
+  const lastmod = sitemapLastmod();
+  const urls = [
+    originUrl('/'),
+    originUrl('/lt/'),
+    originUrl('/assets/www.promptanatomy.app-en.pdf'),
+    originUrl('/assets/www.promptanatomy.app.pdf')
+  ];
+  const urlEntries = urls
+    .map((loc) => `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`)
+    .join('\n');
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${originUrl('/')}</loc></url>
-  <url><loc>${originUrl('/lt/')}</loc></url>
+${urlEntries}
 </urlset>
 `;
   fs.writeFileSync(path.join(SITE_DIR, 'robots.txt'), robots, 'utf8');
