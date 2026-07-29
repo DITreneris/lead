@@ -1,6 +1,6 @@
-# Typography orphan audit (DS v2.0)
+# Typography orphan audit (DS v2.1)
 
-**Date:** 2026-05-25  
+**Date:** 2026-07-29  
 **Scope:** [`index.html`](../index.html) component CSS (post `/* DS_TOKENS_END */`).
 
 ## Canonical roles (§4)
@@ -9,24 +9,24 @@
 |------|-----------|--------|
 | Display H1 | `h1`, `.hero-title-accent` | OK — no change |
 | Section H2 | `h2`, slide titles | OK |
-| Lead | `.slide-lead` + aliases | **Unified** v2.0 |
-| Label | `.label`, `.types-card-k`, `.cta-secondary-label` | Minor tracking variance — acceptable |
-| UI / buttons | CTA, copy, quiz | OK — clamp where set |
+| Lead | `.slide-lead` + aliases | **Tokens** — `--font-size-lead`, `--lh-body`, `--measure-prose` |
+| Label | `.label`, `.disclosure-chip__summary`, `.types-card-k` | **`--tracking-label`** + `--font-size-label` on disclosure |
+| UI / buttons | CTA, copy, quiz | `--font-size-label` on copy chrome |
 
-## Actions taken
+## Actions taken (v2.1)
 
-- Introduced **`.slide-lead`**; applied to `.hero-intro`, `.types-lead`, `.schema-lead`, `.slide-sublead`.
-- Removed duplicate font-size/line-height from `.hero-intro`, `.types-lead` blocks.
-- **`verify:typography-roles`** — warns on `font-size` >32px outside display selectors (soft gate, exit 0).
+- Chrome floor: disclosure, lang switch, library goal, types-copy, prompt-editor chip ≥12–13px.
+- `--tracking-label` shared by `.label` and `.disclosure-chip__summary`.
+- Soft gate `verify:typography-roles` unchanged (exit 0 with warnings).
 
 ## Remaining orphans (documented / low risk)
 
 | Selector | Note |
 |----------|------|
-| `.schema-step-num` | `rgba` color literals for step accents — not font-size orphans |
-| `.roadmap-name`, `.quiz-question` | Mobile `font-size: 14–16px` overrides — within role |
-| `.brand-name`, `.slide-outline` | 11–13px uppercase — matches label tier |
+| `.schema-step-num` | Color accents — not font-size orphans |
+| `.roadmap-name`, `.quiz-question` | Mobile overrides — within role |
+| `.brand-name`, `.slide-outline` | 12–13px uppercase — label tier |
 
-## P1 follow-up (v2.1)
+## Deferred
 
-- Optional: merge `.label` and `.disclosure-chip__summary` letter-spacing to single token `--tracking-label`.
+- Harden typography verify to fail CI after a clean release cycle.

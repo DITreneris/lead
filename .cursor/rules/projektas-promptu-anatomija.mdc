@@ -8,14 +8,15 @@ alwaysApply: true
 - Produktas: **Promptų anatomija** — interaktyvi pamoka / lead magnetas LT kalba.
 - Auditorija: **įmonės darbuotojas** ir **vadovas** (bibliotekoje tabai); vengti perteklinės „mokyklos“ kalbos, nebent kontekstas aiškiai pedagoginis.
 - Stack: vienas pagrindinis **[index.html](index.html)** (HTML + CSS + JS vienoje byloje), statinis deploy į **GitHub Pages** (žr. [.github/workflows/pages.yml](.github/workflows/pages.yml) — `build` + `verify` prieš artefaktą; PR — [.github/workflows/verify.yml](.github/workflows/verify.yml)); LT↔EN drift patikra — [scripts/verify-library-keys.js](scripts/verify-library-keys.js), [scripts/verify-en-locale.js](scripts/verify-en-locale.js), žr. [AGENTS.md](AGENTS.md).
-- PDF: LT — [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf); EN — [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf); build: [scripts/build-pdf.ps1](scripts/build-pdf.ps1) / [scripts/build-pdf.sh](scripts/build-pdf.sh). Po MD pakeitimo — perbuildinti ir commitinti atitinkamą PDF; EN build (`site/index.html`, šaknis `/`) nuoroda į EN failą — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
+- PDF: tracked binaries [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf) (LT), [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf) (EN). Local MD sources (`docs/pamoka-1-pdf*.md`) are **gitignored / optional** — if present and edited, rebuild via [scripts/build-pdf.ps1](scripts/build-pdf.ps1) / [scripts/build-pdf.sh](scripts/build-pdf.sh) and commit the PDF binaries. EN build PDF link — [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
 - Interaktyvi pamoka (kanonas): https://promptanatomy.cloud/ · motininė: https://www.promptanatomy.app/ — neplėsti stacko (frameworkų, bundlerių) be aiškios priežasties.
+- **Design system (v2.1):** CSS kanonas [`styles/tokens.css`](styles/tokens.css); optional local prose `docs/design_system.md` (gitignored, if present).
 - Seserinis domenas **promptanatomy.pro** (pvz. `/en/`) — executive „Prompt Operating Kit“ vadovybei; ne šio repo kanonas. Hero nuoroda į jį keičiama kartu su LT ir [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
 
 ## Golden standard (LT)
 
 - **Tonas**: visur „TU“. Trumpai, profesionaliai, be „mokyklos“ tono.
 - **Terminija**: „DI“, „užklausa (promptas)“, „šablonas“, „patikra“, „skaidrė“, „biblioteka“.
-- **Microcopy**: CTA = vienas veiksmas; sakiniai trumpi; aiškus rezultatas (ką gausi / ką darysi).
+- **Microcopy**: CTA = vienas veiksmas; sakiniai trumpi; aiškus rezultatas (ką gausi / ką darysi). Lead ≤ 2 sakiniai; kortelės aprašas ≤ 1 (DS §2.1).
 - **Formatas**: kabutės „…“, intervalai 10–30 min; didžiosios raidės tik kai reikia.
 - **Šaltinis**: pilnas kanonas gyvena `AGENTS.md` skyriuje **„Golden standard (LT)“**. Čia laikom tik santrauką, kad nebūtų drift.

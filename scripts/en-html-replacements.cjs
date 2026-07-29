@@ -34,8 +34,8 @@ function getEnHtmlReplacementPairs() {
       '<h1>PROMPT<br><span class="hero-title-accent">ANATOMY</span></h1>'
     ],
     [
-      '<p class="hero-intro slide-lead">Penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Nuo DI „spėliojimo“ iki aiškios sistemos: mažiau taisymo, daugiau kontrolės.</p>',
-      '<p class="hero-intro slide-lead">A 5-part prompt framework, a quick send check, a copy-ready library, and a short quiz — for teams and leaders. Turn AI guesswork into a clear playbook: less rework, more control.</p>'
+      '<p class="hero-intro slide-lead">Penkių dalių schema, siuntimo patikra, biblioteka ir quiz. Nuo DI „spėliojimo“ — mažiau taisymo, daugiau kontrolės.</p>',
+      '<p class="hero-intro slide-lead">A 5-part framework, a send check, a library, and a quiz. From AI guesswork — less rework, more control.</p>'
     ],
     [
       'class="hero-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf"',
@@ -90,7 +90,7 @@ function getEnHtmlReplacementPairs() {
       '<p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Library</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO and COO executive kit on promptanatomy.pro (opens in a new tab)">Executive kit</a> · <a class="link-tier-tertiary" href="tools.html">AI tools guide</a></p>'
     ],
     [
-      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div><strong>Kam tai?</strong> Komandos darbui ir vadovui: mažiau taisymo, aiškesni rezultatai.</div>\n                    <div><strong>Kada naudoti patikrą?</strong> Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.</div>\n                    <div><strong>Ką kopijuoti?</strong> Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.</div>\n                </div>\n            </details>',
+      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div><strong>Kam tai?</strong> Komandai ir vadovui — aiškesni rezultatai.</div>\n                    <div><strong>Kada naudoti patikrą?</strong> Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.</div>\n                    <div><strong>Ką kopijuoti?</strong> Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.</div>\n                </div>\n            </details>',
       '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">FAQ (for leaders)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div><strong>What should I include in a prompt for leadership updates?</strong> Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.</div>\n                    <div><strong>How do I reduce hallucinated facts in client emails?</strong> Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.</div>\n                    <div><strong>What’s a quick send check?</strong> A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.</div>\n                    <div><strong>How do I get consistent outputs across my team?</strong> Use one shared template (role + context + reasoning + output), then iterate with the same checklist.</div>\n                </div>\n            </details>'
     ],
 
@@ -103,8 +103,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Pagrindai</span>', '<span class="label">Basics</span>'],
     ['<h2>Kas yra promptas?</h2>', '<h2>What is a prompt?</h2>'],
     [
-      '<p class="types-lead slide-lead">Žemiau — du apibrėžimai ir greito naudojimo taisyklė (juosta).<br>Penkių žingsnių schema — kai atsakymas miglotas ir vis dar reikia pataisymų.</p>',
-      '<p class="types-lead slide-lead">Two definitions and a one-minute rule (strip).<br>Five-step framework — when answers stay fuzzy and you still need fixes.</p>'
+      '<p class="types-lead slide-lead">Du apibrėžimai ir greita taisyklė.<br>Penkių žingsnių schema — kai atsakymas miglotas.</p>',
+      '<p class="types-lead slide-lead">Two definitions and a quick rule.<br>Five-step framework — when answers stay fuzzy.</p>'
     ],
     ['<h3>Promptas</h3>', '<h3>Prompt</h3>'],
     [
@@ -126,8 +126,8 @@ function getEnHtmlReplacementPairs() {
     ],
     ['<p class="types-card-k">Tikslas</p>', '<p class="types-card-k">Goal</p>'],
     [
-      '<p class="types-card-example">Specifikacija → struktūra → iteracija. Mažiau spėliojimo, daugiau stabilumo per kartojimus.</p>',
-      '<p class="types-card-example">Specification → structure → iteration. Less guesswork, more stability through repeats.</p>'
+      '<p class="types-card-example">Mažiau spėliojimo, daugiau stabilumo per kartojimus.</p>',
+      '<p class="types-card-example">Less guesswork, more stability through repeats.</p>'
     ],
     [
       'data-copy-text="Procesas: specifikacija → struktūra → iteracija. Tikslas: mažiau spėliojimo, daugiau stabilumo per kartojimus." aria-label="Kopijuoti promptų inžinerijos santrauką"',
@@ -159,8 +159,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Žingsniai</span>', '<span class="label">Steps</span>'],
     ['<h2>Promptų anatomijos schema</h2>', '<h2>Prompt anatomy framework</h2>'],
     [
-      '<p class="schema-lead slide-lead">Kiekvienas blokas prideda aiškumo. Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>',
-      '<p class="schema-lead slide-lead">Each block adds clarity. Often 2–3 are enough; use all five when you cannot risk mistakes.</p>'
+      '<p class="schema-lead slide-lead">Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>',
+      '<p class="schema-lead slide-lead">Often 2–3 are enough; use all five when you cannot risk mistakes.</p>'
     ],
     [
       '<strong>Vaidmuo</strong>\n                            <span>Kas esi ir koks tikslas (kodėl DI turi taip veikti)</span>',
@@ -193,8 +193,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Praktika</span>', '<span class="label">Practice</span>'],
     ['<h2>Pradėk per 2 minutes</h2>', '<h2>Start in 2 minutes</h2>'],
     [
-      '<p class="types-lead slide-lead">Tas pats Q3 tikslas — bet užklausa su rėmu keičia, ką gauni.<br>Eiga: migla → struktūra → trumpa savikontrolė.</p>',
-      '<p class="types-lead slide-lead">Same Q3 goal — framing changes what you get.<br>Flow: fuzzy → structure → short self-check.</p>'
+      '<p class="types-lead slide-lead">Tas pats savaitės tikslas — rėmas keičia, ką gauni.<br>1) Paleisk „Prieš“. 2) Paleisk „Po“ su savo 3–5 eilučių užrašais. 3) Palygink: ar A/B/C be išgalvotų skaičių?</p>',
+      '<p class="types-lead slide-lead">Same weekly goal — framing changes what you get.<br>1) Run “Before”. 2) Run “After” with your own 3–5 lines of notes. 3) Compare: A/B/C without invented numbers?</p>'
     ],
     ['<h3>Prieš (per miglą)</h3>', '<h3>Before (fuzzy)</h3>'],
     [
@@ -203,12 +203,12 @@ function getEnHtmlReplacementPairs() {
     ],
     ['<p class="types-card-k">Užklausa</p>', '<p class="types-card-k">Prompt</p>'],
     [
-      '<p class="types-card-example types-card-example--minimal">„Paruošk ataskaitą apie mūsų Q3 iniciatyvą.“</p>',
-      '<p class="types-card-example types-card-example--minimal">“Prepare a report on our Q3 initiative.”</p>'
+      '<p class="types-card-example types-card-example--minimal">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>',
+      '<p class="types-card-example types-card-example--minimal">“Prepare a report on our weekly priorities.”</p>'
     ],
     [
-      'data-copy-text="Paruošk ataskaitą apie mūsų Q3 iniciatyvą." aria-label="Kopijuoti \'prieš\' užklausą"',
-      'data-copy-text="Prepare a report on our Q3 initiative." aria-label="Copy the “before” prompt"'
+      'data-copy-text="Paruošk ataskaitą apie mūsų savaitės prioritetus." aria-label="Kopijuoti \'prieš\' užklausą"',
+      'data-copy-text="Prepare a report on our weekly priorities." aria-label="Copy the “before” prompt"'
     ],
     ['data-track="practice_before_copy">Kopijuoti</button>', 'data-track="practice_before_copy">Copy</button>'],
     ['<p class="types-card-k">Rizika</p>', '<p class="types-card-k">Risk</p>'],
@@ -223,12 +223,12 @@ function getEnHtmlReplacementPairs() {
     ],
     ['<p class="types-card-k">Struktūra</p>', '<p class="types-card-k">Structure</p>'],
     [
-      '<div class="practice-structured-line"><strong>Rolė</strong> <span>darbo asistentas</span></div>',
+      '<div class="practice-structured-line"><strong>Vaidmuo</strong> <span>darbo asistentas</span></div>',
       '<div class="practice-structured-line"><strong>Role</strong> <span>work assistant</span></div>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Tikslas</strong> <span>Q3 prioritetai, ši savaitė</span></div>',
-      '<div class="practice-structured-line"><strong>Goal</strong> <span>Q3 priorities, this week</span></div>'
+      '<div class="practice-structured-line"><strong>Tikslas</strong> <span>savaitės prioritetai</span></div>',
+      '<div class="practice-structured-line"><strong>Goal</strong> <span>this week’s priorities</span></div>'
     ],
     [
       '<div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>',
@@ -243,20 +243,20 @@ function getEnHtmlReplacementPairs() {
       '<p class="visually-hidden">Full prompt is copied with the Copy button.</p>'
     ],
     [
-      'data-copy-text="Tu esi mano darbo asistentas. Įvestis: [ĮKLIJUOK el. laišką / užrašus]. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Rezultatas: 7 punktų užduočių sąrašas (prioritetas A/B/C + terminas, jei paminėtas)." aria-label="Kopijuoti \'po\' užklausą"',
-      'data-copy-text="You are my work assistant. Input: [PASTE email / notes]. Goal: [WHAT I MUST DO THIS WEEK]. Output: 7 task bullets (A/B/C priority + deadline if mentioned)." aria-label="Copy the “after” prompt"'
+      'data-copy-text="Vaidmuo: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti \'po\' užklausą"',
+      'data-copy-text="Role: You are my work assistant. Goal: [WHAT I MUST DO THIS WEEK]. Input: [PASTE email / notes / task]. Output: 7-bullet list (A/B/C priority + deadline if mentioned). Constraint: do not use facts or numbers that are not in the input; if data is missing — write “Missing:”." aria-label="Copy the “after” prompt"'
     ],
     ['data-track="practice_after_copy">Kopijuoti</button>', 'data-track="practice_after_copy">Copy</button>'],
     ['<p class="types-card-k">Rezultatas</p>', '<p class="types-card-k">Output</p>'],
     [
-      '<p class="types-card-result">Aiškus sąrašas — gali iškart naudoti ar deleguoti.</p>',
-      '<p class="types-card-result">A clear list you can use or delegate immediately.</p>'
+      '<p class="types-card-result">Gerai, jei: A/B/C prioritetai ir nėra skaičių, kurių neįklijavai.</p>',
+      '<p class="types-card-result">Good if: A/B/C priorities and no numbers you did not paste in.</p>'
     ],
 
     ['<h3>Patikra (30 sek.)</h3>', '<h3>Check (30 sec)</h3>'],
     [
-      '<p class="types-card-desc">Pilna siuntimo patikra — kitoje skaidrėje.</p>',
-      '<p class="types-card-desc">Full send check — on the next slide.</p>'
+      '<p class="types-card-desc">Pilna siuntimo patikra — po kelio plano.</p>',
+      '<p class="types-card-desc">Full send check — after the roadmap.</p>'
     ],
     ['<p class="types-card-k">Ką tikrinti</p>', '<p class="types-card-k">What to check</p>'],
     ['<li>Ar faktai tikri?</li>', '<li>Are facts true?</li>'],
@@ -264,12 +264,13 @@ function getEnHtmlReplacementPairs() {
     ['<li>Kokios 2–3 rizikos?</li>', '<li>What are 2–3 risks?</li>'],
     ['<li>Ką patikrinti nepriklausomu šaltiniu?</li>', '<li>What to verify with an independent source?</li>'],
     [
-      'data-copy-text="Patikra: 1) 3 didžiausios rizikos, 2) kas tinka naudoti, 3) ką turi patikrinti pats, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist"',
-      'data-copy-text="Check: 1) top 3 risks, 2) what is safe to use, 3) what you must verify yourself, 4) what context is missing." aria-label="Copy mini check-list"'
+      'data-copy-text="Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist"',
+      'data-copy-text="Short check: 1) 3 risks, 2) what is safe to use, 3) what to verify without AI, 4) what context is missing." aria-label="Copy mini check-list"'
     ],
     ['data-track="practice_qc_copy">Kopijuoti</button>', 'data-track="practice_qc_copy">Copy</button>'],
     ['<p class="types-card-k">Toliau</p>', '<p class="types-card-k">Next</p>'],
     ['data-track="practice_next_click">Kelio planas ↓</a>', 'data-track="practice_next_click">Roadmap ↓</a>'],
+    ['data-track="practice_qc_jump">Patikra →</a>', 'data-track="practice_qc_jump">Check →</a>'],
 
     [
       '<section id="roadmap" class="roadmap-slide" aria-label="Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"',
@@ -611,6 +612,10 @@ function getEnHtmlReplacementPairs() {
       'aria-label="Prompt Anatomy Telegram community (opens in a new tab)" data-track="cta_telegram_click"'
     ],
     ['Telegram (palaikymas ir naujienos)', 'Telegram (support and updates)'],
+    [
+      '<p class="cta-ecosystem-link">\n            <a class="link-tier-tertiary" href="https://promptanatomy.site/?utm_source=promptanatomy_cloud&amp;utm_medium=cta_footer&amp;utm_campaign=ecosystem_map" target="_blank" rel="noopener noreferrer" data-track="cta_ecosystem_site_click" aria-label="Ekosistemos žemėlapis promptanatomy.site (atidaryti naujame skirtuke)">Ekosistemos žemėlapis</a>\n        </p>',
+      '<p class="cta-ecosystem-link">\n            <a class="link-tier-tertiary" href="https://promptanatomy.site/?utm_source=promptanatomy_cloud&amp;utm_medium=cta_footer&amp;utm_campaign=ecosystem_map" target="_blank" rel="noopener noreferrer" data-track="cta_ecosystem_site_click" aria-label="Ecosystem map on promptanatomy.site (opens in a new tab)">Ecosystem map</a>\n        </p>'
+    ],
     [CTA_FOOTNOTE_LT, CTA_FOOTNOTE_EN]
   ];
 }

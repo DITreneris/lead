@@ -8,7 +8,9 @@ const { SITE_DIR, ROOT, ORIGIN } = require('./site-build-config');
 const REQUIRED_ROBOTS = [
   'Content-Signal',
   'GPTBot',
+  'OAI-SearchBot',
   'ClaudeBot',
+  'Claude-SearchBot',
   'PerplexityBot',
   'Google-Extended',
   'CCBot',
@@ -55,7 +57,16 @@ function main() {
   }
 
   readOrFail('pricing.md');
-  readOrFail('security.txt');
+  const securityRoot = readOrFail('security.txt');
+  const securityWellKnown = readOrFail(path.join('.well-known', 'security.txt'));
+  if (!securityWellKnown.includes('Canonical:') || !securityWellKnown.includes('/.well-known/security.txt')) {
+    console.error('[verify-robots-llms] .well-known/security.txt missing Canonical /.well-known/security.txt');
+    process.exit(1);
+  }
+  if (securityRoot !== securityWellKnown) {
+    console.error('[verify-robots-llms] root security.txt must match .well-known/security.txt');
+    process.exit(1);
+  }
 
   const agentPath = path.join(SITE_DIR, '.well-known', 'agent.json');
   if (!fs.existsSync(agentPath)) {
@@ -72,6 +83,14 @@ function main() {
   }
   if (!enHtml.includes('94501') || !enHtml.includes('info@promptanatomy.app')) {
     console.error('[verify-robots-llms] site/index.html JSON-LD missing Organization address/email');
+    process.exit(1);
+  }
+  if (!enHtml.includes('promptanatomy.pro/en/') || !enHtml.includes('promptanatomy.site/')) {
+    console.error('[verify-robots-llms] site/index.html JSON-LD missing ecosystem sameAs');
+    process.exit(1);
+  }
+  if (!enHtml.includes('"dateModified"') || !enHtml.includes('"datePublished"')) {
+    console.error('[verify-robots-llms] site/index.html JSON-LD missing datePublished/dateModified');
     process.exit(1);
   }
   if (!ltHtml.includes('"@type":"LearningResource"')) {
@@ -95,6 +114,10 @@ function main() {
   const sitemap = readOrFail('sitemap.xml');
   if (!sitemap.includes('<lastmod>') || !sitemap.includes('www.promptanatomy.app-en.pdf')) {
     console.error('[verify-robots-llms] sitemap.xml missing lastmod or PDF URLs');
+    process.exit(1);
+  }
+  if (!sitemap.includes('/llms.txt') || !sitemap.includes('/pricing.md')) {
+    console.error('[verify-robots-llms] sitemap.xml missing llms.txt or pricing.md');
     process.exit(1);
   }
 

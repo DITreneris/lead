@@ -24,6 +24,7 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 
 - [ ] Tekstas aiškus **įmonės darbuotojui / vadovui**; vengiama perteklinės „mokyklos“ kalbos, nebent sąmoningai pedagoginiame bloke.
 - [ ] Nėra klaidinančių faktų be šaltinio (skaičiai, citatos, metai).
+- [ ] **DS §2.1 tankis:** lead ≤ 2 sakiniai; kortelės aprašas ≤ 1; vienas Tier‑1 (raudonas) CTA skaidrėje.
 
 ### `index.html` struktūra
 
@@ -41,13 +42,13 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] Išlaikyti `.skip-link`, `aria-label`, `aria-live` (pvz. quiz), `:focus-visible` stiliai kur jau apibrėžta; nauji interaktyvūs elementai nepažeidžia esamo modelio.
 - [ ] Viskas, kas patenka į **`aria-live`** ar **`#a11y-status` `textContent`**, turi būti **kalbai jautrus** (`uiText` arba EN build poros), kad EN puslapyje nebūtų LT pranešimų.
 
-### Vizualinė sistema / DS (v2.0)
+### Vizualinė sistema / DS (v2.1)
 
-- [ ] Naujas mygtukas / CTA atitinka tier iš [docs/design_system.md](../../../docs/design_system.md) §8 (ne naujas „raudonas“ variantas); DS v2.0 = poliravimas, ne hero/layout redesign.
+- [ ] Naujas mygtukas / CTA — esami tieriai (ne naujas „raudonas“ variantas); naujas tekstas / `details` — decision recipes (role + `.disclosure-chip*`); chrome ≥12–13px. Optional local prose: `docs/design_system.md` if present.
 - [ ] Tokenai redaguojami [`styles/tokens.css`](../../../styles/tokens.css) (satellites: [`styles/tokens-satellite.css`](../../../styles/tokens-satellite.css)); po to `npm run build` arba `node scripts/inject-design-tokens.js` — ne rankinis `:root` drift HTML.
-- [ ] Nauja vieša CSS klasė ar tokenas — atnaujintas [docs/design_system.md](../../../docs/design_system.md) (§3–§8); disclosure/lead/PDF — reuse `.disclosure-chip*`, `.slide-lead`, `.btn-pdf-outline`.
-- [ ] `npm run verify`: `verify:design-tokens`, `verify:satellite-tokens`, `verify:typography-roles` (žr. [docs/DS_A11Y_SMOKE_v2.md](../../../docs/DS_A11Y_SMOKE_v2.md)).
-- [ ] Po CSS pakeitimų: mobilus smoke pagal DS §6 (375 / 390 / 768 / 1024 px), jei liečia layout ar nav.
+- [ ] Nauja vieša CSS klasė ar tokenas — atnaujintas `styles/tokens.css` (+ optional local `docs/design_system.md` if present); disclosure/lead/PDF — reuse `.disclosure-chip*`, `.slide-lead`, `.btn-pdf-outline`.
+- [ ] `npm run verify`: `verify:design-tokens`, `verify:satellite-tokens`, `verify:typography-roles` (optional local smoke notes in `docs/DS_A11Y_SMOKE_v2.md` if present).
+- [ ] Po CSS pakeitimų: mobilus smoke (375 / 390 / 768 / 1024 px), jei liečia layout ar nav.
 
 ### LT ↔ EN (i18n ir „drift“)
 
@@ -58,11 +59,11 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] Po pakeitimų: `npm run build`, tada `npm run verify` (žr. [package.json](../../../package.json)) — CI tai daro po build. **`verify:en-locale`** neveiks be iš anksto sugeneruoto `site/index.html` (EN; pirmiau paleisk `npm run build`).
 - [ ] Build konsolėje **nėra** `[build] EN pair … LT fragment missing` / `EN head fragment not found` (žinutės iš [scripts/build-locale-pages.js](../../../scripts/build-locale-pages.js)).
 - [ ] **Terminologija EN** sutampa su [AGENTS.md](../../../AGENTS.md) skyriumi „Golden standard (EN)“ ir jau naudojamais žodžiais UI (pvz. „framework“, „prompt“, „library“ — ne maišyti atsitiktinai su kitais sinonimais vienoje šakoje).
-- [ ] Nauja ar keista **išorinė nuoroda į promptanatomy.pro**: LT ir EN poros [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs), `aria-label`, UTM; pamokos kanonas — `promptanatomy.cloud` (žr. AGENTS.md **„Ekosistema (domenai)“**).
+- [ ] Nauja ar keista **išorinė nuoroda į promptanatomy.pro** ar **promptanatomy.site**: LT ir EN poros [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs), `aria-label`, UTM; pamokos kanonas — `promptanatomy.cloud` (žr. AGENTS.md **„Ekosistema (domenai)“**). Kitų ekosistemos subdomainų (`.info` … `.lol`) **nekelti** į pamokos chrome be atskiros užduoties.
 
 ### PDF ir release
 
-- [ ] Jei keitėsi [docs/pamoka-1-pdf.md](../../../docs/pamoka-1-pdf.md): perbuildinta išvestis į [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf). Jei keitėsi [docs/pamoka-1-pdf-en.md](../../../docs/pamoka-1-pdf-en.md) — į [assets/www.promptanatomy.app-en.pdf](../../../assets/www.promptanatomy.app-en.pdf). EN build (`site/index.html`) PDF nuorodos — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs) (failas `…-en.pdf`).
+- [ ] Jei lokaliai (gitignored) keitei `docs/pamoka-1-pdf.md` / `docs/pamoka-1-pdf-en.md`: perbuildinta ir commitinta [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf) / [assets/www.promptanatomy.app-en.pdf](../../../assets/www.promptanatomy.app-en.pdf). EN build PDF nuorodos — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs) (`…-en.pdf`).
 - [ ] Nuorodos į GitHub Pages / statinius assetus veikia logiškai (relatyvūs keliai repo kontekste).
 
 ## Išvesties formatas

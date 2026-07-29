@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promptu anatomija � DI irankiu gidas</title>
+    <title>Promptų anatomija — DI įrankių gidas</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
-                                                                                                                /* DS_TOKENS_START — from styles\tokens-satellite.css; do not edit here */
-        /* DS v2.0 — minimal :root for 404.html and tools.html (subset of styles/tokens.css) */
+                                                                                                                                                                                                                                                                                /* DS_TOKENS_START — from styles\tokens-satellite.css; do not edit here */
+        /* DS v2.1 — minimal :root for 404.html and tools.html (subset of styles/tokens.css) */
         :root {
             --primary-blue: #103b5a;
             --accent-yellow: #fbd304;
@@ -26,8 +26,13 @@
             --text-muted: #cbd5e1;
             --text-soft: #94a3b8;
             --text-on-accent: #0a0a0a;
-            --text-on-dark-high: rgba(255, 255, 255, 0.82);
+            --text-tertiary: rgba(255, 255, 255, 0.82);
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-on-dark-high: var(--text-tertiary);
             --brand-wordmark: #f1f5f9;
+            --font-size-label: 13px;
+            --font-size-ui: 14px;
+            --tracking-label: 0.12em;
             --radius-sm: 6px;
             --radius-md: 8px;
             --radius-lg: 12px;
@@ -212,6 +217,14 @@
             color: var(--text-bright);
             font-weight: 600;
         }
+        .page-footer .link-tier-tertiary {
+            color: var(--text-muted);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .page-footer .link-tier-tertiary:hover {
+            color: var(--text-bright);
+        }
         a:focus-visible {
             outline: 2px solid var(--accent-yellow);
             outline-offset: 3px;
@@ -229,11 +242,11 @@
                 </div>
                 <div>
                     <p class="brand-lockup-title">PROMPT <span class="brand-gold">ANATOMY</span></p>
-                    <p class="brand-tagline">DI praktine sistema</p>
+                    <p class="brand-tagline">DI praktinė sistema</p>
                 </div>
             </div>
             <h1 class="header-title">
-                <span class="brand-gold">DI irankiu</span> rinkinys (2026 m. balandis)
+                <span class="brand-gold">DI įrankių</span> rinkinys (2026 m. balandis)
             </h1>
         </header>
 
@@ -251,7 +264,7 @@
                         </div>
                     </section>
                     <section>
-                        <div class="category-pill bg-cat-2">DI skaiciuokles</div>
+                        <div class="category-pill bg-cat-2">DI skaičiuoklės</div>
                         <div class="tool-list">
                             <div class="tool-item"><div class="tool-dot"></div> Rows AI</div>
                             <div class="tool-item"><div class="tool-dot"></div> Google Sheets AI</div>
@@ -273,7 +286,7 @@
                         </div>
                     </section>
                     <section>
-                        <div class="category-pill bg-cat-1">Vaizdu generavimas</div>
+                        <div class="category-pill bg-cat-1">Vaizdų generavimas</div>
                         <div class="tool-list">
                             <div class="tool-item"><div class="tool-dot"></div> Midjourney <span class="version-tag">v7</span></div>
                             <div class="tool-item"><div class="tool-dot"></div> FLUX.1.1 Pro</div>
@@ -296,7 +309,7 @@
                         </div>
                     </section>
                     <section>
-                        <div class="category-pill bg-cat-2">Ra�ymas ir SEO</div>
+                        <div class="category-pill bg-cat-2">Rašymas ir SEO</div>
                         <div class="tool-list">
                             <div class="tool-item"><div class="tool-dot"></div> Claude Writing</div>
                             <div class="tool-item"><div class="tool-dot"></div> Jasper</div>
@@ -318,7 +331,7 @@
                         </div>
                     </section>
                     <section>
-                        <div class="category-pill bg-cat-1">Susitikimai ir u�ra�ai</div>
+                        <div class="category-pill bg-cat-1">Susitikimai ir užrašai</div>
                         <div class="tool-list">
                             <div class="tool-item"><div class="tool-dot"></div> Otter.ai</div>
                             <div class="tool-item"><div class="tool-dot"></div> Fireflies</div>
@@ -332,7 +345,8 @@
 
         <footer class="page-footer" role="contentinfo">
             <p><strong>Prompt Anatomy</strong><br>1311 Park St, Unit #654 · Alameda, CA 94501<br><a href="mailto:info@promptanatomy.app">info@promptanatomy.app</a></p>
-            <p>Curated by PromptAnatomy.app • Updated April 21, 2026</p>
+            <p><a class="link-tier-tertiary" href="lt/index.html">Grįžk į pamoką</a></p>
+            <p>Atrinkta PromptAnatomy.app · Atnaujinta 2026-04-21</p>
         </footer>
     </div>
 </body>

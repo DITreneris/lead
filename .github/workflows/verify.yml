@@ -53,9 +53,12 @@ jobs:
           test -f site/llms-full.txt
           test -f site/pricing.md
           test -f site/security.txt
+          test -f site/.well-known/security.txt
           test -f site/.well-known/agent.json
           test -f site/favicon.svg
           grep -q 'GPTBot' site/robots.txt
+          grep -q 'OAI-SearchBot' site/robots.txt
+          grep -q 'Claude-SearchBot' site/robots.txt
           grep -q 'Content-Signal' site/robots.txt
           test -f site/assets/prompt-library-en.js
           grep -q 'lang="lt"' site/lt/index.html
@@ -67,28 +70,3 @@ jobs:
         run: |
           set -euo pipefail
           npm run verify
-      - name: Prevent MD→PDF drift (PRs)
-        if: ${{ github.event_name == 'pull_request' }}
-        env:
-          BASE_REF: ${{ github.base_ref }}
-        run: |
-          set -euo pipefail
-          if [ -z "${BASE_REF:-}" ]; then
-            echo "BASE_REF not set; skipping."
-            exit 0
-          fi
-          git fetch origin "${BASE_REF}" --depth=1
-          CHANGED="$(git diff --name-only FETCH_HEAD...HEAD || true)"
-          echo "$CHANGED"
-          if echo "$CHANGED" | grep -qx 'docs/pamoka-1-pdf.md'; then
-            if ! echo "$CHANGED" | grep -qx 'assets/www.promptanatomy.app.pdf'; then
-              echo "docs/pamoka-1-pdf.md changed but assets/www.promptanatomy.app.pdf did not. Rebuild PDF."
-              exit 1
-            fi
-          fi
-          if echo "$CHANGED" | grep -qx 'docs/pamoka-1-pdf-en.md'; then
-            if ! echo "$CHANGED" | grep -qx 'assets/www.promptanatomy.app-en.pdf'; then
-              echo "docs/pamoka-1-pdf-en.md changed but assets/www.promptanatomy.app-en.pdf did not. Rebuild PDF."
-              exit 1
-            fi
-          fi

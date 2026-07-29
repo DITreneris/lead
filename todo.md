@@ -45,3 +45,4 @@ Tikslas: prieš kiekvieną `main` push — trumpas, kartojamas ritualas.
 
 - [ ] **„Turinys“ (TOC)**: grupavimas arba aiškesni antraštės lygiai „ką daryti pirmiausia“.
 - [ ] **Vienas šaltinis bibliotekai** (Markdown / JSON + build): tik jei komanda nuspręs, kad `libraryPrompts` maintenance per sunkus — dabar kanonas lieka JS pagal [AGENTS.md](AGENTS.md) §4.1.
+- [ ] **DS deferred:** full WCAG certification; harden `verify:typography-roles` to fail CI — žr. [docs/design_system.md](docs/design_system.md) §14.

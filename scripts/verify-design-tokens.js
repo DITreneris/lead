@@ -1,7 +1,8 @@
 'use strict';
 
 /**
- * Design-token parity: styles/tokens.css ↔ docs/design_system.md §3;
+ * Design-token checks: styles/tokens.css presence + public token set;
+ * optional local docs/design_system.md §3 parity when the file exists;
  * index.html component CSS — no stray accent/overlay literals.
  */
 const fs = require('fs');
@@ -12,14 +13,40 @@ const INDEX = path.join(ROOT, 'index.html');
 const TOKENS = path.join(ROOT, 'styles', 'tokens.css');
 const DS = path.join(ROOT, 'docs', 'design_system.md');
 
-/** Literals allowed outside :root (see DS §3.9 exceptions). */
+/** Public tokens that must exist in styles/tokens.css (CI without docs/). */
+const REQUIRED_PUBLIC_TOKENS = [
+  '--bg-dark',
+  '--surface-base',
+  '--text-bright',
+  '--text-body',
+  '--text-muted',
+  '--text-secondary',
+  '--text-tertiary',
+  '--accent-red',
+  '--accent-yellow',
+  '--accent-teal',
+  '--accent-teal-deep',
+  '--font-size-label',
+  '--font-size-ui',
+  '--font-size-lead',
+  '--lh-body',
+  '--measure-prose',
+  '--tracking-label',
+  '--space-2',
+  '--space-3',
+  '--space-4',
+  '--duration-fast',
+  '--ease-out'
+];
+
+/** Literals allowed outside :root (legacy exceptions). */
 const LITERAL_EXCEPTION_PATTERNS = [
   /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,\s*0\.035\s*\)/,
   /rgba\s*\(\s*16\s*,\s*59\s*,\s*90\s*,/,
   /#2aabee/i,
   /rgba\s*\(\s*255\s*,\s*90\s*,\s*95\s*,\s*0\.45\s*\)/,
   /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,\s*0\.22\s*\)/,
-  /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,\s*0\.06\s*\)/,
+  /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,\s*0\.06\s*\)/
 ];
 
 const OVERLAY_EXCEPTION_PATTERNS = [
@@ -28,7 +55,7 @@ const OVERLAY_EXCEPTION_PATTERNS = [
   /stroke:\s*rgba/,
   /rgba\s*\(\s*7\s*,\s*27\s*,\s*41\s*,\s*0\.(?:55|98)\s*\)/,
   /rgba\s*\(\s*255\s*,\s*255\s*,\s*255\s*,\s*0\.(?:15|16|30|35)\s*\)/,
-  /rgba\s*\(\s*255,\s*255,\s*255,/,
+  /rgba\s*\(\s*255,\s*255,\s*255,/
 ];
 
 function extractStyleBlock(html) {
@@ -88,29 +115,44 @@ function findUndocumentedLiterals(componentPart, patterns, label) {
 }
 
 function main() {
+  if (!fs.existsSync(TOKENS)) {
+    console.error('[verify-design-tokens] Missing styles/tokens.css');
+    process.exit(1);
+  }
+
   const tokensCss = fs.readFileSync(TOKENS, 'utf8');
   const html = fs.readFileSync(INDEX, 'utf8');
-  const ds = fs.readFileSync(DS, 'utf8');
   const indexStyle = extractStyleBlock(html);
   const rootBlock = extractRootBlock(tokensCss);
   const definedTokens = collectDefinedTokens(tokensCss);
-  const docTokens = collectDocumentedTokens(ds);
+  const rootOnlyTokens = collectDefinedTokens(rootBlock);
 
   let failed = false;
 
-  const missingInRoot = [...docTokens].filter((t) => !definedTokens.has(t)).sort();
-  if (missingInRoot.length) {
-    console.error('[verify-design-tokens] Documented in DS §3 but missing in styles/tokens.css:');
-    missingInRoot.forEach((t) => console.error('  ' + t));
+  const missingRequired = REQUIRED_PUBLIC_TOKENS.filter((t) => !definedTokens.has(t));
+  if (missingRequired.length) {
+    console.error('[verify-design-tokens] Required public tokens missing from styles/tokens.css:');
+    missingRequired.forEach((t) => console.error('  ' + t));
     failed = true;
   }
 
-  const rootOnlyTokens = collectDefinedTokens(rootBlock);
-  const missingInDoc = [...rootOnlyTokens].filter((t) => !docTokens.has(t)).sort();
-  if (missingInDoc.length) {
-    console.error('[verify-design-tokens] In tokens.css but not documented in DS §3:');
-    missingInDoc.forEach((t) => console.error('  ' + t));
-    failed = true;
+  if (fs.existsSync(DS)) {
+    const ds = fs.readFileSync(DS, 'utf8');
+    const docTokens = collectDocumentedTokens(ds);
+
+    const missingInRoot = [...docTokens].filter((t) => !definedTokens.has(t)).sort();
+    if (missingInRoot.length) {
+      console.error('[verify-design-tokens] Documented in DS §3 but missing in styles/tokens.css:');
+      missingInRoot.forEach((t) => console.error('  ' + t));
+      failed = true;
+    }
+
+    const missingInDoc = [...rootOnlyTokens].filter((t) => !docTokens.has(t)).sort();
+    if (missingInDoc.length) {
+      console.error('[verify-design-tokens] In tokens.css but not documented in DS §3:');
+      missingInDoc.forEach((t) => console.error('  ' + t));
+      failed = true;
+    }
   }
 
   const componentPart = componentCssFromIndex(indexStyle);
@@ -118,7 +160,7 @@ function main() {
     componentPart,
     [
       /rgba\s*\(\s*251\s*,\s*211\s*,\s*4\s*,[^)]+\)/gi,
-      /rgba\s*\(\s*255\s*,\s*90\s*,\s*95\s*,[^)]+\)/gi,
+      /rgba\s*\(\s*255\s*,\s*90\s*,\s*95\s*,[^)]+\)/gi
     ],
     'accent'
   );
@@ -126,7 +168,7 @@ function main() {
     componentPart,
     [
       /rgba\s*\(\s*7\s*,\s*27\s*,\s*41\s*,[^)]+\)/gi,
-      /rgba\s*\(\s*255\s*,\s*255\s*,\s*255\s*,[^)]+\)/gi,
+      /rgba\s*\(\s*255\s*,\s*255\s*,\s*255\s*,[^)]+\)/gi
     ],
     'overlay'
   );
@@ -140,10 +182,14 @@ function main() {
   }
 
   if (failed) process.exit(1);
+
+  const dsNote = fs.existsSync(DS) ? 'DS §3 parity checked' : 'no local design_system.md (CSS-only)';
   console.log(
     '[verify-design-tokens] OK —',
     rootOnlyTokens.size,
-    'tokens in styles/tokens.css match DS §3; component CSS clean.'
+    'tokens in styles/tokens.css;',
+    dsNote + ';',
+    'component CSS clean.'
   );
 }
 

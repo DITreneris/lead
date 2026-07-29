@@ -37,7 +37,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <!-- Inline SVG: Lucide icons (lucide-static, ISC License, https://lucide.dev) -->
     <style>
-                                                                                                                /* DS_TOKENS_START — from styles\tokens.css; do not edit here */
+                                                                                                                                                                                                                                                                                /* DS_TOKENS_START — from styles\tokens.css; do not edit here */
         :root {
             --primary-blue: #103b5a;
             --accent-yellow: #fbd304;
@@ -117,6 +117,16 @@
             --text-soft: #94a3b8;
             --text-on-accent: #0a0a0a;
             --accent-yellow-hover-text: #fff6b0;
+            /* Type scale / measure (DS v2.1) */
+            --font-size-label: 13px;
+            --font-size-ui: 14px;
+            --font-size-lead: clamp(16px, 1.25vw, 19px);
+            --lh-body: 1.5;
+            --measure-prose: 34em;
+            --tracking-label: 0.12em;
+            /* Brand accent beyond triad (practice ctx card / schema reason) */
+            --accent-teal: #0d9488;
+            --accent-teal-deep: #047857;
             --shadow-accent-yellow: 0 8px 24px var(--accent-yellow-border-soft);
             --scroll-anchor-top: 20px;
             /* Šoninė juosta: „Turinys“ ir taškai — tas pats kairys kraštas + taškų centravimas */
@@ -166,8 +176,12 @@
             --white-alpha-22: rgba(255, 255, 255, 0.22);
             --white-alpha-90: rgba(255, 255, 255, 0.9);
             --border-subtle: rgba(255, 255, 255, 0.16);
-            --text-on-dark-high: rgba(255, 255, 255, 0.82);
-            --text-on-dark-muted: rgba(255, 255, 255, 0.88);
+            /* Text roles on dark (v2.1) */
+            --text-tertiary: rgba(255, 255, 255, 0.82);
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            /* Deprecated aliases (v2.0) — prefer --text-tertiary / --text-secondary */
+            --text-on-dark-high: var(--text-tertiary);
+            --text-on-dark-muted: var(--text-secondary);
             --shadow-chip: 0 10px 28px rgba(0, 0, 0, 0.4);
             --shadow-outline-panel: 0 14px 36px rgba(0, 0, 0, 0.45);
         }
@@ -301,7 +315,7 @@
         .brand-name .brand-prompt { color: var(--brand-wordmark); }
         .brand-name .brand-anatomy { color: var(--accent-yellow); }
         .brand-tagline {
-            font-size: clamp(11px, 1.15vw, 13px);
+            font-size: clamp(12px, 1.15vw, 13px);
             font-weight: 600;
             letter-spacing: 0.1em;
             color: var(--text-soft);
@@ -319,7 +333,7 @@
         .lang-switch__btn {
             font-family: var(--font-main);
             font-weight: 800;
-            font-size: 12px;
+            font-size: var(--font-size-label);
             letter-spacing: 0.08em;
             padding: 6px 10px;
             border-radius: var(--radius-pill);
@@ -378,7 +392,7 @@
         }
         .nav-mobile-progress {
             display: none;
-            font-size: 12px;
+            font-size: var(--font-size-label);
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -460,7 +474,7 @@
         }
         .types-slide--primer .types-card-desc {
             font-size: clamp(12px, 0.98vw, 14px);
-            color: var(--text-soft);
+            color: var(--text-muted);
         }
         .types-slide--primer .types-card .types-card-example {
             background: rgba(16, 59, 90, 0.4);
@@ -474,7 +488,7 @@
         }
         .types-slide--primer .types-copy-btn {
             padding: 7px 12px;
-            font-size: 12px;
+            font-size: var(--font-size-label);
             font-weight: 600;
             opacity: 0.9;
             border-color: var(--accent-yellow-outline-soft);
@@ -532,21 +546,21 @@
         }
         .hero-title-accent { color: var(--accent-yellow); }
 
-        /* DS v2.0 — shared typography / disclosure / tertiary / Tier 2 PDF */
+        /* DS v2.1 — shared typography / disclosure / tertiary / Tier 2 PDF */
         .slide-lead {
             color: var(--text-muted);
-            font-size: clamp(16px, 1.25vw, 19px);
-            line-height: 1.5;
+            font-size: var(--font-size-lead);
+            line-height: var(--lh-body);
             font-weight: 400;
         }
         .slide-lead strong { color: var(--text-bright); font-weight: 700; }
         .hero-intro.slide-lead {
             margin: var(--space-6) 0 0;
-            max-width: 34em;
+            max-width: var(--measure-prose);
         }
         .types-lead.slide-lead,
         .schema-lead.slide-lead {
-            max-width: 34em;
+            max-width: var(--measure-prose);
             margin-left: auto;
             margin-right: auto;
         }
@@ -561,8 +575,8 @@
             gap: var(--space-2);
             font-family: var(--font-display);
             font-weight: 700;
-            font-size: 11px;
-            letter-spacing: 0.14em;
+            font-size: var(--font-size-label);
+            letter-spacing: var(--tracking-label);
             text-transform: uppercase;
             color: var(--text-bright);
             background: var(--surface-overlay);
@@ -611,13 +625,13 @@
             gap: var(--space-3);
             margin-top: var(--space-2);
             padding: var(--space-3) var(--space-4);
-            max-width: 34em;
+            max-width: var(--measure-prose);
             font-size: clamp(14px, 1.1vw, 16px);
-            line-height: 1.5;
+            line-height: var(--lh-body);
             color: var(--text-body);
         }
         .link-tier-tertiary {
-            color: var(--text-on-dark-high);
+            color: var(--text-tertiary);
             text-decoration: none;
             border-radius: var(--radius-tab);
             transition: color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
@@ -704,7 +718,7 @@
             padding: 14px 22px;
             font-size: clamp(14px, 1.1vw, 16px);
             font-weight: 800;
-            color: var(--text-bright);
+            color: var(--text-on-accent);
             background: var(--accent-red);
             text-decoration: none;
             border-radius: var(--radius-md);
@@ -824,7 +838,7 @@
         .label { 
             color: var(--accent-red); 
             text-transform: uppercase; 
-            letter-spacing: 0.14em; 
+            letter-spacing: var(--tracking-label); 
             font-weight: 800; 
             font-size: clamp(13px, 1.1vw, 15px); 
             margin-bottom: 12px;
@@ -846,7 +860,7 @@
             top: -12px; right: 20px;
             background: var(--accent-yellow);
             color: var(--text-on-accent);
-            font-size: 12px;
+            font-size: var(--font-size-label);
             font-weight: 800;
             padding: 4px 12px;
             border-radius: var(--radius-xs);
@@ -946,7 +960,7 @@
         /* CTA */
         .cta-btn {
             background: var(--accent-red);
-            color: var(--text-bright);
+            color: var(--text-on-accent);
             padding: 24px 56px;
             font-size: clamp(18px, 1.6vw, 24px);
             font-weight: 800;
@@ -1036,6 +1050,17 @@
         }
         .cta-telegram-link:hover { color: var(--accent-yellow); border-color: var(--accent-yellow); }
         .cta-telegram-link:hover .icon--telegram { color: var(--accent-yellow); }
+        .cta-ecosystem-link {
+            margin: 20px 0 0;
+            padding: 0 16px;
+            text-align: center;
+        }
+        .cta-ecosystem-link a.link-tier-tertiary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+        }
 
         /* Pagrindiniai užklausų tipai (skaidrė 2) */
         .types-slide .container {
@@ -1204,10 +1229,10 @@
             margin-top: 0;
         }
         .types-slide--guided .types-copy-btn--practice {
-            color: var(--text-on-dark-high);
+            color: var(--text-tertiary);
             border-color: var(--white-alpha-20);
             box-shadow: none;
-            font-size: 12px;
+            font-size: var(--font-size-label);
             padding: 8px 14px;
         }
         .types-slide--guided .types-copy-btn--practice:hover {
@@ -1288,7 +1313,7 @@
             border-left-color: rgba(16, 185, 129, 0.55);
         }
         .types-card--sys { border-color: var(--primary-blue); }
-        .types-card--ctx { border-color: #0d9488; }
+        .types-card--ctx { border-color: var(--accent-teal); }
         .types-card--role { border-color: var(--accent-red); }
         .types-card h3 {
             font-family: var(--font-display);
@@ -1334,7 +1359,7 @@
             align-self: flex-start;
             padding: 10px 16px;
             font-family: var(--font-main);
-            font-size: 13px;
+            font-size: var(--font-size-label);
             font-weight: 700;
             color: var(--accent-yellow);
             background: transparent;
@@ -1358,10 +1383,10 @@
         .types-card-result {
             font-size: clamp(13px, 0.95vw, 14px);
             line-height: 1.6;
-            color: var(--text-soft);
+            color: var(--text-muted);
             margin: 0;
         }
-        .types-card-result strong { color: var(--text-muted); }
+        .types-card-result strong { color: var(--text-body); }
         .types-tip {
             margin-top: 24px;
             padding: 16px 18px;
@@ -1603,7 +1628,7 @@
             color: var(--text-bright);
         }
         .library-goal {
-            font-size: clamp(12px, 0.9vw, 14px);
+            font-size: clamp(13px, 0.95vw, 14px);
             color: var(--accent-yellow);
             font-weight: 700;
             margin: 0 0 12px;
@@ -1945,7 +1970,7 @@
         }
         .schema-step--neutral .schema-step-num { color: #0f172a; }
         .schema-step--reason {
-            background: linear-gradient(135deg, #0d9488 0%, #047857 100%);
+            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-teal-deep) 100%);
             border-color: var(--white-alpha-20);
         }
         .schema-step--reason .schema-step-num { color: var(--white-alpha-90); }
@@ -2460,7 +2485,7 @@
         <div>
             <span class="label">DI praktinė sistema įmonei</span>
             <h1>PROMPTŲ<br><span class="hero-title-accent">ANATOMIJA</span></h1>
-            <p class="hero-intro slide-lead">Penkių dalių užklausos schema, greita siuntimo patikra, kopijuojama biblioteka ir trumpas quiz — skirta įmonės komandai ir vadovui. Nuo DI „spėliojimo“ iki aiškios sistemos: mažiau taisymo, daugiau kontrolės.</p>
+            <p class="hero-intro slide-lead">Penkių dalių schema, siuntimo patikra, biblioteka ir quiz. Nuo DI „spėliojimo“ — mažiau taisymo, daugiau kontrolės.</p>
             <div class="hero-actions">
                 <a class="hero-primary-link" href="#guided" aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką" data-track="hero_primary_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
@@ -2475,14 +2500,14 @@
             <details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">
                 <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>
                 <div class="hero-faq__panel disclosure-chip__panel">
-                    <div><strong>Kam tai?</strong> Komandos darbui ir vadovui: mažiau taisymo, aiškesni rezultatai.</div>
+                    <div><strong>Kam tai?</strong> Komandai ir vadovui — aiškesni rezultatai.</div>
                     <div><strong>Kada naudoti patikrą?</strong> Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.</div>
                     <div><strong>Ką kopijuoti?</strong> Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.</div>
                 </div>
             </details>
         </div>
         <div class="viz-container">
-            <svg class="viz-svg" viewBox="0 0 400 400">
+            <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
                 <rect x="100" y="100" width="200" height="200" fill="none" stroke="var(--accent-yellow)" stroke-width="4" />
                 <circle cx="200" cy="200" r="100" fill="none" stroke="var(--accent-red)" stroke-width="4" />
                 <path d="M200 100 V300 M100 200 H300" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
@@ -2497,7 +2522,7 @@
         <div class="types-head">
             <span class="label">Pagrindai</span>
             <h2>Kas yra promptas?</h2>
-            <p class="types-lead slide-lead">Žemiau — du apibrėžimai ir greito naudojimo taisyklė (juosta).<br>Penkių žingsnių schema — kai atsakymas miglotas ir vis dar reikia pataisymų.</p>
+            <p class="types-lead slide-lead">Du apibrėžimai ir greita taisyklė.<br>Penkių žingsnių schema — kai atsakymas miglotas.</p>
         </div>
 
         <div class="types-grid types-primer-cols">
@@ -2519,7 +2544,7 @@
                     <p class="types-card-desc">Procesas, kaip rašai promptą: specifikacija → struktūra → iteracija.</p>
                     <p class="types-card-k">Tikslas</p>
                     <div class="types-example-block">
-                        <p class="types-card-example">Specifikacija → struktūra → iteracija. Mažiau spėliojimo, daugiau stabilumo per kartojimus.</p>
+                        <p class="types-card-example">Mažiau spėliojimo, daugiau stabilumo per kartojimus.</p>
                         <button type="button" class="types-copy-btn" data-copy-text="Procesas: specifikacija → struktūra → iteracija. Tikslas: mažiau spėliojimo, daugiau stabilumo per kartojimus." aria-label="Kopijuoti promptų inžinerijos santrauką" data-track="primer_copy_inzinerija">Kopijuoti</button>
                     </div>
                 </div>
@@ -2547,7 +2572,7 @@
         <div class="schema-inner">
             <span class="label">Žingsniai</span>
             <h2>Promptų anatomijos schema</h2>
-            <p class="schema-lead slide-lead">Kiekvienas blokas prideda aiškumo. Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>
+            <p class="schema-lead slide-lead">Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>
             <div class="schema-grid">
                 <div class="schema-column-flow">
                     <svg class="schema-loop-svg" viewBox="0 0 40 200" preserveAspectRatio="none" aria-hidden="true">
@@ -2624,7 +2649,7 @@
         <div class="types-head">
             <span class="label">Praktika</span>
             <h2>Pradėk per 2 minutes</h2>
-            <p class="types-lead slide-lead">Tas pats Q3 tikslas — bet užklausa su rėmu keičia, ką gauni.<br>Eiga: migla → struktūra → trumpa savikontrolė.</p>
+            <p class="types-lead slide-lead">Tas pats savaitės tikslas — rėmas keičia, ką gauni.<br>1) Paleisk „Prieš“. 2) Paleisk „Po“ su savo 3–5 eilučių užrašais. 3) Palygink: ar A/B/C be išgalvotų skaičių?</p>
         </div>
         <div class="types-grid types-triple-grid">
             <article class="types-card types-card--sys">
@@ -2633,11 +2658,11 @@
                     <p class="types-card-desc">Be rėmo DI pildo spragas spėliodama.</p>
                     <p class="types-card-k">Užklausa</p>
                     <div class="types-example-block">
-                        <p class="types-card-example types-card-example--minimal">„Paruošk ataskaitą apie mūsų Q3 iniciatyvą.“</p>
+                        <p class="types-card-example types-card-example--minimal">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>
                     </div>
                 </div>
                 <div class="types-card-actions">
-                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Paruošk ataskaitą apie mūsų Q3 iniciatyvą." aria-label="Kopijuoti 'prieš' užklausą" data-track="practice_before_copy">Kopijuoti</button>
+                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Paruošk ataskaitą apie mūsų savaitės prioritetus." aria-label="Kopijuoti 'prieš' užklausą" data-track="practice_before_copy">Kopijuoti</button>
                 </div>
                 <div class="types-card-extra">
                     <p class="types-card-k">Rizika</p>
@@ -2655,8 +2680,8 @@
                     <p class="types-card-k">Struktūra</p>
                     <div class="types-example-block">
                         <div class="types-card-example types-card-example--structured">
-                            <div class="practice-structured-line"><strong>Rolė</strong> <span>darbo asistentas</span></div>
-                            <div class="practice-structured-line"><strong>Tikslas</strong> <span>Q3 prioritetai, ši savaitė</span></div>
+                            <div class="practice-structured-line"><strong>Vaidmuo</strong> <span>darbo asistentas</span></div>
+                            <div class="practice-structured-line"><strong>Tikslas</strong> <span>savaitės prioritetai</span></div>
                             <div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>
                             <div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>
                         </div>
@@ -2664,17 +2689,17 @@
                     </div>
                 </div>
                 <div class="types-card-actions">
-                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Tu esi mano darbo asistentas. Įvestis: [ĮKLIJUOK el. laišką / užrašus]. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Rezultatas: 7 punktų užduočių sąrašas (prioritetas A/B/C + terminas, jei paminėtas)." aria-label="Kopijuoti 'po' užklausą" data-track="practice_after_copy">Kopijuoti</button>
+                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Vaidmuo: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti 'po' užklausą" data-track="practice_after_copy">Kopijuoti</button>
                 </div>
                 <div class="types-card-extra">
                     <p class="types-card-k">Rezultatas</p>
-                    <p class="types-card-result">Aiškus sąrašas — gali iškart naudoti ar deleguoti.</p>
+                    <p class="types-card-result">Gerai, jei: A/B/C prioritetai ir nėra skaičių, kurių neįklijavai.</p>
                 </div>
             </article>
             <article class="types-card types-card--role">
                 <div class="types-card-grow">
                     <h3>Patikra (30 sek.)</h3>
-                    <p class="types-card-desc">Pilna siuntimo patikra — kitoje skaidrėje.</p>
+                    <p class="types-card-desc">Pilna siuntimo patikra — po kelio plano.</p>
                     <p class="types-card-k">Ką tikrinti</p>
                     <div class="types-example-block">
                         <ul class="practice-card-list">
@@ -2686,11 +2711,11 @@
                     </div>
                 </div>
                 <div class="types-card-actions">
-                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Patikra: 1) 3 didžiausios rizikos, 2) kas tinka naudoti, 3) ką turi patikrinti pats, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
+                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
                 </div>
                 <div class="types-card-extra">
                     <p class="types-card-k">Toliau</p>
-                    <p class="types-card-result"><a class="inline-link inline-link--accent" href="#roadmap" data-track="practice_next_click">Kelio planas ↓</a></p>
+                    <p class="types-card-result"><a class="inline-link inline-link--accent" href="#roadmap" data-track="practice_next_click">Kelio planas ↓</a> · <a class="inline-link inline-link--soft" href="#qc" data-track="practice_qc_jump">Patikra →</a></p>
                 </div>
             </article>
         </div>
@@ -2758,7 +2783,7 @@
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 22V2"/></svg></span> Mažiau rizikos klientui ir reputacijai.</div>
         </div>
         <div class="viz-container">
-            <svg class="viz-svg" viewBox="0 0 400 400">
+            <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
                 <path d="M200 55 L330 105 V215 Q330 295 200 355 Q70 295 70 215 V105 Z" fill="none" stroke="var(--accent-yellow)" stroke-width="3" />
                 <path d="M145 205 L180 248 L265 145" stroke="var(--accent-red)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
                 <circle cx="200" cy="200" r="118" fill="none" stroke="var(--white-alpha-08)" stroke-width="1" />
@@ -2778,7 +2803,7 @@
 <section aria-label="Susitikimo ar sprinto planas">
     <div class="container">
         <div class="viz-container">
-            <svg class="viz-svg" viewBox="0 0 400 400">
+            <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
                 <g stroke="var(--accent-yellow)" stroke-width="2" fill="none" opacity="0.6">
                     <path d="M50 350 L350 350 V50 H50 Z" />
                     <path d="M50 350 L200 50 L350 350" />
@@ -2818,7 +2843,7 @@
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span> Vienas šablonas — kelios auditorijos.</div>
         </div>
         <div class="viz-container">
-            <svg class="viz-svg" viewBox="0 0 400 400">
+            <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
                 <rect x="100" y="280" width="200" height="40" fill="var(--accent-yellow)" opacity="0.3" />
                 <rect x="120" y="220" width="160" height="40" fill="var(--accent-yellow)" opacity="0.6" />
                 <rect x="140" y="160" width="120" height="40" fill="var(--accent-yellow)" />
@@ -2832,7 +2857,7 @@
 <section aria-label="Turinio grįžtamasis ryšys">
     <div class="container">
         <div class="viz-container">
-            <svg class="viz-svg" viewBox="0 0 400 400">
+            <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
                 <circle cx="200" cy="200" r="120" fill="none" stroke="var(--accent-yellow)" stroke-width="2" stroke-dasharray="10 5" />
                 <path d="M200 80 A120 120 0 0 1 320 200" stroke="var(--accent-red)" stroke-width="8" fill="none" />
                 <circle cx="320" cy="200" r="10" fill="var(--accent-red)" />
@@ -2869,7 +2894,7 @@
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span> Pritaikyta realiai darbo situacijai.</div>
         </div>
         <div class="viz-container">
-            <svg class="viz-svg" viewBox="0 0 400 400">
+            <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
                 <rect x="100" y="100" width="200" height="200" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
                 <circle cx="150" cy="150" r="20" fill="var(--accent-yellow)" />
                 <circle cx="250" cy="250" r="20" fill="var(--accent-red)" />
@@ -2883,7 +2908,7 @@
 <section aria-label="Laiškas ar žinutė (juodraštis)">
     <div class="container">
         <div class="viz-container">
-            <svg class="viz-svg" viewBox="0 0 400 400">
+            <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
                 <path d="M100 150 L200 250 L300 150" stroke="var(--accent-yellow)" stroke-width="4" fill="none" />
                 <rect x="80" y="120" width="240" height="160" stroke="white" stroke-width="2" fill="none" />
                 <circle cx="320" cy="120" r="15" fill="var(--accent-red)" />
@@ -2944,7 +2969,7 @@
             </div>
         </details>
 
-        <div class="library-categories" id="library-panels" role="tabpanel" aria-labelledby="library-tab-emp" aria-live="polite" aria-atomic="true">
+        <div class="library-categories" id="library-panels" role="tabpanel" aria-labelledby="library-tab-emp">
             <article class="library-cat" id="lib-cat-work">
                 <details class="library-cat-details">
                     <summary class="library-cat-summary"><span class="library-cat-summary__title">Kasdienis darbas</span><span class="library-cat-summary__meta">3 šablonai</span></summary>
@@ -3120,6 +3145,9 @@
                 Telegram (palaikymas ir naujienos)
             </a>
         </p>
+        <p class="cta-ecosystem-link">
+            <a class="link-tier-tertiary" href="https://promptanatomy.site/?utm_source=promptanatomy_cloud&amp;utm_medium=cta_footer&amp;utm_campaign=ecosystem_map" target="_blank" rel="noopener noreferrer" data-track="cta_ecosystem_site_click" aria-label="Ekosistemos žemėlapis promptanatomy.site (atidaryti naujame skirtuke)">Ekosistemos žemėlapis</a>
+        </p>
         <div class="cta-foot site-legal-footnote" role="contentinfo" aria-label="Kontaktai ir leidėjas">
             <p class="site-legal-footnote__brand"><strong>Prompt Anatomy</strong></p>
             <p class="site-legal-footnote__addr">1311 Park St, Unit #654<br>Alameda, CA 94501</p>
@@ -3156,13 +3184,13 @@
         function getPageLocale() {
             var fromPath = getLocaleFromPathname();
             if (fromPath) return fromPath;
+            var fromMeta = getLocaleFromMeta();
+            if (fromMeta) return fromMeta;
             try {
                 var params = new URLSearchParams(window.location.search || '');
                 var q = (params.get('lang') || '').toLowerCase();
                 if (q === 'lt' || q === 'en') return q;
             } catch (e0) { /* ignore */ }
-            var fromMeta = getLocaleFromMeta();
-            if (fromMeta) return fromMeta;
             try {
                 var stored = localStorage.getItem(LANG_KEY);
                 if (stored === 'lt' || stored === 'en') return stored;
@@ -3611,6 +3639,17 @@
                 : libraryPromptsLt;
 
         let libraryModeManager = false;
+        let a11yStatusTimer = null;
+        function announce(msg) {
+            const a11y = document.getElementById('a11y-status');
+            if (!a11y) return;
+            if (a11yStatusTimer) window.clearTimeout(a11yStatusTimer);
+            a11y.textContent = msg;
+            a11yStatusTimer = window.setTimeout(() => {
+                a11y.textContent = '';
+                a11yStatusTimer = null;
+            }, 900);
+        }
 
         function resolveLibraryKey(el) {
             const emp = el.getAttribute('data-emp-key');
@@ -3650,6 +3689,11 @@
             function activateLibraryTab(index, shouldFocus) {
                 libraryModeManager = index === 1;
                 syncLibraryDom();
+                announce(
+                    libraryModeManager
+                        ? uiText('Biblioteka: vadovas', 'Library: manager')
+                        : uiText('Biblioteka: darbuotojas', 'Library: employee')
+                );
                 if (shouldFocus && libraryTabs[index] && typeof libraryTabs[index].focus === 'function') {
                     libraryTabs[index].focus();
                 }
@@ -3902,17 +3946,6 @@
         async function copyPromptText(text, btn) {
             if (btn.disabled) return;
             const original = btn.textContent;
-            const a11y = document.getElementById('a11y-status');
-            let a11yTimer = null;
-            const announce = (msg) => {
-                if (!a11y) return;
-                if (a11yTimer) window.clearTimeout(a11yTimer);
-                a11y.textContent = msg;
-                a11yTimer = window.setTimeout(() => {
-                    a11y.textContent = '';
-                    a11yTimer = null;
-                }, 900);
-            };
             btn.disabled = true;
             btn.setAttribute('aria-busy', 'true');
             try {

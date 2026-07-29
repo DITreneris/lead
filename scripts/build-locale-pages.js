@@ -16,6 +16,7 @@ const {
   SITE_DIR,
   SITE_PREFIX,
   OG_IMAGE_VERSION,
+  LESSON_DATE_PUBLISHED,
   originUrl,
   publicPath,
   sitemapLastmod,
@@ -188,6 +189,8 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
   const websiteId = `${originUrl('/')}#website`;
   const webpageId = `${pageUrl}#webpage`;
   const faqId = `${pageUrl}#faq`;
+  const dateModified = sitemapLastmod();
+  const datePublished = LESSON_DATE_PUBLISHED || dateModified;
   const payload = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -201,7 +204,9 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
         address: postalAddressSchema(),
         sameAs: [
           'https://www.promptanatomy.app/',
-          'https://github.com/DITreneris/lead'
+          'https://github.com/DITreneris/lead',
+          'https://promptanatomy.pro/en/',
+          'https://promptanatomy.site/'
         ]
       },
       {
@@ -219,6 +224,8 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
         description: pageDescription,
         url: pageUrl,
         inLanguage: pageLanguage,
+        datePublished,
+        dateModified,
         isPartOf: { '@id': websiteId }
       },
       {
@@ -228,6 +235,8 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
         description: pageDescription,
         url: pageUrl,
         inLanguage: pageLanguage,
+        datePublished,
+        dateModified,
         isAccessibleForFree: true,
         learningResourceType: 'Interactive lesson',
         provider: { '@id': orgId }
@@ -391,8 +400,10 @@ const ROBOTS_AI_AGENTS = [
   'Googlebot',
   'Bingbot',
   'GPTBot',
+  'OAI-SearchBot',
   'ChatGPT-User',
   'ClaudeBot',
+  'Claude-SearchBot',
   'anthropic-ai',
   'PerplexityBot',
   'Google-Extended',
@@ -422,7 +433,10 @@ function writeRobotsAndSitemap() {
     originUrl('/'),
     originUrl('/lt/'),
     originUrl('/assets/www.promptanatomy.app-en.pdf'),
-    originUrl('/assets/www.promptanatomy.app.pdf')
+    originUrl('/assets/www.promptanatomy.app.pdf'),
+    originUrl('/llms.txt'),
+    originUrl('/llms-full.txt'),
+    originUrl('/pricing.md')
   ];
   const urlEntries = urls
     .map((loc) => `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`)

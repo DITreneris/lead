@@ -1,4 +1,4 @@
-/* DS v2.0 — minimal :root for 404.html and tools.html (subset of styles/tokens.css) */
+/* DS v2.1 — minimal :root for 404.html and tools.html (subset of styles/tokens.css) */
 :root {
     --primary-blue: #103b5a;
     --accent-yellow: #fbd304;
@@ -14,8 +14,13 @@
     --text-muted: #cbd5e1;
     --text-soft: #94a3b8;
     --text-on-accent: #0a0a0a;
-    --text-on-dark-high: rgba(255, 255, 255, 0.82);
+    --text-tertiary: rgba(255, 255, 255, 0.82);
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-on-dark-high: var(--text-tertiary);
     --brand-wordmark: #f1f5f9;
+    --font-size-label: 13px;
+    --font-size-ui: 14px;
+    --tracking-label: 0.12em;
     --radius-sm: 6px;
     --radius-md: 8px;
     --radius-lg: 12px;

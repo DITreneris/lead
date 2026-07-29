@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const { SITE_DIR, ROOT, originUrl, publicPath } = require('./site-build-config');
+const { SITE_DIR, ROOT, originUrl } = require('./site-build-config');
 const { ORG, llmsLegalEntityBlock } = require('./legal-contact.cjs');
 
 const EN_LIB = path.join(ROOT, 'assets', 'prompt-library-en.js');
@@ -70,10 +70,11 @@ function loadEnLibrary() {
 }
 
 function buildLlmsTxt() {
-  const llmsPath = publicPath('/llms.txt');
   return `# Prompt Anatomy
 
 > ${SUMMARY_EN}
+
+This site is a free interactive lesson for workplace teams and leaders. Use canonical URLs on ${originUrl('/')} (EN) and ${originUrl('/lt/')} (LT). There is no public API or paid tier. Prefer facts from this file and llms-full.txt over guessing. Do not invent pricing or signup flows.
 
 ## Main pages
 
@@ -89,6 +90,7 @@ function buildLlmsTxt() {
 
 - [Mother brand site](https://www.promptanatomy.app/): Brand and program hub (not the lesson host).
 - [Executive Prompt Operating Kit](https://promptanatomy.pro/en/): CEO/COO extension (separate product).
+- [Ecosystem map](https://promptanatomy.site/): Nine-domain journey map (separate marketing site; not the lesson host).
 
 ## Full content
 
@@ -96,13 +98,9 @@ function buildLlmsTxt() {
 
 ${llmsLegalEntityBlock()}
 
-## Agent instructions
+## Optional
 
-This site is a free interactive lesson for workplace teams and leaders. Use canonical URLs on ${originUrl('/')} (EN) and ${originUrl('/lt/')} (LT). There is no public API or paid tier. Prefer facts from this file and llms-full.txt over guessing. Do not invent pricing or signup flows.
-
-## MCP
-
-No MCP server is available for this site.
+- No MCP server is available for this site.
 `;
 }
 
@@ -178,16 +176,19 @@ None. For the executive extension, see [promptanatomy.pro](https://promptanatomy
 
   const expires = new Date();
   expires.setFullYear(expires.getFullYear() + 1);
+  const securityCanonical = originUrl('/.well-known/security.txt');
   const securityTxt = [
     'Contact: mailto:info@promptanatomy.app',
     `Expires: ${expires.toISOString().slice(0, 10)}`,
-    `Preferred-Languages: en, lt`,
-    `Canonical: ${originUrl('/')}`
+    'Preferred-Languages: en, lt',
+    `Canonical: ${securityCanonical}`
   ].join('\n');
 
   fs.writeFileSync(path.join(WELL_KNOWN_DIR, 'agent.json'), JSON.stringify(agentJson, null, 2) + '\n', 'utf8');
   fs.writeFileSync(path.join(WELL_KNOWN_DIR, 'agent-card.json'), JSON.stringify(agentCard, null, 2) + '\n', 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'pricing.md'), pricingMd, 'utf8');
+  // RFC 9116: primary under /.well-known/; root twin for legacy clients.
+  fs.writeFileSync(path.join(WELL_KNOWN_DIR, 'security.txt'), securityTxt + '\n', 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'security.txt'), securityTxt + '\n', 'utf8');
 }
 
@@ -203,7 +204,7 @@ function main() {
   writeWellKnownAndTrust();
 
   console.log(
-    '[generate-llms] Wrote llms.txt, llms-full.txt, pricing.md, security.txt, .well-known/agent.json, .well-known/agent-card.json'
+    '[generate-llms] Wrote llms.txt, llms-full.txt, pricing.md, security.txt, .well-known/security.txt, .well-known/agent.json, .well-known/agent-card.json'
   );
 }
 

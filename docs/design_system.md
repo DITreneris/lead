@@ -1,19 +1,26 @@
 # Design System — Promptų anatomija
 
-**Version:** 2.0  
-**Last reviewed:** 2026-05-25 — [`styles/tokens.css`](../styles/tokens.css) + inject; patterns `.slide-lead`, `.disclosure-chip*`, `.btn-pdf-outline`, `.link-tier-tertiary`; `verify:satellite-tokens`, `verify:typography-roles`; [`tools-lt.html`](../tools-lt.html).  
+**Version:** 2.1  
+**Last reviewed:** 2026-07-29 — type/measure tokens; chrome ≥12–13px; `--text-tertiary` / `--text-secondary`; `--accent-teal*`; decision recipes (§2.1); public vs private tokens.  
 **Audience:** Product owner, frontend maintainer, AI coding agents.
 
 This document describes **what exists today**. It is not a redesign brief. Visual changes should improve **consistency and maintainability** only.
 
-### v1.5 scope
+### Semver (this product)
+
+| Range | Meaning |
+|-------|---------|
+| **2.x** | No breaking visual contracts: CTA tiers (§8), public token names, slide-based UX |
+| **3.0** | Would allow hero/layout redesign — **out of scope** until explicit product decision |
+
+### v1.5 / v2.x scope
 
 | Allowed | Not allowed |
 |---------|-------------|
-| Token / motion unification (`var(--duration-*)`) | Hero `h1` scale, layout redesign |
-| Modifier classes instead of ID-specific CSS | New brand colors, 7th red CTA variant |
+| Token / motion / type-scale unification | Hero `h1` scale, layout redesign |
+| Modifier classes instead of ID-specific CSS | New brand colors outside documented accents, 7th red CTA |
 | Doc sync + strict `verify:design-tokens` | Tailwind or bundler on `index.html` |
-| Satellite token subset via shared CSS | `tools-lt.html` LT companion page |
+| Satellite token subset via shared CSS | Stack expansion without approval |
 
 ---
 
@@ -63,11 +70,44 @@ flowchart TB
 | Hero (`#intro`) | Practice link (`.hero-primary-link` → `#guided`) | PDF (`.hero-pdf-link`) |
 | Final slide (`#cta`) | Program / pricing (`.cta-btn--primary`) | PDF (`.cta-pdf-link`) |
 
+### 2.1 Decision recipes (authors / agents)
+
+**New control / button**
+
+1. Map to §8 tier before writing CSS.
+2. At most one **Tier 1 (red)** per slide.
+3. PDF → Tier 2 (`.btn-pdf-outline`). Copy prompt → Tier 3. Do not invent a new red variant.
+
+**New text block**
+
+1. Pick a §4 typography role (`lead`, `label`, `UI`, display H1/H2, mono).
+2. Use `var(--font-size-*)` / `var(--lh-body)` / `var(--measure-prose)` — do not invent a one-off `font-size` outside roles.
+3. Chrome / labels: floor **≥12px** (interactive chrome target **13px** via `--font-size-label`).
+
+**New `details` / disclosure**
+
+1. Reuse `.disclosure-chip*` (modifiers `--nav` / `--inline`) — do not invent a parallel chip.
+
+**Readability contracts**
+
+- Lead ≤ 2 sentences; card description ≤ 1 sentence.
+- One Tier-1 CTA per slide.
+- Body / lead color never below `--text-muted` on `--surface-base` for content that must be read.
+- Reserve `--text-soft` for true meta (taglines, progress chrome) — not primary card copy.
+- Do not use opacity alone to create readable contrast on body text.
+
+### 2.2 Public vs private tokens
+
+| Tier | Examples | Rule |
+|------|----------|------|
+| **Public** | Brand triad, `--accent-teal*`, text roles (`--text-bright` … `--text-tertiary`), `--radius-md` / `--radius-lg`, `--duration-*`, `--space-4` / `6` / `8`, `--font-size-label` / `ui` / `lead`, `--measure-prose`, `--tracking-label` | Prefer these in new UI |
+| **Private** | Yellow tint ladder (`--accent-yellow-bg-*`, border soft/faint/…), most `--white-alpha-*` | Implementation detail; reuse existing step, do not add a new alpha without documenting |
+
 ---
 
 ## 3. Design tokens (`:root`)
 
-**Source of truth:** [`index.html`](../index.html) `<style>` block, `:root` selector.
+**Source of truth:** [`styles/tokens.css`](../styles/tokens.css) — injected into HTML via `npm run build` / `inject-design-tokens`. Do not hand-edit `:root` between `DS_TOKENS_*` markers.
 
 ### 3.1 Brand colors
 
@@ -76,6 +116,8 @@ flowchart TB
 | `--primary-blue` | `#103b5a` | Brand navy, surfaces, schema steps |
 | `--accent-yellow` | `#fbd304` | Highlights, copy buttons, active nav, tabs |
 | `--accent-red` | `#ff5a5f` | Primary CTAs, labels (`.label`), badges tint |
+| `--accent-teal` | `#0d9488` | Context card border (`.types-card--ctx`); schema “reason” step |
+| `--accent-teal-deep` | `#047857` | Schema reason gradient end |
 | `--bg-dark` | `#071b29` | Page base (alias via `--surface-base`) |
 
 ### 3.2 Surfaces and borders
@@ -97,10 +139,25 @@ flowchart TB
 |-------|-------|--------|
 | `--text-bright` | `#f8fafc` | Headings, primary UI text |
 | `--text-body` | `#e2e8f0` | Body, prompts |
-| `--text-muted` | `#cbd5e1` | Leads, subheads |
-| `--text-soft` | `#94a3b8` | Meta, foot links, roadmap time |
+| `--text-muted` | `#cbd5e1` | Leads, subheads, readable secondary |
+| `--text-soft` | `#94a3b8` | Meta only (taglines, progress chrome) |
 | `--text-on-accent` | `#0a0a0a` | Text on yellow buttons |
 | `--accent-yellow-hover-text` | `#fff6b0` | Yellow control hover |
+| `--text-tertiary` | `rgba(255,255,255,0.82)` | Tertiary links / subdued chrome (`.link-tier-tertiary`) |
+| `--text-secondary` | `rgba(255,255,255,0.88)` | On-dark secondary (foot variants) |
+| `--text-on-dark-high` | `var(--text-tertiary)` | **Deprecated alias** (v2.0) |
+| `--text-on-dark-muted` | `var(--text-secondary)` | **Deprecated alias** (v2.0) |
+
+### 3.3a Type scale and measure (v2.1)
+
+| Token | Value | Usage |
+|-------|--------|--------|
+| `--font-size-label` | `13px` | Labels, disclosure summary, copy chrome, lang switch |
+| `--font-size-ui` | `14px` | Compact UI |
+| `--font-size-lead` | `clamp(16px, 1.25vw, 19px)` | `.slide-lead` |
+| `--lh-body` | `1.5` | Lead / prose line-height |
+| `--measure-prose` | `34em` | Lead / FAQ panel max-width |
+| `--tracking-label` | `0.12em` | `.label`, `.disclosure-chip__summary` |
 
 ### 3.4 Radius
 
@@ -210,8 +267,8 @@ flowchart TB
 | `--border-control-hover` | `rgba(255, 255, 255, 0.28)` | Lang switch hover border |
 | `--nav-dot-idle-border` | `rgba(255, 255, 255, 0.14)` | Mobile nav dot ring |
 | `--nav-dot-idle-bg` | `rgba(255, 255, 255, 0.035)` | Mobile nav dot fill |
-| `--text-on-dark-high` | `rgba(255, 255, 255, 0.82)` | Tertiary links on dark (`.link-tier-tertiary`) |
-| `--text-on-dark-muted` | `rgba(255, 255, 255, 0.88)` | Reserved / foot variants |
+| `--text-on-dark-high` | *(alias → `--text-tertiary`)* | Prefer `--text-tertiary` |
+| `--text-on-dark-muted` | *(alias → `--text-secondary`)* | Prefer `--text-secondary` |
 | `--white-alpha-04` | `rgba(255, 255, 255, 0.04)` | Mobile nav dot fill |
 | `--white-alpha-06` | `rgba(255, 255, 255, 0.06)` | Quiz option idle bg |
 | `--white-alpha-08` | `rgba(255, 255, 255, 0.08)` | Library border, SVG stroke |
@@ -244,9 +301,9 @@ These may remain as literals; `verify:design-tokens` does not fail on them:
 | Display H1 | `h1`, `.hero-title-accent` | Display | `clamp(56px, 7.5vw, 104px)`, `letter-spacing: -0.02em` |
 | Section H2 | `h2`, slide titles | Display | `clamp(36px, 4.2vw, 56px)` |
 | Essence / closing headline | `.essence-primary-headline`, `h2.cta-title`, `h2.essence-tagline` | Display | Large clamps; mobile overrides ≤1024px |
-| Lead | `.slide-lead` (+ `.hero-intro`, `.types-lead`, `.slide-sublead`, `.schema-lead`) | Main | `clamp(16px, 1.25vw, 19px)`, `line-height: 1.5` |
-| Label | `.label`, `.types-card-k`, `.cta-secondary-label` | Main | Uppercase, `letter-spacing` 0.1–0.14em |
-| UI / buttons | `.copy-prompt-btn`, `.quiz-check-btn`, `.types-copy-btn` | Main | `clamp` on font-size where set |
+| Lead | `.slide-lead` (+ `.hero-intro`, `.types-lead`, `.slide-sublead`, `.schema-lead`) | Main | `var(--font-size-lead)`, `line-height: var(--lh-body)`, `max-width: var(--measure-prose)` where set |
+| Label | `.label`, `.types-card-k`, `.cta-secondary-label`, `.disclosure-chip__summary` | Main / Display | Uppercase; `letter-spacing: var(--tracking-label)` on `.label` / disclosure |
+| UI / buttons | `.copy-prompt-btn`, `.quiz-check-btn`, `.types-copy-btn` | Main | `--font-size-label` or `clamp` where set |
 | Monospace | `.library-prompt-block` | System mono stack | ~13–15px |
 
 **Do not** add a new heading level with arbitrary `font-size` without mapping to a role above.
@@ -314,6 +371,7 @@ Test at **375px, 390px, 768px, 1024px** after CSS changes:
 |------|-------|-----------|--------|--------|
 | 2026-05-25 | `site/lt/` + `site/` (post v1.5) | 375, 390, 768, 1024 | Agent smoke (structural) | Pass — nav 15 slides, primer/guided modifiers, library tabs, quiz feedback margin, outline focus |
 | 2026-05-25 | post DS v2.0 | 375, 390, 768, 1024 | Agent smoke | Pass — `.disclosure-chip*`, hero mobile center, `tools-lt.html`; see [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) |
+| 2026-07-29 | post DS v2.1 | 375, 768, 1024 | Agent structural + checklist | Pass — chrome ≥13px disclosure/label; teal tokens; type tokens; projector/tab/DUK spot items closed in [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) (human re-check recommended on device) |
 
 ---
 
@@ -613,13 +671,25 @@ Minimal page — no slide nav or lesson JS.
 - [x] [`docs/DS_TYPOGRAPHY_AUDIT.md`](DS_TYPOGRAPHY_AUDIT.md), [`docs/DS_A11Y_SMOKE_v2.md`](DS_A11Y_SMOKE_v2.md)
 - [x] `verify:typography-roles` (soft gate)
 
-### v2.1 backlog
+### v2.1 Definition of Done (2026-07-29)
+
+- [x] Decision recipes (§2.1), public vs private tokens (§2.2), readability contracts
+- [x] SETUP / AGENTS / Q_A version labels → v2.1
+- [x] Type / measure / tracking tokens; chrome floor ≥12–13px on disclosure, labels, copy chrome
+- [x] `--text-tertiary` / `--text-secondary` (deprecated on-dark aliases kept)
+- [x] `--accent-teal` / `--accent-teal-deep` replace `#0d9488` / `#047857` literals
+- [x] Soft text policy: readable secondary uses `--text-muted` (primer desc, card results)
+- [x] Smoke QA log + [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) updated
+- [x] `npm run build && npm run verify`
+
+### Deferred (not DS v2.1)
 
 | Task | Notes |
 |------|--------|
 | Full WCAG audit / certification | Out of DS scope |
 | EN bundle without inline `libraryPromptsLt` | EN audit §4 |
 | Library single Markdown source | AGENTS §4.1 |
+| Harden `verify:typography-roles` to fail CI | Soft gate until orphans stay at zero for a release cycle |
 
 ---
 

@@ -9,6 +9,8 @@ const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
 const SITE_PREFIX = (process.env.SITE_PREFIX || '').replace(/\/$/, '');
 const ORIGIN = (process.env.PUBLIC_ORIGIN || 'https://promptanatomy.cloud').replace(/\/$/, '');
 const OG_IMAGE_VERSION = (process.env.OG_IMAGE_VERSION || '2026-04-30').trim();
+/** Stable LearningResource datePublished (ISO date); align with first public OG asset version. */
+const LESSON_DATE_PUBLISHED = (process.env.LESSON_DATE_PUBLISHED || '2026-04-30').trim();
 
 function originUrl(pathname) {
   const p = pathname.startsWith('/') ? pathname : '/' + pathname;
@@ -40,6 +42,7 @@ module.exports = {
   SITE_PREFIX,
   ORIGIN,
   OG_IMAGE_VERSION,
+  LESSON_DATE_PUBLISHED,
   originUrl,
   publicPath,
   sitemapLastmod,
