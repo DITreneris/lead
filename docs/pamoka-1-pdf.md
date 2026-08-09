@@ -14,7 +14,7 @@ fontsize: 11pt
 
 Derink visus tris tame pačiame tekste — ypač planuojant darbą, pristatymą, laišką ar komandos sprendimą.
 
-| Sluoksnis | Ką įrašote | Ką gaunate |
+| Sluoksnis | Ką įrašai | Ką gauni |
 |-----------|------------|------------|
 | **Sistema** | Koks DI vaidmuo tavo darbe ir koks atsakymo tikslas | Mažiau „bendrų frazių“ — atsakymas laikosi užduoties logikos |
 | **Kontekstas** | Projektas, auditorija, apribojimai, šaltiniai, kas jau žinoma | Turinys susietas su tavo situacija,<br/>ne su abstrakčia santrauka |
@@ -46,7 +46,7 @@ Derink visus tris tame pačiame tekste — ypač planuojant darbą, pristatymą,
 
 **VAIDMUO:** Tu esi patyręs [srities] projektų ar procesų koordinatorius.
 
-**KONTEKSTAS:** Paruošk [trukmė, pvz. 60 min.] susitikimo ar sprinto planą temai [Tema], komandai [Komanda / rolės]. Jie jau žino [ką sutarėte anksčiau].
+**KONTEKSTAS:** Paruošk [trukmė, pvz. 60 min.] susitikimo ar sprinto planą temai [Tema], komandai [Komanda / rolės]. Jie jau žino [ką sutarei anksčiau].
 
 **REZULTATAS:** Lentelė: Laikas | Veikla | Tikslas. Pridėk 3 sprendimui skirtus klausimus.
 
@@ -78,7 +78,7 @@ Derink visus tris tame pačiame tekste — ypač planuojant darbą, pristatymą,
 
 **KONTEKSTAS:** Sukurk užduotį ar trumpą mokymo medžiagą tema [Tema], auditorijai [Komanda / rolė]. Naudok realų verslo ar proceso pavyzdį.
 
-**REZULTATAS:** Formatas: [žinių patikrinimas / praktinė užduotis]. Instrukcija vartotojui + atsakymų ar vertinimo raktas.
+**REZULTATAS:** Formatas: [žinių patikrinimas / praktinė užduotis]. Instrukcija komandai + atsakymų ar vertinimo raktas.
 
 ---
 

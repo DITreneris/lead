@@ -35,7 +35,22 @@ flowchart TD
   workflow -->|"deploy"| site
 ```
 
-## 3. Orkestratoriaus logika (supaprastinta)
+## 3. CTA foot → hub (entity line, QW1b)
+
+```mermaid
+flowchart TB
+  subgraph ctaFoot [CTA_slide_foot]
+    eco[cta_ecosystem_link_site]
+    entity[cta_entity_footer_app]
+    legal[site_legal_footnote]
+  end
+  eco --> entity --> legal
+  entity -->|"utm_source=cloud entity_footer"| hubApp[www_promptanatomy_app]
+```
+
+Copy and UTM canon: [AGENTS.md](../../../AGENTS.md) **„Entity footer (hub QW1b)“**. Do not treat as Tier‑1 CTA.
+
+## 4. Orkestratoriaus logika (supaprastinta)
 
 ```mermaid
 flowchart TD

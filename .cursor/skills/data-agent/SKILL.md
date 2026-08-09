@@ -45,6 +45,7 @@ description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių 
 - **LT / EN (planuojant turinio ar struktūros pokyčius):** kanonas LT `index.html`; EN matomas HTML — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs); biblioteka EN — [assets/prompt-library-en.js](../../../assets/prompt-library-en.js); po pakeitimų — `npm run build` ir `npm run verify` (žr. [AGENTS.md](../../../AGENTS.md) **„Dviguba patikra“**).
 - **Vizualiniai / CSS planai:** tokenai — [`styles/tokens.css`](../../../styles/tokens.css), ne rankinis `:root` drift; optional local `docs/design_system.md` if present.
 - **Neplėsti** stacko (frameworkai, bundleriai, backend) be aiškios priežasties — žr. projekto `.cursor/rules`.
+- **Hub entity footer (QW1b):** planuojant `#cta` foot — žr. [reference.md](reference.md) §3 ir [AGENTS.md](../../../AGENTS.md); ne painioti su Tier‑1 / `promo-handoff`.
 
 ### 5. „Mokymasis“ šiame projekte
 

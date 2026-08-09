@@ -44,12 +44,13 @@ Viena eiga vietoj atskiro „router“ ir „orchestrator“ serviso: klasifikuo
 
 - **Interaktyvi pamoka (kanonas):** EN `/`, LT `/lt/`; LT šaltinis — [index.html](index.html), statinis build — [site/index.html](site/index.html) ir `site/lt/index.html` po `npm run build`. Absoliutūs `canonical` / `og:*` / `hreflang` / `sitemap.xml`: numatyta `https://promptanatomy.cloud` ([scripts/build-locale-pages.js](scripts/build-locale-pages.js), aplinka `PUBLIC_ORIGIN`).
 - **Viešas UI šiame repo:** Enter → Hub (`.app`) + Decide (`.pro`, hero foot) + tertiary į `.site` (CTA skaidrė). Kitų subdomainų **nekelti** į pamokos chrome be atskiros užduoties.
-- **Išorinės nuorodos (`.pro` / `.site`):** LT [index.html](index.html) + pora [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) (`aria-label`, UTM), tada `npm run build` ir `npm run verify`.
+- **Entity footer (hub QW1b):** `#cta` → `.cta-entity-footer` **virš** `.site-legal-footnote` — entity + kelias į hubą, ne antras Tier‑1 / ne „Buy Core“. Copy kanonas: LT `Promptų Anatomijos ekosistema · Mokymai ir checkout → promptanatomy.app`; EN `Part of Prompt Anatomy · Training & checkout → promptanatomy.app`. Href: `https://www.promptanatomy.app/?utm_source=cloud&utm_medium=entity_footer&utm_campaign=ecosystem` + `data-track=entity_footer_click`. Be founder vardo. LT + EN pora [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs). Ne dėti ant hub `.app`; satellites (`tools*`, `404`) — neprivaloma.
+- **Išorinės nuorodos (`.pro` / `.site` / entity `.app`):** LT [index.html](index.html) + pora [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs) (`aria-label`, UTM), tada `npm run build` ir `npm run verify`.
 
 ## Golden standard (LT)
 
 - **Tonas**: visur „TU“ (profesionaliai, trumpai, be „mokyklos“ tono).
-- **Forma**: vengti „-kite“ konstrukcijų (pvz. „Atsisiųskite“) — rašyti tiesiai „Atsisiųsk“.
+- **Forma**: vengti „-kite“ konstrukcijų (pvz. „Atsisiųskite“) — rašyti tiesiai „Atsisiųsk“. Bibliotekos placeholder’iai — TU: `[ĮRAŠYK]`, `[APRAŠYK UŽDUOTĮ]`, `[ĮKLIJUOK TEKSTĄ]` (ne `[ĮRAŠYKITE]`).
 - **Tikslas**: padėti **įmonės darbuotojui** ir **vadovui** greitai pritaikyti sistemą darbe.
 - **Terminija**: „DI“, „užklausa (promptas)“ (pirmą kartą gali būti su paaiškinimu), „šablonas“, „patikra“, „skaidrė“, „biblioteka“.
 - **Microcopy**: vienas sakinys = viena mintis; CTA = vienas veiksmas; veiksmažodžiai vietoj abstrakcijų.

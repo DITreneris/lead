@@ -181,7 +181,7 @@
             '2) Briefly why that score',
             '3) 3 weakest spots',
             '4) Improved prompt version',
-            'Rules: be specific; if facts are missing — say so; if too complex — offer V1; do not change without upside.'
+            'Rules: be specific; if facts are missing — say so; if too complex — offer V1; only change what clearly improves the prompt.'
         ].join('\n')
     };
 
@@ -339,7 +339,7 @@
         '2) Briefly why that score',
         '3) 3 weakest spots',
         '4) Improved prompt version',
-        'Rules: be specific; if facts are missing — say so; if too complex — offer V1; do not change without upside.'
+        'Rules: be specific; if facts are missing — say so; if too complex — offer V1; only change what clearly improves the prompt.'
     ].join('\n');
     p.mgr_simplifyText = [
         'Shorten text for leadership, client, or market — one clear core.',

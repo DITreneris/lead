@@ -37,7 +37,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <!-- Inline SVG: Lucide icons (lucide-static, ISC License, https://lucide.dev) -->
     <style>
-                                                                                                                                                                                                                                                                                /* DS_TOKENS_START — from styles\tokens.css; do not edit here */
+                                                                                                                                                                                                                                                                                                                                /* DS_TOKENS_START — from styles\tokens.css; do not edit here */
         :root {
             --primary-blue: #103b5a;
             --accent-yellow: #fbd304;
@@ -1060,6 +1060,19 @@
             align-items: center;
             justify-content: center;
             min-height: 44px;
+        }
+        .cta-entity-footer {
+            margin: 16px 0 0;
+            padding: 0 16px;
+            text-align: center;
+            font-size: 0.92em;
+            color: var(--text-soft);
+            line-height: 1.45;
+            text-wrap: balance;
+        }
+        .cta-entity-footer a.link-tier-tertiary {
+            display: inline;
+            min-height: 0;
         }
 
         /* Pagrindiniai užklausų tipai (skaidrė 2) */
@@ -2442,7 +2455,7 @@
     <button type="button" class="nav-item active" aria-label="Skaidrė 1: Įvadas" aria-current="true"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutes"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutės"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
@@ -2462,7 +2475,7 @@
         <button type="button" class="nav-item active" aria-label="Skaidrė 1: Įvadas" aria-current="true"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutes"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutės"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
@@ -2496,7 +2509,7 @@
                     Atsisiųsk santrauką (PDF)
                 </a>
             </div>
-            <p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Biblioteka</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO ir COO executive rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a> · <a class="link-tier-tertiary" href="tools-lt.html">DI įrankių gidas</a></p>
+            <p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Biblioteka</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=promptanatomy_app&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" aria-label="CEO ir COO vadovybės rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a> · <a class="link-tier-tertiary" href="tools-lt.html">DI įrankių gidas</a></p>
             <details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">
                 <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>
                 <div class="hero-faq__panel disclosure-chip__panel">
@@ -2644,18 +2657,18 @@
 </div>
 
 <!-- Skaidrė 4: Guided praktika -->
-<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutes">
+<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutės">
     <div class="container">
         <div class="types-head">
             <span class="label">Praktika</span>
-            <h2>Pradėk per 2 minutes</h2>
+            <h2>Pradėk per 2 minutės</h2>
             <p class="types-lead slide-lead">Tas pats savaitės tikslas — rėmas keičia, ką gauni.<br>1) Paleisk „Prieš“. 2) Paleisk „Po“ su savo 3–5 eilučių užrašais. 3) Palygink: ar A/B/C be išgalvotų skaičių?</p>
         </div>
         <div class="types-grid types-triple-grid">
             <article class="types-card types-card--sys">
                 <div class="types-card-grow">
                     <h3>Prieš (per miglą)</h3>
-                    <p class="types-card-desc">Be rėmo DI pildo spragas spėliodama.</p>
+                    <p class="types-card-desc">Be rėmo DI pildo spragas spėliodamas.</p>
                     <p class="types-card-k">Užklausa</p>
                     <div class="types-example-block">
                         <p class="types-card-example types-card-example--minimal">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>
@@ -2762,7 +2775,7 @@
                     <span class="roadmap-time">10–30 min</span>
                 </div>
             </div>
-            <div class="roadmap-total">Viso iki ≈ 5 val. / sav. (priklauso nuo naudojimo dažnio)</div>
+            <div class="roadmap-total">Iš viso iki ≈ 5 val. / sav. (priklauso nuo naudojimo dažnio)</div>
         </div>
     </div>
 </section>
@@ -2818,11 +2831,11 @@
             <p class="slide-sublead slide-lead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>
-                <div class="prompt-line"><b>ĮVESTIS</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTARĖTE ANKSČIAU].</div>
+                <div class="prompt-line"><b>ĮVESTIS</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTAREI ANKSČIAU].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
-            <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span> Planas paruoštas per kelias minutes.</div>
+            <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span> Planas paruoštas per kelias minutės.</div>
         </div>
     </div>
 </section>
@@ -2888,7 +2901,7 @@
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>
-                <div class="prompt-line"><b>REZULTATAS</b> Paruoštą tekstą su aiškia instrukcija naudotojui; jei tinka — atsakymų ar vertinimo raktą.</div>
+                <div class="prompt-line"><b>REZULTATAS</b> Paruoštą tekstą su aiškia instrukcija komandai; jei tinka — atsakymų ar vertinimo raktą.</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span> Pritaikyta realiai darbo situacijai.</div>
@@ -2919,7 +2932,7 @@
             <h2>Laiškas ar žinutė (juodraštis)</h2>
             <p class="slide-sublead slide-lead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus kitas žingsnis.</div>
+                <div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus žingsnis.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>
                 <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
@@ -3085,7 +3098,7 @@
                         <li>
                             <label class="quiz-option" for="quiz-opt-a">
                                 <input type="radio" name="prompt-quiz" id="quiz-opt-a" value="a" data-correct="false">
-                                <span class="quiz-option-text">Užtenka aiškios temos ir norimo formato (pvz. „lentelė“), net jei nenurodau rolės ir konteksto.</span>
+                                <span class="quiz-option-text">Užtenka aiškios temos ir norimo formato (pvz. „lentelė“), net jei nenurodau vaidmens ir konteksto.</span>
                             </label>
                         </li>
                         <li>
@@ -3097,7 +3110,7 @@
                         <li>
                             <label class="quiz-option" for="quiz-opt-c">
                                 <input type="radio" name="prompt-quiz" id="quiz-opt-c" value="c" data-correct="false">
-                                <span class="quiz-option-text">Pakanka rolės ir tono (pvz. „rašyk vadovybei“), net jei nepasakau, kokių faktų DI turi žinoti ir kaip mąstyti.</span>
+                                <span class="quiz-option-text">Pakanka vaidmens ir tono (pvz. „rašyk vadovybei“), net jei nepasakau, kokių faktų DI turi žinoti ir kaip mąstyti.</span>
                             </label>
                         </li>
                         <li>
@@ -3148,6 +3161,7 @@
         <p class="cta-ecosystem-link">
             <a class="link-tier-tertiary" href="https://promptanatomy.site/?utm_source=promptanatomy_cloud&amp;utm_medium=cta_footer&amp;utm_campaign=ecosystem_map" target="_blank" rel="noopener noreferrer" data-track="cta_ecosystem_site_click" aria-label="Ekosistemos žemėlapis promptanatomy.site (atidaryti naujame skirtuke)">Ekosistemos žemėlapis</a>
         </p>
+        <p class="cta-entity-footer">Promptų Anatomijos ekosistema · Mokymai ir checkout → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" aria-label="Promptų Anatomijos hubas promptanatomy.app (atidaryti naujame skirtuke)">promptanatomy.app</a></p>
         <div class="cta-foot site-legal-footnote" role="contentinfo" aria-label="Kontaktai ir leidėjas">
             <p class="site-legal-footnote__brand"><strong>Prompt Anatomy</strong></p>
             <p class="site-legal-footnote__addr">1311 Park St, Unit #654<br>Alameda, CA 94501</p>
@@ -3259,12 +3273,12 @@
         };
 
         const libraryPromptsLt = {
-            lib_zeroShot: 'Sukurk vieno sakinio produkto šūkį produktui [ĮRAŠYKITE].',
+            lib_zeroShot: 'Sukurk vieno sakinio produkto šūkį produktui [ĮRAŠYK].',
             lib_fewShot: [
                 'Pavyzdžiai:',
                 '„[PAVYZDYS 1]“',
                 '„[PAVYZDYS 2]“',
-                'Sukurk dar 3 panašaus stiliaus šūkius produktui [ĮRAŠYKITE].'
+                'Sukurk dar 3 panašaus stiliaus šūkius produktui [ĮRAŠYK].'
             ].join('\n'),
             lib_thoughtChain: [
                 'Identifikuok 3 pagrindines problemas, susijusias su [SITUACIJA / PRODUKTU / PROCESU].',
@@ -3286,7 +3300,7 @@
                 'Apibrėžk užklausą DI su apribojimais, kad rezultatas būtų kontroliuojamas.',
                 '',
                 'Įvestis:',
-                'Užduotis (ką DI turi padaryti): [APRAŠYKITE UŽDUOTĮ]',
+                'Užduotis (ką DI turi padaryti): [APRAŠYK UŽDUOTĮ]',
                 'Ilgis: [PVZ. maks. 200 žodžių / 1 puslapis]',
                 'Ko vengti: [PVZ. žargonas, reklama, subjektyvūs įvertinimai]',
                 'Formatas: [PVZ. punktai, lentelė, pastraipos]',
@@ -3301,10 +3315,10 @@
                 '',
                 'Įvestis:',
                 'Tavo rolė (kontekstui): [ROLĖ]',
-                'Dienos darbai: [ĮRAŠYKITE]',
-                'Rezultatai: [ĮRAŠYKITE]',
-                'Kliūtys: [ĮRAŠYKITE]',
-                'Rytojaus planas: [ĮRAŠYKITE]',
+                'Dienos darbai: [ĮRAŠYK]',
+                'Rezultatai: [ĮRAŠYK]',
+                'Kliūtys: [ĮRAŠYK]',
+                'Rytojaus planas: [ĮRAŠYK]',
                 '',
                 'Išvestis:',
                 '5 punktų sąrašas',
@@ -3328,7 +3342,7 @@
                 'Atsakymas į gautą laišką ar žinutę.',
                 '',
                 'Įvestis:',
-                'Gaunamas laiškas ar žinutė: [ĮRAŠYKITE]',
+                'Gaunamas laiškas ar žinutė: [ĮRAŠYK]',
                 '',
                 'Išvestis:',
                 '4–6 sakiniai',
@@ -3370,13 +3384,13 @@
                 '',
                 'Įvestis:',
                 'Kas sukėlė įtampą: [TRUMPAI APRAŠYK]',
-                'Dabartinė žinutės juodraštis: [ĮKLIJUOK TEKSTĄ]',
+                'Dabartinis žinutės juodraštis: [ĮKLIJUOK TEKSTĄ]',
                 'Gavėjas: [ROLĖ / AUDITORIJA]',
                 '',
                 'Išvestis:',
                 'Perdaryta žinutė: faktai → poreikis → pasiūlymas → kitas žingsnis',
                 'Pašalink kaltinančias frazes; palik aiškią ribą, jei reikia',
-                'Jei trūksta faktų – parašyk, ko paklausti vietoj spėliojimo'
+                'Jei trūksta faktų — parašyk, ko paklausti vietoj spėliojimo'
             ].join('\n'),
             lib_taskList: [
                 'Iš chaotiško teksto — užduočių sąrašas su prioritetais.',
@@ -3453,21 +3467,21 @@
             libraryPromptsLt[mk] = libraryPromptsLt[lk];
         });
 
-        libraryPromptsLt.mgr_zeroShot = 'Sukurk vieno sakinio verslo šūkį ar pozicionavimo sakinį iniciatyvai / produktui [ĮRAŠYKITE]. Auditorija: vadovybė ar išoriniai partneriai.';
+        libraryPromptsLt.mgr_zeroShot = 'Sukurk vieno sakinio verslo šūkį ar pozicionavimo sakinį iniciatyvai / produktui [ĮRAŠYK]. Auditorija: vadovybė ar išoriniai partneriai.';
         libraryPromptsLt.mgr_fewShot = [
             'Pavyzdžiai (stilius vadovybei ar klientui):',
             '„[PAVYZDYS 1]“',
             '„[PAVYZDYS 2]“',
-            'Sukurk dar 3 panašaus stiliaus sakinius tema [ĮRAŠYKITE].'
+            'Sukurk dar 3 panašaus stiliaus sakinius tema [ĮRAŠYK].'
         ].join('\n');
         libraryPromptsLt.mgr_daySummary = [
             'Vadovo dienos santrauka iš faktų — užpildyk laukus.',
             '',
             'Įvestis:',
-            'Šiandienos fokusas ir sprendimai: [ĮRAŠYKITE]',
-            'Rizikos / blokai: [ĮRAŠYKITE]',
-            'Komandos būsena (1–2 sakiniai): [ĮRAŠYKITE]',
-            'Rytojaus prioritetai: [ĮRAŠYKITE]',
+            'Šiandienos fokusas ir sprendimai: [ĮRAŠYK]',
+            'Rizikos / blokai: [ĮRAŠYK]',
+            'Komandos būsena (1–2 sakiniai): [ĮRAŠYK]',
+            'Rytojaus prioritetai: [ĮRAŠYK]',
             '',
             'Išvestis:',
             '5 punktų vadovo santrauka (vykdymui; jei reikia — perkėlimui į vadovybę)',
@@ -3491,7 +3505,7 @@
             'Atsakymas vadovaujančiai ar išorinei komunikacijai.',
             '',
             'Įvestis:',
-            'Gaunamas laiškas ar žinutė: [ĮRAŠYKITE]',
+            'Gaunamas laiškas ar žinutė: [ĮRAŠYK]',
             '',
             'Išvestis:',
             '4–7 sakiniai',
@@ -3535,14 +3549,14 @@
             '',
             'Įvestis:',
             'Kas sukėlė įtampą: [TRUMPAI APRAŠYK]',
-            'Dabartinė žinutės juodraštis: [ĮKLIJUOK TEKSTĄ]',
+            'Dabartinis žinutės juodraštis: [ĮKLIJUOK TEKSTĄ]',
             'Gavėjas: [ROLĖ / AUDITORIJA]',
             'Rizika: [KAS GALI ATSISUKTI Į ORGANIZACIJĄ / KLIENTĄ — jei yra]',
             '',
             'Išvestis:',
             'Perdaryta žinutė: faktai → poreikis → pasiūlymas → aiškus kitas žingsnis',
             'Pašalink kaltinančias frazes; palik aiškią ribą, jei reikia',
-            'Jei trūksta faktų – parašyk, ko paklausti vietoj spėliojimo'
+            'Jei trūksta faktų — parašyk, ko paklausti vietoj spėliojimo'
         ].join('\n');
         libraryPromptsLt.mgr_taskList = [
             'Iš teksto — užduotys su savininku ir prioritetais (vadovui).',
@@ -3691,8 +3705,8 @@
                 syncLibraryDom();
                 announce(
                     libraryModeManager
-                        ? uiText('Biblioteka: vadovas', 'Library: manager')
-                        : uiText('Biblioteka: darbuotojas', 'Library: employee')
+                        ? uiText('Biblioteka: vadovas', 'Library: leader')
+                        : uiText('Biblioteka: darbuotojas', 'Library: individual contributor')
                 );
                 if (shouldFocus && libraryTabs[index] && typeof libraryTabs[index].focus === 'function') {
                     libraryTabs[index].focus();

@@ -337,6 +337,8 @@ There is **no global site footer**. Use contextual footers only:
 | Class | Slide / context |
 |-------|-----------------|
 | `.hero-foot-links` | Hero secondary links |
+| `.cta-ecosystem-link` | Final CTA — tertiary map link to `.site` |
+| `.cta-entity-footer` | Final CTA — hub entity line (QW1b) above legal footnote; body/small + `.link-tier-tertiary`; not a card/promo; copy/UTM in [AGENTS.md](../AGENTS.md) |
 | `.cta-foot` / `.site-legal-footnote` | Final CTA slide — publisher name, postal address, `mailto:` (canonical: [scripts/legal-contact.cjs](../scripts/legal-contact.cjs)) |
 | `.schema-foot` | Schema slide |
 
