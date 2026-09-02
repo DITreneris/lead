@@ -37,6 +37,7 @@ jobs:
           test -f scripts/verify-library-keys.js
           test -f scripts/verify-en-locale.js
           test -f scripts/verify-robots-llms.js
+          test -f scripts/verify-utm-canon.js
       - name: Build locale pages
         run: |
           set -euo pipefail

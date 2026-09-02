@@ -451,7 +451,7 @@ ${urlEntries}
 }
 
 function main() {
-  const raw = fs.readFileSync(SRC_HTML, 'utf8');
+  const raw = fs.readFileSync(SRC_HTML, 'utf8').replace(/\r\n/g, '\n');
 
   fs.mkdirSync(path.join(SITE_DIR, 'lt'), { recursive: true });
 

@@ -41,6 +41,16 @@ Tikslas: prieš kiekvieną `main` push — trumpas, kartojamas ritualas.
 
 ---
 
+## Fazė 4 — Matavimas (spoke → hub)
+
+Tikslas: matyti klikus Vercel Events ir vienodą inbound UTM ant `.app`.
+
+- [x] `track()` → `window.va('event')` + `dataLayer` / console; `[data-track]` delegavimas ant `document` (quiz `quiz_next_paid` / `quiz_back_schema`).
+- [x] Outbound UTM: `utm_source=cloud` (banner / slide / entity_footer / hero `.pro` / `.site`); `verify:utm-canon`.
+- [x] Hero tools: `data-track="hero_tools_click"` (nuoroda palikta).
+
+---
+
 ## Backlog (be datos — kai bus prioritetas)
 
 - [ ] **„Turinys“ (TOC)**: grupavimas arba aiškesni antraštės lygiai „ką daryti pirmiausia“.

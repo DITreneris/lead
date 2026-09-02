@@ -61,6 +61,7 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] **Terminologija EN** sutampa su [AGENTS.md](../../../AGENTS.md) skyriumi „Golden standard (EN)“ ir jau naudojamais žodžiais UI (pvz. „framework“, „prompt“, „library“ — ne maišyti atsitiktinai su kitais sinonimais vienoje šakoje).
 - [ ] Nauja ar keista **išorinė nuoroda į promptanatomy.pro** ar **promptanatomy.site**: LT ir EN poros [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs), `aria-label`, UTM; pamokos kanonas — `promptanatomy.cloud` (žr. AGENTS.md **„Ekosistema (domenai)“**). Kitų ekosistemos subdomainų (`.info` … `.lol`) **nekelti** į pamokos chrome be atskiros užduoties.
 - [ ] **Entity footer (QW1b):** `#cta` turi `.cta-entity-footer` virš legal footnote; copy sutampa su AGENTS.md kanonu (LT + EN pora); href `utm_source=cloud&utm_medium=entity_footer&utm_campaign=ecosystem`; `data-track=entity_footer_click`; neužgožia Tier‑1 CTA; be founder / hard-sell.
+- [ ] **Outbound UTM = `cloud`:** visos nuorodos į `.app` / `.pro` / `.site` naudoja `utm_source=cloud` (ne `lead` / `promptanatomy_app` / `promptanatomy_cloud`); LT + EN poros; `npm run verify` apima `verify:utm-canon`.
 
 ### PDF ir release
 
