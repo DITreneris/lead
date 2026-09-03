@@ -10,6 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const { getEnHtmlReplacementPairs } = require('./en-html-replacements.cjs');
+const { extractHeroFaq } = require('./hero-faq-utils');
 const { ORG, postalAddressSchema } = require('./legal-contact.cjs');
 const {
   ROOT,
@@ -20,7 +21,8 @@ const {
   originUrl,
   publicPath,
   sitemapLastmod,
-  versionedOgImageUrl
+  versionedOgImageUrl,
+  organizationLogoUrl
 } = require('./site-build-config');
 
 const SRC_HTML = path.join(ROOT, 'index.html');
@@ -200,7 +202,7 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
         name: ORG.name,
         url: originUrl('/'),
         email: ORG.email,
-        logo: versionedOgImageUrl(),
+        logo: organizationLogoUrl(),
         address: postalAddressSchema(),
         sameAs: [
           'https://www.promptanatomy.app/',
@@ -340,20 +342,7 @@ function buildLt(html, canonicalHref) {
     pageLanguage: 'lt-LT',
     pageName: 'Promptų anatomija — darbui ir vadovavimui',
     pageDescription: META_DESCRIPTION_LT,
-    faq: [
-      {
-        q: 'Kam tai?',
-        a: 'Komandos darbui ir vadovui: mažiau taisymo, aiškesni rezultatai.'
-      },
-      {
-        q: 'Kada naudoti patikrą?',
-        a: 'Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.'
-      },
-      {
-        q: 'Ką kopijuoti?',
-        a: 'Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.'
-      }
-    ]
+    faq: extractHeroFaq(html, 'lt')
   });
   h = injectLlmsAlternateLink(h);
   h = applySocialImageVersion(h);
@@ -371,24 +360,7 @@ function buildEn(html) {
     pageLanguage: 'en-US',
     pageName: 'Prompt Anatomy — for work and leadership',
     pageDescription: META_DESCRIPTION_EN,
-    faq: [
-      {
-        q: 'What should I include in a prompt for leadership updates?',
-        a: 'Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.'
-      },
-      {
-        q: 'How do I reduce hallucinated facts in client emails?',
-        a: 'Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.'
-      },
-      {
-        q: 'What’s a quick send check?',
-        a: 'A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.'
-      },
-      {
-        q: 'How do I get consistent outputs across my team?',
-        a: 'Use one shared template (role + context + reasoning + output), then iterate with the same checklist.'
-      }
-    ]
+    faq: extractHeroFaq(h, 'en')
   });
   h = injectLlmsAlternateLink(h);
   h = applySocialImageVersion(h);
@@ -419,6 +391,17 @@ function robotsBlock(userAgent, extraLines) {
   return lines.join('\n');
 }
 
+function sitemapHreflangLinks() {
+  const enUrl = originUrl('/');
+  const ltUrl = originUrl('/lt/');
+  return [
+    `    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="en-US" href="${enUrl}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="lt" href="${ltUrl}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>`
+  ].join('\n');
+}
+
 function writeRobotsAndSitemap() {
   const sitemapLoc = originUrl('/sitemap.xml');
   const blocks = [
@@ -429,21 +412,23 @@ function writeRobotsAndSitemap() {
   const robots = blocks.join('\n');
 
   const lastmod = sitemapLastmod();
-  const urls = [
-    originUrl('/'),
-    originUrl('/lt/'),
-    originUrl('/assets/www.promptanatomy.app-en.pdf'),
-    originUrl('/assets/www.promptanatomy.app.pdf'),
-    originUrl('/llms.txt'),
-    originUrl('/llms-full.txt'),
-    originUrl('/pricing.md')
+  const enUrl = originUrl('/');
+  const ltUrl = originUrl('/lt/');
+  const hreflang = sitemapHreflangLinks();
+  const lessonEntries = [
+    `  <url>\n    <loc>${enUrl}</loc>\n${hreflang}\n    <lastmod>${lastmod}</lastmod>\n  </url>`,
+    `  <url>\n    <loc>${ltUrl}</loc>\n${hreflang}\n    <lastmod>${lastmod}</lastmod>\n  </url>`
   ];
-  const urlEntries = urls
-    .map((loc) => `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`)
-    .join('\n');
+  const pdfEntries = [
+    originUrl('/assets/www.promptanatomy.app-en.pdf'),
+    originUrl('/assets/www.promptanatomy.app.pdf')
+  ].map((loc) => `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`);
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urlEntries}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${lessonEntries.join('\n')}
+${pdfEntries.join('\n')}
 </urlset>
 `;
   fs.writeFileSync(path.join(SITE_DIR, 'robots.txt'), robots, 'utf8');

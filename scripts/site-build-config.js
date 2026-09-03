@@ -26,13 +26,32 @@ function publicPath(pathname) {
 function sitemapLastmod() {
   const env = (process.env.SITEMAP_LASTMOD || '').trim();
   if (env) return env;
-  if (/^\d{4}-\d{2}-\d{2}$/.test(OG_IMAGE_VERSION)) return OG_IMAGE_VERSION;
+
+  const vercelGitDate = (process.env.VERCEL_GIT_COMMIT_DATE || '').trim();
+  if (vercelGitDate) {
+    const d = new Date(vercelGitDate);
+    if (!Number.isNaN(d.getTime())) return d.toISOString().slice(0, 10);
+  }
+
+  const sourceEpoch = process.env.SOURCE_DATE_EPOCH;
+  if (sourceEpoch) {
+    const n = Number(sourceEpoch);
+    if (Number.isFinite(n) && n > 0) {
+      return new Date(n * 1000).toISOString().slice(0, 10);
+    }
+  }
+
   return new Date().toISOString().slice(0, 10);
 }
 
 function versionedOgImageUrl() {
   const base = originUrl('/assets/og-promptanatomy.png');
   return OG_IMAGE_VERSION ? `${base}?v=${encodeURIComponent(OG_IMAGE_VERSION)}` : base;
+}
+
+/** Square brand mark for schema.org Organization (not social OG 1200×630). */
+function organizationLogoUrl() {
+  return originUrl('/favicon.svg');
 }
 
 module.exports = {
@@ -46,5 +65,6 @@ module.exports = {
   originUrl,
   publicPath,
   sitemapLastmod,
-  versionedOgImageUrl
+  versionedOgImageUrl,
+  organizationLogoUrl
 };
