@@ -63,6 +63,17 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] **Entity footer (QW1b):** `#cta` turi `.cta-entity-footer` virš legal footnote; copy sutampa su AGENTS.md kanonu (LT + EN pora); href `utm_source=cloud&utm_medium=entity_footer&utm_campaign=ecosystem`; `data-track=entity_footer_click`; neužgožia Tier‑1 CTA; be founder / hard-sell.
 - [ ] **Outbound UTM = `cloud`:** visos nuorodos į `.app` / `.pro` / `.site` naudoja `utm_source=cloud` (ne `lead` / `promptanatomy_app` / `promptanatomy_cloud`); LT + EN poros; `npm run verify` apima `verify:utm-canon`.
 
+### SEO / GEO (Enter build)
+
+- [ ] Hero FAQ: kiekviena eilutė turi `class="hero-faq__item"`; JSON-LD generuojamas build metu per [scripts/hero-faq-utils.js](../../../scripts/hero-faq-utils.js) — ne hardcoded masyvai `build-locale-pages.js`.
+- [ ] FAQ extract **be** fallback; `verify:robots-llms` (ir `npm run build`) failina, jei `extractHeroFaq` kristų į `FALLBACK_FAQ`.
+- [ ] `dateModified` / sitemap `lastmod` = build data ([scripts/site-build-config.js](../../../scripts/site-build-config.js) `sitemapLastmod`), **ne** `OG_IMAGE_VERSION`; `datePublished` lieka `LESSON_DATE_PUBLISHED`.
+- [ ] `sitemap.xml`: tik `/`, `/lt/`, abu PDF; **be** `llms.txt` / `pricing.md`; lesson eilutėse `xmlns:xhtml` + hreflang.
+- [ ] `tools.html` / `tools-lt.html`: `noindex, follow` + `canonical` į pamoką; ne sitemap.
+- [ ] `tools.html` / `tools-lt.html` / `404.html` href **ne** į `index.html` (naudoti `./` / `./lt/`).
+- [ ] Organization JSON-LD `logo` → `favicon.svg` (OG/Twitter lieka 1200×630 PNG).
+- [ ] Po SEO pakeitimų: `npm run build` + `verify:robots-llms` (FAQ paritetas, 4 URL sitemap, tools noindex).
+
 ### PDF ir release
 
 - [ ] Jei lokaliai (gitignored) keitei `docs/pamoka-1-pdf.md` / `docs/pamoka-1-pdf-en.md`: perbuildinta ir commitinta [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf) / [assets/www.promptanatomy.app-en.pdf](../../../assets/www.promptanatomy.app-en.pdf). EN build PDF nuorodos — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs) (`…-en.pdf`).

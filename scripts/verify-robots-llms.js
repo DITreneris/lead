@@ -28,14 +28,32 @@ function readOrFail(rel) {
   return fs.readFileSync(p, 'utf8');
 }
 
+function countHeroFaqItems(html) {
+  return (html.match(/class="hero-faq__item"/g) || []).length;
+}
+
 function verifyHeroFaqParity(htmlPath, locale) {
   const html = readOrFail(htmlPath);
-  const visible = extractHeroFaq(html, locale);
+  let visible;
+  try {
+    visible = extractHeroFaq(html, locale);
+  } catch (err) {
+    console.error('[verify-robots-llms]', err.message || err);
+    process.exit(1);
+  }
+  if (html.includes('data-geo-faq') && countHeroFaqItems(html) === 0) {
+    console.error('[verify-robots-llms] FAQ panel missing hero-faq__item on', htmlPath);
+    process.exit(1);
+  }
   const schema = parseJsonLdFaq(html);
   if (!faqListsMatch(visible, schema)) {
     console.error('[verify-robots-llms] FAQ JSON-LD drift on', htmlPath);
     process.exit(1);
   }
+}
+
+function hasForbiddenIndexHref(html) {
+  return /href=["'](?:\.\/)?(?:lt\/)?index\.html["']/i.test(html);
 }
 
 function verifySitemapLastmod(sitemap) {
@@ -180,13 +198,24 @@ function main() {
 
   const toolsEn = readOrFail('tools.html');
   const toolsLt = readOrFail('tools-lt.html');
+  const fourOh = readOrFail('404.html');
   if (!toolsEn.includes('noindex') || !toolsLt.includes('noindex')) {
     console.error('[verify-robots-llms] tools pages must include noindex');
     process.exit(1);
   }
-  if (!toolsEn.includes('https://promptanatomy.cloud/') || !toolsLt.includes('https://promptanatomy.cloud/lt/')) {
+  if (!toolsEn.includes(`${ORIGIN}/`) || !toolsLt.includes(`${ORIGIN}/lt/`)) {
     console.error('[verify-robots-llms] tools pages missing canonical to lesson');
     process.exit(1);
+  }
+  for (const [rel, html] of [
+    ['tools.html', toolsEn],
+    ['tools-lt.html', toolsLt],
+    ['404.html', fourOh]
+  ]) {
+    if (hasForbiddenIndexHref(html)) {
+      console.error('[verify-robots-llms] satellite must not href index.html:', rel);
+      process.exit(1);
+    }
   }
 
   const indexHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');

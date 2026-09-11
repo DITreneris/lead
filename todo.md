@@ -51,6 +51,22 @@ Tikslas: matyti klikus Vercel Events ir vienodą inbound UTM ant `.app`.
 
 ---
 
+## Fazė 5 — SEO / GEO (Enter spoke) *(uždaryta 2026-09-03, commit `e8ba0ef`)*
+
+Tikslas: teisingas freshness signalas, FAQ schema be drift, plonas sitemap, tools ne indeksuojami.
+
+- [x] `lastmod` / `dateModified` atskirti nuo `OG_IMAGE_VERSION` — [`scripts/site-build-config.js`](scripts/site-build-config.js).
+- [x] FAQ JSON-LD iš matomo hero — [`scripts/hero-faq-utils.js`](scripts/hero-faq-utils.js) + `hero-faq__item` [`index.html`](index.html).
+- [x] Sitemap: 4 URL (`/` `/lt/` + 2 PDF) + `xhtml:hreflang`; `llms*` / `pricing.md` ne sitemap'e.
+- [x] `tools.html` / `tools-lt.html`: `noindex, follow` + canonical į pamoką.
+- [x] Organization logo JSON-LD → `favicon.svg`.
+- [x] `verify:robots-llms` — FAQ paritetas, sitemap forma, tools.
+- [x] **Rankinis:** GSC Domain Verify → submit `sitemap.xml` (TXT jau DNS). *(uždaryta 2026-09-07: `/` ir `/lt/` indeksuoti)*
+- [x] Vercel 301 `/index.html` → `/` ir `/lt/index.html` → `/lt/`.
+- [x] Satellite hrefs (`tools.html` / `tools-lt.html` / `404.html`) be `index.html`.
+
+---
+
 ## Backlog (be datos — kai bus prioritetas)
 
 - [ ] **„Turinys“ (TOC)**: grupavimas arba aiškesni antraštės lygiai „ką daryti pirmiausia“.

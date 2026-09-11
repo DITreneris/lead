@@ -4,7 +4,9 @@
   "outputDirectory": "site",
   "redirects": [
     { "source": "/en", "destination": "/", "permanent": true },
-    { "source": "/en/", "destination": "/", "permanent": true }
+    { "source": "/en/", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/lt/index.html", "destination": "/lt/", "permanent": true }
   ],
   "headers": [
     {

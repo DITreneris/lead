@@ -6,6 +6,14 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [0.4.0] - 2026-09-11
+
+### Added
+
 - **Matavimas (Vercel custom events + UTM kanonas):** `track()` siunčia `window.va('event')` (iki 2 `data` raktų: `locale` + `dest` / `ok`); `[data-track]` per `document` delegavimą (įskaitant dinamines quiz nuorodas); outbound `data-track-dest`; visos nuorodos į `.app` / `.pro` / `.site` — `utm_source=cloud`; `hero_tools_click`; [scripts/verify-utm-canon.js](scripts/verify-utm-canon.js); EN build normalizuoja CRLF prieš poras — [index.html](index.html), [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs), [scripts/build-locale-pages.js](scripts/build-locale-pages.js), [package.json](package.json), [AGENTS.md](AGENTS.md).
 
 - **GEO / SEO hardening (build-only, be front page):** `robots.txt` — explicit `OAI-SearchBot` + `Claude-SearchBot`; `sitemap.xml` — `/llms.txt`, `/llms-full.txt`, `/pricing.md`; RFC 9116 `/.well-known/security.txt` (+ root twin, Canonical); JSON-LD `datePublished` / `dateModified` + ecosystem `sameAs` (`.pro`, `.site`); HSTS — [scripts/build-locale-pages.js](scripts/build-locale-pages.js), [scripts/generate-llms-artifacts.js](scripts/generate-llms-artifacts.js), [scripts/site-build-config.js](scripts/site-build-config.js), [scripts/verify-robots-llms.js](scripts/verify-robots-llms.js), [vercel.json](vercel.json), [.github/workflows/verify.yml](.github/workflows/verify.yml).
@@ -23,6 +31,8 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 - **SEO / GEO / crawlers (build-only, be `index.html` hero pakeitimų):** `robots.txt` — explicit Allow visiems pagrindiniams AI/search crawleriams + `Content-Signal`; `sitemap.xml` — PDF URL + `lastmod`; JSON-LD — `@id`, `Organization.logo` / `sameAs`, `LearningResource`, `WebPage.description`; `<link rel="alternate" type="text/markdown" href="…/llms.txt">`. Nauji artefaktai: `llms.txt`, `llms-full.txt` (EN biblioteka), `pricing.md`, `security.txt`, `.well-known/agent.json`, `.well-known/agent-card.json` — [scripts/site-build-config.js](scripts/site-build-config.js), [scripts/generate-llms-artifacts.js](scripts/generate-llms-artifacts.js), [scripts/verify-robots-llms.js](scripts/verify-robots-llms.js); [vercel.json](vercel.json) security headers; CI — [.github/workflows/verify.yml](.github/workflows/verify.yml).
 
 ### Changed
+
+- **SEO hygiene (Enter, `/index.html` + FAQ verify):** Vercel 301 `/index.html` → `/` ir `/lt/index.html` → `/lt/`; `tools.html` / `tools-lt.html` grįžta `./` / `./lt/`; `404.html` be `./index.html` sub-nuorodos, `.app` UTM `utm_source=cloud&utm_medium=404`; `extractHeroFaq` be silent `FALLBACK_FAQ` (build/verify fail); `parseJsonLdFaq` skaito visus JSON-LD; `verify:robots-llms` — `ORIGIN` canonical, satellite href be `index.html`, FAQ `hero-faq__item` privalomas — [vercel.json](vercel.json), [tools.html](tools.html), [tools-lt.html](tools-lt.html), [404.html](404.html), [scripts/hero-faq-utils.js](scripts/hero-faq-utils.js), [scripts/verify-robots-llms.js](scripts/verify-robots-llms.js), [AGENTS.md](AGENTS.md).
 
 - **llms.txt hygiene:** agent instructions as prose after blockquote; MCP note under `## Optional` — [scripts/generate-llms-artifacts.js](scripts/generate-llms-artifacts.js).
 

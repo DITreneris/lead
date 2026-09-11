@@ -52,17 +52,26 @@ function stripTags(html) {
   );
 }
 
+function fallbackFaq(locale) {
+  return FALLBACK_FAQ[locale] || FALLBACK_FAQ.lt;
+}
+
 /**
  * Parse hero FAQ from built or source HTML (matches data-geo-faq panel).
  * @param {string} html
  * @param {'lt'|'en'} locale
+ * @param {{ allowFallback?: boolean }} [options]
  * @returns {{ q: string, a: string }[]}
  */
-function extractHeroFaq(html, locale = 'lt') {
+function extractHeroFaq(html, locale = 'lt', options = {}) {
+  const allowFallback = options.allowFallback === true;
   const detailsMatch = html.match(/<details[^>]*data-geo-faq="1"[^>]*>([\s\S]*?)<\/details>/i);
   if (!detailsMatch) {
-    console.warn(`[hero-faq] details not found (${locale}); using fallback`);
-    return FALLBACK_FAQ[locale] || FALLBACK_FAQ.lt;
+    if (allowFallback) {
+      console.warn(`[hero-faq] details not found (${locale}); using fallback`);
+      return fallbackFaq(locale);
+    }
+    throw new Error(`[hero-faq] details not found (${locale}); refusing fallback`);
   }
 
   const scope = detailsMatch[1];
@@ -79,30 +88,45 @@ function extractHeroFaq(html, locale = 'lt') {
   }
 
   if (!faq.length) {
-    console.warn(`[hero-faq] no items parsed (${locale}); using fallback`);
-    return FALLBACK_FAQ[locale] || FALLBACK_FAQ.lt;
+    if (allowFallback) {
+      console.warn(`[hero-faq] no items parsed (${locale}); using fallback`);
+      return fallbackFaq(locale);
+    }
+    throw new Error(`[hero-faq] no items parsed (${locale}); refusing fallback`);
   }
 
   return faq;
 }
 
-function parseJsonLdFaq(html) {
-  const scriptMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-  if (!scriptMatch) return [];
-  let payload;
-  try {
-    payload = JSON.parse(scriptMatch[1]);
-  } catch {
-    return [];
-  }
-  const graph = payload['@graph'];
-  if (!Array.isArray(graph)) return [];
-  const faqPage = graph.find((node) => node['@type'] === 'FAQPage');
-  if (!faqPage || !Array.isArray(faqPage.mainEntity)) return [];
+function faqEntitiesFromPayload(payload) {
+  if (!payload || typeof payload !== 'object') return null;
+  const nodes = Array.isArray(payload['@graph'])
+    ? payload['@graph']
+    : payload['@type'] === 'FAQPage'
+      ? [payload]
+      : [];
+  const faqPage = nodes.find((node) => node && node['@type'] === 'FAQPage');
+  if (!faqPage || !Array.isArray(faqPage.mainEntity)) return null;
   return faqPage.mainEntity.map((entity) => ({
     q: normalizeWhitespace(entity.name),
     a: normalizeWhitespace(entity.acceptedAnswer && entity.acceptedAnswer.text)
   }));
+}
+
+function parseJsonLdFaq(html) {
+  const scriptRe = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi;
+  let scriptMatch;
+  while ((scriptMatch = scriptRe.exec(html)) !== null) {
+    let payload;
+    try {
+      payload = JSON.parse(scriptMatch[1]);
+    } catch {
+      continue;
+    }
+    const faq = faqEntitiesFromPayload(payload);
+    if (faq && faq.length) return faq;
+  }
+  return [];
 }
 
 function faqListsMatch(visible, schema) {
