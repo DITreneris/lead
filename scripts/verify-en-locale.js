@@ -20,6 +20,7 @@ function stripNoise(html) {
 const DENY_SUBSTRINGS = [
   'Pereiti prie turinio',
   'Kalbos pasirinkimas',
+  'Bibliotekos valdikliai',
   'aria-label="Skaidrė',
   'Perjungti į lietuvių kalbą',
   '<title>Promptų anatomija',

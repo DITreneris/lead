@@ -10,15 +10,25 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SITE = path.join(ROOT, 'site');
 
+const PUBLIC_FILES = [
+  '404.html',
+  'tools.html',
+  'tools-lt.html',
+  'favicon.svg',
+  'google7305663b2567346e.html',
+  path.join('assets', 'og-promptanatomy.png'),
+  path.join('assets', 'prompt-library-en.js'),
+  path.join('assets', 'www.promptanatomy.app.pdf'),
+  path.join('assets', 'www.promptanatomy.app-en.pdf'),
+  path.join('assets', 'memes', 'meme-after-roadmap.png'),
+  path.join('assets', 'memes', 'meme-essence.png')
+];
+
 function copyIntoSite(relFromRoot) {
   const src = path.join(ROOT, relFromRoot);
   const dest = path.join(SITE, relFromRoot);
-  const stat = fs.statSync(src);
-  if (stat.isDirectory()) {
-    fs.cpSync(src, dest, { recursive: true });
-  } else {
-    fs.copyFileSync(src, dest);
-  }
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.copyFileSync(src, dest);
 }
 
 function main() {
@@ -26,14 +36,9 @@ function main() {
     console.error('[prepare-site-artifact] site/ missing; run build-locale-pages first.');
     process.exit(1);
   }
-  copyIntoSite('404.html');
-  copyIntoSite('tools.html');
-  copyIntoSite('tools-lt.html');
-  copyIntoSite('favicon.svg');
-  copyIntoSite('assets');
-  copyIntoSite('google7305663b2567346e.html');
+  for (const rel of PUBLIC_FILES) copyIntoSite(rel);
   console.log(
-    '[prepare-site-artifact] Copied 404.html, tools.html, tools-lt.html, favicon.svg, assets/, google7305663b2567346e.html → site/'
+    `[prepare-site-artifact] Copied ${PUBLIC_FILES.length} public files → site/`
   );
 }
 

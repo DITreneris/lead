@@ -248,7 +248,7 @@ flowchart TB
 | `--accent-yellow-bg-subtle` | `rgba(251, 211, 4, 0.1)` | Subtle yellow fills |
 | `--accent-yellow-bg-mid` | `rgba(251, 211, 4, 0.12)` | Mid yellow fills |
 | `--accent-yellow-bg-hover` | `rgba(251, 211, 4, 0.07)` | Library / how-to hover |
-| `--accent-yellow-bg-faint` | `rgba(251, 211, 4, 0.06)` | Promo / types-tip gradient stop |
+| `--accent-yellow-bg-faint` | `rgba(251, 211, 4, 0.06)` | Promo gradient stop |
 | `--accent-yellow-bg-fill` | `rgba(251, 211, 4, 0.08)` | Library chrome, inline-link hover |
 | `--accent-yellow-bg-emphasis` | `rgba(251, 211, 4, 0.14)` | `.library-toggle-all:hover` |
 | `--accent-red-muted-border` | `rgba(255, 90, 95, 0.35)` | Red CTA borders |
@@ -300,7 +300,7 @@ These may remain as literals; `verify:design-tokens` does not fail on them:
 |------|-----------|------|----------------|
 | Display H1 | `h1`, `.hero-title-accent` | Display | `clamp(56px, 7.5vw, 104px)`, `letter-spacing: -0.02em` |
 | Section H2 | `h2`, slide titles | Display | `clamp(36px, 4.2vw, 56px)` |
-| Essence / closing headline | `.essence-primary-headline`, `h2.cta-title`, `h2.essence-tagline` | Display | Large clamps; mobile overrides ≤1024px |
+| Essence / closing headline | `h2.cta-title`, `h2.essence-tagline` | Display | Large clamps; mobile overrides ≤1024px |
 | Lead | `.slide-lead` (+ `.hero-intro`, `.types-lead`, `.slide-sublead`, `.schema-lead`) | Main | `var(--font-size-lead)`, `line-height: var(--lh-body)`, `max-width: var(--measure-prose)` where set |
 | Label | `.label`, `.types-card-k`, `.cta-secondary-label`, `.disclosure-chip__summary` | Main / Display | Uppercase; `letter-spacing: var(--tracking-label)` on `.label` / disclosure |
 | UI / buttons | `.copy-prompt-btn`, `.quiz-check-btn`, `.types-copy-btn` | Main | `--font-size-label` or `clamp` where set |
@@ -438,7 +438,6 @@ For each new UI, **reuse a row below** before inventing a class.
 | `.types-card-actions` | Copy row before `types-card-extra` on guided |
 | `.types-card-example--structured` | Structured example block (guided middle card) |
 | `.practice-structured-line` | Single line in structured example |
-| `.types-tip` | Icon + tip banner |
 | `.primer-next-cta` | Soft pill link to schema |
 | `html.primer-active` | JS toggled on `documentElement` when primer slide active; subtler `.slide-outline` on desktop |
 
@@ -457,7 +456,7 @@ For each new UI, **reuse a row below** before inventing a class.
 | Class | Purpose |
 |-------|---------|
 | `.schema-section`, `.schema-grid`, `.schema-step`, `.schema-step--*` | Framework diagram |
-| `.schema-arrow`, `.schema-bracket`, `.schema-loop-svg` | Connectors (hidden on mobile) |
+| `.schema-arrow`, `.schema-loop-svg` | Connectors (`.schema-loop-svg` hidden on mobile) |
 | `.roadmap-slide`, `.roadmap-row`, `.roadmap-dot`, `.roadmap-time` | Journey timeline |
 
 ### 7.8 Library (`#library`)
@@ -468,7 +467,6 @@ For each new UI, **reuse a row below** before inventing a class.
 | `.library-toolbar` | Tabs + actions row |
 | `.library-tabs` `[role="tab"]` | Employee / Manager |
 | `.library-toggle-all` | Expand/collapse categories |
-| `.library-toc` | Category jump links |
 | `.library-cat-details` / `.library-cat-summary` | Collapsible category |
 | `.library-item`, `.library-prompt-block` | Template card; empty `pre` filled by JS |
 | `.library-howto` | How-to `details` |
@@ -481,7 +479,7 @@ For each new UI, **reuse a row below** before inventing a class.
 |-------|---------|
 | `.meme-interlude`, `.meme-figure` | 16:9 PNG break between slides |
 | `.quiz-*` | Question, options, `.quiz-check-btn`, `.quiz-reset-btn`, `.quiz-feedback` |
-| `.essence-primary-headline`, `.essence-lead` | Essence slide |
+| `h2.essence-tagline`, `.essence-lead` | Essence slide |
 | `.promo-handoff__*` | Banner before library |
 | `.cta-inner`, `.cta-btn`, `.cta-pdf-link`, `.cta-community`, `.cta-telegram-link` | Final slide |
 | `.inline-link`, `--accent`, `--soft` | In-text navigation |

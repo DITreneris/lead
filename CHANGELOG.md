@@ -8,7 +8,13 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Changed
 
+- **Deterministinis `.cloud` build artefaktas (`site/`):** prieš generavimą išvalomas senas turinys; į deploy kopijuojamas tik aiškus viešų failų sąrašas, todėl nebelieka `site/en/`, lokalių `pandoc-media` ar nenaudojamų memų; tokenų injekcija tapo idempotentinė ir vienoda Windows / Linux aplinkose.
+
+- **Senų UI liekanų valymas:** pašalinti nepasiekiami schema / CTA / esmės / bibliotekos CSS ir `.library-toc` JS; DS dokumentacija sinchronizuota.
+
 ### Fixed
+
+- **Schema ir LT↔EN:** vieno stulpelio schema centruojama desktop ekrane; EN bibliotekos valdiklių `aria-label` išverstas; EN biblioteka nebegrįžta tyliai į LT tekstus, jei neįsikrauna EN failas; UTM patikra tikrina kiekvieną `.app` / `.pro` / `.site` nuorodą.
 
 ## [0.4.0] - 2026-09-11
 

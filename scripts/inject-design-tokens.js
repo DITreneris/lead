@@ -18,7 +18,8 @@ const TARGETS = [
   { file: path.join(ROOT, 'tools-lt.html'), tokensFile: TOKENS_SAT, indent: '        ' },
 ];
 
-const MARKER_RE = /\/\* DS_TOKENS_START[\s\S]*?\/\* DS_TOKENS_END \*\//;
+const MARKER_RE =
+  /^[ \t]*\/\* DS_TOKENS_START[^\r\n]*\*\/[\s\S]*?^[ \t]*\/\* DS_TOKENS_END \*\//m;
 
 function indentRoot(css, indent) {
   const lines = css.trim().split('\n');
@@ -33,8 +34,9 @@ function injectIntoFile(filePath, tokensPath, indent) {
     return false;
   }
   const rootCss = fs.readFileSync(tokensPath, 'utf8').trim();
+  const tokenLabel = path.relative(ROOT, tokensPath).split(path.sep).join('/');
   const block =
-    `${indent}/* DS_TOKENS_START — from ${path.relative(ROOT, tokensPath)}; do not edit here */\n` +
+    `${indent}/* DS_TOKENS_START — from ${tokenLabel}; do not edit here */\n` +
     `${indentRoot(rootCss, indent)}\n` +
     `${indent}/* DS_TOKENS_END */`;
   html = html.replace(MARKER_RE, block);

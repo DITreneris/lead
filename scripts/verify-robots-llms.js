@@ -56,6 +56,16 @@ function hasForbiddenIndexHref(html) {
   return /href=["'](?:\.\/)?(?:lt\/)?index\.html["']/i.test(html);
 }
 
+function referencedMemeFiles(...htmlPages) {
+  const files = new Set();
+  const re = /src=["'][^"']*assets\/memes\/([^"'?#]+)["']/gi;
+  for (const html of htmlPages) {
+    let match;
+    while ((match = re.exec(html)) !== null) files.add(match[1]);
+  }
+  return files;
+}
+
 function verifySitemapLastmod(sitemap) {
   const matches = sitemap.match(/<lastmod>([^<]+)<\/lastmod>/g);
   if (!matches || !matches.length) {
@@ -135,6 +145,33 @@ function main() {
 
   const enHtml = readOrFail('index.html');
   const ltHtml = readOrFail(path.join('lt', 'index.html'));
+  if (fs.existsSync(path.join(SITE_DIR, 'en'))) {
+    console.error('[verify-robots-llms] Legacy site/en/ must not exist in the .cloud artifact');
+    process.exit(1);
+  }
+  for (const rel of [path.join('assets', 'pandoc-media'), path.join('assets', 'favicon-64.png')]) {
+    if (fs.existsSync(path.join(SITE_DIR, rel))) {
+      console.error('[verify-robots-llms] Local-only asset leaked into site/:', rel);
+      process.exit(1);
+    }
+  }
+  const memeRefs = referencedMemeFiles(enHtml, ltHtml);
+  const memeDir = path.join(SITE_DIR, 'assets', 'memes');
+  const builtMemes = fs.existsSync(memeDir)
+    ? fs.readdirSync(memeDir).filter((name) => name.toLowerCase().endsWith('.png'))
+    : [];
+  for (const name of memeRefs) {
+    if (!builtMemes.includes(name)) {
+      console.error('[verify-robots-llms] Referenced meme missing from site/assets/memes:', name);
+      process.exit(1);
+    }
+  }
+  for (const name of builtMemes) {
+    if (!memeRefs.has(name)) {
+      console.error('[verify-robots-llms] Unreferenced meme leaked into site/assets/memes:', name);
+      process.exit(1);
+    }
+  }
   if (!enHtml.includes('"@type":"Organization"') || !enHtml.includes('"logo"')) {
     console.error('[verify-robots-llms] site/index.html JSON-LD missing Organization logo');
     process.exit(1);

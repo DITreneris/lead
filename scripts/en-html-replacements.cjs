@@ -184,11 +184,6 @@ function getEnHtmlReplacementPairs() {
     ],
     ['aria-label="Toliau: pereiti į 2 minučių praktiką" data-track="schema_next_click">Praktika ↓</a>', 'aria-label="Next: go to the 2-minute practice" data-track="schema_next_click">Practice ↓</a>'],
 
-    [
-      'alt="Memas po pagrindų kortelių (prieš / po / patikra): DI atspindi tavo įvesties aiškumą — verta struktūruoti užklausą."',
-      'alt="Meme after basics cards: the AI mirrors how clear your input is — structure the prompt."'
-    ],
-
     ['<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutės"', '<section id="guided" class="types-slide types-slide--guided" aria-label="Start in 2 minutes"'],
     ['<span class="label">Praktika</span>', '<span class="label">Practice</span>'],
     ['<h2>Pradėk per 2 minutės</h2>', '<h2>Start in 2 minutes</h2>'],
@@ -325,8 +320,8 @@ function getEnHtmlReplacementPairs() {
     ],
 
     [
-      'alt="Tarp patikros ir plano struktūros: kai įvestis chaotiška, atsakymas chaotiškas; kai įvestis aiški, atsakymas labiau kontroliuojamas."',
-      'alt="Between check and plan structure: chaotic input → chaotic output; clear input → more controlled output."'
+      'alt="Dvi pusės: kairėje CHAOS — chaotiškas pokalbis su perbrauktais vaizdais ir trumpais prašymais; dešinėje CONTROL — vaidmuo, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „AI isn’t random. Your input is.“"',
+      'alt="Split graphic: CHAOS — messy chat with crossed-out images and short asks; CONTROL — Role, Context, Output, Criteria and a clean logo. Headline: AI isn’t random. Your input is."'
     ],
 
     ['<span class="label">01 • Struktūra</span>', '<span class="label">01 • Structure</span>'],
@@ -453,6 +448,7 @@ function getEnHtmlReplacementPairs() {
       '<p class="library-lead">Here — ready-made prompts for AI: open a category and copy. Most common start: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Daily work</a> → day summary or task list.</p>'
     ],
     ['aria-label="Bibliotekos auditorija"', 'aria-label="Library audience"'],
+    ['aria-label="Bibliotekos valdikliai"', 'aria-label="Library controls"'],
     ['>Darbuotojas</button>', '>Individual contributor</button>'],
     ['>Vadovas</button>', '>Leader</button>'],
     [
@@ -538,8 +534,8 @@ function getEnHtmlReplacementPairs() {
 
     ['<section aria-label="Esmė"', '<section aria-label="The point"'],
     [
-      'alt="Vizuali iliustracija prie esmės: DI kaip sistema ir struktūra darbe, ne vien atsitiktinis įrankis."',
-      'alt="Visual for the point: AI as system and structure at work, not a random tool."'
+      'alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Role, ryžiai — 2 Context, lašiša — 3 Reasoning, avokadas — 4 Output, sezamai — 5 Quality check."',
+      'alt="Exploded sushi, bottom to top: nori — 1 Role, rice — 2 Context, salmon — 3 Reasoning, avocado — 4 Output, sesame — 5 Quality check."'
     ],
     ['<h2 class="essence-tagline">DI YRA SISTEMA.</h2>', '<h2 class="essence-tagline">AI IS A SYSTEM.</h2>'],
     [
@@ -548,10 +544,6 @@ function getEnHtmlReplacementPairs() {
     ],
 
     ['<section class="quiz-slide" aria-label="Trumpas quiz"', '<section class="quiz-slide" aria-label="Short quiz"'],
-    [
-      'alt="Iliustracija prieš trumpą quiz: priminimas būti kritiškam ir tikrinti DI atsakymus, o ne priimti juos aklai."',
-      'alt="Illustration before the short quiz: stay critical and verify AI answers, do not accept blindly."'
-    ],
     [
       'data-msg-select="Pasirink vieną variantą ir spausk Tikrinti."',
       'data-msg-select="Pick one option and press Check."'

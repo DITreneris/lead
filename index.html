@@ -37,7 +37,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <!-- Inline SVG: Lucide icons (lucide-static, ISC License, https://lucide.dev) -->
     <style>
-                                                                                                                                                                                                                                                                                                                                                                                                /* DS_TOKENS_START — from styles\tokens.css; do not edit here */
+        /* DS_TOKENS_START — from styles/tokens.css; do not edit here */
         :root {
             --primary-blue: #103b5a;
             --accent-yellow: #fbd304;
@@ -733,9 +733,6 @@
             box-shadow: var(--shadow-red-hero-hover);
         }
         .hero-primary-link:active { transform: scale(0.99); }
-        .cta-pdf-wrap {
-            margin: var(--space-8) 0 0;
-        }
         .cta-actions-stack {
             display: flex;
             flex-direction: column;
@@ -757,14 +754,6 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--text-soft);
-        }
-        .essence-primary-headline {
-            font-family: var(--font-display);
-            font-size: clamp(40px, 6vw, 78px);
-            line-height: 1.05;
-            margin: 0 0 8px;
-            font-weight: 700;
-            color: var(--text-bright);
         }
         .essence-lead {
             font-size: clamp(22px, 2.6vw, 36px);
@@ -1400,27 +1389,6 @@
             margin: 0;
         }
         .types-card-result strong { color: var(--text-body); }
-        .types-tip {
-            margin-top: 24px;
-            padding: 16px 18px;
-            background: linear-gradient(135deg, rgba(16, 59, 90, 0.50), var(--accent-yellow-bg-faint));
-            border: 1px solid var(--border-hairline);
-            border-radius: var(--radius-lg);
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            text-align: left;
-            max-width: 720px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .types-tip .icon {
-            color: var(--accent-yellow);
-            width: 20px;
-            height: 20px;
-            margin-top: 1px;
-        }
-        .types-tip p { margin: 0; font-size: clamp(14px, 1.05vw, 16px); line-height: 1.55; color: var(--text-body); }
 
         /* Meme 16:9 (emocinės pauzės tarp skaidrių) */
         .meme-interlude {
@@ -1464,10 +1432,6 @@
         }
         .meme-figure--essence {
             max-width: min(720px, 100%);
-            margin: 0 auto 52px;
-        }
-        .meme-figure--quiz {
-            max-width: min(680px, 100%);
             margin: 0 auto 52px;
         }
 
@@ -1731,32 +1695,7 @@
             }
         }
 
-        /* Biblioteka: šuoliai į kategorijas (sumažina slinkimo apkrovą) */
-        .library-toc {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 10px;
-            margin: 0 0 24px;
-            padding: 14px 16px;
-            background: var(--surface-muted);
-            border: 1px solid var(--border-hairline);
-            border-radius: var(--radius-tab);
-        }
-        .library-toc a {
-            font-size: clamp(12px, 0.95vw, 14px);
-            font-weight: 700;
-            color: var(--accent-yellow);
-            text-decoration: none;
-            border-bottom: 1px solid var(--accent-yellow-border-soft);
-            padding-bottom: 1px;
-        }
-        .library-toc a:hover,
-        .library-toc a:focus-visible {
-            color: var(--accent-yellow-hover-text);
-            border-color: var(--accent-yellow-nav-hover);
-        }
-
-        /* Turinys: visų skaidrių sąrašas (14 taškų lieka; čia pavadinimai) */
+        /* Turinys: visų 15 skaidrių sąrašas */
         .slide-outline {
             position: fixed;
             z-index: 190;
@@ -1930,8 +1869,9 @@
         }
         .schema-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 28px minmax(200px, 260px);
-            gap: 20px 16px;
+            grid-template-columns: minmax(0, 1fr);
+            justify-items: center;
+            gap: 20px;
             align-items: stretch;
             text-align: left;
         }
@@ -1942,7 +1882,9 @@
             align-items: center;
             gap: 6px;
             min-width: 0;
-            padding-left: 24px;
+            width: 100%;
+            max-width: 388px;
+            padding-left: 48px;
         }
         .schema-step {
             position: relative;
@@ -2021,38 +1963,6 @@
             stroke: var(--primary-blue);
             stroke-width: 2.25;
             opacity: 0.85;
-        }
-        .schema-bracket svg {
-            width: 100%;
-            height: 100%;
-            min-height: 420px;
-            stroke: rgba(255, 255, 255, 0.35);
-            fill: none;
-            stroke-width: 2;
-        }
-        .schema-advanced {
-            background: var(--surface-raised);
-            border: 1px solid var(--border-hairline);
-            border-radius: var(--radius-lg);
-            padding: 20px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            justify-content: center;
-            align-self: center;
-        }
-        .schema-advanced strong {
-            font-family: var(--font-display);
-            font-size: 14px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--brand-wordmark);
-        }
-        .schema-advanced p {
-            margin: 0;
-            font-size: clamp(14px, 1.05vw, 16px);
-            line-height: 1.55;
-            color: var(--text-muted);
         }
         .schema-foot {
             margin-top: 40px;
@@ -2257,10 +2167,6 @@
             text-decoration: none;
         }
 
-        .inline-link--soft.link-tier-tertiary {
-            font-weight: 800;
-            text-decoration: none;
-        }
         .inline-link--soft.primer-next-cta {
             color: var(--text-bright);
         }
@@ -2369,13 +2275,7 @@
                 text-align: center;
             }
             .schema-column-flow { margin: 0 auto; padding-left: 0; }
-            .schema-bracket { display: none; }
             .schema-loop-svg { display: none; }
-            .schema-advanced {
-                max-width: 340px;
-                margin: 20px auto 0;
-                text-align: left;
-            }
             .schema-lead { font-size: 16px; }
             .types-grid { grid-template-columns: 1fr; }
             .types-lead { font-size: 16px; }
@@ -2438,7 +2338,7 @@
         <button type="button" class="lang-switch__btn" id="langLtBtn" lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
         <button type="button" class="lang-switch__btn" id="langEnBtn" lang="en" aria-label="Switch to English">EN</button>
     </div>
-    <a class="brand-lockup" href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)">
+    <a class="brand-lockup" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=header&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="brand_app_click" data-track-dest="app" aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)">
         <div class="brand-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path fill="#fbd304" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
@@ -2648,14 +2548,6 @@
     </div>
 </section>
 
-<!-- Meme 16:9: atnaujinkite PNG assets/memes/ (meme-after-types.png, meme-after-roadmap.png, meme-essence.png, meme-before-quiz.png) ir atitinkamai pataisykite img alt tekstus. -->
-<div class="meme-interlude">
-    <figure class="meme-figure">
-        <img src="assets/memes/meme-after-types.png" width="1280" height="720" loading="lazy" decoding="async"
-            alt="Memas po pagrindų kortelių (prieš / po / patikra): DI atspindi tavo įvesties aiškumą — verta struktūruoti užklausą.">
-    </figure>
-</div>
-
 <!-- Skaidrė 4: Guided praktika -->
 <section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutės">
     <div class="container">
@@ -2807,8 +2699,8 @@
 
 <div class="meme-interlude">
     <figure class="meme-figure">
-        <img src="assets/memes/meme-after-roadmap.png" width="1280" height="720" loading="lazy" decoding="async"
-            alt="Tarp patikros ir plano struktūros: kai įvestis chaotiška, atsakymas chaotiškas; kai įvestis aiški, atsakymas labiau kontroliuojamas.">
+        <img src="assets/memes/meme-after-roadmap.png" width="1672" height="941" loading="lazy" decoding="async"
+            alt="Dvi pusės: kairėje CHAOS — chaotiškas pokalbis su perbrauktais vaizdais ir trumpais prašymais; dešinėje CONTROL — vaidmuo, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „AI isn’t random. Your input is.“">
     </figure>
 </div>
 
@@ -3069,8 +2961,8 @@
             <div class="loop-ci"></div>
         </div>
         <figure class="meme-figure meme-figure--essence">
-            <img src="assets/memes/meme-essence.png" width="1280" height="720" loading="lazy" decoding="async"
-                alt="Vizuali iliustracija prie esmės: DI kaip sistema ir struktūra darbe, ne vien atsitiktinis įrankis.">
+            <img src="assets/memes/meme-essence.png" width="1672" height="941" loading="lazy" decoding="async"
+                alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Role, ryžiai — 2 Context, lašiša — 3 Reasoning, avokadas — 4 Output, sezamai — 5 Quality check.">
         </figure>
         <h2 class="essence-tagline">DI YRA SISTEMA.</h2>
         <p class="essence-lead">
@@ -3083,10 +2975,6 @@
 <section class="quiz-slide" aria-label="Trumpas quiz">
     <div class="container">
         <div class="quiz-inner">
-            <figure class="meme-figure meme-figure--quiz">
-                <img src="assets/memes/meme-before-quiz.png" width="1280" height="720" loading="lazy" decoding="async"
-                alt="Iliustracija prieš trumpą quiz: priminimas būti kritiškam ir tikrinti DI atsakymus, o ne priimti juos aklai.">
-            </figure>
             <form id="prompt-quiz-form" novalidate
                 data-msg-select="Pasirink vieną variantą ir spausk Tikrinti."
                 data-feedback-correct="Teisingai: vaidmuo, kontekstas ir aiškus pageidaujamas rezultatas leidžia DI atsakyti pagal tavo užduotį."
@@ -3647,10 +3535,13 @@
             'Jei trūksta faktų — ko paklausti prieš vykdant, ne spėliojant'
         ].join('\n');
 
-        var libraryPrompts =
-            LOCALE === 'en' && typeof window.__PROMPT_LIBRARY_EN__ === 'object'
-                ? window.__PROMPT_LIBRARY_EN__
-                : libraryPromptsLt;
+        const enLibraryAvailable = typeof window.__PROMPT_LIBRARY_EN__ === 'object';
+        if (LOCALE === 'en' && !enLibraryAvailable) {
+            console.error('[library] English prompt library failed to load.');
+        }
+        var libraryPrompts = LOCALE === 'en'
+            ? (enLibraryAvailable ? window.__PROMPT_LIBRARY_EN__ : {})
+            : libraryPromptsLt;
 
         let libraryModeManager = false;
         let a11yStatusTimer = null;
@@ -3818,18 +3709,6 @@
         });
         const libraryHowtoEl = document.getElementById('library-howto');
         if (libraryHowtoEl) libraryHowtoEl.addEventListener('toggle', syncLibraryExpandToggleButton);
-
-        document.querySelectorAll('.library-toc a').forEach((a) => {
-            a.addEventListener('click', () => {
-                const href = a.getAttribute('href') || '';
-                if (!href.startsWith('#')) return;
-                const id = href.replace('#', '').trim();
-                const target = document.getElementById(id);
-                if (!target) return;
-                const details = target.querySelector('details.library-cat-details');
-                if (details) details.open = true;
-            });
-        });
 
         window.addEventListener('hashchange', openLibraryTargetFromHash);
         openLibraryTargetFromHash();

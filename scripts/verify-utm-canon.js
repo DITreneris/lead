@@ -20,6 +20,19 @@ const FORBIDDEN = [
   'utm_source=promptanatomy_cloud'
 ];
 
+const DEST_BY_HOST = new Map([
+  ['promptanatomy.app', 'app'],
+  ['www.promptanatomy.app', 'app'],
+  ['promptanatomy.pro', 'pro'],
+  ['www.promptanatomy.pro', 'pro'],
+  ['promptanatomy.site', 'site'],
+  ['www.promptanatomy.site', 'site']
+]);
+
+function outboundAnchorTags(html) {
+  return html.match(/<a\b[^>]*\bhref="https:\/\/[^"]+"[^>]*>/gi) || [];
+}
+
 let failed = false;
 
 for (const file of FILES) {
@@ -36,11 +49,40 @@ for (const file of FILES) {
       failed = true;
     }
   }
-  if (!html.includes('utm_source=cloud')) {
-    console.error('[verify-utm-canon] Expected utm_source=cloud in', rel);
+  let checked = 0;
+  for (const tag of outboundAnchorTags(html)) {
+    const hrefMatch = tag.match(/\bhref="([^"]+)"/i);
+    if (!hrefMatch) continue;
+    const href = hrefMatch[1].replace(/&amp;/g, '&');
+    const url = new URL(href);
+    const expectedDest = DEST_BY_HOST.get(url.hostname.toLowerCase());
+    if (!expectedDest) continue;
+    checked++;
+    if (url.searchParams.get('utm_source') !== 'cloud') {
+      console.error('[verify-utm-canon] Outbound link missing utm_source=cloud in', rel, href);
+      failed = true;
+    }
+    if (!/\bdata-track="[^"]+"/i.test(tag)) {
+      console.error('[verify-utm-canon] Outbound link missing data-track in', rel, href);
+      failed = true;
+    }
+    const destMatch = tag.match(/\bdata-track-dest="([^"]+)"/i);
+    if (!destMatch || destMatch[1] !== expectedDest) {
+      console.error(
+        '[verify-utm-canon] Outbound link has wrong data-track-dest in',
+        rel,
+        href,
+        'expected',
+        expectedDest
+      );
+      failed = true;
+    }
+  }
+  if (!checked) {
+    console.error('[verify-utm-canon] No tracked ecosystem outbound links found in', rel);
     failed = true;
   }
 }
 
 if (failed) process.exit(1);
-console.log('[verify-utm-canon] OK — outbound UTM source is cloud');
+console.log('[verify-utm-canon] OK — every ecosystem outbound link is tracked with utm_source=cloud');

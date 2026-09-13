@@ -437,11 +437,11 @@ ${pdfEntries.join('\n')}
 
 function main() {
   const raw = fs.readFileSync(SRC_HTML, 'utf8').replace(/\r\n/g, '\n');
-
-  fs.mkdirSync(path.join(SITE_DIR, 'lt'), { recursive: true });
-
   const rootEn = injectAppBasePathMeta(buildEn(raw));
   const ltPage = injectAppBasePathMeta(fixSubdirAssetPaths(buildLt(raw, originUrl('/lt/'))));
+
+  fs.rmSync(SITE_DIR, { recursive: true, force: true });
+  fs.mkdirSync(path.join(SITE_DIR, 'lt'), { recursive: true });
 
   fs.writeFileSync(path.join(SITE_DIR, 'index.html'), rootEn, 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'lt', 'index.html'), ltPage, 'utf8');
