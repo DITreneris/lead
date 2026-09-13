@@ -6,15 +6,32 @@ Visos reikšmingos šio projekto pataisos bus dokumentuojamos čia. Formatas rem
 
 ### Added
 
+- **„Turinys“ grupės ir startas:** `#slide-outline` — „Pirmiausia“ jump’ai į praktiką / biblioteką + grupės Pagrindai / Praktika / Šablonai / Biblioteka / Uždarymas; `.slide-outline__first` / `__group` — [index.html](index.html), [docs/design_system.md](docs/design_system.md).
+- **Patikros išėjimas:** po `#qc` — „kitas šablonas“ (`#meeting`) ir biblioteka; skaidrių 7–11 copy turi `data-track` (`template_copy_*`) — [index.html](index.html), [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
+
 ### Changed
 
-- **Deterministinis `.cloud` build artefaktas (`site/`):** prieš generavimą išvalomas senas turinys; į deploy kopijuojamas tik aiškus viešų failų sąrašas, todėl nebelieka `site/en/`, lokalių `pandoc-media` ar nenaudojamų memų; tokenų injekcija tapo idempotentinė ir vienoda Windows / Linux aplinkose.
-
-- **Senų UI liekanų valymas:** pašalinti nepasiekiami schema / CTA / esmės / bibliotekos CSS ir `.library-toc` JS; DS dokumentacija sinchronizuota.
+- **Kelio planas:** antraštė ir totalas — pradėk nuo 5–15 min, ne „iki 5 val.“ pažadas; 6 eilutės su laikais lieka inventorius — [index.html](index.html), [scripts/en-html-replacements.cjs](scripts/en-html-replacements.cjs).
+- **`track()`:** custom `data` tik stringai, 2 raktų lubos; eventas siunčiamas ir be `data`, jei locale tuščias — [index.html](index.html).
 
 ### Fixed
 
-- **Schema ir LT↔EN:** vieno stulpelio schema centruojama desktop ekrane; EN bibliotekos valdiklių `aria-label` išverstas; EN biblioteka nebegrįžta tyliai į LT tekstus, jei neįsikrauna EN failas; UTM patikra tikrina kiekvieną `.app` / `.pro` / `.site` nuorodą.
+
+## [0.4.1] - 2026-09-13
+
+### Added
+
+- **Build patikra:** [scripts/verify-token-injection-idempotence.js](scripts/verify-token-injection-idempotence.js) — pakartotinis tokenų inject nekeičia HTML; `verify:robots-llms` — meme paritetas (`site/assets/memes/` = tik HTML nuorodos), draudžiami `site/en/`, `pandoc-media`, `favicon-64.png`.
+
+### Changed
+
+- **Deterministinis `.cloud` build artefaktas (`site/`):** [scripts/build-locale-pages.js](scripts/build-locale-pages.js) išvalo `site/` prieš generavimą; [scripts/prepare-site-artifact.js](scripts/prepare-site-artifact.js) kopijuoja tik 11 viešų failų (ne visą `assets/`); tokenų injekcija idempotentinė Windows / Linux — [scripts/inject-design-tokens.js](scripts/inject-design-tokens.js).
+
+- **Senų UI liekanų valymas:** pašalinti nepasiekiami schema / CTA / esmės / bibliotekos CSS ir `.library-toc` JS; DS + agent rules sinchronizuoti; aktyvūs memai — `meme-after-roadmap.png`, `meme-essence.png`.
+
+### Fixed
+
+- **Schema ir LT↔EN:** vieno stulpelio schema centruojama desktop ekrane; EN `Library controls` aria pora; EN biblioteka nebegrįžta tyliai į LT, jei neįsikrauna EN failas; [scripts/verify-utm-canon.js](scripts/verify-utm-canon.js) tikrina kiekvieną outbound `.app` / `.pro` / `.site` anchor (`utm_source=cloud`, `data-track`, `data-track-dest`); brand header UTM + tracking.
 
 ## [0.4.0] - 2026-09-11
 

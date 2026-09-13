@@ -1758,8 +1758,22 @@
             color: var(--text-bright);
         }
         .slide-outline__btn:last-child { border-bottom: none; }
+        .slide-outline__first {
+            padding: 8px 14px 10px;
+            font-size: var(--font-size-label);
+            line-height: 1.35;
+            color: var(--text-muted);
+        }
+        .slide-outline__group {
+            padding: 10px 14px 4px;
+            font-size: var(--font-size-label);
+            font-weight: 600;
+            letter-spacing: var(--tracking-label);
+            text-transform: uppercase;
+            color: var(--text-soft);
+        }
 
-        /* Roadmap: 5 val./sav. — kelias (skaidrė 5, po praktikos) */
+        /* Roadmap: pradėk nuo 5–15 min (skaidrė 5, po praktikos) */
         .roadmap-slide .container {
             max-width: 560px;
             grid-template-columns: 1fr;
@@ -1976,6 +1990,11 @@
             transition: color var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
         }
         .schema-foot a:hover { color: var(--accent-yellow); border-color: var(--accent-yellow); }
+        .qc-next {
+            margin-top: var(--space-4);
+            font-size: var(--font-size-ui);
+            color: var(--text-muted);
+        }
 
         /* Essence Slide */
         .essence-content {
@@ -2329,6 +2348,7 @@
 <details class="slide-outline disclosure-chip disclosure-chip--nav" id="slide-outline">
     <summary class="slide-outline__summary disclosure-chip__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Turinys</summary>
     <div class="slide-outline__panel disclosure-chip__panel">
+        <p class="slide-outline__first" id="slide-outline-first"></p>
         <ul class="slide-outline__list" id="slide-outline-list"></ul>
     </div>
 </details>
@@ -2356,7 +2376,7 @@
     <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutės"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 5: Kelio planas: pradėk nuo 5–15 min"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"></button>
@@ -2376,7 +2396,7 @@
         <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutės"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 5: Kelio planas: pradėk nuo 5–15 min"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"></button>
@@ -2627,13 +2647,13 @@
     </div>
 </section>
 
-<!-- Skaidrė 5: roadmap 5 val. — prieš 6 gilaus turinio skaidres -->
-<section id="roadmap" class="roadmap-slide" aria-label="Tavo kelias, kaip sutaupyti iki 5 val. per savaitę">
+<!-- Skaidrė 5: kelio planas — pradėk nuo 5–15 min, tada šablonai pagal poreikį -->
+<section id="roadmap" class="roadmap-slide" aria-label="Kelio planas: pradėk nuo 5–15 min">
     <div class="container">
         <div class="roadmap-inner">
             <span class="label">Kelio planas</span>
-            <h2>Tavo kelias, kaip sutaupyti iki 5 val. per savaitę</h2>
-            <p class="roadmap-sub">Šeši žingsniai iš eilės: pirmiausia greita siuntimo patikra, tada penki gilūs šablonai. Laikai — orientaciniai.</p>
+            <h2>Kelio planas: pradėk nuo 5–15 min</h2>
+            <p class="roadmap-sub">Pirma — greita siuntimo patikra. Kiti penki šablonai — kai prireiks. Laikai orientaciniai.</p>
             <div class="roadmap-journey" role="list">
                 <div class="roadmap-journey-line" aria-hidden="true"></div>
                 <div class="roadmap-row" role="listitem">
@@ -2667,7 +2687,7 @@
                     <span class="roadmap-time">10–30 min</span>
                 </div>
             </div>
-            <div class="roadmap-total">Iš viso iki ≈ 5 val. / sav. (priklauso nuo naudojimo dažnio)</div>
+            <div class="roadmap-total">Nebūtina eiti visų. Tas pats rinkinys — bibliotekoje.</div>
         </div>
     </div>
 </section>
@@ -2686,6 +2706,7 @@
                 <button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti patikrą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 22V2"/></svg></span> Mažiau rizikos klientui ir reputacijai.</div>
+            <p class="qc-next">Toliau: <a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">kitas šablonas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">visos užklausos bibliotekoje</a></p>
         </div>
         <div class="viz-container">
             <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
@@ -2705,7 +2726,7 @@
 </div>
 
 <!-- Skaidrė 7: susitikimo ar sprinto planas -->
-<section aria-label="Susitikimo ar sprinto planas">
+<section id="meeting" aria-label="Susitikimo ar sprinto planas">
     <div class="container">
         <div class="viz-container">
             <svg class="viz-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
@@ -2725,7 +2746,7 @@
                 <div class="prompt-line"><b>UŽDUOTIS</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTAREI ANKSČIAU].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
+                <button type="button" class="copy-prompt-btn" data-track="template_copy_meeting">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span> Planas paruoštas per kelias minutės.</div>
         </div>
@@ -2743,7 +2764,7 @@
                 <div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Tris aiškiai atskirtas versijas su antraštėmis Bazinis / Vidutinis / Pažengęs; tonas ir detalumas turi augti kartu su lygiu.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
+                <button type="button" class="copy-prompt-btn" data-track="template_copy_levels">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span> Vienas šablonas — kelios auditorijos.</div>
         </div>
@@ -2776,7 +2797,7 @@
                 <div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Trumpą įvertinimą (balas ar lygis), 3 stiprias vietas, 1 konkretų tobulinimo žingsnį su pavyzdžiu.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
+                <button type="button" class="copy-prompt-btn" data-track="template_copy_feedback">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></span> Mažiau iteracijų ir taisymo laiko.</div>
         </div>
@@ -2794,7 +2815,7 @@
                 <div class="prompt-line"><b>UŽDUOTIS</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Paruoštą tekstą su aiškia instrukcija komandai; jei tinka — atsakymų ar vertinimo raktą.</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
+                <button type="button" class="copy-prompt-btn" data-track="template_copy_team">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span> Pritaikyta realiai darbo situacijai.</div>
         </div>
@@ -2827,7 +2848,7 @@
                 <div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus žingsnis.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
                 <div class="prompt-line"><b>REZULTATAS</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>
-                <button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>
+                <button type="button" class="copy-prompt-btn" data-track="template_copy_email">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span> Aiški ir rami komunikacija.</div>
         </div>
@@ -3763,8 +3784,38 @@
 
         const outlineRoot = document.getElementById('slide-outline');
         const outlineList = document.getElementById('slide-outline-list');
+        const outlineFirst = document.getElementById('slide-outline-first');
+        if (outlineFirst) {
+            outlineFirst.innerHTML =
+                uiText('Pirmiausia: ', 'Start here: ') +
+                '<a class="inline-link inline-link--accent" href="#guided" data-track="outline_first_practice">' +
+                uiText('2 min. praktika', '2-min practice') +
+                '</a> · <a class="inline-link inline-link--accent" href="#library" data-track="outline_first_library">' +
+                uiText('biblioteka', 'library') +
+                '</a>';
+            outlineFirst.addEventListener('click', function (e) {
+                var jump = e.target && e.target.closest && e.target.closest('a[href^="#"]');
+                if (!jump || !outlineRoot) return;
+                outlineRoot.open = false;
+            });
+        }
+        const outlineGroups = [
+            { at: 0, lt: 'Pagrindai', en: 'Foundations' },
+            { at: 3, lt: 'Praktika', en: 'Practice' },
+            { at: 5, lt: 'Šablonai', en: 'Templates' },
+            { at: 11, lt: 'Biblioteka', en: 'Library' },
+            { at: 12, lt: 'Uždarymas', en: 'Close' }
+        ];
         if (outlineList && sideNav.length) {
             sideNav.forEach((navBtn, index) => {
+                const group = outlineGroups.find((g) => g.at === index);
+                if (group) {
+                    const gh = document.createElement('li');
+                    gh.className = 'slide-outline__group';
+                    gh.setAttribute('aria-hidden', 'true');
+                    gh.textContent = uiText(group.lt, group.en);
+                    outlineList.appendChild(gh);
+                }
                 const li = document.createElement('li');
                 const b = document.createElement('button');
                 b.type = 'button';
@@ -3890,14 +3941,25 @@
 
         function track(name, props) {
             try {
-                var locale = document.documentElement.lang || (typeof LOCALE !== 'undefined' ? LOCALE : '');
-                var data = Object.assign({ locale: locale }, props || {});
-                var keys = Object.keys(data);
-                if (keys.length > 2) {
-                    data = { locale: data.locale, dest: data.dest != null ? data.dest : data.ok };
+                var locale = String(document.documentElement.lang || (typeof LOCALE !== 'undefined' ? LOCALE : '') || '');
+                var data = {};
+                if (locale) data.locale = locale;
+                if (props && typeof props === 'object') {
+                    Object.keys(props).forEach(function (k) {
+                        if (props[k] == null || props[k] === '') return;
+                        data[k] = String(props[k]);
+                    });
+                }
+                if (Object.keys(data).length > 2) {
+                    var extra = props && (props.dest != null ? props.dest : props.ok);
+                    data = {};
+                    if (locale) data.locale = locale;
+                    if (extra != null && extra !== '') data.dest = String(extra);
                 }
                 if (typeof window.va === 'function') {
-                    window.va('event', { name: name, data: data });
+                    var ev = { name: String(name) };
+                    if (Object.keys(data).length) ev.data = data;
+                    window.va('event', ev);
                 }
                 var payload = Object.assign({ event: name, ts: Date.now() }, data);
                 if (Array.isArray(window.dataLayer)) window.dataLayer.push(payload);

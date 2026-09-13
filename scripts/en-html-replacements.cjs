@@ -52,8 +52,8 @@ function getEnHtmlReplacementPairs() {
     ['aria-label="Skaidrė 3: Promptų anatomijos schema"', 'aria-label="Slide 3: Prompt anatomy framework"'],
     ['aria-label="Skaidrė 4: Pradėk per 2 minutės"', 'aria-label="Slide 4: Start in 2 minutes"'],
     [
-      'aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"',
-      'aria-label="Slide 5: Your path to save up to 5 hours weekly"'
+      'aria-label="Skaidrė 5: Kelio planas: pradėk nuo 5–15 min"',
+      'aria-label="Slide 5: Roadmap: start with 5–15 min"'
     ],
     ['aria-label="Skaidrė 6: Greita siuntimo patikra"', 'aria-label="Slide 6: Quick send check"'],
     ['aria-label="Skaidrė 7: Susitikimo ar sprinto planas"', 'aria-label="Slide 7: Meeting or sprint plan"'],
@@ -268,14 +268,14 @@ function getEnHtmlReplacementPairs() {
     ['data-track="practice_qc_jump">Patikra →</a>', 'data-track="practice_qc_jump">Check →</a>'],
 
     [
-      '<section id="roadmap" class="roadmap-slide" aria-label="Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"',
-      '<section id="roadmap" class="roadmap-slide" aria-label="Your path to save up to 5 hours weekly"'
+      '<section id="roadmap" class="roadmap-slide" aria-label="Kelio planas: pradėk nuo 5–15 min"',
+      '<section id="roadmap" class="roadmap-slide" aria-label="Roadmap: start with 5–15 min"'
     ],
     ['<span class="label">Kelio planas</span>', '<span class="label">Roadmap</span>'],
-    ['<h2>Tavo kelias, kaip sutaupyti iki 5 val. per savaitę</h2>', '<h2>Your path to save up to 5 hours weekly</h2>'],
+    ['<h2>Kelio planas: pradėk nuo 5–15 min</h2>', '<h2>Roadmap: start with 5–15 min</h2>'],
     [
-      '<p class="roadmap-sub">Šeši žingsniai iš eilės: pirmiausia greita siuntimo patikra, tada penki gilūs šablonai. Laikai — orientaciniai.</p>',
-      '<p class="roadmap-sub">Six steps in order: quick send check first, then five deeper templates. Times are approximate.</p>'
+      '<p class="roadmap-sub">Pirma — greita siuntimo patikra. Kiti penki šablonai — kai prireiks. Laikai orientaciniai.</p>',
+      '<p class="roadmap-sub">First — the quick send check. The other five templates — when you need them. Times are approximate.</p>'
     ],
     ['<span class="roadmap-name">Greita siuntimo patikra</span>', '<span class="roadmap-name">Quick send check</span>'],
     ['<span class="roadmap-name">Susitikimo ar sprinto planas</span>', '<span class="roadmap-name">Meeting or sprint plan</span>'],
@@ -284,11 +284,11 @@ function getEnHtmlReplacementPairs() {
     ['<span class="roadmap-name">Užduotis / mokymas komandai</span>', '<span class="roadmap-name">Assignment / team learning</span>'],
     ['<span class="roadmap-name">Laiškas ar žinutė (juodraštis)</span>', '<span class="roadmap-name">Email or message (draft)</span>'],
     [
-      '<div class="roadmap-total">Iš viso iki ≈ 5 val. / sav. (priklauso nuo naudojimo dažnio)</div>',
-      '<div class="roadmap-total">Up to ~5 hrs / week total (depends on how often you use it)</div>'
+      '<div class="roadmap-total">Nebūtina eiti visų. Tas pats rinkinys — bibliotekoje.</div>',
+      '<div class="roadmap-total">You do not have to do them all. The same set is in the library.</div>'
     ],
 
-    ['<section aria-label="Susitikimo ar sprinto planas">', '<section aria-label="Meeting or sprint plan">'],
+    ['<section id="meeting" aria-label="Susitikimo ar sprinto planas">', '<section id="meeting" aria-label="Meeting or sprint plan">'],
     ['<section aria-label="Ta pati žinutė — 3 lygiai">', '<section aria-label="Same message — three levels">'],
     ['<section aria-label="Turinio grįžtamasis ryšys">', '<section aria-label="Content feedback">'],
     ['<section aria-label="Užduotis / mokymas komandai">', '<section aria-label="Assignment / team learning">'],
@@ -318,6 +318,10 @@ function getEnHtmlReplacementPairs() {
       '</svg></span> Mažiau rizikos klientui ir reputacijai.</div>',
       '</svg></span> Less risk for clients and reputation.</div>'
     ],
+    [
+      '<p class="qc-next">Toliau: <a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">kitas šablonas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">visos užklausos bibliotekoje</a></p>',
+      '<p class="qc-next">Next: <a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">next template</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">all prompts in the library</a></p>'
+    ],
 
     [
       'alt="Dvi pusės: kairėje CHAOS — chaotiškas pokalbis su perbrauktais vaizdais ir trumpais prašymais; dešinėje CONTROL — vaidmuo, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „AI isn’t random. Your input is.“"',
@@ -342,7 +346,11 @@ function getEnHtmlReplacementPairs() {
       '<div class="prompt-line"><b>REZULTATAS</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>',
       '<div class="prompt-line"><b>OUTPUT</b> A table with columns Time | Activity | Goal, then 3 questions below.</div>'
     ],
-    ['<button type="button" class="copy-prompt-btn">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn">Copy prompt</button>'],
+    ['<button type="button" class="copy-prompt-btn" data-track="template_copy_meeting">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_meeting">Copy prompt</button>'],
+    ['<button type="button" class="copy-prompt-btn" data-track="template_copy_levels">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_levels">Copy prompt</button>'],
+    ['<button type="button" class="copy-prompt-btn" data-track="template_copy_feedback">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_feedback">Copy prompt</button>'],
+    ['<button type="button" class="copy-prompt-btn" data-track="template_copy_team">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_team">Copy prompt</button>'],
+    ['<button type="button" class="copy-prompt-btn" data-track="template_copy_email">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_email">Copy prompt</button>'],
     [
       '</svg></span> Planas paruoštas per kelias minutės.</div>',
       '</svg></span> Plan ready in a few minutes.</div>'

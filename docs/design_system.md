@@ -1,7 +1,7 @@
 # Design System — Promptų anatomija
 
 **Version:** 2.1  
-**Last reviewed:** 2026-07-29 — type/measure tokens; chrome ≥12–13px; `--text-tertiary` / `--text-secondary`; `--accent-teal*`; decision recipes (§2.1); public vs private tokens.  
+**Last reviewed:** 2026-09-13 — `.slide-outline__group` / `__first`; type/measure tokens; chrome ≥12–13px; `--text-tertiary` / `--text-secondary`; `--accent-teal*`; decision recipes (§2.1); public vs private tokens.  
 **Audience:** Product owner, frontend maintainer, AI coding agents.
 
 This document describes **what exists today**. It is not a redesign brief. Visual changes should improve **consistency and maintainability** only.
@@ -405,6 +405,8 @@ For each new UI, **reuse a row below** before inventing a class.
 | `.nav-mobile` | Bottom dot nav + progress | ≤1024px | — |
 | `.nav-item` | Dot button | One per slide | Text labels in dots (use `aria-label`) |
 | `.slide-outline` | “Turinys” jump list | Fixed; syncs from nav labels | Manual list out of sync |
+| `.slide-outline__first` | Start-here line (practice · library) | Above outline list; JS `uiText` | Extra Tier-1 CTA |
+| `.slide-outline__group` | TOC group label | JS-generated; not a control | Make it a tab-stop |
 | `.slide-outline__btn` | List item buttons | Generated in JS | — |
 
 ### 7.4 Hero (`#intro`)
@@ -457,6 +459,7 @@ For each new UI, **reuse a row below** before inventing a class.
 |-------|---------|
 | `.schema-section`, `.schema-grid`, `.schema-step`, `.schema-step--*` | Framework diagram |
 | `.schema-arrow`, `.schema-loop-svg` | Connectors (`.schema-loop-svg` hidden on mobile) |
+| `.qc-next` | After send-check: next template · library (Tier 5) |
 | `.roadmap-slide`, `.roadmap-row`, `.roadmap-dot`, `.roadmap-time` | Journey timeline |
 
 ### 7.8 Library (`#library`)

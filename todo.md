@@ -67,8 +67,22 @@ Tikslas: teisingas freshness signalas, FAQ schema be drift, plonas sitemap, tool
 
 ---
 
+## Fazė 6 — Build determinism & cleanup *(uždaryta 2026-09-13, commit `4592126`)*
+
+Tikslas: deterministinis `site/` artefaktas, griežtesnė LT↔EN/UTM patikra, neveikiančių UI liekanų valymas.
+
+- [x] `build-locale-pages.js` — išvalo `site/` prieš generavimą (nebelieka `site/en/`).
+- [x] `prepare-site-artifact.js` — `PUBLIC_FILES` allowlist (11 failų); meme paritetas per `verify:robots-llms`.
+- [x] Idempotentinė tokenų injekcija + `verify:token-injection-idempotence`.
+- [x] EN biblioteka fail-closed (`{}` + `console.error`, ne tylus LT fallback); EN `Library controls` aria pora.
+- [x] `verify-utm-canon.js` — per-anchor `utm_source=cloud`, `data-track`, `data-track-dest`; brand header UTM.
+- [x] Pašalinti neveikiantys CSS/JS (`.library-toc`, schema/CTA liekanos); aktyvūs memai — 2 PNG.
+- [x] Vercel production deploy (`lead` → `promptanatomy.cloud`) patvirtintas po push.
+
+---
+
 ## Backlog (be datos — kai bus prioritetas)
 
-- [ ] **„Turinys“ (TOC)**: grupavimas arba aiškesni antraštės lygiai „ką daryti pirmiausia“.
+- [x] **„Turinys“ (TOC)**: grupavimas + „Pirmiausia“ (praktika · biblioteka) — 2026-09-13 A polish.
 - [ ] **Vienas šaltinis bibliotekai** (Markdown / JSON + build): tik jei komanda nuspręs, kad `libraryPrompts` maintenance per sunkus — dabar kanonas lieka JS pagal [AGENTS.md](AGENTS.md) §4.1.
 - [ ] **DS deferred:** full WCAG certification; harden `verify:typography-roles` to fail CI — žr. [docs/design_system.md](docs/design_system.md) §14.
