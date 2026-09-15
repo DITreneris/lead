@@ -2004,15 +2004,6 @@
             flex-direction: column;
             align-items: center;
         }
-        .square-circle-loop {
-            width: 200px; height: 200px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-        .loop-sq { width: 150px; height: 150px; border: 4px solid var(--accent-yellow); position: absolute; top: 0; left: 0; animation: spin 10s linear infinite; }
-        .loop-ci { width: 150px; height: 150px; border: 4px solid var(--accent-red); border-radius: 50%; position: absolute; bottom: 0; right: 0; animation: spin 10s linear infinite reverse; }
-
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* Quiz skaidrė */
         .quiz-slide .container {
@@ -2197,7 +2188,6 @@
                 transition: none !important;
                 animation: none !important;
             }
-            .loop-sq, .loop-ci { animation: none !important; }
             .hero-primary-link,
             .btn-pdf-outline,
             .cta-btn,
@@ -2977,10 +2967,6 @@
 <!-- Skaidrė 13: esmė -->
 <section aria-label="Esmė">
     <div class="essence-content">
-        <div class="square-circle-loop">
-            <div class="loop-sq"></div>
-            <div class="loop-ci"></div>
-        </div>
         <figure class="meme-figure meme-figure--essence">
             <img src="assets/memes/meme-essence.png" width="1672" height="941" loading="lazy" decoding="async"
                 alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Role, ryžiai — 2 Context, lašiša — 3 Reasoning, avokadas — 4 Output, sezamai — 5 Quality check.">
@@ -3070,7 +3056,7 @@
         <p class="cta-ecosystem-link">
             <a class="link-tier-tertiary" href="https://promptanatomy.site/?utm_source=cloud&amp;utm_medium=cta_footer&amp;utm_campaign=ecosystem_map" target="_blank" rel="noopener noreferrer" data-track="cta_ecosystem_site_click" data-track-dest="site" aria-label="Ekosistemos žemėlapis promptanatomy.site (atidaryti naujame skirtuke)">Ekosistemos žemėlapis</a>
         </p>
-        <p class="cta-entity-footer">Promptų Anatomijos ekosistema · Mokymai ir checkout → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" data-track-dest="app" aria-label="Promptų Anatomijos hubas promptanatomy.app (atidaryti naujame skirtuke)">promptanatomy.app</a></p>
+        <p class="cta-entity-footer">Promptų anatomija · programa → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" data-track-dest="app" aria-label="Promptų anatomijos programa promptanatomy.app (atidaryti naujame skirtuke)">promptanatomy.app</a></p>
         <div class="cta-foot site-legal-footnote" role="contentinfo" aria-label="Kontaktai ir leidėjas">
             <p class="site-legal-footnote__brand"><strong>Prompt Anatomy</strong></p>
             <p class="site-legal-footnote__addr">1311 Park St, Unit #654<br>Alameda, CA 94501</p>

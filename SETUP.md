@@ -54,7 +54,7 @@ Po pakeitimų `docs/pamoka-1-pdf.md` paleiskite build ir commitinkite atnaujint�
 - **Design system (v2.1):** [docs/design_system.md](docs/design_system.md) — tokenai, decision recipes, CTA, type scale, `verify:design-tokens`; atnaujinti kartu su didesniais CSS pakeitimais.
 - **PDF kanonai:** LT — [docs/pamoka-1-pdf.md](docs/pamoka-1-pdf.md) → [assets/www.promptanatomy.app.pdf](assets/www.promptanatomy.app.pdf); EN — [docs/pamoka-1-pdf-en.md](docs/pamoka-1-pdf-en.md) → [assets/www.promptanatomy.app-en.pdf](assets/www.promptanatomy.app-en.pdf).
 - **Biblioteka:** kopijuojamas tekstas — `libraryPrompts` + `syncLibraryDom` (žr. [AGENTS.md](AGENTS.md) §4.1).
-- **LT / EN patikra:** po `npm run build` — `npm run verify` ([package.json](package.json) — `verify-library-keys` + `verify-design-tokens` + `verify-en-locale` + `verify-social-meta` + `verify-robots-llms` + `verify-utm-canon`).
+- **LT / EN patikra:** po `npm run build` — `npm run verify` ([package.json](package.json) — `verify-library-keys` + `verify-design-tokens` + `verify-en-locale` + `verify-social-meta` + `verify-robots-llms` + `verify-utm-canon` + `verify:token-injection-idempotence`). Build išvalo `site/` prieš generavimą; vieši assetai — tik `PUBLIC_FILES` allowlist ([scripts/prepare-site-artifact.js](scripts/prepare-site-artifact.js)).
 - **Social share (FB/X):** jei keiti `assets/og-promptanatomy.png`, didink `OG_IMAGE_VERSION` (env) arba `?v=` URL, kad crawleriai persikrautų paveikslą.
 - **Kontekstas agentams:** [AGENTS.md](AGENTS.md) — maršrutai; Cursor rules — `.cursor/rules/`; kokybė — `.cursor/skills/q-a-agent/SKILL.md`.
 
@@ -83,7 +83,7 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 - Jei seniau buvo viešas kelias **`/en/`**, apex serveryje (CDN / hosting) nustatykite **301** į **`/`** — repozitoriuje `/en/` nebegeneruojamas.
 - **GitHub Pages dubliatas:** `https://DITreneris.github.io/lead/` gali rodyti tą patį turinį kaip `promptanatomy.cloud` — kanonas meta/sitemap visada **cloud**. Pageidautina **301** iš github.io į cloud arba atskiras Search Console property; jei naudojate **Cloudflare**, patikrinkite, kad AI bot blocking būtų išjungtas.
 - **Po deploy (curl):** `robots.txt`, `sitemap.xml` (HTTP 200), `llms.txt`, `llms-full.txt`, `/.well-known/security.txt`, `/.well-known/agent.json` — žr. [AGENTS.md](AGENTS.md) Release.
-- **Vercel:** [vercel.json](vercel.json) — `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `Strict-Transport-Security`. GitHub Pages antraštės — CDN taisyklėmis (jei taikoma).
+- **Vercel:** projektas `lead` (`DITreneris/lead`) → production alias `promptanatomy.cloud`; [vercel.json](vercel.json) — `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `Strict-Transport-Security`. GitHub Pages antraštės — CDN taisyklėmis (jei taikoma).
 
 ## Šaltas deploy į GitHub (pvz. [DITreneris/lead](https://github.com/DITreneris/lead))
 

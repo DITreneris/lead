@@ -61,7 +61,8 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] **Terminologija EN** sutampa su [AGENTS.md](../../../AGENTS.md) skyriumi „Golden standard (EN)“ ir jau naudojamais žodžiais UI (pvz. „framework“, „prompt“, „library“ — ne maišyti atsitiktinai su kitais sinonimais vienoje šakoje).
 - [ ] Nauja ar keista **išorinė nuoroda į promptanatomy.pro** ar **promptanatomy.site**: LT ir EN poros [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs), `aria-label`, UTM; pamokos kanonas — `promptanatomy.cloud` (žr. AGENTS.md **„Ekosistema (domenai)“**). Kitų ekosistemos subdomainų (`.info` … `.lol`) **nekelti** į pamokos chrome be atskiros užduoties.
 - [ ] **Entity footer (QW1b):** `#cta` turi `.cta-entity-footer` virš legal footnote; copy sutampa su AGENTS.md kanonu (LT + EN pora); href `utm_source=cloud&utm_medium=entity_footer&utm_campaign=ecosystem`; `data-track=entity_footer_click`; neužgožia Tier‑1 CTA; be founder / hard-sell.
-- [ ] **Outbound UTM = `cloud`:** visos nuorodos į `.app` / `.pro` / `.site` naudoja `utm_source=cloud` (ne `lead` / `promptanatomy_app` / `promptanatomy_cloud`); LT + EN poros; `npm run verify` apima `verify:utm-canon`.
+- [ ] **Outbound UTM = `cloud`:** visos nuorodos į `.app` / `.pro` / `.site` naudoja `utm_source=cloud` (ne `lead` / `promptanatomy_app` / `promptanatomy_cloud`); LT + EN poros; kiekvienas outbound anchor turi `data-track` ir teisingą `data-track-dest` (`app` / `pro` / `site`); `npm run verify` apima `verify:utm-canon`.
+- [ ] **EN biblioteka runtime:** jei `window.__PROMPT_LIBRARY_EN__` neįsikrauna, `libraryPrompts` = `{}` ir `console.error` — ne tylus fallback į LT.
 
 ### SEO / GEO (Enter build)
 
@@ -72,7 +73,13 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] `tools.html` / `tools-lt.html`: `noindex, follow` + `canonical` į pamoką; ne sitemap.
 - [ ] `tools.html` / `tools-lt.html` / `404.html` href **ne** į `index.html` (naudoti `./` / `./lt/`).
 - [ ] Organization JSON-LD `logo` → `favicon.svg` (OG/Twitter lieka 1200×630 PNG).
-- [ ] Po SEO pakeitimų: `npm run build` + `verify:robots-llms` (FAQ paritetas, 4 URL sitemap, tools noindex).
+- [ ] Po SEO pakeitimų: `npm run build` + `verify:robots-llms` (FAQ paritetas, 4 URL sitemap, tools noindex, meme allowlist, draudimas `site/en/`).
+
+### Build artefaktas (`site/`)
+
+- [ ] [scripts/build-locale-pages.js](../../../scripts/build-locale-pages.js) išvalo `site/` prieš generavimą — nebelieka legacy `site/en/`.
+- [ ] [scripts/prepare-site-artifact.js](../../../scripts/prepare-site-artifact.js) kopijuoja tik `PUBLIC_FILES` allowlist; naujas viešas meme/asset = į allowlist + HTML nuoroda + `verify:robots-llms`.
+- [ ] `npm run verify` apima `verify:token-injection-idempotence` — pakartotinis tokenų inject nekeičia HTML.
 
 ### PDF ir release
 
