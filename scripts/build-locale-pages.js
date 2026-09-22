@@ -31,6 +31,9 @@ const META_DESCRIPTION_EN =
   'A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.';
 const META_DESCRIPTION_LT =
   'DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.';
+/** Social cards truncate near 125 characters; search meta stays META_DESCRIPTION_EN. */
+const SOCIAL_DESCRIPTION_EN =
+  'A practical AI playbook for teams and leaders: framework, send check, library, quiz — less rework, more control.';
 /** Vercel sets this during builds on Vercel; omit analytics on GitHub Pages / local to avoid broken /_vercel paths under project URLs. */
 const VERCEL_BUILD = process.env.VERCEL === '1';
 
@@ -146,7 +149,7 @@ function applyLtSocialEnglish(html) {
     ],
     [
       '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta property="og:description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
+      `<meta property="og:description" content="${SOCIAL_DESCRIPTION_EN}">`
     ],
     [
       '<meta property="og:site_name" content="Promptų anatomija">',
@@ -166,7 +169,7 @@ function applyLtSocialEnglish(html) {
     ],
     [
       '<meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta name="twitter:description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
+      `<meta name="twitter:description" content="${SOCIAL_DESCRIPTION_EN}">`
     ]
   ];
   let h = html;
@@ -273,7 +276,7 @@ function applyEnHead(html) {
     ['<title>Promptų anatomija — darbui ir vadovavimui</title>', '<title>Prompt Anatomy — for work and leadership</title>'],
     [
       '<meta name="description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta name="description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
+      `<meta name="description" content="${META_DESCRIPTION_EN}">`
     ],
     [
       '<meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">',
@@ -281,7 +284,7 @@ function applyEnHead(html) {
     ],
     [
       '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta property="og:description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
+      `<meta property="og:description" content="${SOCIAL_DESCRIPTION_EN}">`
     ],
     ['<meta property="og:locale" content="lt_LT">', '<meta property="og:locale" content="en_US">'],
     [
@@ -306,7 +309,7 @@ function applyEnHead(html) {
     ],
     [
       '<meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
-      '<meta name="twitter:description" content="A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.">'
+      `<meta name="twitter:description" content="${SOCIAL_DESCRIPTION_EN}">`
     ]
   ];
   for (const [from, to] of headPairs) {
@@ -451,4 +454,12 @@ function main() {
   console.log('Wrote site/index.html (EN), site/lt/index.html (LT), robots.txt, sitemap.xml');
 }
 
-main();
+module.exports = {
+  META_DESCRIPTION_EN,
+  META_DESCRIPTION_LT,
+  SOCIAL_DESCRIPTION_EN
+};
+
+if (require.main === module) {
+  main();
+}

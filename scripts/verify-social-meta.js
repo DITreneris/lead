@@ -4,14 +4,23 @@
  * Verify social meta stability:
  * - site/index.html and site/lt/index.html must use versioned OG/Twitter image URLs (?v=...)
  * - assets/og-promptanatomy.png must be 1200×630 (matches meta tags)
+ * - og:description and twitter:description share SOCIAL_DESCRIPTION_EN (≤125)
+ * - meta description stays META_DESCRIPTION_EN on EN and META_DESCRIPTION_LT on LT
  */
 const fs = require('fs');
 const path = require('path');
+
+const {
+  META_DESCRIPTION_EN,
+  META_DESCRIPTION_LT,
+  SOCIAL_DESCRIPTION_EN
+} = require('./build-locale-pages');
 
 const ROOT = path.join(__dirname, '..');
 const EN_HTML = path.join(ROOT, 'site', 'index.html');
 const LT_HTML = path.join(ROOT, 'site', 'lt', 'index.html');
 const OG_PNG = path.join(ROOT, 'assets', 'og-promptanatomy.png');
+const SOCIAL_DESCRIPTION_MAX = 125;
 
 function readFileOrFail(p) {
   if (!fs.existsSync(p)) {
@@ -69,12 +78,42 @@ function verifyPage(htmlPath, html) {
   expectVersioned(tw, `${htmlPath} meta name="twitter:image"`);
 }
 
+function verifyDescriptions(htmlPath, html, metaDescription) {
+  const og = extractMetaContent(html, 'property', 'og:description');
+  const tw = extractMetaContent(html, 'name', 'twitter:description');
+  const meta = extractMetaContent(html, 'name', 'description');
+
+  if (og !== tw) {
+    console.error('[verify-social-meta] og:description !== twitter:description on', htmlPath);
+    process.exit(1);
+  }
+  if (og !== SOCIAL_DESCRIPTION_EN) {
+    console.error('[verify-social-meta] social description mismatch on', htmlPath);
+    process.exit(1);
+  }
+  if (SOCIAL_DESCRIPTION_EN.length > SOCIAL_DESCRIPTION_MAX) {
+    console.error(
+      '[verify-social-meta] social description is',
+      SOCIAL_DESCRIPTION_EN.length,
+      'characters; max is',
+      SOCIAL_DESCRIPTION_MAX
+    );
+    process.exit(1);
+  }
+  if (meta !== metaDescription) {
+    console.error('[verify-social-meta] meta description mismatch on', htmlPath);
+    process.exit(1);
+  }
+}
+
 function main() {
   const enHtml = readFileOrFail(EN_HTML).toString('utf8');
   const ltHtml = readFileOrFail(LT_HTML).toString('utf8');
 
   verifyPage(EN_HTML, enHtml);
   verifyPage(LT_HTML, ltHtml);
+  verifyDescriptions(EN_HTML, enHtml, META_DESCRIPTION_EN);
+  verifyDescriptions(LT_HTML, ltHtml, META_DESCRIPTION_LT);
 
   const pngBuf = readFileOrFail(OG_PNG);
   const size = readPngSize(pngBuf);
@@ -87,7 +126,11 @@ function main() {
     process.exit(1);
   }
 
-  console.log('[verify-social-meta] OK:', 'versioned social images + 1200×630 PNG');
+  console.log(
+    '[verify-social-meta] OK:',
+    'versioned social images + 1200×630 PNG + social description',
+    SOCIAL_DESCRIPTION_EN.length
+  );
 }
 
 main();
