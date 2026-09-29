@@ -25,6 +25,9 @@
             '',
             'Input:',
             'Task (what the AI must do): [TASK]',
+            'Confidentiality: [INTERNAL / CLIENT / PUBLIC — what must not leak]',
+            'Legal / contract boundary: [WHAT IS FORBIDDEN OR NEEDS SIGN-OFF]',
+            'Approval chain: [WHO SIGNS OFF BEFORE SEND — if relevant]',
             'Length: [E.g. max 200 words / 1 page]',
             'Avoid: [E.g. jargon, hype, subjective ratings]',
             'Format: [E.g. bullets, table, paragraphs]',
@@ -32,7 +35,8 @@
             '',
             'Output:',
             'One clear prompt ready to paste into the AI',
-            '"Avoid": up to 5 short bullets'
+            '"Avoid": up to 5 short bullets',
+            'If facts are missing — what to ask before acting, not guessing'
         ].join('\n'),
         lib_daySummary: [
             'Day summary from facts — fill the fields, get 5 bullets.',
@@ -60,13 +64,16 @@
             'Summary',
             'Decisions',
             'Actions (who / when)',
-            'Open questions'
+            'Open questions',
+            'Write an owner and a date only if they are in the notes; otherwise — “not stated”.'
         ].join('\n'),
         lib_emailReply: [
             'Reply to an email or message you received.',
             '',
             'Input:',
             'Incoming email or message: [PASTE]',
+            'What you want to answer: [AGREE / DELAY / ASK / DECLINE]',
+            'What you will not promise: [TEXT]',
             '',
             'Output:',
             '4–6 sentences',
@@ -174,7 +181,7 @@
             'Input:',
             '[Paste your prompt here]',
             '',
-            'Criteria (5 principles): Clarity; Experimentation; Simple to complex; Context; Word choice.',
+            'Criteria (5 principles): Role; Context; Reasoning; Output; Quality control.',
             '',
             'Output:',
             '1) Table: 1–5 score per principle',
@@ -224,13 +231,16 @@
         'Summary for leader',
         'Decisions and owners',
         'Actions (who / by when)',
-        'Risks and open questions'
+        'Risks and open questions',
+        'Write an owner and a date only if they are in the notes; otherwise — “not stated”.'
     ].join('\n');
     p.mgr_emailReply = [
         'Reply for leadership or external comms.',
         '',
         'Input:',
         'Incoming email or message: [PASTE]',
+        'What you want to answer: [AGREE / DELAY / ASK / DECLINE]',
+        'What you will not promise: [TEXT]',
         '',
         'Output:',
         '4–7 sentences',
@@ -332,7 +342,7 @@
         'Input:',
         '[Paste your prompt here]',
         '',
-        'Criteria (5 principles): Clarity; Experimentation; Simple to complex; Context; Word choice.',
+        'Criteria (5 principles): Role; Context; Reasoning; Output; Quality control.',
         '',
         'Output:',
         '1) Table: 1–5 score per principle',

@@ -1,9 +1,13 @@
 ---
 name: data-agent
-description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių planas ir vykdymo eilė šiame repozitorijoje. Naudoti kai reikia diagramų, duomenų srautų, rizikų prieš keičiant index.html ar PDF šaltinį.
+description: Schemos (Mermaid), duomenų ir teksto faktų tikrinimas, pokyčių planas ir vykdymo eilė šiame repozitorijoje. Naudoti kai reikia diagramų, duomenų srautų, rizikų prieš keičiant index.html ar PDF šaltinį. Vietinis Python — ne Windows python (Store stubas, exit 9009); paleisti wsl python3.
 ---
 
 # Data agentas — Promptų anatomija (64_APK)
+
+## Lessons
+
+Prieš shell komandą perskaityk [lessons.md](lessons.md). Windows `python` yra Store stubas (exit 9009). Python paleidžiamas per `wsl python3` arba `wsl -e python3`.
 
 ## Kada naudoti
 

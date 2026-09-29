@@ -3,16 +3,20 @@
 const FALLBACK_FAQ = {
   lt: [
     {
-      q: 'Kam tai?',
-      a: 'Komandai ir vadovui — aiškesni rezultatai.'
+      q: 'Ką įrašyti į užklausą vadovybės atnaujinimui?',
+      a: 'Auditoriją, kontekstą, ribas ir rezultatą (punktai, lentelė ar sprendimo santrauka). Pridėk sėkmės kriterijų.'
     },
     {
-      q: 'Kada naudoti patikrą?',
-      a: 'Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.'
+      q: 'Kaip sumažinti pramanytus faktus klientų laiškuose?',
+      a: 'Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kas saugu, ką būtina patikrinti.'
     },
     {
-      q: 'Ką kopijuoti?',
-      a: 'Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.'
+      q: 'Kas yra greita patikra?',
+      a: '30 sekundžių rizikos peržiūra prieš siuntimą: faktai, trūkstamas kontekstas ir 2–3 reputacijos rizikos.'
+    },
+    {
+      q: 'Kaip gauti tą patį rezultatą visoje komandoje?',
+      a: 'Naudok vieną šabloną (vaidmuo, kontekstas, mąstymas, rezultatas), tada kartok su tuo pačiu sąrašu.'
     }
   ],
   en: [

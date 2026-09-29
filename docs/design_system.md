@@ -1,7 +1,7 @@
 # Design System — Promptų anatomija
 
 **Version:** 2.1  
-**Last reviewed:** 2026-09-13 — `.slide-outline__group` / `__first`; type/measure tokens; chrome ≥12–13px; `--text-tertiary` / `--text-secondary`; `--accent-teal*`; decision recipes (§2.1); public vs private tokens.  
+**Last reviewed:** 2026-09-29 — schema reason step contrast (`--accent-teal-deep` + `--text-bright`); chrome floor enforced in `verify:typography-roles`; component white `rgba` must use a token.  
 **Audience:** Product owner, frontend maintainer, AI coding agents.
 
 This document describes **what exists today**. It is not a redesign brief. Visual changes should improve **consistency and maintainability** only.
@@ -82,7 +82,7 @@ flowchart TB
 
 1. Pick a §4 typography role (`lead`, `label`, `UI`, display H1/H2, mono).
 2. Use `var(--font-size-*)` / `var(--lh-body)` / `var(--measure-prose)` — do not invent a one-off `font-size` outside roles.
-3. Chrome / labels: floor **≥12px** (interactive chrome target **13px** via `--font-size-label`).
+3. Chrome / labels: floor **≥12px** (interactive chrome target **13px** via `--font-size-label`). `verify:typography-roles` exits 1 when a rule can render below 12px (`clamp()` bounds, and `em`/`rem` at a 16px root) and on orphan `font-size` above 32px.
 
 **New `details` / disclosure**
 
@@ -116,8 +116,8 @@ flowchart TB
 | `--primary-blue` | `#103b5a` | Brand navy, surfaces, schema steps |
 | `--accent-yellow` | `#fbd304` | Highlights, copy buttons, active nav, tabs |
 | `--accent-red` | `#ff5a5f` | Primary CTAs, labels (`.label`), badges tint |
-| `--accent-teal` | `#0d9488` | Context card border (`.types-card--ctx`); schema “reason” step |
-| `--accent-teal-deep` | `#047857` | Schema reason gradient end |
+| `--accent-teal` | `#0d9488` | Context card border (`.types-card--ctx`) |
+| `--accent-teal-deep` | `#047857` | Schema reason step fill (`.schema-step--reason`) |
 | `--bg-dark` | `#071b29` | Page base (alias via `--surface-base`) |
 
 ### 3.2 Surfaces and borders
@@ -374,6 +374,7 @@ Test at **375px, 390px, 768px, 1024px** after CSS changes:
 | 2026-05-25 | `site/lt/` + `site/` (post v1.5) | 375, 390, 768, 1024 | Agent smoke (structural) | Pass — nav 15 slides, primer/guided modifiers, library tabs, quiz feedback margin, outline focus |
 | 2026-05-25 | post DS v2.0 | 375, 390, 768, 1024 | Agent smoke | Pass — `.disclosure-chip*`, hero mobile center, `tools-lt.html`; see [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) |
 | 2026-07-29 | post DS v2.1 | 375, 768, 1024 | Agent structural + checklist | Pass — chrome ≥13px disclosure/label; teal tokens; type tokens; projector/tab/DUK spot items closed in [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) (human re-check recommended on device) |
+| 2026-09-29 | post reason-step contrast | 375 + desktop | Agent browser | Pass — reason fill `#047857` / `--text-bright`; guided labels 13px including „Rezultatas“; EN `site/index.html` same fill |
 
 ---
 
@@ -422,6 +423,7 @@ For each new UI, **reuse a row below** before inventing a class.
 | `.disclosure-chip__summary` / `__panel` | Shared `details` chip + panel (hero DUK, „Turinys“) |
 | `.disclosure-chip--nav` / `--inline` | Modifiers: fixed nav list vs inline hero FAQ |
 | `.slide-lead` | Unified lead paragraph metrics |
+| `.slide-head` | Label + `h2` + lead as one grid child so container gap does not split the stack. Rhythm: label → `h2` `--space-3` (12px), `h2` → lead `--space-4` (16px), lead → next block `--space-8` (32px). `h2 { margin-top: 0 }` is global. Intro `h1`, essence, CTA title, and quiz question keep their own margins. |
 | `.link-tier-tertiary` | Tertiary text links (hero foot, `.inline-link--soft`) |
 | `.btn-pdf-outline` | Tier 2 PDF (`.hero-pdf-link`, `.cta-pdf-link`) |
 
@@ -430,7 +432,7 @@ For each new UI, **reuse a row below** before inventing a class.
 | Class | Purpose |
 |-------|---------|
 | `.types-slide` | Wrapper for primer/guided slides |
-| `.types-slide--primer` | Pagrindai slide; top-aligned shell (with `id="primer"`) |
+| `.types-slide--primer` | Pagrindai slide; top-aligned shell (with `id="primer"`). Card stack `var(--space-3)`; cols and quick strip `max-width: 960px`; desc/example `text-wrap: pretty`. |
 | `.types-slide--guided` | Praktika slide (with `id="guided"`) |
 | `.types-card` | Base card; modifiers `--sys`, `--ctx`, `--role` (border accent) |
 | `.types-primer-cols` | Two cards on primer slide |
@@ -457,7 +459,7 @@ For each new UI, **reuse a row below** before inventing a class.
 
 | Class | Purpose |
 |-------|---------|
-| `.schema-section`, `.schema-grid`, `.schema-step`, `.schema-step--*` | Framework diagram |
+| `.schema-section`, `.schema-grid`, `.schema-step`, `.schema-step--*` | Framework diagram. Reason step (`.schema-step--reason`): fill `--accent-teal-deep`, text `--text-bright`, number opacity 1 |
 | `.schema-arrow`, `.schema-loop-svg` | Connectors (`.schema-loop-svg` hidden on mobile) |
 | `.qc-next` | After send-check: next template · library (Tier 5) |
 | `.roadmap-slide`, `.roadmap-row`, `.roadmap-dot`, `.roadmap-time` | Journey timeline |
@@ -571,7 +573,7 @@ Visual tokens are locale-agnostic. **Text is not.**
 | Background | `--surface-base` / `--bg-dark` |
 | Accent CTA | `--accent-yellow`, `--radius-md` |
 | Fonts | Inter + Space Grotesk (Google Fonts) |
-| Motion | `--ease-out`, `--duration-fast` on CTA hover |
+| Motion | `--ease-out`, `--duration-fast` on CTA hover; `prefers-reduced-motion` sets `transition: none` on the CTA |
 | Focus | 2px `--accent-yellow` outline (matches lesson) |
 | Divider | `--border-hairline` on legal footnote |
 
@@ -598,7 +600,7 @@ Minimal page — no slide nav or lesson JS.
 | `.tool-list` / `.tool-item` / `.tool-dot` | Tool listing with tree line |
 | `.version-tag` | Small metadata chip |
 | `.header-title` | Hero headline |
-| `.page-shell` / `.page-header` / `.page-footer` | Page chrome |
+| `.page-shell` / `.page-header` / `.page-footer` | Page chrome; shell uses `--shadow-lg`; `.brand-tagline` uses `--font-size-label` |
 
 ### 11.3 Brand mapping (satellites → lesson)
 
@@ -672,7 +674,7 @@ Minimal page — no slide nav or lesson JS.
 - [x] Overlay / on-dark tokens (§3.9) + component literal migracija (lesson)
 - [x] [`tools-lt.html`](../tools-lt.html) LT companion (EN [`tools.html`](../tools.html) unchanged)
 - [x] [`docs/DS_TYPOGRAPHY_AUDIT.md`](DS_TYPOGRAPHY_AUDIT.md), [`docs/DS_A11Y_SMOKE_v2.md`](DS_A11Y_SMOKE_v2.md)
-- [x] `verify:typography-roles` (soft gate)
+- [x] `verify:typography-roles` (hard fail: under 12px, and over 32px outside §4 display roles — 2026-09-29)
 
 ### v2.1 Definition of Done (2026-07-29)
 
@@ -692,7 +694,7 @@ Minimal page — no slide nav or lesson JS.
 | Full WCAG audit / certification | Out of DS scope |
 | EN bundle without inline `libraryPromptsLt` | EN audit §4 |
 | Library single Markdown source | AGENTS §4.1 |
-| Harden `verify:typography-roles` to fail CI | Soft gate until orphans stay at zero for a release cycle |
+| Full contrast audit of schema light cards (`#e8eef4` / `#0f172a`) | Readable today; not tokenized |
 
 ---
 

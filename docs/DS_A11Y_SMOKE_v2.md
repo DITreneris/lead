@@ -31,5 +31,6 @@
 
 | Date | Build | Viewports | Tester | Result |
 |------|-------|-----------|--------|--------|
+| 2026-09-29 | reason-step contrast | 375 + desktop | Agent browser | Pass — `.schema-step--reason` fill `#047857`, text `#f8fafc`, number opacity 1; guided labels 13px, „Rezultatas“ not clipped; EN build same fill |
 | 2026-07-29 | post DS v2.1 | 375, 768, 1024 | Agent structural | Pass — type tokens, chrome floor, teal, tertiary text roles |
 | 2026-05-25 | post DS v2.0 | 375, 390, 768, 1024 | Agent smoke | Pass — disclosure patterns, hero mobile center, tools-lt deploy path |

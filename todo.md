@@ -85,4 +85,5 @@ Tikslas: deterministinis `site/` artefaktas, griežtesnė LT↔EN/UTM patikra, n
 
 - [x] **„Turinys“ (TOC)**: grupavimas + „Pirmiausia“ (praktika · biblioteka) — 2026-09-13 A polish.
 - [ ] **Vienas šaltinis bibliotekai** (Markdown / JSON + build): tik jei komanda nuspręs, kad `libraryPrompts` maintenance per sunkus — dabar kanonas lieka JS pagal [AGENTS.md](AGENTS.md) §4.1.
-- [ ] **DS deferred:** full WCAG certification; harden `verify:typography-roles` to fail CI — žr. [docs/design_system.md](docs/design_system.md) §14.
+- [x] **DS:** `verify:typography-roles` hard-fail (žemiau 12px ir našlaičiai virš 32px) — 2026-09-29.
+- [ ] **DS deferred:** full WCAG certification — žr. [docs/design_system.md](docs/design_system.md) §14.

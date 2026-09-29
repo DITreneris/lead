@@ -32,4 +32,5 @@
     --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
     --duration-fast: 180ms;
     --duration-base: 220ms;
+    --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.45);
 }

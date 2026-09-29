@@ -45,6 +45,7 @@
             --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
             --duration-fast: 180ms;
             --duration-base: 220ms;
+            --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.45);
         }
         /* DS_TOKENS_END */
         * { box-sizing: border-box; }
@@ -83,6 +84,9 @@
         }
         a.cta-primary:hover { filter: brightness(1.05); }
         a.cta-primary:focus-visible { outline: 2px solid var(--accent-yellow); outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            a.cta-primary { transition: none; }
+        }
         .sub { margin-top: 16px; font-size: 0.9rem; }
         .sub a {
             display: inline;

@@ -281,7 +281,7 @@
             border-radius: var(--radius-lg);
             padding: 6px 8px;
             margin: -6px -8px;
-            transition: opacity var(--duration-base);
+            transition: opacity var(--duration-base) var(--ease-out);
         }
         .brand-header .brand-lockup:hover { opacity: 0.9; }
         .brand-icon {
@@ -341,7 +341,7 @@
             background: rgba(0, 0, 0, 0.2);
             color: var(--text-muted);
             cursor: pointer;
-            transition: color var(--duration-fast), border-color var(--duration-fast), background var(--duration-fast);
+            transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
         }
         .lang-switch__btn:hover {
             color: var(--text-bright);
@@ -467,7 +467,7 @@
             margin-bottom: 0;
         }
         .types-slide--primer .types-grid.types-primer-cols {
-            margin-top: 14px;
+            margin-top: 0;
         }
         .types-slide--primer .types-card h3 {
             font-size: clamp(15px, 1.12vw, 17px);
@@ -475,11 +475,16 @@
         .types-slide--primer .types-card-desc {
             font-size: clamp(12px, 0.98vw, 14px);
             color: var(--text-muted);
+            text-wrap: pretty;
+        }
+        .types-slide--primer .types-card-k {
+            margin-top: 0;
         }
         .types-slide--primer .types-card .types-card-example {
             background: rgba(16, 59, 90, 0.4);
             border-left-width: 2px;
             border-left-color: var(--accent-yellow-border);
+            text-wrap: pretty;
         }
         .types-primer-quick .types-card-example.types-primer-quick-example {
             background: rgba(16, 59, 90, 0.38);
@@ -503,7 +508,7 @@
             gap: 6px;
             margin-top: 2px;
             padding: 9px 16px;
-            font-size: clamp(11px, 0.85vw, 12px);
+            font-size: var(--font-size-label);
             font-weight: 800;
             letter-spacing: 0.06em;
             text-transform: uppercase;
@@ -565,7 +570,7 @@
             margin-right: auto;
         }
         .slide-sublead.slide-lead {
-            margin: var(--space-2) 0 var(--space-4);
+            margin: 0 0 var(--space-8);
         }
         .disclosure-chip__summary {
             cursor: pointer;
@@ -688,7 +693,8 @@
             font-family: var(--font-display);
             font-size: clamp(36px, 4.2vw, 56px);
             line-height: 1.12;
-            margin-bottom: 24px;
+            margin-top: 0;
+            margin-bottom: var(--space-4);
             color: var(--text-bright);
             letter-spacing: -0.02em;
         }
@@ -756,7 +762,7 @@
             color: var(--text-soft);
         }
         .essence-lead {
-            font-size: clamp(22px, 2.6vw, 36px);
+            font-size: clamp(22px, 2.6vw, 32px);
             color: var(--text-muted);
             margin: 0 auto;
             line-height: 1.45;
@@ -797,7 +803,7 @@
         .site-legal-footnote__brand {
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            font-size: 0.85em;
+            font-size: var(--font-size-label);
         }
         .site-legal-footnote__brand strong {
             color: var(--text-bright);
@@ -805,7 +811,7 @@
         }
         .site-legal-footnote__addr,
         .site-legal-footnote__email {
-            font-size: 0.92em;
+            font-size: 1em;
         }
         .site-legal-footnote__email a {
             color: var(--text-body);
@@ -820,9 +826,8 @@
         .site-legal-footnote__tag {
             margin-top: 8px;
             letter-spacing: 0.1em;
-            font-size: 0.8em;
+            font-size: var(--font-size-label);
             text-transform: uppercase;
-            opacity: 0.85;
         }
         .label { 
             color: var(--accent-red); 
@@ -830,7 +835,7 @@
             letter-spacing: var(--tracking-label); 
             font-weight: 800; 
             font-size: clamp(13px, 1.1vw, 15px); 
-            margin-bottom: 12px;
+            margin-bottom: var(--space-3);
             display: block;
         }
 
@@ -1069,9 +1074,9 @@
             max-width: 1180px;
             grid-template-columns: 1fr;
             text-align: center;
+            gap: var(--space-8);
         }
-        .types-head { margin-bottom: 4px; }
-        .types-head h2 { margin-bottom: 10px; }
+        .types-head { margin-bottom: 0; }
         .types-lead.slide-lead {
             margin: 0 auto;
         }
@@ -1080,7 +1085,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 18px;
             text-align: left;
-            margin-top: 22px;
+            margin-top: 0;
             align-items: stretch;
         }
         .types-card {
@@ -1097,7 +1102,7 @@
         /* Dvi kortelės (Pagrindai): 2 stulpeliai + greito formato juosta */
         .types-grid.types-primer-cols {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            max-width: 800px;
+            max-width: 960px;
             margin-left: auto;
             margin-right: auto;
             align-items: start;
@@ -1111,6 +1116,7 @@
             flex: 0 1 auto;
             display: flex;
             flex-direction: column;
+            gap: var(--space-3);
             min-height: 0;
         }
         .types-primer-cols .types-example-block {
@@ -1125,8 +1131,8 @@
             align-self: flex-start;
         }
         .types-primer-quick {
-            margin-top: 28px;
-            max-width: 800px;
+            margin-top: 0;
+            max-width: 960px;
             margin-left: auto;
             margin-right: auto;
             padding: 18px 18px 16px;
@@ -1179,7 +1185,7 @@
         /* Trys kortelės (Praktika): lygios kolonos, vienoda Kopijuoti eilutė, pilkas turinio box išsitempia */
         .types-grid.types-triple-grid {
             gap: var(--space-6);
-            margin-top: 26px;
+            margin-top: 0;
             align-items: stretch;
         }
         .types-triple-grid > .types-card {
@@ -1259,6 +1265,11 @@
         }
         .types-slide--guided .types-card-desc {
             margin-bottom: var(--space-2);
+            text-wrap: pretty;
+        }
+        .types-slide--guided .types-card-example,
+        .types-slide--guided .types-card-result {
+            text-wrap: pretty;
         }
         /* .types-slide--guided: kontrastas ir sąrašai (praktika) */
         .types-slide--guided .types-card-example--minimal {
@@ -1286,13 +1297,13 @@
             color: var(--text-body);
         }
         .types-slide--guided .practice-structured-line strong {
-            flex: 0 0 5.5em;
+            flex: 0 0 auto;
             font-family: var(--font-main);
-            font-size: 10px;
+            font-size: var(--font-size-label);
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: rgba(167, 243, 208, 0.88);
+            color: var(--text-bright);
         }
         .types-slide--guided .practice-structured-line span {
             flex: 1 1 12em;
@@ -1446,12 +1457,14 @@
             max-width: 920px;
             width: 100%;
             text-align: left;
+            gap: var(--space-8);
         }
+        .slide-head { margin: 0; }
         .library-lead {
             font-size: clamp(16px, 1.2vw, 19px);
             line-height: 1.55;
             color: var(--text-muted);
-            margin: 0 0 20px;
+            margin: 0;
             max-width: 40em;
         }
         .library-toolbar {
@@ -1561,7 +1574,7 @@
         .library-cat-summary__meta {
             flex-shrink: 0;
             font-family: var(--font-main);
-            font-size: clamp(11px, 0.82vw, 13px);
+            font-size: var(--font-size-label);
             font-weight: 600;
             letter-spacing: 0.03em;
             text-transform: none;
@@ -1785,7 +1798,7 @@
             font-size: clamp(15px, 1.15vw, 18px);
             line-height: 1.45;
             max-width: 28em;
-            margin: 0 auto 20px;
+            margin: 0 auto var(--space-8);
         }
         .roadmap-journey {
             position: relative;
@@ -1911,7 +1924,7 @@
             padding: 14px 16px;
             border-radius: var(--radius-md);
             border: 1px solid var(--white-alpha-12);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            box-shadow: var(--shadow-md);
         }
         .schema-step-num {
             font-family: var(--font-display);
@@ -1939,15 +1952,15 @@
         }
         .schema-step--neutral .schema-step-num { color: #0f172a; }
         .schema-step--reason {
-            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-teal-deep) 100%);
+            background: var(--accent-teal-deep);
             border-color: var(--white-alpha-20);
         }
-        .schema-step--reason .schema-step-num { color: var(--white-alpha-90); }
-        .schema-step--reason .schema-step-body { color: #ecfdf5; }
+        .schema-step--reason .schema-step-num { color: var(--text-bright); opacity: 1; }
+        .schema-step--reason .schema-step-body { color: var(--text-bright); }
         .schema-step--reason .schema-step-body strong { color: var(--text-bright); }
         .schema-step--qc {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #0c2d45 100%);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--border-subtle);
         }
         .schema-step--qc .schema-step-num { color: var(--white-alpha-90); }
         .schema-step--qc .schema-step-body { color: #e0f2fe; }
@@ -1959,7 +1972,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.3);
+            color: var(--text-soft);
         }
         .schema-arrow svg { width: 20px; height: 20px; }
         .schema-loop-svg {
@@ -2253,7 +2266,7 @@
                 width: 10px;
                 height: 10px;
                 border-radius: var(--radius-pill);
-                border: 2px solid rgba(255, 255, 255, 0.16);
+                border: 2px solid var(--border-subtle);
                 background: var(--white-alpha-04);
                 box-sizing: border-box;
                 transition: transform var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
@@ -2423,9 +2436,10 @@
             <details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">
                 <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>
                 <div class="hero-faq__panel disclosure-chip__panel">
-                    <div class="hero-faq__item"><strong>Kam tai?</strong> Komandai ir vadovui — aiškesni rezultatai.</div>
-                    <div class="hero-faq__item"><strong>Kada naudoti patikrą?</strong> Prieš siunčiant klientui ar vadovybei, kai svarbūs faktai ir tonas.</div>
-                    <div class="hero-faq__item"><strong>Ką kopijuoti?</strong> Paimk šabloną, užpildyk [laukus], paleisk, tada iteruok.</div>
+                    <div class="hero-faq__item"><strong>Ką įrašyti į užklausą vadovybės atnaujinimui?</strong> Auditoriją, kontekstą, ribas ir rezultatą (punktai, lentelė ar sprendimo santrauka). Pridėk sėkmės kriterijų.</div>
+                    <div class="hero-faq__item"><strong>Kaip sumažinti pramanytus faktus klientų laiškuose?</strong> Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kas saugu, ką būtina patikrinti.</div>
+                    <div class="hero-faq__item"><strong>Kas yra greita patikra?</strong> 30 sekundžių rizikos peržiūra prieš siuntimą: faktai, trūkstamas kontekstas ir 2–3 reputacijos rizikos.</div>
+                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (vaidmuo, kontekstas, mąstymas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>
                 </div>
             </details>
         </div>
@@ -2859,9 +2873,11 @@
 <!-- Skaidrė 12: Promptų biblioteka (resursai) -->
 <section id="library" class="library-slide" aria-label="Promptų biblioteka (resursai)">
     <div class="container">
-        <span class="label">Biblioteka</span>
-        <h2>Promptų biblioteka</h2>
-        <p class="library-lead">Čia — paruoštos užklausos į DI: atsidaryk kategoriją ir nukopijuok. Dažniausias startas: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Kasdienis darbas</a> → dienos santrauka ar užduočių sąrašas.</p>
+        <div class="slide-head">
+            <span class="label">Biblioteka</span>
+            <h2>Promptų biblioteka</h2>
+            <p class="library-lead">Čia — paruoštos užklausos į DI: atsidaryk kategoriją ir nukopijuok. Dažniausias startas: <a class="inline-link inline-link--accent" href="#lib-cat-work" data-track="library_quick_work">Kasdienis darbas</a> → dienos santrauka ar užduočių sąrašas.</p>
+        </div>
 
         <div class="library-toolbar">
             <div class="library-tabs" role="tablist" aria-label="Bibliotekos auditorija">
@@ -3196,6 +3212,9 @@
                 '',
                 'Įvestis:',
                 'Užduotis (ką DI turi padaryti): [APRAŠYK UŽDUOTĮ]',
+                'Konfidencialumas: [VIDINIS / KLIENTAS / VIEŠA — kas negali nutekėti]',
+                'Teisinė ar patvirtinimo riba: [KAS DRAUDŽIAMA ARBA REIKIA PATVIRTINIMO]',
+                'Kas tvirtina prieš siuntimą: [ĮRAŠYK — jei aktualu]',
                 'Ilgis: [PVZ. maks. 200 žodžių / 1 puslapis]',
                 'Ko vengti: [PVZ. žargonas, reklama, subjektyvūs įvertinimai]',
                 'Formatas: [PVZ. punktai, lentelė, pastraipos]',
@@ -3203,7 +3222,8 @@
                 '',
                 'Išvestis:',
                 'Viena aiški užklausa, paruošta nukopijuoti į DI',
-                '„Ko vengti“: iki 5 trumpų punktų'
+                '„Ko vengti“: iki 5 trumpų punktų',
+                'Jei trūksta faktų — ko paklausti prieš vykdant, ne spėliojant'
             ].join('\n'),
             lib_daySummary: [
                 'Santrauka iš dienos faktų — užpildyk laukus ir gauk 5 punktus.',
@@ -3231,13 +3251,16 @@
                 'Santrauka',
                 'Sprendimai',
                 'Veiksmai (kas / kada)',
-                'Atviri klausimai'
+                'Atviri klausimai',
+                'Savininką ir datą rašyk tik jei jie yra užrašuose; kitaip — „nenurodyta“.'
             ].join('\n'),
             lib_emailReply: [
                 'Atsakymas į gautą laišką ar žinutę.',
                 '',
                 'Įvestis:',
                 'Gaunamas laiškas ar žinutė: [ĮRAŠYK]',
+                'Ką nori atsakyti: [SUTINKU / ATIDEDU / KLAUSIU / ATSISAKAU]',
+                'Ko nežadi: [ĮRAŠYK]',
                 '',
                 'Išvestis:',
                 '4–6 sakiniai',
@@ -3345,7 +3368,7 @@
                 'Įvestis:',
                 '[Įklijuok savo užklausą čia]',
                 '',
-                'Vertinimo kriterijai (5 principai): Aiškumas; Eksperimentavimas; Nuo paprasto prie sudėtingo; Kontekstas; Žodžių pasirinkimas.',
+                'Vertinimo kriterijai (5 principai): Vaidmuo; Kontekstas; Mąstymas; Rezultatas; Kokybės kontrolė.',
                 '',
                 'Išvestis:',
                 '1) Lentelė: 1–5 balai kiekvienam principui',
@@ -3394,13 +3417,16 @@
             'Santrauka vadovui',
             'Sprendimai ir savininkai',
             'Veiksmai (kas / iki kada)',
-            'Rizikos ir atviri klausimai'
+            'Rizikos ir atviri klausimai',
+            'Savininką ir datą rašyk tik jei jie yra užrašuose; kitaip — „nenurodyta“.'
         ].join('\n');
         libraryPromptsLt.mgr_emailReply = [
             'Atsakymas vadovaujančiai ar išorinei komunikacijai.',
             '',
             'Įvestis:',
             'Gaunamas laiškas ar žinutė: [ĮRAŠYK]',
+            'Ką nori atsakyti: [SUTINKU / ATIDEDU / KLAUSIU / ATSISAKAU]',
+            'Ko nežadi: [ĮRAŠYK]',
             '',
             'Išvestis:',
             '4–7 sakiniai',
@@ -3502,7 +3528,7 @@
             'Įvestis:',
             '[Įklijuok savo užklausą čia]',
             '',
-            'Vertinimo kriterijai (5 principai): Aiškumas; Eksperimentavimas; Nuo paprasto prie sudėtingo; Kontekstas; Žodžių pasirinkimas.',
+            'Vertinimo kriterijai (5 principai): Vaidmuo; Kontekstas; Mąstymas; Rezultatas; Kokybės kontrolė.',
             '',
             'Išvestis:',
             '1) Lentelė: 1–5 balai kiekvienam principui',

@@ -1,9 +1,13 @@
 ---
 name: q-a-agent
-description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y, LT/EN paritetas). Naudoti prieš commit ar po rizikingų pakeitimų.
+description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y, LT/EN paritetas). Naudoti prieš commit ar po rizikingų pakeitimų. Vietinis Python — ne Windows python (Store stubas, exit 9009); paleisti wsl python3.
 ---
 
 # Q_A agentas — Promptų anatomija (64_APK)
+
+## Lessons
+
+Prieš shell komandą perskaityk [lessons.md](lessons.md). Windows `python` yra Store stubas (exit 9009). Python paleidžiamas per `wsl python3` arba `wsl -e python3`.
 
 ## Kada naudoti
 
@@ -47,7 +51,7 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] Naujas mygtukas / CTA — esami tieriai (ne naujas „raudonas“ variantas); naujas tekstas / `details` — decision recipes (role + `.disclosure-chip*`); chrome ≥12–13px. Optional local prose: `docs/design_system.md` if present.
 - [ ] Tokenai redaguojami [`styles/tokens.css`](../../../styles/tokens.css) (satellites: [`styles/tokens-satellite.css`](../../../styles/tokens-satellite.css)); po to `npm run build` arba `node scripts/inject-design-tokens.js` — ne rankinis `:root` drift HTML.
 - [ ] Nauja vieša CSS klasė ar tokenas — atnaujintas `styles/tokens.css` (+ optional local `docs/design_system.md` if present); disclosure/lead/PDF — reuse `.disclosure-chip*`, `.slide-lead`, `.btn-pdf-outline`.
-- [ ] `npm run verify`: `verify:design-tokens`, `verify:satellite-tokens`, `verify:typography-roles` (optional local smoke notes in `docs/DS_A11Y_SMOKE_v2.md` if present).
+- [ ] `npm run verify`: `verify:design-tokens` (a new white `rgba` in lesson component CSS fails), `verify:satellite-tokens`, `verify:typography-roles` (exits 1 when a rule can render below 12px, including `clamp()` and `em`/`rem` at a 16px root, and on orphan `font-size` above 32px). Optional local smoke notes in `docs/DS_A11Y_SMOKE_v2.md` if present.
 - [ ] Po CSS pakeitimų: mobilus smoke (375 / 390 / 768 / 1024 px), jei liečia layout ar nav.
 
 ### LT ↔ EN (i18n ir „drift“)
@@ -73,6 +77,7 @@ description: Kokybės ir atitikties patikra (rules, index.html, biblioteka, a11y
 - [ ] `tools.html` / `tools-lt.html`: `noindex, follow` + `canonical` į pamoką; ne sitemap.
 - [ ] `tools.html` / `tools-lt.html` / `404.html` href **ne** į `index.html` (naudoti `./` / `./lt/`).
 - [ ] Organization JSON-LD `logo` → `favicon.svg` (OG/Twitter lieka 1200×630 PNG).
+- [ ] Social vs search: `og:description` ir `twitter:description` (EN ir `/lt/`) = `SOCIAL_DESCRIPTION_EN` (≤125); `<meta name="description">` ir JSON-LD lieka `META_DESCRIPTION_EN` / `META_DESCRIPTION_LT`. `verify:social-meta` tai tikrina. Neperpiešti `assets/og-promptanatomy.png` dėl „nėra CTA“ OCR.
 - [ ] Po SEO pakeitimų: `npm run build` + `verify:robots-llms` (FAQ paritetas, 4 URL sitemap, tools noindex, meme allowlist, draudimas `site/en/`).
 
 ### Build artefaktas (`site/`)

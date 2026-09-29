@@ -51,11 +51,7 @@ const LITERAL_EXCEPTION_PATTERNS = [
 
 const OVERLAY_EXCEPTION_PATTERNS = [
   /rgba\s*\(\s*0\s*,\s*0\s*,\s*0\s*,/,
-  /linear-gradient/,
-  /stroke:\s*rgba/,
-  /rgba\s*\(\s*7\s*,\s*27\s*,\s*41\s*,\s*0\.(?:55|98)\s*\)/,
-  /rgba\s*\(\s*255\s*,\s*255\s*,\s*255\s*,\s*0\.(?:15|16|30|35)\s*\)/,
-  /rgba\s*\(\s*255,\s*255,\s*255,/
+  /rgba\s*\(\s*7\s*,\s*27\s*,\s*41\s*,\s*0\.(?:55|98)\s*\)/
 ];
 
 function extractStyleBlock(html) {
