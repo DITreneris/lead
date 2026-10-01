@@ -1,7 +1,7 @@
 # Design System — Promptų anatomija
 
-**Version:** 2.1  
-**Last reviewed:** 2026-09-29 — schema reason step contrast (`--accent-teal-deep` + `--text-bright`); chrome floor enforced in `verify:typography-roles`; component white `rgba` must use a token.  
+**Version:** 3.1  
+**Last reviewed:** 2026-10-01 — illustration bake colors come from `styles/tokens.css` (`illustration-colors.cjs`). Canvas sizes match `scenes.mjs`: intro 800×1120, the other six 800×900. Slugs: intro, check, meeting, levels, feedback, team, letter. PNG/WebP ship on `PUBLIC_FILES`; bake fonts do not. Type scale adds display / title / body. Hero `h1` mobile clamp and slide count stay closed.  
 **Audience:** Product owner, frontend maintainer, AI coding agents.
 
 This document describes **what exists today**. It is not a redesign brief. Visual changes should improve **consistency and maintainability** only.
@@ -11,7 +11,8 @@ This document describes **what exists today**. It is not a redesign brief. Visua
 | Range | Meaning |
 |-------|---------|
 | **2.x** | No breaking visual contracts: CTA tiers (§8), public token names, slide-based UX |
-| **3.0** | Would allow hero/layout redesign — **out of scope** until explicit product decision |
+| **3.0** | Opened on one surface: the seven drawing columns are baked result illustrations (`.viz-figure`). Further hero-scale, hub restyle, and slide-count changes stay closed |
+| **3.1** | Single color source for lesson CSS + illustrations; illustration-color + hex + contrast-fixture verify; display/title/body type tokens. Hero mobile `h1` clamp stays closed |
 
 ### v1.5 / v2.x scope
 
@@ -100,8 +101,10 @@ flowchart TB
 
 | Tier | Examples | Rule |
 |------|----------|------|
-| **Public** | Brand triad, `--accent-teal*`, text roles (`--text-bright` … `--text-tertiary`), `--radius-md` / `--radius-lg`, `--duration-*`, `--space-4` / `6` / `8`, `--font-size-label` / `ui` / `lead`, `--measure-prose`, `--tracking-label` | Prefer these in new UI |
-| **Private** | Yellow tint ladder (`--accent-yellow-bg-*`, border soft/faint/…), most `--white-alpha-*` | Implementation detail; reuse existing step, do not add a new alpha without documenting |
+| **Public** | Brand triad, `--accent-teal*`, `--surface-light`, `--text-ink`, text roles (`--text-bright` … `--text-tertiary`), `--radius-md` / `--radius-lg`, `--duration-*`, `--space-4` / `6` / `8`, `--font-size-label` / `ui` / `lead` / `display` / `title` / `body`, `--measure-prose`, `--tracking-label`, `--tap-min` | Prefer these in new UI |
+| **Private** | Yellow tint ladder (four public steps below; other `--accent-yellow-*` keep current values), `--surface-stage*`, `--text-ink-muted` / faint / mid, most `--white-alpha-*` | Implementation detail; reuse existing step, do not add a new alpha without documenting |
+
+**Yellow public steps (v3.1, alias-only):** prefer `--accent-yellow-border` (0.45), `--accent-yellow-bg-fill` (0.08), `--accent-yellow-bg-hover` (0.07), `--accent-yellow-bg-emphasis` (0.14). Other yellow names stay at today’s values. Do not mint a new yellow opacity.
 
 ---
 
@@ -118,6 +121,8 @@ flowchart TB
 | `--accent-red` | `#ff5a5f` | Primary CTAs, labels (`.label`), badges tint |
 | `--accent-teal` | `#0d9488` | Context card border (`.types-card--ctx`) |
 | `--accent-teal-deep` | `#047857` | Schema reason step fill (`.schema-step--reason`) |
+| `--primary-blue-deep` | `#0c2d45` | Schema QC gradient end |
+| `--primary-blue-wash` | `rgba(16, 59, 90, 0.85)` | Illustration stage wash |
 | `--bg-dark` | `#071b29` | Page base (alias via `--surface-base`) |
 
 ### 3.2 Surfaces and borders
@@ -128,6 +133,11 @@ flowchart TB
 | `--surface-raised` / `--card-bg` | Cards, library items |
 | `--surface-muted` / `--surface-muted-deep` | Panels, library how-to |
 | `--surface-inset` / `--surface-inset-soft` | Inset panels |
+| `--surface-light` | Schema neutral step; illustration light cards |
+| `--surface-light-bar` | Illustration letter chrome bar |
+| `--surface-navy-deep` | Brand lockup gradient start |
+| `--surface-stage` | Illustration-only stage fill (private) |
+| `--surface-stage-card` | Illustration-only raised card (private) |
 | `--border` | Standard 10% white border |
 | `--border-hairline` | Subtle dividers (sections, cards) |
 
@@ -141,8 +151,13 @@ flowchart TB
 | `--text-body` | `#e2e8f0` | Body, prompts |
 | `--text-muted` | `#cbd5e1` | Leads, subheads, readable secondary |
 | `--text-soft` | `#94a3b8` | Meta only (taglines, progress chrome) |
-| `--text-on-accent` | `#0a0a0a` | Text on yellow buttons |
+| `--text-on-accent` | `#0a0a0a` | Text on yellow / red buttons; illustration risk mark |
 | `--accent-yellow-hover-text` | `#fff6b0` | Yellow control hover |
+| `--text-ink` | `#0f172a` | Text on `--surface-light` (schema + illustrations) |
+| `--text-ink-muted` | `#475569` | Illustration meta on light cards (private) |
+| `--text-ink-faint` | `rgba(15, 23, 42, 0.08)` | Illustration hairlines on light cards (private) |
+| `--text-ink-mid` | `rgba(15, 23, 42, 0.35)` | Illustration bar on yellow row (private) |
+| `--text-on-navy-cool` | `#e0f2fe` | Schema QC body on navy |
 | `--text-tertiary` | `rgba(255,255,255,0.82)` | Tertiary links / subdued chrome (`.link-tier-tertiary`) |
 | `--text-secondary` | `rgba(255,255,255,0.88)` | On-dark secondary (foot variants) |
 | `--text-on-dark-high` | `var(--text-tertiary)` | **Deprecated alias** (v2.0) |
@@ -155,6 +170,9 @@ flowchart TB
 | `--font-size-label` | `13px` | Labels, disclosure summary, copy chrome, lang switch |
 | `--font-size-ui` | `14px` | Compact UI |
 | `--font-size-lead` | `clamp(16px, 1.25vw, 19px)` | `.slide-lead` |
+| `--font-size-display` | `clamp(56px, 7.5vw, 104px)` | Desktop `h1` |
+| `--font-size-title` | `clamp(36px, 4.2vw, 56px)` | Desktop `h2` |
+| `--font-size-body` | `clamp(14px, 1.05vw, 16px)` | Repeated body / card copy |
 | `--lh-body` | `1.5` | Lead / prose line-height |
 | `--measure-prose` | `34em` | Lead / FAQ panel max-width |
 | `--tracking-label` | `0.12em` | `.label`, `.disclosure-chip__summary` |
@@ -206,7 +224,9 @@ flowchart TB
 |-------|---------|--------|
 | `--sidebar-rail-left` | `34px` | Sidebar dots + slide outline left offset |
 | `--scroll-anchor-top` | `20px` (24px ≤1024px) | `section[id]` scroll-margin |
-| `--mobile-nav-h` | `96px` at ≤1024px | `body` padding-bottom, outline position |
+| `--sidebar-rail-width` | `140px` | Fixed dot column. Content starts to its right |
+| `--mobile-nav-h` | `96px`, then the live bar height ≤1024px | Outline sits above the in-flow mobile nav |
+| `--tap-min` | `44px` | Mobile nav item hit area. Not desktop 11px dots |
 
 ### 3.8 Spacing scale
 
@@ -221,8 +241,8 @@ flowchart TB
 | `--space-10` | 40px | Gaps |
 | `--space-section-y` / `--space-section-x` | 60 / 120px | `section` desktop padding |
 | `--space-section-x-md` | 90px | `section` / promo ≤1366px |
-| `--space-section-rail-left` | 132px | `section` ≥1367px left rail |
-| `--space-section-mobile` | `40px 20px 100px` | `section` ≤1024px |
+| `--space-section-rail-left` | `sidebar-rail-left + sidebar-rail-width + space-6` | `section`, promo, meme left inset from 1025px, clear of the fixed dots |
+| `--space-section-mobile` | `40px 20px 40px` | `section` ≤1024px. The bar is outside the scrollport |
 | `--space-container-gap` | 80px | `.container` desktop |
 | `--space-container-gap-md` | 64px | Container ≤1366px |
 | `--space-container-gap-sm` | 40px | Container ≤1024px |
@@ -251,6 +271,7 @@ flowchart TB
 | `--accent-yellow-bg-faint` | `rgba(251, 211, 4, 0.06)` | Promo gradient stop |
 | `--accent-yellow-bg-fill` | `rgba(251, 211, 4, 0.08)` | Library chrome, inline-link hover |
 | `--accent-yellow-bg-emphasis` | `rgba(251, 211, 4, 0.14)` | `.library-toggle-all:hover` |
+| `--accent-yellow-bg-glow` | `rgba(251, 211, 4, 0.22)` | Mobile nav active glow; illustration highlight |
 | `--accent-red-muted-border` | `rgba(255, 90, 95, 0.35)` | Red CTA borders |
 | `--accent-red-border-strong` | `rgba(255, 90, 95, 0.55)` | Strong red borders |
 | `--accent-red-border-emphasis` | `rgba(255, 90, 95, 0.65)` | Emphasis red borders |
@@ -290,7 +311,7 @@ These may remain as literals; `verify:design-tokens` does not fail on them:
 - Promo / CTA gradients: `rgba(16, 59, 90, …)` + yellow mix
 - `.icon--telegram` brand color: `#2aabee`
 - Quiz option focus ring: `rgba(255, 90, 95, 0.45)` (one-off emphasis)
-- Mobile nav dot glow: `rgba(251, 211, 4, 0.22)` (paired with `--bg-dark`)
+- Component CSS hex: only `.icon--telegram` `#2aabee` (`verify:design-tokens`)
 
 ---
 
@@ -298,8 +319,8 @@ These may remain as literals; `verify:design-tokens` does not fail on them:
 
 | Role | Selectors | Font | Size pattern |
 |------|-----------|------|----------------|
-| Display H1 | `h1`, `.hero-title-accent` | Display | `clamp(56px, 7.5vw, 104px)`, `letter-spacing: -0.02em` |
-| Section H2 | `h2`, slide titles | Display | `clamp(36px, 4.2vw, 56px)` |
+| Display H1 | `h1`, `.hero-title-accent` | Display | `var(--font-size-display)`; mobile `#intro` keeps its own clamp |
+| Section H2 | `h2`, slide titles | Display | `var(--font-size-title)` |
 | Essence / closing headline | `h2.cta-title`, `h2.essence-tagline` | Display | Large clamps; mobile overrides ≤1024px |
 | Lead | `.slide-lead` (+ `.hero-intro`, `.types-lead`, `.slide-sublead`, `.schema-lead`) | Main | `var(--font-size-lead)`, `line-height: var(--lh-body)`, `max-width: var(--measure-prose)` where set |
 | Label | `.label`, `.types-card-k`, `.cta-secondary-label`, `.disclosure-chip__summary` | Main / Display | Uppercase; `letter-spacing: var(--tracking-label)` on `.label` / disclosure |
@@ -348,9 +369,9 @@ There is **no global site footer**. Use contextual footers only:
 
 | Media query | Effect |
 |-------------|--------|
-| `min-width: 1367px` | `section { padding-left: 132px }` |
-| `max-width: 1366px` | Horizontal padding `90px`; container gap `64px` |
-| `max-width: 1024px` | Mobile nav visible; sidebar hidden; `--mobile-nav-h: 96px`; outline moves above bottom nav; single-column layout |
+| `min-width: 1025px` | Left inset `--space-section-rail-left` on sections, promo, and meme so the fixed dots stay in the gutter |
+| `max-width: 1366px` | Right padding `90px`; container gap `64px`. Left inset stays the rail |
+| `max-width: 1024px` | Sidebar hidden. Mobile nav is in document flow under `#main-content` (the scrollport). Slide min-height is the scrollport (`100cqh`), not the viewport. Outline uses the measured bar height |
 | `max-width: 480px` | Brand wordmark wrap |
 | `min-width: 1025px` | (additional rules in block ~1568) |
 | `prefers-reduced-motion: reduce` | Disable transitions/animations on CTAs, nav, scroll |
@@ -375,6 +396,7 @@ Test at **375px, 390px, 768px, 1024px** after CSS changes:
 | 2026-05-25 | post DS v2.0 | 375, 390, 768, 1024 | Agent smoke | Pass — `.disclosure-chip*`, hero mobile center, `tools-lt.html`; see [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) |
 | 2026-07-29 | post DS v2.1 | 375, 768, 1024 | Agent structural + checklist | Pass — chrome ≥13px disclosure/label; teal tokens; type tokens; projector/tab/DUK spot items closed in [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) (human re-check recommended on device) |
 | 2026-09-29 | post reason-step contrast | 375 + desktop | Agent browser | Pass — reason fill `#047857` / `--text-bright`; guided labels 13px including „Rezultatas“; EN `site/index.html` same fill |
+| 2026-10-01 | DS v3.1 color source + type tokens | 375, 768, 1024, 1440 | Agent browser | Pass — desktop h1/h2 from `--font-size-display`/`title`; 375 h1 stays 48px; mobile nav 44×44; practice list `--text-muted`; schema light/ink tokens; EN Leader tab + copy still work |
 
 ---
 
@@ -453,7 +475,7 @@ For each new UI, **reuse a row below** before inventing a class.
 | `.prompt-line` | Single prompt row; `<b>` labels stripped on copy |
 | `.copy-prompt-btn` | Yellow filled copy |
 | `.result-badge` | Outcome pill below editor (icon + text) |
-| `.viz-container` / `.viz-svg` | Optional illustration area |
+| `.viz-figure` | Baked illustration in the former drawing column: `<figure><picture>` with WebP + PNG fallback, `width`/`height`, locale alt. Scenes live in `scripts/illustrations/scenes.mjs` (LT + EN copy only). Colors come from [`styles/tokens.css`](../styles/tokens.css) via [`scripts/illustration-colors.cjs`](../scripts/illustration-colors.cjs). Rendered by `npm run build:illustrations` (satori → resvg → sharp) into `assets/illustrations/{slug}-{lt,en}.{png,webp}`. `npm run build` does **not** rebake — color token changes that should update drawings need `npm run build:illustrations`. Intro canvas is 800×1120, `eager` + `fetchpriority=high` (`.viz-figure--intro`); the other six are 800×900 and `lazy`. Slugs: `intro`, `check`, `meeting`, `levels`, `feedback`, `team`, `letter`. PNG and WebP are on `PUBLIC_FILES`. Fonts: Space Grotesk 700/500 + Inter 400/600 TTF in `assets/fonts/`, bake-only — not in `PUBLIC_FILES`, no new webfont on the page. `verify:illustration-colors` fails if bake scripts use a hex/rgba that is not a token |
 
 ### 7.7 Schema and roadmap
 
@@ -687,14 +709,37 @@ Minimal page — no slide nav or lesson JS.
 - [x] Smoke QA log + [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) updated
 - [x] `npm run build && npm run verify`
 
-### Deferred (not DS v2.1)
+### v3.0 Definition of Done (2026-10-01)
+
+- [x] Seven abstract drawings replaced by baked illustrations (`.viz-figure`): intro 800×1120, then check, meeting, levels, feedback, team, letter at 800×900
+- [x] One illustrated result object per slide, same 60 min sprint; no second prompt card, no table headers, no second copy button, no chat window or laptop frame
+- [x] LT and EN renders from one scene source; EN pairs swap `src`/`srcset` and `alt`; library keys unchanged
+- [x] `verify:robots-llms` checks every referenced illustration exists in `site/assets/illustrations` and nothing unreferenced leaks; EN root never points at `-lt` renders
+- [x] `.result-slip` text cards (intermediate 2026-10-01 attempt) removed — they read as a second prompt card
+
+### v3.1 Definition of Done (2026-10-01)
+
+- [x] Illustration bake colors derived from [`styles/tokens.css`](../styles/tokens.css); `COLORS` fork removed
+- [x] Schema / brand leftover hex tokenized (`--surface-light`, `--text-ink`, `--primary-blue-deep`, `--text-on-navy-cool`, `--surface-navy-deep`); guided emerald → `--accent-teal`
+- [x] `verify:illustration-colors` + component hex scan (only `#2aabee` allowed)
+- [x] Bake TTFs committed under `assets/fonts/` (not shipped)
+- [x] Type tokens `--font-size-display` / `title` / `body`; repeated body clamps migrated; hero mobile `h1` unchanged
+- [x] Yellow four public steps documented; other yellow names keep current values
+- [x] `--tap-min` on mobile nav; guided practice list uses `--text-muted`
+- [x] `verify:contrast-fixtures` on the listed pairs
+- [x] Agent labels v2.1 → v3.0 / v3.1
+- [x] `npm run build && npm run verify`
+
+### Deferred (not DS v3.1)
 
 | Task | Notes |
 |------|--------|
 | Full WCAG audit / certification | Out of DS scope |
 | EN bundle without inline `libraryPromptsLt` | EN audit §4 |
 | Library single Markdown source | AGENTS §4.1 |
-| Full contrast audit of schema light cards (`#e8eef4` / `#0f172a`) | Readable today; not tokenized |
+| Self-host woff2 (drop Google Fonts) | Bake TTFs stay off the page |
+| Hard yellow remap onto four steps | Review live first |
+| Remaining one-off `font-size` clamps | Migrate when a slide is already open |
 
 ---
 

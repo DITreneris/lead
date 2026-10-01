@@ -10,6 +10,28 @@ function getEnHtmlReplacementPairs() {
   return [
     ['content: \'UŽKLAUSOS STRUKTŪRA\';', 'content: \'PROMPT STRUCTURE\';'],
 
+    ['assets/illustrations/intro-lt.webp', 'assets/illustrations/intro-en.webp'],
+    ['assets/illustrations/intro-lt.png', 'assets/illustrations/intro-en.png'],
+    ['alt="Penkių dalių užklausa — vaidmuo, kontekstas, mąstymas, rezultatas, patikra — virsta sprinto planu: 0–10 min sutariam, ką paliekam; 10–40 min darom vieną gabalą; 40–60 min sprendimas, kas lieka."', 'alt="A five-part prompt — role, context, reasoning, output, check — becomes a sprint plan: 0–10 min agree what stays; 10–40 min do one piece; 40–60 min decision on what stays."'],
+    ['assets/illustrations/check-lt.webp', 'assets/illustrations/check-en.webp'],
+    ['assets/illustrations/check-lt.png', 'assets/illustrations/check-en.png'],
+    ['alt="Patikros lapas: rizika — data nepatikrinta; tinka — laikas ir tikslas; patikrinti — kas priima sprendimą."', 'alt="Check sheet: risk — the date is unchecked; fits — time and goal; check — who decides."'],
+    ['assets/illustrations/meeting-lt.webp', 'assets/illustrations/meeting-en.webp'],
+    ['assets/illustrations/meeting-lt.png', 'assets/illustrations/meeting-en.png'],
+    ['alt="60 min sprinto laiko juosta: 0–10 min sutariam, ką paliekam; 10–40 min darom vieną gabalą; 40–60 min sprendimas, kas lieka."', 'alt="60 min sprint timeline: 0–10 min agree what stays; 10–40 min do one piece; 40–60 min decision on what stays."'],
+    ['assets/illustrations/levels-lt.webp', 'assets/illustrations/levels-en.webp'],
+    ['assets/illustrations/levels-lt.png', 'assets/illustrations/levels-en.png'],
+    ['alt="Ta pati žinutė trimis lygiais: bazinis — paliekam vieną užduotį; vidutinis — ir vieną savininką; pažengęs — ir vieną sprendimą 60 min pabaigoje."', 'alt="The same message at three levels: basic — we keep one task; mid — and one owner; advanced — and one decision at the end of the 60 min."'],
+    ['assets/illustrations/feedback-lt.webp', 'assets/illustrations/feedback-en.webp'],
+    ['assets/illustrations/feedback-lt.png', 'assets/illustrations/feedback-en.png'],
+    ['alt="Įvertinimo kortelė: aišku; stipru — vienas tikslas; pirmas pakeitimas — įrašyk, kas priima sprendimą."', 'alt="Review card: clear; strong — one goal; first change — write who decides."'],
+    ['assets/illustrations/team-lt.webp', 'assets/illustrations/team-en.webp'],
+    ['assets/illustrations/team-lt.png', 'assets/illustrations/team-en.png'],
+    ['alt="Užduoties kortelė: įrašyk vieną riziką į sprinto planą; savininkas; iki rytojaus; sprinto lapas."', 'alt="Task card: write one risk into the sprint plan; owner; by tomorrow; sprint sheet."'],
+    ['assets/illustrations/letter-lt.webp', 'assets/illustrations/letter-en.webp'],
+    ['assets/illustrations/letter-lt.png', 'assets/illustrations/letter-en.png'],
+    ['alt="Laiško langas: problema — šis sprintas neturi vieno tikslo; sprendimas — paliekam vieną užduotį ir vieną savininką; kitas žingsnis — iki pabaigos pasakyk, kas lieka."', 'alt="Letter window: problem — this sprint has no single goal; fix — we keep one task and one owner; next step — by the end, say what stays."'],
+
     ['<a class="skip-link" href="#main-content">Pereiti prie turinio</a>', '<a class="skip-link" href="#main-content">Skip to content</a>'],
 
     ['aria-label="Kalbos pasirinkimas"', 'aria-label="Language selection"'],
@@ -34,8 +56,8 @@ function getEnHtmlReplacementPairs() {
       '<h1>PROMPT<br><span class="hero-title-accent">ANATOMY</span></h1>'
     ],
     [
-      '<p class="hero-intro slide-lead">Penkių dalių schema, siuntimo patikra, biblioteka ir quiz. Nuo DI „spėliojimo“ — mažiau taisymo, daugiau kontrolės.</p>',
-      '<p class="hero-intro slide-lead">A 5-part framework, a send check, a library, and a quiz. From AI guesswork — less rework, more control.</p>'
+      '<p class="hero-intro slide-lead">Nukopijuok užklausą ir paleisk per 2 minutes. Pirma praktika, o tada — pasitikrinimas.</p>',
+      '<p class="hero-intro slide-lead">Copy a prompt and run it in 2 minutes. Practice first, then a self-check.</p>'
     ],
     [
       'class="hero-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf"',
@@ -63,7 +85,7 @@ function getEnHtmlReplacementPairs() {
     ['aria-label="Skaidrė 11: Laiškas ar žinutė (juodraštis)"', 'aria-label="Slide 11: Email or message (draft)"'],
     ['aria-label="Skaidrė 12: Promptų biblioteka (resursai)"', 'aria-label="Slide 12: Prompt library (resources)"'],
     ['aria-label="Skaidrė 13: Esmė"', 'aria-label="Slide 13: The point"'],
-    ['aria-label="Skaidrė 14: Trumpas quiz"', 'aria-label="Slide 14: Short quiz"'],
+    ['aria-label="Skaidrė 14: Vienas klausimas"', 'aria-label="Slide 14: One question"'],
     ['aria-label="Skaidrė 15: PDF santrauka ir kitas žingsnis"', 'aria-label="Slide 15: PDF summary and next step"'],
 
     ['aria-label="Skaidrių navigacija (mobilusis)"', 'aria-label="Slide navigation (mobile)"'],
@@ -95,16 +117,16 @@ function getEnHtmlReplacementPairs() {
     ],
 
     [
-      '<div class="promo-handoff" role="region" aria-label="Nuoroda į programą www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Programa</span>\n            <p class="promo-handoff__title">Įdiegk tą pačią sistemą komandoje</p>\n            <p class="promo-handoff__sub">Čia — nemokama pamoka ir biblioteka. Ten — mokama programa su struktūra komandai.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryk promptanatomy.app naujame skirtuke" data-track="promo_app_banner_click" data-track-dest="app">Atidaryk promptanatomy.app</a>\n        </div>\n    </div>\n</div>',
-      '<div class="promo-handoff" role="region" aria-label="Link to the program at www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Program</span>\n            <p class="promo-handoff__title">Roll out the same system for your team</p>\n            <p class="promo-handoff__sub">This page is the free lesson and library. The site has the paid, team-ready program.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Open PromptAnatomy.app in a new tab" data-track="promo_app_banner_click" data-track-dest="app">Open PromptAnatomy.app</a>\n        </div>\n    </div>\n</div>'
+      '<div class="promo-handoff" role="region" aria-label="Nuoroda į programą www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Programa</span>\n            <p class="promo-handoff__title">Įdiegk tą pačią sistemą komandoje</p>\n            <p class="promo-handoff__sub">Čia nukopijuoji užklausą. Ten ta pati sistema visai komandai.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryk promptanatomy.app naujame skirtuke" data-track="promo_app_banner_click" data-track-dest="app">Atidaryk promptanatomy.app</a>\n        </div>\n    </div>\n</div>',
+      '<div class="promo-handoff" role="region" aria-label="Link to the program at www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Program</span>\n            <p class="promo-handoff__title">Roll out the same system for your team</p>\n            <p class="promo-handoff__sub">Here you copy a prompt. There the same system covers the whole team.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Open PromptAnatomy.app in a new tab" data-track="promo_app_banner_click" data-track-dest="app">Open PromptAnatomy.app</a>\n        </div>\n    </div>\n</div>'
     ],
 
     ['<section id="primer" class="types-slide types-slide--primer" aria-label="Kas yra promptas?"', '<section id="primer" class="types-slide types-slide--primer" aria-label="What is a prompt?"'],
-    ['<span class="label">Pagrindai</span>', '<span class="label">Basics</span>'],
+    ['<span class="label">Užklausa</span>', '<span class="label">Prompt</span>'],
     ['<h2>Kas yra promptas?</h2>', '<h2>What is a prompt?</h2>'],
     [
-      '<p class="types-lead slide-lead">Du apibrėžimai ir greita taisyklė.<br>Penkių žingsnių schema — kai atsakymas miglotas.</p>',
-      '<p class="types-lead slide-lead">Two definitions and a quick rule.<br>Five-step framework — when answers stay fuzzy.</p>'
+      '<p class="types-lead slide-lead">Užklausa yra instrukcija su rezultatu.<br>Schema padeda, kai atsakymas miglotas.</p>',
+      '<p class="types-lead slide-lead">A prompt is an instruction with a result.<br>Use the framework when the answer stays fuzzy.</p>'
     ],
     ['<h3>Promptas</h3>', '<h3>Prompt</h3>'],
     [
@@ -121,17 +143,16 @@ function getEnHtmlReplacementPairs() {
 
     ['<h3>Promptų inžinerija</h3>', '<h3>Prompt engineering</h3>'],
     [
-      '<p class="types-card-desc">Procesas, kaip rašai promptą: specifikacija → struktūra → iteracija.</p>',
-      '<p class="types-card-desc">How you write a prompt: specification → structure → iteration.</p>'
-    ],
-    ['<p class="types-card-k">Tikslas</p>', '<p class="types-card-k">Goal</p>'],
-    [
-      '<p class="types-card-example">Mažiau spėliojimo, daugiau stabilumo per kartojimus.</p>',
-      '<p class="types-card-example">Less guesswork, more stability through iteration.</p>'
+      '<p class="types-card-desc">Parašai, paleidi, tada taisai vieną dalyką.</p>',
+      '<p class="types-card-desc">Write it, run it, then fix one thing.</p>'
     ],
     [
-      'data-copy-text="Procesas: specifikacija → struktūra → iteracija. Tikslas: mažiau spėliojimo, daugiau stabilumo per kartojimus." aria-label="Kopijuoti promptų inžinerijos santrauką"',
-      'data-copy-text="Process: specification → structure → iteration. Goal: less guesswork, more stability through iteration." aria-label="Copy prompt engineering summary"'
+      '<p class="types-card-example">„Šitą atsakymą sutrumpink iki 7 punktų. Nekeisk faktų, kurių nėra įvestyje.“</p>',
+      '<p class="types-card-example">“Shorten this answer to 7 bullets. Do not change facts that are not in the input.”</p>'
+    ],
+    [
+      'data-copy-text="Šitą atsakymą sutrumpink iki 7 punktų. Nekeisk faktų, kurių nėra įvestyje." aria-label="Kopijuoti promptų inžinerijos užklausą"',
+      'data-copy-text="Shorten this answer to 7 bullets. Do not change facts that are not in the input." aria-label="Copy the prompt-engineering prompt"'
     ],
     ['data-track="primer_copy_inzinerija">Kopijuoti</button>', 'data-track="primer_copy_inzinerija">Copy</button>'],
 
@@ -159,8 +180,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Žingsniai</span>', '<span class="label">Steps</span>'],
     ['<h2>Promptų anatomijos schema</h2>', '<h2>Prompt anatomy framework</h2>'],
     [
-      '<p class="schema-lead slide-lead">Dažnai užtenka 2–3; visus penkis jungk, kai negali rizikuoti.</p>',
-      '<p class="schema-lead slide-lead">Often 2–3 are enough; use all five when you cannot risk mistakes.</p>'
+      '<p class="schema-lead slide-lead">Pradėk nuo 2–3 dalių. Visas penkias naudok, kai užduotis yra svarbi ir sudėtinga.</p>',
+      '<p class="schema-lead slide-lead">Start with 2–3 parts. Use all five when the task is important and complex.</p>'
     ],
     [
       '<strong>Vaidmuo</strong>\n                            <span>Kas esi ir koks tikslas (kodėl DI turi taip veikti)</span>',
@@ -179,7 +200,7 @@ function getEnHtmlReplacementPairs() {
       '<strong>Output</strong>\n                            <span>Format, length, example, done criteria</span>'
     ],
     [
-      '<strong>Kokybės kontrolė</strong>\n                            <span>Patikrink prieš siunčiant (ypač klientui / vadovybei)</span>',
+      '<strong>Kokybės kontrolė</strong>\n                            <span>Tikrink prieš siuntimą (ypač klientui ar vadovybei)</span>',
       '<strong>Quality control</strong>\n                            <span>Check before you send (especially to clients or leadership)</span>'
     ],
     ['aria-label="Toliau: pereiti į 2 minučių praktiką" data-track="schema_next_click">Praktika ↓</a>', 'aria-label="Next: go to the 2-minute practice" data-track="schema_next_click">Practice ↓</a>'],
@@ -188,13 +209,13 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Praktika</span>', '<span class="label">Practice</span>'],
     ['<h2>Pradėk per 2 minutės</h2>', '<h2>Start in 2 minutes</h2>'],
     [
-      '<p class="types-lead slide-lead">Tas pats savaitės tikslas — rėmas keičia, ką gauni.<br>1) Paleisk „Prieš“. 2) Paleisk „Po“ su savo 3–5 eilučių užrašais. 3) Palygink: ar A/B/C be išgalvotų skaičių?</p>',
-      '<p class="types-lead slide-lead">Same weekly goal — framing changes what you get.<br>1) Run “Before”. 2) Run “After” with your own 3–5 lines of notes. 3) Compare: A/B/C without invented numbers?</p>'
+      '<p class="types-lead slide-lead">Tas pats savaitės tikslas — kitaip parašius, kitas atsakymas.<br>Paleisk „Prieš“, tada „Po“ su savo 3–5 eilutėmis ir palygink, ar A/B/C be išgalvotų skaičių.</p>',
+      '<p class="types-lead slide-lead">Same weekly goal — write it differently, you get a different answer.<br>Run “Before”, then “After” with your 3–5 lines, and compare: A/B/C without invented numbers.</p>'
     ],
-    ['<h3>Prieš (per miglą)</h3>', '<h3>Before (fuzzy)</h3>'],
+    ['<h3>Prieš</h3>', '<h3>Before</h3>'],
     [
-      '<p class="types-card-desc">Be rėmo DI pildo spragas spėliodamas.</p>',
-      '<p class="types-card-desc">Without a frame the AI fills gaps by guessing.</p>'
+      '<p class="types-card-desc">Trumpa užklausa — DI spėja, ko nepasakei.</p>',
+      '<p class="types-card-desc">A short prompt — the AI guesses what you left out.</p>'
     ],
     ['<p class="types-card-k">Užklausa</p>', '<p class="types-card-k">Prompt</p>'],
     [
@@ -211,10 +232,10 @@ function getEnHtmlReplacementPairs() {
     ['<li>Skaičiai gali būti išgalvoti</li>', '<li>Numbers may be invented</li>'],
     ['<li>Trūksta tavo konteksto</li>', '<li>Missing your context</li>'],
 
-    ['<h3>Po (pagal anatomiją)</h3>', '<h3>After (with anatomy)</h3>'],
+    ['<h3>Po</h3>', '<h3>After</h3>'],
     [
-      '<p class="types-card-desc">Tas pats tikslas — aiški užklausa, naudojamas rezultatas.</p>',
-      '<p class="types-card-desc">Same goal — clear prompt, usable output.</p>'
+      '<p class="types-card-desc">Tas pats tikslas. Aiški užklausa — rezultatą gali naudoti.</p>',
+      '<p class="types-card-desc">Same goal. A clear prompt — output you can use.</p>'
     ],
     ['<p class="types-card-k">Struktūra</p>', '<p class="types-card-k">Structure</p>'],
     [
@@ -244,8 +265,8 @@ function getEnHtmlReplacementPairs() {
     ['data-track="practice_after_copy">Kopijuoti</button>', 'data-track="practice_after_copy">Copy</button>'],
     ['<p class="types-card-k">Rezultatas</p>', '<p class="types-card-k">Output</p>'],
     [
-      '<p class="types-card-result">Gerai, jei: A/B/C prioritetai ir nėra skaičių, kurių neįklijavai.</p>',
-      '<p class="types-card-result">Good if: A/B/C priorities and no numbers you did not paste in.</p>'
+      '<p class="types-card-result">Tinka, jei matai A/B/C ir nėra skaičių, kurių neįklijavai.</p>',
+      '<p class="types-card-result">Good if you see A/B/C and no numbers you did not paste in.</p>'
     ],
 
     ['<h3>Patikra (30 sek.)</h3>', '<h3>Check (30 sec)</h3>'],
@@ -274,8 +295,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Kelio planas</span>', '<span class="label">Roadmap</span>'],
     ['<h2>Kelio planas: pradėk nuo 5–15 min</h2>', '<h2>Roadmap: start with 5–15 min</h2>'],
     [
-      '<p class="roadmap-sub">Pirma — greita siuntimo patikra. Kiti penki šablonai — kai prireiks. Laikai orientaciniai.</p>',
-      '<p class="roadmap-sub">First — the quick send check. The other five templates — when you need them. Times are approximate.</p>'
+      '<p class="roadmap-sub">Pirma patikra (5–15 min). Kiti šablonai — kai prireiks.</p>',
+      '<p class="roadmap-sub">The check first (5–15 min). The other templates — when you need them.</p>'
     ],
     ['<span class="roadmap-name">Greita siuntimo patikra</span>', '<span class="roadmap-name">Quick send check</span>'],
     ['<span class="roadmap-name">Susitikimo ar sprinto planas</span>', '<span class="roadmap-name">Meeting or sprint plan</span>'],
@@ -315,8 +336,8 @@ function getEnHtmlReplacementPairs() {
     ],
     ['<button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti patikrą</button>', '<button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Copy check</button>'],
     [
-      '</svg></span> Mažiau rizikos klientui ir reputacijai.</div>',
-      '</svg></span> Less risk for clients and reputation.</div>'
+      '</svg></span> Rizikos matomos prieš siuntimą.</div>',
+      '</svg></span> Risks are visible before you send.</div>'
     ],
     [
       '<p class="qc-next">Toliau: <a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">kitas šablonas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">visos užklausos bibliotekoje</a></p>',
@@ -352,11 +373,11 @@ function getEnHtmlReplacementPairs() {
     ['<button type="button" class="copy-prompt-btn" data-track="template_copy_team">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_team">Copy prompt</button>'],
     ['<button type="button" class="copy-prompt-btn" data-track="template_copy_email">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_email">Copy prompt</button>'],
     [
-      '</svg></span> Planas paruoštas per kelias minutės.</div>',
+      '</svg></span> Planas paruoštas per kelias minutes.</div>',
       '</svg></span> Plan ready in a few minutes.</div>'
     ],
 
-    ['<span class="label">02 • Personalizacija</span>', '<span class="label">02 • Personalization</span>'],
+    ['<span class="label">02 • Trys lygiai</span>', '<span class="label">02 • Three levels</span>'],
     ['<h2>Ta pati žinutė — 3 lygiai</h2>', '<h2>Same message — three levels</h2>'],
     [
       '<p class="slide-sublead slide-lead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>',
@@ -382,8 +403,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">03 • Grįžtamasis ryšys</span>', '<span class="label">03 • Feedback</span>'],
     ['<h2>Turinio grįžtamasis ryšys</h2>', '<h2>Content feedback</h2>'],
     [
-      '<p class="slide-sublead slide-lead">Įvertinimas + vienas konkretus patarimas — mažiau tuščių iteracijų.</p>',
-      '<p class="slide-sublead slide-lead">Assessment + one concrete tip — fewer empty iterations.</p>'
+      '<p class="slide-sublead slide-lead">Įvertinimas ir vienas pirmas pakeitimas.</p>',
+      '<p class="slide-sublead slide-lead">A review and one first change.</p>'
     ],
     [
       '<div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>',
@@ -398,11 +419,11 @@ function getEnHtmlReplacementPairs() {
       '<div class="prompt-line"><b>OUTPUT</b> Short assessment (score or level), 3 strengths, 1 concrete improvement step with an example.</div>'
     ],
     [
-      '</svg></span> Mažiau iteracijų ir taisymo laiko.</div>',
-      '</svg></span> Fewer iterations and less fix-up time.</div>'
+      '</svg></span> Vienas pakeitimas, ne dešimt taisymų.</div>',
+      '</svg></span> One change, not ten fixes.</div>'
     ],
 
-    ['<span class="label">04 • Inovacijos</span>', '<span class="label">04 • Innovation</span>'],
+    ['<span class="label">04 • Komanda</span>', '<span class="label">04 • Team</span>'],
     ['<h2>Užduotis / mokymas komandai</h2>', '<h2>Assignment / team learning</h2>'],
     [
       '<p class="slide-sublead slide-lead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>',
@@ -421,8 +442,8 @@ function getEnHtmlReplacementPairs() {
       '<div class="prompt-line"><b>OUTPUT</b> Ready text with clear team instructions; if useful, an answer key or rubric.</div>'
     ],
     [
-      '</svg></span> Pritaikyta realiai darbo situacijai.</div>',
-      '</svg></span> Fits a real work situation.</div>'
+      '</svg></span> Užduotis komandai su terminu.</div>',
+      '</svg></span> A team task with a deadline.</div>'
     ],
 
     ['<span class="label">05 • Komunikacija</span>', '<span class="label">05 • Communication</span>'],
@@ -444,8 +465,8 @@ function getEnHtmlReplacementPairs() {
       '<div class="prompt-line"><b>OUTPUT</b> One ready text; if useful, a second shorter variant (e.g. Slack / Teams).</div>'
     ],
     [
-      '</svg></span> Aiški ir rami komunikacija.</div>',
-      '</svg></span> Clear, calm communication.</div>'
+      '</svg></span> Laiškas su aiškiu kitu žingsniu.</div>',
+      '</svg></span> A letter with a clear next step.</div>'
     ],
 
     ['<section id="library" class="library-slide" aria-label="Promptų biblioteka (resursai)"', '<section id="library" class="library-slide" aria-label="Prompt library (resources)"'],
@@ -470,8 +491,8 @@ function getEnHtmlReplacementPairs() {
     ['<li>„Kopijuoti“.</li>', '<li>“Copy”.</li>'],
     ['<li>Užpildyk <strong>[...]</strong>.</li>', '<li>Fill <strong>[...]</strong>.</li>'],
     [
-      '<li>Per miglą — <a class="inline-link inline-link--accent" href="#schema" data-track="library_back_to_schema">schema</a>, pridėk trūkstamą žingsnį.</li>',
-      '<li>If fuzzy — <a class="inline-link inline-link--accent" href="#schema" data-track="library_back_to_schema">framework</a>, add the missing step.</li>'
+      '<li>Jei atsakymas miglotas — <a class="inline-link inline-link--accent" href="#schema" data-track="library_back_to_schema">schema</a>, pridėk trūkstamą žingsnį.</li>',
+      '<li>If the answer is fuzzy — <a class="inline-link inline-link--accent" href="#schema" data-track="library_back_to_schema">schema</a>, add the missing step.</li>'
     ],
     [
       '<summary class="library-cat-summary"><span class="library-cat-summary__title">Kasdienis darbas</span><span class="library-cat-summary__meta">3 šablonai</span></summary>',
@@ -545,16 +566,16 @@ function getEnHtmlReplacementPairs() {
       'alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Role, ryžiai — 2 Context, lašiša — 3 Reasoning, avokadas — 4 Output, sezamai — 5 Quality check."',
       'alt="Exploded sushi, bottom to top: nori — 1 Role, rice — 2 Context, salmon — 3 Reasoning, avocado — 4 Output, sesame — 5 Quality check."'
     ],
-    ['<h2 class="essence-tagline">DI YRA SISTEMA.</h2>', '<h2 class="essence-tagline">AI IS A SYSTEM.</h2>'],
+    ['<h2 class="essence-tagline">Be rėmo DI spėja.</h2>', '<h2 class="essence-tagline">Without a frame, AI guesses.</h2>'],
     [
       '<p class="essence-lead">\n            Modelis nustato galimybes.<br><strong>Procesas</strong> — ar tas rezultatas išlieka darbe ir komandoje.\n        </p>',
       '<p class="essence-lead">\n            The model sets what is possible.<br><strong>Process</strong> — whether that result sticks at work and in the team.\n        </p>'
     ],
 
-    ['<section class="quiz-slide" aria-label="Trumpas quiz"', '<section class="quiz-slide" aria-label="Short quiz"'],
+    ['<section class="quiz-slide" aria-label="Vienas klausimas"', '<section class="quiz-slide" aria-label="One question"'],
     [
-      'data-msg-select="Pasirink vieną variantą ir spausk Tikrinti."',
-      'data-msg-select="Pick one option and press Check."'
+      'data-msg-select="Pažymėk atsakymą ir spausk Žiūrėk."',
+      'data-msg-select="Mark an answer and press See result."'
     ],
     [
       'data-feedback-correct="Teisingai: vaidmuo, kontekstas ir aiškus pageidaujamas rezultatas leidžia DI atsakyti pagal tavo užduotį."',
@@ -564,7 +585,7 @@ function getEnHtmlReplacementPairs() {
       'data-feedback-wrong="Be aiškaus vaidmens ir konkretaus konteksto DI spėlioja. Vien prašymas būti kūrybingam, bendras tonas ar labai trumpa užklausa neperduoda, kokio turinio ir formato tikiesi."',
       'data-feedback-wrong="Without a clear role and concrete context the AI guesses. A vague “be creative” line, tone alone, or a very short prompt does not say what content or format you want."'
     ],
-    ['<legend class="label">Pasirink vieną variantą</legend>', '<legend class="label">Pick one option</legend>'],
+    ['<legend class="label">Vienas atsakymas</legend>', '<legend class="label">One answer</legend>'],
     [
       '<h2 class="quiz-question" id="quiz-question-heading">Ką įtraukti į užklausą (promptą), kad DI atsakymas būtų naudingas?</h2>',
       '<h2 class="quiz-question" id="quiz-question-heading">What should you put in a prompt so the AI answer is useful?</h2>'
@@ -589,14 +610,14 @@ function getEnHtmlReplacementPairs() {
       '<span class="quiz-option-text">Pakanka nurodyti tik bendrą toną (draugiškas ar formalus), be temos, auditorijos ir norimo formato.</span>',
       '<span class="quiz-option-text">It is enough to set a general tone (friendly or formal) without topic, audience, or desired format.</span>'
     ],
-    ['<button type="button" class="quiz-check-btn" id="quiz-check-btn">Tikrinti</button>', '<button type="button" class="quiz-check-btn" id="quiz-check-btn">Check</button>'],
-    ['<button type="button" class="quiz-reset-btn" id="quiz-reset-btn" hidden>Bandyti dar kartą</button>', '<button type="button" class="quiz-reset-btn" id="quiz-reset-btn" hidden>Try again</button>'],
+    ['<button type="button" class="quiz-check-btn" id="quiz-check-btn">Žiūrėk</button>', '<button type="button" class="quiz-check-btn" id="quiz-check-btn">See result</button>'],
+    ['<button type="button" class="quiz-reset-btn" id="quiz-reset-btn" hidden>Kitas bandymas</button>', '<button type="button" class="quiz-reset-btn" id="quiz-reset-btn" hidden>Try once more</button>'],
 
     ['<section id="cta" aria-label="PDF santrauka ir kitas žingsnis"', '<section id="cta" aria-label="PDF summary and next step"'],
-    ['<h2 class="cta-title">PAVERSK TAI SISTEMA</h2>', '<h2 class="cta-title">MAKE IT A SYSTEM</h2>'],
+    ['<h2 class="cta-title">Toliau — ta pati sistema komandai</h2>', '<h2 class="cta-title">Next — the same system for the team</h2>'],
     [
-      '<p class="cta-sub">PDF su santrauka — pasiimk su savimi. Gilyn — per programą.</p>',
-      '<p class="cta-sub">English lesson summary (PDF) — take it with you. Go deeper via the program.</p>'
+      '<p class="cta-sub">Santrauka PDF — pasiimk. Programa — kai rėmo reikia visai komandai.</p>',
+      '<p class="cta-sub">Lesson summary PDF — take it. The program is for when the whole team needs the frame.</p>'
     ],
     [
       'aria-label="Pagrindinis veiksmas: peržvelk mokamą programą ir kainą (naujame skirtuke)" data-track="paid_cta_click" data-track-dest="app">Peržvelk programą ir kainą</a>',

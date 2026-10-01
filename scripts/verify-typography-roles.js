@@ -13,9 +13,31 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const FILES = ['index.html', '404.html', 'tools.html', 'tools-lt.html'];
+const TOKENS = path.join(ROOT, 'styles', 'tokens.css');
 const ROOT_PX = 16;
 const FLOOR_PX = 12;
 const DISPLAY_MAX_PX = 32;
+
+function loadFontSizeTokens() {
+  const map = new Map();
+  const css = fs.readFileSync(TOKENS, 'utf8');
+  const re = /(--font-size-[a-z0-9-]*)\s*:\s*([^;]+);/gi;
+  let match;
+  while ((match = re.exec(css)) !== null) {
+    map.set(match[1], match[2].trim());
+  }
+  return map;
+}
+
+const FONT_SIZE_TOKENS = loadFontSizeTokens();
+
+function expandFontSize(value) {
+  const m = String(value)
+    .trim()
+    .match(/^var\(\s*(--font-size-[a-z0-9-]*)\s*\)$/i);
+  if (m && FONT_SIZE_TOKENS.has(m[1])) return FONT_SIZE_TOKENS.get(m[1]);
+  return value;
+}
 
 const ALLOWED_CONTEXT =
   /(?:^|,)\s*(?:h1|h2(?:\.essence-tagline|\.cta-title)?|\.essence-primary-headline|\.hero-title-accent|\.header-title)\b/;
@@ -78,7 +100,7 @@ function collectFailures(rel, css) {
     const sizeRe = /font-size\s*:\s*([^;}{]+)/gi;
     let match;
     while ((match = sizeRe.exec(body)) !== null) {
-      const lengths = absolutePx(match[1]);
+      const lengths = absolutePx(expandFontSize(match[1]));
       if (!lengths.length) continue;
       const min = Math.min.apply(null, lengths);
       const max = Math.max.apply(null, lengths);

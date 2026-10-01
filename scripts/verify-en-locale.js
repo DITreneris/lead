@@ -27,8 +27,11 @@ const DENY_SUBSTRINGS = [
   '>Pradėk</a>',
   '>Kopijuoti</button>',
   '>Tikrinti</button>',
+  '>Žiūrėk</button>',
   'Pasirink vieną variantą</legend>',
+  'Vienas atsakymas</legend>',
   'Bandyti dar kartą</button>',
+  'Kitas bandymas</button>',
   '<html lang="lt">',
   '<meta name="page-locale" content="lt">'
 ];

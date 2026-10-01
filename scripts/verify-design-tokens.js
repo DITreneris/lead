@@ -32,6 +32,12 @@ const REQUIRED_PUBLIC_TOKENS = [
   '--lh-body',
   '--measure-prose',
   '--tracking-label',
+  '--font-size-display',
+  '--font-size-title',
+  '--font-size-body',
+  '--surface-light',
+  '--text-ink',
+  '--tap-min',
   '--space-2',
   '--space-3',
   '--space-4',
@@ -175,6 +181,23 @@ function main() {
       failed = true;
     }
     console.error(`  [${label}] line ~${line}: ${literal}`);
+  }
+
+  const hexHits = [];
+  componentPart.split('\n').forEach((line, i) => {
+    const re = /#([0-9a-fA-F]{3,8})\b/g;
+    let m;
+    while ((m = re.exec(line)) !== null) {
+      if (/^#2aabee$/i.test(m[0])) continue;
+      hexHits.push({ line: i + 1, literal: m[0] });
+    }
+  });
+  for (const { line, literal } of hexHits) {
+    if (!failed) {
+      console.error('[verify-design-tokens] Untokenized hex in index.html component CSS:');
+      failed = true;
+    }
+    console.error(`  [hex] line ~${line}: ${literal}`);
   }
 
   if (failed) process.exit(1);

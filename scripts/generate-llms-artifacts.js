@@ -10,7 +10,7 @@ const EN_LIB = path.join(ROOT, 'assets', 'prompt-library-en.js');
 const WELL_KNOWN_DIR = path.join(SITE_DIR, '.well-known');
 
 const SUMMARY_EN =
-  'A practical AI playbook for teams and leaders: 5-part prompt framework, quick send check, copy-ready library, and a short quiz — less rework, more control.';
+  'AI prompts for work: a 2-minute practice, a send check, and a copy-ready library.';
 
 /** Keys grouped for llms-full.txt (matches library slide categories in index.html). */
 const LIBRARY_SECTIONS = [

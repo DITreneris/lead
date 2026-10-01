@@ -81,6 +81,18 @@ Tikslas: deterministinis `site/` artefaktas, griežtesnė LT↔EN/UTM patikra, n
 
 ---
 
+## Fazė 7 — Iliustracijos ir DS v3.1 *(darbo medis, 2026-10-01)*
+
+Tikslas: piešiniai ir agentų dokumentai sutampa su bake ir `PUBLIC_FILES`, ne su senu 11 failų allowlist.
+
+- [x] Scenos [`scripts/illustrations/scenes.mjs`](scripts/illustrations/scenes.mjs): `intro` 800×1120; `check`, `meeting`, `levels`, `feedback`, `team`, `letter` — 800×900. DOM — `.viz-figure` / `<picture>`.
+- [x] [`scripts/prepare-site-artifact.js`](scripts/prepare-site-artifact.js) kopijuoja tų scenų PNG ir WebP. `assets/fonts/` lieka bake-only.
+- [x] `npm run build` iliustracijų neperkepa. Spalva piešinyje — `npm run build:illustrations`.
+- [x] `verify:illustration-colors`, `verify:contrast-fixtures`; `verify:robots-llms` — iliustracijų paritetas ir locale failų atskirtis.
+- [x] AGENTS, SETUP, CHANGELOG, Q_A, data-agent, `index-html` rule ir `docs/design_system.md` sutapdinti su šiais slug ir drobės dydžiais. Fazės 6 „11 failų“ lieka tos datos įrašas.
+
+---
+
 ## Backlog (be datos — kai bus prioritetas)
 
 - [x] **„Turinys“ (TOC)**: grupavimas + „Pirmiausia“ (praktika · biblioteka) — 2026-09-13 A polish.

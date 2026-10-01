@@ -28,12 +28,12 @@ const {
 const SRC_HTML = path.join(ROOT, 'index.html');
 
 const META_DESCRIPTION_EN =
-  'A practical AI playbook for teams and leaders: 5-part framework, quick send check, copy-ready library, short quiz — less rework, more control.';
+  'AI prompts for work: a 2-minute practice, a send check, and a copy-ready library.';
 const META_DESCRIPTION_LT =
-  'DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.';
+  'DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.';
 /** Social cards truncate near 125 characters; search meta stays META_DESCRIPTION_EN. */
 const SOCIAL_DESCRIPTION_EN =
-  'A practical AI playbook for teams and leaders: framework, send check, library, quiz — less rework, more control.';
+  'AI prompts for work: 2-minute practice, send check, and a copy-ready library.';
 /** Vercel sets this during builds on Vercel; omit analytics on GitHub Pages / local to avoid broken /_vercel paths under project URLs. */
 const VERCEL_BUILD = process.env.VERCEL === '1';
 
@@ -83,6 +83,7 @@ function fixSubdirAssetPaths(html) {
   return html
     .replace(/href="assets\//g, 'href="../assets/')
     .replace(/src="assets\//g, 'src="../assets/')
+    .replace(/srcset="assets\//g, 'srcset="../assets/')
     .replace(/href="favicon\.svg"/g, 'href="../favicon.svg"');
 }
 
@@ -148,7 +149,7 @@ function applyLtSocialEnglish(html) {
       '<meta property="og:title" content="Prompt Anatomy — for work and leadership">'
     ],
     [
-      '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
+      '<meta property="og:description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">',
       `<meta property="og:description" content="${SOCIAL_DESCRIPTION_EN}">`
     ],
     [
@@ -168,7 +169,7 @@ function applyLtSocialEnglish(html) {
       '<meta name="twitter:title" content="Prompt Anatomy — for work and leadership">'
     ],
     [
-      '<meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
+      '<meta name="twitter:description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">',
       `<meta name="twitter:description" content="${SOCIAL_DESCRIPTION_EN}">`
     ]
   ];
@@ -275,7 +276,7 @@ function applyEnHead(html) {
   const headPairs = [
     ['<title>Promptų anatomija — darbui ir vadovavimui</title>', '<title>Prompt Anatomy — for work and leadership</title>'],
     [
-      '<meta name="description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
+      '<meta name="description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">',
       `<meta name="description" content="${META_DESCRIPTION_EN}">`
     ],
     [
@@ -283,7 +284,7 @@ function applyEnHead(html) {
       '<meta property="og:title" content="Prompt Anatomy — for work and leadership">'
     ],
     [
-      '<meta property="og:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
+      '<meta property="og:description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">',
       `<meta property="og:description" content="${SOCIAL_DESCRIPTION_EN}">`
     ],
     ['<meta property="og:locale" content="lt_LT">', '<meta property="og:locale" content="en_US">'],
@@ -308,7 +309,7 @@ function applyEnHead(html) {
       '<meta name="twitter:title" content="Prompt Anatomy — for work and leadership">'
     ],
     [
-      '<meta name="twitter:description" content="DI praktinė sistema įmonei: biblioteka, schema, greita patikra ir trumpas quiz — mažiau taisymo, daugiau kontrolės.">',
+      '<meta name="twitter:description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">',
       `<meta name="twitter:description" content="${SOCIAL_DESCRIPTION_EN}">`
     ]
   ];

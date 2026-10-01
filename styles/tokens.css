@@ -9,6 +9,11 @@
     --surface-muted-deep: rgba(16, 59, 90, 0.34);
     --surface-inset: rgba(0, 0, 0, 0.2);
     --surface-inset-soft: rgba(0, 0, 0, 0.13);
+    --surface-light: #e8eef4;
+    --surface-light-bar: #dfe7ef;
+    --surface-navy-deep: #050d14;
+    --surface-stage: #0b1320;
+    --surface-stage-card: #0f2235;
     --card-bg: var(--surface-raised);
     --border: rgba(255, 255, 255, 0.1);
     --border-hairline: rgba(255, 255, 255, 0.065);
@@ -23,8 +28,10 @@
     --space-section-y: 60px;
     --space-section-x: 120px;
     --space-section-x-md: 90px;
-    --space-section-rail-left: 132px;
-    --space-section-mobile: 40px 20px 100px;
+    --sidebar-rail-width: 140px;
+    /* Kairys turinio kraštas prasideda už fiksuotų taškų, ne po jais. */
+    --space-section-rail-left: calc(var(--sidebar-rail-left) + var(--sidebar-rail-width) + var(--space-6));
+    --space-section-mobile: 40px 20px 40px;
     --space-container-gap: 80px;
     --space-container-gap-md: 64px;
     --space-container-gap-sm: 40px;
@@ -33,7 +40,8 @@
     --space-promo-block: 44px 120px 64px;
     --space-promo-mobile: 32px 20px 52px;
     --space-library-block: 64px 0 76px;
-    /* Tint / surface (DS v1.0) */
+    /* Yellow public steps (v3.1 alias-only): border / fill / hover / emphasis.
+       Other yellow names keep current values — do not mint a new opacity. */
     --accent-yellow-border: rgba(251, 211, 4, 0.45);
     --accent-yellow-border-faint: rgba(251, 211, 4, 0.28);
     --accent-yellow-border-soft: rgba(251, 211, 4, 0.35);
@@ -47,6 +55,7 @@
     --accent-yellow-bg-faint: rgba(251, 211, 4, 0.06);
     --accent-yellow-bg-fill: rgba(251, 211, 4, 0.08);
     --accent-yellow-bg-emphasis: rgba(251, 211, 4, 0.14);
+    --accent-yellow-bg-glow: rgba(251, 211, 4, 0.22);
     --mobile-nav-h: 96px;
     --accent-red-muted-border: rgba(255, 90, 95, 0.35);
     --accent-red-border-strong: rgba(255, 90, 95, 0.55);
@@ -77,16 +86,27 @@
     --text-soft: #94a3b8;
     --text-on-accent: #0a0a0a;
     --accent-yellow-hover-text: #fff6b0;
-    /* Type scale / measure (DS v2.1) */
+    --text-ink: #0f172a;
+    --text-ink-muted: #475569;
+    --text-ink-faint: rgba(15, 23, 42, 0.08);
+    --text-ink-mid: rgba(15, 23, 42, 0.35);
+    --text-on-navy-cool: #e0f2fe;
+    /* Type scale / measure (DS v2.1 / v3.1) */
     --font-size-label: 13px;
     --font-size-ui: 14px;
     --font-size-lead: clamp(16px, 1.25vw, 19px);
+    --font-size-display: clamp(56px, 7.5vw, 104px);
+    --font-size-title: clamp(36px, 4.2vw, 56px);
+    --font-size-body: clamp(14px, 1.05vw, 16px);
     --lh-body: 1.5;
     --measure-prose: 34em;
     --tracking-label: 0.12em;
     /* Brand accent beyond triad (practice ctx card / schema reason) */
     --accent-teal: #0d9488;
     --accent-teal-deep: #047857;
+    --primary-blue-deep: #0c2d45;
+    --primary-blue-wash: rgba(16, 59, 90, 0.85);
+    --tap-min: 44px;
     --shadow-accent-yellow: 0 8px 24px var(--accent-yellow-border-soft);
     --scroll-anchor-top: 20px;
     /* Šoninė juosta: „Turinys“ ir taškai — tas pats kairys kraštas + taškų centravimas */

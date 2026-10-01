@@ -3,8 +3,11 @@
   "private": true,
   "scripts": {
     "build": "node scripts/inject-design-tokens.js && node scripts/build-locale-pages.js && node scripts/generate-llms-artifacts.js && node scripts/prepare-site-artifact.js",
+    "build:illustrations": "node scripts/build-illustrations.mjs",
     "verify:library-keys": "node scripts/verify-library-keys.js",
     "verify:design-tokens": "node scripts/verify-design-tokens.js",
+    "verify:illustration-colors": "node scripts/verify-illustration-colors.js",
+    "verify:contrast-fixtures": "node scripts/verify-contrast-fixtures.js",
     "verify:token-injection": "node scripts/verify-token-injection-idempotence.js",
     "verify:satellite-tokens": "node scripts/verify-satellite-tokens.js",
     "verify:typography-roles": "node scripts/verify-typography-roles.js",
@@ -12,9 +15,14 @@
     "verify:social-meta": "node scripts/verify-social-meta.js",
     "verify:robots-llms": "node scripts/verify-robots-llms.js",
     "verify:utm-canon": "node scripts/verify-utm-canon.js",
-    "verify": "node scripts/inject-design-tokens.js && node scripts/verify-token-injection-idempotence.js && node scripts/verify-library-keys.js && node scripts/verify-design-tokens.js && node scripts/verify-satellite-tokens.js && node scripts/verify-typography-roles.js && node scripts/verify-en-locale.js && node scripts/verify-social-meta.js && node scripts/verify-robots-llms.js && node scripts/verify-utm-canon.js"
+    "verify": "node scripts/inject-design-tokens.js && node scripts/verify-token-injection-idempotence.js && node scripts/verify-library-keys.js && node scripts/verify-design-tokens.js && node scripts/verify-illustration-colors.js && node scripts/verify-satellite-tokens.js && node scripts/verify-typography-roles.js && node scripts/verify-contrast-fixtures.js && node scripts/verify-en-locale.js && node scripts/verify-social-meta.js && node scripts/verify-robots-llms.js && node scripts/verify-utm-canon.js"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "satori": "^0.33.5",
+    "sharp": "^0.35.5"
   }
 }

@@ -66,6 +66,16 @@ function referencedMemeFiles(...htmlPages) {
   return files;
 }
 
+function referencedIllustrationFiles(...htmlPages) {
+  const files = new Set();
+  const re = /(?:src|srcset)=["'][^"']*assets\/illustrations\/([^"'?#\s]+)["']/gi;
+  for (const html of htmlPages) {
+    let match;
+    while ((match = re.exec(html)) !== null) files.add(match[1]);
+  }
+  return files;
+}
+
 function verifySitemapLastmod(sitemap) {
   const matches = sitemap.match(/<lastmod>([^<]+)<\/lastmod>/g);
   if (!matches || !matches.length) {
@@ -171,6 +181,35 @@ function main() {
       console.error('[verify-robots-llms] Unreferenced meme leaked into site/assets/memes:', name);
       process.exit(1);
     }
+  }
+  const illustrationRefs = referencedIllustrationFiles(enHtml, ltHtml);
+  const illustrationDir = path.join(SITE_DIR, 'assets', 'illustrations');
+  const builtIllustrations = fs.existsSync(illustrationDir)
+    ? fs.readdirSync(illustrationDir).filter((name) => /\.(png|webp)$/i.test(name))
+    : [];
+  if (illustrationRefs.size === 0) {
+    console.error('[verify-robots-llms] Lesson pages reference no assets/illustrations/* (viz-figure missing)');
+    process.exit(1);
+  }
+  for (const name of illustrationRefs) {
+    if (!builtIllustrations.includes(name)) {
+      console.error('[verify-robots-llms] Referenced illustration missing from site/assets/illustrations:', name);
+      process.exit(1);
+    }
+  }
+  for (const name of builtIllustrations) {
+    if (!illustrationRefs.has(name)) {
+      console.error('[verify-robots-llms] Unreferenced illustration leaked into site/assets/illustrations:', name);
+      process.exit(1);
+    }
+  }
+  if (/assets\/illustrations\/[a-z]+-lt\.(?:png|webp)/i.test(enHtml)) {
+    console.error('[verify-robots-llms] EN root page still references an -lt illustration');
+    process.exit(1);
+  }
+  if (/assets\/illustrations\/[a-z]+-en\.(?:png|webp)/i.test(ltHtml)) {
+    console.error('[verify-robots-llms] LT page references an -en illustration');
+    process.exit(1);
   }
   if (!enHtml.includes('"@type":"Organization"') || !enHtml.includes('"logo"')) {
     console.error('[verify-robots-llms] site/index.html JSON-LD missing Organization logo');
