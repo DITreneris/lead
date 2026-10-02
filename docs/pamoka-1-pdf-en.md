@@ -1,6 +1,6 @@
 ---
 title: "Prompt Anatomy — Lesson 1 (summary)"
-subtitle: "For teams • free summary"
+subtitle: "For companies • free summary"
 author: "Prompt Anatomy"
 date: "2026"
 lang: en
@@ -32,8 +32,8 @@ Align all three in the same text — especially when planning work, a delivery, 
 
 1. **Role** — who and why: your role and what you want this prompt to achieve.  
 2. **Context** — facts, text, or conditions the AI must know before answering.  
-3. **Reasoning** — how to think: steps, logic, criteria.  
-4. **Output** — format and content the answer must return.  
+3. **Output** — format and content the answer must return.  
+4. **Reasoning** — how to think: steps, logic, criteria.  
 5. **Quality control** — review, evaluate, compare to the goal; repeat the loop.
 
 **Extended parameters (above all five):** tone, length, constraints, language — as a global filter for the whole prompt.
@@ -42,70 +42,70 @@ Align all three in the same text — especially when planning work, a delivery, 
 
 ---
 
-# Template: project or work-plan architect
+# Template: meeting or sprint plan
 
-**ROLE:** You are an experienced [domain] project or process coordinator.
+**TASK:** Build a meeting or sprint plan as a table (time · activity · goal) and add 3 questions that help decide.
 
-**CONTEXT:** Prepare a [duration, e.g. 60 min] meeting or sprint plan for topic [Topic], for team [Team / roles]. They already know [what you agreed before].
+**INPUT:** Duration: [e.g. 60 min]. Topic: [TOPIC]. Team / roles: [WHO JOINS]. They already know: [WHAT YOU AGREED BEFORE].
 
-**OUTPUT:** Table: Time | Activity | Goal. Add 3 questions that drive a decision.
-
----
-
-# Template: audiences and levels
-
-**ROLE:** You are a communication and engagement expert in a work setting.
-
-**CONTEXT:** The audience has mixed experience: [e.g. junior / senior, client / internal team]. Topic or task: [Topic].
-
-**OUTPUT:** Give the same message or task at 3 levels: 1. Basic, 2. Intermediate, 3. Advanced / expert.
+**OUTPUT:** A table with columns Time | Activity | Goal, then 3 questions below.
 
 ---
 
-# Template: content review and feedback
+# Template: same message — three levels
 
-**ROLE:** You are a professional content and quality reviewer.
+**TASK:** Write the same message or task at three difficulty levels (basic, intermediate, advanced).
 
-**CONTEXT:** Review text / work submitted by a teammate or vendor: [Text] against criteria: [Criteria].
+**INPUT:** Topic or task: [TOPIC]. Reader: [e.g. junior / senior, client / internal team]. Starting idea or draft (if any): [TEXT].
 
-**OUTPUT:** Rating (score or level), 3 strengths, and 1 concrete improvement tip.
-
----
-
-# Template: task or material generator
-
-**ROLE:** You are a creator of innovative work tools and materials.
-
-**CONTEXT:** Create a task or short learning piece on topic [Topic] for audience [Team / role]. Use a real business or process example.
-
-**OUTPUT:** Format: [knowledge check / hands-on task]. User instructions + answer or grading key.
+**OUTPUT:** Three clearly separated versions titled Basic / Intermediate / Advanced; tone and detail should scale with level.
 
 ---
 
-# Template: communication assistant
+# Template: content feedback
 
-**ROLE:** You are a professional communication specialist.
+**TASK:** Score against the criteria and give one clear change to make first.
 
-**CONTEXT:** Write an email or message for [audience: team / client / partner] about [situation]. Tone: professional but warm.
+**INPUT:** Text or work: [TEXT]. Criteria: [Criteria].
 
-**OUTPUT:** Email up to 100 words: Problem + Solution + Invitation to dialogue or another clear action.
+**OUTPUT:** Short assessment (score or level), 3 strengths, 1 concrete improvement step with an example.
+
+---
+
+# Template: assignment / team learning
+
+**TASK:** Create short material or a task; use the example so it feels relevant and usable.
+
+**INPUT:** Topic: [TOPIC]. Audience: [Team / role]. Format: [knowledge check / hands-on task]. Example from your work or process: [BRIEF].
+
+**OUTPUT:** Ready text with clear team instructions; if useful, an answer key or rubric.
+
+---
+
+# Template: email or message (draft)
+
+**TASK:** Produce one draft; structure: problem → solution → call to action or another clear next step.
+
+**INPUT:** Who you write to: [team / client / partner]. Situation (facts): [WHAT HAPPENED]. Tone: professional but warm. Limit: up to 100 words.
+
+**OUTPUT:** One ready text; if useful, a second shorter variant (e.g. Slack / Teams).
 
 ---
 
 # Quick send check (before you send)
 
-Paste the full text you intend to send or submit to a client, leadership, or partner (e.g. email, report, or proposal draft) — not a random chat reply. The check reviews facts and risks before sending.
+Paste the text you will send.
 
-**ROLE:** You are a responsible specialist and information critic who knows the AI can be wrong or invent content.
+**ROLE:** You are a responsible specialist and information critic: you know the AI can be wrong or invent facts.
 
-**CONTEXT:** Where I will use it: [client email / internal report / proposal / contract / presentation]. Domain: [Domain], audience: [Audience]. Paste here the full AI-prepared text you plan to send or submit: [TEXT].
+**CONTEXT:** Where I will use it: [client email / internal report / proposal / contract / deck]. Domain: [Domain], audience: [Audience]. Paste the full AI draft you plan to send or submit as final: [TEXT].
 
 **OUTPUT:**
 
-1. Top 3 risks (factual, legal, or communication).  
-2. What can be used as-is.  
-3. What you must verify with a trusted source before sending.  
-4. What context is missing for a more accurate answer.
+1. Top 3 risks (factual, legal, or comms).  
+2. What is safe to use unchanged.  
+3. What to verify with an independent source (not AI alone).  
+4. What context is missing for a sharper answer.
 
 ---
 

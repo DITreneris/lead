@@ -2,11 +2,13 @@
 
 /**
  * Fail CI on font-size below 12px, and on font-size above 32px outside
- * the §4 display allowlist. Scans lesson + satellite component CSS.
+ * the §4 display allowlist. Lesson headings must use their role token
+ * (h1 → --font-size-hero, h2 → --font-size-title, essence/CTA → --font-size-display).
+ * Scans lesson + satellite component CSS.
  *
  * Each style rule is checked on its own (including rules nested in
  * @media / @supports). Lengths inside clamp(), min(), and max() count.
- * em and rem are judged at a 16px root. Custom properties are not expanded.
+ * em and rem are judged at a 16px root. `--font-size-*` custom properties are expanded.
  */
 const fs = require('fs');
 const path = require('path');
@@ -40,7 +42,15 @@ function expandFontSize(value) {
 }
 
 const ALLOWED_CONTEXT =
-  /(?:^|,)\s*(?:h1|h2(?:\.essence-tagline|\.cta-title)?|\.essence-primary-headline|\.hero-title-accent|\.header-title)\b/;
+  /(?:^|,)\s*(?:[#.][\w-]+\s+)*(?:h1|h2(?:\.essence-tagline|\.cta-title)?|\.hero-title-accent|\.header-title)\b/;
+
+/** Heading subjects whose font-size must be one role token, never a raw clamp. */
+const RHYTHM_ROLES = [
+  { subject: 'h1', token: '--font-size-hero' },
+  { subject: 'h2', token: '--font-size-title' },
+  { subject: 'h2.essence-tagline', token: '--font-size-display' },
+  { subject: 'h2.cta-title', token: '--font-size-display' }
+];
 
 function extractComponentCss(html) {
   const m = html.match(/<style>([\s\S]*?)<\/style>/i);
@@ -115,6 +125,67 @@ function collectFailures(rel, css) {
   return failures;
 }
 
+function selectorSubjects(selector) {
+  return selector
+    .split(',')
+    .map((part) => part.trim().split(/\s+/).pop())
+    .filter(Boolean);
+}
+
+function collectRhythmFailures(rel, css) {
+  if (rel !== 'index.html') return [];
+  const failures = [];
+  forEachStyleRule(css, (selector, body) => {
+    const sizeRe = /font-size\s*:\s*([^;}{]+)/gi;
+    let match;
+    while ((match = sizeRe.exec(body)) !== null) {
+      const value = match[1].trim();
+      for (const subject of selectorSubjects(selector)) {
+        const role = RHYTHM_ROLES.find((item) => item.subject === subject);
+        if (!role) continue;
+        const expected = 'var(' + role.token + ')';
+        if (value.replace(/\s+/g, '') !== expected) {
+          failures.push(
+            `${rel}: ${subject} font-size must be ${expected} — got ${value}`
+          );
+        }
+      }
+    }
+  });
+  return failures;
+}
+
+function rhythmSelfCheck() {
+  const bad = [
+    'h1 { font-size: clamp(48px, 12vw, 80px); }',
+    'h2 { font-size: var(--font-size-title); }',
+    'h2.cta-title { font-size: clamp(44px, 7vw, 104px); }'
+  ].join('\n');
+  const good = [
+    'h1 { font-size: var(--font-size-hero); }',
+    '#intro h1 { line-height: 1.12; }',
+    'h2.essence-tagline { font-size: var(--font-size-display); }'
+  ].join('\n');
+  const problems = [];
+  const badText = collectRhythmFailures('index.html', bad).join('\n');
+  const goodText = collectRhythmFailures('index.html', good).join('\n');
+  if (!/h1 font-size must be var\(--font-size-hero\)/.test(badText)) {
+    problems.push('missed raw clamp on h1');
+  }
+  if (!/h2\.cta-title font-size must be var\(--font-size-display\)/.test(badText)) {
+    problems.push('missed raw clamp on h2.cta-title');
+  }
+  if (/h2 font-size must be/.test(badText)) problems.push('flagged h2 on the title token');
+  if (goodText) problems.push('flagged a heading already on its role token');
+  if (problems.length) {
+    console.error('[verify-typography-roles] rhythm self-check failed');
+    problems.forEach((line) => console.error('  ' + line));
+    if (badText) console.error(badText);
+    if (goodText) console.error(goodText);
+    process.exit(1);
+  }
+}
+
 function selfCheck() {
   const css = [
     '.primer-next-cta { font-size: clamp(11px, 0.85vw, 12px); }',
@@ -148,6 +219,7 @@ function selfCheck() {
 
 function main() {
   selfCheck();
+  rhythmSelfCheck();
   const failures = [];
 
   for (const rel of FILES) {
@@ -155,6 +227,7 @@ function main() {
     if (!fs.existsSync(filePath)) continue;
     const css = extractComponentCss(fs.readFileSync(filePath, 'utf8'));
     failures.push.apply(failures, collectFailures(rel, css));
+    failures.push.apply(failures, collectRhythmFailures(rel, css));
   }
 
   if (failures.length) {
@@ -163,7 +236,7 @@ function main() {
     process.exit(1);
   }
 
-  console.log('[verify-typography-roles] OK — no font-size under 12px or orphan over 32px.');
+  console.log('[verify-typography-roles] OK — floor, display ceiling, and heading role tokens.');
 }
 
 main();

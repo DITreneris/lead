@@ -32,6 +32,7 @@ if (-not $typst) {
     $typstCandidates = @(
         (Join-Path $env:LOCALAPPDATA "Programs\Typst\typst.exe"),
         (Join-Path $env:LOCALAPPDATA "Programs\Typst\typst-x86_64-pc-windows-msvc\typst.exe"),
+        (Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Packages\Typst.Typst_Microsoft.Winget.Source_8wekyb3d8bbwe\typst-x86_64-pc-windows-msvc\typst.exe"),
         (Join-Path $env:ProgramFiles "Typst\typst.exe"),
         (Join-Path ${env:ProgramFiles(x86)} "Typst\typst.exe")
     ) | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1

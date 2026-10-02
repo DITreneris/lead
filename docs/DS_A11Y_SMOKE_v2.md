@@ -1,6 +1,6 @@
-# WCAG-lite smoke — DS v2.1
+# WCAG-lite smoke — DS v2.1, updated 2026-10-02
 
-**Date:** 2026-07-29  
+**Date:** 2026-07-29 (checklist origin). Updated 2026-10-02 for the hero PDF tier and the schema wash.  
 **Tester:** Agent (structural) + checklist close-out  
 **Build:** after `npm run build` (tokens inject + site/)
 
@@ -10,7 +10,7 @@
 |-------|--------|-------|
 | Skip link → `#main-content` | Pass | Unchanged |
 | Focus visible (yellow 2px) | Pass | Disclosure / PDF / tertiary offset 3px |
-| Hero → primary CTA → PDF tier | Pass | Single red + yellow outline |
+| Hero → primary CTA → PDF tier | Pass | One red CTA. Hero PDF is a tertiary link in `.intro-strip`. Yellow outline stays on the final slide (`.btn-pdf-outline`) only |
 | `details` DUK keyboard | Pass | Native `summary`; chrome ≥13px (`.disclosure-chip__summary`) |
 | „Turinys“ outline + list buttons | Pass | IDs unchanged for JS |
 | Touch 44px hero foot | Pass | `.link-tier-tertiary` |
@@ -31,6 +31,7 @@
 
 | Date | Build | Viewports | Tester | Result |
 |------|-------|-----------|--------|--------|
-| 2026-09-29 | reason-step contrast | 375 + desktop | Agent browser | Pass — `.schema-step--reason` fill `#047857`, text `#f8fafc`, number opacity 1; guided labels 13px, „Rezultatas“ not clipped; EN build same fill |
+| 2026-10-02 | schema wash | 375 + desktop | Agent browser | Pass — step 4 `--surface-reason`, step 5 `--surface-qc`, text `--text-ink` / `--text-ink-body`. Teal stays the left rule |
+| 2026-09-29 | reason-step contrast | 375 + desktop | Agent browser | Superseded 2026-10-02 — full `#047857` fill and `#f8fafc` text are not the live diagram |
 | 2026-07-29 | post DS v2.1 | 375, 768, 1024 | Agent structural | Pass — type tokens, chrome floor, teal, tertiary text roles |
 | 2026-05-25 | post DS v2.0 | 375, 390, 768, 1024 | Agent smoke | Pass — disclosure patterns, hero mobile center, tools-lt deploy path |

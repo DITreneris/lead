@@ -272,7 +272,7 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
 }
 
 function applyEnHead(html) {
-  let h = html.replace('<html lang="lt">', '<html lang="en">');
+  let h = html.replace(/<html lang="lt"/, '<html lang="en"');
   const headPairs = [
     ['<title>Promptų anatomija — darbui ir vadovavimui</title>', '<title>Prompt Anatomy — for work and leadership</title>'],
     [

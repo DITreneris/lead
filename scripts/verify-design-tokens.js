@@ -33,6 +33,7 @@ const REQUIRED_PUBLIC_TOKENS = [
   '--measure-prose',
   '--tracking-label',
   '--font-size-display',
+  '--font-size-hero',
   '--font-size-title',
   '--font-size-body',
   '--surface-light',

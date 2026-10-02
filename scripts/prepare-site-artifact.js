@@ -21,9 +21,10 @@ const PUBLIC_FILES = [
   path.join('assets', 'www.promptanatomy.app.pdf'),
   path.join('assets', 'www.promptanatomy.app-en.pdf'),
   path.join('assets', 'memes', 'meme-after-roadmap.png'),
-  path.join('assets', 'memes', 'meme-essence.png'),
+  path.join('assets', 'memes', 'su_1.png'),
+  path.join('assets', 'memes', 'su_2.png'),
   // Lesson illustrations (tracked outputs of `npm run build:illustrations`).
-  ...['intro', 'check', 'meeting', 'levels', 'feedback', 'team', 'letter'].flatMap((slug) =>
+  ...['check', 'meeting', 'levels', 'feedback', 'team', 'letter'].flatMap((slug) =>
     ['lt', 'en'].flatMap((locale) => [
       path.join('assets', 'illustrations', `${slug}-${locale}.png`),
       path.join('assets', 'illustrations', `${slug}-${locale}.webp`)

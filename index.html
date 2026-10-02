@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Pagrindinis puslapis: redaguok tik šį failą (index.html). LT šaltinis; npm run build → EN site/index.html, LT site/lt/index.html. -->
-<html lang="lt">
+<html lang="lt" class="intro-active">
 <head>
     <meta charset="UTF-8">
     <meta name="page-locale" content="lt">
@@ -34,7 +34,7 @@
     <link rel="apple-touch-icon" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <!-- Inline SVG: Lucide icons (lucide-static, ISC License, https://lucide.dev) -->
     <style>
         /* DS_TOKENS_START — from styles/tokens.css; do not edit here */
@@ -50,6 +50,9 @@
             --surface-inset: rgba(0, 0, 0, 0.2);
             --surface-inset-soft: rgba(0, 0, 0, 0.13);
             --surface-light: #e8eef4;
+            --surface-paper: #f7f9fb;
+            --surface-reason: #d7ebe3;
+            --surface-qc: #d5e2ee;
             --surface-light-bar: #dfe7ef;
             --surface-navy-deep: #050d14;
             --surface-stage: #0b1320;
@@ -128,6 +131,7 @@
             --accent-yellow-hover-text: #fff6b0;
             --text-ink: #0f172a;
             --text-ink-muted: #475569;
+            --text-ink-body: #405064;
             --text-ink-faint: rgba(15, 23, 42, 0.08);
             --text-ink-mid: rgba(15, 23, 42, 0.35);
             --text-on-navy-cool: #e0f2fe;
@@ -136,6 +140,7 @@
             --font-size-ui: 14px;
             --font-size-lead: clamp(16px, 1.25vw, 19px);
             --font-size-display: clamp(56px, 7.5vw, 104px);
+            --font-size-hero: clamp(44px, 5vw, 72px);
             --font-size-title: clamp(36px, 4.2vw, 56px);
             --font-size-body: clamp(14px, 1.05vw, 16px);
             --lh-body: 1.5;
@@ -277,19 +282,33 @@
         }
         .icon--telegram { width: 1.25em; height: 1.25em; color: #2aabee; }
 
-        /* Prekės ženklo juosta — viršuje dešinėje */
+        /* Prekės ženklo juosta — tik dešinys klasteris, dešinė briauna sutampa su sekcija */
         .brand-header {
             position: fixed;
             top: 0;
+            left: 0;
             right: 0;
             z-index: 200;
-            padding: 18px 32px 18px 20px;
             display: flex;
             justify-content: flex-end;
             align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 10px;
+            padding: 8px var(--space-section-x) 0;
             pointer-events: none;
+            background: none;
+        }
+        .brand-header__inner {
+            width: max-content;
+            max-width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 10px;
+            padding: 4px 0 4px 10px;
+            pointer-events: none;
+            background: var(--bg-dark);
+            border-radius: var(--radius-lg) 0 0 var(--radius-lg);
         }
         .brand-header .brand-lockup {
             pointer-events: auto;
@@ -316,7 +335,7 @@
             flex-shrink: 0;
             box-shadow: var(--shadow-sm);
         }
-        .brand-icon svg { width: 26px; height: 26px; display: block; }
+        .brand-icon svg { width: 26px; height: 26px; display: block; color: var(--accent-yellow); }
         .brand-wordmark {
             display: flex;
             flex-direction: column;
@@ -328,8 +347,7 @@
             font-family: var(--font-display);
             font-weight: 700;
             font-size: clamp(12px, 2vw, 17px);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+            letter-spacing: 0;
             white-space: nowrap;
         }
         .brand-name .brand-prompt { color: var(--brand-wordmark); }
@@ -468,14 +486,148 @@
 
         section#intro {
             background: radial-gradient(circle at 80% 20%, rgba(251, 211, 4, 0.035), transparent 52%);
+            align-items: center;
+            justify-content: center;
             padding-top: max(var(--space-section-y), calc(72px + env(safe-area-inset-top, 0px)));
         }
-        #intro .intro-copy { grid-column: 1 / -1; grid-row: 1; }
-        #intro .intro-rest { grid-column: 1 / -1; grid-row: 3; }
-        #intro .viz-figure--intro {
-            grid-column: 1 / -1;
-            grid-row: 2;
+        .intro-frame {
+            width: 100%;
+            max-width: 1200px;
+            margin-inline: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
         }
+        #intro h1 {
+            line-height: 1.12;
+            max-width: 14em;
+        }
+        #intro .container {
+            align-items: center;
+            grid-template-columns: 55fr 45fr;
+        }
+        #intro .intro-copy { grid-column: 1; grid-row: 1; }
+        #intro .intro-proof {
+            grid-column: 2;
+            grid-row: 1;
+            min-width: 0;
+            align-self: center;
+        }
+        #intro .intro-proof-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            background: var(--surface-stage-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4) var(--space-5);
+        }
+        #intro .intro-proof-bridge {
+            display: flex;
+            justify-content: center;
+            color: var(--text-soft);
+        }
+        #intro .intro-proof-bridge svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+        .intro-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-2) var(--space-4);
+            min-height: 64px;
+            margin-top: var(--space-8);
+            padding-top: var(--space-2);
+            border-top: 1px solid var(--border-hairline);
+        }
+        #intro .intro-strip .hero-foot-links,
+        #intro .intro-strip details.hero-faq.disclosure-chip--inline {
+            margin: 0;
+        }
+        #intro .intro-strip .disclosure-chip__summary {
+            color: var(--text-soft);
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            min-height: var(--tap-min);
+            padding: 10px;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: var(--font-size-body);
+            letter-spacing: 0;
+            text-transform: none;
+            border-radius: var(--radius-tab);
+        }
+        #intro .intro-strip .disclosure-chip__summary:hover {
+            color: var(--accent-yellow);
+            background: var(--accent-yellow-bg-fill);
+        }
+        #intro .intro-strip details.hero-faq[open] {
+            flex-basis: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #intro .intro-strip details.hero-faq[open] .disclosure-chip__panel {
+            width: 100%;
+        }
+        #intro .intro-proof-kicker {
+            margin: 0 0 var(--space-2);
+            font-family: var(--font-display);
+            font-size: var(--font-size-label);
+            font-weight: 800;
+            letter-spacing: var(--tracking-label);
+            text-transform: uppercase;
+            color: var(--accent-yellow);
+        }
+        #intro .intro-proof-before,
+        #intro .intro-proof-after {
+            margin: 0;
+            background: var(--surface-light);
+            color: var(--text-ink);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4) var(--space-5);
+        }
+        #intro .intro-proof-before {
+            font-size: var(--font-size-body);
+            font-weight: 600;
+            line-height: 1.35;
+        }
+        #intro .intro-proof-after {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        #intro .intro-proof-after .practice-structured-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2) var(--space-3);
+            align-items: baseline;
+            font-size: var(--font-size-ui);
+            line-height: 1.35;
+            color: var(--text-ink);
+        }
+        #intro .intro-proof-after .practice-structured-line strong {
+            flex: 0 0 auto;
+            font-family: var(--font-main);
+            font-size: var(--font-size-label);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--primary-blue);
+        }
+        #intro .intro-proof-after .practice-structured-line span {
+            flex: 1 1 8em;
+            color: var(--text-ink-muted);
+        }
+        #intro .hero-intro.slide-lead {
+            max-width: 28em;
+            margin-top: var(--space-8);
+        }
+        #intro .hero-foot-links { max-width: none; }
 
         section#cta {
             background: linear-gradient(to bottom, var(--bg-dark), var(--primary-blue));
@@ -562,19 +714,22 @@
             gap: var(--space-container-gap);
             align-items: center;
         }
-        /* From 1025px, a long heading must not collapse the picture column.
-           Intro is excluded: its children already span the full row, and
-           minmax(0) would let ANATOMIJA wrap. Phones stay one column below. */
+        /* From 1025px the picture track is the narrow one so the prompt stays the job.
+           Figure-first slides (meeting, feedback, letter) keep the picture on the left.
+           Intro is excluded: it sets 55fr 45fr itself. Phones stay one column below. */
         @media (min-width: 1025px) {
             section:not(#intro) .container:has(> .viz-figure) {
-                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr);
+            }
+            section:not(#intro) .container:has(> .viz-figure:first-child) {
+                grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.45fr);
             }
         }
 
         /* Tipografija */
         h1 {
             font-family: var(--font-display);
-            font-size: var(--font-size-display);
+            font-size: var(--font-size-hero);
             line-height: 0.92;
             margin: 0;
             font-weight: 700;
@@ -786,7 +941,7 @@
         }
         .cta-secondary-label {
             margin: 0;
-            font-size: clamp(12px, 1vw, 14px);
+            font-size: var(--font-size-label);
             font-weight: 800;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -800,15 +955,6 @@
             max-width: 28em;
         }
         .essence-lead strong { color: var(--text-bright); font-weight: 700; }
-        .cta-sub {
-            font-size: clamp(20px, 2vw, 28px);
-            margin-bottom: 50px;
-            color: var(--text-muted);
-            line-height: 1.45;
-            max-width: 32em;
-            margin-left: auto;
-            margin-right: auto;
-        }
         .cta-foot {
             margin-top: 80px;
             font-size: clamp(13px, 1.2vw, 15px);
@@ -827,8 +973,7 @@
         }
         .site-legal-footnote__brand,
         .site-legal-footnote__addr,
-        .site-legal-footnote__email,
-        .site-legal-footnote__tag {
+        .site-legal-footnote__email {
             margin: 0;
         }
         .site-legal-footnote__brand {
@@ -854,18 +999,12 @@
             outline: 2px solid var(--accent-yellow);
             outline-offset: 3px;
         }
-        .site-legal-footnote__tag {
-            margin-top: 8px;
-            letter-spacing: 0.1em;
-            font-size: var(--font-size-label);
-            text-transform: uppercase;
-        }
         .label { 
             color: var(--accent-red); 
             text-transform: uppercase; 
             letter-spacing: var(--tracking-label); 
             font-weight: 800; 
-            font-size: clamp(13px, 1.1vw, 15px); 
+            font-size: var(--font-size-label); 
             margin-bottom: var(--space-3);
             display: block;
         }
@@ -941,7 +1080,7 @@
 
         h2.essence-tagline {
             font-family: var(--font-display);
-            font-size: clamp(44px, 7.5vw, 104px);
+            font-size: var(--font-size-display);
             line-height: 0.92;
             margin: 0 0 40px;
             font-weight: 700;
@@ -949,19 +1088,19 @@
         }
         h2.cta-title {
             font-family: var(--font-display);
-            font-size: clamp(44px, 7vw, 104px);
+            font-size: var(--font-size-display);
             line-height: 0.92;
-            margin: 0 0 20px;
+            margin: 0 0 50px;
             font-weight: 700;
             color: var(--text-bright);
         }
         .cta-inner { text-align: center; }
 
-        /* Iliustracija: 800px lenta (scripts/build-illustrations.mjs). Neišdidinti virš lentos. */
+        /* Iliustracija: 800×900 lenta, rodymas siauresnis už užklausą. */
         .viz-figure {
             margin: 0;
             width: 100%;
-            max-width: 800px;
+            max-width: 420px;
             justify-self: center;
         }
         .viz-figure img {
@@ -1135,35 +1274,35 @@
             min-height: 0;
             box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
         }
-        /* Dvi kortelės (Pagrindai): 2 stulpeliai + greito formato juosta */
+        /* Dvi kortelės (Pagrindai): vienodas aukštis, Kopijuoti apačioje */
         .types-grid.types-primer-cols {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             max-width: 960px;
             margin-left: auto;
             margin-right: auto;
-            align-items: start;
+            align-items: stretch;
         }
         .types-primer-cols > .types-card {
-            height: auto;
+            height: 100%;
             min-height: 0;
-            align-self: start;
+            align-self: stretch;
         }
         .types-primer-cols .types-card-grow {
-            flex: 0 1 auto;
+            flex: 1 1 auto;
             display: flex;
             flex-direction: column;
             gap: var(--space-3);
             min-height: 0;
         }
         .types-primer-cols .types-example-block {
-            flex: 0 1 auto;
+            flex: 1 1 auto;
             display: flex;
             flex-direction: column;
             gap: 10px;
             min-height: 0;
         }
         .types-primer-cols .types-copy-btn {
-            margin-top: 0;
+            margin-top: auto;
             align-self: flex-start;
         }
         .types-primer-quick {
@@ -1218,60 +1357,7 @@
             margin: 0;
             display: inline;
         }
-        /* Trys kortelės (Praktika): lygios kolonos, vienoda Kopijuoti eilutė, pilkas turinio box išsitempia */
-        .types-grid.types-triple-grid {
-            gap: var(--space-6);
-            margin-top: 0;
-            align-items: stretch;
-        }
-        .types-triple-grid > .types-card {
-            height: 100%;
-            min-height: 0;
-            align-self: stretch;
-            gap: var(--space-4);
-            padding: var(--space-card-padding-lg);
-        }
-        .types-triple-grid .types-card-grow {
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-            gap: var(--space-2);
-        }
-        .types-triple-grid .types-example-block {
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-            min-height: 0;
-        }
-        .types-triple-grid .types-example-block > * {
-            flex: 1 1 auto;
-            min-height: 0;
-        }
-        .types-triple-grid .types-copy-btn {
-            margin-top: 0;
-            align-self: flex-start;
-        }
-        .types-triple-grid .types-card-extra {
-            flex-shrink: 0;
-            margin-top: var(--space-3);
-            padding-top: var(--space-4);
-            border-top: 1px solid var(--border-hairline);
-        }
-        .types-slide--guided .types-card-actions {
-            flex-shrink: 0;
-            margin-top: auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: var(--space-3);
-            padding-top: var(--space-4);
-            border-top: 1px solid var(--border-hairline);
-        }
-        .types-slide--guided .types-card-actions .types-copy-btn {
-            margin-top: 0;
-        }
+        /* Praktika: dvi kortelės per .types-primer-cols, patikra per .types-primer-quick */
         .types-slide--guided .types-copy-btn--practice {
             color: var(--text-tertiary);
             border-color: var(--white-alpha-20);
@@ -1303,67 +1389,17 @@
             margin-bottom: var(--space-2);
             text-wrap: pretty;
         }
-        .types-slide--guided .types-card-example,
-        .types-slide--guided .types-card-result {
+        .types-slide--guided .types-card-example {
             text-wrap: pretty;
         }
-        /* .types-slide--guided: kontrastas ir sąrašai (praktika) */
-        .types-slide--guided .types-card-example--minimal {
-            font-style: normal;
-            padding: 12px 14px;
-            background: rgba(0, 0, 0, 0.22);
-            border-left-width: 2px;
-            border-left-color: var(--white-alpha-20);
-        }
-        .types-slide--guided .types-card-example--structured {
-            font-style: normal;
-            padding: var(--space-4) var(--space-3);
+        .types-slide--guided .types-card-example--lines {
             display: flex;
             flex-direction: column;
-            gap: var(--space-3);
+            gap: var(--space-2);
             overflow-wrap: anywhere;
-        }
-        .types-slide--guided .practice-structured-line {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-2) var(--space-3);
-            align-items: baseline;
-            font-size: clamp(13px, 1.05vw, 14px);
-            line-height: 1.68;
-            color: var(--text-body);
-        }
-        .types-slide--guided .practice-structured-line strong {
-            flex: 0 0 auto;
-            font-family: var(--font-main);
-            font-size: var(--font-size-label);
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-bright);
-        }
-        .types-slide--guided .practice-structured-line span {
-            flex: 1 1 12em;
-            color: var(--text-muted);
-        }
-        .types-slide--guided .practice-card-list {
-            margin: 0;
-            padding: 0 0 0 1.15em;
-            font-size: clamp(13px, 1.05vw, 15px);
-            line-height: 1.65;
-            color: var(--text-muted);
-        }
-        .types-slide--guided .practice-card-list li {
-            margin: 0 0 var(--space-3);
-        }
-        .types-slide--guided .practice-card-list li:last-child {
-            margin-bottom: 0;
-        }
-        .types-slide--guided .types-card--ctx .types-card-example--structured {
-            border-left-color: var(--accent-teal);
         }
         .types-card--sys { border-color: var(--primary-blue); }
         .types-card--ctx { border-color: var(--accent-teal); }
-        .types-card--role { border-color: var(--accent-red); }
         .types-card h3 {
             font-family: var(--font-display);
             font-size: var(--font-size-body);
@@ -1470,7 +1506,7 @@
             border-radius: var(--radius-lg);
             border: 1px solid var(--border);
             background: rgba(0, 0, 0, 0.35);
-            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+            box-shadow: var(--shadow-lg);
         }
         @supports (background: color-mix(in srgb, black 50%, transparent)) {
             .meme-figure img {
@@ -1754,6 +1790,10 @@
             transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
         }
         @media (min-width: 1025px) {
+            html.intro-active .nav-sidebar,
+            html.intro-active .slide-outline {
+                display: none;
+            }
             html.primer-active .slide-outline {
                 opacity: 0.4;
                 transform: scale(0.93);
@@ -1904,17 +1944,6 @@
             min-width: 4.5em;
             text-align: right;
         }
-        .roadmap-total {
-            margin-top: 20px;
-            padding: 14px 18px;
-            background: var(--accent-yellow-bg-subtle);
-            border: 1px solid var(--accent-yellow-border-soft);
-            border-radius: var(--radius-tab);
-            font-family: var(--font-display);
-            font-size: clamp(18px, 2.8vw, 24px);
-            font-weight: 700;
-            color: var(--accent-yellow);
-        }
         /* Promptų anatomijos schema (skaidrė prieš paskutinį šabloną) */
         .schema-section .container {
             max-width: 1100px;
@@ -1942,11 +1971,20 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 6px;
+            align-items: stretch;
+            gap: var(--space-8);
             min-width: 0;
             width: 100%;
-            padding-left: 48px;
+        }
+        .schema-column-flow::before {
+            content: "";
+            position: absolute;
+            left: 55px;
+            top: 14px;
+            bottom: 14px;
+            width: 1px;
+            background: var(--text-muted);
+            z-index: 0;
         }
         .schema-step {
             position: relative;
@@ -1954,75 +1992,61 @@
             width: 100%;
             display: flex;
             gap: 14px;
-            align-items: flex-start;
-            padding: 14px 16px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--white-alpha-12);
-            box-shadow: var(--shadow-md);
+            align-items: stretch;
+            padding: 18px 22px;
+            border-radius: var(--radius-xs);
+            background: var(--surface-paper);
+            border: 1px solid var(--text-ink-mid);
+            border-left: 3px solid transparent;
+            box-shadow: none;
         }
         .schema-step-num {
+            flex: 0 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-family: var(--font-display);
             font-weight: 700;
-            font-size: 18px;
-            opacity: 0.85;
-            flex-shrink: 0;
-            min-width: 1.25em;
+            font-size: 22px;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.02em;
+            color: var(--text-ink);
+            opacity: 1;
+            border-right: 1px solid var(--text-ink-body);
         }
         .schema-step-body {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            justify-content: center;
+            gap: var(--space-2);
+            min-width: 0;
             font-size: var(--font-size-body);
             line-height: 1.5;
             color: var(--text-ink);
         }
         .schema-step-body strong {
-            font-size: clamp(13px, 0.95vw, 14px);
-            letter-spacing: 0.06em;
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
             text-transform: uppercase;
+            color: var(--text-ink);
         }
-        .schema-step--neutral {
-            background: var(--surface-light);
+        .schema-step-body span {
+            font-family: var(--font-main);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: var(--lh-body);
+            color: var(--text-ink-body);
         }
-        .schema-step--neutral .schema-step-num { color: var(--text-ink); }
         .schema-step--reason {
-            background: var(--accent-teal-deep);
-            border-color: var(--white-alpha-20);
+            background: var(--surface-reason);
+            border-left-color: var(--accent-teal-deep);
         }
-        .schema-step--reason .schema-step-num { color: var(--text-bright); opacity: 1; }
-        .schema-step--reason .schema-step-body { color: var(--text-bright); }
-        .schema-step--reason .schema-step-body strong { color: var(--text-bright); }
         .schema-step--qc {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-deep) 100%);
-            border-color: var(--border-subtle);
-        }
-        .schema-step--qc .schema-step-num { color: var(--white-alpha-90); }
-        .schema-step--qc .schema-step-body { color: var(--text-on-navy-cool); }
-        .schema-step--qc .schema-step-body strong { color: var(--text-bright); }
-        .schema-arrow {
-            width: 100%;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-soft);
-        }
-        .schema-arrow svg { width: 20px; height: 20px; }
-        .schema-loop-svg {
-            position: absolute;
-            left: -6px;
-            top: 42%;
-            width: 36px;
-            height: 42%;
-            min-height: 180px;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .schema-loop-svg path {
-            fill: none;
-            stroke: var(--primary-blue);
-            stroke-width: 2.25;
-            opacity: 0.85;
+            background: var(--surface-qc);
+            border-left-color: var(--primary-blue);
         }
         .schema-foot {
             margin-top: 40px;
@@ -2254,11 +2278,16 @@
             .meme-interlude {
                 padding-left: var(--space-section-rail-left);
             }
+            .brand-header {
+                padding-left: var(--space-section-rail-left);
+                padding-right: var(--space-section-x);
+            }
         }
 
         @media (max-width: 1366px) {
             section { padding-right: var(--space-section-x-md); }
             .promo-handoff { padding-right: var(--space-section-x-md); }
+            .brand-header { padding-right: var(--space-section-x-md); }
             .container { gap: var(--space-container-gap-md); }
         }
 
@@ -2270,6 +2299,8 @@
             .promo-handoff { padding: var(--space-promo-mobile); }
             .promo-handoff__panel { padding: 22px 18px 26px; }
             .container { grid-template-columns: 1fr; gap: var(--space-container-gap-sm); text-align: center; }
+            section:not(#intro) .container > .viz-figure { order: 2; }
+            section:not(#intro) .container > div { order: 1; }
             section {
                 padding: var(--space-section-mobile);
                 min-height: 100cqh;
@@ -2308,13 +2339,23 @@
                 right: auto;
                 bottom: auto;
                 flex: 0 0 auto;
+                /* Solid floor. The page is the same navy, so the edge is a light line plus a dark scrim above the bar. */
+                background: var(--bg-dark);
+                border-top-color: var(--white-alpha-22);
+                box-shadow: 0 -1px 0 var(--white-alpha-08);
+            }
+            .nav-mobile::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 100%;
+                height: 36px;
+                pointer-events: none;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
             }
             .nav-mobile-progress { display: block; }
             .prompt-editor { text-align: left; }
-            h1 { font-size: clamp(48px, 12vw, 80px); }
-            h2 { font-size: clamp(32px, 8vw, 44px); }
-            h2.essence-tagline { font-size: clamp(40px, 11vw, 72px); }
-            h2.cta-title { font-size: clamp(40px, 11vw, 72px); }
             .nav-mobile button.nav-item {
                 width: var(--tap-min);
                 height: var(--tap-min);
@@ -2349,7 +2390,7 @@
                 box-shadow: 0 0 0 2px var(--bg-dark), 0 0 12px var(--accent-yellow-bg-glow);
             }
             .brand-header {
-                padding: 12px 14px 12px 12px;
+                padding: 8px 20px 0;
             }
             .brand-icon {
                 width: 40px;
@@ -2361,11 +2402,9 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            .schema-column-flow { margin: 0 auto; padding-left: 0; }
-            .schema-loop-svg { display: none; }
-            .schema-lead { font-size: 16px; }
-            .types-grid { grid-template-columns: 1fr; }
-            .types-lead { font-size: 16px; }
+            .schema-column-flow { margin: 0 auto; }
+            .types-grid,
+            .types-grid.types-primer-cols { grid-template-columns: 1fr; }
             .roadmap-name { font-size: 14px; }
             .roadmap-time { font-size: 13px; min-width: 4em; }
             .quiz-question { font-size: clamp(18px, 4.5vw, 26px); }
@@ -2383,26 +2422,26 @@
             section#intro {
                 padding-top: max(40px, calc(64px + env(safe-area-inset-top, 0px)));
             }
+            #intro .container { grid-template-columns: 1fr; }
             #intro .hero-intro,
-            #intro .hero-foot-links,
-            #intro details.hero-faq {
-                margin-inline: auto;
-            }
-            #intro .disclosure-chip__summary {
+            #intro .hero-foot-links {
                 margin-inline: auto;
             }
             #intro .hero-actions {
                 justify-content: center;
             }
             #intro .intro-copy,
-            #intro .intro-rest,
-            #intro .viz-figure--intro {
+            #intro .intro-proof {
                 grid-column: auto;
                 grid-row: auto;
             }
             #intro .intro-copy { order: 1; }
-            #intro .viz-figure--intro { order: 2; align-self: stretch; }
-            #intro .intro-rest { order: 3; }
+            #intro .intro-proof { order: 2; width: 100%; text-align: left; }
+            #intro .intro-proof-card { padding: var(--space-3) var(--space-4); }
+            #intro .intro-proof-before,
+            #intro .intro-proof-after { padding: var(--space-3) var(--space-4); }
+            #intro .intro-strip { order: 3; }
+            html.intro-active .slide-outline { display: none; }
         }
         @media (max-width: 480px) {
             .brand-name { white-space: normal; text-align: right; max-width: 9.5em; }
@@ -2424,6 +2463,7 @@
 </details>
 
 <header class="brand-header" role="banner">
+    <div class="brand-header__inner">
     <div class="lang-switch" role="group" aria-label="Kalbos pasirinkimas">
         <button type="button" class="lang-switch__btn" id="langLtBtn" lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
         <button type="button" class="lang-switch__btn" id="langEnBtn" lang="en" aria-label="Switch to English">EN</button>
@@ -2431,22 +2471,23 @@
     <a class="brand-lockup" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=header&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="brand_app_click" data-track-dest="app" aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)">
         <div class="brand-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path fill="#fbd304" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
+                <path fill="currentColor" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
             </svg>
         </div>
         <div class="brand-wordmark">
-            <div class="brand-name"><span class="brand-prompt">PROMPTŲ</span> <span class="brand-anatomy">ANATOMIJA</span></div>
+            <div class="brand-name"><span class="brand-prompt">Promptų</span> <span class="brand-anatomy">Anatomija</span></div>
             <div class="brand-tagline">DI praktinė sistema</div>
         </div>
     </a>
+    </div>
 </header>
 
 <nav class="nav-sidebar" aria-label="Skaidrių navigacija">
     <button type="button" class="nav-item active" aria-label="Skaidrė 1: Įvadas" aria-current="true"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutės"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 5: Kelio planas: pradėk nuo 5–15 min"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutes"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 5: Pradėk nuo 5–15 min"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"></button>
@@ -2465,8 +2506,8 @@
         <button type="button" class="nav-item active" aria-label="Skaidrė 1: Įvadas" aria-current="true"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutės"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 5: Kelio planas: pradėk nuo 5–15 min"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutes"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 5: Pradėk nuo 5–15 min"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"></button>
@@ -2484,37 +2525,49 @@
 
 <!-- Skaidrė 1: įvadas -->
 <section id="intro" aria-label="Įvadas">
+    <div class="intro-frame">
     <div class="container">
         <div class="intro-copy">
             <span class="label">DI praktinė sistema įmonei</span>
-            <h1>PROMPTŲ<br><span class="hero-title-accent">ANATOMIJA</span></h1>
-            <p class="hero-intro slide-lead">Nukopijuok užklausą ir paleisk per 2 minutes. Pirma praktika, o tada — pasitikrinimas.</p>
+            <h1>Trumpa užklausa tampa užduotimi.</h1>
+            <p class="hero-intro slide-lead">Tas pats savaitės tikslas: vaidmuo, tikslas, įvestis, rezultatas. Paleidi per 2 minutes.</p>
             <div class="hero-actions">
                 <a class="hero-primary-link" href="#guided" aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką" data-track="hero_primary_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
                     Pradėk 2 min. praktiką
                 </a>
-                <a class="hero-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">
-                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
-                    Atsisiųsk santrauką (PDF)
-                </a>
             </div>
         </div>
-        <figure class="viz-figure viz-figure--intro">
-            <picture>
-                <source srcset="assets/illustrations/intro-lt.webp" type="image/webp">
-                <img src="assets/illustrations/intro-lt.png" width="800" height="1120" loading="eager" fetchpriority="high" decoding="async" alt="Penkių dalių užklausa — vaidmuo, kontekstas, mąstymas, rezultatas, patikra — virsta sprinto planu: 0–10 min sutariam, ką paliekam; 10–40 min darom vieną gabalą; 40–60 min sprendimas, kas lieka.">
-            </picture>
-        </figure>
-        <div class="intro-rest">
-            <p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Biblioteka</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=cloud&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" data-track-dest="pro" aria-label="CEO ir COO vadovybės rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a> · <a class="link-tier-tertiary" href="tools-lt.html" data-track="hero_tools_click">DI įrankių gidas</a></p>
+        <div class="intro-proof">
+            <div class="intro-proof-card">
+            <div class="intro-proof-block">
+                <p class="intro-proof-kicker">Prieš</p>
+                <p class="intro-proof-before">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>
+            </div>
+            <div class="intro-proof-bridge" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="intro-proof-block">
+                <p class="intro-proof-kicker">Po</p>
+                <div class="intro-proof-after">
+                    <div class="practice-structured-line"><strong>Vaidmuo</strong> <span>darbo asistentas</span></div>
+                    <div class="practice-structured-line"><strong>Tikslas</strong> <span>savaitės prioritetai</span></div>
+                    <div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>
+                    <div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+        <div class="intro-strip">
+            <p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Biblioteka</a> · <a class="link-tier-tertiary hero-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">Santrauka (PDF)</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=cloud&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" data-track-dest="pro" aria-label="CEO ir COO vadovybės rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a> · <a class="link-tier-tertiary" href="tools-lt.html" data-track="hero_tools_click">DI įrankių gidas</a></p>
             <details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">
                 <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>
                 <div class="hero-faq__panel disclosure-chip__panel">
                     <div class="hero-faq__item"><strong>Ką įrašyti į užklausą vadovybės atnaujinimui?</strong> Auditoriją, kontekstą, ribas ir rezultatą (punktai, lentelė ar sprendimo santrauka). Pridėk sėkmės kriterijų.</div>
                     <div class="hero-faq__item"><strong>Kaip sumažinti pramanytus faktus klientų laiškuose?</strong> Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kas saugu, ką būtina patikrinti.</div>
                     <div class="hero-faq__item"><strong>Kas yra greita patikra?</strong> 30 sekundžių rizikos peržiūra prieš siuntimą: faktai, trūkstamas kontekstas ir 2–3 reputacijos rizikos.</div>
-                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (vaidmuo, kontekstas, mąstymas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>
+                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (vaidmuo, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>
                 </div>
             </details>
         </div>
@@ -2546,7 +2599,7 @@
             <article class="types-card types-card--ctx">
                 <div class="types-card-grow">
                     <h3>Promptų inžinerija</h3>
-                    <p class="types-card-desc">Parašai, paleidi, tada taisai vieną dalyką.</p>
+                    <p class="types-card-desc">Struktūruotas užklausų rašymas, specifikacija, iteracija.</p>
                     <p class="types-card-k">Praktikoje</p>
                     <div class="types-example-block">
                         <p class="types-card-example">„Šitą atsakymą sutrumpink iki 7 punktų. Nekeisk faktų, kurių nėra įvestyje.“</p>
@@ -2577,55 +2630,39 @@
         <div class="schema-inner">
             <span class="label">Žingsniai</span>
             <h2>Promptų anatomijos schema</h2>
-            <p class="schema-lead slide-lead">Pradėk nuo 2–3 dalių. Visas penkias naudok, kai užduotis yra svarbi ir sudėtinga.</p>
+            <p class="schema-lead slide-lead">Pradėk nuo vaidmens, konteksto ir rezultato.<br>Penkias schemos dalis naudok tada, kai užduotis yra sudėtinga.</p>
             <div class="schema-grid">
                 <div class="schema-column-flow">
-                    <svg class="schema-loop-svg" viewBox="0 0 40 200" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M 34 178 Q 6 142 6 100 Q 6 56 34 26" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="34" cy="24" r="4" fill="var(--primary-blue)" opacity="0.95" />
-                    </svg>
                     <div class="schema-step schema-step--neutral">
-                        <span class="schema-step-num">1</span>
+                        <span class="schema-step-num">01</span>
                         <div class="schema-step-body">
                             <strong>Vaidmuo</strong>
                             <span>Kas esi ir koks tikslas (kodėl DI turi taip veikti)</span>
                         </div>
                     </div>
-                    <div class="schema-arrow" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
                     <div class="schema-step schema-step--neutral">
-                        <span class="schema-step-num">2</span>
+                        <span class="schema-step-num">02</span>
                         <div class="schema-step-body">
                             <strong>Kontekstas</strong>
                             <span>Faktai, auditorija, apribojimai, šaltiniai, kas jau žinoma</span>
                         </div>
                     </div>
-                    <div class="schema-arrow" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
-                    <div class="schema-step schema-step--reason">
-                        <span class="schema-step-num">3</span>
-                        <div class="schema-step-body">
-                            <strong>Mąstymas</strong>
-                            <span>Žingsniai, kriterijai, kaip priimti sprendimą</span>
-                        </div>
-                    </div>
-                    <div class="schema-arrow" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
                     <div class="schema-step schema-step--neutral">
-                        <span class="schema-step-num">4</span>
+                        <span class="schema-step-num">03</span>
                         <div class="schema-step-body">
                             <strong>Rezultatas</strong>
                             <span>Formatas, apimtis, pavyzdys, baigtumo kriterijai</span>
                         </div>
                     </div>
-                    <div class="schema-arrow" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                    <div class="schema-step schema-step--reason">
+                        <span class="schema-step-num">04</span>
+                        <div class="schema-step-body">
+                            <strong>Mąstymas</strong>
+                            <span>Žingsniai, kriterijai, kaip priimti sprendimą</span>
+                        </div>
                     </div>
                     <div class="schema-step schema-step--qc">
-                        <span class="schema-step-num">5</span>
+                        <span class="schema-step-num">05</span>
                         <div class="schema-step-body">
                             <strong>Kokybės kontrolė</strong>
                             <span>Tikrink prieš siuntimą (ypač klientui ar vadovybei)</span>
@@ -2641,90 +2678,66 @@
 </section>
 
 <!-- Skaidrė 4: Guided praktika -->
-<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutės">
+<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutes">
     <div class="container">
         <div class="types-head">
             <span class="label">Praktika</span>
-            <h2>Pradėk per 2 minutės</h2>
-            <p class="types-lead slide-lead">Tas pats savaitės tikslas — kitaip parašius, kitas atsakymas.<br>Paleisk „Prieš“, tada „Po“ su savo 3–5 eilutėmis ir palygink, ar A/B/C be išgalvotų skaičių.</p>
+            <h2>Pradėk per 2 minutes</h2>
+            <p class="types-lead slide-lead">Tas pats savaitės tikslas — kitaip parašius, kitas atsakymas.<br>Nukopijuok „Po“ ir skliaustus pakeisk savo 3–5 eilutėmis.</p>
         </div>
-        <div class="types-grid types-triple-grid">
+        <div class="types-grid types-primer-cols">
             <article class="types-card types-card--sys">
                 <div class="types-card-grow">
                     <h3>Prieš</h3>
                     <p class="types-card-desc">Trumpa užklausa — DI spėja, ko nepasakei.</p>
                     <p class="types-card-k">Užklausa</p>
                     <div class="types-example-block">
-                        <p class="types-card-example types-card-example--minimal">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>
+                        <p class="types-card-example">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>
+                        <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Paruošk ataskaitą apie mūsų savaitės prioritetus." aria-label="Kopijuoti „prieš“ užklausą" data-track="practice_before_copy">Kopijuoti</button>
                     </div>
-                </div>
-                <div class="types-card-actions">
-                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Paruošk ataskaitą apie mūsų savaitės prioritetus." aria-label="Kopijuoti 'prieš' užklausą" data-track="practice_before_copy">Kopijuoti</button>
-                </div>
-                <div class="types-card-extra">
-                    <p class="types-card-k">Rizika</p>
-                    <ul class="practice-card-list">
-                        <li>Neaiški auditorija ir formatas</li>
-                        <li>Skaičiai gali būti išgalvoti</li>
-                        <li>Trūksta tavo konteksto</li>
-                    </ul>
                 </div>
             </article>
             <article class="types-card types-card--ctx">
                 <div class="types-card-grow">
                     <h3>Po</h3>
-                    <p class="types-card-desc">Tas pats tikslas. Aiški užklausa — rezultatą gali naudoti.</p>
-                    <p class="types-card-k">Struktūra</p>
+                    <p class="types-card-desc">Tinka, jei matai A/B/C ir nėra skaičių, kurių neįklijavai.</p>
+                    <p class="types-card-k">Užklausa</p>
                     <div class="types-example-block">
-                        <div class="types-card-example types-card-example--structured">
-                            <div class="practice-structured-line"><strong>Vaidmuo</strong> <span>darbo asistentas</span></div>
-                            <div class="practice-structured-line"><strong>Tikslas</strong> <span>savaitės prioritetai</span></div>
-                            <div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>
-                            <div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>
+                        <div class="types-card-example types-card-example--lines">
+                            <span>Vaidmuo: Tu esi mano darbo asistentas.</span>
+                            <span>Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ].</span>
+                            <span>Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis].</span>
+                            <span>Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas).</span>
+                            <span>Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“.</span>
                         </div>
-                        <p class="visually-hidden">Pilna užklausa nukopijuojama mygtuku Kopijuoti.</p>
+                        <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Vaidmuo: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti „po“ užklausą" data-track="practice_after_copy">Kopijuoti</button>
                     </div>
                 </div>
-                <div class="types-card-actions">
-                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Vaidmuo: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti 'po' užklausą" data-track="practice_after_copy">Kopijuoti</button>
-                </div>
-                <div class="types-card-extra">
-                    <p class="types-card-k">Rezultatas</p>
-                    <p class="types-card-result">Tinka, jei matai A/B/C ir nėra skaičių, kurių neįklijavai.</p>
-                </div>
             </article>
-            <article class="types-card types-card--role">
-                <div class="types-card-grow">
-                    <h3>Patikra (30 sek.)</h3>
-                    <p class="types-card-desc">Pilna siuntimo patikra — po kelio plano.</p>
-                    <p class="types-card-k">Ką tikrinti</p>
-                    <div class="types-example-block">
-                        <ul class="practice-card-list">
-                            <li>Ar faktai tikri?</li>
-                            <li>Ko trūksta kontekste?</li>
-                            <li>Kokios 2–3 rizikos?</li>
-                            <li>Ką patikrinti nepriklausomu šaltiniu?</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="types-card-actions">
-                    <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
-                </div>
-                <div class="types-card-extra">
-                    <p class="types-card-k">Toliau</p>
-                    <p class="types-card-result"><a class="inline-link inline-link--accent" href="#roadmap" data-track="practice_next_click">Kelio planas ↓</a> · <a class="inline-link inline-link--soft" href="#qc" data-track="practice_qc_jump">Patikra →</a></p>
-                </div>
-            </article>
+        </div>
+        <div class="types-primer-quick">
+            <p class="types-primer-quick-k">Patikra (30 sek.)</p>
+            <p class="types-primer-quick-desc">30 sekundžių: rizikos, kas tinka, ką patikrinti ne DI, ko trūksta.</p>
+            <p class="types-card-example types-primer-quick-example">Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste.</p>
+            <div class="types-primer-quick-actions">
+                <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
+                <p class="types-primer-quick-next">
+                    <span class="types-card-k">Toliau</span>
+                    <a class="inline-link inline-link--soft primer-next-cta" href="#roadmap" data-track="practice_next_click">Kelio planas ↓</a>
+                    <span aria-hidden="true">·</span>
+                    <a class="inline-link inline-link--soft" href="#qc" data-track="practice_qc_jump">Patikra →</a>
+                </p>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Skaidrė 5: kelio planas — pradėk nuo 5–15 min, tada šablonai pagal poreikį -->
-<section id="roadmap" class="roadmap-slide" aria-label="Kelio planas: pradėk nuo 5–15 min">
+<section id="roadmap" class="roadmap-slide" aria-label="Pradėk nuo 5–15 min">
     <div class="container">
         <div class="roadmap-inner">
             <span class="label">Kelio planas</span>
-            <h2>Kelio planas: pradėk nuo 5–15 min</h2>
+            <h2>Pradėk nuo 5–15 min</h2>
             <p class="roadmap-sub">Pirma patikra (5–15 min). Kiti šablonai — kai prireiks.</p>
             <div class="roadmap-journey" role="list">
                 <div class="roadmap-journey-line" aria-hidden="true"></div>
@@ -2759,7 +2772,6 @@
                     <span class="roadmap-time">10–30 min</span>
                 </div>
             </div>
-            <div class="roadmap-total">Nebūtina eiti visų. Tas pats rinkinys — bibliotekoje.</div>
         </div>
     </div>
 </section>
@@ -2770,7 +2782,7 @@
         <div>
             <span class="label">Saugumas</span>
             <h2>Greita siuntimo patikra</h2>
-            <p class="slide-sublead slide-lead">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio.<br>Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>
+            <p class="slide-sublead slide-lead">Įklijuok tekstą, kurį siųsi.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>
                 <div class="prompt-line"><b>KONTEKSTAS</b> Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].</div>
@@ -2778,12 +2790,12 @@
                 <button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti patikrą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 22V2"/></svg></span> Rizikos matomos prieš siuntimą.</div>
-            <p class="qc-next">Toliau: <a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">kitas šablonas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">visos užklausos bibliotekoje</a></p>
+            <p class="qc-next"><a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">Susitikimo planas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">Biblioteka</a></p>
         </div>
         <figure class="viz-figure">
             <picture>
                 <source srcset="assets/illustrations/check-lt.webp" type="image/webp">
-                <img src="assets/illustrations/check-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Patikros lapas: rizika — data nepatikrinta; tinka — laikas ir tikslas; patikrinti — kas priima sprendimą.">
+                <img src="assets/illustrations/check-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Patikros lapas: rizika — data nepatikrinta; tinka — laikas ir tikslas; patikrinti ne DI — skaičių sutartyje.">
             </picture>
         </figure>
     </div>
@@ -2802,7 +2814,7 @@
         <figure class="viz-figure">
             <picture>
                 <source srcset="assets/illustrations/meeting-lt.webp" type="image/webp">
-                <img src="assets/illustrations/meeting-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="60 min sprinto laiko juosta: 0–10 min sutariam, ką paliekam; 10–40 min darom vieną gabalą; 40–60 min sprendimas, kas lieka.">
+                <img src="assets/illustrations/meeting-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="60 min sprinto laiko juosta: 0–10 min sutark, ką palikti; 10–40 min padaryk vieną užduotį; 40–60 min sprendimas, kas lieka.">
             </picture>
         </figure>
         <div>
@@ -2838,7 +2850,7 @@
         <figure class="viz-figure">
             <picture>
                 <source srcset="assets/illustrations/levels-lt.webp" type="image/webp">
-                <img src="assets/illustrations/levels-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Ta pati žinutė trimis lygiais: bazinis — paliekam vieną užduotį; vidutinis — ir vieną savininką; pažengęs — ir vieną sprendimą 60 min pabaigoje.">
+                <img src="assets/illustrations/levels-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Ta pati žinutė trimis lygiais: bazinis — palik vieną užduotį; vidutinis — ir vieną savininką; pažengęs — ir vieną sprendimą 60 min pabaigoje.">
             </picture>
         </figure>
     </div>
@@ -2850,7 +2862,7 @@
         <figure class="viz-figure">
             <picture>
                 <source srcset="assets/illustrations/feedback-lt.webp" type="image/webp">
-                <img src="assets/illustrations/feedback-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Įvertinimo kortelė: aišku; stipru — vienas tikslas; pirmas pakeitimas — įrašyk, kas priima sprendimą.">
+                <img src="assets/illustrations/feedback-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Įvertinimo kortelė: aišku; stipru — vienas tikslas; pirmas pakeitimas — pirmą sakinį skirk skaitytojui.">
             </picture>
         </figure>
         <div>
@@ -2898,7 +2910,7 @@
         <figure class="viz-figure">
             <picture>
                 <source srcset="assets/illustrations/letter-lt.webp" type="image/webp">
-                <img src="assets/illustrations/letter-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Laiško langas: problema — šis sprintas neturi vieno tikslo; sprendimas — paliekam vieną užduotį ir vieną savininką; kitas žingsnis — iki pabaigos pasakyk, kas lieka.">
+                <img src="assets/illustrations/letter-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Laiško langas: problema — šis sprintas neturi vieno tikslo; sprendimas — palik vieną užduotį ir vieną savininką; kitas žingsnis — iki pabaigos pasakyk, kas lieka.">
             </picture>
         </figure>
         <div>
@@ -2920,7 +2932,7 @@
     <div class="container">
         <div class="promo-handoff__panel">
             <span class="label">Programa</span>
-            <p class="promo-handoff__title">Įdiegk tą pačią sistemą komandoje</p>
+            <p class="promo-handoff__title">Įdiek tą pačią sistemą komandoje</p>
             <p class="promo-handoff__sub">Čia nukopijuoji užklausą. Ten ta pati sistema visai komandai.</p>
             <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryk promptanatomy.app naujame skirtuke" data-track="promo_app_banner_click" data-track-dest="app">Atidaryk promptanatomy.app</a>
         </div>
@@ -3041,12 +3053,12 @@
 <section aria-label="Esmė">
     <div class="essence-content">
         <figure class="meme-figure meme-figure--essence">
-            <img src="assets/memes/meme-essence.png" width="1672" height="941" loading="lazy" decoding="async"
-                alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Role, ryžiai — 2 Context, lašiša — 3 Reasoning, avokadas — 4 Output, sezamai — 5 Quality check.">
+            <img src="assets/memes/su_2.png" width="640" height="360" loading="lazy" decoding="async"
+                alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Vaidmuo, ryžiai — 2 Kontekstas, lašiša — 3 Rezultatas, avokadas — 4 Mąstymas, sezamai — 5 Kokybės kontrolė.">
         </figure>
-        <h2 class="essence-tagline">Be rėmo DI spėja.</h2>
+        <h2 class="essence-tagline">Be struktūros DI spėlioja.</h2>
         <p class="essence-lead">
-            Modelis nustato galimybes.<br><strong>Procesas</strong> — ar tas rezultatas išlieka darbe ir komandoje.
+            Modelis nustato galimybes.<br><strong>Procesas</strong> lemia, ar tas rezultatas išlieka darbe ir komandoje.
         </p>
     </div>
 </section>
@@ -3056,7 +3068,7 @@
     <div class="container">
         <div class="quiz-inner">
             <form id="prompt-quiz-form" novalidate
-                data-msg-select="Pažymėk atsakymą ir spausk Žiūrėk."
+                data-msg-select="Pažymėk atsakymą ir spausk „Žiūrėk“."
                 data-feedback-correct="Teisingai: vaidmuo, kontekstas ir aiškus pageidaujamas rezultatas leidžia DI atsakyti pagal tavo užduotį."
                 data-feedback-wrong="Be aiškaus vaidmens ir konkretaus konteksto DI spėlioja. Vien prašymas būti kūrybingam, bendras tonas ar labai trumpa užklausa neperduoda, kokio turinio ir formato tikiesi.">
                 <fieldset class="quiz-fieldset">
@@ -3108,8 +3120,7 @@
 <!-- Skaidrė 15: raginimas veikti -->
 <section id="cta" aria-label="PDF santrauka ir kitas žingsnis">
     <div class="cta-inner">
-        <h2 class="cta-title">Toliau — ta pati sistema komandai</h2>
-        <p class="cta-sub">Santrauka PDF — pasiimk. Programa — kai rėmo reikia visai komandai.</p>
+        <h2 class="cta-title">Ta pati sistema visai komandai.</h2>
         <div class="cta-actions-stack">
             <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=slide&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Pagrindinis veiksmas: peržvelk mokamą programą ir kainą (naujame skirtuke)" data-track="paid_cta_click" data-track-dest="app">Peržvelk programą ir kainą</a>
         </div>
@@ -3134,7 +3145,6 @@
             <p class="site-legal-footnote__brand"><strong>Prompt Anatomy</strong></p>
             <p class="site-legal-footnote__addr">1311 Park St, Unit #654<br>Alameda, CA 94501</p>
             <p class="site-legal-footnote__email"><a href="mailto:info@promptanatomy.app">info@promptanatomy.app</a></p>
-            <p class="site-legal-footnote__tag">Promptų anatomija • Įmonės komandos • 2026</p>
         </div>
     </div>
 </section>
@@ -3425,7 +3435,7 @@
                 'Įvestis:',
                 '[Įklijuok savo užklausą čia]',
                 '',
-                'Vertinimo kriterijai (5 principai): Vaidmuo; Kontekstas; Mąstymas; Rezultatas; Kokybės kontrolė.',
+                'Vertinimo kriterijai (5 principai): Vaidmuo; Kontekstas; Rezultatas; Mąstymas; Kokybės kontrolė.',
                 '',
                 'Išvestis:',
                 '1) Lentelė: 1–5 balai kiekvienam principui',
@@ -3585,7 +3595,7 @@
             'Įvestis:',
             '[Įklijuok savo užklausą čia]',
             '',
-            'Vertinimo kriterijai (5 principai): Vaidmuo; Kontekstas; Mąstymas; Rezultatas; Kokybės kontrolė.',
+            'Vertinimo kriterijai (5 principai): Vaidmuo; Kontekstas; Rezultatas; Mąstymas; Kokybės kontrolė.',
             '',
             'Išvestis:',
             '1) Lentelė: 1–5 balai kiekvienam principui',
@@ -3805,6 +3815,7 @@
 
         function setActiveNav(index) {
             if (typeof document.documentElement.classList !== 'undefined') {
+                document.documentElement.classList.toggle('intro-active', index === 0);
                 document.documentElement.classList.toggle('primer-active', index === 1);
             }
             const mobileProgress = document.getElementById('nav-mobile-progress');
@@ -3947,6 +3958,7 @@
         }
         window.addEventListener('scroll', onLessonScroll, { passive: true });
         if (pageScroller) pageScroller.addEventListener('scroll', onLessonScroll, { passive: true });
+        updateNavFromScroll();
 
         let outlineLastY = pageScrollY();
         function onOutlineScroll() {

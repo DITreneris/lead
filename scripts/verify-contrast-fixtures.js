@@ -15,6 +15,14 @@ const FIXTURES = [
   ['--text-on-accent', '--accent-yellow'],
   ['--text-on-accent', '--accent-red'],
   ['--text-ink', '--surface-light'],
+  ['--text-ink-muted', '--surface-light'],
+  ['--text-ink', '--surface-paper'],
+  ['--text-ink-body', '--surface-paper'],
+  ['--text-ink', '--surface-reason'],
+  ['--text-ink-body', '--surface-reason'],
+  ['--text-ink', '--surface-qc'],
+  ['--text-ink-body', '--surface-qc'],
+  ['--accent-yellow', '--surface-stage-card'],
   ['--text-bright', '--accent-teal-deep']
 ];
 

@@ -1,36 +1,40 @@
-# Typography orphan audit (DS v2.1)
+# Typography audit (DS v3.1)
 
-**Date:** 2026-07-29  
-**Scope:** [`index.html`](../index.html) component CSS (post `/* DS_TOKENS_END */`).
+**Recount:** 2026-10-02, after the type rhythm.  
+**Scope:** [`index.html`](../index.html) component CSS after `/* DS_TOKENS_END */`.  
+**Supersedes:** the same-day morning note that `--font-size-display` painted nothing and that hero and section `h2` were both 56px at 1440px.
 
-## Canonical roles (§4)
+## Heading roles
 
-| Role | Selectors | Status |
-|------|-----------|--------|
-| Display H1 | `h1`, `.hero-title-accent` | OK — no change |
-| Section H2 | `h2`, slide titles | OK |
-| Lead | `.slide-lead` + aliases | **Tokens** — `--font-size-lead`, `--lh-body`, `--measure-prose` |
-| Label | `.label`, `.disclosure-chip__summary`, `.types-card-k` | **`--tracking-label`** + `--font-size-label` on disclosure |
-| UI / buttons | CTA, copy, quiz | `--font-size-label` on copy chrome |
+| Role | Selector | Token | 375 / 768 / 1024 / 1440 |
+|------|----------|-------|-------------------------|
+| Hero | `h1` (the only `h1` is `#intro`) | `--font-size-hero` `clamp(44px, 5vw, 72px)` | 44 / 44 / 51 / 72 px |
+| Section | `h2` | `--font-size-title` `clamp(36px, 4.2vw, 56px)` | 36 / 36 / 43 / 56 px |
+| Closing | `h2.essence-tagline`, `h2.cta-title` | `--font-size-display` `clamp(56px, 7.5vw, 104px)` | 56 / 58 / 77 / 104 px |
 
-## Actions taken (v2.1)
+`#intro h1` keeps `line-height: 1.12` and `max-width: 14em`. Closing headlines keep `line-height: 0.92` and weight 700. No raw `font-size` clamp remains on these selectors, including inside `@media (max-width: 1024px)`. `verify:typography-roles` fails if one of them leaves its token.
 
-- Chrome floor: disclosure, lang switch, library goal, types-copy, prompt-editor chip ≥12–13px.
-- `--tracking-label` shared by `.label` and `.disclosure-chip__summary`.
-- At v2.1, `verify:typography-roles` was a soft gate (exit 0 with warnings). Hardened 2026-09-29 — see below.
+Hero stays above the section title at every measured width. The English CTA title is 4 lines at 375px and the button stays on screen.
 
-## Remaining orphans (documented / low risk)
+## What the scale still does not own
 
-| Selector | Note |
-|----------|------|
-| `.schema-step-num` | Color accents — not font-size orphans |
-| `.roadmap-name`, `.quiz-question` | Mobile overrides — within role |
-| `.brand-name`, `.slide-outline` | 12–13px uppercase — label tier |
+83 `font-size` rules in component CSS: **33 token**, **39 clamp** (27 distinct formulas), **7 px**, **4 em**.
 
-## Follow-up (2026-09-29)
+The clamps are cards, quiz, prompts, library, roadmap, and the promo title. They are the deferred list in `docs/design_system.md`. Heading roles are closed; these are not.
 
-- `verify:typography-roles` exits 1 on a font-size that can render under 12px in `index.html`, `404.html`, `tools.html`, and `tools-lt.html`, and on a size over 32px outside the §4 display roles (`h1`, `h2`, `.hero-title-accent`, `.essence-primary-headline`, tools `.header-title`). Each rule is scored on its own, including rules inside `@media`. `clamp()` bounds count. `em` and `rem` are judged at a 16px root. `var(--token)` is not expanded.
-- `.primer-next-cta` and `.library-cat-summary__meta` use `--font-size-label` (13px). Their previous `clamp(11px, …)` minimum sat under the floor and the old line-based scan did not see it.
-- Tools `.version-tag` is `0.75rem` (12px at a 16px root). `.header-title` stays a display role because the rule is the class on `h1`, not the element selector. `.essence-lead` max is 32px; below about 1230px the fluid size is unchanged.
-- Practice field labels (`.practice-structured-line strong`) and the tools `.brand-tagline` use `--font-size-label`. Legal brand and tag use the same token.
-- The deferred “harden after a clean release cycle” item is done.
+| Kind | Where | Note |
+|------|--------|------|
+| px | `.schema-step-num` 22px, schema title 17px, schema description 16px, `.slide-outline__btn` 13px, `.quiz-reset-btn` 15px, mobile `.roadmap-name` 14px / `.roadmap-time` 13px | All under the 32px ceiling |
+| em | legal address `1em`, entity footer `0.92em`, disclosure chevrons `1.35em` / `1.25em` | Relative to the parent |
+| clamp | `.essence-lead` `clamp(22px, 2.6vw, 32px)` | Ceiling is the gate. Width under about 1230px does not change the size |
+| clamp | `.brand-name` `clamp(12px, 2vw, 17px)` | Sentence case, `letter-spacing: 0` |
+
+Letter-spacing still has 11 raw steps plus `var(--tracking-label)`. That token is not part of this recount's change.
+
+## Fonts
+
+Google request: Inter **400 / 500 / 600 / 700 / 800**, Space Grotesk **700**. Component CSS uses those weights 1 / 1 / 11 / 22 / 17 times. The single 500 is `.schema-step-body span`. Inter 300 and Space Grotesk 500 are not requested. Illustration bake TTFs are separate and are not in `PUBLIC_FILES`.
+
+## What is already v3.1
+
+Color, radius, and motion tokens are the live source. Illustration bake reads `styles/tokens.css`. The only component hex is `#2aabee` (Telegram). Yellow stays the existing ladder; it was not remapped. The intro frame stays 1200px / 55/45, one red CTA, PDF as a tertiary strip link. Satellites use the v3.1 subset and do not carry `--font-size-hero`.

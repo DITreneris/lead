@@ -16,7 +16,7 @@ const FALLBACK_FAQ = {
     },
     {
       q: 'Kaip gauti tą patį rezultatą visoje komandoje?',
-      a: 'Naudok vieną šabloną (vaidmuo, kontekstas, mąstymas, rezultatas), tada kartok su tuo pačiu sąrašu.'
+      a: 'Naudok vieną šabloną (vaidmuo, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.'
     }
   ],
   en: [
@@ -34,7 +34,7 @@ const FALLBACK_FAQ = {
     },
     {
       q: 'How do I get consistent outputs across my team?',
-      a: 'Use one shared template (role + context + reasoning + output), then iterate with the same checklist.'
+      a: 'Use one shared template (role, context, and output), then iterate with the same checklist.'
     }
   ]
 };

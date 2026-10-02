@@ -50,7 +50,7 @@ function stage(width, height, ...children) {
       flexDirection: 'column',
       backgroundColor: C.navy,
       backgroundImage: `radial-gradient(circle at 82% 14%, ${C.yellowSubtle}, transparent 46%), radial-gradient(circle at 10% 92%, ${C.navyWash}, transparent 55%)`,
-      padding: 48,
+      padding: height <= 360 ? 16 : 48,
       fontFamily: BODY,
       color: C.text
     },
@@ -129,58 +129,6 @@ function mark(kind) {
 
 // Scenos --------------------------------------------------------------------
 
-function sceneIntro(scene, t) {
-  const block = (label, i) =>
-    h(
-      'div',
-      {
-        alignItems: 'center',
-        gap: 16,
-        padding: '14px 22px',
-        borderRadius: 18,
-        backgroundColor: i === 4 ? C.yellowEmphasis : C.card,
-        border: `2px solid ${i === 4 ? C.yellowStrong : C.line}`
-      },
-      text(String(i + 1).padStart(2, '0'), { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, color: C.yellow, width: 56 }),
-      text(label, { fontFamily: DISPLAY, fontWeight: 500, fontSize: 38, color: C.text })
-    );
-
-  const row = (s, i) =>
-    h(
-      'div',
-      { alignItems: 'flex-start', gap: 16, padding: '14px 0', borderTop: i === 0 ? 'none' : `2px solid ${C.inkFaint}` },
-      h('div', { width: 14, height: 14, borderRadius: 7, backgroundColor: i === 2 ? C.yellow : C.navy2, flexShrink: 0, marginTop: 16 }),
-      text(s, { fontSize: 38, fontWeight: 600, color: C.ink, lineHeight: 1.3 })
-    );
-
-  const arrow = () => ({
-    type: 'svg',
-    props: {
-      width: 48,
-      height: 32,
-      viewBox: '0 0 48 32',
-      children: { type: 'path', props: { d: 'M2 16 H40 M28 4 L44 16 L28 28', fill: 'none', stroke: C.yellow, strokeWidth: 5, strokeLinecap: 'round', strokeLinejoin: 'round' } }
-    }
-  });
-
-  return stage(
-    scene.width,
-    scene.height,
-    h('div', { alignItems: 'center', gap: 14 }, kicker(t.title[0]), arrow(), kicker(t.title[1])),
-    h('div', { flexDirection: 'column', gap: 12, marginTop: 28 }, ...t.blocks.map(block)),
-    lightCard(
-      { width: '100%', padding: '28px 32px 24px', marginTop: 28 },
-      h(
-        'div',
-        { alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 },
-        text(t.resultTitle, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 40, color: C.ink }),
-        h('div', { padding: '8px 16px', borderRadius: 999, backgroundColor: C.yellow }, text('60 min', { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, color: C.ink }))
-      ),
-      h('div', { flexDirection: 'column' }, ...t.rows.map(row))
-    )
-  );
-}
-
 function sceneCheck(scene, t) {
   const row = (r, i) =>
     h(
@@ -202,8 +150,8 @@ function sceneCheck(scene, t) {
 }
 
 function sceneTimeline(scene, t) {
-  // Trys eilutės, viena per segmentą. Laikas kairėje, juosta dešinėje. Paskutinė eilutė geltona.
-  const row = (s, i) =>
+  // Trys eilutės, viena per segmentą. Laikas kairėje, juostos plotis — skirtumas. Be geltono užpildo.
+  const row = (s) =>
     h(
       'div',
       {
@@ -211,15 +159,15 @@ function sceneTimeline(scene, t) {
         gap: 32,
         padding: '22px 24px',
         borderRadius: 26,
-        backgroundColor: s.accent ? C.yellow : C.card,
-        border: `2px solid ${s.accent ? C.yellow : C.line}`
+        backgroundColor: C.card,
+        border: `2px solid ${C.line}`
       },
-      text(s.time, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, color: s.accent ? C.ink : C.text, lineHeight: 1, width: 168 }),
+      text(s.time, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, color: C.text, lineHeight: 1, width: 168 }),
       h(
         'div',
         { flexDirection: 'column', gap: 14, flex: 1 },
-        text(s.label, { fontSize: 38, fontWeight: 600, color: s.accent ? C.ink : C.text, lineHeight: 1.2 }),
-        h('div', { height: 12, borderRadius: 6, width: `${Math.round((s.span / 6) * 100)}%`, backgroundColor: s.accent ? C.inkMid : C.navy2 })
+        text(s.label, { fontSize: 38, fontWeight: 600, color: C.text, lineHeight: 1.2 }),
+        h('div', { height: 12, borderRadius: 6, width: `${Math.round((s.span / 6) * 100)}%`, backgroundColor: C.navy2 })
       )
     );
   return stage(
@@ -245,7 +193,7 @@ function sceneLevels(scene, t) {
         border: `2px solid ${i === 2 ? 'transparent' : C.line}`,
         boxShadow: i === 2 ? '0 30px 70px rgba(0,0,0,0.45)' : 'none'
       },
-      text(l.name, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, letterSpacing: 2, textTransform: 'uppercase', color: i === 2 ? C.navy2 : C.yellow }),
+      text(l.name, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, letterSpacing: 2, textTransform: 'uppercase', color: i === 2 ? C.navy2 : C.text }),
       text(l.text, { fontSize: 38, fontWeight: i === 2 ? 600 : 400, color: i === 2 ? C.ink : C.text, lineHeight: 1.3 })
     );
   return stage(scene.width, scene.height, kicker(t.kicker), h('div', { flex: 1, flexDirection: 'column', justifyContent: 'center', gap: 22, marginTop: 40 }, ...t.levels.map(lvl)));
@@ -260,15 +208,15 @@ function sceneScore(scene, t) {
       'div',
       { flex: 1, alignItems: 'center', marginTop: 40 },
       lightCard(
-        { width: '100%', padding: '56px 56px 52px', gap: 36 },
+        { width: '100%', padding: '40px 48px 36px', gap: 28 },
         h(
           'div',
-          { alignItems: 'center', gap: 28 },
-          h('div', { width: 120, height: 120, borderRadius: 60, backgroundColor: C.yellow, alignItems: 'center', justifyContent: 'center' }, {
+          { alignItems: 'center', gap: 22 },
+          h('div', { width: 72, height: 72, borderRadius: 36, backgroundColor: C.yellow, alignItems: 'center', justifyContent: 'center' }, {
             type: 'svg',
-            props: { width: 64, height: 64, viewBox: '0 0 24 24', children: { type: 'path', props: { d: 'M20 6 9 17l-5-5', fill: 'none', stroke: C.ink, strokeWidth: 3, strokeLinecap: 'round', strokeLinejoin: 'round' } } }
+            props: { width: 36, height: 36, viewBox: '0 0 24 24', children: { type: 'path', props: { d: 'M20 6 9 17l-5-5', fill: 'none', stroke: C.ink, strokeWidth: 3, strokeLinecap: 'round', strokeLinejoin: 'round' } } }
           }),
-          text(t.score, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 92, color: C.ink, lineHeight: 1 })
+          text(t.score, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 64, color: C.ink, lineHeight: 1 })
         ),
         h('div', { height: 2, backgroundColor: C.inkFaint }),
         h(
@@ -279,8 +227,8 @@ function sceneScore(scene, t) {
         ),
         h(
           'div',
-          { alignItems: 'flex-start', gap: 22, padding: '24px 28px', borderRadius: 22, backgroundColor: C.yellowGlow, border: `2px solid ${C.yellow}` },
-          h('div', { width: 16, height: 16, borderRadius: 8, backgroundColor: C.yellow, flexShrink: 0, marginTop: 14 }),
+          { alignItems: 'flex-start', gap: 22 },
+          h('div', { width: 16, height: 16, borderRadius: 8, backgroundColor: C.navy2, flexShrink: 0, marginTop: 14 }),
           text(t.change, { fontSize: 38, fontWeight: 600, color: C.ink, lineHeight: 1.35 })
         )
       )
@@ -310,7 +258,7 @@ function sceneTask(scene, t) {
           { alignItems: 'center', gap: 20, flexWrap: 'wrap' },
           h('div', { width: 64, height: 64, borderRadius: 32, backgroundColor: C.navy2, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }, text(t.initial, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, color: C.yellow })),
           text(t.owner, { fontSize: 38, fontWeight: 600, color: C.ink }),
-          h('div', { padding: '8px 16px', borderRadius: 999, backgroundColor: C.yellow }, text(t.due, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, color: C.ink })),
+          h('div', { padding: '8px 16px', borderRadius: 999, border: `3px solid ${C.navy2}` }, text(t.due, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, color: C.ink })),
           text(t.where, { fontSize: 38, color: C.inkMuted })
         )
       )
@@ -337,18 +285,17 @@ function sceneLetter(scene, t) {
         { width: '100%', padding: 0, overflow: 'hidden' },
         h(
           'div',
-          { alignItems: 'center', gap: 24, padding: '26px 40px', backgroundColor: C.lightBar },
+          { alignItems: 'center', gap: 24, padding: '18px 32px', backgroundColor: C.lightBar },
           windowDots(),
           text(t.subject, { fontFamily: DISPLAY, fontWeight: 700, fontSize: 38, color: C.ink })
         ),
-        h('div', { flexDirection: 'column', gap: 30, padding: '44px 52px 48px' }, ...t.rows.map(row))
+        h('div', { flexDirection: 'column', gap: 22, padding: '28px 36px 32px' }, ...t.rows.map(row))
       )
     )
   );
 }
 
 const RENDERERS = {
-  intro: sceneIntro,
   check: sceneCheck,
   timeline: sceneTimeline,
   levels: sceneLevels,

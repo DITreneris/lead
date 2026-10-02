@@ -40,14 +40,12 @@ const CTA_FOOTNOTE_LT = `        <div class="cta-foot site-legal-footnote" role=
             <p class="site-legal-footnote__brand"><strong>${ORG.name}</strong></p>
             <p class="site-legal-footnote__addr">${addressLinesHtml()}</p>
             <p class="site-legal-footnote__email"><a href="mailto:${ORG.email}">${ORG.email}</a></p>
-            <p class="site-legal-footnote__tag">Promptų anatomija • Įmonės komandos • 2026</p>
         </div>`;
 
 const CTA_FOOTNOTE_EN = `        <div class="cta-foot site-legal-footnote" role="contentinfo" aria-label="Contact and publisher">
             <p class="site-legal-footnote__brand"><strong>${ORG.name}</strong></p>
             <p class="site-legal-footnote__addr">${addressLinesHtml()}</p>
             <p class="site-legal-footnote__email"><a href="mailto:${ORG.email}">${ORG.email}</a></p>
-            <p class="site-legal-footnote__tag">Prompt Anatomy • Teams • 2026</p>
         </div>`;
 
 module.exports = {

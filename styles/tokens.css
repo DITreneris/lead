@@ -10,6 +10,9 @@
     --surface-inset: rgba(0, 0, 0, 0.2);
     --surface-inset-soft: rgba(0, 0, 0, 0.13);
     --surface-light: #e8eef4;
+    --surface-paper: #f7f9fb;
+    --surface-reason: #d7ebe3;
+    --surface-qc: #d5e2ee;
     --surface-light-bar: #dfe7ef;
     --surface-navy-deep: #050d14;
     --surface-stage: #0b1320;
@@ -88,6 +91,7 @@
     --accent-yellow-hover-text: #fff6b0;
     --text-ink: #0f172a;
     --text-ink-muted: #475569;
+    --text-ink-body: #405064;
     --text-ink-faint: rgba(15, 23, 42, 0.08);
     --text-ink-mid: rgba(15, 23, 42, 0.35);
     --text-on-navy-cool: #e0f2fe;
@@ -96,6 +100,7 @@
     --font-size-ui: 14px;
     --font-size-lead: clamp(16px, 1.25vw, 19px);
     --font-size-display: clamp(56px, 7.5vw, 104px);
+    --font-size-hero: clamp(44px, 5vw, 72px);
     --font-size-title: clamp(36px, 4.2vw, 56px);
     --font-size-body: clamp(14px, 1.05vw, 16px);
     --lh-body: 1.5;

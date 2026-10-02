@@ -8,29 +8,30 @@ const { CTA_FOOTNOTE_LT, CTA_FOOTNOTE_EN } = require('./legal-contact.cjs');
  */
 function getEnHtmlReplacementPairs() {
   return [
+    [
+      '<p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Biblioteka</a> · <a class="link-tier-tertiary hero-pdf-link" href="assets/www.promptanatomy.app.pdf" download="www.promptanatomy.app.pdf" aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu" data-track="hero_pdf_click">Santrauka (PDF)</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=cloud&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" data-track-dest="pro" aria-label="CEO ir COO vadovybės rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a> · <a class="link-tier-tertiary" href="tools-lt.html" data-track="hero_tools_click">DI įrankių gidas</a></p>',
+      '<p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Library</a> · <a class="link-tier-tertiary hero-pdf-link" href="assets/www.promptanatomy.app-en.pdf" download="www.promptanatomy.app-en.pdf" aria-label="Download lesson 1 English summary (PDF)" data-track="hero_pdf_click">Summary (PDF)</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=cloud&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" data-track-dest="pro" aria-label="CEO and COO executive kit on promptanatomy.pro (opens in a new tab)">Executive kit</a> · <a class="link-tier-tertiary" href="tools.html" data-track="hero_tools_click">AI tools guide</a></p>'
+    ],
     ['content: \'UŽKLAUSOS STRUKTŪRA\';', 'content: \'PROMPT STRUCTURE\';'],
 
-    ['assets/illustrations/intro-lt.webp', 'assets/illustrations/intro-en.webp'],
-    ['assets/illustrations/intro-lt.png', 'assets/illustrations/intro-en.png'],
-    ['alt="Penkių dalių užklausa — vaidmuo, kontekstas, mąstymas, rezultatas, patikra — virsta sprinto planu: 0–10 min sutariam, ką paliekam; 10–40 min darom vieną gabalą; 40–60 min sprendimas, kas lieka."', 'alt="A five-part prompt — role, context, reasoning, output, check — becomes a sprint plan: 0–10 min agree what stays; 10–40 min do one piece; 40–60 min decision on what stays."'],
     ['assets/illustrations/check-lt.webp', 'assets/illustrations/check-en.webp'],
     ['assets/illustrations/check-lt.png', 'assets/illustrations/check-en.png'],
-    ['alt="Patikros lapas: rizika — data nepatikrinta; tinka — laikas ir tikslas; patikrinti — kas priima sprendimą."', 'alt="Check sheet: risk — the date is unchecked; fits — time and goal; check — who decides."'],
+    ['alt="Patikros lapas: rizika — data nepatikrinta; tinka — laikas ir tikslas; patikrinti ne DI — skaičių sutartyje."', 'alt="Check sheet: risk — the date is unchecked; fits — time and goal; check outside AI — the figure in the contract."'],
     ['assets/illustrations/meeting-lt.webp', 'assets/illustrations/meeting-en.webp'],
     ['assets/illustrations/meeting-lt.png', 'assets/illustrations/meeting-en.png'],
-    ['alt="60 min sprinto laiko juosta: 0–10 min sutariam, ką paliekam; 10–40 min darom vieną gabalą; 40–60 min sprendimas, kas lieka."', 'alt="60 min sprint timeline: 0–10 min agree what stays; 10–40 min do one piece; 40–60 min decision on what stays."'],
+    ['alt="60 min sprinto laiko juosta: 0–10 min sutark, ką palikti; 10–40 min padaryk vieną užduotį; 40–60 min sprendimas, kas lieka."', 'alt="60 min sprint timeline: 0–10 min agree what stays; 10–40 min do one task; 40–60 min decision on what stays."'],
     ['assets/illustrations/levels-lt.webp', 'assets/illustrations/levels-en.webp'],
     ['assets/illustrations/levels-lt.png', 'assets/illustrations/levels-en.png'],
-    ['alt="Ta pati žinutė trimis lygiais: bazinis — paliekam vieną užduotį; vidutinis — ir vieną savininką; pažengęs — ir vieną sprendimą 60 min pabaigoje."', 'alt="The same message at three levels: basic — we keep one task; mid — and one owner; advanced — and one decision at the end of the 60 min."'],
+    ['alt="Ta pati žinutė trimis lygiais: bazinis — palik vieną užduotį; vidutinis — ir vieną savininką; pažengęs — ir vieną sprendimą 60 min pabaigoje."', 'alt="The same message at three levels: basic — keep one task; mid — and one owner; advanced — and one decision at the end of the 60 min."'],
     ['assets/illustrations/feedback-lt.webp', 'assets/illustrations/feedback-en.webp'],
     ['assets/illustrations/feedback-lt.png', 'assets/illustrations/feedback-en.png'],
-    ['alt="Įvertinimo kortelė: aišku; stipru — vienas tikslas; pirmas pakeitimas — įrašyk, kas priima sprendimą."', 'alt="Review card: clear; strong — one goal; first change — write who decides."'],
+    ['alt="Įvertinimo kortelė: aišku; stipru — vienas tikslas; pirmas pakeitimas — pirmą sakinį skirk skaitytojui."', 'alt="Review card: clear; strong — one goal; first change — aim the first sentence at the reader."'],
     ['assets/illustrations/team-lt.webp', 'assets/illustrations/team-en.webp'],
     ['assets/illustrations/team-lt.png', 'assets/illustrations/team-en.png'],
     ['alt="Užduoties kortelė: įrašyk vieną riziką į sprinto planą; savininkas; iki rytojaus; sprinto lapas."', 'alt="Task card: write one risk into the sprint plan; owner; by tomorrow; sprint sheet."'],
     ['assets/illustrations/letter-lt.webp', 'assets/illustrations/letter-en.webp'],
     ['assets/illustrations/letter-lt.png', 'assets/illustrations/letter-en.png'],
-    ['alt="Laiško langas: problema — šis sprintas neturi vieno tikslo; sprendimas — paliekam vieną užduotį ir vieną savininką; kitas žingsnis — iki pabaigos pasakyk, kas lieka."', 'alt="Letter window: problem — this sprint has no single goal; fix — we keep one task and one owner; next step — by the end, say what stays."'],
+    ['alt="Laiško langas: problema — šis sprintas neturi vieno tikslo; sprendimas — palik vieną užduotį ir vieną savininką; kitas žingsnis — iki pabaigos pasakyk, kas lieka."', 'alt="Letter window: problem — this sprint has no single goal; fix — keep one task and one owner; next step — by the end, say what stays."'],
 
     ['<a class="skip-link" href="#main-content">Pereiti prie turinio</a>', '<a class="skip-link" href="#main-content">Skip to content</a>'],
 
@@ -48,20 +49,38 @@ function getEnHtmlReplacementPairs() {
     ['<div class="brand-tagline">DI praktinė sistema</div>', '<div class="brand-tagline">Built for real work</div>'],
 
     [
-      '<div class="brand-name"><span class="brand-prompt">PROMPTŲ</span> <span class="brand-anatomy">ANATOMIJA</span></div>',
-      '<div class="brand-name"><span class="brand-prompt">PROMPT</span> <span class="brand-anatomy">ANATOMY</span></div>'
+      '<div class="brand-name"><span class="brand-prompt">Promptų</span> <span class="brand-anatomy">Anatomija</span></div>',
+      '<div class="brand-name"><span class="brand-prompt">Prompt</span> <span class="brand-anatomy">Anatomy</span></div>'
     ],
     [
-      '<h1>PROMPTŲ<br><span class="hero-title-accent">ANATOMIJA</span></h1>',
-      '<h1>PROMPT<br><span class="hero-title-accent">ANATOMY</span></h1>'
+      '<h1>Trumpa užklausa tampa užduotimi.</h1>',
+      '<h1>A short prompt becomes a task.</h1>'
     ],
     [
-      '<p class="hero-intro slide-lead">Nukopijuok užklausą ir paleisk per 2 minutes. Pirma praktika, o tada — pasitikrinimas.</p>',
-      '<p class="hero-intro slide-lead">Copy a prompt and run it in 2 minutes. Practice first, then a self-check.</p>'
+      '<p class="hero-intro slide-lead">Tas pats savaitės tikslas: vaidmuo, tikslas, įvestis, rezultatas. Paleidi per 2 minutes.</p>',
+      '<p class="hero-intro slide-lead">Same weekly goal: role, goal, input, result. You run it in 2 minutes.</p>'
+    ],
+    ['<p class="intro-proof-kicker">Prieš</p>', '<p class="intro-proof-kicker">Before</p>'],
+    ['<p class="intro-proof-kicker">Po</p>', '<p class="intro-proof-kicker">After</p>'],
+    [
+      '<p class="intro-proof-before">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>',
+      '<p class="intro-proof-before">“Prepare a report on our weekly priorities.”</p>'
     ],
     [
-      'class="hero-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf"',
-      'class="hero-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app-en.pdf"'
+      '<div class="practice-structured-line"><strong>Vaidmuo</strong> <span>darbo asistentas</span></div>',
+      '<div class="practice-structured-line"><strong>Role</strong> <span>work assistant</span></div>'
+    ],
+    [
+      '<div class="practice-structured-line"><strong>Tikslas</strong> <span>savaitės prioritetai</span></div>',
+      '<div class="practice-structured-line"><strong>Goal</strong> <span>this week’s priorities</span></div>'
+    ],
+    [
+      '<div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>',
+      '<div class="practice-structured-line"><strong>Input</strong> <span>notes / emails</span></div>'
+    ],
+    [
+      '<div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>',
+      '<div class="practice-structured-line"><strong>Output</strong> <span>action list (A/B/C)</span></div>'
     ],
     [
       'class="cta-pdf-link btn-pdf-outline" href="assets/www.promptanatomy.app.pdf"',
@@ -72,10 +91,10 @@ function getEnHtmlReplacementPairs() {
     ['aria-label="Skaidrė 1: Įvadas"', 'aria-label="Slide 1: Introduction"'],
     ['aria-label="Skaidrė 2: Kas yra promptas?"', 'aria-label="Slide 2: What is a prompt?"'],
     ['aria-label="Skaidrė 3: Promptų anatomijos schema"', 'aria-label="Slide 3: Prompt anatomy framework"'],
-    ['aria-label="Skaidrė 4: Pradėk per 2 minutės"', 'aria-label="Slide 4: Start in 2 minutes"'],
+    ['aria-label="Skaidrė 4: Pradėk per 2 minutes"', 'aria-label="Slide 4: Start in 2 minutes"'],
     [
-      'aria-label="Skaidrė 5: Kelio planas: pradėk nuo 5–15 min"',
-      'aria-label="Slide 5: Roadmap: start with 5–15 min"'
+      'aria-label="Skaidrė 5: Pradėk nuo 5–15 min"',
+      'aria-label="Slide 5: Start with 5–15 min"'
     ],
     ['aria-label="Skaidrė 6: Greita siuntimo patikra"', 'aria-label="Slide 6: Quick send check"'],
     ['aria-label="Skaidrė 7: Susitikimo ar sprinto planas"', 'aria-label="Slide 7: Meeting or sprint plan"'],
@@ -94,10 +113,6 @@ function getEnHtmlReplacementPairs() {
     ['<section id="intro" aria-label="Įvadas"', '<section id="intro" aria-label="Introduction"'],
     ['<span class="label">DI praktinė sistema įmonei</span>', '<span class="label">Practical AI for teams</span>'],
     ['download="www.promptanatomy.app.pdf"', 'download="www.promptanatomy.app-en.pdf"'],
-    [
-      'aria-label="Atsisiųsk 1 pamokos santrauką PDF formatu"',
-      'aria-label="Download lesson 1 English summary (PDF)"'
-    ],
     ['Atsisiųsk santrauką (PDF)', 'Download English summary (PDF)'],
     [
       'aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką"',
@@ -108,17 +123,13 @@ function getEnHtmlReplacementPairs() {
       'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Try the 2-minute practice\n                </a>'
     ],
     [
-      '<p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Biblioteka</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=cloud&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" data-track-dest="pro" aria-label="CEO ir COO vadovybės rinkinys promptanatomy.pro (atidaryti naujame skirtuke)">CEO rinkinys</a> · <a class="link-tier-tertiary" href="tools-lt.html" data-track="hero_tools_click">DI įrankių gidas</a></p>',
-      '<p class="hero-foot-links"><a class="link-tier-tertiary" href="#library" data-track="hero_library_click">Library</a> · <a class="link-tier-tertiary" href="https://promptanatomy.pro/en/?utm_source=cloud&amp;utm_medium=hero_footer&amp;utm_campaign=executive_pro" target="_blank" rel="noopener noreferrer" data-track="hero_executive_pro_click" data-track-dest="pro" aria-label="CEO and COO executive kit on promptanatomy.pro (opens in a new tab)">Executive kit</a> · <a class="link-tier-tertiary" href="tools.html" data-track="hero_tools_click">AI tools guide</a></p>'
-    ],
-    [
-      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div class="hero-faq__item"><strong>Ką įrašyti į užklausą vadovybės atnaujinimui?</strong> Auditoriją, kontekstą, ribas ir rezultatą (punktai, lentelė ar sprendimo santrauka). Pridėk sėkmės kriterijų.</div>\n                    <div class="hero-faq__item"><strong>Kaip sumažinti pramanytus faktus klientų laiškuose?</strong> Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kas saugu, ką būtina patikrinti.</div>\n                    <div class="hero-faq__item"><strong>Kas yra greita patikra?</strong> 30 sekundžių rizikos peržiūra prieš siuntimą: faktai, trūkstamas kontekstas ir 2–3 reputacijos rizikos.</div>\n                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (vaidmuo, kontekstas, mąstymas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>\n                </div>\n            </details>',
-      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">FAQ (for leaders)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div class="hero-faq__item"><strong>What should I include in a prompt for leadership updates?</strong> Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.</div>\n                    <div class="hero-faq__item"><strong>How do I reduce hallucinated facts in client emails?</strong> Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.</div>\n                    <div class="hero-faq__item"><strong>What’s a quick send check?</strong> A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.</div>\n                    <div class="hero-faq__item"><strong>How do I get consistent outputs across my team?</strong> Use one shared template (role + context + reasoning + output), then iterate with the same checklist.</div>\n                </div>\n            </details>'
+      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div class="hero-faq__item"><strong>Ką įrašyti į užklausą vadovybės atnaujinimui?</strong> Auditoriją, kontekstą, ribas ir rezultatą (punktai, lentelė ar sprendimo santrauka). Pridėk sėkmės kriterijų.</div>\n                    <div class="hero-faq__item"><strong>Kaip sumažinti pramanytus faktus klientų laiškuose?</strong> Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kas saugu, ką būtina patikrinti.</div>\n                    <div class="hero-faq__item"><strong>Kas yra greita patikra?</strong> 30 sekundžių rizikos peržiūra prieš siuntimą: faktai, trūkstamas kontekstas ir 2–3 reputacijos rizikos.</div>\n                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (vaidmuo, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>\n                </div>\n            </details>',
+      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">FAQ (for leaders)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div class="hero-faq__item"><strong>What should I include in a prompt for leadership updates?</strong> Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.</div>\n                    <div class="hero-faq__item"><strong>How do I reduce hallucinated facts in client emails?</strong> Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.</div>\n                    <div class="hero-faq__item"><strong>What’s a quick send check?</strong> A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.</div>\n                    <div class="hero-faq__item"><strong>How do I get consistent outputs across my team?</strong> Use one shared template (role, context, and output), then iterate with the same checklist.</div>\n                </div>\n            </details>'
     ],
 
     [
-      '<div class="promo-handoff" role="region" aria-label="Nuoroda į programą www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Programa</span>\n            <p class="promo-handoff__title">Įdiegk tą pačią sistemą komandoje</p>\n            <p class="promo-handoff__sub">Čia nukopijuoji užklausą. Ten ta pati sistema visai komandai.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryk promptanatomy.app naujame skirtuke" data-track="promo_app_banner_click" data-track-dest="app">Atidaryk promptanatomy.app</a>\n        </div>\n    </div>\n</div>',
-      '<div class="promo-handoff" role="region" aria-label="Link to the program at www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Program</span>\n            <p class="promo-handoff__title">Roll out the same system for your team</p>\n            <p class="promo-handoff__sub">Here you copy a prompt. There the same system covers the whole team.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Open PromptAnatomy.app in a new tab" data-track="promo_app_banner_click" data-track-dest="app">Open PromptAnatomy.app</a>\n        </div>\n    </div>\n</div>'
+      '<div class="promo-handoff" role="region" aria-label="Nuoroda į programą www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Programa</span>\n            <p class="promo-handoff__title">Įdiek tą pačią sistemą komandoje</p>\n            <p class="promo-handoff__sub">Čia nukopijuoji užklausą. Ten ta pati sistema visai komandai.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryk promptanatomy.app naujame skirtuke" data-track="promo_app_banner_click" data-track-dest="app">Atidaryk promptanatomy.app</a>\n        </div>\n    </div>\n</div>',
+      '<div class="promo-handoff" role="region" aria-label="Link to the program at www.promptanatomy.app">\n    <div class="container">\n        <div class="promo-handoff__panel">\n            <span class="label">Program</span>\n            <p class="promo-handoff__title">Roll out the same system for your team</p>\n            <p class="promo-handoff__sub">Here you copy a prompt. There the same system is for the whole team.</p>\n            <a href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=banner&amp;utm_campaign=promptu_anatomija" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Open promptanatomy.app in a new tab" data-track="promo_app_banner_click" data-track-dest="app">Open promptanatomy.app</a>\n        </div>\n    </div>\n</div>'
     ],
 
     ['<section id="primer" class="types-slide types-slide--primer" aria-label="Kas yra promptas?"', '<section id="primer" class="types-slide types-slide--primer" aria-label="What is a prompt?"'],
@@ -137,14 +148,14 @@ function getEnHtmlReplacementPairs() {
     ['<p class="types-card-example">„Padaryk X pagal Y ir grąžink Z formatu.“</p>', '<p class="types-card-example">“Do X according to Y and return Z in this format.”</p>'],
     [
       'data-copy-text="Trumpa instrukcija DI — konkretus rezultatas. Pavyzdys: Padaryk X pagal Y ir grąžink Z formatu." aria-label="Kopijuoti prompto santrauką"',
-      'data-copy-text="Short AI instruction — concrete result. Example: Do X per Y and return Z in this format." aria-label="Copy prompt summary"'
+      'data-copy-text="Short AI instruction — concrete result. Example: Do X according to Y and return Z in this format." aria-label="Copy prompt summary"'
     ],
     ['data-track="primer_copy_promptas">Kopijuoti</button>', 'data-track="primer_copy_promptas">Copy</button>'],
 
     ['<h3>Promptų inžinerija</h3>', '<h3>Prompt engineering</h3>'],
     [
-      '<p class="types-card-desc">Parašai, paleidi, tada taisai vieną dalyką.</p>',
-      '<p class="types-card-desc">Write it, run it, then fix one thing.</p>'
+      '<p class="types-card-desc">Struktūruotas užklausų rašymas, specifikacija, iteracija.</p>',
+      '<p class="types-card-desc">Structured prompt writing, specification, iteration.</p>'
     ],
     [
       '<p class="types-card-example">„Šitą atsakymą sutrumpink iki 7 punktų. Nekeisk faktų, kurių nėra įvestyje.“</p>',
@@ -180,16 +191,16 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Žingsniai</span>', '<span class="label">Steps</span>'],
     ['<h2>Promptų anatomijos schema</h2>', '<h2>Prompt anatomy framework</h2>'],
     [
-      '<p class="schema-lead slide-lead">Pradėk nuo 2–3 dalių. Visas penkias naudok, kai užduotis yra svarbi ir sudėtinga.</p>',
-      '<p class="schema-lead slide-lead">Start with 2–3 parts. Use all five when the task is important and complex.</p>'
+      '<p class="schema-lead slide-lead">Pradėk nuo vaidmens, konteksto ir rezultato.<br>Penkias schemos dalis naudok tada, kai užduotis yra sudėtinga.</p>',
+      '<p class="schema-lead slide-lead">Start with role, context, and output.<br>Use the five parts of the schema when the task is complex.</p>'
     ],
     [
       '<strong>Vaidmuo</strong>\n                            <span>Kas esi ir koks tikslas (kodėl DI turi taip veikti)</span>',
-      '<strong>Role</strong>\n                            <span>Who you are and why the AI should work this way</span>'
+      '<strong>Role</strong>\n                            <span>Who you are, what the goal is, and why the AI should work this way</span>'
     ],
     [
       '<strong>Kontekstas</strong>\n                            <span>Faktai, auditorija, apribojimai, šaltiniai, kas jau žinoma</span>',
-      '<strong>Context</strong>\n                            <span>Facts, audience, constraints, sources, what people already know</span>'
+      '<strong>Context</strong>\n                            <span>Facts, audience, constraints, sources, what is already known</span>'
     ],
     [
       '<strong>Mąstymas</strong>\n                            <span>Žingsniai, kriterijai, kaip priimti sprendimą</span>',
@@ -205,12 +216,12 @@ function getEnHtmlReplacementPairs() {
     ],
     ['aria-label="Toliau: pereiti į 2 minučių praktiką" data-track="schema_next_click">Praktika ↓</a>', 'aria-label="Next: go to the 2-minute practice" data-track="schema_next_click">Practice ↓</a>'],
 
-    ['<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutės"', '<section id="guided" class="types-slide types-slide--guided" aria-label="Start in 2 minutes"'],
+    ['<section id="guided" class="types-slide types-slide--guided" aria-label="Pradėk per 2 minutes"', '<section id="guided" class="types-slide types-slide--guided" aria-label="Start in 2 minutes"'],
     ['<span class="label">Praktika</span>', '<span class="label">Practice</span>'],
-    ['<h2>Pradėk per 2 minutės</h2>', '<h2>Start in 2 minutes</h2>'],
+    ['<h2>Pradėk per 2 minutes</h2>', '<h2>Start in 2 minutes</h2>'],
     [
-      '<p class="types-lead slide-lead">Tas pats savaitės tikslas — kitaip parašius, kitas atsakymas.<br>Paleisk „Prieš“, tada „Po“ su savo 3–5 eilutėmis ir palygink, ar A/B/C be išgalvotų skaičių.</p>',
-      '<p class="types-lead slide-lead">Same weekly goal — write it differently, you get a different answer.<br>Run “Before”, then “After” with your 3–5 lines, and compare: A/B/C without invented numbers.</p>'
+      '<p class="types-lead slide-lead">Tas pats savaitės tikslas — kitaip parašius, kitas atsakymas.<br>Nukopijuok „Po“ ir skliaustus pakeisk savo 3–5 eilutėmis.</p>',
+      '<p class="types-lead slide-lead">Same weekly goal — write it differently, you get a different answer.<br>Copy “After” and replace the brackets with your 3–5 lines.</p>'
     ],
     ['<h3>Prieš</h3>', '<h3>Before</h3>'],
     [
@@ -219,81 +230,69 @@ function getEnHtmlReplacementPairs() {
     ],
     ['<p class="types-card-k">Užklausa</p>', '<p class="types-card-k">Prompt</p>'],
     [
-      '<p class="types-card-example types-card-example--minimal">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>',
-      '<p class="types-card-example types-card-example--minimal">“Prepare a report on our weekly priorities.”</p>'
+      '<p class="types-card-example">„Paruošk ataskaitą apie mūsų savaitės prioritetus.“</p>',
+      '<p class="types-card-example">“Prepare a report on our weekly priorities.”</p>'
     ],
     [
-      'data-copy-text="Paruošk ataskaitą apie mūsų savaitės prioritetus." aria-label="Kopijuoti \'prieš\' užklausą"',
+      'data-copy-text="Paruošk ataskaitą apie mūsų savaitės prioritetus." aria-label="Kopijuoti „prieš“ užklausą"',
       'data-copy-text="Prepare a report on our weekly priorities." aria-label="Copy the “before” prompt"'
     ],
     ['data-track="practice_before_copy">Kopijuoti</button>', 'data-track="practice_before_copy">Copy</button>'],
-    ['<p class="types-card-k">Rizika</p>', '<p class="types-card-k">Risk</p>'],
-    ['<li>Neaiški auditorija ir formatas</li>', '<li>Unclear audience and format</li>'],
-    ['<li>Skaičiai gali būti išgalvoti</li>', '<li>Numbers may be invented</li>'],
-    ['<li>Trūksta tavo konteksto</li>', '<li>Missing your context</li>'],
 
     ['<h3>Po</h3>', '<h3>After</h3>'],
     [
-      '<p class="types-card-desc">Tas pats tikslas. Aiški užklausa — rezultatą gali naudoti.</p>',
-      '<p class="types-card-desc">Same goal. A clear prompt — output you can use.</p>'
-    ],
-    ['<p class="types-card-k">Struktūra</p>', '<p class="types-card-k">Structure</p>'],
-    [
-      '<div class="practice-structured-line"><strong>Vaidmuo</strong> <span>darbo asistentas</span></div>',
-      '<div class="practice-structured-line"><strong>Role</strong> <span>work assistant</span></div>'
+      '<p class="types-card-desc">Tinka, jei matai A/B/C ir nėra skaičių, kurių neįklijavai.</p>',
+      '<p class="types-card-desc">Good if you see A/B/C and no numbers you did not paste in.</p>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Tikslas</strong> <span>savaitės prioritetai</span></div>',
-      '<div class="practice-structured-line"><strong>Goal</strong> <span>this week’s priorities</span></div>'
+      '<span>Vaidmuo: Tu esi mano darbo asistentas.</span>',
+      '<span>Role: You are my work assistant.</span>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>',
-      '<div class="practice-structured-line"><strong>Input</strong> <span>notes / emails</span></div>'
+      '<span>Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ].</span>',
+      '<span>Goal: [WHAT I MUST DO THIS WEEK].</span>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>',
-      '<div class="practice-structured-line"><strong>Output</strong> <span>action list (A/B/C)</span></div>'
+      '<span>Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis].</span>',
+      '<span>Input: [PASTE email / notes / task].</span>'
     ],
     [
-      '<p class="visually-hidden">Pilna užklausa nukopijuojama mygtuku Kopijuoti.</p>',
-      '<p class="visually-hidden">Full prompt is copied with the Copy button.</p>'
+      '<span>Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas).</span>',
+      '<span>Output: 7-bullet list (A/B/C priority + deadline if mentioned).</span>'
     ],
     [
-      'data-copy-text="Vaidmuo: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti \'po\' užklausą"',
+      '<span>Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“.</span>',
+      '<span>Constraint: do not use facts or numbers that are not in the input; if data is missing — write “Missing:”.</span>'
+    ],
+    [
+      'data-copy-text="Vaidmuo: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti „po“ užklausą"',
       'data-copy-text="Role: You are my work assistant. Goal: [WHAT I MUST DO THIS WEEK]. Input: [PASTE email / notes / task]. Output: 7-bullet list (A/B/C priority + deadline if mentioned). Constraint: do not use facts or numbers that are not in the input; if data is missing — write “Missing:”." aria-label="Copy the “after” prompt"'
     ],
     ['data-track="practice_after_copy">Kopijuoti</button>', 'data-track="practice_after_copy">Copy</button>'],
-    ['<p class="types-card-k">Rezultatas</p>', '<p class="types-card-k">Output</p>'],
-    [
-      '<p class="types-card-result">Tinka, jei matai A/B/C ir nėra skaičių, kurių neįklijavai.</p>',
-      '<p class="types-card-result">Good if you see A/B/C and no numbers you did not paste in.</p>'
-    ],
 
-    ['<h3>Patikra (30 sek.)</h3>', '<h3>Check (30 sec)</h3>'],
+    ['<p class="types-primer-quick-k">Patikra (30 sek.)</p>', '<p class="types-primer-quick-k">Check (30 sec)</p>'],
     [
-      '<p class="types-card-desc">Pilna siuntimo patikra — po kelio plano.</p>',
-      '<p class="types-card-desc">Full send check — after the roadmap.</p>'
+      '<p class="types-primer-quick-desc">30 sekundžių: rizikos, kas tinka, ką patikrinti ne DI, ko trūksta.</p>',
+      '<p class="types-primer-quick-desc">30 seconds: risks, what is safe, what to verify without AI, what context is missing.</p>'
     ],
-    ['<p class="types-card-k">Ką tikrinti</p>', '<p class="types-card-k">What to check</p>'],
-    ['<li>Ar faktai tikri?</li>', '<li>Are facts true?</li>'],
-    ['<li>Ko trūksta kontekste?</li>', '<li>What context is missing?</li>'],
-    ['<li>Kokios 2–3 rizikos?</li>', '<li>What are 2–3 risks?</li>'],
-    ['<li>Ką patikrinti nepriklausomu šaltiniu?</li>', '<li>What to verify with an independent source?</li>'],
+    [
+      '<p class="types-card-example types-primer-quick-example">Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste.</p>',
+      '<p class="types-card-example types-primer-quick-example">Short check: 1) 3 risks, 2) what is safe to use, 3) what to verify without AI, 4) what context is missing.</p>'
+    ],
     [
       'data-copy-text="Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist"',
       'data-copy-text="Short check: 1) 3 risks, 2) what is safe to use, 3) what to verify without AI, 4) what context is missing." aria-label="Copy mini checklist"'
     ],
     ['data-track="practice_qc_copy">Kopijuoti</button>', 'data-track="practice_qc_copy">Copy</button>'],
-    ['<p class="types-card-k">Toliau</p>', '<p class="types-card-k">Next</p>'],
     ['data-track="practice_next_click">Kelio planas ↓</a>', 'data-track="practice_next_click">Roadmap ↓</a>'],
     ['data-track="practice_qc_jump">Patikra →</a>', 'data-track="practice_qc_jump">Check →</a>'],
 
     [
-      '<section id="roadmap" class="roadmap-slide" aria-label="Kelio planas: pradėk nuo 5–15 min"',
-      '<section id="roadmap" class="roadmap-slide" aria-label="Roadmap: start with 5–15 min"'
+      '<section id="roadmap" class="roadmap-slide" aria-label="Pradėk nuo 5–15 min"',
+      '<section id="roadmap" class="roadmap-slide" aria-label="Start with 5–15 min"'
     ],
     ['<span class="label">Kelio planas</span>', '<span class="label">Roadmap</span>'],
-    ['<h2>Kelio planas: pradėk nuo 5–15 min</h2>', '<h2>Roadmap: start with 5–15 min</h2>'],
+    ['<h2>Pradėk nuo 5–15 min</h2>', '<h2>Start with 5–15 min</h2>'],
     [
       '<p class="roadmap-sub">Pirma patikra (5–15 min). Kiti šablonai — kai prireiks.</p>',
       '<p class="roadmap-sub">The check first (5–15 min). The other templates — when you need them.</p>'
@@ -304,10 +303,6 @@ function getEnHtmlReplacementPairs() {
     ['<span class="roadmap-name">Turinio grįžtamasis ryšys</span>', '<span class="roadmap-name">Content feedback</span>'],
     ['<span class="roadmap-name">Užduotis / mokymas komandai</span>', '<span class="roadmap-name">Assignment / team learning</span>'],
     ['<span class="roadmap-name">Laiškas ar žinutė (juodraštis)</span>', '<span class="roadmap-name">Email or message (draft)</span>'],
-    [
-      '<div class="roadmap-total">Nebūtina eiti visų. Tas pats rinkinys — bibliotekoje.</div>',
-      '<div class="roadmap-total">You do not have to do them all. The same set is in the library.</div>'
-    ],
 
     ['<section id="meeting" aria-label="Susitikimo ar sprinto planas">', '<section id="meeting" aria-label="Meeting or sprint plan">'],
     ['<section aria-label="Ta pati žinutė — 3 lygiai">', '<section aria-label="Same message — three levels">'],
@@ -319,8 +314,8 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Saugumas</span>', '<span class="label">Safety</span>'],
     ['<h2>Greita siuntimo patikra</h2>', '<h2>Quick send check</h2>'],
     [
-      '<p class="slide-sublead slide-lead">Į DI įklijuok tą pilną tekstą, kurį ketini siųsti ar pateikti klientui, vadovybei ar partneriui (pvz. laiško, ataskaitos ar pasiūlymo juodraštį) — ne bet kurį atsakymą iš pokalbio.<br>Ši patikra peržiūri faktus ir rizikas prieš siuntimą.</p>',
-      '<p class="slide-sublead slide-lead">Paste the full text you plan to send or submit to a client, leadership, or partner (e.g. email, report, or proposal draft) — not a random chat reply.<br>This check reviews facts and risks before you send.</p>'
+      '<p class="slide-sublead slide-lead">Įklijuok tekstą, kurį siųsi.</p>',
+      '<p class="slide-sublead slide-lead">Paste the text you will send.</p>'
     ],
     [
       '<div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>',
@@ -340,8 +335,8 @@ function getEnHtmlReplacementPairs() {
       '</svg></span> Risks are visible before you send.</div>'
     ],
     [
-      '<p class="qc-next">Toliau: <a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">kitas šablonas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">visos užklausos bibliotekoje</a></p>',
-      '<p class="qc-next">Next: <a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">next template</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">all prompts in the library</a></p>'
+      '<p class="qc-next"><a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">Susitikimo planas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">Biblioteka</a></p>',
+      '<p class="qc-next"><a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">Meeting plan</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">Library</a></p>'
     ],
 
     [
@@ -563,23 +558,27 @@ function getEnHtmlReplacementPairs() {
 
     ['<section aria-label="Esmė"', '<section aria-label="The point"'],
     [
-      'alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Role, ryžiai — 2 Context, lašiša — 3 Reasoning, avokadas — 4 Output, sezamai — 5 Quality check."',
-      'alt="Exploded sushi, bottom to top: nori — 1 Role, rice — 2 Context, salmon — 3 Reasoning, avocado — 4 Output, sesame — 5 Quality check."'
+      'src="assets/memes/su_2.png"',
+      'src="assets/memes/su_1.png"'
     ],
-    ['<h2 class="essence-tagline">Be rėmo DI spėja.</h2>', '<h2 class="essence-tagline">Without a frame, AI guesses.</h2>'],
     [
-      '<p class="essence-lead">\n            Modelis nustato galimybes.<br><strong>Procesas</strong> — ar tas rezultatas išlieka darbe ir komandoje.\n        </p>',
-      '<p class="essence-lead">\n            The model sets what is possible.<br><strong>Process</strong> — whether that result sticks at work and in the team.\n        </p>'
+      'alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Vaidmuo, ryžiai — 2 Kontekstas, lašiša — 3 Rezultatas, avokadas — 4 Mąstymas, sezamai — 5 Kokybės kontrolė."',
+      'alt="Exploded sushi, bottom to top: nori — 1 Role, rice — 2 Context, salmon — 3 Result, avocado — 4 Thinking, sesame — 5 Quality control."'
+    ],
+    ['<h2 class="essence-tagline">Be struktūros DI spėlioja.</h2>', '<h2 class="essence-tagline">Without structure, AI guesses.</h2>'],
+    [
+      '<p class="essence-lead">\n            Modelis nustato galimybes.<br><strong>Procesas</strong> lemia, ar tas rezultatas išlieka darbe ir komandoje.\n        </p>',
+      '<p class="essence-lead">\n            The model sets what is possible.<br><strong>Process</strong> determines whether that result sticks at work and in the team.\n        </p>'
     ],
 
     ['<section class="quiz-slide" aria-label="Vienas klausimas"', '<section class="quiz-slide" aria-label="One question"'],
     [
-      'data-msg-select="Pažymėk atsakymą ir spausk Žiūrėk."',
-      'data-msg-select="Mark an answer and press See result."'
+      'data-msg-select="Pažymėk atsakymą ir spausk „Žiūrėk“."',
+      'data-msg-select="Mark an answer and press “See result”."'
     ],
     [
       'data-feedback-correct="Teisingai: vaidmuo, kontekstas ir aiškus pageidaujamas rezultatas leidžia DI atsakyti pagal tavo užduotį."',
-      'data-feedback-correct="Correct: role, context, and a clear desired output let the AI answer to your task."'
+      'data-feedback-correct="Correct: role, context, and a clear desired output let the AI answer in line with your task."'
     ],
     [
       'data-feedback-wrong="Be aiškaus vaidmens ir konkretaus konteksto DI spėlioja. Vien prašymas būti kūrybingam, bendras tonas ar labai trumpa užklausa neperduoda, kokio turinio ir formato tikiesi."',
@@ -614,11 +613,7 @@ function getEnHtmlReplacementPairs() {
     ['<button type="button" class="quiz-reset-btn" id="quiz-reset-btn" hidden>Kitas bandymas</button>', '<button type="button" class="quiz-reset-btn" id="quiz-reset-btn" hidden>Try once more</button>'],
 
     ['<section id="cta" aria-label="PDF santrauka ir kitas žingsnis"', '<section id="cta" aria-label="PDF summary and next step"'],
-    ['<h2 class="cta-title">Toliau — ta pati sistema komandai</h2>', '<h2 class="cta-title">Next — the same system for the team</h2>'],
-    [
-      '<p class="cta-sub">Santrauka PDF — pasiimk. Programa — kai rėmo reikia visai komandai.</p>',
-      '<p class="cta-sub">Lesson summary PDF — take it. The program is for when the whole team needs the frame.</p>'
-    ],
+    ['<h2 class="cta-title">Ta pati sistema visai komandai.</h2>', '<h2 class="cta-title">The same system for the whole team.</h2>'],
     [
       'aria-label="Pagrindinis veiksmas: peržvelk mokamą programą ir kainą (naujame skirtuke)" data-track="paid_cta_click" data-track-dest="app">Peržvelk programą ir kainą</a>',
       'aria-label="Primary action: view the paid program and pricing (new tab)" data-track="paid_cta_click" data-track-dest="app">View program and pricing</a>'

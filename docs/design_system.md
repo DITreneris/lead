@@ -1,7 +1,7 @@
 # Design System — Promptų anatomija
 
 **Version:** 3.1  
-**Last reviewed:** 2026-10-01 — illustration bake colors come from `styles/tokens.css` (`illustration-colors.cjs`). Canvas sizes match `scenes.mjs`: intro 800×1120, the other six 800×900. Slugs: intro, check, meeting, levels, feedback, team, letter. PNG/WebP ship on `PUBLIC_FILES`; bake fonts do not. Type scale adds display / title / body. Hero `h1` mobile clamp and slide count stay closed.  
+**Last reviewed:** 2026-10-02 — `#intro` is one 1200px frame: 55/45 hero, one before/after card, then a `.intro-strip` with min-height 64px. Hero proof stays a four-line summary of the weekly task. `#guided` is that pair plus a quiet strip; Po is the copyable expansion of the same fields, not a baked figure. Hero PDF is a tertiary text link in that strip. Illustration bake colors come from `styles/tokens.css` (`illustration-colors.cjs`). Canvas sizes match `scenes.mjs`: six scenes at 800×900. Template figures display at `max-width: 420px` on a 1.45 / 0.75 track (the picture column is the narrow one; it swaps when the figure is the first child). No large yellow fill in those six scenes. Slugs: check, meeting, levels, feedback, team, letter. PNG/WebP ship on `PUBLIC_FILES`; bake fonts do not. Type scale adds display / hero / title / body. Hero `h1` uses `--font-size-hero` (44px at 375px, 72px at 1440px). Section `h2` stays on the title scale. Essence and CTA headlines use `--font-size-display`. Schema step type is 22 / 17 / 16 px on one vertical axis. Slide count stays closed.  
 **Audience:** Product owner, frontend maintainer, AI coding agents.
 
 This document describes **what exists today**. It is not a redesign brief. Visual changes should improve **consistency and maintainability** only.
@@ -11,8 +11,8 @@ This document describes **what exists today**. It is not a redesign brief. Visua
 | Range | Meaning |
 |-------|---------|
 | **2.x** | No breaking visual contracts: CTA tiers (§8), public token names, slide-based UX |
-| **3.0** | Opened on one surface: the seven drawing columns are baked result illustrations (`.viz-figure`). Further hero-scale, hub restyle, and slide-count changes stay closed |
-| **3.1** | Single color source for lesson CSS + illustrations; illustration-color + hex + contrast-fixture verify; display/title/body type tokens. Hero mobile `h1` clamp stays closed |
+| **3.0** | Opened baked `.viz-figure` scenes. Intro later left the bake; the live set is six scenes (see v3.0 DoD). Hero scale stayed closed until 3.1. Hub restyle and slide-count changes stay closed |
+| **3.1** | Single color source for lesson CSS + illustrations; illustration-color + hex + contrast-fixture verify; display/hero/title/body type tokens. The intro frame stays 1200px / 55/45. `#intro h1` uses `--font-size-hero`. Essence and CTA use `--font-size-display` |
 
 ### v1.5 / v2.x scope
 
@@ -68,8 +68,8 @@ flowchart TB
 
 | Location | Primary | Secondary |
 |----------|---------|-----------|
-| Hero (`#intro`) | Practice link (`.hero-primary-link` → `#guided`) | PDF (`.hero-pdf-link`) |
-| Final slide (`#cta`) | Program / pricing (`.cta-btn--primary`) | PDF (`.cta-pdf-link`) |
+| Hero (`#intro`) | Practice link (`.hero-primary-link` → `#guided`) | None in `.hero-actions`. PDF is a tertiary text link (`.hero-pdf-link`) in `.intro-strip`, with library, CEO kit, tools, and DUK |
+| Final slide (`#cta`) | Program / pricing (`.cta-btn--primary`) | PDF (`.cta-pdf-link` + `.btn-pdf-outline`) |
 
 ### 2.1 Decision recipes (authors / agents)
 
@@ -77,7 +77,7 @@ flowchart TB
 
 1. Map to §8 tier before writing CSS.
 2. At most one **Tier 1 (red)** per slide.
-3. PDF → Tier 2 (`.btn-pdf-outline`). Copy prompt → Tier 3. Do not invent a new red variant.
+3. Final-slide PDF → Tier 2 (`.btn-pdf-outline`). Hero PDF stays a tertiary text link in `.intro-strip`. Copy prompt → Tier 3. Do not invent a new red variant.
 
 **New text block**
 
@@ -101,8 +101,8 @@ flowchart TB
 
 | Tier | Examples | Rule |
 |------|----------|------|
-| **Public** | Brand triad, `--accent-teal*`, `--surface-light`, `--text-ink`, text roles (`--text-bright` … `--text-tertiary`), `--radius-md` / `--radius-lg`, `--duration-*`, `--space-4` / `6` / `8`, `--font-size-label` / `ui` / `lead` / `display` / `title` / `body`, `--measure-prose`, `--tracking-label`, `--tap-min` | Prefer these in new UI |
-| **Private** | Yellow tint ladder (four public steps below; other `--accent-yellow-*` keep current values), `--surface-stage*`, `--text-ink-muted` / faint / mid, most `--white-alpha-*` | Implementation detail; reuse existing step, do not add a new alpha without documenting |
+| **Public** | Brand triad, `--accent-teal*`, `--surface-light`, `--surface-stage-card`, `--text-ink`, `--text-ink-muted`, text roles (`--text-bright` … `--text-tertiary`), `--radius-md` / `--radius-lg`, `--duration-*`, `--space-4` / `6` / `8`, `--font-size-label` / `ui` / `lead` / `display` / `hero` / `title` / `body`, `--measure-prose`, `--tracking-label`, `--tap-min` | Prefer these in new UI |
+| **Private** | Yellow tint ladder (four public steps below; other `--accent-yellow-*` keep current values), `--surface-stage`, `--text-ink-faint` / `--text-ink-mid`, most `--white-alpha-*` | Implementation detail; reuse existing step, do not add a new alpha without documenting |
 
 **Yellow public steps (v3.1, alias-only):** prefer `--accent-yellow-border` (0.45), `--accent-yellow-bg-fill` (0.08), `--accent-yellow-bg-hover` (0.07), `--accent-yellow-bg-emphasis` (0.14). Other yellow names stay at today’s values. Do not mint a new yellow opacity.
 
@@ -116,12 +116,12 @@ flowchart TB
 
 | Token | Value | Usage |
 |-------|-------|--------|
-| `--primary-blue` | `#103b5a` | Brand navy, surfaces, schema steps |
+| `--primary-blue` | `#103b5a` | Brand navy, surfaces; schema QC left rule (`.schema-step--qc`) |
 | `--accent-yellow` | `#fbd304` | Highlights, copy buttons, active nav, tabs |
 | `--accent-red` | `#ff5a5f` | Primary CTAs, labels (`.label`), badges tint |
 | `--accent-teal` | `#0d9488` | Context card border (`.types-card--ctx`) |
-| `--accent-teal-deep` | `#047857` | Schema reason step fill (`.schema-step--reason`) |
-| `--primary-blue-deep` | `#0c2d45` | Schema QC gradient end |
+| `--accent-teal-deep` | `#047857` | Schema reason left rule (`.schema-step--reason`) |
+| `--primary-blue-deep` | `#0c2d45` | Deep navy token; not used on the schema diagram |
 | `--primary-blue-wash` | `rgba(16, 59, 90, 0.85)` | Illustration stage wash |
 | `--bg-dark` | `#071b29` | Page base (alias via `--surface-base`) |
 
@@ -133,11 +133,14 @@ flowchart TB
 | `--surface-raised` / `--card-bg` | Cards, library items |
 | `--surface-muted` / `--surface-muted-deep` | Panels, library how-to |
 | `--surface-inset` / `--surface-inset-soft` | Inset panels |
-| `--surface-light` | Schema neutral step; illustration light cards |
+| `--surface-light` | Illustration light cards. Schema steps use `--surface-paper` |
+| `--surface-paper` | Schema steps 1–3 (`#f7f9fb`) |
+| `--surface-reason` | Schema step 4 wash (`#d7ebe3`) |
+| `--surface-qc` | Schema step 5 wash (`#d5e2ee`) |
 | `--surface-light-bar` | Illustration letter chrome bar |
 | `--surface-navy-deep` | Brand lockup gradient start |
-| `--surface-stage` | Illustration-only stage fill (private) |
-| `--surface-stage-card` | Illustration-only raised card (private) |
+| `--surface-stage` | Illustration stage fill (private; lesson CSS does not use it) |
+| `--surface-stage-card` | Illustration raised card and `#intro` proof card |
 | `--border` | Standard 10% white border |
 | `--border-hairline` | Subtle dividers (sections, cards) |
 
@@ -154,10 +157,11 @@ flowchart TB
 | `--text-on-accent` | `#0a0a0a` | Text on yellow / red buttons; illustration risk mark |
 | `--accent-yellow-hover-text` | `#fff6b0` | Yellow control hover |
 | `--text-ink` | `#0f172a` | Text on `--surface-light` (schema + illustrations) |
-| `--text-ink-muted` | `#475569` | Illustration meta on light cards (private) |
+| `--text-ink-muted` | `#475569` | Meta on light cards: illustrations and `#intro` „Po“ lines |
+| `--text-ink-body` | `#405064` | Schema step description on `--surface-paper` |
 | `--text-ink-faint` | `rgba(15, 23, 42, 0.08)` | Illustration hairlines on light cards (private) |
 | `--text-ink-mid` | `rgba(15, 23, 42, 0.35)` | Illustration bar on yellow row (private) |
-| `--text-on-navy-cool` | `#e0f2fe` | Schema QC body on navy |
+| `--text-on-navy-cool` | `#e0f2fe` | Light text on navy. Schema steps no longer use it |
 | `--text-tertiary` | `rgba(255,255,255,0.82)` | Tertiary links / subdued chrome (`.link-tier-tertiary`) |
 | `--text-secondary` | `rgba(255,255,255,0.88)` | On-dark secondary (foot variants) |
 | `--text-on-dark-high` | `var(--text-tertiary)` | **Deprecated alias** (v2.0) |
@@ -170,8 +174,9 @@ flowchart TB
 | `--font-size-label` | `13px` | Labels, disclosure summary, copy chrome, lang switch |
 | `--font-size-ui` | `14px` | Compact UI |
 | `--font-size-lead` | `clamp(16px, 1.25vw, 19px)` | `.slide-lead` |
-| `--font-size-display` | `clamp(56px, 7.5vw, 104px)` | Desktop `h1` |
-| `--font-size-title` | `clamp(36px, 4.2vw, 56px)` | Desktop `h2` |
+| `--font-size-display` | `clamp(56px, 7.5vw, 104px)` | `h2.essence-tagline`, `h2.cta-title` at every width |
+| `--font-size-hero` | `clamp(44px, 5vw, 72px)` | The only `h1` (`#intro`). 44px at 375px, 72px at 1440px. Line-height 1.12 |
+| `--font-size-title` | `clamp(36px, 4.2vw, 56px)` | Section `h2` at every width |
 | `--font-size-body` | `clamp(14px, 1.05vw, 16px)` | Repeated body / card copy |
 | `--lh-body` | `1.5` | Lead / prose line-height |
 | `--measure-prose` | `34em` | Lead / FAQ panel max-width |
@@ -199,7 +204,7 @@ flowchart TB
 | `--shadow-lg` | General elevation |
 | `--shadow-red-hero-rest` / `--shadow-red-hero-hover` | `.hero-primary-link` |
 | `--shadow-cta-rest` / `--shadow-cta-hover` | `.cta-btn` |
-| `--shadow-yellow-hover` | `.hero-pdf-link`, yellow hovers |
+| `--shadow-yellow-hover` | `.btn-pdf-outline:hover` |
 | `--shadow-accent-yellow` | Copy / quiz yellow buttons |
 | `--shadow-editor` | `.prompt-editor` |
 | `--shadow-panel-deep` | `.promo-handoff__panel` |
@@ -215,8 +220,8 @@ flowchart TB
 
 | Token | Family | Load |
 |-------|--------|------|
-| `--font-display` | Space Grotesk | Google Fonts (head) |
-| `--font-main` | Inter | Google Fonts (head) |
+| `--font-display` | Space Grotesk | Google Fonts, weight 700 |
+| `--font-main` | Inter | Google Fonts, weights 400, 600, 700, 800 |
 
 ### 3.7 Layout tokens
 
@@ -247,7 +252,7 @@ flowchart TB
 | `--space-container-gap-md` | 64px | Container ≤1366px |
 | `--space-container-gap-sm` | 40px | Container ≤1024px |
 | `--space-card-padding` | 18px | `.types-card` |
-| `--space-card-padding-lg` | 21px | `.types-triple-grid` cards |
+| `--space-card-padding-lg` | 21px | Large-card padding step. The guided pair uses `.types-card` padding (`--space-card-padding`) |
 | `--space-promo-block` | `44px 120px 64px` | `.promo-handoff` |
 | `--space-promo-mobile` | `32px 20px 52px` | Promo ≤1024px |
 | `--space-library-block` | `64px 0 76px` | `.library-slide` |
@@ -309,6 +314,7 @@ These may remain as literals; `verify:design-tokens` does not fail on them:
 - `rgba` inside `--shadow-*` definitions in `:root`
 - Hero `#intro` radial: `rgba(251, 211, 4, 0.035)`
 - Promo / CTA gradients: `rgba(16, 59, 90, …)` + yellow mix
+- Primer, library, and promo navy fills already in component CSS: `rgba(16, 59, 90, 0.22–0.48)`. Leave them as literals; the nearest token would change the fill
 - `.icon--telegram` brand color: `#2aabee`
 - Quiz option focus ring: `rgba(255, 90, 95, 0.45)` (one-off emphasis)
 - Component CSS hex: only `.icon--telegram` `#2aabee` (`verify:design-tokens`)
@@ -319,11 +325,11 @@ These may remain as literals; `verify:design-tokens` does not fail on them:
 
 | Role | Selectors | Font | Size pattern |
 |------|-----------|------|----------------|
-| Display H1 | `h1`, `.hero-title-accent` | Display | `var(--font-size-display)`; mobile `#intro` keeps its own clamp |
-| Section H2 | `h2`, slide titles | Display | `var(--font-size-title)` |
-| Essence / closing headline | `h2.cta-title`, `h2.essence-tagline` | Display | Large clamps; mobile overrides ≤1024px |
+| Hero H1 | `h1`, `#intro h1` | Display | `var(--font-size-hero)`, line-height 1.12, max-width 14em (44px at 375px, 72px at 1440px). `.hero-title-accent` is color only |
+| Section H2 | `h2`, slide titles | Display | `var(--font-size-title)` at every width. No mobile clamp |
+| Essence / closing headline | `h2.cta-title`, `h2.essence-tagline` | Display | `var(--font-size-display)` at every width. Do not put a second clamp on these |
 | Lead | `.slide-lead` (+ `.hero-intro`, `.types-lead`, `.slide-sublead`, `.schema-lead`) | Main | `var(--font-size-lead)`, `line-height: var(--lh-body)`, `max-width: var(--measure-prose)` where set |
-| Label | `.label`, `.types-card-k`, `.cta-secondary-label`, `.disclosure-chip__summary` | Main / Display | Uppercase; `letter-spacing: var(--tracking-label)` on `.label` / disclosure |
+| Label | `.label`, `.types-card-k`, `.cta-secondary-label`, `.disclosure-chip__summary` | Main / Display | `--font-size-label`. Uppercase; `letter-spacing: var(--tracking-label)` on `.label` / disclosure |
 | UI / buttons | `.copy-prompt-btn`, `.quiz-check-btn`, `.types-copy-btn` | Main | `--font-size-label` or `clamp` where set |
 | Monospace | `.library-prompt-block` | System mono stack | ~13–15px |
 
@@ -395,8 +401,11 @@ Test at **375px, 390px, 768px, 1024px** after CSS changes:
 | 2026-05-25 | `site/lt/` + `site/` (post v1.5) | 375, 390, 768, 1024 | Agent smoke (structural) | Pass — nav 15 slides, primer/guided modifiers, library tabs, quiz feedback margin, outline focus |
 | 2026-05-25 | post DS v2.0 | 375, 390, 768, 1024 | Agent smoke | Pass — `.disclosure-chip*`, hero mobile center, `tools-lt.html`; see [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) |
 | 2026-07-29 | post DS v2.1 | 375, 768, 1024 | Agent structural + checklist | Pass — chrome ≥13px disclosure/label; teal tokens; type tokens; projector/tab/DUK spot items closed in [DS_A11Y_SMOKE_v2.md](DS_A11Y_SMOKE_v2.md) (human re-check recommended on device) |
-| 2026-09-29 | post reason-step contrast | 375 + desktop | Agent browser | Pass — reason fill `#047857` / `--text-bright`; guided labels 13px including „Rezultatas“; EN `site/index.html` same fill |
-| 2026-10-01 | DS v3.1 color source + type tokens | 375, 768, 1024, 1440 | Agent browser | Pass — desktop h1/h2 from `--font-size-display`/`title`; 375 h1 stays 48px; mobile nav 44×44; practice list `--text-muted`; schema light/ink tokens; EN Leader tab + copy still work |
+| 2026-09-29 | post reason-step contrast | 375 + desktop | Agent browser | Superseded 2026-10-02 — the full `#047857` fill and `--text-bright` text are not the live diagram |
+| 2026-10-02 | schema wash | 375 + desktop | Agent browser | Pass — step 4 fill `--surface-reason`, step 5 `--surface-qc`, text `--text-ink` / `--text-ink-body`. Teal stays the left rule (`--accent-teal-deep`) |
+| 2026-10-01 | DS v3.1 color source + type tokens | 375, 768, 1024, 1440 | Agent browser | Superseded 2026-10-02 — the “375 h1 stays 48px” result is not the live size. Mobile nav 44×44, practice list `--text-muted`, and schema ink tokens still hold |
+| 2026-10-02 | Intro frame doc sync | 375, 1440 | Agent browser | Frame still holds (one red CTA, PDF tertiary in `.intro-strip`). The title-scale h1 in this row was replaced the same day by the type-rhythm row |
+| 2026-10-02 | Type rhythm | 375, 768, 1024, 1440 | Agent browser | Pass — LT and EN. Hero 44/44/51/72 px, section h2 36/36/43/56 px, essence and CTA 56/58/77/104 px. Hero stays above h2. One red CTA. PDF stays a tertiary link. EN CTA title is 4 lines at 375px and the button stays on screen |
 
 ---
 
@@ -416,8 +425,9 @@ For each new UI, **reuse a row below** before inventing a class.
 
 | Class | Purpose | When to use | Don't |
 |-------|---------|-------------|-------|
-| `.brand-header` | Fixed top-right brand + lang | Global | Duplicate logo elsewhere |
-| `.brand-lockup` | Link to www.promptanatomy.app | External brand | Change lesson canonical URL |
+| `.brand-header` | Fixed, full width, no background, content to the right, `pointer-events: none` except the lockup and language buttons | Global | Duplicate logo elsewhere; paint a full-width bar and pin the lockup to the viewport edge |
+| `.brand-header__inner` | `max-content` right cluster. Background `--bg-dark`, radius on the left only. Not the 1200px `.container` | Global | Stretch it to the hero frame |
+| `.brand-lockup` | Link to www.promptanatomy.app. Bolt uses the favicon `path`; fill is `currentColor` with `color: var(--accent-yellow)`. Name is sentence case (Space Grotesk). Tagline stays uppercase | External brand | `text-transform: uppercase` on the name; change the lesson canonical URL |
 | `.lang-switch__btn` | LT / EN toggle | Global; `.is-active` state | New locale UI without build rules |
 
 ### 7.3 Navigation
@@ -437,17 +447,27 @@ For each new UI, **reuse a row below** before inventing a class.
 | Class | Purpose |
 |-------|---------|
 | `.hero-intro` | Lead paragraph |
-| `.hero-actions` | Primary + PDF row |
+| `.hero-actions` | The single red CTA row |
 | `.hero-primary-link` | Primary red CTA |
-| `.hero-pdf-link` | Secondary yellow outline |
+| `.hero-pdf-link` | Tracking hook on the tertiary PDF text link inside `.intro-strip`. No yellow-outline rule |
+| `.intro-frame` | Hero grid plus the strip under it, max-width 1200px. Keep the strip in the frame |
+| `.intro-copy` | Left column: label, `h1`, lead, red CTA |
+| `.intro-proof` | Right column (45fr): the before/after card |
+| `.intro-proof-card` | One before/after shell (`--surface-stage-card`) with a bridge. One card, not two light cards on the navy |
+| `.intro-proof-block` | „Prieš“ or „Po“ stack inside the card |
+| `.intro-proof-kicker` | Uppercase label („Prieš“ / „Po“) |
+| `.intro-proof-before` | The one-line prompt, on `--surface-light` |
+| `.intro-proof-after` | Four short lines (role, goal, input, output). `#guided` Po expands those fields into the prompt you copy |
+| `.intro-proof-bridge` | Decorative arrow between the two blocks (`aria-hidden`) |
+| `.intro-strip` | Tertiary row under the hero (`min-height: 64px`): links + DUK. It can grow. Keep those links out of the hero grid |
 | `.hero-foot-links` | Tertiary text links (44px tap target) |
-| `.hero-faq` / `.hero-faq__*` | Collapsible FAQ (`details`; use with `.disclosure-chip--inline`) |
+| `.hero-faq` / `.hero-faq__*` | Collapsible FAQ (`details`; use with `.disclosure-chip--inline`). Inside `.intro-strip` the summary matches tertiary links |
 | `.disclosure-chip__summary` / `__panel` | Shared `details` chip + panel (hero DUK, „Turinys“) |
 | `.disclosure-chip--nav` / `--inline` | Modifiers: fixed nav list vs inline hero FAQ |
 | `.slide-lead` | Unified lead paragraph metrics |
 | `.slide-head` | Label + `h2` + lead as one grid child so container gap does not split the stack. Rhythm: label → `h2` `--space-3` (12px), `h2` → lead `--space-4` (16px), lead → next block `--space-8` (32px). `h2 { margin-top: 0 }` is global. Intro `h1`, essence, CTA title, and quiz question keep their own margins. |
 | `.link-tier-tertiary` | Tertiary text links (hero foot, `.inline-link--soft`) |
-| `.btn-pdf-outline` | Tier 2 PDF (`.hero-pdf-link`, `.cta-pdf-link`) |
+| `.btn-pdf-outline` | Tier 2 PDF. Used with `.cta-pdf-link` on `#cta` |
 
 ### 7.5 Cards and practice
 
@@ -455,15 +475,13 @@ For each new UI, **reuse a row below** before inventing a class.
 |-------|---------|
 | `.types-slide` | Wrapper for primer/guided slides |
 | `.types-slide--primer` | Pagrindai slide; top-aligned shell (with `id="primer"`). Card stack `var(--space-3)`; cols and quick strip `max-width: 960px`; desc/example `text-wrap: pretty`. |
-| `.types-slide--guided` | Praktika slide (with `id="guided"`) |
-| `.types-card` | Base card; modifiers `--sys`, `--ctx`, `--role` (border accent) |
-| `.types-primer-cols` | Two cards on primer slide |
-| `.types-primer-quick` | Quick-start strip (not a third column card) |
-| `.types-triple-grid` | Three cards on guided slide |
+| `.types-slide--guided` | Praktika slide (with `id="guided"`). Same two-column grid and quiet strip as primer |
+| `.types-card` | Base card; modifiers `--sys` (blue) and `--ctx` (teal) set the border |
+| `.types-primer-cols` | Two equal cards (primer and guided). From 1025px the row stretches to one height and each „Kopijuoti“ sits at the bottom of its card. At ≤1024px the cards stack |
+| `.types-primer-quick` | Quiet strip under the pair (primer quick start; guided 30-second check). Not a third column |
 | `.types-copy-btn` | Outline copy; `--practice` = subdued on guided |
-| `.types-card-actions` | Copy row before `types-card-extra` on guided |
-| `.types-card-example--structured` | Structured example block (guided middle card) |
-| `.practice-structured-line` | Single line in structured example |
+| `.types-card-example--lines` | Guided „Po“ prompt, one sentence per line. The copy button uses that same text |
+| `.practice-structured-line` | One hero-proof line inside `.intro-proof-after` |
 | `.primer-next-cta` | Soft pill link to schema |
 | `html.primer-active` | JS toggled on `documentElement` when primer slide active; subtler `.slide-outline` on desktop |
 
@@ -475,14 +493,13 @@ For each new UI, **reuse a row below** before inventing a class.
 | `.prompt-line` | Single prompt row; `<b>` labels stripped on copy |
 | `.copy-prompt-btn` | Yellow filled copy |
 | `.result-badge` | Outcome pill below editor (icon + text) |
-| `.viz-figure` | Baked illustration in the former drawing column: `<figure><picture>` with WebP + PNG fallback, `width`/`height`, locale alt. Scenes live in `scripts/illustrations/scenes.mjs` (LT + EN copy only). Colors come from [`styles/tokens.css`](../styles/tokens.css) via [`scripts/illustration-colors.cjs`](../scripts/illustration-colors.cjs). Rendered by `npm run build:illustrations` (satori → resvg → sharp) into `assets/illustrations/{slug}-{lt,en}.{png,webp}`. `npm run build` does **not** rebake — color token changes that should update drawings need `npm run build:illustrations`. Intro canvas is 800×1120, `eager` + `fetchpriority=high` (`.viz-figure--intro`); the other six are 800×900 and `lazy`. Slugs: `intro`, `check`, `meeting`, `levels`, `feedback`, `team`, `letter`. PNG and WebP are on `PUBLIC_FILES`. Fonts: Space Grotesk 700/500 + Inter 400/600 TTF in `assets/fonts/`, bake-only — not in `PUBLIC_FILES`, no new webfont on the page. `verify:illustration-colors` fails if bake scripts use a hex/rgba that is not a token |
+| `.viz-figure` | Baked illustration in the former drawing column: `<figure><picture>` with WebP + PNG fallback, `width`/`height`, locale alt. Scenes live in `scripts/illustrations/scenes.mjs` (LT + EN copy only). Colors come from [`styles/tokens.css`](../styles/tokens.css) via [`scripts/illustration-colors.cjs`](../scripts/illustration-colors.cjs). Rendered by `npm run build:illustrations` (satori → resvg → sharp) into `assets/illustrations/{slug}-{lt,en}.{png,webp}`. `npm run build` does **not** rebake — color token changes that should update drawings need `npm run build:illustrations`. `#intro` proof is HTML: one line vs four short lines. `#guided` Po is the copyable expansion of that weekly task. The six baked scenes are 800×900 and `lazy`. Desktop display is `max-width: 420px` on a 1.45 / 0.75 track (picture column narrow; tracks swap when `<figure>` is the first child). Phones stack the task above the figure. No large yellow fill in the six scenes. The 60 min sprint copy starts at `meeting`. Slugs: `check`, `meeting`, `levels`, `feedback`, `team`, `letter`. PNG and WebP are on `PUBLIC_FILES`. Bake fonts: Space Grotesk 700/500 + Inter 400/600 TTF in `assets/fonts/`, not in `PUBLIC_FILES`. The page Google Fonts request also loads Inter 500 for schema descriptions. No new font family. `verify:illustration-colors` fails if bake scripts use a hex/rgba that is not a token |
 
 ### 7.7 Schema and roadmap
 
 | Class | Purpose |
 |-------|---------|
-| `.schema-section`, `.schema-grid`, `.schema-step`, `.schema-step--*` | Framework diagram. Reason step (`.schema-step--reason`): fill `--accent-teal-deep`, text `--text-bright`, number opacity 1 |
-| `.schema-arrow`, `.schema-loop-svg` | Connectors (`.schema-loop-svg` hidden on mobile) |
+| `.schema-section`, `.schema-grid`, `.schema-step`, `.schema-step--*` | Steps 1–3 on `--surface-paper`. Step 4 (`.schema-step--reason`) is `--surface-reason`. Step 5 (`.schema-step--qc`) is `--surface-qc`. Text stays dark. Left rules stay. One vertical axis, no arrows. Number is 22px / 700 in a 60px column. Title is 17px / 700, uppercase. Description is 16px / 500 and `--text-ink-body` |
 | `.qc-next` | After send-check: next template · library (Tier 5) |
 | `.roadmap-slide`, `.roadmap-row`, `.roadmap-dot`, `.roadmap-time` | Journey timeline |
 
@@ -529,7 +546,7 @@ Icons are **inline Lucide-style** SVG (ISC); do not add icon fonts.
 | Tier | Classes | Visual | Use |
 |------|---------|--------|-----|
 | **1 — Primary (red)** | `.hero-primary-link`, `.cta-btn`, `.cta-btn--primary` | `--accent-red`, layered red shadow | Main action |
-| **2 — Secondary (yellow outline)** | `.btn-pdf-outline`, `.hero-pdf-link`, `.cta-pdf-link` | Transparent + yellow border | PDF / summary download |
+| **2 — Secondary (yellow outline)** | `.btn-pdf-outline`, `.cta-pdf-link` | Transparent + yellow border | Final-slide PDF / summary download |
 | **3 — Copy (yellow fill)** | `.copy-prompt-btn`, `.types-copy-btn` (default) | `--accent-yellow` bg, `--text-on-accent` | Copy prompt |
 | **3b — Copy subdued** | `.types-copy-btn--practice` | Ghost on guided slide | Practice cards only |
 | **4 — Quiz** | `.quiz-check-btn`, `.quiz-reset-btn` | Yellow primary / bordered ghost | Quiz slide only |
@@ -603,7 +620,7 @@ Minimal page — no slide nav or lesson JS.
 
 ### 11.2 [`tools.html`](../tools.html)
 
-**Policy (v1.0):** Secondary marketing surface — **dark parity** with lesson brand; inline CSS only (no Tailwind).
+**Policy (v1.0):** Secondary marketing surface — **dark parity** with lesson brand; inline CSS only (no Tailwind). [`tools-lt.html`](../tools-lt.html) uses the same satellite `:root` as `tools.html`.
 
 | Aspect | Implementation |
 |--------|----------------|
@@ -620,6 +637,8 @@ Minimal page — no slide nav or lesson JS.
 |-------|---------|
 | `.category-pill` + `.bg-cat-1` / `.bg-cat-2` | Section label (navy vs gold) |
 | `.tool-list` / `.tool-item` / `.tool-dot` | Tool listing with tree line |
+| `.tool-link` | Vendor URL; new tab, underlined body text |
+| `.header-note` | One line under the title: links open a new tab |
 | `.version-tag` | Small metadata chip |
 | `.header-title` | Hero headline |
 | `.page-shell` / `.page-header` / `.page-footer` | Page chrome; shell uses `--shadow-lg`; `.brand-tagline` uses `--font-size-label` |
@@ -648,7 +667,8 @@ Minimal page — no slide nav or lesson JS.
 
 ### Don't
 
-- Redesign hero layout, `h1` scale, or slide-based navigation model.
+- Replace the current hero frame: 1200px, 55/45, one before/after card, `#intro h1` on `--font-size-hero`, one Tier 1 in `.hero-actions`. The PDF stays a tertiary text link. Do not put a raw `font-size` clamp back on `h1`, `h2`, `h2.essence-tagline`, or `h2.cta-title`.
+- Replace the slide-based navigation model.
 - Hand-fill `.library-prompt-block` without JS library keys.
 - Introduce Tailwind or a bundler on `index.html` without explicit approval.
 - Add a seventh red CTA variant.
@@ -665,7 +685,7 @@ Minimal page — no slide nav or lesson JS.
 5. **Tokens:** edit [`styles/tokens.css`](../styles/tokens.css) (and [`styles/tokens-satellite.css`](../styles/tokens-satellite.css) if satellite subset changes); run `node scripts/inject-design-tokens.js` or `npm run build`.
 6. **Document:** update §3–§8 in this file if tokens or public classes changed.
 7. **Verify:** `npm run build && npm run verify` (`verify:design-tokens`, `verify:satellite-tokens`, `verify:typography-roles`).
-7. **QA:** §6 mobile checklist + keyboard tab through hero, library, quiz.
+8. **QA:** §6 mobile checklist + keyboard tab through hero, library, quiz.
 
 ---
 
@@ -711,8 +731,8 @@ Minimal page — no slide nav or lesson JS.
 
 ### v3.0 Definition of Done (2026-10-01)
 
-- [x] Seven abstract drawings replaced by baked illustrations (`.viz-figure`): intro 800×1120, then check, meeting, levels, feedback, team, letter at 800×900
-- [x] One illustrated result object per slide, same 60 min sprint; no second prompt card, no table headers, no second copy button, no chat window or laptop frame
+- [x] Six baked illustrations (`.viz-figure`): check, meeting, levels, feedback, team, letter at 800×900. `#intro` proof is HTML.
+- [x] Intro is one weekly line vs four fields (Vaidmuo, Tikslas, Įvestis, Rezultatas). A/B/C is only the result value. Schema fields stay on `#guided`. The 60 min sprint stays on `meeting` and the later template scenes. No second prompt card, no table headers, no second copy button, no chat window or laptop frame
 - [x] LT and EN renders from one scene source; EN pairs swap `src`/`srcset` and `alt`; library keys unchanged
 - [x] `verify:robots-llms` checks every referenced illustration exists in `site/assets/illustrations` and nothing unreferenced leaks; EN root never points at `-lt` renders
 - [x] `.result-slip` text cards (intermediate 2026-10-01 attempt) removed — they read as a second prompt card
@@ -723,7 +743,7 @@ Minimal page — no slide nav or lesson JS.
 - [x] Schema / brand leftover hex tokenized (`--surface-light`, `--text-ink`, `--primary-blue-deep`, `--text-on-navy-cool`, `--surface-navy-deep`); guided emerald → `--accent-teal`
 - [x] `verify:illustration-colors` + component hex scan (only `#2aabee` allowed)
 - [x] Bake TTFs committed under `assets/fonts/` (not shipped)
-- [x] Type tokens `--font-size-display` / `title` / `body`; repeated body clamps migrated; hero mobile `h1` unchanged
+- [x] Type tokens `--font-size-display` / `hero` / `title` / `body`. 2026-10-02 type rhythm: `#intro h1` is `--font-size-hero` (44px at 375px, 72px at 1440px); section `h2` stays `--font-size-title`; essence and CTA use `--font-size-display`. Heading clamps are gated in `verify:typography-roles`
 - [x] Yellow four public steps documented; other yellow names keep current values
 - [x] `--tap-min` on mobile nav; guided practice list uses `--text-muted`
 - [x] `verify:contrast-fixtures` on the listed pairs
@@ -739,7 +759,7 @@ Minimal page — no slide nav or lesson JS.
 | Library single Markdown source | AGENTS §4.1 |
 | Self-host woff2 (drop Google Fonts) | Bake TTFs stay off the page |
 | Hard yellow remap onto four steps | Review live first |
-| Remaining one-off `font-size` clamps | Migrate when a slide is already open |
+| Remaining one-off `font-size` clamps | Cards, quiz, prompts, library, roadmap, and the promo title. Heading roles are closed. Recount: [DS_TYPOGRAPHY_AUDIT.md](DS_TYPOGRAPHY_AUDIT.md) |
 
 ---
 
@@ -752,6 +772,7 @@ Minimal page — no slide nav or lesson JS.
 | [.cursor/rules/index-html-pamoka.mdc](../.cursor/rules/index-html-pamoka.mdc) | Slide order, library keys, DOM rules |
 | [.cursor/skills/q-a-agent/SKILL.md](../.cursor/skills/q-a-agent/SKILL.md) | Pre-commit QA |
 | [CHANGELOG.md](../CHANGELOG.md) | UI change history |
+| [DS_TYPOGRAPHY_AUDIT.md](DS_TYPOGRAPHY_AUDIT.md) | 2026-10-02 heading recount. `--font-size-display` paints essence and CTA |
 | [EN_LOCALE_UI_UX_AUDIT_2026-04-18.md](EN_LOCALE_UI_UX_AUDIT_2026-04-18.md) | EN locale / a11y audit |
 | [LT_EN_UI_UX_REPORT.md](../LT_EN_UI_UX_REPORT.md) | **Deprecated** — see banner at top of that file |
 

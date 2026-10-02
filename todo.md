@@ -81,15 +81,17 @@ Tikslas: deterministinis `site/` artefaktas, griežtesnė LT↔EN/UTM patikra, n
 
 ---
 
-## Fazė 7 — Iliustracijos ir DS v3.1 *(darbo medis, 2026-10-01)*
+## Fazė 7 — Iliustracijos ir DS v3.1 *(production `e0b4ff6`, 2026-10-01)*
 
 Tikslas: piešiniai ir agentų dokumentai sutampa su bake ir `PUBLIC_FILES`, ne su senu 11 failų allowlist.
 
 - [x] Scenos [`scripts/illustrations/scenes.mjs`](scripts/illustrations/scenes.mjs): `intro` 800×1120; `check`, `meeting`, `levels`, `feedback`, `team`, `letter` — 800×900. DOM — `.viz-figure` / `<picture>`.
+- Po `e0b4ff6` (Unreleased): intro scena iškrito iš `PUBLIC_FILES`. Dabartinis sąrašas — šešios scenos (`check`, `meeting`, `levels`, `feedback`, `team`, `letter`), kaip [AGENTS.md](AGENTS.md) ir [scripts/prepare-site-artifact.js](scripts/prepare-site-artifact.js).
 - [x] [`scripts/prepare-site-artifact.js`](scripts/prepare-site-artifact.js) kopijuoja tų scenų PNG ir WebP. `assets/fonts/` lieka bake-only.
 - [x] `npm run build` iliustracijų neperkepa. Spalva piešinyje — `npm run build:illustrations`.
 - [x] `verify:illustration-colors`, `verify:contrast-fixtures`; `verify:robots-llms` — iliustracijų paritetas ir locale failų atskirtis.
 - [x] AGENTS, SETUP, CHANGELOG, Q_A, data-agent, `index-html` rule ir `docs/design_system.md` sutapdinti su šiais slug ir drobės dydžiais. Fazės 6 „11 failų“ lieka tos datos įrašas.
+- [x] Production READY `e0b4ff6`. Changelog perkeltas iš `[Unreleased]` į `[0.5.0] - 2026-10-01`.
 
 ---
 

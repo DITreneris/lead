@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         /* DS_TOKENS_START — from styles/tokens-satellite.css; do not edit here */
-        /* DS v2.1 — minimal :root for 404.html and tools.html (subset of styles/tokens.css) */
+        /* DS v3.1 subset — minimal :root for 404.html and tools.html (subset of styles/tokens.css) */
         :root {
             --primary-blue: #103b5a;
             --accent-yellow: #fbd304;
@@ -89,6 +89,7 @@
             padding: 8px;
             border-radius: var(--radius-md);
         }
+        .brand-icon-wrap svg { display: block; color: var(--accent-yellow); }
         .brand-lockup-title {
             font-family: var(--font-display);
             font-size: 1.25rem;
@@ -170,6 +171,8 @@
             font-size: 0.95rem;
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            row-gap: 4px;
             font-weight: 500;
             color: var(--text-body);
         }
@@ -197,6 +200,23 @@
             border-radius: 4px;
             margin-left: 8px;
             color: var(--text-soft);
+        }
+        .header-note {
+            margin: 16px 0 0;
+            max-width: 36rem;
+            font-size: var(--font-size-ui);
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        .tool-link {
+            color: var(--text-body);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: var(--border-subtle);
+        }
+        .tool-link:hover {
+            color: var(--text-bright);
+            text-decoration-color: var(--accent-yellow);
         }
         .page-footer {
             padding: var(--space-8);
@@ -241,17 +261,18 @@
             <div class="brand-row">
                 <div class="brand-icon-wrap">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#fbd304" stroke="#fbd304" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path fill="currentColor" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
                     </svg>
                 </div>
                 <div>
-                    <p class="brand-lockup-title">PROMPT <span class="brand-gold">ANATOMY</span></p>
+                    <p class="brand-lockup-title">Prompt <span class="brand-gold">Anatomy</span></p>
                     <p class="brand-tagline">AI Operating System</p>
                 </div>
             </div>
             <h1 class="header-title">
-                The Ultimate <span class="brand-gold">AI Stack</span> (April 2026 Update)
+                The Ultimate <span class="brand-gold">AI Stack</span> (October 2026 Update)
             </h1>
+            <p class="header-note">Each name opens the vendor site in a new tab.</p>
         </header>
 
         <div class="tools-grid-wrap">
@@ -260,20 +281,20 @@
                     <section>
                         <div class="category-pill bg-cat-1">AI Presentations</div>
                         <div class="tool-list">
-                            <div class="tool-item"><div class="tool-dot"></div> PPT AI <span class="version-tag">New King</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> Gamma AI</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Beautiful.AI</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Pitch</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Napkin AI</div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://gamma.app" target="_blank" rel="noopener noreferrer">Gamma</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://plusai.com" target="_blank" rel="noopener noreferrer">Plus AI</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.beautiful.ai" target="_blank" rel="noopener noreferrer">Beautiful.ai</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://pitch.com" target="_blank" rel="noopener noreferrer">Pitch</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.napkin.ai" target="_blank" rel="noopener noreferrer">Napkin AI</a></div>
                         </div>
                     </section>
                     <section>
                         <div class="category-pill bg-cat-2">AI Spreadsheets</div>
                         <div class="tool-list">
-                            <div class="tool-item"><div class="tool-dot"></div> Rows AI</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Google Sheets AI</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Formula Bot</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Gigasheet</div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://workspace.google.com/products/sheets/" target="_blank" rel="noopener noreferrer">Gemini in Sheets</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.microsoft.com/microsoft-365/copilot" target="_blank" rel="noopener noreferrer">Copilot in Excel</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://betteranalyst.com" target="_blank" rel="noopener noreferrer">Better Analyst</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.gigasheet.com" target="_blank" rel="noopener noreferrer">Gigasheet</a></div>
                         </div>
                     </section>
                 </div>
@@ -282,21 +303,21 @@
                     <section>
                         <div class="category-pill bg-cat-2">AI Chatbots</div>
                         <div class="tool-list">
-                            <div class="tool-item"><div class="tool-dot"></div> ChatGPT <span class="version-tag">GPT-5.4</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> Claude <span class="version-tag">4.6 Opus</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> Gemini <span class="version-tag">3.1 Pro</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> Perplexity <span class="version-tag">Sonar Pro</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> DeepSeek <span class="version-tag">V3.2</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">ChatGPT</a> <span class="version-tag">5.6 Sol</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a> <span class="version-tag">Opus 5.5</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Gemini</a> <span class="version-tag">3.8 Flash</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer">Perplexity</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://chat.deepseek.com" target="_blank" rel="noopener noreferrer">DeepSeek</a> <span class="version-tag">V4.1</span></div>
                         </div>
                     </section>
                     <section>
                         <div class="category-pill bg-cat-1">Image Generation</div>
                         <div class="tool-list">
-                            <div class="tool-item"><div class="tool-dot"></div> Midjourney <span class="version-tag">v7</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> FLUX.1.1 Pro</div>
-                            <div class="tool-item"><div class="tool-dot"></div> DALL-E 4</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Adobe Firefly</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Leonardo.ai</div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a> <span class="version-tag">v8.2</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://bfl.ai" target="_blank" rel="noopener noreferrer">FLUX.2</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">GPT Image 2</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener noreferrer">Adobe Firefly</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://leonardo.ai" target="_blank" rel="noopener noreferrer">Leonardo.ai</a></div>
                         </div>
                     </section>
                 </div>
@@ -305,20 +326,20 @@
                     <section>
                         <div class="category-pill bg-cat-1">Coding Assistants</div>
                         <div class="tool-list">
-                            <div class="tool-item"><div class="tool-dot"></div> Windsurf <span class="version-tag">#1 Rank</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> Cursor <span class="version-tag">Composer</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> Lovable</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Claude Code <span class="version-tag">CLI</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> GitHub Copilot</div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://cursor.com" target="_blank" rel="noopener noreferrer">Cursor</a> <span class="version-tag">Composer 2.5</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://claude.com/product/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://devin.ai/desktop" target="_blank" rel="noopener noreferrer">Devin Desktop</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://lovable.dev" target="_blank" rel="noopener noreferrer">Lovable</a></div>
                         </div>
                     </section>
                     <section>
                         <div class="category-pill bg-cat-2">Writing &amp; SEO</div>
                         <div class="tool-list">
-                            <div class="tool-item"><div class="tool-dot"></div> Claude Writing</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Jasper</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Copy.ai</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Grammarly Business</div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.jasper.ai" target="_blank" rel="noopener noreferrer">Jasper</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.copy.ai" target="_blank" rel="noopener noreferrer">Copy.ai</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.grammarly.com/business" target="_blank" rel="noopener noreferrer">Grammarly Business</a></div>
                         </div>
                     </section>
                 </div>
@@ -327,20 +348,19 @@
                     <section>
                         <div class="category-pill bg-cat-2">Video &amp; Motion</div>
                         <div class="tool-list">
-                            <div class="tool-item"><div class="tool-dot"></div> Runway <span class="version-tag">Gen-4.5</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> Google Veo 3</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Sora <span class="version-tag">Public</span></div>
-                            <div class="tool-item"><div class="tool-dot"></div> Kling AI</div>
-                            <div class="tool-item"><div class="tool-dot"></div> HeyGen</div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://runway.com" target="_blank" rel="noopener noreferrer">Runway</a> <span class="version-tag">Gen-4.5</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://deepmind.google/models/veo/" target="_blank" rel="noopener noreferrer">Google Veo</a> <span class="version-tag">3.1</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://kling.ai" target="_blank" rel="noopener noreferrer">Kling</a> <span class="version-tag">3.0</span></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.heygen.com" target="_blank" rel="noopener noreferrer">HeyGen</a></div>
                         </div>
                     </section>
                     <section>
                         <div class="category-pill bg-cat-1">Meeting &amp; Notes</div>
                         <div class="tool-list">
-                            <div class="tool-item"><div class="tool-dot"></div> Otter.ai</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Fireflies</div>
-                            <div class="tool-item"><div class="tool-dot"></div> Fathom</div>
-                            <div class="tool-item"><div class="tool-dot"></div> NotebookLM</div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://otter.ai" target="_blank" rel="noopener noreferrer">Otter.ai</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://fireflies.ai" target="_blank" rel="noopener noreferrer">Fireflies</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://www.fathom.ai" target="_blank" rel="noopener noreferrer">Fathom</a></div>
+                            <div class="tool-item"><div class="tool-dot"></div><a class="tool-link" href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer">NotebookLM</a></div>
                         </div>
                     </section>
                 </div>
@@ -350,7 +370,7 @@
         <footer class="page-footer" role="contentinfo">
             <p><strong>Prompt Anatomy</strong><br>1311 Park St, Unit #654 · Alameda, CA 94501<br><a href="mailto:info@promptanatomy.app">info@promptanatomy.app</a></p>
             <p><a class="link-tier-tertiary" href="./">Back to lesson</a></p>
-            <p>Curated by PromptAnatomy.app • Updated April 21, 2026</p>
+            <p>Curated by PromptAnatomy.app • Updated October 2, 2026</p>
         </footer>
     </div>
 </body>

@@ -48,10 +48,10 @@ Prieš shell komandą perskaityk [lessons.md](lessons.md). Windows `python` yra 
 
 ### Vizualinė sistema / DS (v3.1)
 
-- [ ] Naujas mygtukas / CTA — esami tieriai (ne naujas „raudonas“ variantas); naujas tekstas / `details` — decision recipes (role + `.disclosure-chip*`); chrome ≥12–13px. Optional local prose: `docs/design_system.md` if present.
+- [ ] Naujas mygtukas / CTA — esami tieriai (ne naujas „raudonas“ variantas); naujas tekstas / `details` — decision recipes (role + `.disclosure-chip*`); chrome ≥12–13px. Hero PDF yra tretinė juostos nuoroda; `#intro h1` yra `--font-size-hero`; sekcijos `h2` yra `--font-size-title`; esmė ir CTA yra `--font-size-display`. Proza: `docs/design_system.md`, kai failas yra checkout'e.
 - [ ] Tokenai redaguojami [`styles/tokens.css`](../../../styles/tokens.css) (satellites: [`styles/tokens-satellite.css`](../../../styles/tokens-satellite.css)); po to `npm run build` arba `node scripts/inject-design-tokens.js` — ne rankinis `:root` drift HTML.
 - [ ] Nauja vieša CSS klasė ar tokenas — atnaujintas `styles/tokens.css` (+ optional local `docs/design_system.md` if present); disclosure/lead/PDF — reuse `.disclosure-chip*`, `.slide-lead`, `.btn-pdf-outline`.
-- [ ] `npm run verify`: `verify:design-tokens` (a new white `rgba` or untokenized hex in lesson component CSS fails; only `#2aabee` allowed), `verify:illustration-colors`, `verify:satellite-tokens`, `verify:typography-roles` (exits 1 when a rule can render below 12px, including `clamp()` and `em`/`rem` at a 16px root, and on orphan `font-size` above 32px; expands `var(--font-size-*)`), `verify:contrast-fixtures`. Optional local smoke notes in `docs/DS_A11Y_SMOKE_v2.md` if present. Color token changes that should update drawings: `npm run build:illustrations`.
+- [ ] `npm run verify`: `verify:design-tokens` (a new white `rgba` or untokenized hex in lesson component CSS fails; only `#2aabee` allowed), `verify:illustration-colors`, `verify:satellite-tokens`, `verify:typography-roles` (exits 1 when a rule can render below 12px, including `clamp()` and `em`/`rem` at a 16px root, and on orphan `font-size` above 32px; expands `var(--font-size-*)`; lesson `h1` / `h2` / essence / CTA must use `--font-size-hero` / `title` / `display`), `verify:contrast-fixtures`. Optional local smoke notes in `docs/DS_A11Y_SMOKE_v2.md` if present. Color token changes that should update drawings: `npm run build:illustrations`.
 - [ ] Po CSS pakeitimų: mobilus smoke (375 / 390 / 768 / 1024 px), jei liečia layout ar nav.
 
 ### LT ↔ EN (i18n ir „drift“)
@@ -83,7 +83,7 @@ Prieš shell komandą perskaityk [lessons.md](lessons.md). Windows `python` yra 
 ### Build artefaktas (`site/`)
 
 - [ ] [scripts/build-locale-pages.js](../../../scripts/build-locale-pages.js) išvalo `site/` prieš generavimą — nebelieka legacy `site/en/`.
-- [ ] [scripts/prepare-site-artifact.js](../../../scripts/prepare-site-artifact.js) kopijuoja tik `PUBLIC_FILES`: branduolys + `assets/illustrations/{intro,check,meeting,levels,feedback,team,letter}-{lt,en}.{png,webp}`. `assets/fonts/` ne. Naujas meme, scenos slug ar asset = allowlist + HTML nuoroda + `verify:robots-llms`. Spalva piešinyje — `npm run build:illustrations`, ne `npm run build`. Drobių dydžiai: intro 800×1120, kitos šešios 800×900.
+- [ ] [scripts/prepare-site-artifact.js](../../../scripts/prepare-site-artifact.js) kopijuoja tik `PUBLIC_FILES`: branduolys + `assets/illustrations/{check,meeting,levels,feedback,team,letter}-{lt,en}.{png,webp}`. `assets/fonts/` ne. Naujas meme, scenos slug ar asset = allowlist + HTML nuoroda + `verify:robots-llms`. Spalva piešinyje — `npm run build:illustrations`, ne `npm run build`. Drobių dydžiai: šešios scenos 800×900. `#intro` proof yra HTML, ne piešinys.
 - [ ] `npm run verify` apima `verify:token-injection-idempotence` — pakartotinis tokenų inject nekeičia HTML.
 
 ### PDF ir release
