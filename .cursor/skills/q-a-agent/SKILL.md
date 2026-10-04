@@ -77,7 +77,7 @@ Prieš shell komandą perskaityk [lessons.md](lessons.md). Windows `python` yra 
 - [ ] `tools.html` / `tools-lt.html`: `noindex, follow` + `canonical` į pamoką; ne sitemap.
 - [ ] `tools.html` / `tools-lt.html` / `404.html` href **ne** į `index.html` (naudoti `./` / `./lt/`).
 - [ ] Organization JSON-LD `logo` → `favicon.svg` (OG/Twitter lieka 1200×630 PNG).
-- [ ] Social vs search: `og:description` ir `twitter:description` (EN ir `/lt/`) = `SOCIAL_DESCRIPTION_EN` (≤125); `<meta name="description">` ir JSON-LD lieka `META_DESCRIPTION_EN` / `META_DESCRIPTION_LT`. `verify:social-meta` tai tikrina. Neperpiešti `assets/og-promptanatomy.png` dėl „nėra CTA“ OCR.
+- [ ] Social vs search: `og:description` ir `twitter:description` (EN ir `/lt/`) = `SOCIAL_DESCRIPTION_EN` (≤125); `<meta name="description">` ir JSON-LD lieka `META_DESCRIPTION_EN` / `META_DESCRIPTION_LT`. `verify:social-meta` tai tikrina. OG kortelė: kairėje „Prompt Anatomy“, „For teams“, „A short prompt becomes a task.“, „Try the 2-minute practice.“ Dešinėje siaura šviesi lentelė Role / Goal / Input / Output, ne per visą kadrą. Žodžio After nėra. Be žaibo. Neperpiešti `assets/og-promptanatomy.png` dėl checkerio, kuris prašo mygtuko. Perpiešti tik kai keičiasi hero tekstas, ta antraštė arba prekės ženklas.
 - [ ] Po SEO pakeitimų: `npm run build` + `verify:robots-llms` (FAQ paritetas, 4 URL sitemap, tools noindex, meme ir iliustracijų paritetas, EN šaknis be `-lt` iliustracijų, draudimas `site/en/`).
 
 ### Build artefaktas (`site/`)

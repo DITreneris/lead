@@ -157,12 +157,12 @@ function applyLtSocialEnglish(html) {
       '<meta property="og:site_name" content="Prompt Anatomy">'
     ],
     [
-      '<meta property="og:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
-      '<meta property="og:image:alt" content="Prompt Anatomy — practical AI for teams">'
+      '<meta property="og:image:alt" content="Trumpa užklausa tampa užduotimi.">',
+      '<meta property="og:image:alt" content="A short prompt becomes a task.">'
     ],
     [
-      '<meta name="twitter:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
-      '<meta name="twitter:image:alt" content="Prompt Anatomy — practical AI for teams">'
+      '<meta name="twitter:image:alt" content="Trumpa užklausa tampa užduotimi.">',
+      '<meta name="twitter:image:alt" content="A short prompt becomes a task.">'
     ],
     [
       '<meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">',
@@ -297,12 +297,12 @@ function applyEnHead(html) {
       '<meta property="og:locale:alternate" content="lt_LT">'
     ],
     [
-      '<meta property="og:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
-      '<meta property="og:image:alt" content="Prompt Anatomy — practical AI for teams">'
+      '<meta property="og:image:alt" content="Trumpa užklausa tampa užduotimi.">',
+      '<meta property="og:image:alt" content="A short prompt becomes a task.">'
     ],
     [
-      '<meta name="twitter:image:alt" content="Promptų anatomija — DI praktinė sistema įmonei">',
-      '<meta name="twitter:image:alt" content="Prompt Anatomy — practical AI for teams">'
+      '<meta name="twitter:image:alt" content="Trumpa užklausa tampa užduotimi.">',
+      '<meta name="twitter:image:alt" content="A short prompt becomes a task.">'
     ],
     [
       '<meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">',

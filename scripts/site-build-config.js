@@ -8,7 +8,7 @@ const SITE_DIR = path.join(ROOT, 'site');
 const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
 const SITE_PREFIX = (process.env.SITE_PREFIX || '').replace(/\/$/, '');
 const ORIGIN = (process.env.PUBLIC_ORIGIN || 'https://promptanatomy.cloud').replace(/\/$/, '');
-const OG_IMAGE_VERSION = (process.env.OG_IMAGE_VERSION || '2026-04-30').trim();
+const OG_IMAGE_VERSION = (process.env.OG_IMAGE_VERSION || '2026-10-04').trim();
 /** Stable LearningResource datePublished (ISO date); align with first public OG asset version. */
 const LESSON_DATE_PUBLISHED = (process.env.LESSON_DATE_PUBLISHED || '2026-04-30').trim();
 

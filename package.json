@@ -4,6 +4,7 @@
   "scripts": {
     "build": "node scripts/inject-design-tokens.js && node scripts/build-locale-pages.js && node scripts/generate-llms-artifacts.js && node scripts/prepare-site-artifact.js",
     "build:illustrations": "node scripts/build-illustrations.mjs",
+    "build:og": "node scripts/generate-og-image.mjs",
     "verify:library-keys": "node scripts/verify-library-keys.js",
     "verify:design-tokens": "node scripts/verify-design-tokens.js",
     "verify:illustration-colors": "node scripts/verify-illustration-colors.js",

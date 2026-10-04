@@ -340,7 +340,11 @@ function getEnHtmlReplacementPairs() {
     ],
 
     [
-      'alt="Dvi pusės: kairėje CHAOS — chaotiškas pokalbis su perbrauktais vaizdais ir trumpais prašymais; dešinėje CONTROL — vaidmuo, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „AI isn’t random. Your input is.“"',
+      'src="assets/memes/meme-after-roadmap-lt.png"',
+      'src="assets/memes/meme-after-roadmap.png"'
+    ],
+    [
+      'alt="Dvi pusės: kairėje CHAOSAS — chaotiškas pokalbis su perbrauktu vaizdu ir trumpais prašymais; dešinėje KONTROLĖ — vaidmuo, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „DI nėra chaotiškas. Tavo užklausa – taip.“"',
       'alt="Split graphic: CHAOS — messy chat with crossed-out images and short asks; CONTROL — Role, Context, Output, Criteria and a clean logo. Headline: AI isn’t random. Your input is."'
     ],
 

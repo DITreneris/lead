@@ -20,6 +20,7 @@ const PUBLIC_FILES = [
   path.join('assets', 'prompt-library-en.js'),
   path.join('assets', 'www.promptanatomy.app.pdf'),
   path.join('assets', 'www.promptanatomy.app-en.pdf'),
+  path.join('assets', 'memes', 'meme-after-roadmap-lt.png'),
   path.join('assets', 'memes', 'meme-after-roadmap.png'),
   path.join('assets', 'memes', 'su_1.png'),
   path.join('assets', 'memes', 'su_2.png'),
