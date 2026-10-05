@@ -6,7 +6,8 @@
     { "source": "/en", "destination": "/", "permanent": true },
     { "source": "/en/", "destination": "/", "permanent": true },
     { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/lt/index.html", "destination": "/lt/", "permanent": true }
+    { "source": "/lt/index.html", "destination": "/lt/", "permanent": true },
+    { "source": "/lt/tools-lt.html", "destination": "/tools-lt.html", "permanent": true }
   ],
   "headers": [
     {

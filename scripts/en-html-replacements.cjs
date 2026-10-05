@@ -93,15 +93,15 @@ function getEnHtmlReplacementPairs() {
     ['aria-label="Skaidrė 3: Promptų anatomijos schema"', 'aria-label="Slide 3: Prompt anatomy framework"'],
     ['aria-label="Skaidrė 4: Pradėk per 2 minutes"', 'aria-label="Slide 4: Start in 2 minutes"'],
     [
-      'aria-label="Skaidrė 5: Pradėk nuo 5–15 min"',
-      'aria-label="Slide 5: Start with 5–15 min"'
+      'aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"',
+      'aria-label="Slide 5: Your path to save up to 5 hours weekly"'
     ],
-    ['aria-label="Skaidrė 6: Greita siuntimo patikra"', 'aria-label="Slide 6: Quick send check"'],
+    ['aria-label="Skaidrė 6: Laiškas ar žinutė (juodraštis)"', 'aria-label="Slide 6: Email or message (draft)"'],
     ['aria-label="Skaidrė 7: Susitikimo ar sprinto planas"', 'aria-label="Slide 7: Meeting or sprint plan"'],
-    ['aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"', 'aria-label="Slide 8: Same message — three levels"'],
-    ['aria-label="Skaidrė 9: Turinio grįžtamasis ryšys"', 'aria-label="Slide 9: Content feedback"'],
+    ['aria-label="Skaidrė 8: Viena žinutė, trys versijos"', 'aria-label="Slide 8: One message, three versions"'],
+    ['aria-label="Skaidrė 9: Teksto įvertinimas"', 'aria-label="Slide 9: Text review"'],
     ['aria-label="Skaidrė 10: Užduotis / mokymas komandai"', 'aria-label="Slide 10: Assignment / team learning"'],
-    ['aria-label="Skaidrė 11: Laiškas ar žinutė (juodraštis)"', 'aria-label="Slide 11: Email or message (draft)"'],
+    ['aria-label="Skaidrė 11: Greita patikra"', 'aria-label="Slide 11: Quick check"'],
     ['aria-label="Skaidrė 12: Promptų biblioteka (resursai)"', 'aria-label="Slide 12: Prompt library (resources)"'],
     ['aria-label="Skaidrė 13: Esmė"', 'aria-label="Slide 13: The point"'],
     ['aria-label="Skaidrė 14: Vienas klausimas"', 'aria-label="Slide 14: One question"'],
@@ -288,31 +288,31 @@ function getEnHtmlReplacementPairs() {
     ['data-track="practice_qc_jump">Patikra →</a>', 'data-track="practice_qc_jump">Check →</a>'],
 
     [
-      '<section id="roadmap" class="roadmap-slide" aria-label="Pradėk nuo 5–15 min"',
-      '<section id="roadmap" class="roadmap-slide" aria-label="Start with 5–15 min"'
+      '<section id="roadmap" class="roadmap-slide" aria-label="Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"',
+      '<section id="roadmap" class="roadmap-slide" aria-label="Your path to save up to 5 hours weekly"'
     ],
     ['<span class="label">Kelio planas</span>', '<span class="label">Roadmap</span>'],
-    ['<h2>Pradėk nuo 5–15 min</h2>', '<h2>Start with 5–15 min</h2>'],
-    [
-      '<p class="roadmap-sub">Pirma patikra (5–15 min). Kiti šablonai — kai prireiks.</p>',
-      '<p class="roadmap-sub">The check first (5–15 min). The other templates — when you need them.</p>'
-    ],
-    ['<span class="roadmap-name">Greita siuntimo patikra</span>', '<span class="roadmap-name">Quick send check</span>'],
+    ['<h2>Tavo kelias, kaip sutaupyti iki 5 val. per savaitę</h2>', '<h2>Your path to save up to 5 hours weekly</h2>'],
+    ['<span class="roadmap-name">Greita patikra</span>', '<span class="roadmap-name">Quick check</span>'],
     ['<span class="roadmap-name">Susitikimo ar sprinto planas</span>', '<span class="roadmap-name">Meeting or sprint plan</span>'],
-    ['<span class="roadmap-name">Ta pati žinutė — 3 lygiai</span>', '<span class="roadmap-name">Same message — three levels</span>'],
-    ['<span class="roadmap-name">Turinio grįžtamasis ryšys</span>', '<span class="roadmap-name">Content feedback</span>'],
+    ['<span class="roadmap-name">Viena žinutė, trys versijos</span>', '<span class="roadmap-name">One message, three versions</span>'],
+    ['<span class="roadmap-name">Teksto įvertinimas</span>', '<span class="roadmap-name">Text review</span>'],
     ['<span class="roadmap-name">Užduotis / mokymas komandai</span>', '<span class="roadmap-name">Assignment / team learning</span>'],
     ['<span class="roadmap-name">Laiškas ar žinutė (juodraštis)</span>', '<span class="roadmap-name">Email or message (draft)</span>'],
+    [
+      '<div class="roadmap-total">Iš viso iki ≈ 5 val. / sav. (priklauso nuo naudojimo dažnio)</div>',
+      '<div class="roadmap-total">Up to ~5 hrs / week (depends how often you use it)</div>'
+    ],
 
     ['<section id="meeting" aria-label="Susitikimo ar sprinto planas">', '<section id="meeting" aria-label="Meeting or sprint plan">'],
-    ['<section aria-label="Ta pati žinutė — 3 lygiai">', '<section aria-label="Same message — three levels">'],
-    ['<section aria-label="Turinio grįžtamasis ryšys">', '<section aria-label="Content feedback">'],
+    ['<section aria-label="Viena žinutė, trys versijos">', '<section aria-label="One message, three versions">'],
+    ['<section aria-label="Teksto įvertinimas">', '<section aria-label="Text review">'],
     ['<section aria-label="Užduotis / mokymas komandai">', '<section aria-label="Assignment / team learning">'],
     ['<section aria-label="Laiškas ar žinutė (juodraštis)">', '<section aria-label="Email or message (draft)">'],
 
-    ['<section id="qc" aria-label="Greita siuntimo patikra"', '<section id="qc" aria-label="Quick send check"'],
+    ['<section id="qc" aria-label="Greita patikra"', '<section id="qc" aria-label="Quick check"'],
     ['<span class="label">Saugumas</span>', '<span class="label">Safety</span>'],
-    ['<h2>Greita siuntimo patikra</h2>', '<h2>Quick send check</h2>'],
+    ['<h2>Greita patikra</h2>', '<h2>Quick check</h2>'],
     [
       '<p class="slide-sublead slide-lead">Įklijuok tekstą, kurį siųsi.</p>',
       '<p class="slide-sublead slide-lead">Paste the text you will send.</p>'
@@ -335,8 +335,8 @@ function getEnHtmlReplacementPairs() {
       '</svg></span> Risks are visible before you send.</div>'
     ],
     [
-      '<p class="qc-next"><a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">Susitikimo planas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">Biblioteka</a></p>',
-      '<p class="qc-next"><a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">Meeting plan</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">Library</a></p>'
+      '<p class="qc-next"><a class="inline-link inline-link--accent" href="#library" data-track="qc_to_library">Biblioteka</a></p>',
+      '<p class="qc-next"><a class="inline-link inline-link--accent" href="#library" data-track="qc_to_library">Library</a></p>'
     ],
 
     [
@@ -348,7 +348,7 @@ function getEnHtmlReplacementPairs() {
       'alt="Split graphic: CHAOS — messy chat with crossed-out images and short asks; CONTROL — Role, Context, Output, Criteria and a clean logo. Headline: AI isn’t random. Your input is."'
     ],
 
-    ['<span class="label">01 • Struktūra</span>', '<span class="label">01 • Structure</span>'],
+    ['<span class="label">02 • Struktūra</span>', '<span class="label">02 • Structure</span>'],
     ['<h2>Susitikimo ar sprinto planas</h2>', '<h2>Meeting or sprint plan</h2>'],
     [
       '<p class="slide-sublead slide-lead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>',
@@ -376,11 +376,11 @@ function getEnHtmlReplacementPairs() {
       '</svg></span> Plan ready in a few minutes.</div>'
     ],
 
-    ['<span class="label">02 • Trys lygiai</span>', '<span class="label">02 • Three levels</span>'],
-    ['<h2>Ta pati žinutė — 3 lygiai</h2>', '<h2>Same message — three levels</h2>'],
+    ['<span class="label">03 • Trys versijos</span>', '<span class="label">03 • Three versions</span>'],
+    ['<h2>Viena žinutė, trys versijos</h2>', '<h2>One message, three versions</h2>'],
     [
-      '<p class="slide-sublead slide-lead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>',
-      '<p class="slide-sublead slide-lead">Basic, intermediate, advanced — same core, different depth.</p>'
+      '<p class="slide-sublead slide-lead">Trumpa, normali ir detali — ta pati mintis.</p>',
+      '<p class="slide-sublead slide-lead">Short, normal, and detailed — the same point.</p>'
     ],
     [
       '<div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>',
@@ -399,11 +399,11 @@ function getEnHtmlReplacementPairs() {
       '</svg></span> One template — several audiences.</div>'
     ],
 
-    ['<span class="label">03 • Grįžtamasis ryšys</span>', '<span class="label">03 • Feedback</span>'],
-    ['<h2>Turinio grįžtamasis ryšys</h2>', '<h2>Content feedback</h2>'],
+    ['<span class="label">04 • Įvertinimas</span>', '<span class="label">04 • Review</span>'],
+    ['<h2>Teksto įvertinimas</h2>', '<h2>Text review</h2>'],
     [
-      '<p class="slide-sublead slide-lead">Įvertinimas ir vienas pirmas pakeitimas.</p>',
-      '<p class="slide-sublead slide-lead">A review and one first change.</p>'
+      '<p class="slide-sublead slide-lead">Vienas pirmas pakeitimas.</p>',
+      '<p class="slide-sublead slide-lead">One first change.</p>'
     ],
     [
       '<div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>',
@@ -422,7 +422,7 @@ function getEnHtmlReplacementPairs() {
       '</svg></span> One change, not ten fixes.</div>'
     ],
 
-    ['<span class="label">04 • Komanda</span>', '<span class="label">04 • Team</span>'],
+    ['<span class="label">05 • Komanda</span>', '<span class="label">05 • Team</span>'],
     ['<h2>Užduotis / mokymas komandai</h2>', '<h2>Assignment / team learning</h2>'],
     [
       '<p class="slide-sublead slide-lead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>',
@@ -445,7 +445,7 @@ function getEnHtmlReplacementPairs() {
       '</svg></span> A team task with a deadline.</div>'
     ],
 
-    ['<span class="label">05 • Komunikacija</span>', '<span class="label">05 • Communication</span>'],
+    ['<span class="label">01 • Komunikacija</span>', '<span class="label">01 • Communication</span>'],
     ['<h2>Laiškas ar žinutė (juodraštis)</h2>', '<h2>Email or message (draft)</h2>'],
     [
       '<p class="slide-sublead slide-lead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>',

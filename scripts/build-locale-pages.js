@@ -84,7 +84,8 @@ function fixSubdirAssetPaths(html) {
     .replace(/href="assets\//g, 'href="../assets/')
     .replace(/src="assets\//g, 'src="../assets/')
     .replace(/srcset="assets\//g, 'srcset="../assets/')
-    .replace(/href="favicon\.svg"/g, 'href="../favicon.svg"');
+    .replace(/href="favicon\.svg"/g, 'href="../favicon.svg"')
+    .replace(/href="tools-lt\.html"/g, 'href="../tools-lt.html"');
 }
 
 function injectAppBasePathMeta(html) {

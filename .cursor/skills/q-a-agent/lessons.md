@@ -2,6 +2,8 @@
 
 Formatas: `YYYY-MM-DD | kontekstas | problema | sprendimas | failai`
 
+2026-10-05 | Enter kelio planas, 64_APK | Agentas pavertė skaidrę inventoriumi „Pradėk nuo 5–15 min“, pradėjo nuo greitos patikros ir paliko „3 lygiai“ bei „turinio grįžtamasis ryšys“. 5–15 min yra patikros trukmė, ne ženklas, kad ji lengva pradžia. | Kelias yra laiko sutaupymas. H2 „Tavo kelias, kaip sutaupyti iki 5 val. per savaitę“, etiketė „Kelio planas“, be leado, suma apačioje. Eilė ir skaidrės 6–11: laiško juodraštis, susitikimo planas, viena žinutė — trys versijos, teksto įvertinimas, užduotis komandai, greita patikra paskutinė. Patikra — keturi vertinimai jau parašytam tekstui; po jos tik Biblioteka. Negrąžinti „Pradėk nuo 5–15 min“, „Šeši žingsniai iš eilės. Laikai — orientaciniai.“, „Greita siuntimo patikra“, „Ta pati žinutė — 3 lygiai“, „Turinio grįžtamasis ryšys“, ir nepradėti kelio nuo patikros. | index.html, scripts/en-html-replacements.cjs
+
 2026-09-29 | vietinis shell, 64_APK | Windows komanda `python` yra Store stubas ir išeina su kodu 9009. Tai nereiškia, kad Python nėra. | Paleisti per `wsl python3` arba `wsl -e python3` (pvz. `wsl python3 -m http.server`). | shell
 
 2026-09-29 | verify:typography-roles, 64_APK | Žalia patikra nereiškė 12 px grindų. Skenas skaldė CSS pagal neįtrauktą eilutę, o regex matė tik `font-size: Npx`, todėl `clamp(11px, …)` ir `0.7rem` prasilenkė. | Kiekviena taisyklė atskirai, įskaitant `@media`. Skaičiuoti `clamp()` ribas. `em` / `rem` vertinti prie 16 px šaknies. Nuo 2026-10-02 `--font-size-*` išskleidžiami (ankstesnis „neišskleisti“ nebegalioja). `.header-title` yra display rolė, nes tools `h1` taisyklė yra klasė. Deploy `a7bfe34`. | scripts/verify-typography-roles.js, index.html, tools.html, tools-lt.html

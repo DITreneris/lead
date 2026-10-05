@@ -247,6 +247,10 @@ function main() {
     console.error('[verify-robots-llms] EN page missing legal footnote / contact email');
     process.exit(1);
   }
+  if (!ltHtml.includes('href="../tools-lt.html"') || ltHtml.includes('href="tools-lt.html"')) {
+    console.error('[verify-robots-llms] LT lesson must link to ../tools-lt.html (guide lives at site root)');
+    process.exit(1);
+  }
   if (!ltHtml.includes('site-legal-footnote') || !ltHtml.includes('info@promptanatomy.app')) {
     console.error('[verify-robots-llms] LT page missing legal footnote / contact email');
     process.exit(1);

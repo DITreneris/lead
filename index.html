@@ -1862,21 +1862,15 @@
             color: var(--text-soft);
         }
 
-        /* Roadmap: pradėk nuo 5–15 min (skaidrė 5, po praktikos) */
+        /* Roadmap: iki 5 val./sav. (skaidrė 5, po praktikos) */
         .roadmap-slide .container {
             max-width: 560px;
             grid-template-columns: 1fr;
             text-align: center;
         }
         .roadmap-inner { width: 100%; margin: 0 auto; }
-        .roadmap-sub {
-            color: var(--text-muted);
-            font-size: clamp(15px, 1.15vw, 18px);
-            line-height: 1.45;
-            max-width: 28em;
-            margin: 0 auto var(--space-8);
-        }
         .roadmap-journey {
+            margin-top: var(--space-6);
             position: relative;
             text-align: left;
             margin: 0 auto;
@@ -1943,6 +1937,17 @@
             flex-shrink: 0;
             min-width: 4.5em;
             text-align: right;
+        }
+        .roadmap-total {
+            margin-top: 20px;
+            padding: 14px 18px;
+            background: var(--accent-yellow-bg-subtle);
+            border: 1px solid var(--accent-yellow-border-soft);
+            border-radius: var(--radius-tab);
+            font-family: var(--font-display);
+            font-size: clamp(18px, 2.8vw, 24px);
+            font-weight: 700;
+            color: var(--accent-yellow);
         }
         /* Promptų anatomijos schema (skaidrė prieš paskutinį šabloną) */
         .schema-section .container {
@@ -2487,13 +2492,13 @@
     <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutes"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 5: Pradėk nuo 5–15 min"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 6: Laiškas ar žinutė (juodraštis)"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 9: Turinio grįžtamasis ryšys"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 8: Viena žinutė, trys versijos"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 9: Teksto įvertinimas"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 10: Užduotis / mokymas komandai"></button>
-    <button type="button" class="nav-item" aria-label="Skaidrė 11: Laiškas ar žinutė (juodraštis)"></button>
+    <button type="button" class="nav-item" aria-label="Skaidrė 11: Greita patikra"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 12: Promptų biblioteka (resursai)"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 13: Esmė"></button>
     <button type="button" class="nav-item" aria-label="Skaidrė 14: Vienas klausimas"></button>
@@ -2507,13 +2512,13 @@
         <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 3: Promptų anatomijos schema"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 4: Pradėk per 2 minutes"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 5: Pradėk nuo 5–15 min"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 6: Greita siuntimo patikra"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 5: Tavo kelias, kaip sutaupyti iki 5 val. per savaitę"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 6: Laiškas ar žinutė (juodraštis)"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 7: Susitikimo ar sprinto planas"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 8: Ta pati žinutė — 3 lygiai"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 9: Turinio grįžtamasis ryšys"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 8: Viena žinutė, trys versijos"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 9: Teksto įvertinimas"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 10: Užduotis / mokymas komandai"></button>
-        <button type="button" class="nav-item" aria-label="Skaidrė 11: Laiškas ar žinutė (juodraštis)"></button>
+        <button type="button" class="nav-item" aria-label="Skaidrė 11: Greita patikra"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 12: Promptų biblioteka (resursai)"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 13: Esmė"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 14: Vienas klausimas"></button>
@@ -2732,19 +2737,18 @@
     </div>
 </section>
 
-<!-- Skaidrė 5: kelio planas — pradėk nuo 5–15 min, tada šablonai pagal poreikį -->
-<section id="roadmap" class="roadmap-slide" aria-label="Pradėk nuo 5–15 min">
+<!-- Skaidrė 5: kelias sutaupyti iki 5 val. per savaitę -->
+<section id="roadmap" class="roadmap-slide" aria-label="Tavo kelias, kaip sutaupyti iki 5 val. per savaitę">
     <div class="container">
         <div class="roadmap-inner">
             <span class="label">Kelio planas</span>
-            <h2>Pradėk nuo 5–15 min</h2>
-            <p class="roadmap-sub">Pirma patikra (5–15 min). Kiti šablonai — kai prireiks.</p>
+            <h2>Tavo kelias, kaip sutaupyti iki 5 val. per savaitę</h2>
             <div class="roadmap-journey" role="list">
                 <div class="roadmap-journey-line" aria-hidden="true"></div>
                 <div class="roadmap-row" role="listitem">
                     <span class="roadmap-dot-wrap" aria-hidden="true"><span class="roadmap-dot"></span></span>
-                    <span class="roadmap-name">Greita siuntimo patikra</span>
-                    <span class="roadmap-time">5–15 min</span>
+                    <span class="roadmap-name">Laiškas ar žinutė (juodraštis)</span>
+                    <span class="roadmap-time">10–30 min</span>
                 </div>
                 <div class="roadmap-row" role="listitem">
                     <span class="roadmap-dot-wrap" aria-hidden="true"><span class="roadmap-dot"></span></span>
@@ -2753,12 +2757,12 @@
                 </div>
                 <div class="roadmap-row" role="listitem">
                     <span class="roadmap-dot-wrap" aria-hidden="true"><span class="roadmap-dot"></span></span>
-                    <span class="roadmap-name">Ta pati žinutė — 3 lygiai</span>
+                    <span class="roadmap-name">Viena žinutė, trys versijos</span>
                     <span class="roadmap-time">20–60 min</span>
                 </div>
                 <div class="roadmap-row" role="listitem">
                     <span class="roadmap-dot-wrap" aria-hidden="true"><span class="roadmap-dot"></span></span>
-                    <span class="roadmap-name">Turinio grįžtamasis ryšys</span>
+                    <span class="roadmap-name">Teksto įvertinimas</span>
                     <span class="roadmap-time">20–60 min</span>
                 </div>
                 <div class="roadmap-row" role="listitem">
@@ -2768,36 +2772,12 @@
                 </div>
                 <div class="roadmap-row" role="listitem">
                     <span class="roadmap-dot-wrap" aria-hidden="true"><span class="roadmap-dot"></span></span>
-                    <span class="roadmap-name">Laiškas ar žinutė (juodraštis)</span>
-                    <span class="roadmap-time">10–30 min</span>
+                    <span class="roadmap-name">Greita patikra</span>
+                    <span class="roadmap-time">5–15 min</span>
                 </div>
             </div>
+            <div class="roadmap-total">Iš viso iki ≈ 5 val. / sav. (priklauso nuo naudojimo dažnio)</div>
         </div>
-    </div>
-</section>
-
-<!-- Skaidrė 6: greita siuntimo patikra -->
-<section id="qc" aria-label="Greita siuntimo patikra">
-    <div class="container">
-        <div>
-            <span class="label">Saugumas</span>
-            <h2>Greita siuntimo patikra</h2>
-            <p class="slide-sublead slide-lead">Įklijuok tekstą, kurį siųsi.</p>
-            <div class="prompt-editor">
-                <div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>
-                <div class="prompt-line"><b>KONTEKSTAS</b> Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].</div>
-                <div class="prompt-line"><b>REZULTATAS</b> 1) 3 didžiausios rizikos (faktinės, teisinės ar komunikacinės). 2) Kas tinka naudoti be pakeitimų. 3) Ką patikrinti nepriklausomu šaltiniu (ne vien DI). 4) Ko trūksta kontekste tikslesniam atsakymui.</div>
-                <button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti patikrą</button>
-            </div>
-            <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 22V2"/></svg></span> Rizikos matomos prieš siuntimą.</div>
-            <p class="qc-next"><a class="inline-link inline-link--accent" href="#meeting" data-track="qc_next_template">Susitikimo planas</a> · <a class="inline-link inline-link--soft" href="#library" data-track="qc_to_library">Biblioteka</a></p>
-        </div>
-        <figure class="viz-figure">
-            <picture>
-                <source srcset="assets/illustrations/check-lt.webp" type="image/webp">
-                <img src="assets/illustrations/check-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Patikros lapas: rizika — data nepatikrinta; tinka — laikas ir tikslas; patikrinti ne DI — skaičių sutartyje.">
-            </picture>
-        </figure>
     </div>
 </section>
 
@@ -2807,6 +2787,30 @@
             alt="Dvi pusės: kairėje CHAOSAS — chaotiškas pokalbis su perbrauktu vaizdu ir trumpais prašymais; dešinėje KONTROLĖ — vaidmuo, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „DI nėra chaotiškas. Tavo užklausa – taip.“">
     </figure>
 </div>
+
+<!-- Skaidrė 6: laiškas ar žinutė (juodraštis) -->
+<section aria-label="Laiškas ar žinutė (juodraštis)">
+    <div class="container">
+        <figure class="viz-figure">
+            <picture>
+                <source srcset="assets/illustrations/letter-lt.webp" type="image/webp">
+                <img src="assets/illustrations/letter-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Laiško langas: problema — šis sprintas neturi vieno tikslo; sprendimas — palik vieną užduotį ir vieną savininką; kitas žingsnis — iki pabaigos pasakyk, kas lieka.">
+            </picture>
+        </figure>
+        <div>
+            <span class="label">01 • Komunikacija</span>
+            <h2>Laiškas ar žinutė (juodraštis)</h2>
+            <p class="slide-sublead slide-lead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
+            <div class="prompt-editor">
+                <div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus žingsnis.</div>
+                <div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
+                <div class="prompt-line"><b>REZULTATAS</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>
+                <button type="button" class="copy-prompt-btn" data-track="template_copy_email">Kopijuoti užklausą</button>
+            </div>
+            <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span> Laiškas su aiškiu kitu žingsniu.</div>
+        </div>
+    </div>
+</section>
 
 <!-- Skaidrė 7: susitikimo ar sprinto planas -->
 <section id="meeting" aria-label="Susitikimo ar sprinto planas">
@@ -2818,7 +2822,7 @@
             </picture>
         </figure>
         <div>
-            <span class="label">01 • Struktūra</span>
+            <span class="label">02 • Struktūra</span>
             <h2>Susitikimo ar sprinto planas</h2>
             <p class="slide-sublead slide-lead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>
             <div class="prompt-editor">
@@ -2832,13 +2836,13 @@
     </div>
 </section>
 
-<!-- Skaidrė 8: ta pati žinutė — 3 lygiai -->
-<section aria-label="Ta pati žinutė — 3 lygiai">
+<!-- Skaidrė 8: viena žinutė, trys versijos -->
+<section aria-label="Viena žinutė, trys versijos">
     <div class="container">
         <div>
-            <span class="label">02 • Trys lygiai</span>
-            <h2>Ta pati žinutė — 3 lygiai</h2>
-            <p class="slide-sublead slide-lead">Bazinis, vidutinis, pažengęs — ta pati esmė, skirtingas gilumas.</p>
+            <span class="label">03 • Trys versijos</span>
+            <h2>Viena žinutė, trys versijos</h2>
+            <p class="slide-sublead slide-lead">Trumpa, normali ir detali — ta pati mintis.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>
@@ -2856,8 +2860,8 @@
     </div>
 </section>
 
-<!-- Skaidrė 9: turinio grįžtamasis ryšys -->
-<section aria-label="Turinio grįžtamasis ryšys">
+<!-- Skaidrė 9: teksto įvertinimas -->
+<section aria-label="Teksto įvertinimas">
     <div class="container">
         <figure class="viz-figure">
             <picture>
@@ -2866,9 +2870,9 @@
             </picture>
         </figure>
         <div>
-            <span class="label">03 • Grįžtamasis ryšys</span>
-            <h2>Turinio grįžtamasis ryšys</h2>
-            <p class="slide-sublead slide-lead">Įvertinimas ir vienas pirmas pakeitimas.</p>
+            <span class="label">04 • Įvertinimas</span>
+            <h2>Teksto įvertinimas</h2>
+            <p class="slide-sublead slide-lead">Vienas pirmas pakeitimas.</p>
             <div class="prompt-editor">
                 <div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>
                 <div class="prompt-line"><b>ĮVESTIS</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>
@@ -2884,7 +2888,7 @@
 <section aria-label="Užduotis / mokymas komandai">
     <div class="container">
         <div>
-            <span class="label">04 • Komanda</span>
+            <span class="label">05 • Komanda</span>
             <h2>Užduotis / mokymas komandai</h2>
             <p class="slide-sublead slide-lead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>
             <div class="prompt-editor">
@@ -2904,27 +2908,28 @@
     </div>
 </section>
 
-<!-- Skaidrė 11: laiškas ar žinutė (juodraštis) -->
-<section aria-label="Laiškas ar žinutė (juodraštis)">
+<!-- Skaidrė 11: greita patikra -->
+<section id="qc" aria-label="Greita patikra">
     <div class="container">
+        <div>
+            <span class="label">Saugumas</span>
+            <h2>Greita patikra</h2>
+            <p class="slide-sublead slide-lead">Įklijuok tekstą, kurį siųsi.</p>
+            <div class="prompt-editor">
+                <div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>
+                <div class="prompt-line"><b>KONTEKSTAS</b> Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].</div>
+                <div class="prompt-line"><b>REZULTATAS</b> 1) 3 didžiausios rizikos (faktinės, teisinės ar komunikacinės). 2) Kas tinka naudoti be pakeitimų. 3) Ką patikrinti nepriklausomu šaltiniu (ne vien DI). 4) Ko trūksta kontekste tikslesniam atsakymui.</div>
+                <button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti patikrą</button>
+            </div>
+            <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 22V2"/></svg></span> Rizikos matomos prieš siuntimą.</div>
+            <p class="qc-next"><a class="inline-link inline-link--accent" href="#library" data-track="qc_to_library">Biblioteka</a></p>
+        </div>
         <figure class="viz-figure">
             <picture>
-                <source srcset="assets/illustrations/letter-lt.webp" type="image/webp">
-                <img src="assets/illustrations/letter-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Laiško langas: problema — šis sprintas neturi vieno tikslo; sprendimas — palik vieną užduotį ir vieną savininką; kitas žingsnis — iki pabaigos pasakyk, kas lieka.">
+                <source srcset="assets/illustrations/check-lt.webp" type="image/webp">
+                <img src="assets/illustrations/check-lt.png" width="800" height="900" loading="lazy" decoding="async" alt="Patikros lapas: rizika — data nepatikrinta; tinka — laikas ir tikslas; patikrinti ne DI — skaičių sutartyje.">
             </picture>
         </figure>
-        <div>
-            <span class="label">05 • Komunikacija</span>
-            <h2>Laiškas ar žinutė (juodraštis)</h2>
-            <p class="slide-sublead slide-lead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
-            <div class="prompt-editor">
-                <div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus žingsnis.</div>
-                <div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
-                <div class="prompt-line"><b>REZULTATAS</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>
-                <button type="button" class="copy-prompt-btn" data-track="template_copy_email">Kopijuoti užklausą</button>
-            </div>
-            <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span> Laiškas su aiškiu kitu žingsniu.</div>
-        </div>
     </div>
 </section>
 
