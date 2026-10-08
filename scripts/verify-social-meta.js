@@ -106,6 +106,42 @@ function verifyDescriptions(htmlPath, html, metaDescription) {
   }
 }
 
+function websiteName(html) {
+  const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (!m) return '';
+  const graph = JSON.parse(m[1])['@graph'] || [];
+  const site = graph.find((node) => node['@type'] === 'WebSite');
+  return site ? site.name : '';
+}
+
+function expectEqual(actual, wanted, label) {
+  if (actual !== wanted) {
+    console.error(
+      '[verify-social-meta]',
+      label,
+      'expected',
+      JSON.stringify(wanted),
+      'got',
+      JSON.stringify(actual)
+    );
+    process.exit(1);
+  }
+}
+
+function verifySiteNames(enHtml, ltHtml) {
+  const shareTitle = 'Prompt Anatomy — for work and leadership';
+  expectEqual(extractMetaContent(enHtml, 'property', 'og:site_name'), 'Prompt Anatomy', 'EN og:site_name');
+  expectEqual(extractMetaContent(ltHtml, 'property', 'og:site_name'), 'Promptų Anatomija', 'LT og:site_name');
+  expectEqual(extractMetaContent(enHtml, 'property', 'og:title'), shareTitle, 'EN og:title');
+  expectEqual(extractMetaContent(ltHtml, 'property', 'og:title'), shareTitle, 'LT og:title');
+  expectEqual(websiteName(enHtml), 'Prompt Anatomy', 'EN WebSite.name');
+  expectEqual(websiteName(ltHtml), 'Promptų Anatomija', 'LT WebSite.name');
+  if (!enHtml.includes('Training &amp; checkout')) {
+    console.error('[verify-social-meta] EN entity footer is missing the escaped ampersand');
+    process.exit(1);
+  }
+}
+
 function main() {
   const enHtml = readFileOrFail(EN_HTML).toString('utf8');
   const ltHtml = readFileOrFail(LT_HTML).toString('utf8');
@@ -114,6 +150,7 @@ function main() {
   verifyPage(LT_HTML, ltHtml);
   verifyDescriptions(EN_HTML, enHtml, META_DESCRIPTION_EN);
   verifyDescriptions(LT_HTML, ltHtml, META_DESCRIPTION_LT);
+  verifySiteNames(enHtml, ltHtml);
 
   const pngBuf = readFileOrFail(OG_PNG);
   const size = readPngSize(pngBuf);

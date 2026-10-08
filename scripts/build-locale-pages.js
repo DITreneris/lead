@@ -140,22 +140,18 @@ function injectVercelWebAnalytics(html) {
 }
 
 /**
- * LT page content stays Lithuanian; Open Graph / Twitter preview fields use English so og:image
- * and shared cards match international English artwork and copy (same PNG as EN build).
+ * LT page content stays Lithuanian. Share-card headline, description, and image alt use English
+ * so they match the shared English artwork. og:site_name stays in the page language.
  */
 function applyLtSocialEnglish(html) {
   const pairs = [
     [
-      '<meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">',
+      '<meta property="og:title" content="Promptų Anatomija — darbui ir vadovavimui">',
       '<meta property="og:title" content="Prompt Anatomy — for work and leadership">'
     ],
     [
       '<meta property="og:description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">',
       `<meta property="og:description" content="${SOCIAL_DESCRIPTION_EN}">`
-    ],
-    [
-      '<meta property="og:site_name" content="Promptų anatomija">',
-      '<meta property="og:site_name" content="Prompt Anatomy">'
     ],
     [
       '<meta property="og:image:alt" content="Trumpa užklausa tampa užduotimi.">',
@@ -166,7 +162,7 @@ function applyLtSocialEnglish(html) {
       '<meta name="twitter:image:alt" content="A short prompt becomes a task.">'
     ],
     [
-      '<meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">',
+      '<meta name="twitter:title" content="Promptų Anatomija — darbui ir vadovavimui">',
       '<meta name="twitter:title" content="Prompt Anatomy — for work and leadership">'
     ],
     [
@@ -219,7 +215,7 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
       {
         '@type': 'WebSite',
         '@id': websiteId,
-        name: 'Prompt Anatomy',
+        name: pageLanguage.startsWith('lt') ? 'Promptų Anatomija' : 'Prompt Anatomy',
         url: originUrl('/'),
         inLanguage: pageLanguage.startsWith('lt') ? 'lt-LT' : 'en-US',
         publisher: { '@id': orgId }
@@ -275,13 +271,13 @@ function injectJsonLdForPage(html, { pageUrl, pageLanguage, pageName, pageDescri
 function applyEnHead(html) {
   let h = html.replace(/<html lang="lt"/, '<html lang="en"');
   const headPairs = [
-    ['<title>Promptų anatomija — darbui ir vadovavimui</title>', '<title>Prompt Anatomy — for work and leadership</title>'],
+    ['<title>Promptų Anatomija — darbui ir vadovavimui</title>', '<title>Prompt Anatomy — for work and leadership</title>'],
     [
       '<meta name="description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">',
       `<meta name="description" content="${META_DESCRIPTION_EN}">`
     ],
     [
-      '<meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">',
+      '<meta property="og:title" content="Promptų Anatomija — darbui ir vadovavimui">',
       '<meta property="og:title" content="Prompt Anatomy — for work and leadership">'
     ],
     [
@@ -290,7 +286,7 @@ function applyEnHead(html) {
     ],
     ['<meta property="og:locale" content="lt_LT">', '<meta property="og:locale" content="en_US">'],
     [
-      '<meta property="og:site_name" content="Promptų anatomija">',
+      '<meta property="og:site_name" content="Promptų Anatomija">',
       '<meta property="og:site_name" content="Prompt Anatomy">'
     ],
     [
@@ -306,7 +302,7 @@ function applyEnHead(html) {
       '<meta name="twitter:image:alt" content="A short prompt becomes a task.">'
     ],
     [
-      '<meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">',
+      '<meta name="twitter:title" content="Promptų Anatomija — darbui ir vadovavimui">',
       '<meta name="twitter:title" content="Prompt Anatomy — for work and leadership">'
     ],
     [
@@ -345,7 +341,7 @@ function buildLt(html, canonicalHref) {
   h = injectJsonLdForPage(h, {
     pageUrl: canonicalHref,
     pageLanguage: 'lt-LT',
-    pageName: 'Promptų anatomija — darbui ir vadovavimui',
+    pageName: 'Promptų Anatomija — darbui ir vadovavimui',
     pageDescription: META_DESCRIPTION_LT,
     faq: extractHeroFaq(html, 'lt')
   });

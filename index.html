@@ -9,14 +9,14 @@
     <link rel="alternate" hreflang="lt" href="https://promptanatomy.cloud/lt/">
     <link rel="alternate" hreflang="en" href="https://promptanatomy.cloud/">
     <link rel="alternate" hreflang="x-default" href="https://promptanatomy.cloud/">
-    <title>Promptų anatomija — darbui ir vadovavimui</title>
+    <title>Promptų Anatomija — darbui ir vadovavimui</title>
     <meta name="description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">
-    <meta property="og:title" content="Promptų anatomija — darbui ir vadovavimui">
+    <meta property="og:title" content="Promptų Anatomija — darbui ir vadovavimui">
     <meta property="og:description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://promptanatomy.cloud/">
     <meta property="og:locale" content="lt_LT">
-    <meta property="og:site_name" content="Promptų anatomija">
+    <meta property="og:site_name" content="Promptų Anatomija">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:image" content="https://promptanatomy.cloud/assets/og-promptanatomy.png?v=2026-10-04">
     <meta property="og:image:secure_url" content="https://promptanatomy.cloud/assets/og-promptanatomy.png?v=2026-10-04">
@@ -27,7 +27,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://promptanatomy.cloud/assets/og-promptanatomy.png?v=2026-10-04">
     <meta name="twitter:image:alt" content="Trumpa užklausa tampa užduotimi.">
-    <meta name="twitter:title" content="Promptų anatomija — darbui ir vadovavimui">
+    <meta name="twitter:title" content="Promptų Anatomija — darbui ir vadovavimui">
     <meta name="twitter:description" content="DI užklausos įmonei: 2 min. praktika, siuntimo patikra ir biblioteka.">
     <link rel="canonical" href="https://promptanatomy.cloud/lt/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -107,7 +107,9 @@
             --accent-red-quiz-bg: rgba(255, 90, 95, 0.1);
             --accent-red-text-muted: #ff7a7e;
             --surface-code: #000;
-            --brand-wordmark: #f1f5f9;
+            --brand-wordmark: #ffffff;
+            --brand-navy: #0b1320;
+            --brand-gold: #cfa73a;
             /* Radius & šešėliai: viena skalė (premium nuoseklumas) */
             --radius-xs: 4px;
             --radius-sm: 6px;
@@ -323,19 +325,27 @@
             transition: opacity var(--duration-base) var(--ease-out);
         }
         .brand-header .brand-lockup:hover { opacity: 0.9; }
+        .brand-cluster {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
         .brand-icon {
-            width: 48px;
-            height: 48px;
+            width: 36px;
+            height: 36px;
             border-radius: var(--radius-lg);
-            background: linear-gradient(145deg, var(--surface-navy-deep) 0%, var(--primary-blue) 100%);
+            background: var(--brand-navy);
             border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: var(--shadow-sm);
         }
-        .brand-icon svg { width: 26px; height: 26px; display: block; color: var(--accent-yellow); }
+        @media (min-width: 640px) {
+            .brand-icon { width: 40px; height: 40px; }
+        }
+        .brand-icon svg { width: 22px; height: 22px; display: block; color: var(--brand-gold); }
         .brand-wordmark {
             display: flex;
             flex-direction: column;
@@ -344,21 +354,25 @@
             line-height: 1.12;
         }
         .brand-name {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: clamp(12px, 2vw, 17px);
-            letter-spacing: 0;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-weight: 900;
+            font-size: 16px;
+            letter-spacing: -0.03em;
             white-space: nowrap;
         }
+        @media (min-width: 640px) {
+            .brand-name { font-size: 17px; }
+        }
         .brand-name .brand-prompt { color: var(--brand-wordmark); }
-        .brand-name .brand-anatomy { color: var(--accent-yellow); }
+        .brand-name .brand-anatomy { color: var(--brand-gold); }
         .brand-tagline {
             font-size: clamp(12px, 1.15vw, 13px);
             font-weight: 600;
             letter-spacing: 0.1em;
             color: var(--text-soft);
             text-transform: uppercase;
-            margin-top: 4px;
+            margin: 0;
+            pointer-events: none;
         }
 
         .lang-switch {
@@ -2397,12 +2411,6 @@
             .brand-header {
                 padding: 8px 20px 0;
             }
-            .brand-icon {
-                width: 40px;
-                height: 40px;
-                border-radius: var(--radius-tab);
-            }
-            .brand-icon svg { width: 22px; height: 22px; }
             .schema-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -2473,7 +2481,8 @@
         <button type="button" class="lang-switch__btn" id="langLtBtn" lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
         <button type="button" class="lang-switch__btn" id="langEnBtn" lang="en" aria-label="Switch to English">EN</button>
     </div>
-    <a class="brand-lockup" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=header&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="brand_app_click" data-track-dest="app" aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)">
+    <div class="brand-cluster">
+    <a class="brand-lockup" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=header&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="brand_app_click" data-track-dest="app" aria-label="Promptų Anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)">
         <div class="brand-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path fill="currentColor" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
@@ -2481,9 +2490,10 @@
         </div>
         <div class="brand-wordmark">
             <div class="brand-name"><span class="brand-prompt">Promptų</span> <span class="brand-anatomy">Anatomija</span></div>
-            <div class="brand-tagline">DI praktinė sistema</div>
         </div>
     </a>
+    <p class="brand-tagline">DI praktinė sistema</p>
+    </div>
     </div>
 </header>
 
@@ -3145,7 +3155,7 @@
         <p class="cta-ecosystem-link">
             <a class="link-tier-tertiary" href="https://promptanatomy.site/?utm_source=cloud&amp;utm_medium=cta_footer&amp;utm_campaign=ecosystem_map" target="_blank" rel="noopener noreferrer" data-track="cta_ecosystem_site_click" data-track-dest="site" aria-label="Ekosistemos žemėlapis promptanatomy.site (atidaryti naujame skirtuke)">Ekosistemos žemėlapis</a>
         </p>
-        <p class="cta-entity-footer">Promptų anatomija · programa → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" data-track-dest="app" aria-label="Promptų anatomijos programa promptanatomy.app (atidaryti naujame skirtuke)">promptanatomy.app</a></p>
+        <p class="cta-entity-footer">Promptų Anatomijos ekosistema · Mokymai ir checkout → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" data-track-dest="app" aria-label="Promptų Anatomijos mokymai ir checkout promptanatomy.app (atidaryti naujame skirtuke)">promptanatomy.app</a></p>
         <div class="cta-foot site-legal-footnote" role="contentinfo" aria-label="Kontaktai ir leidėjas">
             <p class="site-legal-footnote__brand"><strong>Prompt Anatomy</strong></p>
             <p class="site-legal-footnote__addr">1311 Park St, Unit #654<br>Alameda, CA 94501</p>

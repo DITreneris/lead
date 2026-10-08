@@ -1,7 +1,7 @@
 # Design System — Promptų anatomija
 
 **Version:** 3.1  
-**Last reviewed:** 2026-10-02 — `#intro` is one 1200px frame: 55/45 hero, one before/after card, then a `.intro-strip` with min-height 64px. Hero proof stays a four-line summary of the weekly task. `#guided` is that pair plus a quiet strip; Po is the copyable expansion of the same fields, not a baked figure. Hero PDF is a tertiary text link in that strip. Illustration bake colors come from `styles/tokens.css` (`illustration-colors.cjs`). Canvas sizes match `scenes.mjs`: six scenes at 800×900. Template figures display at `max-width: 420px` on a 1.45 / 0.75 track (the picture column is the narrow one; it swaps when the figure is the first child). No large yellow fill in those six scenes. Slugs: check, meeting, levels, feedback, team, letter. PNG/WebP ship on `PUBLIC_FILES`; bake fonts do not. Type scale adds display / hero / title / body. Hero `h1` uses `--font-size-hero` (44px at 375px, 72px at 1440px). Section `h2` stays on the title scale. Essence and CTA headlines use `--font-size-display`. Schema step type is 22 / 17 / 16 px on one vertical axis. Slide count stays closed.  
+**Last reviewed:** 2026-10-06 — `#intro` is one 1200px frame: 55/45 hero, one before/after card, then a `.intro-strip` with min-height 64px. Hero proof stays a four-line summary of the weekly task. `#guided` is that pair plus a quiet strip; Po is the copyable expansion of the same fields, not a baked figure. Hero PDF is a tertiary text link in that strip. Illustration bake colors come from `styles/tokens.css` (`illustration-colors.cjs`). Canvas sizes match `scenes.mjs`: six scenes at 800×900. Template figures display at `max-width: 420px` on a 1.45 / 0.75 track (the picture column is the narrow one; it swaps when the figure is the first child). No large yellow fill in those six scenes. Slugs: check, meeting, levels, feedback, team, letter. PNG/WebP ship on `PUBLIC_FILES`; bake fonts do not. Type scale adds display / hero / title / body. Hero `h1` uses `--font-size-hero` (44px at 375px, 72px at 1440px). Section `h2` stays on the title scale. Essence and CTA headlines use `--font-size-display`. Schema step type is 22 / 17 / 16 px on one vertical axis. Slide count stays closed. Header lockup tile is 36px below 640px and 40px from there, radius `--radius-lg`, fill `--brand-navy`, bolt and second word `--brand-gold`. `--accent-yellow` stays on copy buttons, focus, and nav.  
 **Audience:** Product owner, frontend maintainer, AI coding agents.
 
 This document describes **what exists today**. It is not a redesign brief. Visual changes should improve **consistency and maintainability** only.
@@ -116,8 +116,10 @@ flowchart TB
 
 | Token | Value | Usage |
 |-------|-------|--------|
-| `--primary-blue` | `#103b5a` | Brand navy, surfaces; schema QC left rule (`.schema-step--qc`) |
-| `--accent-yellow` | `#fbd304` | Highlights, copy buttons, active nav, tabs |
+| `--primary-blue` | `#103b5a` | Lesson navy, surfaces; schema QC left rule (`.schema-step--qc`) |
+| `--brand-navy` | `#0b1320` | Lockup tile only. Not a remap of `--accent-yellow` or `--primary-blue` |
+| `--brand-gold` | `#cfa73a` | Second word of the wordmark and the bolt. Not copy buttons, not small labels |
+| `--accent-yellow` | `#fbd304` | Lesson highlights, copy buttons, active nav, tabs. Not the lockup |
 | `--accent-red` | `#ff5a5f` | Primary CTAs, labels (`.label`), badges tint |
 | `--accent-teal` | `#0d9488` | Context card border (`.types-card--ctx`) |
 | `--accent-teal-deep` | `#047857` | Schema reason left rule (`.schema-step--reason`) |
@@ -138,7 +140,7 @@ flowchart TB
 | `--surface-reason` | Schema step 4 wash (`#d7ebe3`) |
 | `--surface-qc` | Schema step 5 wash (`#d5e2ee`) |
 | `--surface-light-bar` | Illustration letter chrome bar |
-| `--surface-navy-deep` | Brand lockup gradient start |
+| `--surface-navy-deep` | Deep navy plate. Lockup tile uses `--brand-navy` |
 | `--surface-stage` | Illustration stage fill (private; lesson CSS does not use it) |
 | `--surface-stage-card` | Illustration raised card and `#intro` proof card |
 | `--border` | Standard 10% white border |
@@ -284,7 +286,9 @@ flowchart TB
 | `--accent-red-quiz-bg` | `rgba(255, 90, 95, 0.1)` | Quiz option tint |
 | `--accent-red-text-muted` | `#ff7a7e` | `.result-badge` text |
 | `--surface-code` | `#000` | `.prompt-editor` background |
-| `--brand-wordmark` | `#f1f5f9` | `.brand-prompt` |
+| `--brand-wordmark` | `#ffffff` | First word of the lockup on the dark header (`.brand-prompt`) |
+| `--brand-navy` | `#0b1320` | Lockup tile fill |
+| `--brand-gold` | `#cfa73a` | Lockup second word and bolt |
 | `--surface-overlay` | `rgba(7, 27, 41, 0.94)` | Disclosure chip summary (`.disclosure-chip__summary`) |
 | `--surface-overlay-mid` | `rgba(7, 27, 41, 0.92)` | Slide outline hover panel |
 | `--surface-overlay-strong` | `rgba(7, 27, 41, 0.97)` | Disclosure panel (`.disclosure-chip__panel`) |
@@ -406,6 +410,7 @@ Test at **375px, 390px, 768px, 1024px** after CSS changes:
 | 2026-10-01 | DS v3.1 color source + type tokens | 375, 768, 1024, 1440 | Agent browser | Superseded 2026-10-02 — the “375 h1 stays 48px” result is not the live size. Mobile nav 44×44, practice list `--text-muted`, and schema ink tokens still hold |
 | 2026-10-02 | Intro frame doc sync | 375, 1440 | Agent browser | Frame still holds (one red CTA, PDF tertiary in `.intro-strip`). The title-scale h1 in this row was replaced the same day by the type-rhythm row |
 | 2026-10-02 | Type rhythm | 375, 768, 1024, 1440 | Agent browser | Pass — LT and EN. Hero 44/44/51/72 px, section h2 36/36/43/56 px, essence and CTA 56/58/77/104 px. Hero stays above h2. One red CTA. PDF stays a tertiary link. EN CTA title is 4 lines at 375px and the button stays on screen |
+| 2026-10-06 | Lockup tile | 520, 700, 1280 | Agent browser | Pass — 36px at 520px, 40px at 700px and 1280px, radius 12px, fill `#0b1320`, bolt and second word `#cfa73a`. Copy button stays `#fbd304`. EN footer reads “Training & checkout” |
 
 ---
 
@@ -427,7 +432,7 @@ For each new UI, **reuse a row below** before inventing a class.
 |-------|---------|-------------|-------|
 | `.brand-header` | Fixed, full width, no background, content to the right, `pointer-events: none` except the lockup and language buttons | Global | Duplicate logo elsewhere; paint a full-width bar and pin the lockup to the viewport edge |
 | `.brand-header__inner` | `max-content` right cluster. Background `--bg-dark`, radius on the left only. Not the 1200px `.container` | Global | Stretch it to the hero frame |
-| `.brand-lockup` | Link to www.promptanatomy.app. Bolt uses the favicon `path`; fill is `currentColor` with `color: var(--accent-yellow)`. Name is sentence case (Space Grotesk). Tagline stays uppercase | External brand | `text-transform: uppercase` on the name; change the lesson canonical URL |
+| `.brand-lockup` | Link to www.promptanatomy.app. Flat `--brand-navy` tile, 36px below 640px and 40px from there, radius `--radius-lg`, no glow. Bolt `currentColor` from `--brand-gold`, wordmark split at weight 900 on the OS sans. Tagline is a sibling under the link, not inside it | External brand | `text-transform: uppercase` on the name; paint the second word with `--accent-yellow`; a `max-width: 1024px` rule that forces the tile to 40px; change the lesson canonical URL |
 | `.lang-switch__btn` | LT / EN toggle | Global; `.is-active` state | New locale UI without build rules |
 
 ### 7.3 Navigation
@@ -626,7 +631,7 @@ Minimal page — no slide nav or lesson JS.
 |--------|----------------|
 | Stack | Single-file inline CSS + token subset in `:root` |
 | Page bg | `--surface-base`; card `--surface-raised` |
-| Brand | `--primary-blue`, `--accent-yellow`, `--text-on-accent` on gold pills |
+| Brand | Lockup tile `--brand-navy`, bolt and second word `--brand-gold`. Page-title highlight and gold pills stay `--accent-yellow` |
 | Typography | Space Grotesk (headlines), Inter (body) |
 | Motion / focus | `--ease-out`, `--duration-fast`; `:focus-visible` 2px yellow |
 | Layout | CSS Grid 4 → 2 → 1 columns |
@@ -648,7 +653,8 @@ Minimal page — no slide nav or lesson JS.
 | Semantic | Lesson token | 404 | tools.html |
 |----------|--------------|-----|------------|
 | Page dark bg | `--bg-dark` | `--surface-base` | `--surface-base` |
-| Accent gold | `--accent-yellow` | `--accent-yellow` | `--accent-yellow` |
+| Accent gold | `--accent-yellow` | `--accent-yellow` | `--accent-yellow` on pills and the page title |
+| Lockup tile | `--brand-navy`, `--brand-gold` | — | same tokens |
 | Navy | `--primary-blue` | — | `.bg-cat-1` |
 | Motion | `--ease-out`, `--duration-fast` | same | same |
 | Hairline border | `--border-hairline` | legal footnote | `.page-shell` |

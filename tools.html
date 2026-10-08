@@ -32,7 +32,10 @@
             --text-tertiary: rgba(255, 255, 255, 0.82);
             --text-secondary: rgba(255, 255, 255, 0.88);
             --text-on-dark-high: var(--text-tertiary);
-            --brand-wordmark: #f1f5f9;
+            --brand-wordmark: #ffffff;
+            --brand-navy: #0b1320;
+            --brand-gold: #cfa73a;
+            --border: rgba(255, 255, 255, 0.1);
             --font-size-label: 13px;
             --font-size-ui: 14px;
             --tracking-label: 0.12em;
@@ -82,26 +85,32 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: var(--space-8);
+            margin-bottom: 0;
         }
         .brand-icon-wrap {
-            background: var(--primary-blue);
-            padding: 8px;
-            border-radius: var(--radius-md);
+            background: var(--brand-navy);
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
-        .brand-icon-wrap svg { display: block; color: var(--accent-yellow); }
+        .brand-icon-wrap svg { display: block; width: 22px; height: 22px; color: var(--brand-gold); }
         .brand-lockup-title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
             line-height: 1;
             margin: 0;
-            color: var(--text-bright);
+            color: var(--brand-wordmark);
         }
-        .brand-lockup-title .brand-gold { color: var(--accent-yellow); }
+        .brand-lockup-title .brand-gold { color: var(--brand-gold); }
         .brand-tagline {
-            margin: 4px 0 0;
+            margin: 8px 0 var(--space-8);
             font-size: var(--font-size-label);
             text-transform: uppercase;
             letter-spacing: 0.2em;
@@ -264,11 +273,9 @@
                         <path fill="currentColor" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
                     </svg>
                 </div>
-                <div>
-                    <p class="brand-lockup-title">Prompt <span class="brand-gold">Anatomy</span></p>
-                    <p class="brand-tagline">AI Operating System</p>
-                </div>
+                <p class="brand-lockup-title">Prompt <span class="brand-gold">Anatomy</span></p>
             </div>
+            <p class="brand-tagline">AI Training System</p>
             <h1 class="header-title">
                 The Ultimate <span class="brand-gold">AI Stack</span> (October 2026 Update)
             </h1>

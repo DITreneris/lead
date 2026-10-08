@@ -1,7 +1,7 @@
 ---
-title: "Promptų anatomija — 1 pamoka (santrauka)"
+title: "Promptų Anatomija — 1 pamoka (santrauka)"
 subtitle: "Įmonėms • nemokama santrauka"
-author: "Promptų anatomija"
+author: "Promptų Anatomija"
 date: "2026"
 lang: lt
 geometry: margin=2.5cm

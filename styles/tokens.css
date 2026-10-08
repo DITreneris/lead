@@ -67,7 +67,9 @@
     --accent-red-quiz-bg: rgba(255, 90, 95, 0.1);
     --accent-red-text-muted: #ff7a7e;
     --surface-code: #000;
-    --brand-wordmark: #f1f5f9;
+    --brand-wordmark: #ffffff;
+    --brand-navy: #0b1320;
+    --brand-gold: #cfa73a;
     /* Radius & šešėliai: viena skalė (premium nuoseklumas) */
     --radius-xs: 4px;
     --radius-sm: 6px;

@@ -43,10 +43,10 @@ function getEnHtmlReplacementPairs() {
       '<summary class="slide-outline__summary disclosure-chip__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Contents</summary>'
     ],
     [
-      'aria-label="Promptų anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)"',
+      'aria-label="Promptų Anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)"',
       'aria-label="Prompt Anatomy — brand site www.promptanatomy.app (opens in a new tab)"'
     ],
-    ['<div class="brand-tagline">DI praktinė sistema</div>', '<div class="brand-tagline">Built for real work</div>'],
+    ['<p class="brand-tagline">DI praktinė sistema</p>', '<p class="brand-tagline">Built for real work</p>'],
 
     [
       '<div class="brand-name"><span class="brand-prompt">Promptų</span> <span class="brand-anatomy">Anatomija</span></div>',
@@ -637,8 +637,8 @@ function getEnHtmlReplacementPairs() {
       '<p class="cta-ecosystem-link">\n            <a class="link-tier-tertiary" href="https://promptanatomy.site/?utm_source=cloud&amp;utm_medium=cta_footer&amp;utm_campaign=ecosystem_map" target="_blank" rel="noopener noreferrer" data-track="cta_ecosystem_site_click" data-track-dest="site" aria-label="Ecosystem map on promptanatomy.site (opens in a new tab)">Ecosystem map</a>\n        </p>'
     ],
     [
-      '<p class="cta-entity-footer">Promptų anatomija · programa → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" data-track-dest="app" aria-label="Promptų anatomijos programa promptanatomy.app (atidaryti naujame skirtuke)">promptanatomy.app</a></p>',
-      '<p class="cta-entity-footer">Part of Prompt Anatomy · the program → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" data-track-dest="app" aria-label="Prompt Anatomy program at promptanatomy.app (opens in a new tab)">promptanatomy.app</a></p>'
+      '<p class="cta-entity-footer">Promptų Anatomijos ekosistema · Mokymai ir checkout → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" data-track-dest="app" aria-label="Promptų Anatomijos mokymai ir checkout promptanatomy.app (atidaryti naujame skirtuke)">promptanatomy.app</a></p>',
+      '<p class="cta-entity-footer">Part of Prompt Anatomy · Training &amp; checkout → <a class="link-tier-tertiary" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=entity_footer&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="entity_footer_click" data-track-dest="app" aria-label="Prompt Anatomy training and checkout at promptanatomy.app (opens in a new tab)">promptanatomy.app</a></p>'
     ],
     [CTA_FOOTNOTE_LT, CTA_FOOTNOTE_EN]
   ];

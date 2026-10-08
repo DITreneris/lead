@@ -23,7 +23,7 @@ const DENY_SUBSTRINGS = [
   'Bibliotekos valdikliai',
   'aria-label="Skaidrė',
   'Perjungti į lietuvių kalbą',
-  '<title>Promptų anatomija',
+  '<title>Promptų Anatomija',
   '>Pradėk</a>',
   '>Kopijuoti</button>',
   '>Tikrinti</button>',
