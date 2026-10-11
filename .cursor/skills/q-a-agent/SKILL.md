@@ -48,9 +48,9 @@ Prieš shell komandą perskaityk [lessons.md](lessons.md). Windows `python` yra 
 
 ### Vizualinė sistema / DS (v3.1)
 
-- [ ] Naujas mygtukas / CTA — esami tieriai (ne naujas „raudonas“ variantas); naujas tekstas / `details` — decision recipes (role + `.disclosure-chip*`); chrome ≥12–13px. Hero PDF yra tretinė juostos nuoroda; `#intro h1` yra `--font-size-hero`; sekcijos `h2` yra `--font-size-title`; esmė ir CTA yra `--font-size-display`. Proza: `docs/design_system.md`, kai failas yra checkout'e.
+- [ ] Naujas mygtukas / CTA — esami tieriai (ne naujas „raudonas“ variantas); naujas tekstas / `details` — decision recipes (role + `.disclosure-chip*`); chrome ≥12–13px. Hero PDF yra tretinė juostos nuoroda; `#intro h1` yra `--font-size-hero`; sekcijos `h2` yra `--font-size-title`; esmė ir CTA yra `--font-size-display`. Proza: sekamas `docs/design_system.md`.
 - [ ] Tokenai redaguojami [`styles/tokens.css`](../../../styles/tokens.css) (satellites: [`styles/tokens-satellite.css`](../../../styles/tokens-satellite.css)); po to `npm run build` arba `node scripts/inject-design-tokens.js` — ne rankinis `:root` drift HTML.
-- [ ] Nauja vieša CSS klasė ar tokenas — atnaujintas `styles/tokens.css` (+ optional local `docs/design_system.md` if present); disclosure/lead/PDF — reuse `.disclosure-chip*`, `.slide-lead`, `.btn-pdf-outline`.
+- [ ] Nauja vieša CSS klasė ar tokenas — atnaujintas `styles/tokens.css` ir sekama proza `docs/design_system.md`; disclosure/lead/PDF — reuse `.disclosure-chip*`, `.slide-lead`, `.btn-pdf-outline`.
 - [ ] `npm run verify`: `verify:design-tokens` (a new white `rgba` or untokenized hex in lesson component CSS fails; only `#2aabee` allowed), `verify:illustration-colors`, `verify:satellite-tokens`, `verify:typography-roles` (exits 1 when a rule can render below 12px, including `clamp()` and `em`/`rem` at a 16px root, and on orphan `font-size` above 32px; expands `var(--font-size-*)`; lesson `h1` / `h2` / essence / CTA must use `--font-size-hero` / `title` / `display`), `verify:contrast-fixtures`. Optional local smoke notes in `docs/DS_A11Y_SMOKE_v2.md` if present. Color token changes that should update drawings: `npm run build:illustrations`.
 - [ ] Po CSS pakeitimų: mobilus smoke (375 / 390 / 768 / 1024 px), jei liečia layout ar nav.
 
@@ -89,7 +89,7 @@ Prieš shell komandą perskaityk [lessons.md](lessons.md). Windows `python` yra 
 ### PDF ir release
 
 - [ ] Jei lokaliai (gitignored) keitei `docs/pamoka-1-pdf.md` / `docs/pamoka-1-pdf-en.md`: perbuildinta ir commitinta [assets/www.promptanatomy.app.pdf](../../../assets/www.promptanatomy.app.pdf) / [assets/www.promptanatomy.app-en.pdf](../../../assets/www.promptanatomy.app-en.pdf). EN build PDF nuorodos — [scripts/en-html-replacements.cjs](../../../scripts/en-html-replacements.cjs) (`…-en.pdf`).
-- [ ] Nuorodos į GitHub Pages / statinius assetus veikia logiškai (relatyvūs keliai repo kontekste).
+- [ ] Reliatyvūs asset keliai repo kontekste veikia. Gamyba yra Vercel (`promptanatomy.cloud`), ne GitHub Pages.
 
 ## Išvesties formatas
 

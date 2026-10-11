@@ -2,7 +2,7 @@
 
 /**
  * Design-token checks: styles/tokens.css presence + public token set;
- * optional local docs/design_system.md §3 parity when the file exists;
+ * tracked DS prose docs/design_system.md §3 parity (missing file fails);
  * index.html component CSS — no stray accent/overlay literals.
  */
 const fs = require('fs');
@@ -13,7 +13,7 @@ const INDEX = path.join(ROOT, 'index.html');
 const TOKENS = path.join(ROOT, 'styles', 'tokens.css');
 const DS = path.join(ROOT, 'docs', 'design_system.md');
 
-/** Public tokens that must exist in styles/tokens.css (CI without docs/). */
+/** Public tokens that must exist in styles/tokens.css. */
 const REQUIRED_PUBLIC_TOKENS = [
   '--bg-dark',
   '--surface-base',
@@ -139,23 +139,25 @@ function main() {
     failed = true;
   }
 
-  if (fs.existsSync(DS)) {
-    const ds = fs.readFileSync(DS, 'utf8');
-    const docTokens = collectDocumentedTokens(ds);
+  if (!fs.existsSync(DS)) {
+    console.error('[verify-design-tokens] Missing tracked docs/design_system.md');
+    process.exit(1);
+  }
+  const ds = fs.readFileSync(DS, 'utf8');
+  const docTokens = collectDocumentedTokens(ds);
 
-    const missingInRoot = [...docTokens].filter((t) => !definedTokens.has(t)).sort();
-    if (missingInRoot.length) {
-      console.error('[verify-design-tokens] Documented in DS §3 but missing in styles/tokens.css:');
-      missingInRoot.forEach((t) => console.error('  ' + t));
-      failed = true;
-    }
+  const missingInRoot = [...docTokens].filter((t) => !definedTokens.has(t)).sort();
+  if (missingInRoot.length) {
+    console.error('[verify-design-tokens] Documented in DS §3 but missing in styles/tokens.css:');
+    missingInRoot.forEach((t) => console.error('  ' + t));
+    failed = true;
+  }
 
-    const missingInDoc = [...rootOnlyTokens].filter((t) => !docTokens.has(t)).sort();
-    if (missingInDoc.length) {
-      console.error('[verify-design-tokens] In tokens.css but not documented in DS §3:');
-      missingInDoc.forEach((t) => console.error('  ' + t));
-      failed = true;
-    }
+  const missingInDoc = [...rootOnlyTokens].filter((t) => !docTokens.has(t)).sort();
+  if (missingInDoc.length) {
+    console.error('[verify-design-tokens] In tokens.css but not documented in DS §3:');
+    missingInDoc.forEach((t) => console.error('  ' + t));
+    failed = true;
   }
 
   const componentPart = componentCssFromIndex(indexStyle);
@@ -203,7 +205,7 @@ function main() {
 
   if (failed) process.exit(1);
 
-  const dsNote = fs.existsSync(DS) ? 'DS §3 parity checked' : 'no local design_system.md (CSS-only)';
+  const dsNote = 'DS §3 parity checked';
   console.log(
     '[verify-design-tokens] OK —',
     rootOnlyTokens.size,

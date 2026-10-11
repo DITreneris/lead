@@ -32,7 +32,7 @@ flowchart TD
     site[promptanatomy.cloud]
   end
   html --> verify
-  verify -->|"production"| site
+  html --> site
 ```
 
 ## 3. CTA foot → hub (entity line, QW1b)

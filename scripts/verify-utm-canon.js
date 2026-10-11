@@ -10,6 +10,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const FILES = [
   path.join(ROOT, 'index.html'),
+  path.join(ROOT, '404.html'),
   path.join(ROOT, 'site', 'index.html'),
   path.join(ROOT, 'site', 'lt', 'index.html')
 ];

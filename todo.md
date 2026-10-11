@@ -95,6 +95,14 @@ Tikslas: piešiniai ir agentų dokumentai sutampa su bake ir `PUBLIC_FILES`, ne 
 
 ---
 
+## Fazė 8 — Salė, Rolė, PDF *(production `d82597e`, 2026-10-11)*
+
+- [x] Pamoka: Rolė, uždaras rezultatas, greitas startas lieka Tikslas + Įvestis + Rezultatas. Salė — `sessionStorage` `pa-room`; išjungus ta pati kortelė lieka tamsi. Šešios scenos salėje slepiamos, tekstas ribojamas `--measure-prose`.
+- [x] PDF dvejetainiai commitinti. Markdown vietinis, nebesekamas. `.github/workflows/pages.yml` ištrintas.
+- [x] Production READY `d82597e`. Changelog perkeltas iš `[Unreleased]` į `[0.6.0] - 2026-10-11`.
+
+---
+
 ## Backlog (be datos — kai bus prioritetas)
 
 - [x] **„Turinys“ (TOC)**: grupavimas + „Pirmiausia“ (praktika · biblioteka) — 2026-09-13 A polish.
