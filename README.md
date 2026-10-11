@@ -1,6 +1,6 @@
 # Prompt Anatomy
 
-A practical AI playbook for workplace teams and leaders: a five-part prompt framework, a quick send check, a copy-ready prompt library, and a short quiz — less rework, more control.
+A practical AI playbook for workplace teams and leaders: a five-part prompt framework, a quick check, a copy-ready prompt library, and a short quiz — less rework, more control.
 
 **Live:** [promptanatomy.cloud](https://promptanatomy.cloud/) (English) · [promptanatomy.cloud/lt/](https://promptanatomy.cloud/lt/) (Lithuanian)
 

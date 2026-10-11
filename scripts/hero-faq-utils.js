@@ -8,15 +8,15 @@ const FALLBACK_FAQ = {
     },
     {
       q: 'Kaip sumažinti pramanytus faktus klientų laiškuose?',
-      a: 'Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kas saugu, ką būtina patikrinti.'
+      a: 'Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kuriuos sakinius galima siųsti ir ką patikrinti ne DI.'
     },
     {
       q: 'Kas yra greita patikra?',
-      a: '30 sekundžių rizikos peržiūra prieš siuntimą: faktai, trūkstamas kontekstas ir 2–3 reputacijos rizikos.'
+      a: 'Keturi punktai prieš siuntimą: trys rizikos su citata, sakiniai, kuriuos galima siųsti, ką patikrinti ne DI, ir sąrašas „Trūksta:“.'
     },
     {
       q: 'Kaip gauti tą patį rezultatą visoje komandoje?',
-      a: 'Naudok vieną šabloną (vaidmuo, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.'
+      a: 'Naudok vieną šabloną (rolė, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.'
     }
   ],
   en: [
@@ -26,11 +26,11 @@ const FALLBACK_FAQ = {
     },
     {
       q: 'How do I reduce hallucinated facts in client emails?',
-      a: "Paste source notes, ask for citations/quotes, and run a quick send check: what's safe, what must be verified."
+      a: 'Paste source notes, ask for citations/quotes, and run a quick check: which sentences you can send and what to check outside the AI.'
     },
     {
-      q: "What's a quick send check?",
-      a: 'A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.'
+      q: "What's a quick check?",
+      a: 'Four points before you send: three risks with a quote, sentences you can send, what to check outside the AI, and a “Missing:” list.'
     },
     {
       q: 'How do I get consistent outputs across my team?',

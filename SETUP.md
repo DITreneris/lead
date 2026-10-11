@@ -2,7 +2,7 @@
 
 ## Kas tai
 
-Vieno failo statinė pamoka ir lead magnetas: [index.html](index.html), publikuojama per [GitHub Pages](.github/workflows/pages.yml) (šaknies katalogas).
+Vieno failo statinė pamoka ir lead magnetas: [index.html](index.html), publikuojama į Vercel projektą `lead` (`https://promptanatomy.cloud/`).
 
 ## Vietinis peržiūrėjimas
 
@@ -69,7 +69,7 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 - [ ] Po `npm run build`: `npm run verify` (bibliotekos raktų paritetas ir EN puslapio LT „drift“) — žr. [AGENTS.md](AGENTS.md) skyrių „Dviguba patikra (LT↔EN)“.
 - [ ] [404.html](404.html) atsidaro ir grįžta į pamoką; [tools.html](tools.html) (EN) ir [tools-lt.html](tools-lt.html) — dark brand + token inject smoke.
 - [ ] Po CSS/token pakeitimo: redaguoti [`styles/tokens.css`](styles/tokens.css), ne ranka `:root` tarp `DS_TOKENS_*` markerių HTML; `npm run build` (inject) ir `npm run verify`. Jei keitėsi spalva, kuri turi matytis piešiniuose: `npm run build:illustrations` ir commitinti `assets/illustrations/*`.
-- [ ] GitHub Actions: [pages.yml](.github/workflows/pages.yml) ir [verify.yml](.github/workflows/verify.yml) žali po push (kai taikoma).
+- [ ] GitHub Actions: [verify.yml](.github/workflows/verify.yml) žalias po push (kai taikoma). Gamyba — Vercel `promptanatomy.cloud`.
 
 ## Nuorodos
 
@@ -90,9 +90,7 @@ Trumpas smoke testas ir atitiktis; išsamiau — [AGENTS.md](AGENTS.md) skyrius 
 1. **Repozitorija:** tuščias `lead` klonas arba naujas remote. Vietiniame kataloge `origin` dabar gali rodyti į kitą repo — pasirinkite vieną variantą:
    - pakeisti `origin`: `git remote set-url origin https://github.com/DITreneris/lead.git`
    - arba antras remote: `git remote add lead https://github.com/DITreneris/lead.git` ir tada `git push -u lead main`
-2. **Pirmas push:** įsitikinkite, kad `main` šakoje yra visi reikalingi failai (įskaitant [.github/workflows/pages.yml](.github/workflows/pages.yml) ir [`.github/workflows/verify.yml`](.github/workflows/verify.yml)), tada `git push -u origin main` (arba `-u lead main`).
-3. **GitHub Pages:** repozitorijoje *Settings → Pages → Build and deployment → Source:* pasirinkite **GitHub Actions** (ne „Deploy from a branch“), kad veiktų esamas Pages workflow.
-4. **Pirmas Actions paleidimas:** po push atidarykite *Actions* ir leiskite workflow baigtis; jei reikia, *Settings → Actions → General* patvirtinkite workflow leidimus organizacijos lygmenyje.
-5. **Publikacija:** projekto Pages URL yra **`https://DITreneris.github.io/lead/`** (EN šaknis); lietuvių — **`https://DITreneris.github.io/lead/lt/`**. Adresas `https://DITreneris.github.io/en/` yra vartotojo/organizacijos šaknies svetainė (ne šis repo). Deploy workflow nustato `SITE_PREFIX=/lead`, kad kalbos perjungiklis ir `../assets/` veiktų po `/lead/`.
+2. **Pirmas push:** įsitikinkite, kad `main` šakoje yra visi reikalingi failai (įskaitant [`.github/workflows/verify.yml`](.github/workflows/verify.yml)), tada `git push -u origin main` (arba `-u lead main`).
+3. **Gamyba:** Vercel projektas `lead` → **`https://promptanatomy.cloud/`** (EN) ir **`https://promptanatomy.cloud/lt/`**. GitHub Pages workflow nebediegia.
 
 **Pastaba:** `github.io` artefaktas gali būti antrinis URL; pamokos kanonas meta ir sitemap — **`promptanatomy.cloud`** (arba per `PUBLIC_ORIGIN` kitas viešas hostas).

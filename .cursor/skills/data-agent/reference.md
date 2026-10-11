@@ -20,19 +20,19 @@ flowchart LR
   pdfEn --> indexPage
 ```
 
-## 2. Sluoksniai: statinis deploy (GitHub Pages)
+## 2. Sluoksniai: statinis deploy (Vercel)
 
 ```mermaid
 flowchart TD
   subgraph repo [Repozitorija]
     html[index.html]
-    workflow[pages.yml]
+    verify[verify.yml]
   end
-  subgraph pages [GitHub Pages]
-    site[Public site]
+  subgraph vercel [Vercel lead]
+    site[promptanatomy.cloud]
   end
-  html --> workflow
-  workflow -->|"deploy"| site
+  html --> verify
+  verify -->|"production"| site
 ```
 
 ## 3. CTA foot → hub (entity line, QW1b)

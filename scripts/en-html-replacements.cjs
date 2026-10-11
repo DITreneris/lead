@@ -36,6 +36,10 @@ function getEnHtmlReplacementPairs() {
     ['<a class="skip-link" href="#main-content">Pereiti prie turinio</a>', '<a class="skip-link" href="#main-content">Skip to content</a>'],
 
     ['aria-label="Kalbos pasirinkimas"', 'aria-label="Language selection"'],
+    [
+      'id="roomModeBtn" aria-pressed="false" aria-label="Salės režimas: šviesus fonas projektoriui">Salė</button>',
+      'id="roomModeBtn" aria-pressed="false" aria-label="Room mode: light background for a projector">Room</button>'
+    ],
     ['aria-label="Perjungti į lietuvių kalbą"', 'aria-label="Switch to Lithuanian"'],
 
     [
@@ -43,8 +47,8 @@ function getEnHtmlReplacementPairs() {
       '<summary class="slide-outline__summary disclosure-chip__summary"><span class="slide-outline__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>Contents</summary>'
     ],
     [
-      'aria-label="Promptų Anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)"',
-      'aria-label="Prompt Anatomy — brand site www.promptanatomy.app (opens in a new tab)"'
+      'aria-label="Promptų Anatomija, pamokos pradžia"',
+      'aria-label="Prompt Anatomy, start of the lesson"'
     ],
     ['<p class="brand-tagline">DI praktinė sistema</p>', '<p class="brand-tagline">Built for real work</p>'],
 
@@ -57,7 +61,7 @@ function getEnHtmlReplacementPairs() {
       '<h1>A short prompt becomes a task.</h1>'
     ],
     [
-      '<p class="hero-intro slide-lead">Tas pats savaitės tikslas: vaidmuo, tikslas, įvestis, rezultatas. Paleidi per 2 minutes.</p>',
+      '<p class="hero-intro slide-lead">Tas pats savaitės tikslas: rolė, tikslas, įvestis, rezultatas. Paleidi per 2 minutes.</p>',
       '<p class="hero-intro slide-lead">Same weekly goal: role, goal, input, result. You run it in 2 minutes.</p>'
     ],
     ['<p class="intro-proof-kicker">Prieš</p>', '<p class="intro-proof-kicker">Before</p>'],
@@ -67,7 +71,7 @@ function getEnHtmlReplacementPairs() {
       '<p class="intro-proof-before">“Prepare a report on our weekly priorities.”</p>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Vaidmuo</strong> <span>darbo asistentas</span></div>',
+      '<div class="practice-structured-line"><strong>Rolė</strong> <span>darbo asistentas</span></div>',
       '<div class="practice-structured-line"><strong>Role</strong> <span>work assistant</span></div>'
     ],
     [
@@ -75,8 +79,8 @@ function getEnHtmlReplacementPairs() {
       '<div class="practice-structured-line"><strong>Goal</strong> <span>this week’s priorities</span></div>'
     ],
     [
-      '<div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>',
-      '<div class="practice-structured-line"><strong>Input</strong> <span>notes / emails</span></div>'
+      '<div class="practice-structured-line"><strong>Kontekstas</strong> <span>užrašai / laiškai</span></div>',
+      '<div class="practice-structured-line"><strong>Context</strong> <span>notes / emails</span></div>'
     ],
     [
       '<div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>',
@@ -108,6 +112,14 @@ function getEnHtmlReplacementPairs() {
     ['aria-label="Skaidrė 15: PDF santrauka ir kitas žingsnis"', 'aria-label="Slide 15: PDF summary and next step"'],
 
     ['aria-label="Skaidrių navigacija (mobilusis)"', 'aria-label="Slide navigation (mobile)"'],
+    [
+      '<button type="button" class="nav-mobile-step" id="nav-mobile-prev" disabled aria-label="Ankstesnė skaidrė">Ankstesnė</button>',
+      '<button type="button" class="nav-mobile-step" id="nav-mobile-prev" disabled aria-label="Previous slide">Previous</button>'
+    ],
+    [
+      '<button type="button" class="nav-mobile-step" id="nav-mobile-next" aria-label="Kita skaidrė">Kita</button>',
+      '<button type="button" class="nav-mobile-step" id="nav-mobile-next" aria-label="Next slide">Next</button>'
+    ],
     ['<div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Įvadas</div>', '<div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Introduction</div>'],
 
     ['<section id="intro" aria-label="Įvadas"', '<section id="intro" aria-label="Introduction"'],
@@ -123,8 +135,8 @@ function getEnHtmlReplacementPairs() {
       'data-track="hero_primary_click">\n                    <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>\n                    Try the 2-minute practice\n                </a>'
     ],
     [
-      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div class="hero-faq__item"><strong>Ką įrašyti į užklausą vadovybės atnaujinimui?</strong> Auditoriją, kontekstą, ribas ir rezultatą (punktai, lentelė ar sprendimo santrauka). Pridėk sėkmės kriterijų.</div>\n                    <div class="hero-faq__item"><strong>Kaip sumažinti pramanytus faktus klientų laiškuose?</strong> Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kas saugu, ką būtina patikrinti.</div>\n                    <div class="hero-faq__item"><strong>Kas yra greita patikra?</strong> 30 sekundžių rizikos peržiūra prieš siuntimą: faktai, trūkstamas kontekstas ir 2–3 reputacijos rizikos.</div>\n                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (vaidmuo, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>\n                </div>\n            </details>',
-      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">FAQ (for leaders)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div class="hero-faq__item"><strong>What should I include in a prompt for leadership updates?</strong> Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.</div>\n                    <div class="hero-faq__item"><strong>How do I reduce hallucinated facts in client emails?</strong> Paste source notes, ask for citations/quotes, and run a quick send check: what’s safe, what must be verified.</div>\n                    <div class="hero-faq__item"><strong>What’s a quick send check?</strong> A 30-second risk review before you send: facts, missing context, and 2–3 reputational risks.</div>\n                    <div class="hero-faq__item"><strong>How do I get consistent outputs across my team?</strong> Use one shared template (role, context, and output), then iterate with the same checklist.</div>\n                </div>\n            </details>'
+      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div class="hero-faq__item"><strong>Ką įrašyti į užklausą vadovybės atnaujinimui?</strong> Auditoriją, kontekstą, ribas ir rezultatą (punktai, lentelė ar sprendimo santrauka). Pridėk sėkmės kriterijų.</div>\n                    <div class="hero-faq__item"><strong>Kaip sumažinti pramanytus faktus klientų laiškuose?</strong> Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kuriuos sakinius galima siųsti ir ką patikrinti ne DI.</div>\n                    <div class="hero-faq__item"><strong>Kas yra greita patikra?</strong> Keturi punktai prieš siuntimą: trys rizikos su citata, sakiniai, kuriuos galima siųsti, ką patikrinti ne DI, ir sąrašas „Trūksta:“.</div>\n                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (rolė, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>\n                </div>\n            </details>',
+      '<details class="hero-faq geo-faq-anchor disclosure-chip disclosure-chip--inline" data-geo-faq="1">\n                <summary class="hero-faq__summary disclosure-chip__summary">FAQ (for leaders)</summary>\n                <div class="hero-faq__panel disclosure-chip__panel">\n                    <div class="hero-faq__item"><strong>What should I include in a prompt for leadership updates?</strong> Audience, context, constraints, and the exact output format (bullets, table, decision memo). Add success criteria.</div>\n                    <div class="hero-faq__item"><strong>How do I reduce hallucinated facts in client emails?</strong> Paste source notes, ask for citations/quotes, and run a quick check: which sentences you can send and what to check outside the AI.</div>\n                    <div class="hero-faq__item"><strong>What’s a quick check?</strong> Four points before you send: three risks with a quote, sentences you can send, what to check outside the AI, and a “Missing:” list.</div>\n                    <div class="hero-faq__item"><strong>How do I get consistent outputs across my team?</strong> Use one shared template (role, context, and output), then iterate with the same checklist.</div>\n                </div>\n            </details>'
     ],
 
     [
@@ -191,12 +203,12 @@ function getEnHtmlReplacementPairs() {
     ['<span class="label">Žingsniai</span>', '<span class="label">Steps</span>'],
     ['<h2>Promptų anatomijos schema</h2>', '<h2>Prompt anatomy framework</h2>'],
     [
-      '<p class="schema-lead slide-lead">Pradėk nuo vaidmens, konteksto ir rezultato.<br>Penkias schemos dalis naudok tada, kai užduotis yra sudėtinga.</p>',
+      '<p class="schema-lead slide-lead">Pradėk nuo rolės, konteksto ir rezultato.<br>Penkias schemos dalis naudok tada, kai užduotis yra sudėtinga.</p>',
       '<p class="schema-lead slide-lead">Start with role, context, and output.<br>Use the five parts of the schema when the task is complex.</p>'
     ],
     [
-      '<strong>Vaidmuo</strong>\n                            <span>Kas esi ir koks tikslas (kodėl DI turi taip veikti)</span>',
-      '<strong>Role</strong>\n                            <span>Who you are, what the goal is, and why the AI should work this way</span>'
+      '<strong>Rolė</strong>\n                            <span>Kas esi</span>',
+      '<strong>Role</strong>\n                            <span>Who you are</span>'
     ],
     [
       '<strong>Kontekstas</strong>\n                            <span>Faktai, auditorija, apribojimai, šaltiniai, kas jau žinoma</span>',
@@ -245,7 +257,7 @@ function getEnHtmlReplacementPairs() {
       '<p class="types-card-desc">Good if you see A/B/C and no numbers you did not paste in.</p>'
     ],
     [
-      '<span>Vaidmuo: Tu esi mano darbo asistentas.</span>',
+      '<span>Rolė: Tu esi mano darbo asistentas.</span>',
       '<span>Role: You are my work assistant.</span>'
     ],
     [
@@ -253,35 +265,35 @@ function getEnHtmlReplacementPairs() {
       '<span>Goal: [WHAT I MUST DO THIS WEEK].</span>'
     ],
     [
-      '<span>Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis].</span>',
-      '<span>Input: [PASTE email / notes / task].</span>'
+      '<span>Kontekstas: [ĮKLIJUOK el. laišką / užrašus / užduotis].</span>',
+      '<span>Context: [PASTE email / notes / task].</span>'
     ],
     [
       '<span>Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas).</span>',
       '<span>Output: 7-bullet list (A/B/C priority + deadline if mentioned).</span>'
     ],
     [
-      '<span>Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“.</span>',
-      '<span>Constraint: do not use facts or numbers that are not in the input; if data is missing — write “Missing:”.</span>'
+      '<span>Apribojimas: nenaudok faktų ar skaičių, kurių nėra kontekste; jei trūksta duomenų — parašyk „Trūksta:“.</span>',
+      '<span>Constraint: do not use facts or numbers that are not in the context; if data is missing — write “Missing:”.</span>'
     ],
     [
-      'data-copy-text="Vaidmuo: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti „po“ užklausą"',
-      'data-copy-text="Role: You are my work assistant. Goal: [WHAT I MUST DO THIS WEEK]. Input: [PASTE email / notes / task]. Output: 7-bullet list (A/B/C priority + deadline if mentioned). Constraint: do not use facts or numbers that are not in the input; if data is missing — write “Missing:”." aria-label="Copy the “after” prompt"'
+      'data-copy-text="Rolė: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Kontekstas: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra kontekste; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti „po“ užklausą"',
+      'data-copy-text="Role: You are my work assistant. Goal: [WHAT I MUST DO THIS WEEK]. Context: [PASTE email / notes / task]. Output: 7-bullet list (A/B/C priority + deadline if mentioned). Constraint: do not use facts or numbers that are not in the context; if data is missing — write “Missing:”." aria-label="Copy the “after” prompt"'
     ],
     ['data-track="practice_after_copy">Kopijuoti</button>', 'data-track="practice_after_copy">Copy</button>'],
 
     ['<p class="types-primer-quick-k">Patikra (30 sek.)</p>', '<p class="types-primer-quick-k">Check (30 sec)</p>'],
     [
-      '<p class="types-primer-quick-desc">30 sekundžių: rizikos, kas tinka, ką patikrinti ne DI, ko trūksta.</p>',
-      '<p class="types-primer-quick-desc">30 seconds: risks, what is safe, what to verify without AI, what context is missing.</p>'
+      '<p class="types-primer-quick-desc">30 sekundžių: trys rizikos, ką siųsti, ką tikrinti ne DI, ko trūksta.</p>',
+      '<p class="types-primer-quick-desc">30 seconds: three risks, what to send, what to check outside the AI, what is missing.</p>'
     ],
     [
-      '<p class="types-card-example types-primer-quick-example">Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste.</p>',
-      '<p class="types-card-example types-primer-quick-example">Short check: 1) 3 risks, 2) what is safe to use, 3) what to verify without AI, 4) what context is missing.</p>'
+      '<p class="types-card-example types-primer-quick-example">Trumpa patikra: 1) trys rizikos su citata, 2) sakiniai, kuriuos galima siųsti, 3) ką patikrinti ne DI, 4) sąrašas „Trūksta:“.</p>',
+      '<p class="types-card-example types-primer-quick-example">Short check: 1) three risks with a quote, 2) sentences you can send, 3) what to check outside the AI, 4) a “Missing:” list.</p>'
     ],
     [
-      'data-copy-text="Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist"',
-      'data-copy-text="Short check: 1) 3 risks, 2) what is safe to use, 3) what to verify without AI, 4) what context is missing." aria-label="Copy mini checklist"'
+      'data-copy-text="Trumpa patikra: 1) trys rizikos su citata, 2) sakiniai, kuriuos galima siųsti, 3) ką patikrinti ne DI, 4) sąrašas „Trūksta:“." aria-label="Kopijuoti patikros mini-checklist"',
+      'data-copy-text="Short check: 1) three risks with a quote, 2) sentences you can send, 3) what to check outside the AI, 4) a “Missing:” list." aria-label="Copy mini checklist"'
     ],
     ['data-track="practice_qc_copy">Kopijuoti</button>', 'data-track="practice_qc_copy">Copy</button>'],
     ['data-track="practice_next_click">Kelio planas ↓</a>', 'data-track="practice_next_click">Roadmap ↓</a>'],
@@ -318,16 +330,24 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead slide-lead">Paste the text you will send.</p>'
     ],
     [
-      '<div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>',
-      '<div class="prompt-line"><b>ROLE</b> You are a responsible specialist and information critic: you know the AI can be wrong or invent facts.</div>'
+      '<div class="prompt-line"><b>Rolė:</b> Tu esi informacijos kritikas. Žinai, kad DI gali išgalvoti faktus.</div>',
+      '<div class="prompt-line"><b>Role:</b> You are an information critic. You know the AI can invent facts.</div>'
     ],
     [
-      '<div class="prompt-line"><b>KONTEKSTAS</b> Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].</div>',
-      '<div class="prompt-line"><b>CONTEXT</b> Where I will use it: [client email / internal report / proposal / contract / deck]. Domain: [Domain], audience: [Audience]. Paste the full AI draft you plan to send or submit as final: [TEXT].</div>'
+      '<div class="prompt-line"><b>Tikslas:</b> Patikrink tekstą prieš siuntimą.</div>',
+      '<div class="prompt-line"><b>Goal:</b> Check the text before it is sent.</div>'
     ],
     [
-      '<div class="prompt-line"><b>REZULTATAS</b> 1) 3 didžiausios rizikos (faktinės, teisinės ar komunikacinės). 2) Kas tinka naudoti be pakeitimų. 3) Ką patikrinti nepriklausomu šaltiniu (ne vien DI). 4) Ko trūksta kontekste tikslesniam atsakymui.</div>',
-      '<div class="prompt-line"><b>OUTPUT</b> 1) Top 3 risks (factual, legal, or comms). 2) What is safe to use unchanged. 3) What to verify with an independent source (not AI alone). 4) What context is missing for a sharper answer.</div>'
+      '<div class="prompt-line"><b>Kontekstas:</b> Kur naudosiu: [kliento laiškas / vidinė ataskaita / pasiūlymas / sutartis / pristatymas]. Sritis: [SRITIS]. Auditorija: [AUDITORIJA]. Tekstas: [TEKSTAS].</div>',
+      '<div class="prompt-line"><b>Context:</b> Where I will use it: [client email / internal report / proposal / contract / deck]. Domain: [DOMAIN]. Audience: [AUDIENCE]. Text: [TEXT].</div>'
+    ],
+    [
+      '<div class="prompt-line"><b>Mąstymas:</b> Kiekvieną riziką rišk su vienu sakiniu iš teksto. Vienas tipas — viena rizika.</div>',
+      '<div class="prompt-line"><b>Reasoning:</b> Tie each risk to one sentence from the text. One type — one risk.</div>'
+    ],
+    [
+      '<div class="prompt-line"><b>Rezultatas:</b> 1) Trys rizikos: viena faktinė, viena teisinė, viena komunikacinė. Kiekviena cituoja sakinį. 2) Sakiniai, kuriuos galima siųsti be pakeitimų. Cituok juos. 3) Ką patikrinti ne DI. Kiekvienam punktui — ką būtent tikrinti. 4) Ko trūksta kontekste. Sąrašas „Trūksta:“.</div>',
+      '<div class="prompt-line"><b>Output:</b> 1) Three risks: one factual, one legal, one about communication. Each quotes a sentence. 2) Sentences that can be sent unchanged. Quote them. 3) What to check outside the AI. For each item — what exactly to check. 4) What context is missing. A “Missing:” list.</div>'
     ],
     ['<button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti patikrą</button>', '<button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Copy check</button>'],
     [
@@ -344,7 +364,7 @@ function getEnHtmlReplacementPairs() {
       'src="assets/memes/meme-after-roadmap.png"'
     ],
     [
-      'alt="Dvi pusės: kairėje CHAOSAS — chaotiškas pokalbis su perbrauktu vaizdu ir trumpais prašymais; dešinėje KONTROLĖ — vaidmuo, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „DI nėra chaotiškas. Tavo užklausa – taip.“"',
+      'alt="Dvi pusės: kairėje CHAOSAS — chaotiškas pokalbis su perbrauktu vaizdu ir trumpais prašymais; dešinėje KONTROLĖ — rolė, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „DI nėra chaotiškas. Tavo užklausa – taip.“"',
       'alt="Split graphic: CHAOS — messy chat with crossed-out images and short asks; CONTROL — Role, Context, Output, Criteria and a clean logo. Headline: AI isn’t random. Your input is."'
     ],
 
@@ -355,16 +375,20 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead slide-lead">One table: time, activity, goal — plus a few decision questions.</p>'
     ],
     [
-      '<div class="prompt-line"><b>UŽDUOTIS</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>',
-      '<div class="prompt-line"><b>TASK</b> Build a meeting or sprint plan as a table (time · activity · goal) and add 3 questions that help decide.</div>'
+      '<div class="prompt-line"><b>Rolė:</b> Tu esi mano darbo asistentas.</div>',
+      '<div class="prompt-line"><b>Role:</b> You are my work assistant.</div>'
     ],
     [
-      '<div class="prompt-line"><b>ĮVESTIS</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTAREI ANKSČIAU].</div>',
-      '<div class="prompt-line"><b>INPUT</b> Duration: [e.g. 60 min]. Topic: [TOPIC]. Team / roles: [WHO JOINS]. They already know: [WHAT YOU AGREED BEFORE].</div>'
+      '<div class="prompt-line"><b>Tikslas:</b> Sudaryk planą, pagal kurį komanda priima vieną sprendimą.</div>',
+      '<div class="prompt-line"><b>Goal:</b> Build a plan the team uses to make one decision.</div>'
     ],
     [
-      '<div class="prompt-line"><b>REZULTATAS</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>',
-      '<div class="prompt-line"><b>OUTPUT</b> A table with columns Time | Activity | Goal, then 3 questions below.</div>'
+      '<div class="prompt-line"><b>Kontekstas:</b> Trukmė: [MIN.]. Tema: [TEMA]. Pareigos: [KAS DALYVAUJA]. Jau sutarta: [KĄ SUTAREI ANKSČIAU].</div>',
+      '<div class="prompt-line"><b>Context:</b> Duration: [MINUTES]. Topic: [TOPIC]. Position: [WHO JOINS]. Already agreed: [WHAT YOU AGREED BEFORE].</div>'
+    ],
+    [
+      '<div class="prompt-line"><b>Rezultatas:</b> Lentelė Laikas | Veikla | Tikslas. Laikai susideda į trukmę. Tuščia trukmė — 60 min. ir eilutė „Prielaida: 60 min.“ Trys klausimai. Kiekvienas pavadina sprendimą, kurį atrakina. Ko nėra įvestyje — „Trūksta:“.</div>',
+      '<div class="prompt-line"><b>Output:</b> Table Time | Activity | Goal. Times add up to the duration. Empty duration — 60 min and the line “Assumption: 60 min.” Three questions. Each names the decision it unlocks. If it is not in the input — “Missing:”.</div>'
     ],
     ['<button type="button" class="copy-prompt-btn" data-track="template_copy_meeting">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_meeting">Copy prompt</button>'],
     ['<button type="button" class="copy-prompt-btn" data-track="template_copy_levels">Kopijuoti užklausą</button>', '<button type="button" class="copy-prompt-btn" data-track="template_copy_levels">Copy prompt</button>'],
@@ -383,16 +407,16 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead slide-lead">Short, normal, and detailed — the same point.</p>'
     ],
     [
-      '<div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>',
-      '<div class="prompt-line"><b>TASK</b> Write the same message or task at three difficulty levels (basic, intermediate, advanced).</div>'
+      '<div class="prompt-line"><b>Tikslas:</b> Tą pačią mintį parašyk trimis lygiais.</div>',
+      '<div class="prompt-line"><b>Goal:</b> Write the same point at three levels.</div>'
     ],
     [
-      '<div class="prompt-line"><b>ĮVESTIS</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>',
-      '<div class="prompt-line"><b>INPUT</b> Topic or task: [TOPIC]. Reader: [e.g. junior / senior, client / internal team]. Starting idea or draft (if any): [TEXT].</div>'
+      '<div class="prompt-line"><b>Kontekstas:</b> Mintis: [TEMA]. Kas skaito: [junior / senior, klientas / vidinė komanda]. Juodraštis, jei yra: [TEKSTAS].</div>',
+      '<div class="prompt-line"><b>Context:</b> Point: [TOPIC]. Reader: [junior / senior, client / internal team]. Draft, if any: [TEXT].</div>'
     ],
     [
-      '<div class="prompt-line"><b>REZULTATAS</b> Tris aiškiai atskirtas versijas su antraštėmis Bazinis / Vidutinis / Pažengęs; tonas ir detalumas turi augti kartu su lygiu.</div>',
-      '<div class="prompt-line"><b>OUTPUT</b> Three clearly separated versions titled Basic / Intermediate / Advanced; tone and detail should scale with level.</div>'
+      '<div class="prompt-line"><b>Rezultatas:</b> Trys blokai, tie patys faktai. Bazinis: 1 sakinys, vienas veiksmas. Vidutinis: 4 sakiniai, veiksmas, savininkas, terminas. Pažengęs: tie patys faktai, 1 rizika, 1 sprendimas. Naujo fakto, kurio nėra įvestyje, nekurk. Trūksta — „Trūksta:“.</div>',
+      '<div class="prompt-line"><b>Output:</b> Three blocks, the same facts. Basic: 1 sentence, one action. Intermediate: 4 sentences, action, owner, deadline. Advanced: the same facts, 1 risk, 1 decision. Do not add a fact that is not in the input. If missing — “Missing:”.</div>'
     ],
     [
       '</svg></span> Vienas šablonas — kelios auditorijos.</div>',
@@ -406,16 +430,20 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead slide-lead">One first change.</p>'
     ],
     [
-      '<div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>',
-      '<div class="prompt-line"><b>TASK</b> Score against the criteria and give one clear change to make first.</div>'
+      '<div class="prompt-line"><b>Tikslas:</b> Pasakyk, ką šiame tekste keisti pirmiausia.</div>',
+      '<div class="prompt-line"><b>Goal:</b> Say what to change first in this text.</div>'
     ],
     [
-      '<div class="prompt-line"><b>ĮVESTIS</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>',
-      '<div class="prompt-line"><b>INPUT</b> Text or work: [TEXT]. Criteria: [Criteria].</div>'
+      '<div class="prompt-line"><b>Kontekstas:</b> Tekstas: [TEKSTAS]. Kriterijai: aiškumas; vienas veiksmas; tonas.</div>',
+      '<div class="prompt-line"><b>Context:</b> Text: [TEXT]. Criteria: clarity; one action; tone.</div>'
     ],
     [
-      '<div class="prompt-line"><b>REZULTATAS</b> Trumpą įvertinimą (balas ar lygis), 3 stiprias vietas, 1 konkretų tobulinimo žingsnį su pavyzdžiu.</div>',
-      '<div class="prompt-line"><b>OUTPUT</b> Short assessment (score or level), 3 strengths, 1 concrete improvement step with an example.</div>'
+      '<div class="prompt-line"><b>Mąstymas:</b> Kiekvienam kriterijui atsakyk „yra“ arba „nėra“. Prie „nėra“ cituok sakinį iš teksto.</div>',
+      '<div class="prompt-line"><b>Reasoning:</b> For each criterion answer “yes” or “no”. Next to “no”, quote a sentence from the text.</div>'
+    ],
+    [
+      '<div class="prompt-line"><b>Rezultatas:</b> Trys eilutės, po vieną kriterijų: yra arba nėra, citata. Tada viena pora: Buvo / Turi būti.</div>',
+      '<div class="prompt-line"><b>Output:</b> Three lines, one criterion each: yes or no, plus a quote. Then one pair: Was / Should be.</div>'
     ],
     [
       '</svg></span> Vienas pakeitimas, ne dešimt taisymų.</div>',
@@ -429,16 +457,20 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead slide-lead">One concrete format — e.g. knowledge check or hands-on task — with instructions for the team.</p>'
     ],
     [
-      '<div class="prompt-line"><b>UŽDUOTIS</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>',
-      '<div class="prompt-line"><b>TASK</b> Create short material or a task; use the example so it feels relevant and usable.</div>'
+      '<div class="prompt-line"><b>Tikslas:</b> Paruošk vieną užduotį komandai ir raktą, pagal kurį ji laikoma padaryta.</div>',
+      '<div class="prompt-line"><b>Goal:</b> Prepare one team task and the key that shows it is done.</div>'
     ],
     [
-      '<div class="prompt-line"><b>ĮVESTIS</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>',
-      '<div class="prompt-line"><b>INPUT</b> Topic: [TOPIC]. Audience: [Team / role]. Format: [knowledge check / hands-on task]. Example from your work or process: [BRIEF].</div>'
+      '<div class="prompt-line"><b>Kontekstas:</b> Tema: [TEMA]. Auditorija: [KOMANDA]. Pareigos: [PAREIGOS]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys: [TRUMPAI].</div>',
+      '<div class="prompt-line"><b>Context:</b> Topic: [TOPIC]. Audience: [TEAM]. Position: [POSITION]. Format: [knowledge check / hands-on task]. Example: [BRIEF].</div>'
     ],
     [
-      '<div class="prompt-line"><b>REZULTATAS</b> Paruoštą tekstą su aiškia instrukcija komandai; jei tinka — atsakymų ar vertinimo raktą.</div>',
-      '<div class="prompt-line"><b>OUTPUT</b> Ready text with clear team instructions; if useful, an answer key or rubric.</div>'
+      '<div class="prompt-line"><b>Mąstymas:</b> Formatą imk tik iš lauko. Tuščias formatas — sustok ir parašyk „Trūksta: formatas“.</div>',
+      '<div class="prompt-line"><b>Reasoning:</b> Take the format only from the field. If the format is empty — stop and write “Missing: format”.</div>'
+    ],
+    [
+      '<div class="prompt-line"><b>Rezultatas:</b> Visada du blokai. 1) Instrukcija, iki 120 žodžių: viena užduotis, vienas savininkas, terminas. 2) Raktas. Jei formatas yra žinių patikrinimas — teisingi atsakymai. Jei formatas yra praktinė užduotis — 3 punktai, pagal kuriuos laikoma padaryta. Faktai tik iš pavyzdžio. Ko nėra — „Trūksta:“.</div>',
+      '<div class="prompt-line"><b>Output:</b> Always two blocks. 1) Instruction, up to 120 words: one task, one owner, a deadline. 2) Key. If the format is a knowledge check — the correct answers. If the format is a hands-on task — 3 points that count as done. Facts only from the example. If it is not there — “Missing:”.</div>'
     ],
     [
       '</svg></span> Užduotis komandai su terminu.</div>',
@@ -452,16 +484,16 @@ function getEnHtmlReplacementPairs() {
       '<p class="slide-sublead slide-lead">Up to ~100 words: problem, solution, clear next step.</p>'
     ],
     [
-      '<div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus žingsnis.</div>',
-      '<div class="prompt-line"><b>TASK</b> Produce one draft; structure: problem → solution → call to action or another clear next step.</div>'
+      '<div class="prompt-line"><b>Tikslas:</b> Paruošk žinutę, kurią galima siųsti.</div>',
+      '<div class="prompt-line"><b>Goal:</b> Draft a message you can send.</div>'
     ],
     [
-      '<div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>',
-      '<div class="prompt-line"><b>INPUT</b> Who you write to: [team / client / partner]. Situation (facts): [WHAT HAPPENED]. Tone: professional but warm. Limit: up to 100 words.</div>'
+      '<div class="prompt-line"><b>Kontekstas:</b> Kam: [komanda / klientas / partneris]. Faktai: [KAS ĮVYKO]. Tonas: profesionalus, šiltas.</div>',
+      '<div class="prompt-line"><b>Context:</b> To: [team / client / partner]. Facts: [WHAT HAPPENED]. Tone: professional, warm.</div>'
     ],
     [
-      '<div class="prompt-line"><b>REZULTATAS</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>',
-      '<div class="prompt-line"><b>OUTPUT</b> One ready text; if useful, a second shorter variant (e.g. Slack / Teams).</div>'
+      '<div class="prompt-line"><b>Rezultatas:</b> 1) Laiškas, iki 100 žodžių. Trys pastraipos: problema; sprendimas; kitas žingsnis (kas ir kada). 2) Žinutė, iki 40 žodžių. Tos pačios trys dalys, po vieną sakinį. Ko nėra įvestyje — „Trūksta:“.</div>',
+      '<div class="prompt-line"><b>Output:</b> 1) Letter, up to 100 words. Three paragraphs: problem; solution; next step (who and when). 2) Message, up to 40 words. The same three parts, one sentence each. If it is not in the input — “Missing:”.</div>'
     ],
     [
       '</svg></span> Laiškas su aiškiu kitu žingsniu.</div>',
@@ -498,16 +530,19 @@ function getEnHtmlReplacementPairs() {
       '<summary class="library-cat-summary"><span class="library-cat-summary__title">Daily work</span><span class="library-cat-summary__meta">3 templates</span></summary>'
     ],
     ['<h4>Dienos santrauka</h4>', '<h4>Day summary</h4>'],
+    ['<p class="library-goal">5 punktai iš įrašytų faktų.</p>', '<p class="library-goal">5 bullets from the facts you entered.</p>'],
     [
       'aria-label="Kopijuoti dienos santraukos užklausą" data-track="library_copy_daySummary">Kopijuoti</button>',
       'aria-label="Copy day-summary prompt" data-track="library_copy_daySummary">Copy</button>'
     ],
     ['<h4>Užduočių sąrašas</h4>', '<h4>Task list</h4>'],
+    ['<p class="library-goal">Užduotys su prioritetu A, B arba C.</p>', '<p class="library-goal">Tasks with priority A, B, or C.</p>'],
     [
       'aria-label="Kopijuoti užduočių sąrašo užklausą" data-track="library_copy_taskList">Kopijuoti</button>',
       'aria-label="Copy task-list prompt" data-track="library_copy_taskList">Copy</button>'
     ],
     ['<h4>Susitikimo užrašai</h4>', '<h4>Meeting notes</h4>'],
+    ['<p class="library-goal">Santrauka, sprendimai, veiksmai, atviri klausimai.</p>', '<p class="library-goal">Summary, decisions, actions, open questions.</p>'],
     [
       'aria-label="Kopijuoti susitikimo užrašų užklausą" data-track="library_copy_meetingNotes">Kopijuoti</button>',
       'aria-label="Copy meeting-notes prompt" data-track="library_copy_meetingNotes">Copy</button>'
@@ -517,26 +552,31 @@ function getEnHtmlReplacementPairs() {
       '<summary class="library-cat-summary"><span class="library-cat-summary__title">Communication</span><span class="library-cat-summary__meta">5 templates</span></summary>'
     ],
     ['<h4>Atsakymas į laišką</h4>', '<h4>Email reply</h4>'],
+    ['<p class="library-goal">Atsakymas su kitu žingsniu.</p>', '<p class="library-goal">A reply with a next step.</p>'],
     [
       'aria-label="Kopijuoti atsakymo į laišką užklausą" data-track="library_copy_emailReply">Kopijuoti</button>',
       'aria-label="Copy email-reply prompt" data-track="library_copy_emailReply">Copy</button>'
     ],
     ['<h4>Sutrumpinti tekstą</h4>', '<h4>Shorten text</h4>'],
+    ['<p class="library-goal">Trumpesnė versija, tie patys faktai.</p>', '<p class="library-goal">A shorter version, the same facts.</p>'],
     [
       'aria-label="Kopijuoti teksto trumpinimo užklausą" data-track="library_copy_simplifyText">Kopijuoti</button>',
       'aria-label="Copy shorten-text prompt" data-track="library_copy_simplifyText">Copy</button>'
     ],
     ['<h4>Sunki žinutė (terminas / klaida / pokytis)</h4>', '<h4>Hard message (deadline / error / change)</h4>'],
+    ['<p class="library-goal">Du variantai: trumpas ir vidutinis.</p>', '<p class="library-goal">Two variants: short and medium.</p>'],
     [
       'aria-label="Kopijuoti sunkios žinutės užklausą" data-track="library_copy_hardUpdate">Kopijuoti</button>',
       'aria-label="Copy hard-message prompt" data-track="library_copy_hardUpdate">Copy</button>'
     ],
     ['<h4>Grįžtamasis ryšys po klaidos (1:1)</h4>', '<h4>Feedback after a mistake (1:1)</h4>'],
+    ['<p class="library-goal">Pokalbio pradžia, pastebėjimai, viena sutartis.</p>', '<p class="library-goal">An opening, observations, one agreement.</p>'],
     [
       'aria-label="Kopijuoti grįžtamojo ryšio po klaidos užklausą" data-track="library_copy_feedbackAfterMistake">Kopijuoti</button>',
       'aria-label="Copy post-mistake feedback prompt" data-track="library_copy_feedbackAfterMistake">Copy</button>'
     ],
     ['<h4>Įtampos mažinimas (perrašyk žinutę)</h4>', '<h4>De-escalation (rewrite the message)</h4>'],
+    ['<p class="library-goal">Viena rami žinutė su kitu žingsniu.</p>', '<p class="library-goal">One calm message with a next step.</p>'],
     [
       'aria-label="Kopijuoti įtampos mažinimo užklausą" data-track="library_copy_deescalateMessage">Kopijuoti</button>',
       'aria-label="Copy de-escalation prompt" data-track="library_copy_deescalateMessage">Copy</button>'
@@ -547,14 +587,15 @@ function getEnHtmlReplacementPairs() {
     ],
     ['<h4>Užklausos kokybės patikrinimas (pagal 5 principus)</h4>', '<h4>Prompt quality check (five principles)</h4>'],
     [
-      '<p class="library-goal">Įklijuok savo užklausą (promptą) ir paleisk.</p>',
-      '<p class="library-goal">Paste your prompt and run.</p>'
+      '<p class="library-goal">Penki „yra / nėra“ ir viena perrašyta užklausa.</p>',
+      '<p class="library-goal">Five yes / no lines and one rewritten prompt.</p>'
     ],
     [
       'aria-label="Kopijuoti užklausos kokybės patikrinimo užklausą" data-track="library_copy_qualityCheck">Kopijuoti</button>',
       'aria-label="Copy quality-check prompt" data-track="library_copy_qualityCheck">Copy</button>'
     ],
-    ['<h4>Apribojimai ir formatas</h4>', '<h4>Constraints and format</h4>'],
+    ['<h4>Užklausa su ribomis</h4>', '<h4>A prompt with limits</h4>'],
+    ['<p class="library-goal">Paruošk užklausą su ribomis, ne gatavą laišką.</p>', '<p class="library-goal">Prepare a prompt with limits, not a finished letter.</p>'],
     [
       'aria-label="Kopijuoti apribojimų ir formato užklausą" data-track="library_copy_constraints">Kopijuoti</button>',
       'aria-label="Copy constraints-and-format prompt" data-track="library_copy_constraints">Copy</button>'
@@ -566,7 +607,7 @@ function getEnHtmlReplacementPairs() {
       'src="assets/memes/su_1.png"'
     ],
     [
-      'alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Vaidmuo, ryžiai — 2 Kontekstas, lašiša — 3 Rezultatas, avokadas — 4 Mąstymas, sezamai — 5 Kokybės kontrolė."',
+      'alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Rolė, ryžiai — 2 Kontekstas, lašiša — 3 Rezultatas, avokadas — 4 Mąstymas, sezamai — 5 Kokybės kontrolė."',
       'alt="Exploded sushi, bottom to top: nori — 1 Role, rice — 2 Context, salmon — 3 Result, avocado — 4 Thinking, sesame — 5 Quality control."'
     ],
     ['<h2 class="essence-tagline">Be struktūros DI spėlioja.</h2>', '<h2 class="essence-tagline">Without structure, AI guesses.</h2>'],
@@ -581,11 +622,11 @@ function getEnHtmlReplacementPairs() {
       'data-msg-select="Mark an answer and press “See result”."'
     ],
     [
-      'data-feedback-correct="Teisingai: vaidmuo, kontekstas ir aiškus pageidaujamas rezultatas leidžia DI atsakyti pagal tavo užduotį."',
+      'data-feedback-correct="Teisingai: rolė, kontekstas ir aiškus pageidaujamas rezultatas leidžia DI atsakyti pagal tavo užduotį."',
       'data-feedback-correct="Correct: role, context, and a clear desired output let the AI answer in line with your task."'
     ],
     [
-      'data-feedback-wrong="Be aiškaus vaidmens ir konkretaus konteksto DI spėlioja. Vien prašymas būti kūrybingam, bendras tonas ar labai trumpa užklausa neperduoda, kokio turinio ir formato tikiesi."',
+      'data-feedback-wrong="Be aiškios rolės ir konkretaus konteksto DI spėlioja. Vien prašymas būti kūrybingam, bendras tonas ar labai trumpa užklausa neperduoda, kokio turinio ir formato tikiesi."',
       'data-feedback-wrong="Without a clear role and concrete context the AI guesses. A vague “be creative” line, tone alone, or a very short prompt does not say what content or format you want."'
     ],
     ['<legend class="label">Vienas atsakymas</legend>', '<legend class="label">One answer</legend>'],
@@ -594,7 +635,7 @@ function getEnHtmlReplacementPairs() {
       '<h2 class="quiz-question" id="quiz-question-heading">What should you put in a prompt so the AI answer is useful?</h2>'
     ],
     [
-      '<span class="quiz-option-text">Užtenka aiškios temos ir norimo formato (pvz. „lentelė“), net jei nenurodau vaidmens ir konteksto.</span>',
+      '<span class="quiz-option-text">Užtenka aiškios temos ir norimo formato (pvz. „lentelė“), net jei nenurodau rolės ir konteksto.</span>',
       '<span class="quiz-option-text">A clear topic and desired format (e.g. “table”) are enough even if I skip role and context.</span>'
     ],
     [
@@ -602,12 +643,12 @@ function getEnHtmlReplacementPairs() {
       '<span class="quiz-option-text">One line is enough, e.g. “Prepare a report on…” — without context, goal, or desired output.</span>'
     ],
     [
-      '<span class="quiz-option-text">Pakanka vaidmens ir tono (pvz. „rašyk vadovybei“), net jei nepasakau, kokių faktų DI turi žinoti ir kaip mąstyti.</span>',
+      '<span class="quiz-option-text">Pakanka rolės ir tono (pvz. „rašyk vadovybei“), net jei nepasakau, kokių faktų DI turi žinoti ir kaip mąstyti.</span>',
       '<span class="quiz-option-text">Role and tone (e.g. “write for leadership”) are enough even if I do not say what facts the AI should know or how to reason.</span>'
     ],
     [
-      '<span class="quiz-option-text">Vaidmuo (kas esi ir ko sieki), kontekstas (projektas, auditorija, ką jau žino komanda) ir pageidaujamas rezultato formatas.</span>',
-      '<span class="quiz-option-text">Role (who you are and what you want), context (project, audience, what the team already knows), and the desired output format.</span>'
+      '<span class="quiz-option-text">Rolė (kas esi), kontekstas (projektas, auditorija, ką jau žino komanda) ir pageidaujamas rezultato formatas.</span>',
+      '<span class="quiz-option-text">Role (who you are), context (project, audience, what the team already knows), and the desired output format.</span>'
     ],
     [
       '<span class="quiz-option-text">Pakanka nurodyti tik bendrą toną (draugiškas ar formalus), be temos, auditorijos ir norimo formato.</span>',

@@ -7,6 +7,10 @@ site/
 docs/favicon-64.png
 assets/favicon-64.png
 
+# Local PDF sources. Commit the PDF binaries only.
+docs/pamoka-1-pdf.md
+docs/pamoka-1-pdf-en.md
+
 # Pandoc / LaTeX pagalbiniai (jei naudojate pdflatex)
 *.aux
 *.log

@@ -430,9 +430,9 @@ For each new UI, **reuse a row below** before inventing a class.
 
 | Class | Purpose | When to use | Don't |
 |-------|---------|-------------|-------|
-| `.brand-header` | Fixed, full width, no background, content to the right, `pointer-events: none` except the lockup and language buttons | Global | Duplicate logo elsewhere; paint a full-width bar and pin the lockup to the viewport edge |
-| `.brand-header__inner` | `max-content` right cluster. Background `--bg-dark`, radius on the left only. Not the 1200px `.container` | Global | Stretch it to the hero frame |
-| `.brand-lockup` | Link to www.promptanatomy.app. Flat `--brand-navy` tile, 36px below 640px and 40px from there, radius `--radius-lg`, no glow. Bolt `currentColor` from `--brand-gold`, wordmark split at weight 900 on the OS sans. Tagline is a sibling under the link, not inside it | External brand | `text-transform: uppercase` on the name; paint the second word with `--accent-yellow`; a `max-width: 1024px` rule that forces the tile to 40px; change the lesson canonical URL |
+| `.brand-header` | Fixed, full width, solid `--bg-dark`, no fade and no glass. Lockup on the left, language and Salė on the right. `pointer-events: none` except the lockup and those controls. Height is `--brand-header-h` from `header.offsetHeight` | Global | Duplicate logo elsewhere; leave the bar transparent so the hero eyebrow shows through |
+| `.brand-header__inner` | Full-width row: `.brand-cluster` left, `.brand-header__tools` right. Not the 1200px `.container` | Global | Pin the cluster to the right edge |
+| `.brand-lockup` | Same-tab link to `#main-content`. Flat `--brand-navy` tile, 36px below 640px and 40px from there, radius `--radius-lg`, no glow. Bolt `currentColor` from `--brand-gold`, wordmark one line at weight 900 on the OS sans. Tagline is a sibling under the link, left-aligned, hidden at `max-width: 640px` together with `#roomModeBtn` | Lesson home | `text-transform: uppercase` on the name; paint the second word with `--accent-yellow`; a `max-width: 1024px` rule that forces the tile to 40px; open `.app` from the lockup |
 | `.lang-switch__btn` | LT / EN toggle | Global; `.is-active` state | New locale UI without build rules |
 
 ### 7.3 Navigation
@@ -440,7 +440,7 @@ For each new UI, **reuse a row below** before inventing a class.
 | Class | Purpose | When to use | Don't |
 |-------|---------|-------------|-------|
 | `.nav-sidebar` | Desktop dot nav | 15 slides | Change dot count without adding/removing `section` + both navs |
-| `.nav-mobile` | Bottom dot nav + progress | ≤1024px | — |
+| `.nav-mobile` | In-flow bar. At ≤1024px the 15 `.nav-item` nodes stay in the DOM and `.nav-mobile-inner` is hidden. Visible row is previous, `#nav-mobile-progress`, next | ≤1024px | `position: fixed`; a second red CTA on the step buttons |
 | `.nav-item` | Dot button | One per slide | Text labels in dots (use `aria-label`) |
 | `.slide-outline` | “Turinys” jump list | Fixed; syncs from nav labels | Manual list out of sync |
 | `.slide-outline__first` | Start-here line (practice · library) | Above outline list; JS `uiText` | Extra Tier-1 CTA |
@@ -738,7 +738,7 @@ Minimal page — no slide nav or lesson JS.
 ### v3.0 Definition of Done (2026-10-01)
 
 - [x] Six baked illustrations (`.viz-figure`): check, meeting, levels, feedback, team, letter at 800×900. `#intro` proof is HTML.
-- [x] Intro is one weekly line vs four fields (Vaidmuo, Tikslas, Įvestis, Rezultatas). A/B/C is only the result value. Schema fields stay on `#guided`. The 60 min sprint stays on `meeting` and the later template scenes. No second prompt card, no table headers, no second copy button, no chat window or laptop frame
+- [x] Intro is one weekly line vs four fields (Rolė, Tikslas, Įvestis, Rezultatas). A/B/C is only the result value. Schema fields stay on `#guided`. The 60 min sprint stays on `meeting` and the later template scenes. No second prompt card, no table headers, no second copy button, no chat window or laptop frame
 - [x] LT and EN renders from one scene source; EN pairs swap `src`/`srcset` and `alt`; library keys unchanged
 - [x] `verify:robots-llms` checks every referenced illustration exists in `site/assets/illustrations` and nothing unreferenced leaks; EN root never points at `-lt` renders
 - [x] `.result-slip` text cards (intermediate 2026-10-01 attempt) removed — they read as a second prompt card

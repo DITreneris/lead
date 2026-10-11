@@ -3,6 +3,26 @@
 <html lang="lt" class="intro-active">
 <head>
     <meta charset="UTF-8">
+    <script>
+    try {
+        var salaOn = /(?:^|[?&])sala=1(?:&|$)/.test(location.search);
+        var roomStored = null;
+        try { roomStored = sessionStorage.getItem('pa-room'); } catch (eRoom) {}
+        var roomOn = roomStored === '1' || (salaOn && roomStored !== '0');
+        if (roomOn) document.documentElement.classList.add('room');
+        if (salaOn && roomStored !== '0') {
+            try { sessionStorage.setItem('pa-room', '1'); } catch (eRoomSet) {}
+        }
+        if (!roomOn && salaOn) {
+            try {
+                var roomUrl = new URL(location.href);
+                roomUrl.searchParams.delete('sala');
+                history.replaceState(null, '', roomUrl.pathname + roomUrl.search + roomUrl.hash);
+            } catch (eRoomUrl) {}
+        }
+        try { localStorage.removeItem('pa-room'); } catch (eRoomDrop) {}
+    } catch (eRoomBoot) {}
+    </script>
     <meta name="page-locale" content="lt">
     <meta name="app-base-path" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -214,6 +234,168 @@
         }
         /* DS_TOKENS_END */
 
+        /* Salės režimas: šviesus popierius visai pamokai. Numatyti tokenai lieka tamsūs. */
+        html.room {
+            --bg-dark: var(--surface-paper);
+            --surface-base: var(--surface-paper);
+            --surface-raised: var(--surface-light);
+            --surface-code: var(--surface-light);
+            --surface-inset: var(--surface-light);
+            --surface-inset-soft: var(--surface-light);
+            --surface-muted: var(--surface-light);
+            --surface-muted-deep: var(--surface-light);
+            --surface-overlay: var(--surface-paper);
+            --surface-overlay-mid: var(--surface-paper);
+            --surface-overlay-strong: var(--surface-paper);
+            --surface-stage-card: var(--surface-light);
+            --text-bright: var(--text-ink);
+            --text-body: var(--text-ink-body);
+            --text-muted: var(--text-ink-muted);
+            --text-soft: var(--text-ink-muted);
+            --text-tertiary: var(--text-ink-muted);
+            --text-secondary: var(--text-ink-muted);
+            --border: rgba(15, 23, 42, 0.22);
+            --border-hairline: rgba(15, 23, 42, 0.18);
+            --border-control: rgba(15, 23, 42, 0.28);
+            --border-control-hover: rgba(15, 23, 42, 0.45);
+            --border-subtle: rgba(15, 23, 42, 0.22);
+            --nav-dot-idle-border: rgba(15, 23, 42, 0.35);
+            --nav-dot-idle-bg: transparent;
+            --focus-ring: var(--primary-blue);
+            --font-size-label: 16px;
+            --font-size-ui: 18px;
+            --font-size-body: 20px;
+            --font-size-lead: 22px;
+            --tracking-label: 0.04em;
+        }
+        html.room body { background-image: none; }
+        html.room section#cta { background: var(--surface-paper); }
+        html.room .meme-interlude,
+        html.room .viz-figure { display: none; }
+        html.room section:not(#intro) .container:has(> .viz-figure),
+        html.room section:not(#intro) .container:has(> .viz-figure:first-child) {
+            grid-template-columns: minmax(0, 1fr);
+        }
+        html.room section:not(#intro) .container:has(> .viz-figure) > div {
+            width: 100%;
+            max-width: var(--measure-prose);
+            justify-self: center;
+        }
+        html.room .brand-name .brand-prompt { color: var(--text-ink); }
+        html.room .brand-name .brand-anatomy { color: var(--primary-blue); }
+        html.room #intro .intro-proof-before,
+        html.room #intro .intro-proof-after {
+            border: 1px solid var(--border);
+        }
+        html.room .nav-mobile {
+            border-top-color: var(--border);
+            box-shadow: none;
+        }
+        html.room .nav-mobile::before { display: none; }
+        html.room button.nav-item.active {
+            background: var(--accent-yellow);
+            border-color: var(--accent-yellow);
+        }
+        html.room .lang-switch__btn:not(.is-active),
+        html.room .room-switch:not([aria-pressed="true"]) { background: var(--surface-light); }
+        html.room .lang-switch__btn.is-active {
+            color: var(--text-on-accent);
+            background: var(--accent-yellow);
+            border-color: var(--accent-yellow);
+        }
+        html.room .room-switch[aria-pressed="true"] {
+            color: var(--surface-paper);
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+        html.room .types-card-example,
+        html.room .types-slide--primer .types-card .types-card-example,
+        html.room .types-primer-quick .types-card-example.types-primer-quick-example,
+        html.room .types-primer-quick,
+        html.room .primer-next-cta,
+        html.room .library-prompt-block,
+        html.room .promo-handoff,
+        html.room .promo-handoff__panel,
+        html.room .library-tabs [role="tab"] {
+            background: var(--surface-light);
+        }
+        html.room .library-tabs [role="tab"][aria-selected="true"] {
+            color: var(--text-on-accent);
+            background: var(--accent-yellow);
+            border-color: var(--accent-yellow);
+        }
+        html.room .quiz-option:hover { background: var(--surface-light); }
+        html.room .quiz-option input { accent-color: var(--primary-blue); }
+        html.room .disclosure-chip__summary {
+            border-color: rgba(15, 23, 42, 0.22);
+            border-left-color: var(--primary-blue);
+        }
+        html.room #intro .intro-strip .disclosure-chip__summary:hover,
+        html.room #intro .intro-proof-kicker,
+        html.room .hero-title-accent,
+        html.room .link-tier-tertiary:hover,
+        html.room .btn-pdf-outline,
+        html.room .btn-pdf-outline:hover,
+        html.room .prompt-line b,
+        html.room h2.essence-tagline,
+        html.room .cta-telegram-link:hover,
+        html.room .cta-telegram-link:hover .icon--telegram,
+        html.room .types-primer-quick-k,
+        html.room .types-card-k,
+        html.room .types-copy-btn,
+        html.room .types-copy-btn:hover,
+        html.room .types-copy-btn:disabled:hover,
+        html.room .library-howto-summary,
+        html.room .library-goal,
+        html.room .library-toggle-all,
+        html.room .library-toggle-all:hover,
+        html.room .slide-outline__icon,
+        html.room .roadmap-time,
+        html.room .roadmap-total,
+        html.room .schema-foot a:hover,
+        html.room .quiz-feedback--ok .quiz-feedback-title,
+        html.room .inline-link--accent,
+        html.room .primer-next-cta,
+        html.room .primer-next-cta:hover {
+            color: var(--primary-blue);
+        }
+        html.room .btn-pdf-outline,
+        html.room .btn-pdf-outline:hover,
+        html.room .types-copy-btn,
+        html.room .types-copy-btn:hover,
+        html.room .types-copy-btn:disabled:hover,
+        html.room .library-toggle-all,
+        html.room .library-toggle-all:hover,
+        html.room .primer-next-cta,
+        html.room .primer-next-cta:hover {
+            border-color: var(--primary-blue);
+        }
+        html.room .brand-tagline,
+        html.room .types-slide--primer .types-card-desc,
+        html.room .types-card-desc,
+        html.room .types-primer-quick-desc,
+        html.room .types-card-result,
+        html.room .types-card-example,
+        html.room .prompt-line,
+        html.room .library-prompt-block,
+        html.room .library-goal,
+        html.room .cta-foot,
+        html.room .quiz-option-text,
+        html.room .roadmap-name {
+            font-size: var(--font-size-body);
+        }
+        html.room .prompt-line b,
+        html.room .types-primer-quick-k,
+        html.room .types-card-k,
+        html.room .types-slide--primer .types-copy-btn,
+        html.room .library-actions .types-copy-btn,
+        html.room .library-actions .library-toggle-all,
+        html.room .library-tabs [role="tab"] {
+            font-size: var(--font-size-label);
+            letter-spacing: 0.04em;
+        }
+        html.room .types-slide--primer .types-card h3 { font-size: var(--font-size-ui); }
+
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { 
@@ -262,7 +444,7 @@
         }
 
         :focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
 
@@ -284,7 +466,8 @@
         }
         .icon--telegram { width: 1.25em; height: 1.25em; color: #2aabee; }
 
-        /* Prekės ženklo juosta — tik dešinys klasteris, dešinė briauna sutampa su sekcija */
+        /* Prekės ženklo juosta — pilnas dažytas plotis, spyna kairėje */
+        html { --brand-header-h: 72px; }
         .brand-header {
             position: fixed;
             top: 0;
@@ -292,25 +475,32 @@
             right: 0;
             z-index: 200;
             display: flex;
-            justify-content: flex-end;
-            align-items: flex-start;
-            padding: 8px var(--space-section-x) 0;
+            justify-content: stretch;
+            align-items: center;
+            padding: 8px var(--space-section-x);
             pointer-events: none;
-            background: none;
+            background: var(--bg-dark);
         }
         .brand-header__inner {
-            width: max-content;
+            width: 100%;
             max-width: 100%;
             margin: 0;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
             flex-wrap: nowrap;
-            gap: 10px;
-            padding: 4px 0 4px 10px;
+            gap: 12px;
+            padding: 0;
             pointer-events: none;
-            background: var(--bg-dark);
-            border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+            background: none;
+        }
+        .brand-header__tools {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+            pointer-events: none;
+            flex-shrink: 0;
         }
         .brand-header .brand-lockup {
             pointer-events: auto;
@@ -321,15 +511,16 @@
             color: inherit;
             border-radius: var(--radius-lg);
             padding: 6px 8px;
-            margin: -6px -8px;
+            margin: -6px -8px 0;
             transition: opacity var(--duration-base) var(--ease-out);
         }
         .brand-header .brand-lockup:hover { opacity: 0.9; }
         .brand-cluster {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
+            align-items: flex-start;
+            gap: 2px;
+            min-width: 0;
         }
         .brand-icon {
             width: 36px;
@@ -349,8 +540,8 @@
         .brand-wordmark {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            text-align: right;
+            align-items: flex-start;
+            text-align: left;
             line-height: 1.12;
         }
         .brand-name {
@@ -380,7 +571,6 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            margin-right: 12px;
         }
         .lang-switch__btn {
             font-family: var(--font-main);
@@ -403,6 +593,24 @@
             color: var(--text-on-accent);
             background: var(--accent-yellow);
             border-color: var(--accent-yellow);
+        }
+        .room-switch {
+            pointer-events: auto;
+            font-family: var(--font-main);
+            font-weight: 800;
+            font-size: var(--font-size-label);
+            letter-spacing: 0.08em;
+            padding: 6px 10px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--border-control);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        .room-switch[aria-pressed="true"] {
+            color: var(--surface-paper);
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
         }
 
         /* Navigacija */
@@ -441,6 +649,32 @@
             align-items: center;
             gap: 12px;
             max-width: 100%;
+        }
+        .nav-mobile-row {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            width: 100%;
+            min-width: 0;
+        }
+        .nav-mobile-step {
+            flex: 0 0 auto;
+            min-height: var(--tap-min);
+            padding: 8px 12px;
+            font-family: var(--font-main);
+            font-size: var(--font-size-label);
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            color: var(--text-bright);
+            background: transparent;
+            border: 1px solid var(--border-control);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+        }
+        .nav-mobile-step:disabled {
+            opacity: 0.4;
+            cursor: default;
         }
         .nav-mobile-progress {
             display: none;
@@ -495,14 +729,14 @@
         }
 
         section[id] {
-            scroll-margin-top: calc(var(--scroll-anchor-top) + env(safe-area-inset-top, 0px));
+            scroll-margin-top: calc(var(--brand-header-h, 72px) + env(safe-area-inset-top, 0px));
         }
 
         section#intro {
             background: radial-gradient(circle at 80% 20%, rgba(251, 211, 4, 0.035), transparent 52%);
             align-items: center;
             justify-content: center;
-            padding-top: max(var(--space-section-y), calc(72px + env(safe-area-inset-top, 0px)));
+            padding-top: max(var(--space-section-y), calc(var(--brand-header-h, 72px) + env(safe-area-inset-top, 0px)));
         }
         .intro-frame {
             width: 100%;
@@ -716,7 +950,7 @@
             text-decoration: none;
         }
         .primer-next-cta:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
 
@@ -795,7 +1029,7 @@
         .disclosure-chip__summary::-webkit-details-marker { display: none; }
         .disclosure-chip__summary::marker { content: ''; }
         .disclosure-chip__summary:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
         .disclosure-chip--inline .disclosure-chip__summary::after {
@@ -849,7 +1083,7 @@
             text-underline-offset: 3px;
         }
         .link-tier-tertiary:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
         .hero-foot-links a.link-tier-tertiary {
@@ -885,7 +1119,7 @@
         }
         .btn-pdf-outline .icon { opacity: 0.9; }
         .btn-pdf-outline:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
 
@@ -1010,7 +1244,7 @@
         }
         .site-legal-footnote__email a:hover { color: var(--text-bright); }
         .site-legal-footnote__email a:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
         .label { 
@@ -1076,7 +1310,7 @@
         .types-copy-btn:focus-visible,
         .quiz-check-btn:focus-visible,
         .quiz-reset-btn:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
         .copy-prompt-btn:disabled,
@@ -1386,7 +1620,7 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
         }
         .types-slide--guided .types-copy-btn--practice:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
         .types-slide--guided .types-card h3 {
@@ -1610,7 +1844,7 @@
         .library-howto-summary::marker { content: ''; }
         .library-howto-summary:hover { background: var(--accent-yellow-bg-hover); }
         .library-howto-summary:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: -2px;
         }
         .library-howto-body {
@@ -1684,7 +1918,7 @@
             background: var(--accent-yellow-bg-hover);
         }
         .library-cat-summary:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: -2px;
         }
         .library-cat-body {
@@ -1760,7 +1994,7 @@
             border-color: var(--accent-yellow-border-strong);
         }
         .library-toggle-all:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 2px;
         }
         .library-tabs [role="tab"] {
@@ -1783,7 +2017,7 @@
             border-color: var(--accent-yellow);
         }
         .library-tabs [role="tab"]:focus-visible {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 3px;
         }
 
@@ -2148,7 +2382,7 @@
             background: var(--white-alpha-06);
         }
         .quiz-option:has(input:focus-visible) {
-            outline: 2px solid var(--accent-yellow);
+            outline: 2px solid var(--focus-ring, var(--accent-yellow));
             outline-offset: 2px;
         }
         .quiz-option input {
@@ -2258,7 +2492,7 @@
             text-decoration-thickness: 2px;
             text-underline-offset: 3px;
         }
-        .inline-link:focus-visible { outline: 2px solid var(--accent-yellow); outline-offset: 3px; }
+        .inline-link:focus-visible { outline: 2px solid var(--focus-ring, var(--accent-yellow)); outline-offset: 3px; }
 
         .inline-link--accent {
             color: var(--accent-yellow);
@@ -2373,7 +2607,20 @@
                 pointer-events: none;
                 background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
             }
-            .nav-mobile-progress { display: block; }
+            .nav-mobile-row { display: flex; }
+            .nav-mobile-inner { display: none; }
+            .nav-mobile-progress {
+                display: block;
+                flex: 1 1 auto;
+                min-width: 0;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            #cta {
+                padding-bottom: calc(var(--outline-clear, 48px) + 12px);
+            }
             .prompt-editor { text-align: left; }
             .nav-mobile button.nav-item {
                 width: var(--tap-min);
@@ -2409,7 +2656,7 @@
                 box-shadow: 0 0 0 2px var(--bg-dark), 0 0 12px var(--accent-yellow-bg-glow);
             }
             .brand-header {
-                padding: 8px 20px 0;
+                padding: 8px 20px;
             }
             .schema-grid {
                 grid-template-columns: 1fr;
@@ -2433,7 +2680,7 @@
                 scroll-margin-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 12px);
             }
             section#intro {
-                padding-top: max(40px, calc(64px + env(safe-area-inset-top, 0px)));
+                padding-top: calc(var(--brand-header-h, 56px) + 16px + env(safe-area-inset-top, 0px));
             }
             #intro .container { grid-template-columns: 1fr; }
             #intro .hero-intro,
@@ -2456,9 +2703,10 @@
             #intro .intro-strip { order: 3; }
             html.intro-active .slide-outline { display: none; }
         }
-        @media (max-width: 480px) {
-            .brand-name { white-space: normal; text-align: right; max-width: 9.5em; }
-            .brand-tagline { letter-spacing: 0.14em; }
+
+        @media (max-width: 640px) {
+            #roomModeBtn,
+            .brand-tagline { display: none; }
         }
     </style>
 </head>
@@ -2477,12 +2725,8 @@
 
 <header class="brand-header" role="banner">
     <div class="brand-header__inner">
-    <div class="lang-switch" role="group" aria-label="Kalbos pasirinkimas">
-        <button type="button" class="lang-switch__btn" id="langLtBtn" lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
-        <button type="button" class="lang-switch__btn" id="langEnBtn" lang="en" aria-label="Switch to English">EN</button>
-    </div>
     <div class="brand-cluster">
-    <a class="brand-lockup" href="https://www.promptanatomy.app/?utm_source=cloud&amp;utm_medium=header&amp;utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer" data-track="brand_app_click" data-track-dest="app" aria-label="Promptų Anatomija — brendo svetainė www.promptanatomy.app (atidaryti naujame skirtuke)">
+    <a class="brand-lockup" href="#main-content" aria-label="Promptų Anatomija, pamokos pradžia">
         <div class="brand-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path fill="currentColor" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
@@ -2493,6 +2737,19 @@
         </div>
     </a>
     <p class="brand-tagline">DI praktinė sistema</p>
+    </div>
+    <div class="brand-header__tools">
+    <button type="button" class="room-switch" id="roomModeBtn" aria-pressed="false" aria-label="Salės režimas: šviesus fonas projektoriui">Salė</button>
+    <script>
+    try {
+        var roomBtnBoot = document.getElementById('roomModeBtn');
+        if (roomBtnBoot) roomBtnBoot.setAttribute('aria-pressed', document.documentElement.classList.contains('room') ? 'true' : 'false');
+    } catch (eRoomBtn) {}
+    </script>
+    <div class="lang-switch" role="group" aria-label="Kalbos pasirinkimas">
+        <button type="button" class="lang-switch__btn" id="langLtBtn" lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
+        <button type="button" class="lang-switch__btn" id="langEnBtn" lang="en" aria-label="Switch to English">EN</button>
+    </div>
     </div>
     </div>
 </header>
@@ -2516,7 +2773,11 @@
 </nav>
 
 <nav class="nav-mobile" aria-label="Skaidrių navigacija (mobilusis)">
-    <div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Įvadas</div>
+    <div class="nav-mobile-row">
+        <button type="button" class="nav-mobile-step" id="nav-mobile-prev" disabled aria-label="Ankstesnė skaidrė">Ankstesnė</button>
+        <div class="nav-mobile-progress" id="nav-mobile-progress" aria-live="polite">1/15 · Įvadas</div>
+        <button type="button" class="nav-mobile-step" id="nav-mobile-next" aria-label="Kita skaidrė">Kita</button>
+    </div>
     <div class="nav-mobile-inner">
         <button type="button" class="nav-item active" aria-label="Skaidrė 1: Įvadas" aria-current="true"></button>
         <button type="button" class="nav-item" aria-label="Skaidrė 2: Kas yra promptas?"></button>
@@ -2545,7 +2806,7 @@
         <div class="intro-copy">
             <span class="label">DI praktinė sistema įmonei</span>
             <h1>Trumpa užklausa tampa užduotimi.</h1>
-            <p class="hero-intro slide-lead">Tas pats savaitės tikslas: vaidmuo, tikslas, įvestis, rezultatas. Paleidi per 2 minutes.</p>
+            <p class="hero-intro slide-lead">Tas pats savaitės tikslas: rolė, tikslas, įvestis, rezultatas. Paleidi per 2 minutes.</p>
             <div class="hero-actions">
                 <a class="hero-primary-link" href="#guided" aria-label="Pradėti pamoką: pereiti į 2 minučių praktiką" data-track="hero_primary_click">
                     <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
@@ -2565,9 +2826,9 @@
             <div class="intro-proof-block">
                 <p class="intro-proof-kicker">Po</p>
                 <div class="intro-proof-after">
-                    <div class="practice-structured-line"><strong>Vaidmuo</strong> <span>darbo asistentas</span></div>
+                    <div class="practice-structured-line"><strong>Rolė</strong> <span>darbo asistentas</span></div>
                     <div class="practice-structured-line"><strong>Tikslas</strong> <span>savaitės prioritetai</span></div>
-                    <div class="practice-structured-line"><strong>Įvestis</strong> <span>užrašai / laiškai</span></div>
+                    <div class="practice-structured-line"><strong>Kontekstas</strong> <span>užrašai / laiškai</span></div>
                     <div class="practice-structured-line"><strong>Rezultatas</strong> <span>veiksmų sąrašas (A/B/C)</span></div>
                 </div>
             </div>
@@ -2580,9 +2841,9 @@
                 <summary class="hero-faq__summary disclosure-chip__summary">DUK (trumpai)</summary>
                 <div class="hero-faq__panel disclosure-chip__panel">
                     <div class="hero-faq__item"><strong>Ką įrašyti į užklausą vadovybės atnaujinimui?</strong> Auditoriją, kontekstą, ribas ir rezultatą (punktai, lentelė ar sprendimo santrauka). Pridėk sėkmės kriterijų.</div>
-                    <div class="hero-faq__item"><strong>Kaip sumažinti pramanytus faktus klientų laiškuose?</strong> Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kas saugu, ką būtina patikrinti.</div>
-                    <div class="hero-faq__item"><strong>Kas yra greita patikra?</strong> 30 sekundžių rizikos peržiūra prieš siuntimą: faktai, trūkstamas kontekstas ir 2–3 reputacijos rizikos.</div>
-                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (vaidmuo, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>
+                    <div class="hero-faq__item"><strong>Kaip sumažinti pramanytus faktus klientų laiškuose?</strong> Įklijuok šaltinio pastabas, prašyk citatų ir paleisk trumpą patikrą: kuriuos sakinius galima siųsti ir ką patikrinti ne DI.</div>
+                    <div class="hero-faq__item"><strong>Kas yra greita patikra?</strong> Keturi punktai prieš siuntimą: trys rizikos su citata, sakiniai, kuriuos galima siųsti, ką patikrinti ne DI, ir sąrašas „Trūksta:“.</div>
+                    <div class="hero-faq__item"><strong>Kaip gauti tą patį rezultatą visoje komandoje?</strong> Naudok vieną šabloną (rolė, kontekstas, rezultatas), tada kartok su tuo pačiu sąrašu.</div>
                 </div>
             </details>
         </div>
@@ -2645,14 +2906,14 @@
         <div class="schema-inner">
             <span class="label">Žingsniai</span>
             <h2>Promptų anatomijos schema</h2>
-            <p class="schema-lead slide-lead">Pradėk nuo vaidmens, konteksto ir rezultato.<br>Penkias schemos dalis naudok tada, kai užduotis yra sudėtinga.</p>
+            <p class="schema-lead slide-lead">Pradėk nuo rolės, konteksto ir rezultato.<br>Penkias schemos dalis naudok tada, kai užduotis yra sudėtinga.</p>
             <div class="schema-grid">
                 <div class="schema-column-flow">
                     <div class="schema-step schema-step--neutral">
                         <span class="schema-step-num">01</span>
                         <div class="schema-step-body">
-                            <strong>Vaidmuo</strong>
-                            <span>Kas esi ir koks tikslas (kodėl DI turi taip veikti)</span>
+                            <strong>Rolė</strong>
+                            <span>Kas esi</span>
                         </div>
                     </div>
                     <div class="schema-step schema-step--neutral">
@@ -2719,23 +2980,23 @@
                     <p class="types-card-k">Užklausa</p>
                     <div class="types-example-block">
                         <div class="types-card-example types-card-example--lines">
-                            <span>Vaidmuo: Tu esi mano darbo asistentas.</span>
+                            <span>Rolė: Tu esi mano darbo asistentas.</span>
                             <span>Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ].</span>
-                            <span>Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis].</span>
+                            <span>Kontekstas: [ĮKLIJUOK el. laišką / užrašus / užduotis].</span>
                             <span>Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas).</span>
-                            <span>Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“.</span>
+                            <span>Apribojimas: nenaudok faktų ar skaičių, kurių nėra kontekste; jei trūksta duomenų — parašyk „Trūksta:“.</span>
                         </div>
-                        <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Vaidmuo: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Įvestis: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra įvestyje; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti „po“ užklausą" data-track="practice_after_copy">Kopijuoti</button>
+                        <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Rolė: Tu esi mano darbo asistentas. Tikslas: [KĄ TURIU PADARYTI ŠIĄ SAVAITĘ]. Kontekstas: [ĮKLIJUOK el. laišką / užrašus / užduotis]. Rezultatas: 7 punktų sąrašas (prioritetas A/B/C + terminas, jei paminėtas). Apribojimas: nenaudok faktų ar skaičių, kurių nėra kontekste; jei trūksta duomenų — parašyk „Trūksta:“." aria-label="Kopijuoti „po“ užklausą" data-track="practice_after_copy">Kopijuoti</button>
                     </div>
                 </div>
             </article>
         </div>
         <div class="types-primer-quick">
             <p class="types-primer-quick-k">Patikra (30 sek.)</p>
-            <p class="types-primer-quick-desc">30 sekundžių: rizikos, kas tinka, ką patikrinti ne DI, ko trūksta.</p>
-            <p class="types-card-example types-primer-quick-example">Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste.</p>
+            <p class="types-primer-quick-desc">30 sekundžių: trys rizikos, ką siųsti, ką tikrinti ne DI, ko trūksta.</p>
+            <p class="types-card-example types-primer-quick-example">Trumpa patikra: 1) trys rizikos su citata, 2) sakiniai, kuriuos galima siųsti, 3) ką patikrinti ne DI, 4) sąrašas „Trūksta:“.</p>
             <div class="types-primer-quick-actions">
-                <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Trumpa patikra: 1) 3 rizikos, 2) kas tinka naudoti, 3) ką patikrinti ne DI, 4) ko trūksta kontekste." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
+                <button type="button" class="types-copy-btn types-copy-btn--practice" data-copy-text="Trumpa patikra: 1) trys rizikos su citata, 2) sakiniai, kuriuos galima siųsti, 3) ką patikrinti ne DI, 4) sąrašas „Trūksta:“." aria-label="Kopijuoti patikros mini-checklist" data-track="practice_qc_copy">Kopijuoti</button>
                 <p class="types-primer-quick-next">
                     <span class="types-card-k">Toliau</span>
                     <a class="inline-link inline-link--soft primer-next-cta" href="#roadmap" data-track="practice_next_click">Kelio planas ↓</a>
@@ -2794,7 +3055,7 @@
 <div class="meme-interlude">
     <figure class="meme-figure">
         <img src="assets/memes/meme-after-roadmap-lt.png" width="1672" height="941" loading="lazy" decoding="async"
-            alt="Dvi pusės: kairėje CHAOSAS — chaotiškas pokalbis su perbrauktu vaizdu ir trumpais prašymais; dešinėje KONTROLĖ — vaidmuo, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „DI nėra chaotiškas. Tavo užklausa – taip.“">
+            alt="Dvi pusės: kairėje CHAOSAS — chaotiškas pokalbis su perbrauktu vaizdu ir trumpais prašymais; dešinėje KONTROLĖ — rolė, kontekstas, rezultatas, kriterijai ir švarus logotipas. Antraštė: „DI nėra chaotiškas. Tavo užklausa – taip.“">
     </figure>
 </div>
 
@@ -2812,9 +3073,10 @@
             <h2>Laiškas ar žinutė (juodraštis)</h2>
             <p class="slide-sublead slide-lead">Iki ~100 žodžių: problema, sprendimas, aiškus kitas žingsnis.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>UŽDUOTIS</b> Paruošk vieną juodraštį; struktūra: problema → sprendimas → kvietimas veikti arba kitas aiškus žingsnis.</div>
-                <div class="prompt-line"><b>ĮVESTIS</b> Kam rašai: [komanda / klientas / partneris]. Situacija (faktai): [KAS ĮVYKO]. Tonas: profesionalus, bet šiltas. Riba: iki 100 žodžių.</div>
-                <div class="prompt-line"><b>REZULTATAS</b> Vieną paruoštą tekstą; jei tinka — antrą, trumpesnį variantą (pvz. Slack / Teams).</div>
+                <div class="prompt-line"><b>Rolė:</b> Tu esi mano darbo asistentas.</div>
+                <div class="prompt-line"><b>Tikslas:</b> Paruošk žinutę, kurią galima siųsti.</div>
+                <div class="prompt-line"><b>Kontekstas:</b> Kam: [komanda / klientas / partneris]. Faktai: [KAS ĮVYKO]. Tonas: profesionalus, šiltas.</div>
+                <div class="prompt-line"><b>Rezultatas:</b> 1) Laiškas, iki 100 žodžių. Trys pastraipos: problema; sprendimas; kitas žingsnis (kas ir kada). 2) Žinutė, iki 40 žodžių. Tos pačios trys dalys, po vieną sakinį. Ko nėra įvestyje — „Trūksta:“.</div>
                 <button type="button" class="copy-prompt-btn" data-track="template_copy_email">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span> Laiškas su aiškiu kitu žingsniu.</div>
@@ -2836,9 +3098,10 @@
             <h2>Susitikimo ar sprinto planas</h2>
             <p class="slide-sublead slide-lead">Viena lentelė: laikas, veikla, tikslas — ir keli klausimai sprendimui.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>UŽDUOTIS</b> Sudaryk susitikimo ar sprinto planą lentele (laikas · veikla · tikslas) ir pridėk 3 klausimus, kurie padėtų priimti sprendimą.</div>
-                <div class="prompt-line"><b>ĮVESTIS</b> Trukmė: [pvz. 60 min.]. Tema: [TEMA]. Komanda / rolės: [KAS DALYVAUJA]. Jie jau žino: [KĄ SUTAREI ANKSČIAU].</div>
-                <div class="prompt-line"><b>REZULTATAS</b> Lentelę su stulpeliais Laikas | Veikla | Tikslas, po ja — 3 klausimus.</div>
+                <div class="prompt-line"><b>Rolė:</b> Tu esi mano darbo asistentas.</div>
+                <div class="prompt-line"><b>Tikslas:</b> Sudaryk planą, pagal kurį komanda priima vieną sprendimą.</div>
+                <div class="prompt-line"><b>Kontekstas:</b> Trukmė: [MIN.]. Tema: [TEMA]. Pareigos: [KAS DALYVAUJA]. Jau sutarta: [KĄ SUTAREI ANKSČIAU].</div>
+                <div class="prompt-line"><b>Rezultatas:</b> Lentelė Laikas | Veikla | Tikslas. Laikai susideda į trukmę. Tuščia trukmė — 60 min. ir eilutė „Prielaida: 60 min.“ Trys klausimai. Kiekvienas pavadina sprendimą, kurį atrakina. Ko nėra įvestyje — „Trūksta:“.</div>
                 <button type="button" class="copy-prompt-btn" data-track="template_copy_meeting">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span> Planas paruoštas per kelias minutes.</div>
@@ -2854,9 +3117,10 @@
             <h2>Viena žinutė, trys versijos</h2>
             <p class="slide-sublead slide-lead">Trumpa, normali ir detali — ta pati mintis.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>UŽDUOTIS</b> Parašyk tą pačią žinutę ar užduotį trimis sudėtingumo lygiais (bazinis, vidutinis, pažengęs).</div>
-                <div class="prompt-line"><b>ĮVESTIS</b> Tema ar užduotis: [TEMA]. Kas skaito: [pvz. junior / senior, klientas / vidinė komanda]. Pradinė mintis ar juodraštis (jei yra): [TEKSTAS].</div>
-                <div class="prompt-line"><b>REZULTATAS</b> Tris aiškiai atskirtas versijas su antraštėmis Bazinis / Vidutinis / Pažengęs; tonas ir detalumas turi augti kartu su lygiu.</div>
+                <div class="prompt-line"><b>Rolė:</b> Tu esi mano darbo asistentas.</div>
+                <div class="prompt-line"><b>Tikslas:</b> Tą pačią mintį parašyk trimis lygiais.</div>
+                <div class="prompt-line"><b>Kontekstas:</b> Mintis: [TEMA]. Kas skaito: [junior / senior, klientas / vidinė komanda]. Juodraštis, jei yra: [TEKSTAS].</div>
+                <div class="prompt-line"><b>Rezultatas:</b> Trys blokai, tie patys faktai. Bazinis: 1 sakinys, vienas veiksmas. Vidutinis: 4 sakiniai, veiksmas, savininkas, terminas. Pažengęs: tie patys faktai, 1 rizika, 1 sprendimas. Naujo fakto, kurio nėra įvestyje, nekurk. Trūksta — „Trūksta:“.</div>
                 <button type="button" class="copy-prompt-btn" data-track="template_copy_levels">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span> Vienas šablonas — kelios auditorijos.</div>
@@ -2884,9 +3148,11 @@
             <h2>Teksto įvertinimas</h2>
             <p class="slide-sublead slide-lead">Vienas pirmas pakeitimas.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>UŽDUOTIS</b> Įvertink pagal kriterijus ir duok vieną aiškų patarimą, ką pakeisti pirmiausia.</div>
-                <div class="prompt-line"><b>ĮVESTIS</b> Tekstas ar darbas: [TEKSTAS]. Vertinimo kriterijai: [Kriterijai].</div>
-                <div class="prompt-line"><b>REZULTATAS</b> Trumpą įvertinimą (balas ar lygis), 3 stiprias vietas, 1 konkretų tobulinimo žingsnį su pavyzdžiu.</div>
+                <div class="prompt-line"><b>Rolė:</b> Tu esi mano darbo asistentas.</div>
+                <div class="prompt-line"><b>Tikslas:</b> Pasakyk, ką šiame tekste keisti pirmiausia.</div>
+                <div class="prompt-line"><b>Kontekstas:</b> Tekstas: [TEKSTAS]. Kriterijai: aiškumas; vienas veiksmas; tonas.</div>
+                <div class="prompt-line"><b>Mąstymas:</b> Kiekvienam kriterijui atsakyk „yra“ arba „nėra“. Prie „nėra“ cituok sakinį iš teksto.</div>
+                <div class="prompt-line"><b>Rezultatas:</b> Trys eilutės, po vieną kriterijų: yra arba nėra, citata. Tada viena pora: Buvo / Turi būti.</div>
                 <button type="button" class="copy-prompt-btn" data-track="template_copy_feedback">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></span> Vienas pakeitimas, ne dešimt taisymų.</div>
@@ -2902,9 +3168,11 @@
             <h2>Užduotis / mokymas komandai</h2>
             <p class="slide-sublead slide-lead">Vienas konkretus formatas — pvz. patikrinimas ar praktinė užduotis — su instrukcija komandai.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>UŽDUOTIS</b> Sukurk trumpą medžiagą ar užduotį; naudok pateiktą pavyzdį, kad būtų įtaigi ir pritaikoma.</div>
-                <div class="prompt-line"><b>ĮVESTIS</b> Tema: [TEMA]. Auditorija: [Komanda / rolė]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys iš tavo veiklos ar proceso: [TRUMPAI].</div>
-                <div class="prompt-line"><b>REZULTATAS</b> Paruoštą tekstą su aiškia instrukcija komandai; jei tinka — atsakymų ar vertinimo raktą.</div>
+                <div class="prompt-line"><b>Rolė:</b> Tu esi mano darbo asistentas.</div>
+                <div class="prompt-line"><b>Tikslas:</b> Paruošk vieną užduotį komandai ir raktą, pagal kurį ji laikoma padaryta.</div>
+                <div class="prompt-line"><b>Kontekstas:</b> Tema: [TEMA]. Auditorija: [KOMANDA]. Pareigos: [PAREIGOS]. Formatas: [žinių patikrinimas / praktinė užduotis]. Pavyzdys: [TRUMPAI].</div>
+                <div class="prompt-line"><b>Mąstymas:</b> Formatą imk tik iš lauko. Tuščias formatas — sustok ir parašyk „Trūksta: formatas“.</div>
+                <div class="prompt-line"><b>Rezultatas:</b> Visada du blokai. 1) Instrukcija, iki 120 žodžių: viena užduotis, vienas savininkas, terminas. 2) Raktas. Jei formatas yra žinių patikrinimas — teisingi atsakymai. Jei formatas yra praktinė užduotis — 3 punktai, pagal kuriuos laikoma padaryta. Faktai tik iš pavyzdžio. Ko nėra — „Trūksta:“.</div>
                 <button type="button" class="copy-prompt-btn" data-track="template_copy_team">Kopijuoti užklausą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span> Užduotis komandai su terminu.</div>
@@ -2926,9 +3194,11 @@
             <h2>Greita patikra</h2>
             <p class="slide-sublead slide-lead">Įklijuok tekstą, kurį siųsi.</p>
             <div class="prompt-editor">
-                <div class="prompt-line"><b>VAIDMUO</b> Tu esi atsakingas specialistas ir informacijos kritikas: žinai, kad DI gali klysti ar išgalvoti faktus.</div>
-                <div class="prompt-line"><b>KONTEKSTAS</b> Kur naudosiu: [kliento laiške / vidinėje ataskaitoje / pasiūlyme / sutartyje / pristatyme]. Sritis: [Sritis], auditorija: [Auditorija]. Įklijuok čia visą DI paruoštą tekstą, kurį ketini naudoti kaip siunčiamą ar pateikiamą versiją: [TEKSTAS].</div>
-                <div class="prompt-line"><b>REZULTATAS</b> 1) 3 didžiausios rizikos (faktinės, teisinės ar komunikacinės). 2) Kas tinka naudoti be pakeitimų. 3) Ką patikrinti nepriklausomu šaltiniu (ne vien DI). 4) Ko trūksta kontekste tikslesniam atsakymui.</div>
+                <div class="prompt-line"><b>Rolė:</b> Tu esi informacijos kritikas. Žinai, kad DI gali išgalvoti faktus.</div>
+                <div class="prompt-line"><b>Tikslas:</b> Patikrink tekstą prieš siuntimą.</div>
+                <div class="prompt-line"><b>Kontekstas:</b> Kur naudosiu: [kliento laiškas / vidinė ataskaita / pasiūlymas / sutartis / pristatymas]. Sritis: [SRITIS]. Auditorija: [AUDITORIJA]. Tekstas: [TEKSTAS].</div>
+                <div class="prompt-line"><b>Mąstymas:</b> Kiekvieną riziką rišk su vienu sakiniu iš teksto. Vienas tipas — viena rizika.</div>
+                <div class="prompt-line"><b>Rezultatas:</b> 1) Trys rizikos: viena faktinė, viena teisinė, viena komunikacinė. Kiekviena cituoja sakinį. 2) Sakiniai, kuriuos galima siųsti be pakeitimų. Cituok juos. 3) Ką patikrinti ne DI. Kiekvienam punktui — ką būtent tikrinti. 4) Ko trūksta kontekste. Sąrašas „Trūksta:“.</div>
                 <button type="button" class="copy-prompt-btn" data-track="qc_copy_click">Kopijuoti patikrą</button>
             </div>
             <div class="result-badge"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 22V2"/></svg></span> Rizikos matomos prieš siuntimą.</div>
@@ -2992,16 +3262,19 @@
                     <div class="library-cat-body">
                         <div class="library-item">
                             <h4>Dienos santrauka</h4>
+                            <p class="library-goal">5 punktai iš įrašytų faktų.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_daySummary" data-mgr-key="mgr_daySummary"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_daySummary" data-mgr-key="mgr_daySummary" aria-label="Kopijuoti dienos santraukos užklausą" data-track="library_copy_daySummary">Kopijuoti</button>
                         </div>
                         <div class="library-item">
                             <h4>Užduočių sąrašas</h4>
+                            <p class="library-goal">Užduotys su prioritetu A, B arba C.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_taskList" data-mgr-key="mgr_taskList"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_taskList" data-mgr-key="mgr_taskList" aria-label="Kopijuoti užduočių sąrašo užklausą" data-track="library_copy_taskList">Kopijuoti</button>
                         </div>
                         <div class="library-item">
                             <h4>Susitikimo užrašai</h4>
+                            <p class="library-goal">Santrauka, sprendimai, veiksmai, atviri klausimai.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_meetingNotes" data-mgr-key="mgr_meetingNotes"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_meetingNotes" data-mgr-key="mgr_meetingNotes" aria-label="Kopijuoti susitikimo užrašų užklausą" data-track="library_copy_meetingNotes">Kopijuoti</button>
                         </div>
@@ -3015,26 +3288,31 @@
                     <div class="library-cat-body">
                         <div class="library-item">
                             <h4>Atsakymas į laišką</h4>
+                            <p class="library-goal">Atsakymas su kitu žingsniu.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_emailReply" data-mgr-key="mgr_emailReply"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_emailReply" data-mgr-key="mgr_emailReply" aria-label="Kopijuoti atsakymo į laišką užklausą" data-track="library_copy_emailReply">Kopijuoti</button>
                         </div>
                         <div class="library-item">
                             <h4>Sutrumpinti tekstą</h4>
+                            <p class="library-goal">Trumpesnė versija, tie patys faktai.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_simplifyText" data-mgr-key="mgr_simplifyText"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_simplifyText" data-mgr-key="mgr_simplifyText" aria-label="Kopijuoti teksto trumpinimo užklausą" data-track="library_copy_simplifyText">Kopijuoti</button>
                         </div>
                         <div class="library-item">
                             <h4>Sunki žinutė (terminas / klaida / pokytis)</h4>
+                            <p class="library-goal">Du variantai: trumpas ir vidutinis.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_hardUpdate" data-mgr-key="mgr_hardUpdate"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_hardUpdate" data-mgr-key="mgr_hardUpdate" aria-label="Kopijuoti sunkios žinutės užklausą" data-track="library_copy_hardUpdate">Kopijuoti</button>
                         </div>
                         <div class="library-item">
                             <h4>Grįžtamasis ryšys po klaidos (1:1)</h4>
+                            <p class="library-goal">Pokalbio pradžia, pastebėjimai, viena sutartis.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_feedbackAfterMistake" data-mgr-key="mgr_feedbackAfterMistake"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_feedbackAfterMistake" data-mgr-key="mgr_feedbackAfterMistake" aria-label="Kopijuoti grįžtamojo ryšio po klaidos užklausą" data-track="library_copy_feedbackAfterMistake">Kopijuoti</button>
                         </div>
                         <div class="library-item">
                             <h4>Įtampos mažinimas (perrašyk žinutę)</h4>
+                            <p class="library-goal">Viena rami žinutė su kitu žingsniu.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_deescalateMessage" data-mgr-key="mgr_deescalateMessage"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_deescalateMessage" data-mgr-key="mgr_deescalateMessage" aria-label="Kopijuoti įtampos mažinimo užklausą" data-track="library_copy_deescalateMessage">Kopijuoti</button>
                         </div>
@@ -3048,12 +3326,13 @@
                     <div class="library-cat-body">
                         <div class="library-item">
                             <h4>Užklausos kokybės patikrinimas (pagal 5 principus)</h4>
-                            <p class="library-goal">Įklijuok savo užklausą (promptą) ir paleisk.</p>
+                            <p class="library-goal">Penki „yra / nėra“ ir viena perrašyta užklausa.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_qualityCheck" data-mgr-key="mgr_qualityCheck"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_qualityCheck" data-mgr-key="mgr_qualityCheck" aria-label="Kopijuoti užklausos kokybės patikrinimo užklausą" data-track="library_copy_qualityCheck">Kopijuoti</button>
                         </div>
                         <div class="library-item">
-                            <h4>Apribojimai ir formatas</h4>
+                            <h4>Užklausa su ribomis</h4>
+                            <p class="library-goal">Paruošk užklausą su ribomis, ne gatavą laišką.</p>
                             <pre class="library-prompt-block" data-emp-key="lib_constraints" data-mgr-key="mgr_constraints"></pre>
                             <button type="button" class="types-copy-btn library-prompt-copy" data-emp-key="lib_constraints" data-mgr-key="mgr_constraints" aria-label="Kopijuoti apribojimų ir formato užklausą" data-track="library_copy_constraints">Kopijuoti</button>
                         </div>
@@ -3069,7 +3348,7 @@
     <div class="essence-content">
         <figure class="meme-figure meme-figure--essence">
             <img src="assets/memes/su_2.png" width="640" height="360" loading="lazy" decoding="async"
-                alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Vaidmuo, ryžiai — 2 Kontekstas, lašiša — 3 Rezultatas, avokadas — 4 Mąstymas, sezamai — 5 Kokybės kontrolė.">
+                alt="Išsprogdintas suši, iš apačios į viršų: nori — 1 Rolė, ryžiai — 2 Kontekstas, lašiša — 3 Rezultatas, avokadas — 4 Mąstymas, sezamai — 5 Kokybės kontrolė.">
         </figure>
         <h2 class="essence-tagline">Be struktūros DI spėlioja.</h2>
         <p class="essence-lead">
@@ -3084,8 +3363,8 @@
         <div class="quiz-inner">
             <form id="prompt-quiz-form" novalidate
                 data-msg-select="Pažymėk atsakymą ir spausk „Žiūrėk“."
-                data-feedback-correct="Teisingai: vaidmuo, kontekstas ir aiškus pageidaujamas rezultatas leidžia DI atsakyti pagal tavo užduotį."
-                data-feedback-wrong="Be aiškaus vaidmens ir konkretaus konteksto DI spėlioja. Vien prašymas būti kūrybingam, bendras tonas ar labai trumpa užklausa neperduoda, kokio turinio ir formato tikiesi.">
+                data-feedback-correct="Teisingai: rolė, kontekstas ir aiškus pageidaujamas rezultatas leidžia DI atsakyti pagal tavo užduotį."
+                data-feedback-wrong="Be aiškios rolės ir konkretaus konteksto DI spėlioja. Vien prašymas būti kūrybingam, bendras tonas ar labai trumpa užklausa neperduoda, kokio turinio ir formato tikiesi.">
                 <fieldset class="quiz-fieldset">
                     <legend class="label">Vienas atsakymas</legend>
                     <h2 class="quiz-question" id="quiz-question-heading">Ką įtraukti į užklausą (promptą), kad DI atsakymas būtų naudingas?</h2>
@@ -3093,7 +3372,7 @@
                         <li>
                             <label class="quiz-option" for="quiz-opt-a">
                                 <input type="radio" name="prompt-quiz" id="quiz-opt-a" value="a" data-correct="false">
-                                <span class="quiz-option-text">Užtenka aiškios temos ir norimo formato (pvz. „lentelė“), net jei nenurodau vaidmens ir konteksto.</span>
+                                <span class="quiz-option-text">Užtenka aiškios temos ir norimo formato (pvz. „lentelė“), net jei nenurodau rolės ir konteksto.</span>
                             </label>
                         </li>
                         <li>
@@ -3105,13 +3384,13 @@
                         <li>
                             <label class="quiz-option" for="quiz-opt-c">
                                 <input type="radio" name="prompt-quiz" id="quiz-opt-c" value="c" data-correct="false">
-                                <span class="quiz-option-text">Pakanka vaidmens ir tono (pvz. „rašyk vadovybei“), net jei nepasakau, kokių faktų DI turi žinoti ir kaip mąstyti.</span>
+                                <span class="quiz-option-text">Pakanka rolės ir tono (pvz. „rašyk vadovybei“), net jei nepasakau, kokių faktų DI turi žinoti ir kaip mąstyti.</span>
                             </label>
                         </li>
                         <li>
                             <label class="quiz-option" for="quiz-opt-d">
                                 <input type="radio" name="prompt-quiz" id="quiz-opt-d" value="d" data-correct="true">
-                                <span class="quiz-option-text">Vaidmuo (kas esi ir ko sieki), kontekstas (projektas, auditorija, ką jau žino komanda) ir pageidaujamas rezultato formatas.</span>
+                                <span class="quiz-option-text">Rolė (kas esi), kontekstas (projektas, auditorija, ką jau žino komanda) ir pageidaujamas rezultato formatas.</span>
                             </label>
                         </li>
                         <li>
@@ -3254,6 +3533,29 @@
                 window.location.href = localeSwitchUrl('en');
             });
         }
+        function bindRoomSwitch() {
+            var btn = document.getElementById('roomModeBtn');
+            if (!btn) return;
+            function sync() {
+                var on = document.documentElement.classList.contains('room');
+                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+            sync();
+            btn.addEventListener('click', function () {
+                var on = !document.documentElement.classList.contains('room');
+                document.documentElement.classList.toggle('room', on);
+                try { sessionStorage.setItem('pa-room', on ? '1' : '0'); } catch (eRoom) {}
+                try { localStorage.removeItem('pa-room'); } catch (eRoomDrop) {}
+                if (!on && /(?:^|[?&])sala=1(?:&|$)/.test(location.search)) {
+                    try {
+                        var u = new URL(location.href);
+                        u.searchParams.delete('sala');
+                        history.replaceState(null, '', u.pathname + u.search + u.hash);
+                    } catch (eRoomUrl) {}
+                }
+                sync();
+            });
+        }
 
         const sections = document.querySelectorAll('main section');
         const sideNav = document.querySelectorAll('.nav-sidebar .nav-item');
@@ -3290,118 +3592,92 @@
                 'Kalba: [KALBA].'
             ].join('\n'),
             lib_constraints: [
-                'Apibrėžk užklausą DI su apribojimais, kad rezultatas būtų kontroliuojamas.',
-                '',
-                'Įvestis:',
-                'Užduotis (ką DI turi padaryti): [APRAŠYK UŽDUOTĮ]',
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Paruošk vieną užklausą su ribomis, ne gatavą darbą.',
+                'Kontekstas:',
+                'Užduotis, kurią ta užklausa turės atlikti: [APRAŠYK UŽDUOTĮ]',
                 'Konfidencialumas: [VIDINIS / KLIENTAS / VIEŠA — kas negali nutekėti]',
                 'Teisinė ar patvirtinimo riba: [KAS DRAUDŽIAMA ARBA REIKIA PATVIRTINIMO]',
-                'Kas tvirtina prieš siuntimą: [ĮRAŠYK — jei aktualu]',
+                'Kas tvirtina prieš siuntimą: [ĮRAŠYK]',
                 'Ilgis: [PVZ. maks. 200 žodžių / 1 puslapis]',
                 'Ko vengti: [PVZ. žargonas, reklama, subjektyvūs įvertinimai]',
                 'Formatas: [PVZ. punktai, lentelė, pastraipos]',
                 'Kalba: [KALBA]',
-                '',
-                'Išvestis:',
-                'Viena aiški užklausa, paruošta nukopijuoti į DI',
-                '„Ko vengti“: iki 5 trumpų punktų',
-                'Jei trūksta faktų — ko paklausti prieš vykdant, ne spėliojant'
+                'Rezultatas: 1) Viena užklausa, paruošta kopijuoti į DI. 2) „Ko vengti“: iki 5 punktų. 3) Ko paklausti prieš vykdant.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_daySummary: [
-                'Santrauka iš dienos faktų — užpildyk laukus ir gauk 5 punktus.',
-                '',
-                'Įvestis:',
-                'Tavo rolė (kontekstui): [ROLĖ]',
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Parašyk dienos santrauką tik iš laukų žemiau.',
+                'Kontekstas:',
+                'Pareigos: [PAREIGOS]',
                 'Dienos darbai: [ĮRAŠYK]',
                 'Rezultatai: [ĮRAŠYK]',
                 'Kliūtys: [ĮRAŠYK]',
                 'Rytojaus planas: [ĮRAŠYK]',
-                '',
-                'Išvestis:',
-                '5 punktų sąrašas',
-                '1–2 sakiniai kiekvienam'
+                'Rezultatas: Parašyk 5 punktus, po 1–2 sakinius. Kiekvienas punktas remiasi vienu įrašytu faktu.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_meetingNotes: [
-                'Iš užrašų padaryk struktūruotą susitikimo išvadą.',
-                '',
-                'Įvestis:',
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Iš užrašų parašyk susitikimo išvadą.',
+                'Kontekstas:',
                 'Tema: [TEMA]',
                 'Dalyviai: [VARDŲ SĄRAŠAS]',
                 'Pastabos: [TEKSTAS]',
-                '',
-                'Išvestis:',
-                'Santrauka',
-                'Sprendimai',
-                'Veiksmai (kas / kada)',
-                'Atviri klausimai',
-                'Savininką ir datą rašyk tik jei jie yra užrašuose; kitaip — „nenurodyta“.'
+                'Rezultatas: Keturi blokai: Santrauka; Sprendimai; Veiksmai (kas ir kada); Atviri klausimai. Savininką ir datą rašyk tik jei jie yra užrašuose; kitaip — „nenurodyta“.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_emailReply: [
-                'Atsakymas į gautą laišką ar žinutę.',
-                '',
-                'Įvestis:',
-                'Gaunamas laiškas ar žinutė: [ĮRAŠYK]',
-                'Ką nori atsakyti: [SUTINKU / ATIDEDU / KLAUSIU / ATSISAKAU]',
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Parašyk atsakymą į gautą laišką.',
+                'Kontekstas:',
+                'Gautas laiškas: [ĮRAŠYK]',
+                'Ką atsakai: [SUTINKU / ATIDEDU / KLAUSIU / ATSISAKAU]',
                 'Ko nežadi: [ĮRAŠYK]',
-                '',
-                'Išvestis:',
-                '4–6 sakiniai',
-                'Profesionalus, mandagus tonas',
-                'Aiškus kitas veiksmas'
+                'Rezultatas: 4–6 sakiniai. Profesionalus, mandagus tonas. Paskutinis sakinys — kitas veiksmas (kas ir kada).',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_hardUpdate: [
-                'Sunki, bet profesionali žinutė darbe (terminas, klaida, pokytis).',
-                '',
-                'Įvestis:',
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Parašyk sunkią darbo žinutę iš faktų.',
+                'Kontekstas:',
                 'Kanalas: [EL. PAŠTAS / SLACK / TEAMS]',
                 'Auditorija: [KOMANDA / KLIENTAS / PARTNERIS]',
-                'Situacija (faktai): [KAS ĮVYKO / KAS VĖLUOJA / KAS KEIČIASI]',
-                'Apribojimai: [KO NEGALI SAKYTI / KONFIDENCIALUMAI / TERMINAI]',
-                '',
-                'Išvestis:',
-                '2 variantai: trumpas (iki 120 žodžių) ir vidutinis (iki 200 žodžių)',
-                'Struktūra: kontekstas → kas daroma dabar → kitas žingsnis (kas / kada) → rizikos (iki 3)',
-                'Tonas: ramus, be kaltinimų; be spekuliacijų už faktų ribų'
+                'Faktai: [KAS ĮVYKO]',
+                'Apribojimai: [KO NEGALI SAKYTI]',
+                'Rezultatas: Du variantai, abu su tomis pačiomis dalimis: kontekstas; kas daroma dabar; kitas žingsnis (kas ir kada); rizikos, iki 3. Trumpas — iki 120 žodžių. Vidutinis — iki 200 žodžių. Tonas ramus, be kaltinimų.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_feedbackAfterMistake: [
-                'Grįžtamasis ryšys po klaidos ar incidento (1:1, darbo kontekstas).',
-                '',
-                'Įvestis:',
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Paruošk 1:1 pokalbio pradžią po klaidos.',
+                'Kontekstas:',
                 'Santykis: [VADOVAS–NARYS / TARP KOLEGŲ]',
-                'Įvykis (faktai, be interpretacijų): [KAS NUTIKO]',
+                'Įvykis (faktai): [KAS NUTIKO]',
                 'Poveikis: [KOMANDAI / KLIENTUI / TERMINAMS]',
-                'Tikslas pokalbiui: [KO NORI TOLESNĖJE ELGSENOJE AR PROCESE]',
-                '',
-                'Išvestis:',
-                'Pradžia: 2–3 sakiniai (aiškiai, be „mokyklos“ tono)',
-                '2–3 pastebėjimai, susieti su elgsena ir rezultatu',
-                '1 aiški sutartis ar lūkestis',
-                '1 klausimas dialogui tęsti',
-                'Venk asmeninių etikečių; kalbėk apie tai, ką galima pakeisti'
+                'Ko nori toliau: [ELGSENA AR PROCESAS]',
+                'Mąstymas: Kiekvieną pastebėjimą rišk su elgsena ir rezultatu. Asmeninės etiketės nerašyk.',
+                'Rezultatas: Pradžia, 2–3 sakiniai. 2–3 pastebėjimai. 1 sutartis. 1 klausimas.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_deescalateMessage: [
-                'Perdaryk įtemptą žinutę ramiau ir aiškiau.',
-                '',
-                'Įvestis:',
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Perrašyk įtemptą žinutę ramiau.',
+                'Kontekstas:',
                 'Kas sukėlė įtampą: [TRUMPAI APRAŠYK]',
-                'Dabartinis žinutės juodraštis: [ĮKLIJUOK TEKSTĄ]',
-                'Gavėjas: [ROLĖ / AUDITORIJA]',
-                '',
-                'Išvestis:',
-                'Perdaryta žinutė: faktai → poreikis → pasiūlymas → kitas žingsnis',
-                'Pašalink kaltinančias frazes; palik aiškią ribą, jei reikia',
-                'Jei trūksta faktų — parašyk, ko paklausti vietoj spėliojimo'
+                'Juodraštis: [ĮKLIJUOK TEKSTĄ]',
+                'Gavėjas: [PAREIGOS / AUDITORIJA]',
+                'Rezultatas: Viena žinutė, keturios dalys: faktai; poreikis; pasiūlymas; kitas žingsnis. Be kaltinančių frazių. Jei juodraštyje yra riba, ją palik.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_taskList: [
-                'Iš chaotiško teksto — užduočių sąrašas su prioritetais.',
-                '',
-                'Įvestis:',
-                'Tekstas su idėjomis ar reikalavimais: [TEKSTAS]',
-                '',
-                'Išvestis:',
-                'Užduočių sąrašas',
-                'Prioritetai A / B / C',
-                'Terminai, jei paminėti'
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Iš teksto sudaryk užduočių sąrašą su prioritetais.',
+                'Kontekstas:',
+                'Tekstas: [TEKSTAS]',
+                'Rezultatas: Kiekviena eilutė: užduotis, prioritetas A, B arba C, terminas jei jis yra tekste.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_decisionSummary: [
                 'META: Tu esi verslo analitikas.',
@@ -3425,15 +3701,13 @@
                 'Trumpi sakiniai, veiksmažodžiai'
             ].join('\n'),
             lib_simplifyText: [
-                'Sutrumpink tekstą, palikdamas esmę skaitytojui.',
-                '',
-                'Įvestis:',
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Sutrumpink tekstą, palikdamas esmę.',
+                'Kontekstas:',
                 'Tekstas: [TEKSTAS]',
                 'Auditorija: [AUDITORIJA]',
-                '',
-                'Išvestis:',
-                '30–50 % trumpesnė versija',
-                'Aiški, paprasta kalba'
+                'Rezultatas: Versija 30–50 % trumpesnė. Tie patys faktai. Jokių naujų teiginių.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n'),
             lib_swot: [
                 'META: Tu esi verslo konsultantas.',
@@ -3445,19 +3719,13 @@
                 '3–5 konkretūs punktai kiekvienoje dalyje'
             ].join('\n'),
             lib_qualityCheck: [
-                'Įvertink savo užklausą (promptą) prieš naudojant svarbiems sprendimams ar masinėms žinutėms.',
-                '',
-                'Įvestis:',
-                '[Įklijuok savo užklausą čia]',
-                '',
-                'Vertinimo kriterijai (5 principai): Vaidmuo; Kontekstas; Rezultatas; Mąstymas; Kokybės kontrolė.',
-                '',
-                'Išvestis:',
-                '1) Lentelė: 1–5 balai kiekvienam principui',
-                '2) Trumpai, kodėl toks balas',
-                '3) 3 silpniausios vietos',
-                '4) Patobulinta užklausos versija',
-                'Taisyklės: būk konkretus; jei trūksta faktų — įvardink; jei per sudėtinga — pasiūlyk V1; nekeisk be naudos.'
+                'Rolė: Tu esi mano darbo asistentas.',
+                'Tikslas: Įvertink įklijuotą užklausą prieš naudojimą.',
+                'Kontekstas:',
+                'Užklausa: [ĮKLIJUOK UŽKLAUSĄ]',
+                'Mąstymas: Kiekvienam principui atsakyk tik „yra“ arba „nėra“. Prie „nėra“ parašyk, ko trūksta.',
+                'Rezultatas: Penkios eilutės: Rolė; Kontekstas; Rezultatas; Mąstymas; Kokybės kontrolė. Kiekviena — yra arba nėra ir vienas sakinys. Tada viena perrašyta užklausa. Jei užklausa jau pilna — perrašyk ją be pakeitimų ir parašyk „Be pakeitimų“.',
+                'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
             ].join('\n')
         };
 
@@ -3475,102 +3743,79 @@
             'Sukurk dar 3 panašaus stiliaus sakinius tema [ĮRAŠYK].'
         ].join('\n');
         libraryPromptsLt.mgr_daySummary = [
-            'Vadovo dienos santrauka iš faktų — užpildyk laukus.',
-            '',
-            'Įvestis:',
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Parašyk vadovo dienos santrauką tik iš laukų žemiau.',
+            'Kontekstas:',
             'Šiandienos fokusas ir sprendimai: [ĮRAŠYK]',
-            'Rizikos / blokai: [ĮRAŠYK]',
+            'Rizikos ir blokai: [ĮRAŠYK]',
             'Komandos būsena (1–2 sakiniai): [ĮRAŠYK]',
             'Rytojaus prioritetai: [ĮRAŠYK]',
-            '',
-            'Išvestis:',
-            '5 punktų vadovo santrauka (vykdymui; jei reikia — perkėlimui į vadovybę)',
-            'Kiekvienam 1–2 sakiniai, be perteklinio žargono'
+            'Rezultatas: Parašyk 5 punktus, po 1–2 sakinius. Kiekvienas punktas remiasi vienu įrašytu faktu.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_meetingNotes = [
-            'Susitikimo išvada vadovybei ar komandai — iš trumpų užrašų.',
-            '',
-            'Įvestis:',
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Iš užrašų parašyk susitikimo išvadą vadovybei.',
+            'Kontekstas:',
             'Tema ir tikslas: [TEMA]',
-            'Dalyviai ir rolės: [SĄRAŠAS]',
-            'Trumpos užrašų pastabos: [TEKSTAS]',
-            '',
-            'Išvestis:',
-            'Santrauka vadovui',
-            'Sprendimai ir savininkai',
-            'Veiksmai (kas / iki kada)',
-            'Rizikos ir atviri klausimai',
-            'Savininką ir datą rašyk tik jei jie yra užrašuose; kitaip — „nenurodyta“.'
+            'Dalyviai ir pareigos: [SĄRAŠAS]',
+            'Pastabos: [TEKSTAS]',
+            'Rezultatas: Penki blokai: Santrauka; Sprendimai ir savininkai; Veiksmai (kas ir iki kada); Rizikos; Atviri klausimai. Savininką ir datą rašyk tik jei jie yra užrašuose; kitaip — „nenurodyta“.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_emailReply = [
-            'Atsakymas vadovaujančiai ar išorinei komunikacijai.',
-            '',
-            'Įvestis:',
-            'Gaunamas laiškas ar žinutė: [ĮRAŠYK]',
-            'Ką nori atsakyti: [SUTINKU / ATIDEDU / KLAUSIU / ATSISAKAU]',
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Parašyk atsakymą vadovybei ar išorei.',
+            'Kontekstas:',
+            'Gautas laiškas: [ĮRAŠYK]',
+            'Ką atsakai: [SUTINKU / ATIDEDU / KLAUSIU / ATSISAKAU]',
             'Ko nežadi: [ĮRAŠYK]',
-            '',
-            'Išvestis:',
-            '4–7 sakiniai',
             'Tonas: [formalus / partneriškas]',
-            'Aiškūs kiti žingsniai ir atsakomybės',
-            'Jei reikia — viena pastaba apie konfidencialumą'
+            'Rezultatas: 4–7 sakiniai. Paskutiniai du sakiniai — kitas žingsnis ir kas atsakingas. Viena konfidencialumo pastaba, jei ji yra įvestyje.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_hardUpdate = [
-            'Sunki žinutė vadovybei ar išorei — reputacija ir rizika matomos.',
-            '',
-            'Įvestis:',
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Parašyk sunkią žinutę vadovybei ar išorei iš faktų.',
+            'Kontekstas:',
             'Kanalas: [EL. PAŠTAS / SLACK / TEAMS]',
             'Auditorija: [KOMANDA / KLIENTAS / PARTNERIS / VADOVYBĖ]',
-            'Situacija (faktai): [KAS ĮVYKO / KAS VĖLUOJA / KAS KEIČIASI]',
-            'Rizikos: [TEISINĖ / KOMUNIKACINĖ / SUTARTIES / REPUTACINĖ — jei yra]',
-            'Apribojimai: [KO NEGALI SAKYTI / KONFIDENCIALUMAI / TERMINAI]',
-            '',
-            'Išvestis:',
-            '2 variantai: trumpas ir vidutinis',
-            'Struktūra: kontekstas → sprendimas dabar → savininkas ir terminas → rizikos (iki 3)',
-            'Tonas: ramus, be kaltinimų; be spekuliacijų už faktų ribų'
+            'Faktai: [KAS ĮVYKO]',
+            'Rizikos: [TEISINĖ / KOMUNIKACINĖ / SUTARTIES / REPUTACINĖ]',
+            'Apribojimai: [KO NEGALI SAKYTI]',
+            'Rezultatas: Du variantai, abu su tomis pačiomis dalimis: kontekstas; sprendimas dabar; savininkas ir terminas; rizikos, iki 3. Trumpas — iki 120 žodžių. Vidutinis — iki 200 žodžių. Tonas ramus, be kaltinimų.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_feedbackAfterMistake = [
-            'Grįžtamasis ryšys vadovui: rezultatas ir elgsena (1:1).',
-            '',
-            'Įvestis:',
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Paruošk 1:1 pokalbio pradžią po klaidos.',
+            'Kontekstas:',
             'Santykis: [VADOVAS–NARYS / TARP KOLEGŲ]',
             'Įvykis (faktai): [KAS NUTIKO]',
-            'Poveikis: [KOMANDAI / KLIENTUI / TERMINAMS / RIZIKOMS]',
-            'Tikslas: [KO NORI TOLESNĖJE ELGSENOJE / PROCESE]',
-            '',
-            'Išvestis:',
-            'Pradžia: 2–3 sakiniai (aiškiai, be „vertinimo“ tono)',
-            '2–3 pastebėjimai, susieti su elgsena ir pasekmėmis',
-            '1 aiškus lūkestis ir 1 matomas kitas žingsnis',
-            '1 klausimas dialogui tęsti',
-            'Jei reikia HR / proceso etapo — viena neutrali pastaba (be diagnozių)'
+            'Poveikis: [KOMANDAI / KLIENTUI / TERMINAMS]',
+            'Ko nori toliau: [ELGSENA AR PROCESAS]',
+            'Mąstymas: Kiekvieną pastebėjimą rišk su elgsena ir pasekme. Asmeninės etiketės nerašyk.',
+            'Rezultatas: Pradžia, 2–3 sakiniai. 2–3 pastebėjimai. 1 lūkestis. 1 kitas žingsnis. 1 klausimas.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_deescalateMessage = [
-            'Įtampos mažinimas vadovo žinutei — rizika ir tęstinumas įvertinti.',
-            '',
-            'Įvestis:',
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Perrašyk įtemptą vadovo žinutę ramiau.',
+            'Kontekstas:',
             'Kas sukėlė įtampą: [TRUMPAI APRAŠYK]',
-            'Dabartinis žinutės juodraštis: [ĮKLIJUOK TEKSTĄ]',
-            'Gavėjas: [ROLĖ / AUDITORIJA]',
-            'Rizika: [KAS GALI ATSISUKTI Į ORGANIZACIJĄ / KLIENTĄ — jei yra]',
-            '',
-            'Išvestis:',
-            'Perdaryta žinutė: faktai → poreikis → pasiūlymas → aiškus kitas žingsnis',
-            'Pašalink kaltinančias frazes; palik aiškią ribą, jei reikia',
-            'Jei trūksta faktų — parašyk, ko paklausti vietoj spėliojimo'
+            'Juodraštis: [ĮKLIJUOK TEKSTĄ]',
+            'Gavėjas: [PAREIGOS / AUDITORIJA]',
+            'Rizika organizacijai ar klientui: [ĮRAŠYK]',
+            'Rezultatas: Viena žinutė, keturios dalys: faktai; poreikis; pasiūlymas; kitas žingsnis. Be kaltinančių frazių. Jei juodraštyje yra riba, ją palik.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_taskList = [
-            'Iš teksto — užduotys su savininku ir prioritetais (vadovui).',
-            '',
-            'Įvestis:',
-            'Idėjos, el. laiškas ar susitikimo išvados: [TEKSTAS]',
-            '',
-            'Išvestis:',
-            'Užduočių sąrašas su savininku',
-            'Prioritetai A / B / C su pagrindimu',
-            'Terminai ir priklausomybės (jei žinomos)'
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Iš teksto sudaryk užduotis su savininku ir prioritetu.',
+            'Kontekstas:',
+            'Tekstas: [TEKSTAS]',
+            'Rezultatas: Kiekviena eilutė: užduotis, savininkas, prioritetas A, B arba C, vienas sakinys kodėl toks prioritetas, terminas jei jis yra tekste.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_decisionSummary = [
             'META: Tu esi vadovybės sprendimų analitikas.',
@@ -3605,49 +3850,36 @@
             '1 pastaba apie konkurencinį ar reguliacinį kontekstą, jei aktualu'
         ].join('\n');
         libraryPromptsLt.mgr_qualityCheck = [
-            'Įvertink užklausą (promptą) prieš masinį siuntimą ar svarbius vadovybės sprendimus.',
-            '',
-            'Įvestis:',
-            '[Įklijuok savo užklausą čia]',
-            '',
-            'Vertinimo kriterijai (5 principai): Vaidmuo; Kontekstas; Rezultatas; Mąstymas; Kokybės kontrolė.',
-            '',
-            'Išvestis:',
-            '1) Lentelė: 1–5 balai kiekvienam principui',
-            '2) Trumpai, kodėl toks balas',
-            '3) 3 silpniausios vietos',
-            '4) Patobulinta užklausos versija',
-            'Taisyklės: būk konkretus; jei trūksta faktų — įvardink; jei per sudėtinga — pasiūlyk V1; nekeisk be naudos.'
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Įvertink įklijuotą užklausą prieš siuntimą vadovybei.',
+            'Kontekstas:',
+            'Užklausa: [ĮKLIJUOK UŽKLAUSĄ]',
+            'Mąstymas: Kiekvienam principui atsakyk tik „yra“ arba „nėra“. Prie „nėra“ parašyk, ko trūksta.',
+            'Rezultatas: Penkios eilutės: Rolė; Kontekstas; Rezultatas; Mąstymas; Kokybės kontrolė. Kiekviena — yra arba nėra ir vienas sakinys. Tada viena perrašyta užklausa. Jei užklausa jau pilna — perrašyk ją be pakeitimų ir parašyk „Be pakeitimų“.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_simplifyText = [
-            'Sutrumpink tekstą vadovybei, klientui ar rinkai — viena aiški esmė.',
-            '',
-            'Įvestis:',
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Sutrumpink tekstą iki vienos esmės.',
+            'Kontekstas:',
             'Tekstas: [TEKSTAS]',
             'Auditorija: [VADOVYBĖ / KLIENTAS / RINKA / VIDINĖ KOMANDA]',
-            'Tikslas (ką turi suprasti skaitytojas): [VIENU ŽINGSNIU]',
-            '',
-            'Išvestis:',
-            '30–50 % trumpesnė versija',
-            '1 sakinys — esmė (ką daryti / ką žinoti)',
-            'Aiški kalba; be perteklinio žargono ir „dekoracijų“',
-            'Jei lieka politinė ar teisinė rizika — viena aiški pastaba, be spekuliacijų'
+            'Ką skaitytojas turi suprasti: [VIENU SAKINIU]',
+            'Rezultatas: Versija 30–50 % trumpesnė. Pirmas sakinys — esmė. Tie patys faktai. Jei tekste yra teisinė rizika — viena pastaba, be spėjimo.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
         libraryPromptsLt.mgr_constraints = [
-            'Užduotis DI su atitiktimi ir patvirtinimo grandine (vadovui).',
-            '',
-            'Įvestis:',
-            'Užduotis ar rezultatas: [KĄ REIKIA PADARYTI]',
+            'Rolė: Tu esi mano darbo asistentas.',
+            'Tikslas: Paruošk vieną užklausą su atitiktimi ir patvirtinimu, ne gatavą darbą.',
+            'Kontekstas:',
+            'Užduotis, kurią ta užklausa turės atlikti: [KĄ REIKIA PADARYTI]',
             'Konfidencialumas: [VIDINIS / KLIENTAS / VIEŠA — kas negali nutekėti]',
-            'Teisinė / sutarties riba: [KAS DRAUDŽIAMA ARBA REIKIA PATVIRTINIMO]',
+            'Teisinė ar sutarties riba: [KAS DRAUDŽIAMA ARBA REIKIA PATVIRTINIMO]',
             'Ilgis ir formatas: [PVZ. 1 puslapis, punktai, lentelė]',
             'Kalba: [KALBA]',
-            'Sprendimo grandinė: [KAS PATVIRTINA PRIEŠ SIUNTIMĄ — jei aktualu]',
-            '',
-            'Išvestis:',
-            'Viena aiški užduotis DI su kontekstu ir formatu',
-            '„Ko vengti“: iki 5 punktų',
-            'Jei trūksta faktų — ko paklausti prieš vykdant, ne spėliojant'
+            'Kas tvirtina prieš siuntimą: [ĮRAŠYK]',
+            'Rezultatas: 1) Viena užklausa, paruošta kopijuoti į DI. 2) „Ko vengti“: iki 5 punktų. 3) Ko paklausti prieš vykdant.',
+            'Tuščias laukas ar […] — fakto nekurk. Parašyk „Trūksta:“.'
         ].join('\n');
 
         const enLibraryAvailable = typeof window.__PROMPT_LIBRARY_EN__ === 'object';
@@ -3830,8 +4062,11 @@
 
         function setActiveNav(index) {
             if (typeof document.documentElement.classList !== 'undefined') {
-                document.documentElement.classList.toggle('intro-active', index === 0);
+                const introNow = index === 0;
+                const introWas = document.documentElement.classList.contains('intro-active');
+                document.documentElement.classList.toggle('intro-active', introNow);
                 document.documentElement.classList.toggle('primer-active', index === 1);
+                if (introWas !== introNow) syncMobileNavHeight();
             }
             const mobileProgress = document.getElementById('nav-mobile-progress');
             if (mobileProgress && sideNav[index]) {
@@ -3851,6 +4086,15 @@
                 if (on) el.setAttribute('aria-current', 'true');
                 else el.removeAttribute('aria-current');
             });
+            const prevStep = document.getElementById('nav-mobile-prev');
+            const nextStep = document.getElementById('nav-mobile-next');
+            if (prevStep) prevStep.disabled = index <= 0;
+            if (nextStep) nextStep.disabled = index >= sections.length - 1;
+        }
+
+        function showSlide(index) {
+            if (index < 0 || index >= sections.length) return;
+            if (sections[index]) sections[index].scrollIntoView(Object.assign({ block: 'start' }, scrollOpts));
         }
 
         function bindNav(navButtons) {
@@ -3860,7 +4104,7 @@
                     const now = Date.now();
                     if (now < tapLockUntil) return;
                     tapLockUntil = now + 350;
-                    if (sections[index]) sections[index].scrollIntoView(Object.assign({ block: 'start' }, scrollOpts));
+                    showSlide(index);
                 });
             });
         }
@@ -3876,6 +4120,31 @@
 
         bindNav(sideNav);
         bindNav(mobileNav);
+
+        (function bindMobileSteps() {
+            const prev = document.getElementById('nav-mobile-prev');
+            const next = document.getElementById('nav-mobile-next');
+            if (prev) {
+                prev.textContent = uiText('Ankstesnė', 'Previous');
+                prev.setAttribute('aria-label', uiText('Ankstesnė skaidrė', 'Previous slide'));
+            }
+            if (next) {
+                next.textContent = uiText('Kita', 'Next');
+                next.setAttribute('aria-label', uiText('Kita skaidrė', 'Next slide'));
+            }
+            let tapLockUntil = 0;
+            function go(delta) {
+                const now = Date.now();
+                if (now < tapLockUntil) return;
+                const current = Array.prototype.findIndex.call(sideNav, (el) => el.classList.contains('active'));
+                const index = (current >= 0 ? current : 0) + delta;
+                if (index < 0 || index >= sections.length) return;
+                tapLockUntil = now + 350;
+                showSlide(index);
+            }
+            if (prev) prev.addEventListener('click', () => go(-1));
+            if (next) next.addEventListener('click', () => go(1));
+        })();
 
         const outlineRoot = document.getElementById('slide-outline');
         const outlineList = document.getElementById('slide-outline-list');
@@ -3933,12 +4202,25 @@
             return window.scrollY || window.pageYOffset || 0;
         }
         function syncMobileNavHeight() {
+            const header = document.querySelector('.brand-header');
+            if (header) {
+                document.documentElement.style.setProperty('--brand-header-h', header.offsetHeight + 'px');
+            }
+            const mobile = window.matchMedia('(max-width: 1024px)').matches;
             const nav = document.querySelector('.nav-mobile');
-            if (!nav || !window.matchMedia('(max-width: 1024px)').matches) {
+            if (!nav || !mobile) {
                 document.documentElement.style.removeProperty('--mobile-nav-h');
+            } else {
+                document.documentElement.style.setProperty('--mobile-nav-h', nav.offsetHeight + 'px');
+            }
+            const outline = document.getElementById('slide-outline');
+            if (!outline || !mobile) {
+                document.documentElement.style.removeProperty('--outline-clear');
                 return;
             }
-            document.documentElement.style.setProperty('--mobile-nav-h', nav.offsetHeight + 'px');
+            const summary = outline.querySelector('summary');
+            const chip = summary ? summary.offsetHeight : outline.offsetHeight;
+            document.documentElement.style.setProperty('--outline-clear', chip + 'px');
         }
         syncMobileNavHeight();
         window.addEventListener('resize', syncMobileNavHeight);
@@ -4034,14 +4316,8 @@
             const btn = editor.querySelector('.copy-prompt-btn');
             if (!btn) return;
             btn.addEventListener('click', () => {
-                // Vizualines etiketes (<b>VAIDMUO</b>, <b>Užduotis</b> ir pan.) is
-                // kopijuojamo teksto pašaliname — DI gauna tik gryną prompto turinį.
                 const lines = Array.from(editor.querySelectorAll('.prompt-line'))
-                    .map((line) => {
-                        const cloned = line.cloneNode(true);
-                        cloned.querySelectorAll('b, strong').forEach((label) => label.remove());
-                        return cloned.textContent.trim().replace(/\s+/g, ' ');
-                    })
+                    .map((line) => line.textContent.trim().replace(/\s+/g, ' '))
                     .filter((text) => text.length > 0);
                 copyPromptText(lines.join('\n\n'), btn);
             });
@@ -4203,6 +4479,7 @@
         }
 
         bindLangSwitch();
+        bindRoomSwitch();
 
         window.addEventListener('load', () => window.dispatchEvent(new Event('scroll')));
     })();

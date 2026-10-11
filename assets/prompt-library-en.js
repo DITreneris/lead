@@ -21,118 +21,92 @@
             'Language: [LANGUAGE].'
         ].join('\n'),
         lib_constraints: [
-            'Define an AI prompt with constraints so the output stays controllable.',
-            '',
-            'Input:',
-            'Task (what the AI must do): [TASK]',
+            'Role: You are my work assistant.',
+            'Goal: Prepare one prompt with limits, not the finished work.',
+            'Context:',
+            'Task that prompt must do: [TASK]',
             'Confidentiality: [INTERNAL / CLIENT / PUBLIC — what must not leak]',
-            'Legal / contract boundary: [WHAT IS FORBIDDEN OR NEEDS SIGN-OFF]',
-            'Approval chain: [WHO SIGNS OFF BEFORE SEND — if relevant]',
+            'Legal or approval boundary: [WHAT IS FORBIDDEN OR NEEDS SIGN-OFF]',
+            'Who signs off before send: [NAME]',
             'Length: [E.g. max 200 words / 1 page]',
             'Avoid: [E.g. jargon, hype, subjective ratings]',
             'Format: [E.g. bullets, table, paragraphs]',
             'Language: [LANGUAGE]',
-            '',
-            'Output:',
-            'One clear prompt ready to paste into the AI',
-            '"Avoid": up to 5 short bullets',
-            'If facts are missing — what to ask before acting, not guessing'
+            'Output: 1) One prompt, ready to paste into the AI. 2) "Avoid": up to 5 bullets. 3) What to ask before acting.',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_daySummary: [
-            'Day summary from facts — fill the fields, get 5 bullets.',
-            '',
-            'Input:',
-            'Your role (for context): [ROLE]',
+            'Role: You are my work assistant.',
+            'Goal: Write a day summary only from the fields below.',
+            'Context:',
+            'Position: [POSITION]',
             'Today’s work: [TEXT]',
             'Results: [TEXT]',
             'Blockers: [TEXT]',
             'Tomorrow’s plan: [TEXT]',
-            '',
-            'Output:',
-            '5-bullet list',
-            '1–2 sentences each'
+            'Output: Write 5 bullets, 1–2 sentences each. Each bullet rests on one entered fact.',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_meetingNotes: [
-            'Turn rough notes into a structured meeting outcome.',
-            '',
-            'Input:',
+            'Role: You are my work assistant.',
+            'Goal: Turn the notes into a meeting outcome.',
+            'Context:',
             'Topic: [TOPIC]',
             'Participants: [NAMES]',
             'Notes: [TEXT]',
-            '',
-            'Output:',
-            'Summary',
-            'Decisions',
-            'Actions (who / when)',
-            'Open questions',
-            'Write an owner and a date only if they are in the notes; otherwise — “not stated”.'
+            'Output: Four blocks: Summary; Decisions; Actions (who and when); Open questions. Write an owner and a date only if they are in the notes; otherwise — "not stated".',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_emailReply: [
-            'Reply to an email or message you received.',
-            '',
-            'Input:',
-            'Incoming email or message: [PASTE]',
-            'What you want to answer: [AGREE / DELAY / ASK / DECLINE]',
+            'Role: You are my work assistant.',
+            'Goal: Write a reply to the email you received.',
+            'Context:',
+            'Incoming email: [PASTE]',
+            'What you answer: [AGREE / DELAY / ASK / DECLINE]',
             'What you will not promise: [TEXT]',
-            '',
-            'Output:',
-            '4–6 sentences',
-            'Professional, polite tone',
-            'Clear next step'
+            'Output: 4–6 sentences. Professional, polite tone. The last sentence is the next step (who and when).',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_hardUpdate: [
-            'Hard but professional work message (deadline, error, change).',
-            '',
-            'Input:',
+            'Role: You are my work assistant.',
+            'Goal: Write a hard work message from the facts.',
+            'Context:',
             'Channel: [EMAIL / SLACK / TEAMS]',
             'Audience: [TEAM / CLIENT / PARTNER]',
-            'Facts: [WHAT HAPPENED / WHAT IS LATE / WHAT CHANGES]',
-            'Constraints: [WHAT YOU CANNOT SAY / CONFIDENTIALITY / DEADLINES]',
-            '',
-            'Output:',
-            '2 variants: short (up to 120 words) and medium (up to 200 words)',
-            'Structure: context → what happens now → next step (who / when) → risks (up to 3)',
-            'Tone: calm, no blame; no speculation beyond facts'
+            'Facts: [WHAT HAPPENED]',
+            'Constraints: [WHAT YOU CANNOT SAY]',
+            'Output: Two variants, both with the same parts: context; what happens now; next step (who and when); risks, up to 3. Short — up to 120 words. Medium — up to 200 words. Tone calm, no blame.',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_feedbackAfterMistake: [
-            'Feedback after a mistake or incident (1:1, work context).',
-            '',
-            'Input:',
+            'Role: You are my work assistant.',
+            'Goal: Draft the opening of a 1:1 after a mistake.',
+            'Context:',
             'Relationship: [LEADER–MEMBER / PEERS]',
-            'Event (facts, no spin): [WHAT HAPPENED]',
+            'Event (facts): [WHAT HAPPENED]',
             'Impact: [TEAM / CLIENT / DEADLINES]',
-            'Goal for the conversation: [WHAT YOU WANT NEXT IN BEHAVIOR OR PROCESS]',
-            '',
-            'Output:',
-            'Opening: 2–3 sentences (clear, not “school tone”)',
-            '2–3 observations tied to behavior and outcome',
-            '1 clear agreement or expectation',
-            '1 question to continue the dialogue',
-            'Avoid personal labels; talk about what can change'
+            'What you want next: [BEHAVIOR OR PROCESS]',
+            'Reasoning: Tie each observation to behavior and outcome. Do not use personal labels.',
+            'Output: Opening, 2–3 sentences. 2–3 observations. 1 agreement. 1 question.',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_deescalateMessage: [
-            'Rewrite a tense message to be calmer and clearer.',
-            '',
-            'Input:',
+            'Role: You are my work assistant.',
+            'Goal: Rewrite the tense message so it is calmer.',
+            'Context:',
             'What caused tension: [BRIEF]',
-            'Current draft: [PASTE TEXT]',
-            'Recipient: [ROLE / AUDIENCE]',
-            '',
-            'Output:',
-            'Rewritten message: facts → need → proposal → next step',
-            'Remove blaming phrases; keep a clear boundary if needed',
-            'If facts are missing — say what to ask instead of guessing'
+            'Draft: [PASTE TEXT]',
+            'Recipient: [POSITION / AUDIENCE]',
+            'Output: One message, four parts: facts; need; proposal; next step. No blaming phrases. If the draft has a boundary, keep it.',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_taskList: [
-            'From messy text — task list with priorities.',
-            '',
-            'Input:',
-            'Text with ideas or requirements: [TEXT]',
-            '',
-            'Output:',
-            'Task list',
-            'Priorities A / B / C',
-            'Deadlines if mentioned'
+            'Role: You are my work assistant.',
+            'Goal: Turn the text into a task list with priorities.',
+            'Context:',
+            'Text: [TEXT]',
+            'Output: Each line: task, priority A, B, or C, deadline if it is in the text.',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_decisionSummary: [
             'META: You are a business analyst.',
@@ -156,15 +130,13 @@
             'Short sentences, verbs'
         ].join('\n'),
         lib_simplifyText: [
-            'Shorten text while keeping the core for the reader.',
-            '',
-            'Input:',
+            'Role: You are my work assistant.',
+            'Goal: Shorten the text and keep the core.',
+            'Context:',
             'Text: [TEXT]',
             'Audience: [AUDIENCE]',
-            '',
-            'Output:',
-            '30–50% shorter version',
-            'Plain, clear language'
+            'Output: A version 30–50% shorter. The same facts. No new claims.',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n'),
         lib_swot: [
             'META: You are a business consultant.',
@@ -176,19 +148,13 @@
             '3–5 concrete bullets per quadrant'
         ].join('\n'),
         lib_qualityCheck: [
-            'Review your prompt before high-stakes decisions or bulk sends.',
-            '',
-            'Input:',
-            '[Paste your prompt here]',
-            '',
-            'Criteria (5 principles): Role; Context; Output; Reasoning; Quality control.',
-            '',
-            'Output:',
-            '1) Table: 1–5 score per principle',
-            '2) Briefly why that score',
-            '3) 3 weakest spots',
-            '4) Improved prompt version',
-            'Rules: be specific; if facts are missing — say so; if too complex — offer V1; only change what clearly improves the prompt.'
+            'Role: You are my work assistant.',
+            'Goal: Review the pasted prompt before it is used.',
+            'Context:',
+            'Prompt: [PASTE PROMPT]',
+            'Reasoning: For each principle answer only "yes" or "no". Next to "no", say what is missing.',
+            'Output: Five lines: Role; Context; Output; Reasoning; Quality control. Each is yes or no and one sentence. Then one rewritten prompt. If the prompt is already complete — rewrite it unchanged and write "No changes".',
+            'An empty field or […] — do not invent the fact. Write "Missing:".'
         ].join('\n')
     };
 
@@ -207,102 +173,79 @@
         'Write 3 more lines in the same style on [TOPIC].'
     ].join('\n');
     p.mgr_daySummary = [
-        'Leader day summary from facts — fill the fields.',
-        '',
-        'Input:',
+        'Role: You are my work assistant.',
+        'Goal: Write a leader day summary only from the fields below.',
+        'Context:',
         'Today’s focus and decisions: [TEXT]',
-        'Risks / blockers: [TEXT]',
+        'Risks and blockers: [TEXT]',
         'Team state (1–2 sentences): [TEXT]',
         'Tomorrow’s priorities: [TEXT]',
-        '',
-        'Output:',
-        '5-bullet leader summary (for execution; escalate to leadership if needed)',
-        '1–2 sentences each, minimal jargon'
+        'Output: Write 5 bullets, 1–2 sentences each. Each bullet rests on one entered fact.',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_meetingNotes = [
-        'Meeting outcome for leadership or team — from short notes.',
-        '',
-        'Input:',
+        'Role: You are my work assistant.',
+        'Goal: Turn the notes into a meeting outcome for leadership.',
+        'Context:',
         'Topic and goal: [TOPIC]',
-        'Participants and roles: [LIST]',
-        'Short raw notes: [TEXT]',
-        '',
-        'Output:',
-        'Summary for leader',
-        'Decisions and owners',
-        'Actions (who / by when)',
-        'Risks and open questions',
-        'Write an owner and a date only if they are in the notes; otherwise — “not stated”.'
+        'Participants and positions: [LIST]',
+        'Notes: [TEXT]',
+        'Output: Five blocks: Summary; Decisions and owners; Actions (who and by when); Risks; Open questions. Write an owner and a date only if they are in the notes; otherwise — "not stated".',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_emailReply = [
-        'Reply for leadership or external comms.',
-        '',
-        'Input:',
-        'Incoming email or message: [PASTE]',
-        'What you want to answer: [AGREE / DELAY / ASK / DECLINE]',
+        'Role: You are my work assistant.',
+        'Goal: Write a reply to leadership or an outside party.',
+        'Context:',
+        'Incoming email: [PASTE]',
+        'What you answer: [AGREE / DELAY / ASK / DECLINE]',
         'What you will not promise: [TEXT]',
-        '',
-        'Output:',
-        '4–7 sentences',
         'Tone: [formal / partner-like]',
-        'Clear next steps and ownership',
-        'Optional one line on confidentiality'
+        'Output: 4–7 sentences. The last two sentences are the next step and who owns it. One confidentiality note if it is in the input.',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_hardUpdate = [
-        'Hard message to leadership or outside — reputation and risk visible.',
-        '',
-        'Input:',
+        'Role: You are my work assistant.',
+        'Goal: Write a hard message to leadership or an outside party from the facts.',
+        'Context:',
         'Channel: [EMAIL / SLACK / TEAMS]',
         'Audience: [TEAM / CLIENT / PARTNER / LEADERSHIP]',
-        'Facts: [WHAT HAPPENED / WHAT IS LATE / WHAT CHANGES]',
-        'Risks: [LEGAL / COMMS / CONTRACT / REPUTATION — if any]',
-        'Constraints: [WHAT YOU CANNOT SAY / CONFIDENTIALITY / DEADLINES]',
-        '',
-        'Output:',
-        'Two variants: short and medium',
-        'Structure: context → decision now → owner and deadline → risks (up to 3)',
-        'Tone: calm, no blame; no speculation beyond facts'
+        'Facts: [WHAT HAPPENED]',
+        'Risks: [LEGAL / COMMS / CONTRACT / REPUTATION]',
+        'Constraints: [WHAT YOU CANNOT SAY]',
+        'Output: Two variants, both with the same parts: context; decision now; owner and deadline; risks, up to 3. Short — up to 120 words. Medium — up to 200 words. Tone calm, no blame.',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_feedbackAfterMistake = [
-        'Feedback to a leader: results and behavior (1:1).',
-        '',
-        'Input:',
+        'Role: You are my work assistant.',
+        'Goal: Draft the opening of a 1:1 after a mistake.',
+        'Context:',
         'Relationship: [LEADER–MEMBER / PEERS]',
         'Event (facts): [WHAT HAPPENED]',
-        'Impact: [TEAM / CLIENT / DEADLINES / RISKS]',
-        'Goal: [WHAT YOU WANT NEXT IN BEHAVIOR / PROCESS]',
-        '',
-        'Output:',
-        'Opening: 2–3 sentences (clear, not “grading” tone)',
-        '2–3 observations tied to behavior and impact',
-        '1 clear expectation and 1 visible next step',
-        '1 question to continue the dialogue',
-        'If HR / process step is relevant — one neutral note (no diagnoses)'
+        'Impact: [TEAM / CLIENT / DEADLINES]',
+        'What you want next: [BEHAVIOR OR PROCESS]',
+        'Reasoning: Tie each observation to behavior and consequence. Do not use personal labels.',
+        'Output: Opening, 2–3 sentences. 2–3 observations. 1 expectation. 1 next step. 1 question.',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_deescalateMessage = [
-        'De-escalation for a leader message — assess risk and continuity.',
-        '',
-        'Input:',
+        'Role: You are my work assistant.',
+        'Goal: Rewrite a tense leader message so it is calmer.',
+        'Context:',
         'What caused tension: [BRIEF]',
-        'Current draft: [PASTE TEXT]',
-        'Recipient: [ROLE / AUDIENCE]',
-        'Risk: [WHAT COULD BOOMERANG — if any]',
-        '',
-        'Output:',
-        'Rewritten message: facts → need → proposal → clear next step',
-        'Remove blaming phrases; keep a clear boundary if needed',
-        'If facts are missing — say what to ask instead of guessing'
+        'Draft: [PASTE TEXT]',
+        'Recipient: [POSITION / AUDIENCE]',
+        'Risk to the organization or client: [TEXT]',
+        'Output: One message, four parts: facts; need; proposal; next step. No blaming phrases. If the draft has a boundary, keep it.',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_taskList = [
-        'From text — tasks with owner and priorities (for leaders).',
-        '',
-        'Input:',
-        'Ideas, email, or meeting notes: [TEXT]',
-        '',
-        'Output:',
-        'Task list with owners',
-        'Priorities A / B / C with rationale',
-        'Deadlines and dependencies if known'
+        'Role: You are my work assistant.',
+        'Goal: Turn the text into tasks with an owner and a priority.',
+        'Context:',
+        'Text: [TEXT]',
+        'Output: Each line: task, owner, priority A, B, or C, one sentence on why that priority, deadline if it is in the text.',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_decisionSummary = [
         'META: You are a leadership decision analyst.',
@@ -337,49 +280,36 @@
         'One note on competitive or regulatory context if relevant'
     ].join('\n');
     p.mgr_qualityCheck = [
-        'Review a prompt before bulk send or major leadership decisions.',
-        '',
-        'Input:',
-        '[Paste your prompt here]',
-        '',
-        'Criteria (5 principles): Role; Context; Output; Reasoning; Quality control.',
-        '',
-        'Output:',
-        '1) Table: 1–5 score per principle',
-        '2) Briefly why that score',
-        '3) 3 weakest spots',
-        '4) Improved prompt version',
-        'Rules: be specific; if facts are missing — say so; if too complex — offer V1; only change what clearly improves the prompt.'
+        'Role: You are my work assistant.',
+        'Goal: Review the pasted prompt before it goes to leadership.',
+        'Context:',
+        'Prompt: [PASTE PROMPT]',
+        'Reasoning: For each principle answer only "yes" or "no". Next to "no", say what is missing.',
+        'Output: Five lines: Role; Context; Output; Reasoning; Quality control. Each is yes or no and one sentence. Then one rewritten prompt. If the prompt is already complete — rewrite it unchanged and write "No changes".',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_simplifyText = [
-        'Shorten text for leadership, client, or market — one clear core.',
-        '',
-        'Input:',
+        'Role: You are my work assistant.',
+        'Goal: Shorten the text to one core point.',
+        'Context:',
         'Text: [TEXT]',
         'Audience: [LEADERSHIP / CLIENT / MARKET / INTERNAL TEAM]',
-        'Goal (what the reader must grasp): [ONE STEP]',
-        '',
-        'Output:',
-        '30–50% shorter version',
-        '1 sentence — core (what to do / what to know)',
-        'Plain language; no extra jargon or decoration',
-        'If political or legal risk remains — one clear note, no speculation'
+        'What the reader must understand: [ONE SENTENCE]',
+        'Output: A version 30–50% shorter. The first sentence is the core. The same facts. If the text has a legal risk — one note, no guess.',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
     p.mgr_constraints = [
-        'AI task with compliance and approval chain (for leaders).',
-        '',
-        'Input:',
-        'Task or outcome: [WHAT MUST BE DONE]',
+        'Role: You are my work assistant.',
+        'Goal: Prepare one prompt with compliance and sign-off, not the finished work.',
+        'Context:',
+        'Task that prompt must do: [WHAT MUST BE DONE]',
         'Confidentiality: [INTERNAL / CLIENT / PUBLIC — what must not leak]',
-        'Legal / contract boundary: [WHAT IS FORBIDDEN OR NEEDS SIGN-OFF]',
+        'Legal or contract boundary: [WHAT IS FORBIDDEN OR NEEDS SIGN-OFF]',
         'Length and format: [E.g. 1 page, bullets, table]',
         'Language: [LANGUAGE]',
-        'Approval chain: [WHO SIGNS OFF BEFORE SEND — if relevant]',
-        '',
-        'Output:',
-        'One clear AI task with context and format',
-        '"Avoid": up to 5 bullets',
-        'If facts are missing — what to ask before acting, not guessing'
+        'Who signs off before send: [NAME]',
+        'Output: 1) One prompt, ready to paste into the AI. 2) "Avoid": up to 5 bullets. 3) What to ask before acting.',
+        'An empty field or […] — do not invent the fact. Write "Missing:".'
     ].join('\n');
 
     window.__PROMPT_LIBRARY_EN__ = p;
